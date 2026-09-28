@@ -619,8 +619,9 @@ If you have any concerns or need assistance during this transition, contact supp
 
 | Feature area | Update summary |
 | --- | --- |
-| Device identity | Fixed an issue where cloned Linux virtual machines could retain the source image's machine identifier, causing multiple endpoints to appear with the same Microsoft Defender for Endpoint device identity. |
-| Bug fix | Fixed `SIGILL` crashes on systems with processors that don't support SSE4.1. The crashes were caused by bundled open-source libraries. |
+| Device identity | Fixed an issue where cloned Linux virtual machines could retain the source image's machine identifier, causing multiple endpoints to appear with the same Microsoft Defender for Endpoint device identity.Each cloned endpoint is now correctly identified as a unique device. |
+| Bug fix | Fixed `SIGILL` crashes on systems with processors that don't support SSE4.1. |
+| General | Reliability and quality improvements. |
 
 ### Linux | September 2026 | 101.26072.0005
 

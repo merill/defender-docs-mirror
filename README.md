@@ -13,8 +13,8 @@ published docs.
 - `.learn-mirror/state.json` records each page's ETag and the publish metadata
   stripped from its front matter, so a run only downloads pages that changed
   and a republish is not a diff.
-- `.github/workflows/mirror-learn.yml` calls the engine's shared mirror
-  workflow in `merill/dailynews-engine` four times a day.
+- `.github/workflows/mirror-learn.yml` runs [learn-mirror](https://github.com/merill/learn-mirror)
+  four times a day.
 
 Content is © Microsoft, published on Microsoft Learn under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).

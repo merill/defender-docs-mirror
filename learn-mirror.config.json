@@ -17,6 +17,9 @@
   ],
   "include": "^https://learn\\.microsoft\\.com/en-us/(defender|defender-xdr|defender-endpoint|defender-office-365|defender-for-identity|defender-cloud-apps|defender-business|defender-vulnerability-management|security-exposure-management|defender-for-iot|unified-secops-platform|azure/(sentinel|defender-for-cloud|defender-for-iot|external-attack-surface-management))/",
   "trackedPaths": "^(defender-xdr|defender-endpoint|defender-office-365|defender-for-identity|defender-for-cloud-apps|defender-for-cloud|defender-for-iot-azure|defender-for-iot|sentinel|easm|exposure-management|defender-vulnerability-management|defender-business|unified-secops-platform|defender)/",
-  "sourceRepos": ["MicrosoftDocs/defender-docs-pr"],
-  "concurrency": 6
+  "sourceRepos": [
+    "MicrosoftDocs/defender-docs-pr"
+  ],
+  "concurrency": 4,
+  "priority": "(whats-new|release-notes|what-s-new|new-features|deprecat|retire)"
 }

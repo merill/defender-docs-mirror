@@ -1,0 +1,25 @@
+name: Mirror Microsoft Learn
+
+on:
+  schedule:
+    # Ahead of the Defender monitor, which runs at :15 past 02, 08, 14 and 20 UTC.
+    - cron: '30 1,7,13,19 * * *'
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Refetch every page, ignoring saved ETags
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: learn-mirror
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    uses: merill/dailynews-engine/.github/workflows/mirror-learn.yml@learn-mirror
+    with:
+      full: ${{ inputs.full || false }}
+    permissions:
+      contents: write

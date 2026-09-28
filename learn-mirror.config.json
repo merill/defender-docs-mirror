@@ -1,0 +1,22 @@
+{
+  "sitemapIndex": "https://learn.microsoft.com/_sitemaps/sitemapindex.xml",
+  "sitemaps": "/_sitemaps/(defender[a-z0-9-]*|security-exposure-management|azure)_en-us_\\d+\\.xml$",
+  "tocs": [
+    "https://learn.microsoft.com/en-us/defender-xdr/toc.json",
+    "https://learn.microsoft.com/en-us/defender-endpoint/toc.json",
+    "https://learn.microsoft.com/en-us/defender-office-365/toc.json",
+    "https://learn.microsoft.com/en-us/defender-for-identity/toc.json",
+    "https://learn.microsoft.com/en-us/defender-cloud-apps/toc.json",
+    "https://learn.microsoft.com/en-us/defender-business/toc.json",
+    "https://learn.microsoft.com/en-us/defender-vulnerability-management/toc.json",
+    "https://learn.microsoft.com/en-us/security-exposure-management/toc.json",
+    "https://learn.microsoft.com/en-us/defender-for-iot/toc.json",
+    "https://learn.microsoft.com/en-us/azure/sentinel/toc.json",
+    "https://learn.microsoft.com/en-us/azure/defender-for-cloud/toc.json",
+    "https://learn.microsoft.com/en-us/azure/external-attack-surface-management/toc.json"
+  ],
+  "include": "^https://learn\\.microsoft\\.com/en-us/(defender|defender-xdr|defender-endpoint|defender-office-365|defender-for-identity|defender-cloud-apps|defender-business|defender-vulnerability-management|security-exposure-management|defender-for-iot|unified-secops-platform|azure/(sentinel|defender-for-cloud|defender-for-iot|external-attack-surface-management))/",
+  "trackedPaths": "^(defender-xdr|defender-endpoint|defender-office-365|defender-for-identity|defender-for-cloud-apps|defender-for-cloud|defender-for-iot-azure|defender-for-iot|sentinel|easm|exposure-management|defender-vulnerability-management|defender-business|unified-secops-platform|defender)/",
+  "sourceRepos": ["MicrosoftDocs/defender-docs-pr"],
+  "concurrency": 6
+}

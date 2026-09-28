@@ -116,14 +116,11 @@ Deploy the models required for the agentic code security integration.
 3. Select the **Deployments** tab.
 4. Select **Deploy a base model**.
 5. Choose and deploy the following models with default or custom settings:
-    - **Standard**: Deploy all three models:
+    - **Standard**: Deploy all three models only once:
     - `gpt-5.4`
-
-        - `gpt-5.3-codex`
-        - `gpt-5.4-mini`
-
-            Deploy each model only once.
-    - **MAI Cyber**\*\* (Preview)\*\*: To use this configuration, deploy the three models listed previously and:
+    - `gpt-5.3-codex`
+    - `gpt-5.4-mini`
+    - **MAI Cyber** **(Preview)**: To use this configuration, deploy the three models listed previously and:
     - `MAI-Cyber-1-Flash`
 
 Important
@@ -160,8 +157,7 @@ Configure content filtering is intentionally permissive for MDASH scanning scena
 
 ### Prerequisites
 
-- A Microsoft Foundry resource is created, and three model deployments are completed.
-- The same setup applies to the new MAI-Cyber-1-Flash model, which is part of the MAI Cyber (Preview) configuration .
+- A Microsoft Foundry resource is created, and the required model deployments are completed.
 
 ### Create a content filter
 
@@ -178,11 +174,7 @@ To create a content filter, follow these steps:
 
 ## Allow Codename MDASH to access your Microsoft Foundry resource
 
-Codename MDASH needs to access your Microsoft Foundry endpoint to validate credentials and run agentic scans. When your Foundry resource networking is set to **Selected networks and private endpoints**, all inbound traffic is blocked by default, including requests from MDASH. Without allowing the required IP addresses, validation of the Foundry resource during MDASH onboarding will fail.
-
-Note
-
-If your Foundry resource has public access set to **All networks**, no action is required and you can continue to the next step.
+Codename MDASH needs to access your Microsoft Foundry endpoint to validate credentials and run agentic scans. When your Foundry resource networking is set to **Selected networks and private endpoints**, all inbound traffic is blocked by default, including requests from MDASH. Without allowing the required IP addresses, validation of the Foundry resource during MDASH onboarding will fail. If your Foundry resource has public access set to **All networks**, no action is required and you can continue to the next step.
 
 To allow Codename MDASH to access your Microsoft Foundry resource, you should run script to configure access:
 
@@ -561,17 +553,12 @@ Complete Defender portal onboarding from the getting started page. For more info
 
 ## Disconnect Foundry
 
-To replace a connected Foundry with a different one, or to remove the connection, you can disconnect at any time.
+To replace a connected Foundry with a different one, or to remove the connection, you can disconnect at any time. Disconnecting the connected Foundry without providing an alternative will disable the use of the agentic code scanning.
 
 1. Go to the **Initiative** and select **Settings** (top-right).
 2. Select **Disconnect** next to the connected Foundry resource, then confirm by selecting **Disconnect**.
 
-Once disconnected, you can leave it as is or reconnect at any time to the same Foundry or to a different one.
-
-Note
-
-- Disconnecting the connected Foundry without providing an alternative will disable the use of the agentic code scanning.
-- Disconnecting removes the connection from MDASH. It doesn't delete the Microsoft Foundry resource.
+Once disconnected, you can leave it as is or reconnect at any time to the same Foundry or to a different one. Disconnecting removes the connection from MDASH but it doesn't delete the Microsoft Foundry resource.
 
 For **Keyless** authentication, disconnecting doesn't remove the managed identity, federated identity credential, or RBAC role assignment created for the connection. When you disconnect the Foundry resource in the portal, the confirmation dialog provides an optional cleanup script that removes these resources—select **Copy script** to run it. Running it is optional - run it if your organization requires full cleanup.
 

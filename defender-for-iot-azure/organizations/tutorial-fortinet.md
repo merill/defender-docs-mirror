@@ -1,0 +1,244 @@
+---
+layout: Conceptual
+title: Integrate Fortinet with Microsoft Defender for IoT - Microsoft Defender for IoT | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-iot/organizations/tutorial-fortinet
+breadcrumb_path: ../breadcrumb/toc.json
+feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-iot-blog/bg-p/MicrosoftDefenderIoTBlog
+feedback_help_link_type: ask-the-community
+feedback_product_url: https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4
+feedback_system: Standard
+learn_banner_products:
+- azure
+permissioned-type: public
+recommendations: true
+recommendation_types:
+- Training
+- Certification
+uhfHeaderId: azure
+ms.suite: office
+adobe-target: true
+ms.service: defender-for-iot
+author: limwainstein
+manager: bagol
+ms.author: lwainstein
+description: In this article, you learn how to integrate Microsoft Defender for IoT with Fortinet.
+ms.topic: tutorial
+ms.date: 2024-10-14T00:00:00.0000000Z
+ms.custom:
+- how-to
+- sfi-image-nochange
+locale: en-us
+document_id: 14a28ea8-a69e-b957-2a4a-0068ba8ddc4a
+document_version_independent_id: 4d296e07-cc36-9b54-32a3-ae7dd6464bfd
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-for-iot-azure/organizations/tutorial-fortinet.md
+site_name: Docs
+depot_name: Azure.d4iot-azure
+page_type: conceptual
+toc_rel: toc.json
+asset_id: defender-for-iot/organizations/tutorial-fortinet
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-for-iot-azure/organizations/tutorial-fortinet.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1438b371-d010-4b69-a622-5b0950c389fc
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/86b71af1-f926-4f84-ad97-652864405350
+platformId: bf054658-315f-c79b-f6a9-ab5b8d349c59
+---
+
+# Integrate Fortinet with Microsoft Defender for IoT - Microsoft Defender for IoT | Microsoft Learn
+
+This article helps you learn how to integrate and use Fortinet with Microsoft Defender for IoT.
+
+Microsoft Defender for IoT mitigates IIoT, ICS, and SCADA risk with ICS-aware self-learning engines that deliver immediate insights about ICS devices, vulnerabilities, and threats. Defender for IoT accomplishes this without relying on agents, rules, signatures, specialized skills, or prior knowledge of the environment.
+
+Defender for IoT and Fortinet have established a technological partnership that detects and stop attacks on IoT and ICS networks.
+
+Note
+
+Defender for IoT plans to retire the Fortinet integration on December 1, 2025
+
+Fortinet and Microsoft Defender for IoT prevent:
+
+- Unauthorized changes to programmable logic controllers (PLC).
+- Malware that manipulates ICS and IoT devices via their native protocols.
+- Reconnaissance tools from collecting data.
+- Protocol violations caused by misconfigurations or malicious attackers.
+
+Defender for IoT detects anomalous behavior in IoT and ICS networks and delivers that information to FortiGate and FortiSIEM, as follows:
+
+- **Visibility:** The information provided by Defender for IoT gives FortiSIEM administrators visibility into previously invisible IoT and ICS networks.
+- **Blocking malicious attacks:** FortiGate administrators can use the information discovered by Defender for IoT to create rules to stop anomalous behavior, regardless of whether that behavior is caused by chaotic actors or misconfigured devices, before it causes damage to production, profits, or people.
+
+FortiSIEM and Fortinet’s multivendor security incident and events management solution brings visibility, correlation, automated response, and remediation to a single scalable solution.
+
+Using a Business Services view, the complexity of managing network and security operations is reduced, freeing resources and improving breach detection. FortiSIEM provides cross correlation, while applying machine learning and UEBA, to improve the response in order to stop breaches before they occur.
+
+In this article, you learn how to:
+
+- Create an API key in Fortinet
+- Set a forwarding rule to block malware-related alerts
+- Block the source of suspicious alerts
+- Send Defender for IoT alerts to FortiSIEM
+- Block a malicious source using the Fortigate firewall
+
+## Prerequisites
+
+Before you begin, make sure that you have the following prerequisites:
+
+- Access to a Defender for IoT OT sensor as an Admin user. For more information, see [On-premises users and roles for OT monitoring with Defender for IoT](roles-on-premises).
+- Ability to create API keys in Fortinet.
+
+## Create an API key in Fortinet
+
+An application programming interface (API) key is a uniquely generated code that allows an API to identify the application or user requesting access to it. An API key is needed for Microsoft Defender for IoT and Fortinet to communicate correctly.
+
+**To create an API key in Fortinet**:
+
+1. In FortiGate, navigate to **System** &gt; **Admin Profiles**.
+2. Create a profile with the following permissions:
+
+    | Parameter | Selection |
+    | --- | --- |
+    | **Security Fabric** | None |
+    | **Fortiview** | None |
+    | **User & Device** | None |
+    | **Firewall** | Custom |
+    | **Policy** | Read/Write |
+    | **Address** | Read/Write |
+    | **Service** | None |
+    | **Schedule** | None |
+    | **Logs & Report** | None |
+    | **Network** | None |
+    | **System** | None |
+    | **Security Profile** | None |
+    | **VPN** | None |
+    | **WAN Opt & Cache** | None |
+    | **WiFi & Switch** | None |
+3. Navigate to **System** &gt; **Administrators**, and create a new **REST API Admin** with the following fields:
+
+    | Parameter | Description |
+    | --- | --- |
+    | **Username** | Enter the forwarding rule name. |
+    | **Comments** | Enter the minimal security level incident to forward. For example, if **Minor** is selected, minor alerts and any alert above this severity level will be forwarded. |
+    | **Administrator Profile** | From the dropdown list, select the profile name that you've defined in the previous step. |
+    | **PKI Group** | Toggle the switch to **Disable**. |
+    | **CORS Allow Origin** | Toggle the switch to **Enable**. |
+    | **Restrict login to trusted hosts** | Add the IP addresses of the sensors that will connect to FortiGate. |
+
+Save the API key when it's generated, as it will not be provided again. The bearer of the generated API key will be granted all access privileges assigned to the account.
+
+## Set a forwarding rule to block malware-related alerts
+
+The FortiGate firewall can be used to block suspicious traffic.
+
+Forwarding alert rules run only on alerts triggered after the forwarding rule is created. Alerts already in the system from before the forwarding rule was created aren't affected by the rule.
+
+When creating your forwarding rule:
+
+1. In the **Actions** area, select **FortiGate**.
+2. Define the server IP address where you want to send the data.
+3. Enter an API key created in FortiGate.
+4. Enter the incoming and outgoing firewall interface ports.
+5. Select to forward specific alert details. We recommend selecting one of more of the following:
+
+    - **Block illegal function codes**: Protocol violations - Illegal field value violating ICS protocol specification (potential exploit)
+    - **Block unauthorized PLC programming / firmware updates**: Unauthorized PLC changes
+    - **Block unauthorized PLC stop** PLC stop (downtime)
+    - **Block malware related alerts**: Blocking of the industrial malware attempts, such as TRITON or NotPetya
+    - **Block unauthorized scanning**: Unauthorized scanning (potential reconnaissance)
+
+For more information, see [Forward on-premises OT alert information](how-to-forward-alert-information-to-partners).
+
+## Block the source of suspicious alerts
+
+The source of suspicious alerts can be blocked in order to prevent further occurrences.
+
+**To block the source of suspicious alerts**:
+
+1. Sign in to the OT sensor, then select **Alerts**.
+2. Select the alert related to Fortinet integration.
+3. To automatically block the suspicious source, select **Block Source**.
+4. In the Please Confirm dialog box, select **OK**.
+
+## Send Defender for IoT alerts to FortiSIEM
+
+Defender for IoT alerts provide information about an extensive range of security events, including:
+
+- Deviations from learned baseline network activity
+- Malware detections
+- Detections based on suspicious operational changes
+- Network anomalies
+- Protocol deviations from protocol specifications
+
+You can configure Defender for IoT to send alerts to the FortiSIEM server, where alert information is displayed in the **ANALYTICS** window:
+
+Each Defender for IoT alert is then parsed without any other configuration on the FortiSIEM side, and they're presented in the FortiSIEM as security events. The following event details appear by default:
+
+- Application Protocol
+- Application Version
+- Category Type
+- Collector ID
+- Count
+- Device Time
+- Event ID
+- Event Name
+- Event Parse Status
+
+You can then use Defender for IoT's Forwarding Rules to send alert information to FortiSIEM.
+
+Forwarding alert rules run only on alerts triggered after the forwarding rule is created. Alerts already in the system from before the forwarding rule was created aren't affected by the rule.
+
+**To use Defender for IoT's Forwarding Rules to send alert information to FortiSIEM**:
+
+1. From the sensor console, select **Forwarding**.
+2. Select **+ Create new rule**.
+3. In the **Add forwarding rule** pane, define the rule parameters:
+
+    [![Screenshot of the view of your forwarding rules in the Forwarding window.](media/tutorial-fortinet/forwarding-view.png)](media/tutorial-fortinet/forwarding-view.png#lightbox)
+
+    | Parameter | Description |
+    | --- | --- |
+    | **Rule name** | The forwarding rule name. |
+    | **Minimal alert level** | The minimal security level incident to forward. For example, if Minor is selected, minor alerts and any alert above this severity level will be forwarded. |
+    | **Any protocol detected** | Toggle off to select the protocols you want to include in the rule. |
+    | **Traffic detected by any engine** | Toggle off to select the traffic you want to include in the rule. |
+4. In the **Actions** area, define the following values:
+
+    | Parameter | Description |
+    | --- | --- |
+    | **Server** | Select FortiSIEM. |
+    | **Host** | Define the ClearPass server IP to send alert information. |
+    | **Port** | Define the ClearPass port to send alert information. |
+    | **Timezone** | The time stamp for the alert detection. |
+5. Select **Save**.
+
+## Block a malicious source using the Fortigate firewall
+
+You can set policies to automatically block malicious sources in the FortiGate firewall, using alerts in Defender for IoT.
+
+**To set a FortiGate firewall rule that blocks a malicious source**:
+
+1. In FortiGate, create an API key.
+2. Sign in to the Defender for IoT sensor, and select **Forwarding**, set a forwarding rule that blocks malware-related alerts.
+3. In the Defender for IoT sensor, select **Alerts**, and block a malicious source.
+4. Navigate to the FortiGage **Administrator** window, and locate the malicious source address you blocked.
+
+    The blocking policy is automatically created, and appears in the FortiGate IPv4 Policy window.
+
+    [![Screenshot of the FortiGate IPv4 Policy window view.](media/tutorial-fortinet/policy.png)](media/tutorial-fortinet/policy.png#lightbox)
+5. Select the policy and ensure that **Enable this policy** is toggled on.
+
+    [![Screenshot of the FortiGate IPv4 Policy Edit view.](media/tutorial-fortinet/edit.png)](media/tutorial-fortinet/edit.png#lightbox)
+
+    | Parameter | Description |
+    | --- | --- |
+    | **Name** | The name of the policy. |
+    | **Incoming Interface** | The inbound firewall interface for the traffic. |
+    | **Outgoing Interface** | The outbound firewall interface for the traffic. |
+    | **Source** | The source address(es) for the traffic. |
+    | **Destination** | The destination address(es) for the traffic. |
+    | **Schedule** | The occurrence of the newly defined rule. For example, `always`. |
+    | **Service** | The protocol, or specific ports for the traffic. |
+    | **Action** | The action that the firewall will perform. |

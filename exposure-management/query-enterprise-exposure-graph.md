@@ -1,0 +1,339 @@
+---
+layout: Conceptual
+title: Query the enterprise exposure graph in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/query-enterprise-exposure-graph
+author: dlanger
+ms.author: dlanger
+manager: orspodek
+ms.service: exposure-management
+breadcrumb_path: /security-exposure-management/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-Security
+description: Learn how to query the enterprise exposure graph to understand security risk in Microsoft Security Exposure Management.
+ms.topic: reference
+ms.date: 2025-07-30T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: 5316a3d9-e300-ffaf-600d-c33abd17292e
+document_version_independent_id: 5316a3d9-e300-ffaf-600d-c33abd17292e
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/exposure-management/query-enterprise-exposure-graph.md
+site_name: Docs
+depot_name: office.exposure-management
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: query-enterprise-exposure-graph
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: exposure-management/query-enterprise-exposure-graph.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/26e1a60c-4ce1-41de-b2d1-e5f3b7e68e6e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5287f575-02f0-405f-92b7-800456526b0c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2ed91286-6cf7-4b83-810d-75d0ee3b09dd
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/ad3bd485-5ca9-4865-afde-baec02586899
+- https://authoring-docs-microsoft.poolparty.biz/devrel/06e86142-34c2-4b94-ab9c-9477c21f7152
+- https://authoring-docs-microsoft.poolparty.biz/devrel/6735bd7e-4f7b-457d-b58c-29e6f0198677
+platformId: 1c454bc3-6f82-3336-f777-5bf5cc35c148
+---
+
+# Query the enterprise exposure graph in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
+
+Use the enterprise exposure graph in [Microsoft Security Exposure Management](microsoft-security-exposure-management) to proactively hunt for enterprise exposure threats across endpoints, cloud environments, and hybrid infrastructures in [advanced hunting](https://security.microsoft.com/v2/advanced-hunting) in the Microsoft Defender portal. With the integration of Defender for Cloud in the Defender portal, the exposure graph now includes cloud node types and entities from Azure, AWS, and GCP environments.
+
+The following sections provide examples, tips, and hints for constructing queries in the enterprise exposure graph.
+
+## Prerequisites
+
+- [Read about](cross-workload-attack-surfaces) attack surface management.
+- [Review required permissions](prerequisites#permissions) for working with the graph.
+
+## Build advanced hunting queries
+
+- Review [best practices for building advanced hunting queries](/en-us/defender-xdr/advanced-hunting-best-practices)
+- Get started with [Kusto Query Language (KQL)](/en-us/azure/data-explorer/kusto/query/)
+
+## Use the make-graph operator
+
+Kusto's `make-graph` operator loads nodes and edges data into memory.
+
+- Since Kusto only loads the columns that are in use, there's no need to explicitly select columns.
+- However, the `NodeProperties` column contains all node information and so is large.
+- In most scenarios, it's useful to extract only the information required before feeding it into the `make-graph` operator.
+
+### Example
+
+```kusto
+let FilteredNodes = ExposureGraphNodes
+| extend ContainsSensetiveData = NodeProperties has "containsSensitiveData"
+| project Id, ContainsSensetiveData, Label, EntityIds, Categories;
+Edges
+| make-graph SourceNodeId --> TargetNodeId with FilteredNodes on Id
+..
+```
+
+## Use dynamic columns and smart-indexing
+
+`NodeProperties` and `Categories` are dynamic columns.
+
+- Kusto knows those columns contain json-like content, and applies smart indexing.
+- However, not all Kusto operators use the index. For example, `set_has_element`, `isempty`, `isnotnull` don't use the index when they're applied to a dynamic column and `isnotnull(Properties["containsSensitiveData"]` doesn't use the index.
+- Instead, use the `has()` operator, which always uses the index.
+
+### Example
+
+In the following query the `has` operator checks for the `data` string, and `set_has_element` checks for the `data` element.
+
+Using both operators is important as the `has()` operator returns true even for a category `prefix_data`.
+
+`Categories has('data') and set_has_element(Categories, 'data')`
+
+Learn more about [understanding string terms](/en-us/azure/data-explorer/kusto/query/datatypes-string-operators#understanding-string-terms).
+
+## Example exposure queries
+
+The following examples can help you write queries to understand the security exposure data in your tenant.
+
+### List all node labels in your tenant
+
+The following query groups the data in the `ExposureGraphNodes` table and uses Kusto's `summarize` operator to list it by `NodeLabel`.
+
+```kusto
+ExposureGraphNodes
+| summarize by NodeLabel
+```
+
+### List all edge labels in your tenant
+
+The following query groups the data in the `ExposureGraphEdges` table and uses Kusto's `summarize` operator to list it by edge labels (`EdgeLabel`).
+
+```kusto
+ExposureGraphEdges
+| summarize by EdgeLabel
+```
+
+### List all connections from a specified node label
+
+The following query groups the data in the `ExposureGraphEdges` table, and where the source node label is `microsoft.compute/virtualmachines`, it summarizes the virtual machine's by `EdgeLabel`. It summarizes the edges that connect assets to virtual machines in your security exposure graph. With the integration of Defender for Cloud in the Defender portal, this now includes cloud resources from multiple environments.
+
+```kusto
+ExposureGraphEdges
+| where SourceNodeLabel == "microsoft.compute/virtualmachines"
+| summarize by EdgeLabel
+```
+
+### List all connections to a specific node label
+
+The following query summarizes edges that connect virtual machines to other security exposure graph assets. It groups the data in the `ExposureGraphEdges` table, and where the target node label is `microsoft.compute/virtualmachines`, it uses Kusto's `summarize` operator to list the target node label by `EdgeLabel`.
+
+```kusto
+ExposureGraphEdges
+| where TargetNodeLabel == "microsoft.compute/virtualmachines"
+| summarize by EdgeLabel
+```
+
+### List properties of a specific node label
+
+The following query lists properties of the virtual machine node label. It groups the data in the `ExposureGraphNodes` table, filtered to show the node label "microsoft.compute/virtualmachines" results only. With the `project-keep` operator, the query keeps the `NodeProperties` column. The data returned is limited to one row. With the integration of Defender for Cloud in the Defender portal, the NodeProperties now include additional cloud-specific attributes and relationships.
+
+```kusto
+ExposureGraphNodes
+| where NodeLabel == "microsoft.compute/virtualmachines"
+| project-keep NodeProperties
+| take 1
+```
+
+### Example: Query cloud resources across multiple environments
+
+The following query shows how to query cloud resources from different environments now available with the integration of Defender for Cloud in the Defender portal:
+
+```kusto
+ExposureGraphNodes
+| where NodeLabel contains "microsoft.compute" or NodeLabel contains "aws." or NodeLabel contains "gcp."
+| summarize count() by NodeLabel
+| order by count_ desc
+```
+
+## Query the exposure graph
+
+To query the exposure graph:
+
+1. In the [Microsoft Defender portal](https://security.microsoft.com/), select **Hunting &gt; Advanced hunting**.
+2. In the Query area, type your query. Use the graph schema, functions, and operator tables or the following examples to help you build your query.
+3. Select **Run query**.
+
+## Graph-oriented query examples
+
+Use these graph-oriented query examples to help you write better security exposure queries. The examples search for patterns to expose relationships between entities that can uncover risk. They show you how to correlate context with incident/alert signals.
+
+### List all node labels with an edge to a specific node label
+
+The following query results in a list of all incoming node labels with a connector to the virtual machine node label. It builds a graph structure by mapping the `SourceNodeId` column data in the `ExposureGraphEdges` table to the `TargetNodeId` column in the `ExposureGraphNodes` table with the `make-graph` operator to build a graph structure.
+
+It then uses the `graph-match` operator to make a graph pattern where the target node `TargetNode` and `NodeLabel` match `microsoft.compute/virtualmachines`. The `project` operator is used to keep only the `IncomingNodeLabels`. It lists the results by `IncomingNodeLabels`.
+
+```kusto
+ExposureGraphEdges
+| make-graph SourceNodeId --> TargetNodeId with ExposureGraphNodes
+on NodeId
+| graph-match (SourceNode)-[edges]->(TargetNode)
+       where TargetNode.NodeLabel == "microsoft.compute/virtualmachines"
+       project IncomingNodeLabels = SourceNode.NodeLabel 
+| summarize by IncomingNodeLabels
+```
+
+### List all node labels edging a specific node label
+
+The following query results in a list of all the outgoing node labels with a connector to the virtual machine node label.
+
+- It builds a graph structure by mapping the `SourceNodeId` column uses the data in the `ExposureGraphEdges` table to the `TargetNodeId` column in the `ExposureGraphNodes` table using the `make-graph` operator to build a graph structure.
+- It then uses the `graph-match` operator to match the graph pattern where `SourceNode` and `NodeLabel` match `microsoft.compute/virtualmachines`.
+- The `project` operator is used to keep only the `OutgoingNodeLabels`. It lists the results by `OutgoingNodeLabels`.
+
+```kusto
+ExposureGraphEdges
+| make-graph SourceNodeId --> TargetNodeId with ExposureGraphNodes
+on NodeId
+| graph-match (SourceNode)-[edges]->(TargetNode)
+       where SourceNode.NodeLabel == "microsoft.compute/virtualmachines"
+       project OutgoingNodeLabels = SourceNode.NodeLabel 
+| summarize by OutgoingNodeLabels
+```
+
+### Discover VMs exposed to the internet with an RCE vulnerability
+
+The following query allows you to discover virtual machines exposed to the internet and to a Remote Code Execution (RCE) vulnerability across cloud environments.
+
+- It uses the `ExposureGraphNodes` schema table.
+- When both `NodeProperties``exposedToInternet` and `vulnerableToRCE` are true, it checks that the category (`Categories`) is virtual machines (`virtual_machine`).
+- With the integration of Defender for Cloud in the Defender portal, this now includes VMs from Azure, AWS, and GCP environments.
+
+```kusto
+ExposureGraphNodes
+| where isnotnull(NodeProperties.rawData.exposedToInternet)
+| where isnotnull(NodeProperties.rawData.vulnerableToRCE)
+| where Categories has "virtual_machine" and set_has_element(Categories, "virtual_machine")
+```
+
+### Example: Find hybrid attack paths between cloud and on-premises assets
+
+The following query demonstrates how to identify potential hybrid attack paths with the integration of Defender for Cloud in the Defender portal:
+
+```kusto
+let CloudAssets = ExposureGraphNodes
+| where Categories has "virtual_machine" and (NodeLabel contains "microsoft.compute" or NodeLabel contains "aws." or NodeLabel contains "gcp.");
+let OnPremAssets = ExposureGraphNodes
+| where Categories has "device" and not(NodeLabel contains "microsoft.compute" or NodeLabel contains "aws." or NodeLabel contains "gcp.");
+ExposureGraphEdges
+| make-graph SourceNodeId --> TargetNodeId with ExposureGraphNodes on NodeId
+| graph-match (CloudVM)-[edge1]->(Identity)-[edge2]->(OnPremDevice)
+       where set_has_element(CloudVM.Categories, "virtual_machine") and 
+             (CloudVM.NodeLabel contains "microsoft.compute" or CloudVM.NodeLabel contains "aws." or CloudVM.NodeLabel contains "gcp.") and
+             set_has_element(Identity.Categories, "identity") and
+             set_has_element(OnPremDevice.Categories, "device") and
+             not(OnPremDevice.NodeLabel contains "microsoft.compute" or OnPremDevice.NodeLabel contains "aws." or OnPremDevice.NodeLabel contains "gcp.")
+       project CloudVMName=CloudVM.NodeName, IdentityName=Identity.NodeName, OnPremDeviceName=OnPremDevice.NodeName
+```
+
+### Discover internet facing devices with a privilege escalation vulnerability
+
+The following query looks for internet facing devices exposed to a privilege escalation vulnerability, which could allow access to higher level privileges within the system.
+
+- It uses the `ExposureGraphNodes` schema table.
+- When `NodeProperties` is both internet facing (`IsInternetFacing`) and `VulnerableToPrivilegeEscalation`, the query checks that the items in `Categories` are actually devices (`device`).
+
+```kusto
+ExposureGraphNodes
+| where isnotnull(NodeProperties.rawData.IsInternetFacing)
+| where isnotnull(NodeProperties.rawData.VulnerableToPrivilegeEscalation)
+| where set_has_element(Categories, "device")
+```
+
+### Show all users logged in to more than one critical device
+
+This query results in a list of users logged into more than one critical device, along with the number of devices they're logged into.
+
+- It creates an `IdentitiesAndCriticalDevices` table using `ExposureGraphNodes` data filtered either by devices with a criticality level above 4 or by `identity`.
+- It then makes a graph structure with the `make-graph` operator, where the `EdgeLabel` is `Can Authenticate As`.
+- It uses the `graph-match` operator to match instances where a `device` matches an `identity`.
+- Then it uses the `project` operator to keep identity IDs and device IDs.
+- The `mv-apply` operator filters device IDs and identity IDs by type. It summarizes them and displays the results in a table with the headers, `Number Of devices user is logged-in to`, and `User Id`.
+
+```kusto
+let IdentitiesAndCriticalDevices = ExposureGraphNodes
+| where
+ // Critical Device
+ (set_has_element(Categories, "device") and isnotnull(NodeProperties.rawData.criticalityLevel) and NodeProperties.rawData.criticalityLevel.criticalityLevel > 4)
+ // or identity
+ or set_has_element(Categories, "identity");
+ExposureGraphEdges
+| where EdgeLabel == "Can Authenticate As"
+| make-graph SourceNodeId --> TargetNodeId with IdentitiesAndCriticalDevices on NodeId
+| graph-match (Device)-[canConnectAs]->(Identity)
+       where set_has_element(Identity.Categories, "identity") and set_has_element(Device.Categories, "device")
+       project IdentityIds=Identity.EntityIds, DeviceIds=Device.EntityIds
+| mv-apply DeviceIds on (
+    where DeviceIds.type == "DeviceInventoryId")
+| mv-apply IdentityIds on (
+    where IdentityIds.type == "SecurityIdentifier")
+| summarize NumberOfDevicesUserLoggedinTo=count() by tostring(IdentityIds.id)
+| where NumberOfDevicesUserLoggedinTo > 1
+| project ["Number Of devices user is logged-in to"]=NumberOfDevicesUserLoggedinTo, ["User Id"]=IdentityIds_id
+```
+
+### Show client devices with a critical vulnerability/users that have access to high value servers
+
+The following query results in a list of devices with RCE vulnerabilities and their device IDs, and devices with high critical vulnerabilities and their device IDs.
+
+- It creates an `IdentitiesAndCriticalDevices` table that includes devices (`device`) with RCE vulnerabilities with criticality lower than four, and identities (`identity`) that with through filtering and pattern matching, show devices with critical vulnerabilities.
+- The list is filtered to show only those connections that have edge labels `Can Authenticate As` and `CanRemoteInteractiveLogonTo`.
+
+```kusto
+let IdentitiesAndCriticalDevices = ExposureGraphNodes // Reduce the number of nodes to match
+| where 
+ // Critical devices & devices with RCE vulnerabilities
+ (set_has_element(Categories, "device") and 
+    (
+        // Critical devices
+        (isnotnull(NodeProperties.rawData.criticalityLevel) and NodeProperties.rawData.criticalityLevel.criticalityLevel < 4)
+        or 
+        // Devices with RCE vulnerability
+        isnotnull(NodeProperties.rawData.vulnerableToRCE)
+    )
+  )
+ or 
+ // identity
+ set_has_element(Categories, "identity");
+ExposureGraphEdges
+| where EdgeLabel in~ ("Can Authenticate As", "CanRemoteInteractiveLogonTo") // Reduce the number of edges to match
+| make-graph SourceNodeId --> TargetNodeId with IdentitiesAndCriticalDevices on NodeId
+| graph-match (DeviceWithRCE)-[CanConnectAs]->(Identity)-[CanRemoteLogin]->(CriticalDevice)
+       where 
+             CanConnectAs.EdgeLabel =~ "Can Authenticate As" and
+             CanRemoteLogin.EdgeLabel =~ "CanRemoteInteractiveLogonTo" and
+             set_has_element(Identity.Categories, "identity") and 
+             set_has_element(DeviceWithRCE.Categories, "device") and isnotnull(DeviceWithRCE.NodeProperties.rawData.vulnerableToRCE) and
+             set_has_element(CriticalDevice.Categories, "device") and isnotnull(CriticalDevice.NodeProperties.rawData.criticalityLevel)
+       project DeviceWithRCEIds=DeviceWithRCE.EntityIds, DeviceWithRCEName=DeviceWithRCE.NodeName, CriticalDeviceIds=CriticalDevice.EntityIds, CriticalDeviceName=CriticalDevice.NodeName
+```
+
+### Provide all paths from specific node ID to a node with a specific label
+
+This query displays the path from a specific IP node, passing through up to three assets that results in a connection to the virtual machine node label.
+
+- It uses the `ExposureGraphNodes` and `ExposureGraphEdges` schema tables and the `make-graph` and `graph-match` operators to create a graph structure.
+- With the `project` operator, it displays a list of IP IDs, IP properties, virtual machine IDs, and virtual machine properties.
+
+```kusto
+let IPsAndVMs = ExposureGraphNodes
+| where (set_has_element(Categories, "ip_address") or set_has_element(Categories, "virtual_machine"));
+ExposureGraphEdges
+| make-graph SourceNodeId --> TargetNodeId with IPsAndVMs on NodeId
+| graph-match (IP)-[anyEdge*1..3]->(VM)
+       where set_has_element(IP.Categories, "ip_address") and set_has_element(VM.Categories, "virtual_machine")
+       project IpIds=IP.EntityIds, IpProperties=IP.NodeProperties.rawData, VmIds=VM.EntityIds, VmProperties=VM.NodeProperties.rawData
+```

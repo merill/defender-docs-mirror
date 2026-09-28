@@ -1,0 +1,153 @@
+---
+layout: Conceptual
+title: Security recommendations for priority accounts in Microsoft 365, priority accounts, priority accounts in Office 365, priority accounts in Microsoft 365 - Microsoft Defender for Office 365 | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-office-365/priority-accounts-security-recommendations
+breadcrumb_path: /defender-office-365/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+author: chrisda
+ms.author: chrisda
+ms.topic: solution-overview
+ms.localizationpriority: medium
+ms.assetid: 
+ms.collection:
+- m365-security
+- m365solution-overview
+- m365solution-protecthve
+- highpri
+- tier1
+ms.custom: 
+description: Admins can learn how to elevate the security settings and use reports, alerts, and investigations for priority accounts in their Microsoft 365 organizations.
+ms.service: defender-office-365
+ms.date: 2025-07-07T00:00:00.0000000Z
+locale: en-us
+document_id: aa727faf-7228-3bb5-b236-1edb779f3824
+document_version_independent_id: aa727faf-7228-3bb5-b236-1edb779f3824
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-office-365/priority-accounts-security-recommendations.md
+site_name: Docs
+depot_name: Learn.defender-office-365
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: priority-accounts-security-recommendations
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-office-365/priority-accounts-security-recommendations.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
+platformId: a6c7cc7c-c994-38d7-45d8-fce50935af45
+---
+
+# Security recommendations for priority accounts in Microsoft 365, priority accounts, priority accounts in Office 365, priority accounts in Microsoft 365 - Microsoft Defender for Office 365 | Microsoft Learn
+
+Tip
+
+*Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
+
+Not all user accounts have access to the same company information. Some accounts have access to sensitive information. For example, financial data, product development schedules, partner access to critical build systems, and more. If compromised, these accounts pose a serious threat. We call these types of accounts *priority accounts*. Priority accounts include (but aren't limited to) CEOs, CISOs, CFOs, infrastructure admin accounts, build system accounts, and more.
+
+Microsoft Defender for Office 365 supports priority accounts as tags that can be used in filters in alerts, reports, and investigations. For more information, see [User tags in Microsoft Defender for Office 365](user-tags-about).
+
+For attackers, ordinary phishing attacks that cast a random net for ordinary or unknown users are inefficient. On the other hand, *spear phishing* or *whaling* attacks that target priority accounts are very rewarding for attackers. So, priority accounts require stronger than ordinary protection to help prevent account compromise.
+
+Microsoft 365 and Microsoft Defender for Office 365 contain several key features that provide extra layers of security for your priority accounts. This article describes these capabilities and how to use them.
+
+[![The summary of the security recommendations in icon form](media/security-recommendations-for-priority-users.png)](media/security-recommendations-for-priority-users.png#lightbox)
+
+| Task | All Office 365 Enterprise plans | Microsoft 365 E3 | Microsoft 365 E5 |
+| --- | --- | --- | --- |
+| Increase sign-in security for priority accounts | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) |
+| Use Strict preset security policies for priority accounts | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) |
+| Apply user tags to priority accounts |  |  | ![](media/d238e041-6854-4a78-9141-049224df0795.png) |
+| Monitor priority accounts in alerts, reports, and detections |  |  | ![](media/d238e041-6854-4a78-9141-049224df0795.png) |
+| Train users | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) | ![](media/d238e041-6854-4a78-9141-049224df0795.png) |
+
+Note
+
+For information about securing *privileged accounts* (admin accounts), see [this article](/en-us/purview/privileged-access-management).
+
+## Increase sign-in security for priority accounts
+
+Priority accounts require increased sign-in security. You can increase their sign-in security by requiring multifactor authentication (MFA) and disabling legacy authentication protocols.
+
+For instructions, see [Step 1. Increase sign-in security for remote workers with MFA](/en-us/microsoft-365/solutions/empower-people-to-work-remotely-secure-sign-in). Although this article is about remote workers, the same concepts apply to priority users.
+
+Note
+
+We strongly recommend that you globally disable legacy authentication protocols for all priority users as described in the previous article. If your business requirements prevent you from doing so, Exchange Online offers the following controls to help limit the scope of legacy authentication protocols:
+
+- You can disable POP3 and IMAP4 access on individual mailboxes. You can disable authenticated SMTP at the organizational level and enable it on specific mailboxes that still require it. For instructions, see the following articles:
+    - [Enable or Disable POP3 or IMAP4 access for a user](/en-us/exchange/clients-and-mobile-in-exchange-online/pop3-and-imap4/enable-or-disable-pop3-or-imap4-access)
+    - [Enable or disable authenticated client SMTP submission (SMTP AUTH)](/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission)
+
+## Use Strict preset security policies for priority accounts
+
+Priority users require more stringent actions for [the built-in security features for all cloud mailboxes](eop-about) and the protections in Defender for Office 365.
+
+For example, instead of delivering messages that were classified as spam to the Junk Email folder, you should quarantine those same messages intended for priority accounts.
+
+You can implement this stringent approach for priority accounts by using the Strict profile in preset security policies.
+
+Preset security policies are a convenient and central location to apply our recommended Strict policy settings for all threat policies in Microsoft 365 and Defender for Office 365. For more information, see [Preset security policies](preset-security-policies).
+
+For details about how the Strict policy settings differ from the default and Standard policy settings, see [Recommended email and collaboration threat policy settings for cloud organizations](recommended-settings-for-eop-and-office365).
+
+## Apply user tags to priority accounts
+
+User tags in Microsoft Defender for Office 365 Plan 2 (as part of Microsoft 365 E5 or an add-on subscription) are a way to quickly identify and classify specific users or groups of users in reports and incident investigations.
+
+**Priority accounts** is a type of built-in user tag (known as a *system tag*) that you can use to identify incidents and alerts that involve priority accounts. For more information about **priority accounts**, see [Manage and monitor priority accounts](/en-us/microsoft-365/admin/setup/priority-accounts).
+
+You can also create custom tags to further identify and classify your priority accounts. For more information, see [User tags](user-tags-about). You can manage **priority accounts** (system tags) in the same interface as custom user tags.
+
+## Monitor priority accounts in alerts, reports, and detections
+
+After you secure and tag your priority users, you can see how Microsoft 365 and Defender for Office 365 protects these users. The features that support user tags are described in the following table.
+
+| Feature | Description |
+| --- | --- |
+| Alerts | The user tags of affected users are visible and available as filters on the **Alerts** page in the Microsoft Defender portal. For more information, see [Alert policies in the Microsoft Defender portal](alert-policies-defender-portal). |
+| Incidents | The user tags for all correlated alerts are visible on the **Incidents** page in the Microsoft Defender portal. For more information, see [Manage incidents and alerts](mdo-sec-ops-manage-incidents-and-alerts). |
+| Custom alert policies | You can create alert policies based on user tags in the Microsoft Defender portal. For more information, see [Alert policies in the Microsoft Defender portal](alert-policies-defender-portal). |
+| Explorer <br> Real-time detections | In **Explorer** (Defender for Office 365 Plan 2) or **Real-time detections** (Defender for Office 365 Plan 1), user tags are visible in the Email grid view and the Email details flyout. User tags are also available as a filterable property. For more information, see [Tags in Threat Explorer](threat-explorer-threat-hunting#tags-in-threat-explorer). |
+| Email entity page | You can filter email based on applied user tags in Microsoft 365 E5 and in Defender for Office 365 Plan 1 and Plan 2. For more information, see [Email entity page](mdo-email-entity-page). |
+| Campaign Views | User tags are one of many filterable properties in Campaign Views in Microsoft Defender for Office 365 Plan 2. For more information, see [Campaign Views](campaigns). |
+| Threat protection status report | In virtually all of the views and detail tables in the **Threat protection status report**, you can filter the results by **priority accounts**. For more information, see [Threat protection status report](reports-email-security#threat-protection-status-report). |
+| Top senders and recipients report | You can add this user tag to the top 20 message senders in your organization. For more information, see [Top senders and recipients report](reports-email-security#top-senders-and-recipients-report). |
+| Compromised user report | User accounts that are marked as **Suspicious** or **Restricted** in Microsoft 365 organizations with Exchange Online mailboxes shows up in this report. For more information, see [Compromised user report](reports-email-security#compromised-users-report). |
+| Admin submissions and user reported messages | Use the Submissions page in the Microsoft Defender portal to submit email messages, URLs, and attachments to Microsoft for analysis. For more information, see [Admin submissions and user reported messages](submissions-admin). |
+| Quarantine | Quarantine is available to hold potentially dangerous or unwanted messages for **Priority accounts**. For more information, see [Quarantine email messages](quarantine-about). |
+| Attack simulation | To test your security policies and practices, run a benign cyberattack simulation for your target users. For more information, see [Attack simulation](attack-simulation-training-simulations#target-users). |
+| Email issues for priority accounts report | The **Email issues for priority accounts** report in the Exchange admin center (EAC) contains information about undelivered and delayed messages for **priority accounts**. For more information, see [Email issues for priority accounts report](/en-us/exchange/monitoring/mail-flow-reports/mfr-email-issues-for-priority-accounts-report). |
+
+## Train users
+
+Training users with priority accounts can help save those users and your security operations team much time and frustration. Savvy users are less likely to open attachments or click links in questionable email messages, and they're more likely to avoid suspicious websites.
+
+The Harvard Kennedy School [Cybersecurity Campaign Handbook](https://www.hks.harvard.edu/publications/cybersecurity-campaign-playbook) provides excellent guidance for establishing a strong culture of security awareness within your organization, including training users to identify phishing attacks.
+
+Microsoft 365 provides the following resources to help inform users in your organization:
+
+| Concept | Resources | Description |
+| --- | --- | --- |
+| Microsoft 365 | [Customizable learning pathways](/en-us/office365/customlearning/) | These resources can help you put together training for users in your organization. |
+| Microsoft 365 security | [Learning module: Secure your organization with built-in, intelligent security from Microsoft 365](/en-us/training/modules/security-with-microsoft-365) | This module enables you to describe how Microsoft 365 security features work together and to articulate the benefits of these security features. |
+| Multi-factor authentication | [Download and install the Microsoft Authenticator app](https://support.microsoft.com/account-billing/351498fc-850a-45da-b7b6-27e523b8702a) | This article helps end users understand what multi-factor authentication is and why it's being used at your organization. |
+| Attack simulation training | [Get started using Attack simulation training](attack-simulation-training-get-started) | Attack simulation training in Microsoft Defender for Office 365 Plan 2 allows admin to configure, launch, and track simulated phishing attacks against specific groups of users. |
+
+In addition, Microsoft recommends that users take the actions described in this article: [Protect your account and devices from hackers and malware](https://support.microsoft.com/office/066d6216-a56b-4f90-9af3-b3a1e9a327d6). These actions include:
+
+- Using strong passwords
+- Protecting devices
+- Enabling security features on Windows and Mac PCs (for unmanaged devices)

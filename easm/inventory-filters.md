@@ -1,0 +1,156 @@
+---
+layout: Conceptual
+title: Inventory Filters Overview - Defender EASM inventory filters overview | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/azure/external-attack-surface-management/inventory-filters
+breadcrumb_path: breadcrumb/toc.json
+feedback_help_link_url: https://learn.microsoft.com/answers/tags/133/azure
+feedback_help_link_type: get-help-at-qna
+feedback_product_url: https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4
+feedback_system: Standard
+learn_banner_products:
+- azure
+permissioned-type: public
+recommendations: true
+recommendation_types:
+- Training
+- Certification
+uhfHeaderId: azure
+ms.suite: office
+adobe-target: true
+ms.service: defender-easm
+description: This article outlines the filter functionality available in Defender EASM to help you find specific subsets of inventory assets based on selected parameters.
+author: danielledennis
+ms.author: dandennis
+ms.date: 2026-07-02T00:00:00.0000000Z
+ms.topic: how-to
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ai-usage: ai-assisted
+locale: en-us
+document_id: 400fc26a-b182-5a9c-4950-5c59b180d51f
+document_version_independent_id: 48579e3f-8bd0-ac16-a982-62cf87d76be5
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/easm/inventory-filters.md
+site_name: Docs
+depot_name: Azure.easm-azure
+page_type: conceptual
+toc_rel: toc.json
+asset_id: external-attack-surface-management/inventory-filters
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: easm/inventory-filters.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
+platformId: 64d355a1-264d-2163-83b9-6ca671dcee93
+---
+
+# Inventory Filters Overview - Defender EASM inventory filters overview | Microsoft Learn
+
+This article outlines the filter functionality available in Microsoft Defender External Attack Surface Management (Defender EASM). Filtering helps you find specific subsets of inventory assets based on selected parameters. This article outlines each filter and operator and provides guidance on input options that yield the best results. It also explains how to save queries for easy accessibility to the filtered results.
+
+## How Defender EASM inventory filters work
+
+Inventory filters allow you to access a specific subset of data that meets your search parameters. You can apply as many filters as you need to obtain the results you want.
+
+By default, the **Inventory** screen displays only **Approved** inventory assets. Assets in an alternative state are hidden. This filter can be removed if you want to view assets in a different state. Other states are **Candidate**, **Dependency**, and **Requires investigation**.
+
+Removing the **Approved** inventory filter is useful when you need to:
+
+- Review potential new assets.
+- Investigate a third-party dependency issue.
+- See a complete view of all potential owned assets when you conduct a search.
+
+Defender EASM offers various filters to obtain results of differing levels of granularity. With some filters, you can select value options from a dropdown list. Others require you to manually enter the value you want.
+
+![Screenshot of the inventory filters panel expanded to show available filter options and operators.](media/filters-1.png)
+
+## Manage saved queries for inventory filters
+
+You can save queries of interest to quickly access the resulting asset list. This feature is beneficial if you need to search for a particular subset of assets on a routine basis. It's also helpful if you need to easily refer to a specific filter configuration at a later time. Saved filters help you easily access the assets you care about most based on highly customizable parameters.
+
+To save a query:
+
+1. First, carefully select the filters to produce the results you want. For more information on the applicable filters for each kind of asset, see the asset-specific filter articles such as [Domain asset filters](domain-asset-filters), [Host asset filters](host-asset-filters), and [IP address asset filters](ip-address-asset-filters). In this example, you're searching for domains that expire within 30 days that require renewal. Select **Search**.
+
+    ![Screenshot of the Inventory page showing where to run a search and access saved queries.](media/saved-filters-1.png)
+2. Review the resulting assets. If you're satisfied with the selected filters and want to save the query, select **Save query**.
+3. Name your query and provide a description. Query names can't be edited after the initial setup, but descriptions can be changed at a later time. Select **Save**. A banner appears that confirms the query was saved.
+
+    ![Screenshot of the Save query page where you enter a name and description for the current inventory filter.](media/saved-filters-2.png)
+4. To view your saved filters, select the **Saved queries** tab at the top of the inventory list page. Any saved queries are visible in the top section. Selecting **Open query** filters your inventory by the designated parameters. From this page, you can also edit or delete saved queries.
+
+    ![Screenshot of the Saved queries tab listing existing saved queries with options to open, edit, or delete them.](media/saved-filters-3.png)
+
+## Inventory filter operators reference
+
+Inventory filters can be used with the following operators. Some operators aren't available for every filter. Some operators are hidden if they aren't logically applicable to the specific filter.
+
+| Operator | Description |
+| --- | --- |
+| `Equals` | Returns results that exactly match the search value. This filter only returns results for one value at a time. For filters that populate a dropdown list of options, only one option can be selected at a time. To select multiple values, see the `In` operator. |
+| `Not Equals` | Returns results where the field doesn't exactly match the search value. |
+| `Starts with` | Returns results where the field starts with the search value. |
+| `Does not start with` | Returns results where the field doesn't start with the search value. |
+| `Matches` | Returns results where a tokenized term in the field exactly matches the search value. |
+| `Does not match` | Returns results where a tokenized term in the field doesn't exactly match the search value. |
+| `In` | Returns results where the field exactly matches one of the search values. For dropdown lists, multiple options can be selected. |
+| `Not In` | Returns results where the field doesn't exactly match any of the search values. Multiple options can be selected. Manually input fields exclude results that match an exact value. |
+| `Starts with in` | Returns results where the field starts with one of the search values. |
+| `Does not start with in` | Returns results where the field doesn't start with any of the search values. |
+| `Matches in` | Returns results where a tokenized term in the field exactly matches one of the search values. |
+| `Does not match in` | Returns results where a tokenized term in the field doesn't exactly match any of the search values. |
+| `Contains` | Returns results where the field content contains the search value. |
+| `Does Not Contain` | Returns results where the field content doesn't contain the search value. |
+| `Contains in` | Returns results where the field content contains one of the search values. |
+| `Does Not Contain In` | Returns results where a tokenized term in the field content doesn't contain any of the search values. |
+| `Empty` | Returns assets that don't return any value for the specified filter. |
+| `Not Empty` | Returns all assets that return a value for the specified filter, regardless of the value. |
+| `Greater Than or Equal To` | Returns results that are greater than or equal to a numerical value. Includes dates. |
+| `Between` | Returns results within a numerical range. Includes date ranges. |
+
+## Common Defender EASM inventory filters
+
+The following common filters apply to all kinds of assets within an inventory. You can use these filters when you search for a wider range of assets. For filters specific to each kind of asset, see the asset-specific filter articles such as [ASN asset filters](asn-asset-filters), [Domain asset filters](domain-asset-filters), [Host asset filters](host-asset-filters), and [IP address asset filters](ip-address-asset-filters).
+
+### Defined-value inventory filters
+
+The following filters provide a dropdown list of options that you can select. The available values are predefined.
+
+| Filter name | Description | Selectable values | Available operators |
+| --- | --- | --- | --- |
+| Kind | Filters by specific web property types that comprise your inventory. | ASN, Contact, Domain, Host, IP Address, IP Block, Page, SSL Cert | `Equals`, `Not Equals`, `In`, `Not In`, `Empty`, `Not Empty` |
+| State | The state assigned to assets to distinguish their relevance to your organization and how Defender EASM monitors them. | Approved, Candidate, Dependency, Monitor only, Requires investigation |  |
+| Removed from Inventory | The method by which an asset was removed from inventory. | Archived, Dismissed |  |
+| Created At | Filters by the date that an asset was created in your inventory. | Date range via calendar dropdown | `Greater Than or Equal To`, `Less Than or Equal To`, `Between` |
+| First Seen | Filters by the date that an asset was first observed by the Defender EASM detection system. | Date range via calendar dropdown |  |
+| Last Seen | Filters by the date that an asset was last observed by the Defender EASM detection system. | Date range via calendar dropdown |  |
+| Labels | Filters for labels manually applied to inventory assets. | Accepts freeform responses, but also offers a dropdown of labels available in your Defender EASM resource |  |
+| Updated At | Filters by the date that asset data was last updated in inventory. | Date range via calendar dropdown |  |
+| Wildcard | A wildcard DNS record answers DNS requests for subdomains that haven't already been defined. An example is \*.contoso.com. | True, False | `Equals`, `Not Equals` |
+
+### Freeform inventory filters
+
+The following filters require you to manually enter the value you want to use for your search. Many of these values are case sensitive.
+
+| Filter name | Description | Value format | Applicable operators |
+| --- | --- | --- | --- |
+| UUID | The universally unique identifier assigned to a particular asset. | acabe677-f0c6-4807-ab4e-3a59d9e66b22 | `Equals`, `Not Equals`, `In`, `Not In` |
+| Name | The name of an asset. | Must align to the format of the asset name as listed in inventory. For instance, a host would appear as mail.contoso.com or an IP as 192.168.92.73. | `Equals`, `Not Equals`, `Starts with`, `Does not start with`, `In`, `Not In`, `Starts with in`, `Does not start with in` |
+| External ID | An identifier provided by a third party. | Typically a numerical value. | `Equals`, `Not Equals`, `Starts with`, `Does not start with`, `Matches`, `Does not match`, `In`, `Not In`, `Starts with in`, `Does not start with in`, `Matches in`, `Does not match in`, `Contains`, `Does Not Contain`, `Contains In`, `Does Not Contain In`, `Empty`, `Not Empty` |
+
+## Filter for assets outside your approved inventory
+
+To remove the default **Approved** state filter and locate assets in other states, such as **Candidate** or **Requires investigation**, complete this procedure:
+
+1. On the leftmost pane, select **Inventory** to view your inventory.
+2. To remove the **Approved** inventory filter, select the **X** next to the **State = Approved** filter. Your inventory list expands to include assets in other states, such as **Dismissed**.
+
+    ![Screenshot of the inventory filter bar with the State equals Approved filter applied, showing the X button to remove it.](media/filters-2.png)
+3. Use the inventory filters to identify the assets you want to find. You might want to review all assets in the **Candidate** state. You can also add any assets that are important to your organization to the **Approved** inventory.
+
+    ![Screenshot of a query configured to filter inventory for assets in the Candidate state.](media/filters-3.png)![Screenshot of inventory results filtered to show assets in the Candidate state.](media/filters-4.png)
+4. Or you might need to find a single specific asset that you want to add to the **Approved** inventory. To discover a specific asset, apply a filter to search for the name.
+
+    ![Screenshot of a query configured to search for a specific asset by name.](media/filters-5.png)![Screenshot of inventory results filtered to a single asset matched by name.](media/filters-6.png)
+5. When your inventory list shows the unapproved assets you were searching for, you can modify the assets. For more information on how to update assets, see [Modifying inventory assets](labeling-inventory-assets).

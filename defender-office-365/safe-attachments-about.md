@@ -1,0 +1,214 @@
+---
+layout: Conceptual
+title: Safe Attachments - Microsoft Defender for Office 365 | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-office-365/safe-attachments-about
+breadcrumb_path: /defender-office-365/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+author: chrisda
+ms.author: chrisda
+ms.topic: overview
+ms.localizationpriority: medium
+ms.assetid: 6e13311e-92ae-495e-a619-56d770199170
+ms.collection:
+- m365-security
+- tier1
+description: Admins can learn about the Safe Attachments feature in Microsoft Defender for Office 365.
+ms.service: defender-office-365
+ms.custom:
+- msecd-doc-authoring-1015
+ms.date: 2026-07-17T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: bb283624-fc2d-2ed8-bd53-88f82e8a5d5c
+document_version_independent_id: bb283624-fc2d-2ed8-bd53-88f82e8a5d5c
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-office-365/safe-attachments-about.md
+site_name: Docs
+depot_name: Learn.defender-office-365
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: safe-attachments-about
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-office-365/safe-attachments-about.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
+- https://authoring-docs-microsoft.poolparty.biz/devrel/68cb9039-df60-49b0-8ef8-89ad96497f63
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/725b6df3-93e8-472d-834e-e7e0d2953d35
+platformId: 0fe2a341-15ad-2741-c39b-7be7b815c998
+---
+
+# Safe Attachments - Microsoft Defender for Office 365 | Microsoft Learn
+
+Tip
+
+*Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
+
+Safe Attachments in [Microsoft Defender for Office 365](mdo-about) provides an additional layer of protection for email attachments that have already been scanned by [Anti-malware protection](anti-malware-protection-about). Specifically, Safe Attachments uses a virtual environment to check attachments in email messages for harmful attachments (for example, malware, ransomware, and phishing) before they're delivered to recipients (a process known as *detonation*).
+
+Tip
+
+Typically, email attachment scanning completes within 15 minutes. Sometimes, it takes longer due to retry delays and processing time to analyze the file in the virtual environment.
+
+Safe Attachments protection for email messages is controlled by Safe Attachments policies. Although there's no default Safe Attachments policy, the **Built-in protection** preset security policy provides Safe Attachments protection to all recipients (users who aren't defined in the Standard or Strict preset security policies or in custom Safe Attachments policies). For more information, see [Preset security policies](preset-security-policies). You can also create Safe Attachments policies that apply to specific users, group, or domains. For instructions, see [Set up Safe Attachments policies in Microsoft Defender for Office 365](safe-attachments-policies-configure).
+
+The following table describes scenarios for Safe Attachments in Microsoft 365 and Office 365 organizations that include Microsoft Defender for Office 365 (in other words, lack of licensing is never an issue in the examples).
+
+| Scenario | Result |
+| --- | --- |
+| Pat's Microsoft 365 E5 organization has no Safe Attachments policies configured. | Pat is protected by Safe Attachments due to the **Built-in protection** preset security policy that applies to all recipients who aren't otherwise defined in Safe Attachments policies. |
+| Lee's organization has a Safe Attachments policy that applies only to finance employees. Lee is a member of the sales department. | Lee and the rest of the sales department are protected by Safe Attachments due to the **Built-in protection** preset security policy that applies to all recipients who aren't otherwise defined in Safe Attachments policies. |
+| Yesterday, an admin in Jean's organization created a Safe Attachments policy that applies to all employees. Earlier today, Jean received an email message that included an attachment. | Jean is protected by Safe Attachments due to that custom Safe Attachments policy.  Typically, it takes about 30 minutes for a new policy to take effect. |
+| Chris's organization has long-standing Safe Attachments policies for everyone in the organization. Chris receives an email that has an attachment, and then forwards the message to external recipients. | Chris is protected by Safe Attachments.  If the external recipients are in a Microsoft 365 organization, then the forwarded messages are also protected by Safe Attachments. |
+
+Safe Attachments scanning takes place in the same region where your Microsoft 365 data resides. For more information about datacenter geography, see [Where is your data located?](https://products.office.com/where-is-your-data-located?geo=All)
+
+Note
+
+The following features are located in the global settings of Safe Attachments policies in the Microsoft Defender portal. But, these settings are enabled or disabled globally, and don't require Safe Attachments policies:
+
+- [Safe Attachments for SharePoint, OneDrive, and Microsoft Teams](safe-attachments-for-spo-odfb-teams-about).
+- [Safe Documents in Microsoft 365 E5](safe-documents-in-e5-plus-security-about)
+
+Tip
+
+As a companion to this article, see our [Microsoft Defender for Office 365 setup guide](https://setup.cloud.microsoft/defender/office-365-setup-guide) to review best practices and to protect against email, link, and collaboration threats. Features include Safe Links, Safe Attachments, and more. For a customized experience based on your environment, you can access the [Microsoft Defender for Office 365 automated setup guide](https://admin.microsoft.com/Adminportal/Home?Q=ADG#/modernonboarding/office365advancedthreatprotectionadvisor) in the Microsoft 365 admin center.
+
+## Safe Attachments policy settings
+
+This section describes the settings in Safe Attachments policies:
+
+- **Recipient filters**: Conditions and exceptions to identify the internal recipients that the policy applies to. At least one condition is required. You can use the following recipient filters for conditions and exceptions:
+
+    - **Users**: One or more mailboxes, or mail users in the organization.
+    - **Groups**:
+        - Members of the specified distribution groups or mail-enabled security groups (dynamic distribution groups aren't supported).
+        - The specified Microsoft 365 Groups (dynamic membership groups in Microsoft Entra ID aren't supported).
+    - **Domains**: One or more of the configured [accepted domains](/en-us/exchange/mail-flow-best-practices/manage-accepted-domains/manage-accepted-domains) in Microsoft 365. The recipient's primary email address is in the specified domain.
+
+    You can use a condition or exception only once, but the condition or exception can contain multiple values:
+
+    - Multiple **values** of the **same condition or exception** use OR logic (for example, *&lt;recipient1&gt;* or *&lt;recipient2&gt;*):
+
+        - **Conditions**: If the recipient matches **any** of the specified values, the policy is applied to them.
+        - **Exceptions**: If the recipient matches **any** of the specified values, the policy isn't applied to them.
+    - Different **types of exceptions** use OR logic (for example, *&lt;recipient1&gt;* or *&lt;member of group1&gt;* or *&lt;member of domain1&gt;*). If the recipient matches **any** of the specified exception values, the policy isn't applied to them.
+    - Different **types of conditions** use AND logic. The recipient must match **all** of the specified conditions for the policy to apply to them. For example, you configure a condition with the following values:
+    - Users: `romain@contoso.com`
+    - Groups: Executives
+
+        The policy is applied to `romain@contoso.com`*only* if he's also a member of the Executives group. Otherwise, the policy isn't applied to him.
+- **Safe Attachments unknown malware response**: This setting controls the action for Safe Attachments threat scanning in email messages. The available options are described in the following table:
+
+    | Option | Effect | Use when you want to: |
+    | --- | --- | --- |
+    | **Off** | Attachments aren't scanned for threats by Safe Attachments (for example, malware, ransomware, and phishing). Messages are still scanned for malware by [Anti-malware protection](anti-malware-protection-about). | Turn scanning off for selected recipients.  Prevent unnecessary delays in routing internal mail. **This option is not recommended for most users. You should only use this option to turn off Safe Attachments scanning for recipients who only receive messages from trusted senders. ZAP doesn't quarantine messages if Safe Attachments is turned off and a threat signal isn't received. For details, see [Zero-hour auto purge](zero-hour-auto-purge)** |
+    | **Monitor** | Delivers messages with attachments and then tracks what happens with detected threats.  Delivery of safe messages might be delayed due to Safe Attachments scanning. | See where detected messages go in your organization. |
+    | **Block** | Prevents messages with detected attachments from being delivered.  Messages are quarantined. By default, only admins (not users) can review, release, or delete the messages.¹  Automatically blocks future instances of the messages and attachments.  Delivery of safe messages might be delayed due to Safe Attachments scanning. | Protects your organization from repeated attacks using the same attachments.  This value is the default, and the recommended value in Standard and Strict [preset security policies](preset-security-policies). |
+    | **Dynamic Delivery** | Delivers messages immediately, but replaces attachments with placeholders until Safe Attachments scanning is complete.  Messages that contain malicious attachments are quarantined. By default, only admins (not users) can review, release, or delete the messages.¹  For details, see the Dynamic Delivery in Safe Attachments policies section later in this article. | Avoid message delays while protecting recipients from malicious files. |
+
+    ¹ Quarantine policies define what users are able to do to quarantined messages, and whether users receive quarantine notifications. For more information, see [Anatomy of a quarantine policy](quarantine-policies#anatomy-of-a-quarantine-policy). Users can't release their own messages quarantined as malware or phishing by Safe Attachments, regardless of how the quarantine policy is configured. If the policy is configured for users to release these quarantined messages, users are instead allowed to *request* the release of these quarantined messages.
+- **Redirect messages with detected attachments**: **Enable redirect** and **Send messages that contain monitored attachments to the specified email address**: For the **Monitor** action only, send messages that contain detected attachments to the specified internal or external email address for analysis and investigation.
+
+    The recommendation for Standard and Strict policy settings is to enable redirection. For more information, see [Safe Attachments settings](recommended-settings-for-eop-and-office365#safe-attachments-settings).
+- **Block messages containing encrypted attachments that could not be scanned**: When you select **Block** as the **Safe Attachments unknown malware response**, you can turn on this setting to quarantine messages that contain encrypted (password-protected) attachments. This setting applies when Safe Attachments can't scan or detonate the attachments, for example, when the password isn't available. Affected messages are held in quarantine instead of being delivered until an admin or the recipient releases them. For more information, see the Encrypted (password-protected) attachments in Safe Attachments policies section later in this article.
+- **Priority**: If you create multiple policies, you can specify the order that they're applied. No two policies can have the same priority, and policy processing stops after the first policy is applied (the highest priority policy for that recipient).
+
+    For more information about the order of precedence and how multiple policies are evaluated and applied, see [Order and precedence of email protection](how-policies-and-protections-are-combined).
+
+### Dynamic Delivery in Safe Attachments policies
+
+Note
+
+Dynamic Delivery works only for Exchange Online mailboxes.
+
+The Dynamic Delivery action in Safe Attachments policies seeks to eliminate any email delivery delays that might be caused by Safe Attachments scanning. The body of the email message is delivered to the recipient with a placeholder for each attachment. The placeholder remains until the attachment is found to be safe, and then the attachment becomes available to open or download.
+
+If an attachment is found to be malicious, the message is quarantined.
+
+Most PDFs and Office documents can be previewed in safe mode while Safe Attachments scanning is underway. If an attachment is not compatible with the Dynamic Delivery previewer, the recipients see a placeholder for the attachment until Safe Attachments scanning is complete.
+
+If you're using a mobile device, and PDFs aren't rendering in the Dynamic Delivery previewer on your mobile device, try opening the message in Outlook on the web (formerly known as Outlook Web App) using your mobile browser.
+
+Here are some considerations for Dynamic Delivery and forwarded messages:
+
+- If the forwarded recipient is protected by a Safe Attachments policy that uses the Dynamic Delivery option, then the recipient sees the placeholder, with the ability to preview compatible files.
+- If the forwarded recipient is not protected by a Safe Attachments policy, the message and attachments are delivered without any Safe Attachments scanning or attachment placeholders.
+
+There are scenarios where Dynamic Delivery is unable to replace attachments in messages. These scenarios include:
+
+- Messages in public folders.
+- Messages that are routed out of and then back into a user's mailbox using custom rules.
+- Messages that are moved (automatically or manually) out of cloud mailboxes to other locations, including archive folders.
+- Inbox rules move the message out of the Inbox into a different folder.
+- Deleted messages.
+- The user's mailbox search folder is in an error state.
+- Exchange Online organizations where Exclaimer is enabled. To resolve this issue, see [KB4014438](https://support.microsoft.com/help/4014438).
+- [S/MIME)](/en-us/exchange/security-and-compliance/smime-exo/smime-exo) encrypted messages.
+- You configured the Dynamic Delivery action in a Safe Attachments policy, but the recipient doesn't support Dynamic Delivery (for example, the recipient is a mailbox in an on-premises Exchange organization). However, [Safe Links in Microsoft Defender for Office 365](safe-links-policies-configure) is able to scan Office file attachments that contain URLs (if Safe Links scanning of support Office apps is turned on in the applicable Safe Links policy).
+
+## Encrypted (password-protected) attachments in Safe Attachments policies
+
+Note
+
+In this context, *encrypted* means the attachment is password-protected. It doesn't refer to messages or files that are protected by Microsoft Purview Message Encryption, S/MIME, or Rights Management.
+
+Encrypted (password-protected) attachments are common in business workflows, but they create inspection challenges. Safe Attachments opens email attachments in a virtual environment to check them for malicious content (a process known as *detonation*). Safe Attachments can't fully scan or detonate a password-protected attachment unless the password is available (for example, extracted from the email body during scanning).
+
+You configure Safe Attachments policies to quarantine messages that contain password-protected attachments when scanning or detonation can't complete. Affected messages are quarantined instead of delivered. They stay in quarantine until they're released:
+
+- **Admins** can release the message at any time with full authority, without needing the password. For instructions, see [Manage quarantined messages and files as an admin in Microsoft Defender for Office 365](quarantine-admin-manage-messages-files).
+- **Users** can self-release their own quarantined message by supplying the password for the attachment, if the assigned quarantine policy allows users to release their own messages. Users can't release these messages directly from a quarantine notification email. Instead, they select **Review message** in the notification to open the message in the Microsoft Defender portal, select **Release email**, and then enter the attachment password. For instructions, see [Find and release quarantined messages as a user in Microsoft Defender for Office 365](quarantine-end-user).
+
+On the **Quarantine** page in the Defender portal, these messages have the **Password protected item** quarantine reason value.
+
+When a user supplies the password, Safe Attachments runs a just-in-time detonation (a new scan) of the attachment before release. The password is used only to open and rescan the attachment. It isn't stored.
+
+- If the attachment is found to be safe, the message is released to the mailbox.
+- If the attachment is found to be malicious or still can't be scanned, the message stays in quarantine for an admin to review.
+
+Currently, the password can be submitted only once for each quarantined message. Retrying with another password isn't supported.
+
+By default, this setting evaluates password-protected attachments of all file types. In the **Exclude these attachment types** section, you can exclude specific attachment types from the setting:
+
+- **Acrobat (pdf)**
+- **Archive (zip, gzip, 7z, rar, tar only)**
+- **Office (doc, docx, xls, xlsx, ppt, pptx only)**
+- **All other file types**
+
+Attachments are identified by their true file type, not only by the file name extension.
+
+A **Quarantine policy** value determines what recipients can do with these quarantined messages and whether they receive quarantine notifications. By default, the quarantine policy named DefaultFullAccessWithNotificationPolicy is used. For more information, see [Anatomy of a quarantine policy](quarantine-policies#anatomy-of-a-quarantine-policy).
+
+This setting supports messages where a single password unlocks the attachments:
+
+- A message with one password-protected attachment.
+- A message with multiple password-protected attachments that all use the same password. The user enters the password once to evaluate and possibly release the message.
+
+Messages that contain multiple password-protected attachments with different passwords aren't handled by this setting. The same limitation applies to a single archive (for example, a ZIP file) that contains multiple items protected by different passwords. These messages continue to be processed as they are today, without the quarantine and self-release experience.
+
+Important
+
+Users should enter only the password for the attachment in the release view. They should never enter account passwords, banking passwords, or other unrelated credentials. Users should supply the attachment password only when they expected the message and can validate the sender and business context. Report unexpected protected messages to your security operations (SecOps) team.
+
+In Defender for Office 365 Plan 2, security operations teams can identify messages with password-protected attachments by using [advanced hunting](/en-us/defender-xdr/advanced-hunting-overview):
+
+```kusto
+EmailAttachmentInfo
+| where AdditionalFields contains "IsPasswordProtectedItem"
+```
+
+## Submit files for analysis
+
+- If you receive a file that you want to send to Microsoft for analysis, see [Submit malware and non-malware to Microsoft for analysis](submissions-submit-files-to-microsoft).
+- If you receive an email message (with or without an attachment) that you want to submit to Microsoft for analysis, see [Report messages and files to Microsoft](submissions-report-messages-files-to-microsoft).

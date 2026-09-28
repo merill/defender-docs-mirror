@@ -1,0 +1,225 @@
+---
+layout: Conceptual
+title: Export browser extensions assessment - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/api/get-assessment-browser-extensions
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Returns a table with an entry for every unique combination of DeviceId, BrowserName, ExtensionID.
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- must-keep
+ms.topic: reference
+ms.subservice: reference
+ms.custom: api
+ms.date: 2025-11-10T00:00:00.0000000Z
+locale: en-us
+document_id: 267bfae0-027f-123d-7920-5684802072a8
+document_version_independent_id: 267bfae0-027f-123d-7920-5684802072a8
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/api/get-assessment-browser-extensions.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: ../toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: api/get-assessment-browser-extensions
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/api/get-assessment-browser-extensions.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/de8ce683-cbe1-461b-bae7-77db0888ec6d
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/a06cf482-4ca9-4582-a142-bcf842258d42
+platformId: fe7981ba-37e5-49f5-1594-1e617294fefe
+---
+
+# Export browser extensions assessment - Microsoft Defender for Endpoint | Microsoft Learn
+
+Returns all known installed browser extensions and their details for all devices, on a per-device basis. Unless indicated otherwise, all export assessment methods listed are ***full export*** and ***by device*** (also referred to as ***per device***)
+
+Different API calls get different types of data. Because the amount of data can be large, there are two ways it can be retrieved:
+
+- Export browser extensions assessment **JSON response** The API pulls all data in your organization as Json responses. This method is best for *small organizations with less than 100-K devices*. The response is paginated, so you can use the @odata.nextLink field from the response to fetch the next results.
+- Export browser extensions assessment **via files** This API solution enables pulling larger amounts of data faster and more reliably. This is recommended for large organizations with more than 100-K devices. This API pulls all data in your organization as download files. The response contains URLs to download all the data from Azure Storage. This API enables you to download all your data from Azure Storage as follows:
+
+    - Call the API to get a list of download URLs with all your organization data.
+    - Download all the files using the download URLs and process the data as you like.
+
+Data that is collected (using either *Json response* or *via files*) is the current snapshot of the current state. It doesn't contain historic data. To collect historic data, customers must save the data in their own data storages.
+
+## 1. Export browser extensions assessment (JSON response)
+
+### 1.1 API method description
+
+This API response contains all the data for installed browser extensions per device. Returns a table with an entry for every unique combination of DeviceId, BrowserName, ExtensionId.
+
+#### 1.1.1 Limitations
+
+- Maximum page size is 200,000.
+- Rate limitations for this API are 30 calls per minute and 1,000 calls per hour.
+
+### 1.2 Permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Use Microsoft Defender for Endpoint APIs for details.](apis-intro)
+
+| Permission type | Permission | Permission display name |
+| --- | --- | --- |
+| Application | Software.Read.All | 'Read Threat and Vulnerability Management software information' |
+| Delegated (work or school account) | Software.Read | 'Read Threat and Vulnerability Management software information' |
+
+### 1.3 URL
+
+```http
+GET /api/Machines/BrowserExtensionsInventoryByMachine
+```
+
+### 1.4 Parameters
+
+- pageSize (default = 50,000): Number of results in response.
+- $top: Number of results to return (doesn't return @odata.nextLink and therefore doesn't pull all the data)
+
+### 1.5 Properties
+
+- Each record is 0.5KB of data. You should take this size into account when choosing the correct pageSize parameter for you.
+- The properties defined in the following table are listed alphabetically, by property ID. When running this API, the resulting output isn't necessarily returned in the same order listed in this table.
+- Some other columns might be returned in the response. These columns are temporary and might be removed so use only the documented columns.
+
+| Property (ID) | Data type | Description |
+| --- | --- | --- |
+| BrowserName | string | Name of the browser where the extension is installed. |
+| DeviceId | string | Unique identifier for the device. |
+| DeviceName | string | Fully qualified domain name (FQDN) of the device. |
+| ExtensionDescription | string | Description of a specific browser extension. |
+| ExtensionId | string | Unique identifier for a specific browser extension. |
+| ExtensionName | string | Name of a specific browser extension. |
+| ExtensionRisk | string | The highest risk level generated by the browser extension. Possible values are: "None", "Low", "Medium", "High", "Critical". |
+| ExtensionVersion | string | Version number of a specific browser extension. |
+| IsActivated | Boolean | Indicates whether a browser extension is active. |
+| RbacGroupId | integer | The role-based access control (RBAC) group ID. |
+| RbacGroupName | string | The role-based access control (RBAC) group. If this device isn't assigned to any RBAC group, the value is "Unassigned." If the organization doesn't contain any RBAC groups, the value is "None." |
+| InstallationTime | string | The time the browser extension was installed. |
+| Permissions | Array[string] | The set of permissions requested by a specific browser extension. |
+
+### 1.6 Examples
+
+#### 1.6.1 Request example
+
+```http
+GET https://api.security.microsoft.com/api/Machines/BrowserExtensionsInventoryByMachine?pageSize=5  &sinceTime=2021-05-19T18%3A35%3A49.924Z
+```
+
+#### 1.6.2 Response example
+
+```json
+{
+    "@odata.context": "https://api.security.microsoft.com/api/$metadata#Collection(contoso.windowsDefenderATP.api.AssetSoftware)",
+    "value": [
+        {
+            "DeviceId": "1c32162b42e9efa1f5de42f951775f22f435c997",
+            "DeviceName": "computerpii_1363c2e016e2225cb03974df58f14e6968067aa8.domainpii_f260e982985f7e8eee198b4332e0ae5b2a069cd6.corp.microsoft.com",
+            "RbacGroupId": 86,
+            "RbacGroupName": "UnassignedGroup",
+            "InstallationTime": "2022-05-26T18:46:27.000Z",
+            "BrowserName": "chrome",
+            "ExtensionId": "dkpejdfnpdkhifgbancbammdijojoffk",
+            "ExtensionName": "Logitech Smooth Scrolling",
+            "ExtensionDescription": "Buttery-smooth scrolling for Logitech mice and touchpads.",
+            "ExtensionVersion": "6.65.62",
+            "ExtensionRisk": "High",
+            "IsActivated": true,
+            "Permissions": [
+                        {
+                                    "Id": "tabs",
+                                    "IsRequired": true,
+                                    "Risk": "High"
+                        },
+                        {
+                                    "Id": http://*/*,
+                                    "IsRequired": true,
+                                    "Risk": "High"
+                        },
+                        {
+                                    "Id": https://*/*,
+                                    "IsRequired": true,
+                                    "Risk": "High"
+                        }
+            ]
+}
+    ],
+    "@odata.nextLink": "https://api.security.microsoft.com/api/Machines/BrowserExtensionsInventoryByMachine?pagesize=5&$skiptoken=eyJFeHBvcnREZWZpbml0aW9uIjp7IlRpbWVQYXRoIjoiMjAyMS0wMS0yNS8wMjAwLyJ9LCJFeHBvcnRGaWxlSW5kZXgiOjAsIkxpbmVTdG9wcGVkQXQiOjV9"
+}
+```
+
+## 2. Export browser extension assessment (via files)
+
+### 2.1 API method description
+
+This API response contains all the data for installed browser extensions per device. Returns a table with an entry for every unique combination of DeviceId, BrowserName, ExtensionId.
+
+#### 2.1.1 Limitations
+
+Rate limitations for this API are 5 calls per minute and 20 calls per hour.
+
+### 2.2 Permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Use Microsoft Defender for Endpoint APIs for details.](apis-intro)
+
+| Permission type | Permission | Permission display name |
+| --- | --- | --- |
+| Application | Software.Read.All | 'Read Threat and Vulnerability Management software information' |
+| Delegated (work or school account) | Software.Read | 'Read Threat and Vulnerability Management software information' |
+
+### 2.3 URL
+
+```http
+GET /api/machines/browserextensionsinventoryExport
+```
+
+### 2.4 Parameters
+
+- `sasValidHours`: The number of hours that the download URLs are valid for. Maximum is 6 hours.
+
+### 2.5 Properties
+
+- The files are GZIP compressed & in multiline JSON format.
+- The download URLs are valid for 1 hour unless the `sasValidHours` parameter is used.
+- For maximum download speed of your data, you can make sure you're downloading from the same Azure region that your data resides.
+
+| Property (ID) | Data type | Description | Example of a returned value |
+| --- | --- | --- | --- |
+| Export files | array[string] | A list of download URLs for files holding the current snapshot of the organization | "[Https://tvmexportstrstgeus.blob.core.windows.net/tvm-export...1", "https://tvmexportstrstgeus.blob.core.windows.net/tvm-export...2"]" |
+| GeneratedTime | string | The time that the export was generated. | 2021-05-20T08:00:00Z |
+
+### 2.6 Examples
+
+#### 2.6.1 Request example
+
+```http
+GET https://api.security.microsoft.com/api/machines/browserextensionsinventoryExport
+```
+
+#### 2.6.2 Response example
+
+```json
+{
+    "@odata.context": "https://api.security.microsoft.com/api/$metadata#microsoft.windowsDefenderATP.api.ExportFilesResponse",
+    "exportFiles": [
+        "https://tvmexportstrstgeus.blob.core.windows.net/tvm-export/2021-01-11/1101/BrowserExtensions/json/OrgId=12345678-195f-4223-9c7a-99fb420fd000/part-00393-e423630d-4c69-4490-8769-a4f5468c4f25.c000.json.gz?sv=2019-12-12&st=2021-01-11T11%3A55%3A51Z&se=2021-01-11T14%3A55%3A51Z&sr=b&sp=r&sig=...",
+        "https://tvmexportstrstgeus.blob.core.windows.net/tvm-export/2021-01-11/1101/BrowserExtensions/json/OrgId=12345678-195f-4223-9c7a-99fb420fd000/part-00394-e423630d-4c69-4490-8769-a4f5468c4f25.c000.json.gz?sv=2019-12-12&st=2021-01-11T11%3A55%3A51Z&se=2021-01-11T14%3A55%3A51Z&sr=b&sp=r&sig=...",
+        "https://tvmexportstrstgeus.blob.core.windows.net/tvm-export/2021-01-11/1101/BrowserExtensions/json/OrgId=12345678-195f-4223-9c7a-99fb420fd000/part-00394-e423630d-4c69-4490-8769-a4f5468c4f25.c001.json.gz?sv=2019-12-12&st=2021-01-11T11%3A55%3A51Z&se=2021-01-11T14%3A55%3A51Z&sr=b&sp=r&sig=..."
+    ],
+    "generatedTime": "2021-01-11T11:01:00Z"
+}
+```

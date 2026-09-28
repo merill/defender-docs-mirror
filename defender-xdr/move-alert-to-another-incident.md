@@ -1,0 +1,117 @@
+---
+layout: Conceptual
+title: Move alerts from one incident to another in the Microsoft Defender portal (Legacy) - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/move-alert-to-another-incident
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Learn how to detach an alert from an incident in the Microsoft Defender portal, to correct false and/or missed correlations, and attach the alert to another (new or existing) incident, so you can investigate and remediate security threats more effectively.
+ms.service: defender-xdr
+ms.author: guywild
+author: guywi-ms
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier2
+- usx-security
+- sentinel-only
+ms.topic: how-to
+ms.date: 2026-07-02T00:00:00.0000000Z
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1016
+locale: en-us
+document_id: 60bd13fe-cf91-bf67-23d4-1c35a191edaa
+document_version_independent_id: 60bd13fe-cf91-bf67-23d4-1c35a191edaa
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/move-alert-to-another-incident.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: move-alert-to-another-incident
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/move-alert-to-another-incident.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+platformId: 8b5d167c-6bc8-61c2-7e37-c5426dc4e7c1
+---
+
+# Move alerts from one incident to another in the Microsoft Defender portal (Legacy) - Microsoft Defender XDR | Microsoft Learn
+
+Note
+
+This article describes the legacy incident experience in the Microsoft Defender portal. Incident cases are in preview and are the recommended experience for managing incidents. The legacy incident experience remains available during this preview. For the recommended incident case experience, see [Move alerts from one incident case to another in the Microsoft Defender portal](move-alert-to-another-incident-case).
+
+While Microsoft Defender already uses advanced correlation mechanisms, you might want to decide differently whether a given alert belongs with a particular incident or not. In such a case, you can detach an alert from one incident and attach it to another. Every alert must belong to an incident, so you must attach the alert either to another existing incident, or to a new incident that you create on the spot.
+
+This article explains how to move alerts from one incident to another.
+
+## Prerequisites
+
+Before you move alerts between incidents, make sure you have the following permissions:
+
+- Users must have permissions to view the incidents queue.
+- Users must have read and write permissions on all the alerts they wish to move between incidents.
+
+## Access the panel to move alerts
+
+There are many ways to open the **Move alerts to another incident** panel. You can access it from anywhere you can select or take action on alerts. For example:
+
+In any of the following locations, select one or more alerts by marking the checkboxes at the beginning of their rows. When one or more alerts are marked, the **Move alerts to another incident** button appears on the toolbar.
+
+- The **Incidents** queue. Expand a given incident to reveal the alerts it contains.
+- The **Alerts** tab on the incident details page.
+- The **Alerts** queue.
+
+Also, on the details panel on an alert details page, the **Move alert to another incident** button always appears.
+
+## Select the alert or alerts to move
+
+To choose the alerts you want to move and open the move panel, follow these steps:
+
+1. Open the **Incidents** queue, the **Alerts** tab on the incident details page, the **Alerts** queue, or an alert details page.
+2. Select the alert or alerts you want to move by marking the checkboxes at the beginning of their rows in the queue. When one or more alerts are marked, the **Move alerts to another incident** button appears on the toolbar.
+
+    [![Screenshot of selecting alerts from the queue to move to another incident.](media/move-alert-to-another-incident/move-alert-to-another-incident-from-alerts-tab.png)](media/move-alert-to-another-incident/move-alert-to-another-incident-from-alerts-tab.png#lightbox)
+3. Select **Move alerts to another incident** from the toolbar. A flyout panel opens. If you selected only one alert, the panel is labeled **Move alert to another incident**. If you selected two or more alerts, it's labeled **Move multiple alerts to another incident**. In all other respects, the flyout panel is the same.
+4. If the alert or alerts belong with another existing incident, select **Link to an existing incident**. Otherwise, select **Create a new incident**. Alerts must belong to an incident.
+
+### Move alert or alerts to an existing incident
+
+To move the selected alerts to an existing incident, complete the following steps:
+
+1. If you selected **Link to an existing incident**, a new text field, **Incident name or ID**, appears immediately following the selection. Begin typing the name or ID number of the incident you want to attach the alert or alerts to. As you type, the list of available incidents is dynamically displayed and filtered by what you type. When you see the one you want in the list, select it.
+
+    ![Screenshot of selecting an existing incident to move an alert to.](media/move-alert-to-another-incident/move-alert-to-existing-incident-select.png)
+2. In the **Comment** field, type a comment explaining why you want to move the alerts.
+
+    ![Screenshot of adding a comment explaining why moving an alert.](media/move-alert-to-another-incident/move-alert-to-existing-incident-save.png)
+3. Provide feedback explaining why you are moving the alert or alerts by selecting one of the predefined options. Providing feedback helps Microsoft improve alert correlation in the future.
+4. Select **Save** at the bottom of the panel to execute the move.
+
+### Move alert or alerts to a new incident
+
+To create a new incident for the selected alerts, follow these steps:
+
+1. If you selected **Create a new incident**, enter a comment explaining why you want to move the alerts.
+2. Provide feedback explaining why you are moving the alert or alerts by selecting one of the predefined options. Providing feedback helps Microsoft improve alert correlation in the future.
+3. Select **Save** at the bottom of the panel to execute the move.
+
+    ![Screenshot of selecting a new incident to move an alert to.](media/move-alert-to-another-incident/move-alert-to-new-incident.png)
+
+    After the move is saved, a new incident is created with the alert or alerts you moved to it. The incident is given a name automatically based on the name of the alert or alerts.
+
+## Review activity log entries for moved alerts
+
+When an alert is correlated with an incident, a message is written to the incident's activity log, attesting that the alert was correlated with it. This message is written in either of the following circumstances:
+
+- An alert is created and automatically correlated with a new or existing incident.
+- An alert is moved from one incident to another. The message appears in the log of the destination incident.

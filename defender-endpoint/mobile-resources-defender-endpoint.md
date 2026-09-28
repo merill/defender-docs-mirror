@@ -1,0 +1,109 @@
+---
+layout: Conceptual
+title: Resources for Microsoft Defender for Endpoint for mobile devices - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/mobile-resources-defender-endpoint
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Learn about the configurations and privacy settings for all the features in Defender for Endpoint on mobile devices.
+ms.service: defender-endpoint
+ms.reviewer: priyankagill
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+ms.topic: concept-article
+ms.subservice: ngp
+ms.date: 2026-07-21T00:00:00.0000000Z
+locale: en-us
+document_id: 2959e696-a333-b6bf-ad70-dbb6ef28d40d
+document_version_independent_id: 2959e696-a333-b6bf-ad70-dbb6ef28d40d
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/mobile-resources-defender-endpoint.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: mobile-resources-defender-endpoint
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/mobile-resources-defender-endpoint.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+platformId: 580b7e65-2c70-189e-7dfb-a2e7f9ff911a
+---
+
+# Resources for Microsoft Defender for Endpoint for mobile devices - Microsoft Defender for Endpoint | Microsoft Learn
+
+Microsoft Defender for Endpoint provides multiple capabilities on mobile devices. Some of these capabilities are set to default, and some require administrator configuration. The following table shows how to configure the resources related to Microsoft Defender for Endpoint on Android and iOS.
+
+## Feature configurations
+
+| Configuration | Description | Android AE config key | Android MAM | iOS |
+| --- | --- | --- | --- | --- |
+| Web Protection | Admins can use this setting to change the web protection feature. When disabled, end users aren't asked for VPN permissions | Antiphishing = 0/1 (default), VPN = 0 or 1(default) | Antiphishing = 0 or 1(default), VPN = 0 or 1(default) | WebProtection = true (default) or false |
+| Network Protection | Network protection is disabled by default. Admins can enable it to include rogue WiFi and certificate detection (only available on android) on mobile. | Enable Network protection in Microsoft Defender = 0 or 1 (default) | DefenderNetworkProtectionEnable = 0 or 1 (default) | DefenderNetworkProtectionEnable = 0 or 1(default) |
+
+## Privacy configuration
+
+| Configuration | Description | Android AE config key | Android MAM | iOS |
+| --- | --- | --- | --- | --- |
+| Privacy for phishing alert report | If privacy is enabled, Defender for Endpoint won't send domain name and website details | Hide URLs in report=0(default)/1 | DefenderExcludeURLInReport = 0(default)/1 | DefenderExcludeURLInReport = 0(default)/1 |
+| Configure Privacy for malware threat report | Control the collection of app details (name, package information) in the threat report | Hide app details in report= 0(default)/1 | DefenderExcludeAppInReport = 0(default)/1 |  |
+| Configure privacy in vulnerability assessment of apps | Control what app data shows up in the security portal when Defender for Vulnerability Management is enabled | Enable Vulnerability Management privacy= 0(default)/1 | DefenderTVMPrivacyMode = 0(default)/1 | DefenderTVMPrivacyMode = 0(default)/1 |
+| Network protection | Control the collection of network and certificate details in the alert report | Enable Network protection privacy = 1/0 | DefenderNetworkProtectionPrivacy = 1/0 | DefenderNetworkProtectionPrivacy |
+
+## Other configurations
+
+| Configuration | Description | Android AE config key | Android MAM | iOS |
+| --- | --- | --- | --- | --- |
+| Disable/enable sign out | Sign out option can be disabled for an end user. This helps prevent tampering with the device. | Disable sign out = 1(default)/0 | DisableSignOut = 1/0 | DisableSignOut = 1/0 |
+| Device tagging | Defender for Endpoint enables bulk tagging mobile devices during onboarding. Admins can set up tags using this configuration by using Intune. | Device tag (Value as String) | DefenderDeviceTag (Value as String) | DefenderDeviceTag (Value as String) |
+| Optional Permissions | Admins can make some permissions optional for the end user while onboarding Defender for Endpoint. Users see an option to grant these permissions later. | NA | DefenderOptionalVPN = 0(default)/1, DefenderOptionalAccessibility = 0(default)/1 | DefenderOptionalVPN = 0(default)/1, DefenderOptionalAccessibility = 0(default)/1 |
+| [Dynamic Preview Rings](mobile-dynamic-preview-rings-configure) | Admins can enable preview features on the production Defender app for a selected group of users. | DefenderPreview = 0(default)/1 | DefenderPreview = 0(default)/1 | DefenderPreview = 0(default)/1 |
+
+## Alerts severity and privacy information
+
+| Alert type | Severity | Privacy information (Android) | Privacy information (iOS) |
+| --- | --- | --- | --- |
+| Anti-phishing (Defender warning) | Informational | URL of malicious connection, connection information, Protocol type; [More information](android-privacy#web-page--network-information) | Domain name, IP address of malicious website; [More information](ios-privacy#web-page-or-network-information) |
+| Anti-phishing (Defender warning overlooked) | Low |  |  |
+| Anti-malware | Medium | Information about malicious APKs including install source, storage location, time of install, etc.; [More information](android-privacy#app-information) |  |
+|  |  |  |  |
+| Root Detection | High | NA | NA |
+| Jailbreak Detection | High | NA | NA |
+| Rogue Wifi | Low |  |  |
+| Open Network Detection (Migrated from alert to event in the device timeline) | NA (Event) |  |  |
+| Suspicious Certificates Downloaded/Installed (Migrated from alert to event in the device timeline) | NA (Event) |  |  |
+
+[Complete privacy information for Android](android-privacy)
+
+[Complete privacy information for iOS](ios-privacy)
+
+## Microsoft Defender mobile app exclusion from Conditional Access (CA) Policies
+
+The Microsoft Defender mobile app is a security app that needs to constantly be running in the background to report the device security posture. This security posture is used in the Compliance and App Protection policies to secure the managed apps and ensure that corporate data is accessed only in a secured device. However, with restrictive Conditional Access policies such as having Block policies based on certain locations, or enforcing frequent sign ins can result in Defender blocked from reporting posture. If the Defender app fails to report the device posture this can lead to situation where the device is under a threat, leading to vulnerability of corporate data on the device. To ensure seamless protection, we recommend excluding the Defender app from the blocking Conditional Access Policy.
+
+### Apps required to exclude
+
+1. **MicrosoftDefenderATP XPlat app (a0e84e36-b067-4d5c-ab4a-3db38e598ae2)**: MicrosoftDefenderATP XPlat app is the application responsible for forwarding Defender risk signals to the Defender backend. However, the presence of restrictive CA policies can result in Defender blocked from reporting signals. In these scenarios, we recommend excluding the MicrosoftDefenderATP XPlat app. Note, that **MicrosoftDefenderATP XPlat app** is also used by other platforms like Mac and Linux. So if the policy is same for these platforms, it is better to create a separate Conditional Access policy for Mobile.
+2. **Microsoft Defender for Mobile TVM app (e724aa31-0f56-4018-b8be-f8cb82ca1196)**: Microsoft Defender for Mobile TVM (Threat and Vulnerability Management) is the service, which provides the vulnerability assessment for the installed apps on the iOS devices. However, the presence of restrictive CA policies can result in Defender blocked from communicating the onboarding requests to the TVM backend services. This service should be excluded if MDVM (Vulnerability Assessment) is used in the organization.
+
+### Steps to exclude
+
+1. Create service principal for the apps that needs to be excluded. [Steps to create service principal.](/en-us/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&amp;tabs=powershell#request&amp;preserve-view=true)
+2. While creating the service principal object above, use these app IDs: **MicrosoftDefenderATP XPlat app (a0e84e36-b067-4d5c-ab4a-3db38e598ae2), Microsoft Defender for Mobile TVM app (e724aa31-0f56-4018-b8be-f8cb82ca1196)**.
+3. After the object is successfully created the two apps are visible in the CA screen and can be excluded.
+
+    ![Image displaying Application exclusions.](media/mobile-resources-defender-endpoint/appexclusion.png)

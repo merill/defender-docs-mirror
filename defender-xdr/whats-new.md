@@ -1,0 +1,207 @@
+---
+layout: Conceptual
+title: What's new in Microsoft Defender XDR - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/whats-new
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Lists the new features and functionality in Microsoft Defender XDR
+ms.service: defender-xdr
+ms.author: guywild
+author: guywi-ms
+ms.localizationpriority: medium
+ms.date: 2026-09-08T00:00:00.0000000Z
+ms.collection:
+- M365-security-compliance
+- tier1
+ms.topic: whats-new
+ms.custom: msecd-doc-authoring-1015
+locale: en-us
+document_id: 551f70f0-8d02-5eec-751d-e03a7fc533d0
+document_version_independent_id: 551f70f0-8d02-5eec-751d-e03a7fc533d0
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/whats-new.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: whats-new
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/whats-new.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+platformId: 3befe401-2397-781e-59c5-5b6183599c4f
+---
+
+# What's new in Microsoft Defender XDR - Microsoft Defender XDR | Microsoft Learn
+
+Lists the new features and functionality in Microsoft Defender XDR.
+
+For more information on what's new with other Microsoft Defender security products and Microsoft Sentinel, see:
+
+- [What's new in Microsoft Defender for Office 365](/en-us/defender-office-365/defender-for-office-365-whats-new)
+- [What's new in Microsoft Defender for Endpoint](/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint)
+- [What's new in Microsoft Defender for Identity](/en-us/defender-for-identity/whats-new)
+- [What's new in Microsoft Defender for Cloud Apps](/en-us/cloud-app-security/release-notes)
+- [What's new in Microsoft Defender for Cloud](/en-us/azure/defender-for-cloud/release-notes)
+- [What's new in Microsoft Sentinel](/en-us/azure/sentinel/whats-new)
+- [What's new in Microsoft Purview](/en-us/purview/whats-new)
+
+You can also get product updates and important notifications through the [message center](https://admin.microsoft.com/Adminportal/Home#/MessageCenter).
+
+## September 2026
+
+- (Preview) **Integrated Security Operations Center (ISOC) in Microsoft Defender** brings XDR, SIEM, threat intelligence, automation, and AI capabilities together in the Microsoft Defender portal. Starting September 23, 2026, it's available to eligible Microsoft 365 E5 and E7 customers without an active Microsoft Sentinel workspace. For more information, see [ISOC in Microsoft Defender](isoc-overview).
+- (GA) **Identity Security dashboard and Coverage & Maturity**: The Identity Security dashboard provides a centralized view of identity-related security risks and posture across the organization. Coverage & Maturity helps security teams understand how well their identity environment is protected across on-premises, cloud, SaaS, identity providers, and partner technologies, identify coverage and deployment gaps, and prioritize the actions required to improve identity security posture. For more information, see [Coverage & Maturity](identity-security/coverage-maturity).
+
+## July 2026
+
+- (Preview) **AI agent posture risk in Microsoft Defender**: Microsoft Defender now assesses posture risk for AI agents, including enterprise agents and local agents discovered on endpoint devices. Risk levels are based on active risk indicators, such as configuration, access, runtime activity, endpoint and user context, and active alerts. Security teams can use posture risk and recommendations to prioritize risky agents and improve agent security posture. For more information, see [AI agent posture risk in Microsoft Defender](security-for-ai/ai-agent-risk-assessment).
+- (GA) The **Domain investigation** page allows you to investigate an Active Directory domain. It shows Active Directory domain security, including domain properties, deployment health, identity summary, service account breakdown, sensitive entities, active recommendations, group policies, and trust relationships. For more information, see [Investigate a domain](/en-us/defender-for-identity/investigate-domain).
+- (Preview) **Threat detection for Microsoft Agent 365 agents**: Microsoft Defender analyzes runtime signals from agent interactions, tool usage, and execution patterns to surface alerts in Microsoft Defender XDR. Detection uses observability data from Microsoft Copilot Studio, Microsoft Foundry, Microsoft 365 Copilot Agent Builder, and agents integrated through the Microsoft Agent 365 SDK. Analysts can investigate alerts through incidents and advanced hunting. For more information, see [Detect and investigate threats to AI agents using Microsoft Defender](security-for-ai/ai-agent-detection-protection).
+- (GA) **Real-time protection for Microsoft Agent 365 tooling servers**: Microsoft Defender evaluates tool invocations and responses against security policies and can allow or block interactions with Work IQ MCP and customer MCP tools onboarded to Agent 365. For more information, see [Protect AI agents in real time using Microsoft Defender](security-for-ai/ai-agent-real-time-protection).
+
+## June 2026
+
+- The [Phishing Triage Agent](phishing-triage-agent) and [Security Alert Triage Agent](security-alert-triage-agent) now use the more limited **Email & collaboration content: Emails associated with alerts (read)** permission instead of the broader **Email & Collaboration content: All Emails (read)** permission. This least-privilege permission restricts agent access to only email content associated with alerts, improving the security posture of your agent configuration.
+- (Preview) **Entity enrichments with threat intelligence**: Entity pages for IP addresses, domains, URLs, and files now include a **Threat Intelligence Insights** tab that surfaces enrichment data from Microsoft Threat Intelligence directly in the investigation workflow. Enrichments include reputation scores, attributed threat reports, infrastructure relationships, and sandbox analysis, eliminating the need to switch between separate tools during investigations. For more information, see [View threat intelligence in entity pages](entity-page-threat-intelligence).
+- (Preview) The **Identity Security dashboard** now includes a new **Human identities** card that shows your human identities by source (Entra ID, SaaS, and on-premises), giving you a single view of where your human identities live. For more information, see [Identity Security dashboard](/en-us/defender-for-identity/dashboard).
+- (Preview) On the **Coverage and maturity** page, the **Review and improve coverage** side panel for SaaS Identities now includes an **Observed** column and a **Show Only Observed Applications** toggle. By default, the panel shows only SaaS applications detected in your environment. Turn off the toggle to see other supported SaaS applications you can onboard to expand your identity coverage. For more information, see [Coverage and maturity](identity-security/coverage-maturity).
+- (Preview) Local AI agent discovery on Windows endpoints: as part of the [Defender AI agents experience](/en-us/defender-xdr/security-for-ai/defender-security-for-ai), Microsoft Defender now automatically discovers supported local AI agents running on onboarded Windows devices - including coding agents and IDE extensions, desktop AI assistants, local AI runtimes, and agent platforms. Discovered agents appear as assets in the AI agent inventory, exposure map, and advanced hunting, giving security teams visibility into local AI agent usage across the organization. For more information, see [Discover local AI agents](/en-us/defender-endpoint/discover-local-ai-agents).
+- (Preview) Local AI agent runtime protection on Windows endpoints: as part of the [Defender AI agents experience](/en-us/defender-xdr/security-for-ai/defender-security-for-ai), runtime protection for supported local AI agents on Windows endpoints is now available in public preview. Microsoft Defender inspects the agent loop (user prompts, tool calls, and tool responses) and can block risky activity before it executes, helping stop prompt injection and unsafe agent actions at the device level. Blocked and audited events appear as alerts in Microsoft Defender to support incident correlation and investigation workflows. For more information, see [Set up AI agent runtime protection with Microsoft Defender for Endpoint](/en-us/defender-endpoint/configure-ai-agent-runtime-protection).
+- (GA) The following advanced hunting schema tables are now generally available:
+    - The [DisruptionAndResponseEvents](advanced-hunting-disruptionandresponseevents-table) table contains information about automatic attack disruption events in Microsoft Defender XDR.
+    - The [`CloudAuditEvents`](advanced-hunting-cloudauditevents-table) table contains information about cloud audit events for various cloud platforms protected by the organization's Microsoft Defender for Cloud.
+    - The [`CloudDnsEvents`](advanced-hunting-clouddnsevents-table) table contains information about DNS activity events from cloud infrastructure environments.
+    - The [`CloudProcessEvents`](advanced-hunting-cloudprocessevents-table) table contains information about process events in multicloud hosted environments.
+- (Preview) The [`AgentsInfo`](advanced-hunting-agentsinfo-table) table in advanced hunting is now available in preview. The [`AIAgentsInfo`](advanced-hunting-aiagentsinfo-table) table is transitioning to this new table, which provides a unified schema that supports agent inventory and governance for all agent types, including Copilot Studio, Microsoft Foundry, Microsoft 365 Copilot, third-party, and endpoint-discovered agents. Microsoft Agent 365 customers should use the `AgentsInfo` table today. The `AIAgentsInfo` table remains accessible until July 1, 2026. Update your queries to use `AgentsInfo` before this date. For more information, see [Advanced hunting schema - Naming changes](advanced-hunting-schema-changes).
+
+## May 2026
+
+- **Microsoft Defender Experts for Servers** and **Microsoft Defender Experts Hunting - Servers** are now offered as standalone offerings for customers who wish to avail managed extended detection and response and threat hunting services for their on-premises and multicloud servers protected by Microsoft Defender for Cloud. These services were previously offered as add-ons to Microsoft Defender Experts MDR and Microsoft Defender Experts Hunting, respectively. [Learn more.](defender-experts/defender-experts-servers-overview)
+- (Preview) [Automatic attack disruption](automatic-attack-disruption) can now isolate compromised devices from the network when high-confidence incident analysis indicates the device is being used as an active foothold. Isolation blocks attacker communication and lateral movement while keeping the device connected to security services. The action is time-limited, scoped to devices involved in the incident, and can be released by security operators at any time. [Learn more](/en-us/defender-endpoint/respond-machine-alerts#isolate-device-automatic-attack-disruption)
+- In advanced hunting, the **Take action** wizard now lets customers allow or block top-level domains and files attachment hashes in emails based on query results. [Learn more](advanced-hunting-take-action#take-various-actions-on-emails).
+- The [hunting graph](advanced-hunting-graph) in advanced hunting now includes new identity-focused predefined scenarios. These scenarios help you discover attack paths, privilege escalation routes, and credential access risks across on-premises and cloud environments, including Kerberoast and AS-REP roast paths, domain compromise routes, OAuth application risks, and guest user access to cloud resources.
+- [Defender Chat experience](security-copilot-in-microsoft-365-defender#microsoft-security-copilot-integration-in-microsoft-defender) (Preview) is an open prompt chat assistant built into Microsoft Defender. It helps SOC analysts investigate threats, explore incidents, and answer security questions in plain language, without needing to navigate multiple screens or write complex queries.
+
+## April 2026
+
+- (Preview) You can now view the current status of automatic attack disruption and predictive shielding actions related to a specific incident. You view this data in the **Activities** tab of the incident page. [Learn more](autoad-results#track-the-action-status-in-the-activities-tab-preview)
+- (Preview) The [`AIAgentsInfo`](advanced-hunting-aiagentsinfo-table) table in advanced hunting now includes additional columns that provide deeper visibility into AI agents operating in your Microsoft 365 environment. These fields expand coverage beyond Copilot Studio to all agent types, including Microsoft Foundry, third-party marketplace, and custom line-of-business agents.
+- (GA) [Built-in alert tuning rules](investigate-alerts#built-in-alert-tuning-rules) are now generally available. Built-in alert tuning rules suppress alerts from common benign activity in Defender for Endpoint and Defender for Office 365 without affecting Automated Investigation and Response (AIR) investigations and email notifications.
+- Microsoft Defender Experts MDR customers can now see **Defender Experts** as a distinct entry in the Microsoft Defender portal navigation menu. This feature adds to the existing home page status card as in-portal experiences that provide consistent and predictable access to the service. [Learn more](defender-experts/defender-experts-mdr-start-using).
+
+## March 2026
+
+- **Identity security enhancements**: New identity security capabilities help you monitor and manage identity security for human and non-human identities:
+    - (Preview) Identity Security dashboard: The **Identity Security** dashboard provides summary cards for identity providers, on-premises identities, SaaS identities, PAM and IGA integrations, and non-human identities. For more information, see [The Identity Security dashboard](/en-us/defender-for-identity/dashboard). The **Identity Security** dashboard is being rolled out gradually to customers, and might not yet be available in your organization.
+    - (Preview) Coverage and maturity page: The **Coverage and maturity** page shows your organization's identity security coverage with maturity levels, including Connected, Protected, Fortified, and Resilient, and prioritized setup tasks. For more information, see [Coverage and maturity](identity-security/coverage-maturity). The **Coverage and maturity** page is being rolled out gradually to customers, and might not yet be available in your organization. If you don't see this feature in your environment yet, check back soon.
+    - Identity inventory: The **Identity inventory** page now shows human and non-human identities in separate tabs. Insight cards help you classify critical assets, view highly privileged identities, identify critical Active Directory service accounts, and view cloud application accounts. For more information, see [View the Identity inventory](/en-us/defender-for-identity/identity-inventory).
+    - (Preview) Non-human identities: The **Non-human identities** tab shows non-human identities, including Microsoft Entra ID apps, Active Directory service accounts, Google Workspace apps, and Salesforce apps. For more information, see [Identity inventory](/en-us/defender-for-identity/identity-inventory) and [Investigate non-human identities](investigate-non-human-identities).
+    - (Preview) Identity risk score: A new risk score for identities, ranging from 0 to 100, that indicates the likelihood of compromise and the potential impact based on criticality and privileged roles. The risk score is available in Microsoft Entra ID, where it can be used to inform conditional access policies and identity protection workflows. A new **Risk score** tab on the **Identity** page provides a detailed breakdown of the risk factors, including percentile comparison and risk trends. For more information, see [Investigate an identity](/en-us/defender-xdr/investigate-users).
+    - (Preview) Domain investigation page: The **Domain investigation** page shows Active Directory domain security, including domain properties, deployment health, identity summary, service account breakdown, sensitive entities, active recommendations, group policies, and trust relationships. For more information, see [Investigate a domain](/en-us/defender-for-identity/investigate-domain).
+    - (Preview) Identity security recommendations: View recommendations from Active Directory, Microsoft Entra ID, SaaS applications, and supported non-Microsoft identity providers. For more information, see [Identity security recommendations](identity-security/identity-security-recommendations).
+- (Preview) The following advanced hunting schema tables are now available for preview:
+    - The [`CloudDnsEvents`](advanced-hunting-clouddnsevents-table) table contains information about DNS activity events from cloud infrastructure environments.
+    - The [`CloudPolicyEnforcementEvents`](advanced-hunting-cloudpolicyenforcementevents-table) table contains policy enforcement evaluation decisions and metadata of security gating events for various cloud platforms protected by the organization's Microsoft Defender for Cloud.
+- To improve accuracy and better protect organizational identities, we've made updates to the Secure Score category calculations. Some security recommendations categorized as **Cloud apps** recommendations are now considered identity‑related and grouped under the **Identity** category. While the total Secure Score remains unchanged, individual identity and app scores may change.
+- (Preview) Customers can now use filters on very large incidents with many alerts and entities or hide specific entities to simplify complex incident graphs. By simplifying the graphs, security teams can focus their investigations on what matters most. [Learn more](investigate-incidents#filter-and-focus-the-incident-graph)
+- The [proactive user containment (contain user)](/en-us/defender-endpoint/respond-machine-alerts#contain-user-from-the-network) action as part of the predictive shielding feature is now generally available. This action infuses activity data with exposure data to identify exposed credentials at risk of being compromised and reused to conduct malicious activity.
+
+## February 2026
+
+- (GA) The following content types are now generally available for [distribution across multiple tenants](mto-distribution-profiles) in the Microsoft Defender multitenant portal: analytics rules, automation rules, and workbooks.
+- Microsoft Defender Experts Hunting customers can now set up [Notification contacts](defender-experts/defender-experts-hunting-onboarding#tell-us-who-to-contact-for-important-matters). These contacts are the individuals or groups that Microsoft needs to notify if there are critical incidents or service updates.
+- (GA) The following advanced hunting schema tables are now generally available:
+    - The [`IdentityAccountInfo`](advanced-hunting-identityaccountinfo-table) table contains information about account information from various sources, including Microsoft Entra ID. It also includes information and link to the identity that owns the account.
+    - The [`EntraIdSignInEvents`](advanced-hunting-entraidsigninevents-table) table contains information about Microsoft Entra interactive and non-interactive sign-ins.
+    - The [`EntraIdSpnSignInEvents`](advanced-hunting-entraidspnsigninevents-table) table contains information about Microsoft Entra service principal and managed identity sign-ins.
+    - The [`GraphApiAuditEvents`](advanced-hunting-graphapiauditevents-table) table provides information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
+
+## January 2026
+
+- (Preview) Custom detection rules in Microsoft Defender now support Near Real-Time (NRT) configuration on [Microsoft Sentinel data](custom-detection-rules#tables-that-support-continuous-nrt-frequency).
+- (Preview) In advanced hunting, if the query result exceeds the 64-MB size limit, the portal now returns the maximum number of records it can within this limit and displays a message indicating that the displayed results are partial due to size constraints. [Learn more](advanced-hunting-overview#quotas-and-usage-parameters)
+- (Preview) The [`BehaviorInfo`](advanced-hunting-behaviorinfo-table) and [`BehaviorEntities`](advanced-hunting-behaviorentities-table) tables in advanced hunting now include additional columns and information about behavior data types and alerts from User and Entity Behavior Analytics (UEBA), providing more insights on the relationships between identified behaviors and entities. [Learn more about UEBA behaviors](/en-us/azure/sentinel/entity-behaviors-layer)
+
+## December 2025
+
+- (Preview) Microsoft Security Copilot in Microsoft Defender now includes the Dynamic Threat Detection Agent, an always-on, adaptive backend service that uncovers hidden threats across Defender and Microsoft Sentinel environments. [Learn more](dynamic-threat-detection-agent)
+- (GA) The [Microsoft Security Copilot Threat Intelligence Briefing Agent in Microsoft Defender](threat-intel-briefing-agent-defender) is now generally available. It generates threat intelligence briefings based on the latest threat actor activity and both internal and external vulnerability information in a matter of minutes, helping security teams save time by creating customized, relevant reports.
+- (GA) Microsoft Security Copilot in Microsoft Defender now lets you hunt for threats by using natural language with the [Threat Hunting Assistant](advanced-hunting-security-copilot-threat-hunting-assistant). This agent delivers a complete, conversational threat hunting experience by not only generating queries but also interpreting results, surfacing insights, and guiding you through full hunting sessions.
+- (Preview) The following advanced hunting schema tables are now available for preview:
+    - The [`CampaignInfo`](advanced-hunting-campaigninfo-table) table contains information about email campaigns identified by Microsoft Defender for Office 365.
+    - The [`FileMaliciousContentInfo`](advanced-hunting-filemaliciouscontentinfo-table) table contains information about files that Microsoft Defender for Office 365 processed in SharePoint Online, OneDrive, and Microsoft Teams.
+- (GA) The [hunting graph](advanced-hunting-graph) in advanced hunting is now generally available. It also now has two new predefined threat scenarios that you can use to render your hunts as interactive graphs.
+- (GA) Advanced hunting now supports custom functions that use tabular parameters. By using tabular parameters, you can pass entire tables as inputs. This approach lets you build more modular, reusable, and expressive logic across your hunting queries. [Learn more](advanced-hunting-custom-functions#create-custom-functions-with-tabular-parameters)
+
+## November 2025
+
+- Microsoft Sentinel customers using the Defender portal, or the Azure portal with the Microsoft Sentinel Defender XDR data connector, now also benefit from Microsoft Threat Intelligence alerts that highlight activity from nation-state actors, major ransomware campaigns, and fraudulent operations. To view these alert types, you must have the **Security Administrator** or higher role. The **Service Source**, **Detection Source**, and **Product Name** values for these alerts are listed as *Microsoft Threat Intelligence*. For more information, see [Incidents and alerts in the Microsoft Defender portal](incidents-overview).
+- (Preview) Defender XDR now includes the **predictive shielding** capability, which uses predictive analytics and real-time insights to dynamically infer risk, anticipate attacker progression, and harden your environment before threats materialize. [Learn more](shield-predict-threats)
+- (Preview) A new **Restrict pod access** response action is now available when [investigating container threats](investigate-respond-container-threats) in the Defender portal. This response action blocks sensitive interfaces that allow lateral movement and privilege escalation.
+- (Preview) The [`IdentityAccountInfo`](advanced-hunting-identityaccountinfo-table) table in advanced hunting is now available for preview. This table contains information about account information from various sources, including Microsoft Entra ID. It also includes information and link to the identity that owns the account.
+- (Preview) Threat analytics now has an **Indicators** tab that provides a list of all indicators of compromise (IOCs) associated with a threat. Microsoft researchers update these IOCs in real time as they find new evidence related to the threat. This information helps your security operations center (SOC) and threat intelligence analysts with remediation and proactive hunting. [Learn more](threat-analytics-indicators)
+- (Preview) The overview section of [threat analytics](threat-analytics) now includes additional details about a threat, such as alias, origin, and related intelligence, providing you with more insights on what the threat is and how it might impact your organization.
+
+## October 2025
+
+- [Microsoft Defender Experts MDR reports](defender-experts/defender-experts-mdr-reports) now include a **Trends** tab that provides you with the monthly volume of investigated and resolved incidents for the last six months. The tab visualizes the data according to the incidents' severity, MITRE tactic, and threat type. This section gives you insight into how Defender Experts are tangibly improving your security operations by showing important operational metrics on a month-over-month basis.
+- [Microsoft Defender Experts Hunting reports](defender-experts/defender-experts-hunting-report) now include an **Emerging threats** section that details the proactive, hypothesis-based hunts Defender Experts conducted in your environment. Each report also now includes investigation summaries for nearly every hunt that Defender Experts conduct in your environment, regardless of whether they identified a confirmed threat.
+
+## September 2025
+
+- (Preview) Use tasks in the Microsoft Defender portal to break down incident investigations into actionable steps and assign them across your operations teams. Tasks are displayed alongside Security Copilot insights, guided responses, and reports - giving your team a unified view of progress and next steps. When you onboard Microsoft Sentinel to the Defender portal, tasks you create in Microsoft Sentinel through the Azure portal are automatically synchronized to the Defender portal. For more information, see [Streamline incident response using tasks in the Microsoft Defender portal (Preview)](split-incidents-into-tasks)
+- (Preview) Investigate incidents by using [Blast radius analysis](investigate-incidents#blast-radius-analysis), which is an advanced graph visualization built on the Microsoft Sentinel data lake and graph infrastructure. This feature generates an interactive graph showing possible propagation paths from the selected node to predefined critical targets scoped to the user’s permissions.
+- (Preview) In advanced hunting, you can now hunt by using the [hunting graph](advanced-hunting-graph), which renders predefined threat scenarios as interactive graphs.
+
+## August 2025
+
+- (Preview) In advanced hunting, you can now enrich your [custom detection rules](custom-detection-rules) by creating dynamic alert titles and descriptions, select more impacted entities, and add custom details to display in the alert side panel. Microsoft Sentinel customers that are onboarded to Microsoft Defender also now have the option to customize the alert frequency when the rule is based only on data that is ingested to Sentinel.
+- (Preview) The following advanced hunting schema tables are now available for preview:
+    - The [`CloudStorageAggregatedEvents`](advanced-hunting-cloudstorageaggregatedevents-table) table contains information about storage activity and related events
+    - The [`IdentityEvents`](advanced-hunting-identityevents-table) table contains information about identity events obtained from other cloud identity service providers
+- (Preview) Advanced hunting now lets you investigate Microsoft Defender for Cloud behaviors. For more information, see [Investigate behaviors with advanced hunting](/en-us/defender-cloud-apps/behaviors).
+- (Preview) In advanced hunting, the number of [query results](advanced-hunting-query-results) displayed in the Microsoft Defender portal has been increased to 100,000.
+- (GA) [Microsoft Defender Experts MDR](defender-experts/defender-experts-mdr-overview) and [Microsoft Defender Experts Hunting](defender-experts/defender-experts-hunting-overview) customers can now expand their service coverage to include server and cloud workloads protected by Microsoft Defender for Cloud through the respective add-ons, **Microsoft Defender Experts for Servers** and **Microsoft Defender Experts Hunting - Servers**. [Learn more](defender-experts/defender-experts-faq-cloud-coverage).
+- (GA) Defender Experts MDR customers can now [incorporate third-party network signals](defender-experts/defender-experts-mdr-third-party-enrichment) for enrichment. This feature allows our security analysts to gain a more comprehensive view of an attack's path that allows for faster and more thorough detection and response. It also provides customers with a more holistic view of the threat in their environments.
+- (GA) In advanced hunting, you can now [view all your user-defined rules](custom-detection-manage)—both custom detection rules and analytics rules—in the **Detection rules**page. This feature also brings the following improvements:
+    - You can now filter for *every* column (in addition to **Frequency** and **Organizational scope**).
+    - For multiworkspace organizations that onboard multiple workspaces to Microsoft Defender, you can now view the **Workspace ID** column and filter by workspace.
+    - You can now view the details pane even for analytics rules.
+    - You can now perform the following actions on analytics rules: Turn on/off, Delete, Edit.
+- (GA) The **Sensitivity label** filter is now available in the **Incidents** and **Alerts** queues in the Microsoft Defender portal. This filter lets you filter incidents and alerts based on the sensitivity label assigned to the affected resources. For more information, see [Filters in the incident queue](incident-queue#filters-) and [Investigate alerts](investigate-alerts).
+
+## July 2025
+
+- (Preview) The [`GraphApiAuditEvents`](advanced-hunting-graphapiauditevents-table) table in advanced hunting is now available for preview. This table contains information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
+- (Preview) The [`DisruptionAndResponseEvents`](advanced-hunting-disruptionandresponseevents-table) table, now available in advanced hunting, contains information about [automatic attack disruption](automatic-attack-disruption) events in Microsoft Defender XDR. These events include both block and policy application events related to triggered attack disruption policies, and automatic actions that were taken across related workloads. Increase your visibility and awareness of active, complex attacks disrupted by attack disruption to understand the attacks' scope, context, impact, and actions taken.
+
+## June 2025
+
+- (Preview) Microsoft Copilot now provides suggested prompts as part of incident summaries in the Microsoft Defender portal. Suggested prompts help you get more insights into the specific assets involved in an incident. For more information, see [Summarize incidents with Microsoft Copilot in Microsoft Defender](security-copilot-m365d-incident-summary).
+- (GA) In [advanced hunting](advanced-hunting-defender-use-custom-rules#use-adx-operator-for-azure-data-explorer-queries), Microsoft Defender portal users can now use the `adx()` operator to query tables stored in Azure Data Explorer. You no longer need to go to log analytics in Microsoft Sentinel to use this operator if you're already in Microsoft Defender.
+
+## May 2025
+
+- (Preview) In advanced hunting, you can now [view all your user-defined rules](custom-detection-manage)—both custom detection rules and analytics rules—in the **Detection rules** page. This feature also brings the following improvements:
+
+    - You can now filter for *every* column (in addition to **Frequency** and **Organizational scope**).
+    - For multiworkspace organizations that onboard multiple workspaces to Microsoft Defender, you can now view the **Workspace ID** column and filter by workspace.
+    - You can now view the details pane even for analytics rules.
+    - You can now perform the following actions on analytics rules: Turn on/off, Delete, Edit.
+- (Preview) You can now highlight your security operations achievements and the impact of Microsoft Defender by using the **unified security summary**. The unified security summary is available in the Microsoft Defender portal and streamlines the process for SOC teams to generate security reports, saving time usually spent on collecting data from various sources and creating reports. For more information, see [Visualize security impact with the unified security summary](security-summary-report).
+- Defender portal users who onboard Microsoft Sentinel and enable the [User and Entity Behavior Analytics (UEBA)](/en-us/azure/sentinel/ueba-reference) can now take advantage of the new unified [`IdentityInfo` table](advanced-hunting-identityinfo-table) in advanced hunting. This latest version now includes the largest possible set of fields common to both Defender and Azure portals.
+- (Preview) The following advanced hunting schema tables are now available for preview to help you look through Microsoft Teams events and related information:
+
+    - The [MessageEvents](advanced-hunting-messageevents-table) table contains details about messages sent and received within your organization at the time of delivery
+    - The [MessagePostDeliveryEvents](advanced-hunting-messagepostdeliveryevents-table) table contains information about security events that occurred after the delivery of a Microsoft Teams message in your organization
+    - The [MessageUrlInfo](advanced-hunting-messageurlinfo-table) table contains information about URLs sent through Microsoft Teams messages in your organization

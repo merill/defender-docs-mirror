@@ -1,0 +1,129 @@
+---
+layout: Conceptual
+title: Create alert from event API - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/api/create-alert-by-reference
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Learn how to use the Create alert API to create a new Alert on top of Event in Microsoft Defender for Endpoint.
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- must-keep
+ms.topic: reference
+ms.subservice: reference
+ms.custom: api
+ms.date: 2025-11-11T00:00:00.0000000Z
+locale: en-us
+document_id: 5ec3b07d-053e-3503-bc66-5516c5eb6402
+document_version_independent_id: 5ec3b07d-053e-3503-bc66-5516c5eb6402
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/api/create-alert-by-reference.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: ../toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: api/create-alert-by-reference
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/api/create-alert-by-reference.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+platformId: 1d51f9d2-ce7d-ea6e-ee2a-fa717edc5c94
+---
+
+# Create alert from event API - Microsoft Defender for Endpoint | Microsoft Learn
+
+## API description
+
+Creates new [Alert](alerts) on top of **Event**.
+
+- **Microsoft Defender for Endpoint Event** is required for the alert creation.
+- You need to supply three parameters from the Event in the request: **Event Time**, **Machine ID**, and **Report ID**. See example below.
+- You can use an event found in Advanced Hunting API or Portal.
+- If there existing an open alert on the same Device with the same Title, the new created alert is merged with it.
+- An automatic investigation starts automatically on alerts created via the API.
+
+## Limitations
+
+Rate limitations for this API are 15 calls per minute.
+
+## Permissions
+
+When obtaining a token using user credentials:
+
+- The user needs to have at least the following role permission: *Alerts investigation*. For more information, see [Create and manage roles](../user-roles).
+- The user needs to have access to the device associated with the alert, based on device group settings. For more information, see [Create and manage device groups](../machine-groups).
+
+One of the following permissions is required to call this API. For more information on how to choose permissions, see [Use Microsoft Defender for Endpoint APIs](apis-intro).
+
+| Permission type | Permission | Permission display name |
+| --- | --- | --- |
+| Application | Alert.ReadWrite.All | 'Read and write all alerts' |
+| Delegated (work or school account) | Alert.ReadWrite | 'Read and write alerts' |
+
+## HTTP request
+
+```http
+POST https://api.security.microsoft.com/api/alerts/CreateAlertByReference
+```
+
+## Request headers
+
+| Name | Type | Description |
+| --- | --- | --- |
+| Authorization | String | Bearer {token}. **Required**. |
+| Content-Type | String | application/json. **Required**. |
+
+## Request body
+
+In the request body, supply the following values (all are required):
+
+| Property | Type | Description |
+| --- | --- | --- |
+| eventTime | DateTime(UTC) | The precise time of the event as string, as obtained from advanced hunting. For example, `2018-08-03T16:45:21.7115183Z`. **Required**. |
+| reportId | String | The reportId of the event, as obtained from advanced hunting. **Required**. |
+| machineId | String | Id of the device on which the event was identified. **Required**. |
+| severity | String | Severity of the alert. The property values are: 'Low', 'Medium' and 'High'. **Required**. |
+| title | String | Title for the alert. **Required**. |
+| description | String | Description of the alert. **Required**. |
+| recommendedAction | String | Security officer needs to take this action when analyzing the alert. **Required**. |
+| category | String | Category of the alert. The property values are: "General", "CommandAndControl", "Collection", "CredentialAccess", "DefenseEvasion", "Discovery", "Exfiltration", "Exploit", "Execution", "InitialAccess", "LateralMovement", "Malware", "Persistence", "PrivilegeEscalation", "Ransomware", "SuspiciousActivity" **Required**. |
+
+## Response
+
+If successful, this method returns 200 OK, and a new [alert](alerts) object in the response body. If event with the specified properties (*reportId*, *eventTime* and *machineId*) wasn't found - 404 Not Found.
+
+## Example
+
+### Request
+
+Here's an example of the request.
+
+```http
+POST https://api.security.microsoft.com/api/alerts/CreateAlertByReference
+```
+
+```json
+{
+    "machineId": "1e5bc9d7e413ddd7902c2932e418702b84d0cc07",
+    "severity": "Low",
+    "title": "example",
+    "description": "example alert",
+    "recommendedAction": "nothing",
+    "eventTime": "2018-08-03T16:45:21.7115183Z",
+    "reportId": "20776",
+    "category": "Exploit"
+}
+```

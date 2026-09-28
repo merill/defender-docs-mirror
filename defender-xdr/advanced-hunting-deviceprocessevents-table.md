@@ -1,0 +1,152 @@
+---
+layout: Conceptual
+title: DeviceProcessEvents table in the advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-deviceprocessevents-table
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Learn about the process spawning or creation events in the DeviceProcessEvents table of the advanced hunting schema
+ms.service: defender-xdr
+ms.subservice: adv-hunting
+ms.author: pauloliveria
+author: poliveria
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+ms.custom:
+- cx-ti
+- cx-ah
+ms.topic: reference
+ms.date: 2026-08-07T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: 3a229c51-334a-f908-3317-e8081a47218a
+document_version_independent_id: 3a229c51-334a-f908-3317-e8081a47218a
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/advanced-hunting-deviceprocessevents-table.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: advanced-hunting-deviceprocessevents-table
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/advanced-hunting-deviceprocessevents-table.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+platformId: f4c4f9c1-8d58-562b-f000-4203b2d4ca44
+---
+
+# DeviceProcessEvents table in the advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
+
+The `DeviceProcessEvents` table in the [advanced hunting](advanced-hunting-overview) schema contains information about process creation and related events. Use this reference to construct queries that return information from this table.
+
+Tip
+
+For detailed information about the events types (`ActionType` values) supported by a table, use the built-in schema reference available in the Defender portal.
+
+This advanced hunting table is populated by records from Microsoft Defender for Endpoint. If your organization hasn't deployed the service in Microsoft Defender, queries that use the table aren't going to work or return any results. For more information about how to deploy Defender for Endpoint in the Defender portal, read [Deploy supported services](deploy-supported-services).
+
+For information on other tables in the advanced hunting schema, [see the advanced hunting reference](advanced-hunting-schema-tables).
+
+Note
+
+`InitiatingProcessSignerType` and `InitiatingProcessSignatureStatus` describe the initiating process, not the newly created process. The `ProcessVersionInfo*` columns contain file version metadata and don't indicate whether the created process is digitally signed. To retrieve signing information for the created process, join its `SHA1` value with the [DeviceFileCertificateInfo](advanced-hunting-devicefilecertificateinfo-table) table.
+
+| Column name | Data type | Description |
+| --- | --- | --- |
+| `Timestamp` | `datetime` | Date and time when the event was recorded |
+| `DeviceId` | `string` | Unique identifier for the device in the service |
+| `DeviceName` | `string` | Fully qualified domain name (FQDN) of the device |
+| `ActionType` | `string` | Type of activity that triggered the event. See the [in-portal schema reference](advanced-hunting-schema-tables?#get-schema-information-in-the-security-center) for details. |
+| `FileName` | `string` | Name of the file that the recorded action was applied to |
+| `FolderPath` | `string` | Folder containing the file that the recorded action was applied to |
+| `SHA1` | `string` | SHA-1 of the file that the recorded action was applied to |
+| `SHA256` | `string` | SHA-256 of the file that the recorded action was applied to. This field is usually not populated — use the SHA1 column when available. |
+| `MD5` | `string` | MD5 hash of the file that the recorded action was applied to |
+| `FileSize` | `long` | Size of the file in bytes |
+| `ProcessVersionInfoCompanyName` | `string` | Company name from the version information of the newly created process |
+| `ProcessVersionInfoProductName` | `string` | Product name from the version information of the newly created process |
+| `ProcessVersionInfoProductVersion` | `string` | Product version from the version information of the newly created process |
+| `ProcessVersionInfoInternalFileName` | `string` | Internal file name from the version information of the newly created process |
+| `ProcessVersionInfoOriginalFileName` | `string` | Original file name from the version information of the newly created process |
+| `ProcessVersionInfoFileDescription` | `string` | Description from the version information of the newly created process |
+| `ProcessId` | `long` | Process ID (PID) of the newly created process |
+| `ProcessCommandLine` | `string` | Command line used to create the new process |
+| `ProcessIntegrityLevel` | `string` | Integrity level of the newly created process. Windows assigns integrity levels to processes based on certain characteristics, such as if they were launched from an internet downloaded. These integrity levels influence permissions to resources. |
+| `ProcessTokenElevation` | `string` | Indicates the type of token elevation applied to the newly created process. Possible values: TokenElevationTypeLimited (restricted), TokenElevationTypeDefault (standard), and TokenElevationTypeFull (elevated) |
+| `ProcessCreationTime` | `datetime` | Date and time the process was created |
+| `AccountDomain` | `string` | Domain of the account |
+| `AccountName` | `string` | User name of the account; if the device is registered in Microsoft Entra ID, the Entra ID user name of the account might be shown instead |
+| `AccountSid` | `string` | Security Identifier (SID) of the account |
+| `AccountUpn` | `string` | User principal name (UPN) of the account; if the device is registered in Microsoft Entra ID, the Entra ID UPN of the account might be shown instead |
+| `AccountObjectId` | `string` | Unique identifier for the account in Microsoft Entra ID |
+| `LogonId` | `long` | Identifier for a logon session. This identifier is unique on the same device only between restarts. |
+| `InitiatingProcessAccountDomain` | `string` | Domain of the account that ran the process responsible for the event |
+| `InitiatingProcessAccountName` | `string` | User name of the account that ran the process responsible for the event; if the device is registered in Microsoft Entra ID, the Entra ID user name of the account that ran the process responsible for the event might be shown instead |
+| `InitiatingProcessAccountSid` | `string` | Security Identifier (SID) of the account that ran the process responsible for the event |
+| `InitiatingProcessAccountUpn` | `string` | User principal name (UPN) of the account that ran the process responsible for the event; if the device is registered in Microsoft Entra ID, the Entra ID UPN of the account that ran the process responsible for the event might be shown instead |
+| `InitiatingProcessAccountObjectId` | `string` | Microsoft Entra object ID of the user account that ran the process responsible for the event |
+| `InitiatingProcessLogonId` | `long` | Identifier for a logon session of the process that initiated the event. This identifier is unique on the same device only between restarts. |
+| `InitiatingProcessIntegrityLevel` | `string` | Integrity level of the process that initiated the event. Windows assigns integrity levels to processes based on certain characteristics, such as if they were launched from an internet download. These integrity levels influence permissions to resources. |
+| `InitiatingProcessTokenElevation` | `string` | Token type indicating the presence or absence of User Access Control (UAC) privilege elevation applied to the process that initiated the event |
+| `InitiatingProcessSHA1` | `string` | SHA-1 hash of the process (image file) that initiated the event |
+| `InitiatingProcessSHA256` | `string` | SHA-256 of the process (image file) that initiated the event. This field is usually not populated — use the SHA1 column when available. |
+| `InitiatingProcessMD5` | `string` | MD5 hash of the process (image file) that initiated the event |
+| `InitiatingProcessFileName` | `string` | Name of the process file that initiated the event; if unavailable, the name of the process that initiated the event might be shown instead |
+| `InitiatingProcessFileSize` | `long` | Size of the file that ran the process responsible for the event |
+| `InitiatingProcessVersionInfoCompanyName` | `string` | Company name from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessVersionInfoProductName` | `string` | Product name from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessVersionInfoProductVersion` | `string` | Product version from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessVersionInfoInternalFileName` | `string` | Internal file name from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessVersionInfoOriginalFileName` | `string` | Original file name from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessVersionInfoFileDescription` | `string` | Description from the version information of the process (image file) responsible for the event |
+| `InitiatingProcessId` | `long` | Process ID (PID) of the process that initiated the event |
+| `InitiatingProcessCommandLine` | `string` | Command line used to run the process that initiated the event |
+| `InitiatingProcessCreationTime` | `datetime` | Date and time when the process that initiated the event was started |
+| `InitiatingProcessFolderPath` | `string` | Folder containing the process (image file) that initiated the event |
+| `InitiatingProcessParentId` | `long` | Process ID (PID) of the parent process that spawned the process responsible for the event |
+| `InitiatingProcessParentFileName` | `string` | Name of the parent process that spawned the process responsible for the event |
+| `InitiatingProcessParentCreationTime` | `datetime` | Date and time when the parent of the process responsible for the event was started |
+| `InitiatingProcessSignerType` | `string` | Type of file signer of the process (image file) that initiated the event |
+| `InitiatingProcessSignatureStatus` | `string` | Information about the signature status of the process (image file) that initiated the event |
+| `ReportId` | `long` | Event identifier based on a repeating counter. To identify unique events, this column must be used in conjunction with the DeviceName and Timestamp columns. |
+| `AppGuardContainerId` | `string` | Identifier for the virtualized container used by Application Guard to isolate browser activity |
+| `AdditionalFields` | `string` | Additional information about the event in JSON array format |
+| `InitiatingProcessSessionId` | `long` | Windows session ID of the initiating process |
+| `IsInitiatingProcessRemoteSession` | `bool` | Indicates whether the initiating process was run under a remote desktop protocol (RDP) session (true) or locally (false) |
+| `InitiatingProcessRemoteSessionDeviceName` | `string` | Device name of the remote device from which the initiating process's RDP session was initiated |
+| `InitiatingProcessRemoteSessionIP` | `string` | IP address of the remote device from which the initiating process's RDP session was initiated |
+| `CreatedProcessSessionId` | `long` | Windows session ID of the created process |
+| `IsProcessRemoteSession` | `bool` | Indicates whether the created process was run under a remote desktop protocol (RDP) session (true) or locally (false) |
+| `ProcessRemoteSessionDeviceName` | `string` | Device name of the remote device from which the created process's RDP session was initiated |
+| `ProcessRemoteSessionIP` | `string` | IP address of the remote device from which the created process's RDP session was initiated |
+| `ProcessUniqueId` | `string` | Unique identifier of the process; this is equal to the Process Start Key in Windows devices |
+| `InitiatingProcessUniqueId` | `string` | Unique identifier of the initiating process; this is equal to the Process Start Key in Windows devices |
+| `LogonID` | `long` | A unique identifier for the user initiating the event, enabling attribution of process activity to the originating interactive user across privilege escalation and session transitions. This field is located inside AdditionalFields/InitiatingProcessPosixEffectiveUser |
+
+## Retrieve signature information for created processes
+
+The following query returns process creation events and adds available signing certificate information for the created process:
+
+```kusto
+DeviceProcessEvents
+| where isnotempty(SHA1)
+| join kind=leftouter (
+    DeviceFileCertificateInfo
+    | project SHA1, IsSigned, IsTrusted, Signer, Issuer
+) on SHA1
+| project Timestamp, DeviceName, FileName, FolderPath, ProcessCommandLine,
+    InitiatingProcessFileName, InitiatingProcessSignatureStatus,
+    IsSigned, IsTrusted, Signer, Issuer
+```

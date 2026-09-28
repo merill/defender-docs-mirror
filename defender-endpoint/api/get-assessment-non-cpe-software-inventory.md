@@ -1,0 +1,233 @@
+---
+layout: Conceptual
+title: Export non product code software inventory assessment per device - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/api/get-assessment-non-cpe-software-inventory
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Returns a table with an entry for every unique combination of DeviceId, SoftwareVendor, SoftwareName, SoftwareVersion for software that doesn't have a Common Platform Enumeration (CPE)
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- must-keep
+ms.topic: reference
+ms.subservice: reference
+ms.custom: api
+ms.date: 2025-11-04T00:00:00.0000000Z
+locale: en-us
+document_id: 8e445bcb-8515-ef45-5dcc-df33220c7eb6
+document_version_independent_id: 8e445bcb-8515-ef45-5dcc-df33220c7eb6
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/api/get-assessment-non-cpe-software-inventory.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: ../toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: api/get-assessment-non-cpe-software-inventory
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/api/get-assessment-non-cpe-software-inventory.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/de8ce683-cbe1-461b-bae7-77db0888ec6d
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/a06cf482-4ca9-4582-a142-bcf842258d42
+platformId: f791ab68-fc48-4a4c-bde6-249f8c59249c
+---
+
+# Export non product code software inventory assessment per device - Microsoft Defender for Endpoint | Microsoft Learn
+
+This API returns all the data for installed software that doesn't have a [Common Platform Enumeration(CPE)](https://nvd.nist.gov/products/cpe), on a per-device basis. The information returned by this API, along with the information returned by the [Export software inventory assessment](get-assessment-non-cpe-software-inventory) API, for software that does have a CPE gives you full visibility into the software installed across your organization and the devices it's installed on.
+
+Note
+
+Vulnerability management doesn't support software products without a CPE. While these products are shown in the software inventory page, because CPEs are used by vulnerability management to identify the software and any vulnerabilities, information like exploits, number of exposed devices, and weaknesses aren't available. For more information, see [Software inventory](/en-us/defender-vulnerability-management/tvm-software-inventory).
+
+Different API calls get different types of data. Because the amount of data can be large, there are two ways it can be retrieved:
+
+- Export non product code software inventory assessment **JSON response**: The API pulls all data in your organization as Json responses. This method is best for *small organizations with less than 100-K devices*. The response is paginated, so you can use the @odata.nextLink field from the response to fetch the next results.
+- Export non product code software inventory assessment **via files**: This API solution enables pulling larger amounts of data faster and more reliably and is recommended for large organizations with more than 100-K devices. This API pulls all data in your organization as download files. The response contains URLs to download all the data from Azure Storage. This API enables you to download all your data from Azure Storage as follows:
+
+    - Call the API to get a list of download URLs with all your organization data.
+    - Download all the files using the download URLs and process the data as you like.
+
+All export assessment methods listed are ***full export*** and ***by device*** (also referred to as ***per device***) unless specified otherwise.
+
+Data that is collected (using either *Json response* or *via files*) is the current snapshot of the current state. It doesn't contain historic data. To collect historic data, customers must save the data in their own data storages.
+
+## 1. Export non product code software inventory assessment (JSON response)
+
+### 1.1 API method description
+
+This API response contains all the data of installed software that doesn't have a [Common Platform Enumeration(CPE)](https://nvd.nist.gov/products/cpe) per device. Returns a table with an entry for every unique combination of DeviceId, SoftwareVendor, SoftwareName, SoftwareVersion.
+
+#### Limitations
+
+- Maximum page size is 200,000.
+- Rate limitations for this API are 30 calls per minute and 1,000 calls per hour.
+
+### 1.2 Permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Use Microsoft Defender for Endpoint APIs for details.](apis-intro)
+
+| Permission type | Permission | Permission display name |
+| --- | --- | --- |
+| Application | Software.Read.All | 'Read Threat and Vulnerability Management software information' |
+| Delegated (work or school account) | Software.Read | 'Read Threat and Vulnerability Management software information' |
+
+### 1.3 URL
+
+```http
+GET /api/machines/SoftwareInventoryNoProductCodeByMachine
+```
+
+### 1.4 Parameters
+
+- pageSize (default = 50,000): Number of results in response.
+- $top: Number of results to return (doesn't return @odata.nextLink and therefore doesn't pull all the data)
+
+### 1.5 Properties
+
+- Each record is 0.5KB of data. You should take this size into account when choosing the correct pageSize parameter for you.
+- The properties defined in the following table are listed alphabetically, by property ID. When running this API, the resulting output isn't necessarily returned in the same order listed in this table.
+- Some other columns might be returned in the response. These columns are temporary and might be removed so use only the documented columns.
+
+| Property (ID) | Data type | Description |
+| --- | --- | --- |
+| DeviceId | string | Unique identifier for the device in the service. |
+| DeviceName | string | Fully qualified domain name (FQDN) of the device. |
+| OSPlatform | string | Platform of the operating system running on the device. These are specific operating systems with variations within the same family, such as Windows 10 and Windows 11. See [Supported operating systems, platforms, and capabilities](/en-us/defender-vulnerability-management/tvm-supported-os) for details. |
+| RbacGroupName | string | The role-based access control (RBAC) group. If this device isn't assigned to any RBAC group, the value is "Unassigned." If the organization doesn't contain any RBAC groups, the value is "None." |
+| RbacGroupId | string | The role-based access control (RBAC) group ID. |
+| SoftwareLastSeenTimestamp | string | The last time this software was seen on the device. |
+| SoftwareName | string | Name of the software product. |
+| SoftwareVendor | string | Name of the software vendor. |
+| SoftwareVersion | string | Version number of the software product. |
+| RegistryPath | string | Registry evidence that the product is installed on the device. |
+
+### 1.6 Examples
+
+#### 1.6.1 Request example
+
+```http
+https://api.security.microsoft.com/api/machines/SoftwareInventoryNoProductCodeByMachine?pageSize=3  &sinceTime=2021-05-19
+```
+
+#### 1.6.2 Response example
+
+```json
+{
+    "@odata.context": "https://api.security.microsoft.com/api/$metadata#Collection(microsoft.windowsDefenderATP.api.AssetNonCpeSoftware)",
+    "value": [
+        {
+           "deviceId": "1234512345123451234512345",
+            "rbacGroupId": 11,
+            "rbacGroupName": "London",
+            "deviceName": "Device1",
+            "osPlatform": "Windows11",
+            "softwareVendor": "microsoft",
+            "softwareName": "vs_communitymsi",
+            "softwareVersion": "11.11.31111.1",
+            "softwareLastSeenTimestamp": "2021-01-30 11:31:12.271"
+        },
+        {
+            "deviceId": "232323232323232322323232323",
+            "rbacGroupId": 23,
+            "rbacGroupName": "Tokyo",
+            "deviceName": "Device23",
+            "osPlatform": "Windows10",
+            "softwareVendor": "intel",
+            "softwareName": "intel®_software_installer",
+            "softwareVersion": "22.20.2.2",
+            "softwareLastSeenTimestamp": "2022-05-30 15:35:12.271"
+        },
+        {
+            "deviceId": "6565656565",
+            "rbacGroupId": 65,
+            "rbacGroupName": "Center",
+            "deviceName": "Device56",
+            "osPlatform": "Windows10",
+            "softwareVendor": "Lob Apps",
+            "softwareName": "Headtrax",
+            "softwareVersion": "60.273.3",
+            "softwareLastSeenTimestamp": "2022-05-05 15:35:12.271"
+        },
+    ],
+        "@odata.nextLink": "https://api.security.microsoft.com/api/machines/SoftwareInventoryNoProductCodeByMachine?pagesize=3%20%20&sincetime=2021-05-19&$skiptoken=eyJFeHBvcnREZWZpbml0aW9uIjp7IlRpbWVQYXRoIjoiMjAyMi0wNS0zMC8xMTAxLyJ9LCJFeHBvcnRGaWxlSW5kZXgiOjAsIkxpbmVTdG9wcGVkQXQiOjV9"
+}
+
+```
+
+## 2. Export non product code software inventory assessment (via files)
+
+### 2.1 API method description
+
+This API response contains all the data of installed software that doesn't have a [Common Platform Enumeration(CPE)](https://nvd.nist.gov/products/cpe) per device. Returns a table with an entry for every unique combination of DeviceId, SoftwareVendor, SoftwareName, SoftwareVersion.
+
+#### 2.1.1 Limitations
+
+Rate limitations for this API are 5 calls per minute and 20 calls per hour.
+
+### 2.2 Permissions
+
+One of the following permissions is required to call this API. To learn more, including how to choose permissions, see [Use Microsoft Defender for Endpoint APIs for details.](apis-intro)
+
+| Permission type | Permission | Permission display name |
+| --- | --- | --- |
+| Application | Software.Read.All | 'Read Threat and Vulnerability Management software information' |
+| Delegated (work or school account) | Software.Read | 'Read Threat and Vulnerability Management software information' |
+
+### 2.3 URL
+
+```http
+GET /api/machines/SoftwareInventoryNonCpeExport
+```
+
+### 2.4 Parameters
+
+- `sasValidHours`: The number of hours that the download URLs are valid for. Maximum is 6 hours.
+
+### 2.5 Properties
+
+- The files are GZIP compressed & in multiline JSON format.
+- The download URLs are valid for 1 hour unless the `sasValidHours` parameter is used.
+- For maximum download speed of your data, you can make sure you're downloading from the same Azure region that your data resides.
+
+| Property (ID) | Data type | Description | Example of a returned value |
+| --- | --- | --- | --- |
+| Export files | array[string] | A list of download URLs for files holding the current snapshot of the organization | "[Https://tvmexportstrstgeus.blob.core.windows.net/tvm-export...1", "https://tvmexportstrstgeus.blob.core.windows.net/tvm-export...2"] |
+| GeneratedTime | string | The time that the export was generated. | 2021-05-20T08:00:00Z |
+
+### 2.6 Examples
+
+#### 2.6.1 Request example
+
+```http
+GET https://api.security.microsoft.com/api/machines/SoftwareInventoryNonCpeExport
+```
+
+#### 2.6.2 Response example
+
+```json
+{
+    "@odata.context": "https://api.security.microsoft.com/api/$metadata#microsoft.windowsDefenderATP.api.ExportFilesResponse",
+    "exportFiles": [
+        "https://tvmexportexternalprdcanc.blob.core.windows.net/temp-ffd80447-7b3d-4ad2-b366-f0979b129662/2022-05-30/1101/NonCpeSoftwareInventory/json/OrgId=47d41a0c-188d-46d3-bbea-a93dbc0bfcaa/_RbacGroupId=1/part-00337-5e15412b-5c85-4896-ac60-b7b3ab8da096.c000.json.gz?sv=2020-08-04&st=2022-05-30T13%3A41%3A59Z&se=2022-05-30T16%3A41%3A59Z&sr=b&sp=r&sig=aHnmuOKlIvpR0PsdamYfmCCDZ1nhpuXBzK2%2FkJ9xTpg%3D",
+        "https://tvmexportexternalprdcanc.blob.core.windows.net/temp-ffd80447-7b3d-4ad2-b366-f0979b129662/2022-05-30/1101/NonCpeSoftwareInventory/json/OrgId=47d41a0c-188d-46d3-bbea-a93dbc0bfcaa/_RbacGroupId=1/part-00338-5e15412b-5c85-4896-ac60-b7b3ab8da096.c000.json.gz?sv=2020-08-04&st=2022-05-30T13%3A41%3A59Z&se=2022-05-30T16%3A41%3A59Z&sr=b&sp=r&sig=0fQg%2Ft469x26KvPLmvctLl0g6DC38CNM3lXYi9dnFfo%3D",
+        "https://tvmexportexternalprdcanc.blob.core.windows.net/temp-ffd80447-7b3d-4ad2-b366-f0979b129662/2022-05-30/1101/NonCpeSoftwareInventory/json/OrgId=47d41a0c-188d-46d3-bbea-a93dbc0bfcaa/_RbacGroupId=1/part-00339-5e15412b-5c85-4896-ac60-b7b3ab8da096.c000.json.gz?sv=2020-08-04&st=2022-05-30T13%3A41%3A59Z&se=2022-05-30T16%3A41%3A59Z&sr=b&sp=r&sig=P6HGHoLXXipMauBpLueoQVrwHL7qmvLoCjcij6ERx8o%3D",
+        "https://tvmexportexternalprdcanc.blob.core.windows.net/temp-ffd80447-7b3d-4ad2-b366-f0979b129662/2022-05-30/1101/NonCpeSoftwareInventory/json/OrgId=47d41a0c-188d-46d3-bbea-a93dbc0bfcaa/_RbacGroupId=1/part-00340-5e15412b-5c85-4896-ac60-b7b3ab8da096.c000.json.gz?sv=2020-08-04&st=2022-05-30T13%3A41%3A59Z&se=2022-05-30T16%3A41%3A59Z&sr=b&sp=r&sig=VnpVct%2F8vdiIFTf2xXP9DF7ngWv1Zqew30q2jBPVghg%3D",
+        "https://tvmexportexternalprdcanc.blob.core.windows.net/temp-ffd80447-7b3d-4ad2-b366-f0979b129662/2022-05-30/1101/NonCpeSoftwareInventory/json/OrgId=47d41a0c-188d-46d3-bbea-a93dbc0bfcaa/_RbacGroupId=1/part-00341-5e15412b-5c85-4896-ac60-b7b3ab8da096.c000.json.gz?sv=2020-08-04&st=2022-05-30T13%3A41%3A59Z&se=2022-05-30T16%3A41%3A59Z&sr=b&sp=r&sig=GY0zxMfEmr9v9fZBWYyKEtT2k%2F0ELQIlOP0ct%2B6SdGU%3D",
+    ],
+    "generatedTime": "2022-05-30T11:01:00Z"
+}
+```

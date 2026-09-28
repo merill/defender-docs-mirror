@@ -1,0 +1,144 @@
+---
+layout: Conceptual
+title: Get baseline profile configurations - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/api/get-security-baselines-assessment-configurations
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Provides information about the security baselines assessment configurations that pull "Microsoft Defender Vulnerability Management" data. There are different API calls to get different types of data. In general, each API call contains the requisite data for devices in your organization.
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- must-keep
+ms.topic: reference
+ms.subservice: reference
+ms.custom: api
+ms.date: 2025-11-16T00:00:00.0000000Z
+locale: en-us
+document_id: d4c46664-a1b7-abb1-ab92-4050607eac75
+document_version_independent_id: d4c46664-a1b7-abb1-ab92-4050607eac75
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/api/get-security-baselines-assessment-configurations.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: ../toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: api/get-security-baselines-assessment-configurations
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/api/get-security-baselines-assessment-configurations.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+platformId: fb648332-7856-7041-4192-61170aae1fbd
+---
+
+# Get baseline profile configurations - Microsoft Defender for Endpoint | Microsoft Learn
+
+## 1.API description
+
+This API retrieves a list of the configurations being assessed in active baseline profiles.
+
+### 1.1 Parameters
+
+Supports [OData V4 queries](https://www.odata.org/documentation/). OData supported operators:
+
+- `$filter`on the following properties:
+    - `id`
+    - `category`
+    - `name`
+    - `CCE`
+- `$top` with max value of 10,000
+- `$skip`
+
+See examples at [OData queries with Microsoft Defender for Endpoint](exposed-apis-odata-samples).
+
+### 1.2 HTTP request
+
+```http
+GET /api/baselineConfigurations
+```
+
+### 1.3 Request headers
+
+| Name | Type | Description |
+| --- | --- | --- |
+| Authorization | String | Bearer {token}. **Required**. |
+
+### 1.4 Response
+
+If successful, this method returns 200 OK with the list of baseline configurations in the body.
+
+### 1.5 Properties
+
+| Property | Type | Description |
+| --- | --- | --- |
+| uniqueId | String | Identifier for the specific configuration across baseline benchmarks. |
+| Id | String | Identifier of the specific configuration in the baseline benchmark. |
+| benchmarkName | String | The name of the benchmark. |
+| benchmarkVersion | String | The version of the benchmark. May contain operating system details. |
+| name | String | The configuration name at it appears in the benchmark. |
+| description | String | The configuration description as it appears in the benchmark. |
+| category | String | The configuration category as it appears in the benchmark. |
+| complianceLevels | String | The compliance level of the benchmark where this configuration appears. |
+| `cce` | Int | The CCE for this configuration as it appears in the benchmark. |
+| rationale | String | The rationale for this configuration as it appears in the benchmark. For STIG benchmark this isn't supplied for this configuration. |
+| source | Array [String] | Array of the registry paths or other locations used to determine the current device setting. |
+| recommendedValue | Array [String] | Array of the recommended value for each source returned in the 'source' property array (values returned in the same order as the source property array). |
+| remediation | String | The recommended steps to remediate. |
+| isCustom | Boolean | True if the configuration is customized, false if not. |
+
+## 1.6 Example
+
+### 1.5.1 Request example
+
+```http
+GET https://api.security.microsoft.com/api/baselineConfigurations
+```
+
+### 1.6.2 Response example
+
+```json
+{
+    "@odata.context": " https://api.security.microsoft.com/api/$metadata#BaselineConfigurations ",
+    "value": [
+        {
+            "id": "9.3.9",
+            "uniqueId": "CIS_1.4.0-windows_server_2016_9.3.9",
+            "benchmarkName": "CIS",
+            "benchmarkVersion": "1.4.0-windows_server_2016",
+            "name": "(L1) Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'",
+            "description": "<p xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">  Use this option to log when Windows Firewall with Advanced Security discards an inbound packet for any reason. The log records why and when the packet was dropped. Look for entries with the word             <span class=\"inline_block\">DROP</span>   in the action column of the log.          </p>",
+            "category": "Public Profile",
+            "complianceLevels": [
+                "Level 1 - Domain Controller",
+                "Level 1 - Member Server",
+                "Level 2 - Domain Controller",
+                "Level 2 - Member Server"
+            ],
+            "cce": "CCE-35116-3",
+            "rationale": "<p xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">If events are not recorded it may be difficult or impossible to determine the root cause of system problems or the unauthorized activities of malicious users.</p>",
+            "remediation": "<div xmlns:xhtml=\"http://www.w3.org/1999/xhtml\">    <p>      <p>  To establish the recommended configuration via GP, set the following UI path to                 <span class=\"inline_block\">Yes</span>  :              </p>      <code class=\"code_block\">Computer Configuration\\Policies\\Windows Settings\\Security Settings\\Windows Firewall with Advanced Security\\Windows Firewall with Advanced Security\\Windows Firewall Properties\\Public Profile\\Logging Customize\\Log dropped packets  </code>      <p class=\"bold\">Impact:</p>      <p>        <p>Information about dropped packets will be recorded in the firewall log file.</p>      </p>    </p>  </div>",
+            "recommendedValue": [
+                "Equals '1'"
+            ],
+            "source": [
+                "hkey_local_machine\\software\\policies\\microsoft\\windowsfirewall\\publicprofile\\logging\\logdroppedpackets"
+            ],
+            "isCustom": false
+        },
+    ]
+}
+```

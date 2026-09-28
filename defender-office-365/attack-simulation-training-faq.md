@@ -1,0 +1,475 @@
+---
+layout: Conceptual
+title: Attack simulation training deployment considerations and FAQ - Microsoft Defender for Office 365 | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-office-365/attack-simulation-training-faq
+breadcrumb_path: /defender-office-365/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+author: chrisda
+ms.author: chrisda
+ms.topic: how-to
+ms.localizationpriority: medium
+ms.assetid: 
+ms.collection:
+- m365-security
+- tier2
+ms.custom:
+- seo-marvel-apr2020
+- sfi-image-nochange
+- msecd-doc-authoring-1016
+description: Admins can learn about deployment considerations and frequently asked questions regarding Attack simulation and training in Microsoft 365 E5 or Microsoft Defender for Office 365 Plan 2 organizations.
+ms.service: defender-office-365
+ms.date: 2026-07-30T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: 5140574c-ba65-1ca0-8946-cfc6b9a29d35
+document_version_independent_id: 5140574c-ba65-1ca0-8946-cfc6b9a29d35
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-office-365/attack-simulation-training-faq.md
+site_name: Docs
+depot_name: Learn.defender-office-365
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: attack-simulation-training-faq
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-office-365/attack-simulation-training-faq.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c6f99e62-1cf6-4b71-af9b-649b05f80cce
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3f56b378-07a9-4fa1-afe8-9889fdc77628
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
+platformId: 46b3ee0f-6831-ed7c-6371-6c06213d2e39
+---
+
+# Attack simulation training deployment considerations and FAQ - Microsoft Defender for Office 365 | Microsoft Learn
+
+Tip
+
+*Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
+
+Attack simulation training enables Microsoft 365 E5 or Microsoft Defender for Office 365 Plan 2 organizations to measure and manage social engineering risk. Attack simulation training allows phishing simulations that are powered by real-world, harmless phishing payloads. Hyper-targeted training, delivered in partnership with Terranova security, helps improve knowledge and change user behavior.
+
+For more information about getting started with Attack simulation training, see [Get started using Attack simulation training](attack-simulation-training-get-started).
+
+While creating and scheduling simulations is designed to be easy, simulations at an enterprise scale require planning. This article helps address specific challenges that we see as our customers run simulations in their own environments.
+
+## User experience issues
+
+### Phishing simulation URLs blocked by Google Safe Browsing
+
+A URL reputation service might identify one or more of the URLs that are used by Attack simulation training as unsafe. Google Safe Browsing in Google Chrome blocks some of the simulated phishing URLs with a **Deceptive site ahead** message. While we work with many URL reputation vendors to always allow our simulation URLs, we don't always have full coverage.
+
+[![The Deceptive site ahead warning in Google Chrome](media/attack-sim-training-faq-chrome-deceptive-site-message.png)](media/attack-sim-training-faq-chrome-deceptive-site-message.png#lightbox)
+
+The deceptive-site warning from Google Safe Browsing doesn't affect Microsoft Edge.
+
+As part of the planning phase, be sure to check the availability of the URL in your supported web browsers before you use the URL in a phishing campaign. If Google Safe Browsing blocks the URLs, [allow URLs in Google Chrome Enterprise](https://support.google.com/chrome/a/answer/7532419) to grant access to the URLs.
+
+Refer to [Get started using Attack simulation training](attack-simulation-training-get-started) for the list of URLs that are currently used by Attack simulation training.
+
+### Phishing simulation and admin URLs blocked by network proxy solutions and filter drivers
+
+Intermediate security devices or filters might block or drop your phishing simulation URLs and admin URLs. For example:
+
+- Firewalls
+- Web Application Firewall (WAF) solutions
+- Non-Microsoft filter drivers (for example, kernel mode filters)
+
+While few customers are blocked at this layer, blocking at this layer does happen. If you encounter problems, consider configuring the following URLs to bypass scanning by your security devices or filters as required:
+
+- The simulated phishing URLs as described in [Get started using Attack simulation training](attack-simulation-training-get-started).
+- `https://security.microsoft.com/attacksimulator`
+- `https://security.microsoft.com/attacksimulationreport`
+- `https://security.microsoft.com/trainingassignments`
+- `http://asttrainingfdendpoint-a6fva0cjbsbbereq.b02.azurefd.net/`
+
+### Simulation messages not delivered to all targeted users
+
+It's possible that all users targeted by the simulation don't receive the simulation email messages. The following types of users are excluded as part of target validation:
+
+- Invalid recipient email addresses.
+- Guests.
+- Users that are no longer active in Microsoft Entra ID.
+
+You can use the [Get-DistributionGroupMember](/en-us/powershell/module/exchangepowershell/get-distributiongroupmember) cmdlet in [Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell) to view and validate targeted group members.
+
+### Trainings unexpectedly assigned or not assigned to users
+
+The training threshold in training campaigns prevents users from having the same trainings assigned to them during a specific interval (90 days by default). For more information, see [Set the training threshold](attack-simulation-training-settings#configure-the-training-threshold).
+
+If you created a [simulation](attack-simulation-training-simulations#assign-training) or a [simulation automation](attack-simulation-training-simulation-automations#assign-training) with the training assignment value **Assign training for me (Recommended)**, we assign training based on a user's previous simulation and training results. To assign training based on specific criteria, select **Select training courses and modules myself**.
+
+### What happens when a user replies to or forwards a simulation message?
+
+If a user replies to or forwards a simulation message to another mailbox, the message is treated like a normal email message (including detonation by Safe Links or Safe Attachments). The [Simulation report](attack-simulation-training-insights#simulation-report-for-simulations) shows whether the simulation message was replied to or forwarded. Each URL in the simulation email is tied to an individual user, so Safe Links detonations are identified as clicks by the user.
+
+If you use a dedicated security operations (SecOps) mailbox, be sure to identify it as a SecOps in the [advanced delivery policy](advanced-delivery-policy-configure#use-the-microsoft-defender-portal-to-configure-secops-mailboxes-in-the-advanced-delivery-policy) so messages are delivered unfiltered.
+
+### How can I stagger the delivery of simulation messages?
+
+You can stagger delivery by using the following features:
+
+- Simulations offer region aware delivery.
+- Simulation automations have a [simulation schedule page](attack-simulation-training-simulation-automations#simulation-schedule) where you can randomize delivery and configure other delivery details.
+
+Whether you use region aware delivery or a simulation automation schedule, use different payloads to avoid discussion and identification among users.
+
+### Why are images in simulation messages blocked by Outlook?
+
+By default, Outlook is configured to block automatic image downloads in messages from the internet. Although you can [configure Outlook to automatically download images](https://support.microsoft.com/office/15e08854-6808-49b1-9a0a-50b81f2d617a), we don't recommend it due to the security implications (potential automatic download of malicious code or web bugs, also known as web beacons or tracking pixels).
+
+### I see clicks or compromise events from users who insist they didn't click the link in the simulation message OR I see clicks within a few seconds of delivery for many users (false positives). What's going on?
+
+Unexpected clicks and compromise events can occur when other security devices or applications inspect simulation messages. For example (but not limited to):
+
+- Applications or plugins within Outlook that inspect or intercept the message.
+- Email security applications.
+- Endpoint security or anti-virus software.
+- Security orchestration, automation, and response (SOAR) playbooks that automatically triage or automatically respond to reported messages.
+
+Outlook add-ins, email security tools, endpoint security software, and SOAR playbooks can inspect web content to detect phishing, so you need to define exclusions for simulation messages in those tools.
+
+EmailLinkClicked\_IP and EmailLinkClicked\_TimeStamp data might give more details about the event. For example, if a click occurred a few seconds after delivery, and the IP address doesn't belong to Microsoft, your company, or the user, then it's likely that a non-Microsoft filtering system or another service intercepted the message.
+
+For any non-Microsoft filtering systems or services, you need to allow or exempt the following items:
+
+- All [Attack simulation training URLs](attack-simulation-training-get-started#simulations) and the corresponding domains. Currently, we don't send simulation messages from a static list of IP addresses.
+- Any other domains that you use in custom payloads.
+
+### Can I add the External tag or safety tips to simulation messages?
+
+You can configure custom payloads to add the External tag to messages. For more information, see Step 5 in [Create payloads](attack-simulation-training-payloads#create-payloads).
+
+There are no built-in options to add safety tips to payloads, but you can use the following methods on the **Configure payload** page of the payload setup wizard:
+
+- Use an existing email message that contains the safety tip as a template. Save the message as HTML and copy the information.
+- Use the following sample code for the First contact safety tip:
+
+    ```html
+    <table class="MsoNormalTable" border="0" cellspacing="0" cellpadding="0" align="left" width="100%" style="width:100.0%;mso-cellspacing:0in;mso-yfti-tbllook:1184;
+    mso-table-lspace:2.25pt;mso-table-rspace:2.25pt;mso-table-anchor-vertical:
+    paragraph;mso-table-anchor-horizontal:column;mso-table-left:left;mso-padding-alt:
+    0in 0in 0in 0in">
+    <tbody><tr style="mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes">
+      <td style="background:#A6A6A6;padding:5.25pt 1.5pt 5.25pt 1.5pt"></td>
+      <td width="100%" style="width:100.0%;background:#EAEAEA;padding:5.25pt 3.75pt 5.25pt 11.25pt" cellpadding="7px 5px 7px 15px" color="#212121">
+      <div>
+      <p class="MsoNormal" style="mso-element:frame;mso-element-frame-hspace:2.25pt;
+      mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:
+      column;mso-height-rule:exactly"><span style="font-size:9.0pt;font-family:
+      wf_segoe-ui_normal;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-bidi-font-family:
+      Aptos;color:#212121;mso-ligatures:none">You don't often get email from
+      this sender <a rel="noopener" href="https://aka.ms/LearnAboutSenderIdentification" tabindex="-1" target="_blank">Learn why
+      this is important</a></span></p>
+      </div>
+      </td>
+      <td width="75" style="width:56.25pt;background:#EAEAEA;padding:5.25pt 3.75pt 5.25pt 3.75pt;
+      align:left" cellpadding="7px 5px 7px 5px" color="#212121"></td>
+    </tr>
+    </tbody></table>
+    <div>
+    <p class="MsoNormal"><span lang="DA" style="font-size:12.0pt;font-family:&quot;Georgia&quot;,serif;
+    color:black;mso-ansi-language:DA">Insert payload content here,</span></p>
+    </div>
+    ```
+
+### Can I assign training modules without putting users through a simulation?
+
+Yes. For more information, see [Training campaigns in Attack simulation training](attack-simulation-training-training-campaigns).
+
+### How do I find out about simulation messages that weren't delivered?
+
+The [Users tab](attack-simulation-training-simulations#users-tab) for each simulation is filterable by **Simulation message delivery: Failed to deliver**.
+
+If you own the sender domain, the undelivered simulation report is returned in a non-delivery report (also known as an NDR or bounce message). For more information about the codes in the NDR, see [Email non-delivery reports and SMTP errors in Exchange Online](/en-us/exchange/troubleshoot/email-delivery/ndr/non-delivery-reports-in-exchange-online).
+
+## Reporting issues
+
+Tip
+
+- Simulation data recording starts a few minutes after the simulation is launched and after users begin interacting with the simulation messages. There's no fixed start time. Events are still captured after the simulation ends.
+- Simulation messages reported by non-Microsoft tools aren't captured in attack simulation reports.
+- After December 2025 as described in Message Center post [MC1166864](https://admin.microsoft.com/AdminPortal/Home?#/MessageCenter/:/messages/MC1166864), user interaction signals are captured consistently until the simulation ends. For example:
+
+    - Compromise
+    - Report
+    - Read
+    - Delete
+    - Reply
+    - Forward
+    - Out-of-office (only when active at the time of receiving the attack simulation email)
+    - Attachment opened
+
+    Training-related events (for example, Training completed or In progress) are reflected in simulation reporting up to the training due date, even after the simulation ends.
+
+### Differences in user activity data from Attack simulation training reports and other reports
+
+For reporting on user activity related to simulation messages, we recommend using the [built-in simulation reports](attack-simulation-training-insights). Reports from other sources (for example, [Advanced hunting](/en-us/defender-xdr/advanced-hunting-overview)) might not be accurate.
+
+Safe Links doesn't wrap simulation URLs, so the URLs are considered unwrapped links. Not all clicks on unwrapped links go through Safe Links, so user activity related to simulation messages might not be recorded in the [UrlClickEvents logs](/en-us/defender-xdr/advanced-hunting-urlclickevents-table).
+
+### Attack simulation training reports don't contain any activity details
+
+Attack simulation training comes with rich, actionable insights that keep you informed of the threat readiness progress of users. If Attack simulation training reports aren't populated with data, verify that audit logging is turned on in your organization (it's on by default).
+
+Attack simulation training requires audit logging to capture, record, and read back events. Turning off audit logging has the following consequences for Attack simulation training:
+
+- Reporting data isn't available across all reports. The reports appear empty.
+- Training assignments are blocked, because data isn't available.
+
+To verify that audit logging is on or to turn it on, see [Turn auditing on or off](/en-us/purview/audit-log-enable-disable).
+
+Tip
+
+Users without Microsoft 365 E5 licenses assigned also cause empty activity details. To ensure that reporting events are captured and recorded, verify at least one E5 license is assigned to an active user.
+
+User actions and admin actions are audited. In the Management Activity API, look for the [AuditLogRecordType](/en-us/office/office-365-management-api/office-365-management-activity-api-schema) values 85, 88, and 218.
+
+Some auditing information might also be available in the [CloudAppEvents table](/en-us/defender-xdr/advanced-hunting-cloudappevents-table) in Microsoft Defender XDR Advanced hunting via the Defender portal or the [Streaming API](/en-us/defender-xdr/streaming-api).
+
+### Reporting issues with on-premises mailboxes
+
+Attack simulation training supports on-premises mailboxes, but with reduced reporting functionality:
+
+- Data on whether users read, forwarded, or deleted the simulation email isn't available for on-premises mailboxes.
+- The number of users who reported the simulation email isn't available for on-premises mailboxes.
+
+Tip
+
+Simulations messages are sent via the transport pipeline to on-premises mailboxes. Otherwise, the training, automation, and content management experiences are the same for on-premises mailboxes.
+
+### Simulation reports aren't updated immediately
+
+Detailed simulation reports aren't updated immediately after you launch a campaign. Don't worry; the delay in report updates is expected.
+
+Every simulation campaign has a lifecycle. When first created, the simulation is in the **Scheduled** state. When the simulation starts, it transitions to the **In progress** state. When completed, the simulation transitions to the **Completed** state.
+
+While a simulation is in the **Scheduled** state, the simulation reports are mostly empty. During this stage, the simulation engine is resolving the target user email addresses, expanding distribution groups, removing guests from the list, etc.:
+
+[![Simulation details showing the simulation in the Scheduled state](media/attack-sim-training-faq-scheduled-state.png)](media/attack-sim-training-faq-scheduled-state.png#lightbox)
+
+Once the simulation enters the **In progress** stage, information starts trickling into the reporting:
+
+[![Simulation details showing the simulation in the In progress state](media/attack-sim-training-faq-in-progress-state.png)](media/attack-sim-training-faq-in-progress-state.png#lightbox)
+
+It can take up to 30 minutes for the individual simulation reports to update after the transition to the **In progress** state. The report data continues to build until the simulation reaches the **Completed** state. Reporting updates occur at the following intervals:
+
+- Every 10 minutes for the first 60 minutes.
+- Every 15 minutes after 60 minutes until two days.
+- Every 30 minutes after two days until seven days.
+- Every 60 minutes after seven days.
+
+Widgets on the **Overview** page provide a quick snapshot of your organization's simulation-based security posture over time. Because these widgets reflect your overall security posture and journey over time, they're updated after each simulation campaign is completed.
+
+Note
+
+You can use the **Export** option on the various reporting pages to extract data.
+
+### Messages reported as phishing by users aren't appearing in simulation reports
+
+Simulation reports in Attack simulator training provide details on user activity. For example:
+
+- Users who clicked on the link in the message.
+- Users who gave up their credentials.
+- Users who reported the message as phishing.
+
+If messages that users reported as phishing aren't captured in Attack simulation training simulation reports, there might be an Exchange mail flow rule (also known as a transport rule) that's blocking the delivery of the reported messages to Microsoft. Verify that any mail flow rules aren't blocking delivery to the following email addresses:
+
+- `junk@office365.microsoft.com`
+- `abuse@messaging.microsoft.com`
+- `phish@office365.microsoft.com`
+- `not_junk@office365.microsoft.com`
+
+### Users are assigned training after they report a simulated message
+
+If users are assigned training after they report a phishing simulation message, check to see if your organization uses a reporting mailbox to receive user reported messages at https://security.microsoft.com/securitysettings/userSubmission. The reporting mailbox needs to be configured to skip many security checks as described in the [reporting mailbox prerequisites](submissions-user-reported-messages-custom-mailbox#configuration-requirements-for-the-reporting-mailbox).
+
+Safe Links or Safe Attachments protection might detonate messages if you don't configure the required exclusions for the custom reporting mailbox. Detonated messages result in training assignments.
+
+## Other frequently asked questions
+
+### Q: What is the recommended method to target users for simulation campaigns?
+
+A: Several options are available to target users:
+
+- Include all users (currently available to organizations with less than 40,000 users).
+- Choose specific users.
+- Select users from a CSV file (one email address per line).
+- Use Microsoft Entra groups. The following group types are supported:
+    - Microsoft 365 Groups (static and dynamic)
+    - Distribution groups (static only)
+    - Mail-enabled security groups (static only)
+
+We find that campaigns assigned to Microsoft Entra groups are easier to manage.
+
+### Q: How many training modules are there?
+
+Currently, there are 94 built-in trainings on the [Training modules](attack-simulation-training-training-modules) page.
+
+### Q: How are languages used for experiences like training modules and notifications?
+
+Language behavior varies by experience:
+
+- **Training modules**: The browser locale settings are used. But once the training is assigned to a user, the language selection persists, and future trainings are assigned in that language.
+- **End user notifications**: The mailbox locale/language settings are used.
+- **Simulation payloads**: The language selected by the admin during creation is used.
+- **Landing pages**: The Microsoft 365 account language settings are used. User can also change languages in the landing page.
+
+### Q: Are there any limits in targeting users while importing from a CSV or adding users?
+
+A: The limit for importing recipients from a CSV file or adding individual recipients to a simulation is 40,000.
+
+A recipient can be an individual user or a group. A group might contain hundreds or thousands of recipients. The upper limit on the number of users is 400,000, but we recommend a limit of 200,000 users for each simulation for best performance.
+
+Managing a large CSV file or adding many individual recipients can be cumbersome. Using Microsoft Entra groups simplify the overall management of the simulation.
+
+Tip
+
+Currently, shared mailboxes aren't supported in Attack simulation training. Simulations should target user mailboxes or groups containing user mailboxes.
+
+Groups are expanded and the list of users is generated at the time of saving the simulation, simulation automation, or training campaign.
+
+### Q: Are the limits for the number of simulations that can be deployed during a specific time interval?
+
+A. No, although you might experience slowness if you launch many parallel simulations. The [message rate limits of the service](/en-us/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits) also constrain simulation message rates.
+
+### Q: Does Microsoft provide payloads in other languages?
+
+A: Currently, there are 40+ localized payloads available in 29+ languages: English, Spanish, German, Japanese, French, Portuguese, Dutch, Italian, Swedish, Chinese (Simplified), Norwegian Bokmål, Polish, Russian, Finnish, Korean, Turkish, Hungarian, Hebrew, Thai, Arabic, Vietnamese, Slovak, Greek, Indonesian, Romanian, Slovenian, Croatian, Catalan, and Other. We determined that direct or machine translation of existing payloads to other languages leads to inaccuracies and decreased relevance.
+
+That being said, you can create your own payload in the language of your choice using the custom payload authoring experience. We also strongly recommend that you harvest existing payloads that were used to target users in a specific geography. In other words, let the attackers localize the content for you.
+
+### Q: How many training videos are available?
+
+A: Currently, there are more than 85 training modules available in the content library.
+
+### Q: How can I switch to other languages for my admin portal and training experience?
+
+A: In Microsoft 365 or Office 365, language configuration is specific and centralized for each user account. For instructions on how to change your language setting, see [Change your display language and time zone in Microsoft 365 for Business](https://support.microsoft.com/office/6f238bff-5252-441e-b32b-655d5d85d15b).
+
+The configuration change might take up to 30 minutes to synchronize across all services.
+
+### Q: Can I trigger a test simulation to understand what it looks like before launching a real campaign?
+
+A: Yes. On the last **Review Simulation** page in the new simulation wizard, select **Send a test**. This option sends a sample phishing simulation message to the currently logged in user. After you validate the phishing message in your Inbox, you can submit the simulation.
+
+[![The Send a test button on the Review simulation page](media/attack-sim-training-simulations-review-simulation.png)](media/attack-sim-training-simulations-review-simulation.png#lightbox)
+
+Tip
+
+You can also use [Send a test](attack-simulation-training-payloads#send-a-test) from the **Payloads** page. But, if you ever use the selected payload in a simulation, the test message appears in the aggregate reports. You can export the results or use the [Microsoft Graph API](/en-us/graph/api/resources/report-m365defender-reports-overview) to filter the results.
+
+### Q: Can I target users that belong to a different organization as part of the same simulation campaign?
+
+A: No. Currently, cross-organization simulations aren't supported. Verify that all of your targeted users are in the same organization. Any cross-organization users or guests are excluded from the simulation campaign.
+
+### Q: How does region aware delivery work?
+
+A: Region aware delivery uses the time zone attribute of the targeted user's mailbox, with "not before" logic, to determine when to deliver the message. Each recipient receives the simulation at the scheduled time of day in their own mailbox time zone, and never before it. If that local time has already passed on the launch day, the recipient receives the message at the same local time on the following day. Because simulation messages are delivered in throttled batches, delivery completes progressively after the scheduled start and might take longer for large simulations. For example, consider the following scenario:
+
+- At 7:00 AM in the Pacific time zone (UTC-8), an admin creates and schedules a campaign to start at 9:00 AM on the same day.
+- UserA is in the Eastern time zone (UTC-5).
+- UserB is also in the Pacific time zone.
+
+At 9:00 AM on the same day, the simulation message is sent to UserB. With region-aware delivery, the message isn't sent to UserA on the same day, because 9:00 AM Pacific time is 12:00 PM Eastern time. Instead, the message is sent to UserA at 9:00 AM Eastern time on the following day.
+
+So, on the initial run of a campaign with region aware delivery enabled, it might appear that the simulation message was sent only to users in a specific time zone. But, as time passes and more users come into scope, the targeted users increase.
+
+If you don't use region aware delivery, the campaign starts based on the time zone of the user who's setting it up.
+
+### Q: Does Microsoft collect or store any information that users enter at the Credential Harvest sign-in page, used in the Credential Harvest simulation technique?
+
+A: No. Any information entered at the credential harvest sign-in page is discarded silently. Only the 'click' is recorded to capture the compromise event. Microsoft doesn't collect, log, or store any details that users enter at this step.
+
+### Q: How long is simulation information retained? Can I delete simulation data?
+
+A: See the following table:
+
+| Data type | Retention |
+| --- | --- |
+| Simulation metadata | 18 months unless [an admin deletes the simulation first](attack-simulation-training-simulations#remove-simulations). |
+| Simulation automation | 18 months unless [an admin deletes the simulation automation first](attack-simulation-training-simulation-automations#remove-simulation-automations). |
+| Payload automation | 18 months unless [an admin deletes the payload automation first](attack-simulation-training-payload-automations#remove-payload-automations). |
+| User activity in simulation metadata | 18 months unless [an admin deletes the simulation first](attack-simulation-training-simulations#remove-simulations). |
+| Global payloads | Persisted unless deleted by Microsoft. |
+| Tenant payloads | 18 months unless [an admin deletes the archived payload first](attack-simulation-training-payloads#remove-archived-payloads). |
+| User activity in training metadata | 18 months unless [an admin deletes the simulation first](attack-simulation-training-simulations#remove-simulations). |
+| MDO recommended payloads | 6 months. |
+| Global end user notifications | Persisted unless deleted by Microsoft. |
+| Tenant end user notifications | 18 months unless [an admin deletes the notification first](attack-simulation-training-end-user-notifications#remove-end-user-notifications). |
+| Global login pages | Persisted unless deleted by Microsoft. |
+| Tenant login pages | 18 months unless [an admin deletes the login page first](attack-simulation-training-login-pages#remove-login-pages). |
+| Global landing pages | Persisted unless deleted by Microsoft |
+| Tenant landing pages | 18 months unless [an admin deletes the landing page first](attack-simulation-training-landing-pages#remove-landing-pages). |
+
+If the entire tenant is deleted, attack simulation training data is deleted after 90 days.
+
+For more information, see [Data retention information for Microsoft Defender for Office 365](mdo-data-retention).
+
+### Q: Can I create, view, and manage simulations using an API?
+
+A: Yes. Read and write scenarios are supported using the Microsoft Graph API:
+
+- `AttackSimulation.Read.All`:
+    - Read simulation metadata
+    - Read user activity
+    - Read training data
+    - Read repeat offenders
+- `AttackSimulation.ReadWrite.All`: Run simulations using the specified payloads, notifications, and login pages.
+
+For more information, see [List simulations](/en-us/graph/api/attacksimulationroot-list-simulations) and [Reports API overview for attack simulation training as part of Microsoft Defender for Office 365](/en-us/graph/api/resources/report-m365defender-reports-overview).
+
+### Q: Can I delete custom payloads?
+
+A: Yes. First you archive the payload, then you delete the archived payload. For instructions, see [Archive payloads](attack-simulation-training-payloads#archive-payloads).
+
+### Q: Can I modify the built-in payloads?
+
+A: Not directly. You can copy the built-in payload and then modify the copy. For instructions, see [Copy payloads](attack-simulation-training-payloads#copy-payloads).
+
+### Q: What is Microsoft's guidance on the third-party brands or logos used in the built-in (global) payloads?
+
+A: Microsoft provides Attack simulation training payloads to help customers simulate real-world attack techniques. Microsoft does not provide legal advice, and customers remain responsible for determining the appropriate use of any payloads in their own environment. For questions relating to applicable laws, trademark use, or other legal considerations, customers should consult their own legal advisors. This guidance applies equally to global payloads (provided by Microsoft) and tenant payloads (custom payloads that you create). For the detailed legal considerations, see [Create payloads](attack-simulation-training-payloads#create-payloads).
+
+### Q: I'm trying to run a QR code simulation, but scanning the QR code shows me 'ping successful' instead of the landing page?
+
+A: When you insert a QR code in the payload editor, it maps to the base phishing URL that you selected in the **Phishing link** section &gt; **Select URL**. The QR code is inserted in the email message as an image. If you switch from the **Text** tab to the **Code** tab, you see the inserted image in Base64 format. The beginning of the image contains `<div id="QRcode"...>`. Make sure to verify that the finished payload contains `<div id="QRcode"...>` before you use it in a simulation.
+
+During simulation creation, if you scan the QR code or you use **Send a Test** to review the payload, the QR code points to the base phishing URL that you selected.
+
+When the payload is used in a simulation, the service replaces the QR code with a dynamically generated QR code to track click and compromise metrics. The size, position, and shape of the QR code matches the configuration options you configured in the payload. Scanning the QR code during an actual simulation takes you to the configured landing page.
+
+### Q: I'm trying to create a payload in HTML, but the payload editor seems to remove certain content from my design or doesn't save the payload?
+
+A: Currently, the following HTML tags aren't supported in the payload editor: `applet, base, basefont, command, embed, frame, frameset, iframe, keygen, link, meta, noframes, noscript, param, script, object, title`.
+
+Payloads containing the following case-insensitive terms are blocked: `IRS, I.R.S., Internal Revenue Service, Inland Revenue Service, Treasury`. This behavior aligns with the restrictions on using certain government-related trademarks and symbols described in [Create payloads](attack-simulation-training-payloads#create-payloads). If your payload is rejected unexpectedly, review the content for these terms and remove them.
+
+### Q: What happens if you modify the content used in an existing simulation?
+
+A: You can modify key elements that are used in a simulation independently of the simulation itself. For example:
+
+- Payload
+- Module
+- Login page
+- Landing page
+
+The simulation content is evaluated at the time of launch, so which payload, module, login page, or landing page is used in the simulation depends on the status of the simulation when you modified the content:
+
+- **Active** or **In progress**: This simulation was already launched, so any content changes aren't used.
+- **Scheduled**: The simulation hasn't been launched yet, so any content changes are used in the situation when it launches.
+
+### Q: What happens if you cancel a simulation after there have already been clicks on the payload? Are those users still considered repeat offenders, even though the simulation was cancelled?
+
+A *repeat offender* is a user who was compromised by consecutive simulations (gave up their credentials). The default value of consecutive simulations is two, but you can [configure the threshold](attack-simulation-training-settings#configure-the-repeat-offender-threshold).
+
+If you cancel an in-progress simulation, users who entered their credentials before the cancellation are counted as repeat offenders or compromised in reports.

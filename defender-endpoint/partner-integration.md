@@ -1,0 +1,78 @@
+---
+layout: Conceptual
+title: Microsoft Defender for Endpoint partner opportunities and scenarios - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/partner-integration
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+ms.reviewer: 
+description: Learn how you can extend existing security offerings on top of the open framework and a rich set of APIs to build extensions and integrations with Microsoft Defender for Endpoint.
+ms.service: defender-endpoint
+ms.subservice: onboard
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+ms.topic: concept-article
+ms.date: 2026-06-08T00:00:00.0000000Z
+locale: en-us
+document_id: e725e620-33ce-453c-85c7-c6756642ed02
+document_version_independent_id: e725e620-33ce-453c-85c7-c6756642ed02
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/partner-integration.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: partner-integration
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/partner-integration.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+platformId: 8db3d9d5-1fac-18a8-c895-e7db9cee7aca
+---
+
+# Microsoft Defender for Endpoint partner opportunities and scenarios - Microsoft Defender for Endpoint | Microsoft Learn
+
+Partners can easily extend their existing security offerings on top of the open framework and a rich and complete set of APIs to build extensions and integrations with Defender for Endpoint.
+
+The APIs span functional areas including detection, management, response, vulnerabilities, and intelligence-wide range of use cases. Based on the use case and need, partners can either stream or query data from Defender for Endpoint.
+
+The following scenarios serve as examples of the extensibility of the platform. You aren't limited to the examples and we certainly encourage you to use the open framework to discover and explore other scenarios.
+
+For information about how to become a Microsoft Defender for Endpoint partner to integrate your solution in Defender for Endpoint, see the [Microsoft Partner Center](https://partner.microsoft.com).
+
+To find professional services supported by Microsoft Defender XDR, see the [Microsoft Marketplace](https://marketplace.microsoft.com).
+
+## Scenario 1: External alert correlation and Automated investigation and remediation
+
+Defender for Endpoint offers unique automated investigation and remediation capabilities to drive incident response at scale.
+
+Integrating the automated investigation and response capability with other solutions such as network security products or other endpoint security products help to address alerts. The integration also minimizes the complexities surrounding network and device signal correlation, effectively streamlining the investigation and threat remediation actions on devices.
+
+Defender for Endpoint adds support for this scenario in the following forms:
+
+- External alerts can be pushed into Defender for Endpoint and presented side by side with additional device-based alerts from Defender for Endpoint. This view provides the full context of the alert - with the real process and the full story of attack.
+- Once an alert is generated, the signal is shared across all Defender for Endpoint protected endpoints in the enterprise. Defender for Endpoint takes immediate automated or operator-assisted response to address the alert.
+
+## Scenario 2: Security orchestration and automation response (SOAR) integration
+
+Orchestration solutions can help build playbooks and integrate the rich data model and actions that Defender for Endpoint APIs expose to orchestrate responses, such as query for device data, trigger device isolation, block/allow, resolve alert, and others.
+
+## Scenario 3: Indicators matching
+
+Indicator of compromise (IoCs) matching is an essential feature in every endpoint protection solution. This capability is available in Defender for Endpoint and gives the ability to set a list of indicators for prevention, detection, and exclusion of entities. One can define the action to be taken as well as the duration for when to apply the action.
+
+## Related article
+
+- [Overview of management and APIs](api/management-apis)

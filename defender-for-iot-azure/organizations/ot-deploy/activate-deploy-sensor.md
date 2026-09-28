@@ -1,0 +1,295 @@
+---
+layout: Conceptual
+title: Configure and activate your OT sensor - - Microsoft Defender for IoT | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-iot/organizations/ot-deploy/activate-deploy-sensor
+breadcrumb_path: ../../breadcrumb/toc.json
+feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-iot-blog/bg-p/MicrosoftDefenderIoTBlog
+feedback_help_link_type: ask-the-community
+feedback_product_url: https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4
+feedback_system: Standard
+learn_banner_products:
+- azure
+permissioned-type: public
+recommendations: true
+recommendation_types:
+- Training
+- Certification
+uhfHeaderId: azure
+ms.suite: office
+adobe-target: true
+ms.service: defender-for-iot
+author: limwainstein
+manager: bagol
+ms.author: lwainstein
+description: Learn how to configure initial setup settings and activate your Microsoft Defender for IoT OT sensor.
+ms.date: 2023-12-19T00:00:00.0000000Z
+ms.topic: install-set-up-deploy
+ms.custom: sfi-image-nochange
+locale: en-us
+document_id: e5e7141f-f334-bf52-69b6-f979bf5c9935
+document_version_independent_id: 8b2fa9de-258c-685b-4a92-b5d5d4dd3a9a
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-for-iot-azure/organizations/ot-deploy/activate-deploy-sensor.md
+site_name: Docs
+depot_name: Azure.d4iot-azure
+page_type: conceptual
+toc_rel: ../toc.json
+asset_id: defender-for-iot/organizations/ot-deploy/activate-deploy-sensor
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-for-iot-azure/organizations/ot-deploy/activate-deploy-sensor.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1438b371-d010-4b69-a622-5b0950c389fc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
+- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/86b71af1-f926-4f84-ad97-652864405350
+- https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
+- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+platformId: fe551fc6-b4fd-81a8-a4b2-4d3d12c4d080
+---
+
+# Configure and activate your OT sensor - - Microsoft Defender for IoT | Microsoft Learn
+
+This article is one in a series of articles describing the [deployment path](ot-deploy-path) for OT monitoring with Microsoft Defender for IoT, and describes how to configure initial setup settings and activate your OT sensor.
+
+[![Diagram of a progress bar with Deploy your sensors highlighted.](../media/deployment-paths/progress-deploy-your-sensors.png)](../media/deployment-paths/progress-deploy-your-sensors.png#lightbox)
+
+Several initial setup steps can be performed in the browser or via CLI.
+
+- Use the browser if you can connect physical cables from your switch to the sensor to identify your interfaces correctly. Make sure to reconfigure your network adapter to match the default settings on the sensor.
+- Use the CLI if you know your networking details without needing to connect physical cables. Use the CLI if you can only connect to the sensor via iLo / iDrac
+
+Configuring your setup via the CLI still requires you to complete the last few steps in the browser.
+
+## Prerequisites
+
+To perform the procedures in this article, you need:
+
+- An OT sensor [onboarded](../onboard-sensors) to Defender for IoT in the Azure portal.
+- OT sensor software installed on your appliance. Make sure that you've either [installed](install-software-ot-sensor) the software yourself or [purchased](../ot-pre-configured-appliances) a preconfigured appliance.
+- The sensor's activation file, which was downloaded after [onboarding your sensor](../onboard-sensors). You need a unique activation file for each OT sensor you deploy.
+
+    All files downloaded from the Azure portal are signed by root of trust so that your machines use signed assets only.
+
+    Note
+
+    Activation files expire 14 days after creation. If you onboarded your sensor but didn't upload the activation file before it expired, [download a new activation file](../how-to-manage-individual-sensors#current).
+- A SSL/TLS certificate. We recommend using a CA-signed certificate, and not a self-signed certificate. For more information, see [Create SSL/TLS certificates for OT appliances](create-ssl-certificates).
+- Access to the physical or virtual appliance where you're installing your sensor. For more information, see [Which appliances do I need?](../ot-appliance-sizing)
+
+This step is performed by your deployment teams.
+
+## Configure setup via the browser
+
+Configuring sensor setup via the browser includes the following steps:
+
+- Signing into the sensor console and changing the *admin* user password
+- Defining network details for your sensor
+- Defining the interfaces you want to monitor
+- Activating your sensor
+- Configuring SSL/TLS certificate settings
+
+### Sign in to the sensor console and change the default password
+
+This procedure describes how to sign into the OT sensor console for the first time. You're prompted to change the default password for the *admin* user.
+
+**To sign in to your sensor**:
+
+1. In a browser, go the `192.168.0.101` IP address, which is the default IP address provided for your sensor at the end of the installation.
+
+    The initial sign-in page appears. For example:
+
+    ![Screenshot of the initial sensor sign-in page.](../media/install-software-ot-sensor/ui-sign-in.png)
+2. Enter the following credentials and select **Login**:
+
+    - **Username**: `admin`
+    - **Password**: `admin`
+
+    You're asked to define a new password for the *admin* user.
+3. In the **New password** field, enter your new password. Your password must contain lowercase and uppercase alphabetic characters, numbers, and symbols.
+
+    In the **Confirm new password** field, enter your new password again, and then select **Get started**.
+
+    For more information, see [Default privileged users](../manage-users-sensor#default-privileged-users).
+
+The **Defender for IoT | Overview** page opens to the **Management interface** tab.
+
+### Define sensor networking details
+
+In the **Management interface** tab, use the following fields to define network details for your new sensor:
+
+| Name | Description |
+| --- | --- |
+| **Management interface** | Select the interface you want to use as the management interface, to connect to the Azure portal.To identify a physical interface on your machine, select an interface and then select **Blink physical interface LED**. The port that matches the selected interface lights up so that you can connect your cable correctly. |
+| **IP Address** | Enter the IP address you want to use for your sensor. This is the IP address your team uses to connect to the sensor via the browser or CLI. |
+| **Subnet Mask** | Enter the address you want to use as the sensor's subnet mask. |
+| **Default Gateway** | Enter the address you want to use as the sensor's default gateway. |
+| **DNS** | Enter the sensor's DNS server IP address. |
+| **Hostname** | Enter the hostname you want to assign to the sensor. Make sure that you use the same hostname as is defined in the DNS server. |
+| **Enable proxy for cloud connectivity (Optional)** | Select to define a proxy server for your sensor. If you use an SSL/TSL certificate to access the proxy server, select **Client certificate** and upload your certificate. |
+
+When you're done, select **Next: Interface configurations** to continue.
+
+### Define the interfaces you want to monitor
+
+The **Interface configurations** tab shows all interfaces detected by the sensor by default. Use this tab to turn monitoring on or off per interface, or define specific settings for each interface.
+
+Tip
+
+We recommend that you optimize performance on your sensor by configuring your settings to monitor only the interfaces that are actively in use.
+
+In the **Interface configurations** tab, do the following to configure settings for your monitored interfaces:
+
+1. Select the **Enable/Disable** toggle for any interfaces you want the sensor to monitor. You must select at least one interface to continue.
+
+    If you're not sure about which interface to use, select the ![](../media/install-software-ot-sensor/blink-interface.png)**Blink physical interface LED** button to have the selected port blink on your machine. Select any of the interfaces that you've connected to your switch.
+2. (Optional) For each interface you select to monitor, select the ![](../media/install-software-ot-sensor/advanced-settings-icon.png)**Advanced settings** button to modify any of the following settings:
+
+    | Name | Description |
+    | --- | --- |
+    | **Mode** | Select one of the following: - **SPAN Traffic (no encapsulation)** to use the default SPAN port mirroring. - **ERSPAN** if you're using ERSPAN mirroring. For more information, see [Choose a traffic mirroring method for OT sensors](../best-practices/traffic-mirroring-methods). |
+    | **Description** | Enter an optional description for the interface. You'll see this later on in the sensor's **System settings &gt; Interface configurations** page, and these descriptions may be helpful in understanding the purpose of each interface. |
+    | **Auto negotiation** | Relevant for physical machines only. Use this option to determine which sort of communication methods are used, or if the communication methods are automatically defined between components. **Important**: We recommend that you change this setting only on the advice of your networking team. |
+
+    **To add ERSPAN tunneling to your interface:**
+
+    1. In the **Mode** option, select **Tunneling** from the drop-down list.
+    2. To configure the tunnel, update the following OT sensor details:
+
+        - **Description** (optional).
+        - **Interface IP**.
+        - **Subnet**.
+
+    For example:
+
+    ![Screenshot of how to configure ERSPAN settings in the OT sensor settings.](media/activate-deploy-sensor/erspan-adv-settings-tunneling.png)
+3. Select **Save** to save your changes.
+4. Select **Next: Reboot &gt;** to continue, and then **Start reboot** to reboot your sensor machine. After the sensor starts again, you're automatically redirected to the IP address you'd defined earlier as your sensor IP address.
+
+    Select **Cancel** to wait for the reboot.
+
+### Activate your OT sensor
+
+This procedure describes how to activate your new OT sensor.
+
+If you've configured the initial settings via the CLI until now, you'll start the browser-based configuration at this step. After the sensor reboots, you're redirected to the same **Defender for IoT | Overview** page, to the **Activation** tab.
+
+**To activate your sensor**:
+
+1. In the **Activation** tab, select **Upload** to upload the sensor's activation file that you downloaded from the Azure portal.
+2. Select the terms and conditions option and then select **Activate**.
+3. Select **Next: Certificates**.
+
+If you have a connection problem between the cloud-based sensor and the Azure portal during the activation process that causes the activation to fail, a message appears below the Activate button. To solve the connectivity problem select **Learn more** and the **Cloud connectivity** pane opens. The pane lists the causes for the problem and recommendations to solve it.
+
+Even without solving the problem you're able to continue to the next stage, by selecting **Next: Certificates**.
+
+The only connection problem that must be fixed before moving to the next stage, is when a time drift is detected and the sensor isn't synchronized to the cloud. In this case the sensor must be correctly synchronized, as described in the recommendations, before moving to the next stage.
+
+### Define SSL/TLS certificate settings
+
+Use the **Certificates** tab to deploy an SSL/TLS certificate on your OT sensor. We recommend that you use a [CA-signed certificate](create-ssl-certificates) for all production environments.
+
+**To define SSL/TLS certificate settings**:
+
+1. In the **Certificates** tab, select **Import trusted CA certificate (recommended)** to deploy a CA-signed certificate.
+
+    Enter the certificate's name and [passphrase](../best-practices/certificate-requirements#supported-characters-for-keys-and-passphrases), and then select **Upload** to upload your private key file, certificate file, and an optional certificate chain file.
+
+    You may need to refresh the page after uploading your files. For more information, see [Troubleshoot certificate upload errors](../how-to-manage-individual-sensors#troubleshoot-certificate-upload-errors).
+
+    For more information, see [SSL/TLS certificate requirements for on-premises resources](../best-practices/certificate-requirements) and [Create SSL/TLS certificates for OT appliances](create-ssl-certificates).
+
+    Tip
+
+    If you're working on a testing environment, you can also use the self-signed certificate that's generated locally during installation. If you select to use a self-signed certificate, make sure to select the **Confirm** option about the recommendations.
+
+    For more information, see [Manage SSL/TLS certificates](../how-to-manage-individual-sensors#manage-ssltls-certificates).
+2. Select **Finish** to complete the initial setup and open your sensor console.
+
+## Configure setup via the CLI
+
+Use this procedure to configure the following initial setup settings via CLI:
+
+- Signing into the sensor console and setting a new *admin* user password
+- Defining network details for your sensor
+- Defining the interfaces you want to monitor
+
+Continue with activating and configuring SSL/TLS certificate settings in the browser.
+
+Note
+
+The information in this article applies to the sensor version 24.1.5. If you are running an earlier version, see [configure ERSPAN mirroring](../traffic-mirroring/configure-mirror-erspan).
+
+**To configure initial setup settings via CLI**:
+
+1. In the installation screen, after the default networking details are shown, press **ENTER** to continue.
+2. At the `D4Iot login` prompt, sign in with the following default credentials:
+
+    - **Username**: `admin`
+    - **Password**: `admin`
+
+    When you enter your password, the password characters don't display on the screen. Make sure you enter them carefully.
+3. At the prompt, enter a new password for the *admin* user. Your password must contain lowercase and uppercase alphabetic characters, numbers, and symbols.
+
+    When prompted to confirm your password, enter your new password again. For more information, see [Default privileged users](../manage-users-sensor#default-privileged-users).
+4. After changing the password, the `Sensor Config` wizard automatically starts. Continue to step 5.
+
+    If you're logging in on subsequent occasions continue to step 4.
+5. To start the `Sensor Config` wizard, at the prompt type `network reconfigure`. If you are using the cyberx user, type `ERSPAN=1 python3 -m cyberx.config.configure`.
+6. The `Sensor Config` screen shows the present setup of the interfaces. Ensure that one interface is set as the management interface. In this wizard, use the up or down arrows to navigate, and the **SPACE** bar to select an option. Press **ENTER** to advance to the next screen.
+
+    Select the interface you want to configure, for example:
+
+    ![Screenshot of the Select monitor interfaces screen.](media/activate-deploy-sensor/ersp-cli-settings.png)
+7. In the `Select type` screen select the new configuration type for this interface.
+
+Important
+
+Make sure that you select only interfaces that are connected.
+
+If you select interfaces that are enabled but not connected, the sensor will show a *No traffic monitored* health notification in the Azure portal. If you connect more traffic sources after installation and want to monitor them with Defender for IoT, you can add them later via the [CLI](../references-work-with-defender-for-iot-cli-commands).
+
+An interface can be set as either **Management**, **Monitor**, **Tunnel** or **Unused**. You may wish to set an interface as **Unused** as a temporary setting, to reset it, or if a mistake was made in the original setup.
+
+1. To configure a **Management** interface:
+
+    1. Select the interface.
+    2. Select **Management**.
+    3. Type the sensor's **IP address**, **DNS server** IP address and the default **Gateway** IP address.
+
+        ![Screenshot of the interface Management screen.](media/activate-deploy-sensor/ersp-cli-management-settings.png)
+    4. Select **Back**.
+2. To configure a **Monitor** interface:
+
+    1. Select the interface.
+    2. Select **Monitor**. The **Sensor Config** screen updates.
+3. To configure an ERSPAN **Tunnel** interface:
+
+    1. Select Interface IP and add the **IP** and **Subnet** details.
+    2. Select **Confirm**.
+    3. Select **Tunnels** and add a **Name**, **Source IP** and an **ID** numbered between 1 and 1023.
+
+        ![Screenshot of the interface Tunnels screen.](media/activate-deploy-sensor/ersp-cli-interface-tunnel.png)
+    4. Select **Confirm**.
+4. To configure an interface as **Unused**:
+
+    1. Select the interface.
+    2. Select the existing status.
+    3. Select **Unused**. The **Sensor Config** screen updates.
+5. After configuring all of the interfaces, select **Save**.
+
+### Automatic backup folder location
+
+The sensor automatically creates a backup folder. To change the location of the mounted backups you must:
+
+1. Log in to the sensor using the **admin** user.
+2. Type the following code in the CLI interface: `system backup path` and then add the path location, for example `/opt/sensor/backup`.
+3. The backup runs automatically and might take up to one minute.
+
+Note
+
+During initial setup, options for ERSPAN monitoring ports are available only in the browser-based procedure.
+
+If you're defining your network details via CLI and want to set up ERSPAN monitoring ports, do so afterwards via the sensor's **Settings &gt; Interface connections** page. For more information, see [Update a sensor's monitoring interfaces (configure ERSPAN)](../how-to-manage-individual-sensors#update-a-sensors-monitoring-interfaces-configure-erspan).

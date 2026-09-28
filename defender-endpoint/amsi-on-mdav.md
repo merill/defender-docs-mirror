@@ -1,0 +1,123 @@
+---
+layout: Conceptual
+title: Anti-malware Scan Interface (AMSI) integration with Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/amsi-on-mdav
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Describes fileless malware and how Microsoft Defender Antivirus uses AMSI to protect against hidden threats.
+author: chrisda
+ms.author: chrisda
+ms.reviewer: yongrhee
+ms.date: 2026-05-11T00:00:00.0000000Z
+ms.topic: concept-article
+ms.service: defender-endpoint
+ms.subservice: ngp
+ms.custom:
+- QuickDraft
+- partner-contribution
+ms.collection:
+- m365-security
+- tier2
+ai-usage: ai-assisted
+locale: en-us
+document_id: e130dcc2-b9f7-4c3f-0ee0-b7de78e39377
+document_version_independent_id: e130dcc2-b9f7-4c3f-0ee0-b7de78e39377
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/amsi-on-mdav.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: amsi-on-mdav
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/amsi-on-mdav.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c6f99e62-1cf6-4b71-af9b-649b05f80cce
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3f56b378-07a9-4fa1-afe8-9889fdc77628
+platformId: 0f34033b-3837-4da3-058b-f5b301468b56
+---
+
+# Anti-malware Scan Interface (AMSI) integration with Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
+
+Microsoft Defender for Endpoint utilizes the anti-malware Scan Interface (AMSI) to enhance protection against fileless malware, dynamic script-based attacks, and other nontraditional cyber threats. This article describes the benefits of AMSI integration, the types of scripting languages it supports, and how to enable AMSI for improved security.
+
+## What is fileless malware?
+
+Fileless malware plays a critical role in modern cyberattacks, using stealthy techniques to avoid detection. Several major ransomware outbreaks used fileless methods as part of their kill chains.
+
+Fileless malware uses existing tools that are already present on a compromised device, such as PowerShell.exe or wmic.exe. Malware can infiltrate a process, executing code within its memory space, and invoking these built-in tools. Attackers significantly reduce their footprint and evade traditional detection mechanisms.
+
+Because memory is volatile, and fileless malware doesn't place files on disk, establishing persistence by using fileless malware can be tricky. One example of how fileless malware achieved persistence was to create a registry run key that launches a "one-liner" PowerShell cmdlet. This command launched an obfuscated PowerShell script that was stored in the registry BLOB. The obfuscated PowerShell script contained a reflective portable executable (PE) loader that loaded a Base64-encoded PE from the registry. The script stored in the registry ensured the malware persisted.
+
+Attackers use several fileless techniques that can make malware implants stealthy and evasive. These techniques include:
+
+- **Reflective DLL injection**: Reflective DLL injection involves the manual loading of malicious DLLs into a process memory without the need for said DLLs to be on disk. The malicious DLL can be hosted on a remote attacker-controlled machine and delivered through a staged network channel (for example, Transport Layer Security (TLS) protocol), or embedded in obfuscated form inside infection vectors, like macros and scripts. This configuration results in the evasion of the OS mechanism that monitors and keeps track of loading executable modules. An example of malware that uses Reflective DLL injection is `HackTool:Win32/Mikatz!dha`.
+- **Memory exploits**: Adversaries use fileless memory exploits to run arbitrary code remotely on victim machines. For example, the UIWIX threat uses the EternalBlue exploit, which was used by both Petya and WannaCry, to install the DoublePulsar backdoor, and lives entirely in the kernel's memory (SMB Dispatch Table). Unlike Petya and Wannacry, UIWIX doesn't drop any files on disk.
+- **Script-based techniques**: Scripting languages provide powerful means for delivering memory-only executable payloads. Script files can embed encoded shell codes or binaries that they can decrypt on the fly at run time and execute via .NET objects or directly with APIs without requiring them to be written to disk. The scripts themselves can be hidden in the registry, read from network streams, or run manually in the command-line by an attacker, without ever touching the disk.
+
+    Note
+
+    Do not disable PowerShell as a means to block fileless malware. PowerShell is a powerful and secure management tool and is important for many system and IT functions. Attackers use malicious PowerShell scripts as post-exploitation technique that can only take place after an initial compromise has already occurred. Its misuse is a symptom of an attack that begins with other malicious actions like software exploitation, social engineering, or credential theft. The key is to prevent an attacker from getting into the position where they can misuse PowerShell.
+
+    Tip
+
+    Reducing the number of unsigned Powershell scripts in your environment helps with increasing your security posture. Here are instructions on how you could add signing to the Powershell scripts used in your environment [Hey, Scripting Guy! How Can I Sign Windows PowerShell Scripts with an Enterprise Windows PKI? (Part 2 of 2) | Scripting Blog](https://devblogs.microsoft.com/scripting/hey-scripting-guy-how-can-i-sign-windows-powershell-scripts-with-an-enterprise-windows-pki-part-2-of-2/)
+- **WMI persistence**: Some attackers use the Windows Management Instrumentation (WMI) repository to store malicious scripts that are then invoked periodically using WMI bindings. Microsoft Defender Antivirus blocks most malware using generic, heuristic, and behavior-based detections, as well as local and cloud-based machine learning models. Microsoft Defender Antivirus protects against fileless malware through these capabilities:
+
+    - Detecting script-based techniques by using AMSI, which provides the capability to inspect PowerShell and other script types, even with multiple layers of obfuscation
+    - Detecting and remediating WMI persistence techniques by scanning the WMI repository, both periodically and whenever anomalous behavior is observed
+    - Detecting reflective DLL injection through enhanced memory scanning techniques and behavioral monitoring
+
+## Prerequisites
+
+### Supported operating systems
+
+- Windows 10 and later
+- Windows Server 2016 and later
+
+### Supported Scripting Languages
+
+- PowerShell
+- Jscript
+- VBScript
+- Windows Script Host (wscript.exe and cscript.exe)
+- .NET Framework 4.8 or newer (scanning of all assemblies)
+- Windows Management Instrumentation (WMI)
+
+If you use Microsoft 365 Apps, AMSI also supports JavaScript, VBA, and XLM.
+
+AMSI doesn't currently support Python or Perl.
+
+## Why AMSI?
+
+AMSI provides a deeper level of inspection for malicious software that employs obfuscation and evasion techniques on Windows' built-in scripting hosts. By integrating AMSI, Microsoft Defender for Endpoint offers extra layers of protection against advanced threats.
+
+### Enabling AMSI
+
+To enable AMSI, you need to enable script scanning. See [Configure scanning options for Microsoft Defender Antivirus](configure-advanced-scan-types-microsoft-defender-antivirus).
+
+Also see [Defender Policy CSP - Windows Client Management](/en-us/windows/client-management/mdm/policy-csp-defender).
+
+### AMSI resources
+
+[Anti-malware Scan Interface (AMSI) APIs](/en-us/windows/win32/amsi/antimalware-scan-interface-portal) are available for developers and antivirus vendors to implement.
+
+Other Microsoft products such as [Exchange](https://techcommunity.microsoft.com/t5/exchange-team-blog/more-about-amsi-integration-with-exchange-server/ba-p/2572371) and [Sharepoint](https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/cyberattack-protection-by-default-and-other-enhancements-to/ba-p/3925641) also use AMSI integration.
+
+## More resources to protect against fileless attacks
+
+- [Windows Defender Application Control and AppLocker](/en-us/windows/security/application-security/application-control/app-control-for-business/appcontrol-and-applocker-overview). Enforces strong code Integrity policies and to allow only trusted applications to run. In the context of fileless malware, WDAC locks down PowerShell to Constrained Language Mode, which limits the extended language features that can lead to unverifiable code execution, such as direct .NET scripting, invocation of Win32 APIs via the Add-Type cmdlet, and interaction with COM objects. This essentially mitigates PowerShell-based reflective DLL injection attacks. If WDAC script enforcement is enabled and you need Defender for Endpoint PowerShell scripts to run in FullLanguage mode, see [Allow Defender for Endpoint scripts with WDAC script enforcement](configure-wdac-script-enforcement-mde).
+- [Attack surface reduction](attack-surface-reduction-overview) helps admins protect against common attack vectors.
+- [Enable virtualization-based protection of code integrity](/en-us/windows/security/hardware-security/enable-virtualization-based-protection-of-code-integrity). Mitigates kernel-memory exploits through Hypervisor Code Integrity (HVCI), which makes it difficult to inject malicious code using kernel-mode software vulnerabilities.

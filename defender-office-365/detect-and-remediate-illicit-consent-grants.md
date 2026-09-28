@@ -1,0 +1,195 @@
+---
+layout: Conceptual
+title: Detect and remediate illicit consent grants - Microsoft Defender for Office 365 | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-office-365/detect-and-remediate-illicit-consent-grants
+breadcrumb_path: /defender-office-365/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+author: chrisda
+ms.author: chrisda
+ms.topic: how-to
+ms.collection:
+- tier2
+- m365-security
+ms.date: 2026-07-03T00:00:00.0000000Z
+ms.localizationpriority: medium
+description: Learn how to detect, confirm, and remediate illicit consent grant attacks in Microsoft 365.
+ms.custom:
+- seo-marvel-apr2020
+- no-azure-ad-ps-ref
+- sfi-ga-nochange
+- msecd-doc-authoring-1016
+ms.service: defender-office-365
+ai-usage: ai-assisted
+locale: en-us
+document_id: 3cba544a-3e84-88a3-9e69-aa2605ad9e30
+document_version_independent_id: 3cba544a-3e84-88a3-9e69-aa2605ad9e30
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-office-365/detect-and-remediate-illicit-consent-grants.md
+site_name: Docs
+depot_name: Learn.defender-office-365
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: detect-and-remediate-illicit-consent-grants
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-office-365/detect-and-remediate-illicit-consent-grants.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/68e4b2d8-b70c-4019-b49a-d1f8881e2aea
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/67b2ba1a-6f74-4044-a48a-f0f8ad076b8f
+platformId: 7aa3ec61-cd7a-b408-f224-f77bf2fb3967
+---
+
+# Detect and remediate illicit consent grants - Microsoft Defender for Office 365 | Microsoft Learn
+
+Tip
+
+*Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
+
+An illicit consent grant attack presumes the entity calling the information is an automation, not a human:
+
+- The attacker creates an registered app in Microsoft Entra ID that requests access to contact information, email, or documents.
+- The attacker then uses a phishing attack or injects illicit code into a trusted website to trick users into granting the app consent to access their data.
+- After a user grants consent to the illicit application, it has account-level access to data without the need for an account in the organization.
+
+In an illicit consent grant attack, the attacker creates a registered application in Microsoft Entra ID that requests access to data such as contact information, email, or documents. The attacker then tricks an end user into granting that application consent to access their data either through a phishing attack, or by injecting illicit code into a trusted website. After the illicit application is granted consent, it has account-level access to data without the need for an organizational account. Normal remediation steps (for example, resetting passwords or requiring multifactor authentication (MFA)) aren't effective against this type of attack, because these apps are external to the organization.
+
+The following sections explain how to identify and remediate illicit consent grants in your organization.
+
+Tip
+
+Do you suspect that you're experiencing problems with illicit consent grants right now? Microsoft Defender for Cloud Apps has tools to detect, investigate, and remediate your OAuth apps. This Defender for Cloud Apps article has a tutorial that outlines how to go about [investigating risky OAuth apps](/en-us/defender-cloud-apps/investigate-risky-oauth). You can also set [OAuth app policies](/en-us/defender-cloud-apps/app-permission-policy) to investigate app-requested permissions, which users are authorizing these apps, and widely approve or ban these permissions requests.
+
+## Prerequisites
+
+- You open the Microsoft Defender portal at https://security.microsoft.com. You open the Microsoft Entra admin center at https://entra.microsoft.com.
+- You need to be assigned permissions before you can do the procedures in this article. You have the following options:
+
+    - [Microsoft Entra permissions](/en-us/entra/identity/role-based-access-control/manage-roles-portal): Membership in the **Global Administrator**^\*^ roles gives users the required permissions *and* permissions for other features in Microsoft 365.
+
+        Important
+
+        ^\*^ Microsoft recommends that you use roles with the fewest permissions. Using lower permissioned accounts helps improve security for your organization. Global Administrator is a highly privileged role that should be limited to emergency scenarios when you can't use an existing role.
+
+## How to find illicit consent grants
+
+You need to search the audit log in Microsoft Purview Audit (Standard) or Audit (Premium) to find the signs of illicit consent grants, which are questionable **Consent to application** activities. These signs are also known as indicators of compromise (IOC). The steps to search the audit log for these activities are described in this section. For more information about searching the audit log, see [Search the audit log](/en-us/purview/audit-search).
+
+Tip
+
+In organizations with many apps registered in Entra ID and a large user base, the best practice is to review consent grants in organizations on a weekly basis.
+
+1. In the Microsoft Defender portal at https://security.microsoft.com, go to **Audit**. Or, to go directly to the **Audit** page, use https://security.microsoft.com/auditlogsearch.
+2. On the **Audit** page, verify that the **New search** tab is selected, and then configure the following settings:
+
+    - **Date and time range**: Select appropriate **Start** and **Edt** date/time values.
+    - **Activities**: Verify that **Show results for all activities** is selected.
+
+    When you're finished, select **Search**.
+3. Select the **Activity** column to sort the results and look for **Consent to application**.
+4. Select an entry from the list to see the details of the activity. Check to see if IsAdminConsent is set to True.
+
+Note
+
+It can take from 30 minutes up to 24 hours for the corresponding audit log entry to be displayed in the search results after an event occurs.
+
+The length of time that an audit record is retained and searchable in the audit log depends on your Microsoft 365 subscription. Specifically, the licenses assigned to specific users. For more information, see [Audit log](/en-us/purview/audit-log-search).
+
+The value True indicates that someone with Global Administrator access might have granted broad access to data. If this value is unexpected, take steps to confirm an attack.
+
+## How to confirm an attack
+
+If you found questionable **Consent to application** activities in the audit log, you need to do further investigation to positively confirm that the attack occurred. You can use any of these three methods to confirm the attack:
+
+- Inventory applications and their permissions using the Microsoft Entra admin center. This method is thorough, but you can only check one user at a time. This method can be very time consuming if you have many users to check.
+- Inventory applications and their permissions using PowerShell. This method is the fastest, most method, and has the least amount of overhead.
+- Have users individually check their apps and permissions and report the results back to the admins for remediation.
+
+## Inventory apps with access in your organization
+
+You have the following options to inventory apps for your users:
+
+- The Microsoft Entra admin center.
+- PowerShell.
+- Have users individually enumerate their own application access.
+
+### Steps for using the Microsoft Entra admin center
+
+You can look up the applications to which any individual user has granted permissions by using the Microsoft Entra admin center:
+
+1. Open the Microsoft Entra admin center at https://entra.microsoft.com, and then go to **Identity** &gt; **Users** &gt; **All users**. Or, to go directly to **Users** &gt; **All users**, use [https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/%7E/AllUsers/menuId/).
+2. Find and select the user that you want to review by clicking on the **Display name** value.
+3. On the user details page that opens, select **Applications**.
+
+These steps show you the apps that are assigned to the user and what permissions the applications have.
+
+### Steps for having your users enumerate their application access
+
+Have your users go to https://myapps.microsoft.com and review their own application access there. They should be able to see all the apps with access, view details about them (including the scope of access), and be able to revoke privileges to suspicious or illicit apps.
+
+### Steps in PowerShell
+
+The simplest way to verify the Illicit Consent Grant attack is to run [the Get-AzureADPSPermissions.ps1 script](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09), which dumps all the OAuth consent grants and OAuth apps for all users in your tenancy into one .csv file.
+
+#### Prerequisites
+
+- The [Microsoft Graph PowerShell SDK is installed](/en-us/powershell/microsoftgraph/installation).
+- Global Administrator permissions in the organization where the script is run.
+- Local Administrator permissions on the computer where you run the scripts.
+
+Important
+
+We ***highly recommend*** that you require multifactor authentication on your admin account. This script supports MFA authentication.
+
+Microsoft strongly advocates for the principle of least privilege. Assigning accounts only the minimum permissions necessary to perform their tasks helps reduce security risks and strengthens your organization's overall protection. Global Administrator is a highly privileged role that you should limit to emergency scenarios or when you can't use a different role.
+
+1. Sign in to the computer where you want to run the scripts with local administrator rights.
+2. Download or copy the [Get-AzureADPSPermissions.ps1](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09) script from GitHub to a folder that's easy to find and remember. This folder is also where you need to write the "permissions.csv" output file is written.
+3. Open an elevated PowerShell session as an administrator in the folder where you saved the script.
+4. Connect to your directory using the [Connect-MgGraph](/en-us/powershell/microsoftgraph/authentication-commands#using-connect-mggraph) cmdlet.
+5. Run the following command to execute the permissions script and export the results to a CSV file:
+
+    ```powershell
+    .\Get-AzureADPSPermissions.ps1 | Export-csv -Path "Permissions.csv" -NoTypeInformation
+    ```
+
+The script produces one file named Permissions.csv. Follow these steps to look for illicit application permission grants:
+
+1. In the ConsentType column (column G) search for the value "AllPrinciples." The AllPrincipals permission allows the client application to access everyone's content in the tenancy. Native Microsoft 365 applications need this permission to work correctly. Every non-Microsoft application with this permission should be reviewed carefully.
+2. In the Permission column (column F), review the permissions that each delegated application has to content. Look for "Read" and "Write" permission or "All" permission, and review these permissions carefully, because they might not be appropriate.
+3. Review the specific users that have consents granted. If high profile or high value users have inappropriate consents granted, you should investigate further.
+4. In the ClientDisplayName column (column C) look for apps that seem suspicious. Apps with misspelled names, super bland names, or hacker-sounding names should be reviewed carefully.
+
+## Determine the scope of the attack
+
+After you finish inventorying application access, review the Microsoft Purview **audit log** in the Microsoft Defender portal to determine the full scope of the breach. Search on the affected users, the time frames that the illicit application had access to your organization, and the permissions the app had. You can search the **audit log** in the [Microsoft Defender portal](audit-log-search-defender-portal).
+
+Important
+
+Getting this information requires [Mailbox auditing](/en-us/purview/audit-mailboxes) and [Activity auditing for admins and users](/en-us/purview/audit-log-enable-disable) to be turned on before the attack.
+
+## How to stop and remediate an illicit consent grant attack
+
+After you identified the application with illicit permissions, you have several ways to remove that access:
+
+- You can revoke the application's permission in the Microsoft Entra admin center by doing the following steps:
+
+    1. Open the Microsoft Entra admin center at https://entra.microsoft.com, and then go to **Identity** &gt; **Users** &gt; **All users**. Or, to go directly to **Users** &gt; **All users**, use [https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/~/AllUsers/menuId/](https://entra.microsoft.com/#view/Microsoft_AAD_UsersAndTenants/UserManagementMenuBlade/%7E/AllUsers/menuId/).
+    2. Find and select the affected user by clicking on the **Display name** value.
+    3. On the user details page that opens, select **Applications**.
+    4. On the **Applications** page, select the illicit application by clicking on the **Name** value.
+    5. On the **Assignment detail** page that opens, select **Remove**.
+- You can revoke the OAuth consent grant with PowerShell by following the steps in [Remove-MgOauth2PermissionGrant](/en-us/powershell/module/microsoft.graph.identity.signins/remove-mgoauth2permissiongrant)
+- You can revoke the Service App Role Assignment with PowerShell by following the steps in [Remove-MgServicePrincipalAppRoleAssignment](/en-us/powershell/module/microsoft.graph.applications/remove-mgserviceprincipalapproleassignment).
+- You can disable sign-in for the affected account, which disables access to data in the account by the app. This action isn't ideal for user productivity, but it can be a short-term remediation to quickly limit the results of the attack.
+- You can turn off integrated applications in your organization. This action is drastic. Although it prevents users from accidentally granting access to a malicious app, it also prevents all users from granting consent to any applications. We don't recommend this action because it severely impairs user productivity with non-Microsoft applications. You can turn off integrated apps by following the steps in [Turning Integrated Apps on or off](/en-us/microsoft-365/admin/misc/user-consent).

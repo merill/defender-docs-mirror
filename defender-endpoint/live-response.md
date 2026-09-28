@@ -1,0 +1,382 @@
+---
+layout: Conceptual
+title: Investigate entities on devices using live response in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/live-response
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Access a device using a secure remote shell connection to do investigative work and take immediate response actions on a device in real time.
+ms.service: defender-endpoint
+ms.author: lwainstein
+author: limwainstein
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- mde-edr
+ms.topic: how-to
+ms.subservice: edr
+ms.date: 2026-07-28T00:00:00.0000000Z
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1016
+locale: en-us
+document_id: 954a2802-7609-d419-03fe-98c65c9b9104
+document_version_independent_id: 954a2802-7609-d419-03fe-98c65c9b9104
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/live-response.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: live-response
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/live-response.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e0ffb20c-01c6-407b-a9bd-29111652a1dc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fc3f72c2-fb6f-4cea-95ee-b444e52254ee
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/3904bce4-d817-48cf-85fd-b6146fca83b7
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f12cf087-582d-48ac-a085-0c19adf1e391
+platformId: bce743fa-a82a-32e0-89dc-bf2b39785ad2
+---
+
+# Investigate entities on devices using live response in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
+
+Live response gives security operations teams instantaneous access to a device (also referred to as a machine) using a remote shell connection. Live response gives you the power to do in-depth investigative work and take immediate response actions to promptly contain identified threats in real time.
+
+Live response is designed to enhance investigations by enabling your security operations team to collect forensic data, run scripts, send suspicious entities for analysis, remediate threats, and proactively hunt for emerging threats.
+
+With live response, analysts can do all of the following tasks:
+
+- Run basic and advanced commands to do investigative work on a device.
+- Download files such as malware samples and outcomes of PowerShell scripts.
+- Download files in the background (new!).
+- Upload a PowerShell script or executable to the library and run it on a device from a tenant level.
+- Take or undo remediation actions.
+
+Tip
+
+You can upload, view, and manage files used for live response from the [Library management](configure-libraries-live-response) page.
+
+## Prerequisites
+
+Devices must be running one of the following supported operating systems and versions
+
+### Supported operating systems
+
+- **Windows 11**
+- **Windows 10**:
+
+    - [Windows 10, version 1909](/en-us/windows/whats-new/whats-new-windows-10-version-1909) or later.
+    - [Windows 10, version 1903](/en-us/windows/whats-new/whats-new-windows-10-version-1903) with [KB4515384](https://support.microsoft.com/servicing/os/windows-10/2019/09/september-10-2019-kb4515384-os-build-18362-356).
+    - [Windows 10, version 1809 (RS 5)](/en-us/windows/whats-new/whats-new-windows-10-version-1809) with [Windows 10 update KB4537818](https://support.microsoft.com/servicing/os/windows-10/2020/02/february-25-2020-kb4537818-os-build-17763-1075).
+    - [Windows 10, version 1803 (RS 4)](/en-us/windows/whats-new/whats-new-windows-10-version-1803) with [Windows 10 update KB4537795](https://support.microsoft.com/topic/february-25-2020-kb4537795-os-build-17134-1345-36b35e62-d897-2dc3-289c-44a1327c2d8e).
+    - [Windows 10, version 1709 (RS 3)](/en-us/windows/whats-new/whats-new-windows-10-version-1709) with [Windows 10 update KB4537816](https://support.microsoft.com/servicing/os/windows-10/2020/02/february-25-2020-kb4537816-os-build-16299-1717).
+- **macOS**: Version `101.43.84` or later. Supported on Intel-based and ARM-based macOS devices.
+- **Linux**: Version `101.45.13` or later.
+- **Windows Server 2022** or later.
+- **Windows Server 2019**:
+
+    - Version 1903 (with [Windows 10 update KB4515384](https://support.microsoft.com/servicing/os/windows-10/2019/09/september-10-2019-kb4515384-os-build-18362-356)) or later.
+    - Version 1809 (with [Windows 10 update KB4537818](https://support.microsoft.com/servicing/os/windows-10/2020/02/february-25-2020-kb4537818-os-build-17763-1075)).
+- **Windows Server 2016 and Windows Server 2012 R2**:
+
+    - Requires the [Unified Agent](update-agent-mma-windows#update-mma-on-your-devices).
+    - We also recommend the patch for the latest sensor version: [Microsoft Defender for Endpoint update for EDR sensor KB5005292](https://support.microsoft.com/servicing/Management-Tools/microsoft-defender/update/microsoft-defender-for-endpoint-update-for-edr-sensor).
+    - If you use a static proxy, live response doesn't work as expected for offline down-level servers onboarded using the streamlined method. Consider using a system proxy instead.
+- **Azure Stack HCI OS**: Version 23H2 or later.
+
+### Other requirements
+
+- **Enable live response from the advanced settings page**: You need to enable the live response capability in the [Advanced features settings](advanced-features) page.
+
+    Note
+
+    Only admins and users who have "Manage Portal Settings" permissions can enable live response.
+- **Enable live response for servers from the advanced settings page** (recommended).
+
+    Note
+
+    Only admins and users who have "Manage Portal Settings" permissions can enable live response.
+- **Enable live response unsigned script execution** (optional).
+
+    Important
+
+    Signature verification only applies for PowerShell scripts.
+
+    Warning
+
+    Allowing the use of unsigned scripts may increase your exposure to threats. If you must use them, you need to enable the setting in the [Advanced features settings](advanced-features) page.
+- **Ensure that you have the appropriate permissions**: Only users who are provisioned with the appropriate permissions can initiate a session. For more information on role assignments, see [Create and manage roles](user-roles).
+
+    Important
+
+    The option to upload a file to the library via live response is only available to users with "Manage Security Settings" permission. The button is greyed out for users with only delegated permissions. You can also upload files to the library from the [Library management](configure-libraries-live-response) page, for which you don't need this permission.
+
+    Depending on the role that's been granted to you, you can run basic or advanced live response commands. Users permissions are controlled by RBAC custom role.
+
+## Live response dashboard overview
+
+When you initiate a live response session on a device, a dashboard opens. The dashboard provides information about the session. For example:
+
+- Who created the session
+- When the session started
+- The duration of the session
+
+The dashboard also gives you access to actions for the session. For example:
+
+- Disconnect session
+- Upload files to the library
+- Command console
+- Command log
+
+## Initiate a live response session on a device
+
+Perform the following steps to initiate a live response session on a device.
+
+Note
+
+Live response actions initiated from the Device page are not available in the MachineActions API.
+
+1. Sign in to [Microsoft Defender portal](https://security.microsoft.com).
+2. Navigate to **Endpoints** &gt; **Device inventory** and select a device to investigate. The devices page opens.
+3. Launch the live response session by selecting **Initiate live response session**. A command console is displayed. Wait while the session connects to the device.
+4. Use the built-in commands to do investigative work. For more information, see Live response commands.
+5. After completing your investigation, select **Disconnect session**, then select **Confirm**.
+
+## Live response commands
+
+Depending on the role that's been granted to you, you can run basic or advanced live response commands. User permissions are controlled by RBAC custom roles. For more information on role assignments, see [Create and manage roles](user-roles).
+
+Note
+
+Live response is a cloud-based interactive shell, as such, specific command experience may vary in response time depending on network quality and system load between the end user and the target device.
+
+### Basic commands
+
+The following commands are available for user roles that are granted the ability to run **basic** live response commands. For more information on role assignments, see [Create and manage roles](user-roles).
+
+| Command | Description | Windows and Windows Server | macOS | Linux |
+| --- | --- | --- | --- | --- |
+| `cd` | Changes the current directory. | Y | Y | Y |
+| `cls` | Clears the console screen. | Y | Y | Y |
+| `connect` | Initiates a live response session to the device. | Y | Y | Y |
+| `connections` | Shows all the active connections. | Y | N | N |
+| `dir` | Shows a list of files and subdirectories in a directory. | Y | Y | Y |
+| `drivers` | Shows all drivers installed on the device. | Y | N | N |
+| `fg <command ID>` | Place the specified job in the foreground, making it the current job. `fg` takes a `command ID` available from jobs, not a PID. | Y | Y | Y |
+| `fileinfo` | Get information about a file. | Y | Y | Y |
+| `findfile` | Locates files by a given name on the device. | Y | Y | Y |
+| `getfile <file_path>` | Downloads a file. | Y | Y | Y |
+| `help` | Provides help information for live response commands. | Y | Y | Y |
+| `jobs` | Shows currently running jobs, their ID and status. | Y | Y | Y |
+| `persistence` | Shows all known persistence methods on the device. | Y | N | N |
+| `processes` | Shows all processes running on the device. | Y | Y | Y |
+| `registry` | Shows registry values. | Y | N | N |
+| `scheduledtasks` | Shows all scheduled tasks on the device. | Y | N | N |
+| `services` | Shows all services on the device. | Y | N | N |
+| `startupfolders` | Shows all known files in startup folders on the device. | Y | N | N |
+| `status` | Shows the status and output of specific command. | Y | Y | Y |
+| `trace` | Sets the terminal's logging mode to debug. | Y | Y | Y |
+
+### Advanced commands
+
+The following commands are available for user roles that are granted the ability to run **advanced** live response commands. For more information on role assignments, see [Create and manage roles](user-roles).
+
+| Command | Description | Windows and Windows Server | macOS | Linux |
+| --- | --- | --- | --- | --- |
+| `analyze` | Analyses the entity with various incrimination engines to reach a verdict. | Y | N | N |
+| `collect` | Collects forensics package from device. | N | Y | Y |
+| `isolate` | Disconnects the device from the network while retaining connectivity to the Defender for Endpoint service. | N | Y | N |
+| `release` | Releases a device from network isolation. | N | Y | N |
+| `run` | Runs a PowerShell script from the library on the device. | Y | Y | Y |
+| `library` | Lists files that were uploaded to the live response library. You can also view and manage these files from the [Library management](configure-libraries-live-response) page. | Y | Y | Y |
+| `putfile` | Puts a file from the library to the device. Files are saved in a working folder and are deleted when the device restarts by default. | Y | Y | Y |
+| `remediate` | Remediates an entity on the device. The remediation action varies, depending on the entity type: <br>- **File**: delete<br>- **Process**: stop, delete image file<br>- **Service**: stop, delete image file<br>- **Registry entry**: delete<br>- **Scheduled task**: remove<br>- **Startup folder item**: delete file<br><br> This command has a prerequisite command. You can use the `-auto` command in conjunction with remediate to automatically run the prerequisite command. | Y | Y | Y |
+| `scan` | Runs a quick antivirus scan to help identify and remediate malware. | N | Y | Y |
+| `undo` | Restores an entity that was remediated. | Y | N | N |
+
+Note
+
+The following file size limits apply for `putfile` live response command:
+
+- Windows: 300 MB
+- Other platforms: 10 MB
+
+## Use live response commands
+
+The commands that you can use in the console follow similar principles as [Windows Commands](/en-us/windows-server/administration/windows-commands/windows-commands#BKMK_c).
+
+Advanced live response commands offer a more robust set of actions that allow you to take more powerful actions such as download and upload a file, run scripts on the device, and take remediation actions on an entity.
+
+Tip
+
+You can upload, view, and manage files used for live response from the [Library management](configure-libraries-live-response) page.
+
+### Get a file from the device
+
+For scenarios when you'd like get a file from a device you're investigating, you can use the `getfile` command. This allows you to save the file from the device for further investigation.
+
+Note
+
+The following file size limits apply:
+
+- `getfile` limit: 3 GB
+- `fileinfo` limit: 30 GB
+- `library` limit: 250 MB
+- `library` limit in US Government cloud environments: 5 MB (default). To request a higher limit, open a support ticket.
+
+### Download a file in the background
+
+To enable your security operations team to continue investigating an impacted device, files can now be downloaded in the background.
+
+- To download a file in the background, in the live response command console, type `getfile <file_path> &`.
+- If you are waiting for a file to be downloaded, you can move it to the background by using Ctrl + Z.
+- To bring a file download to the foreground, in the live response command console, type `fg <command_id>`.
+
+Here are some examples:
+
+| Command | What it does |
+| --- | --- |
+| `getfile "C:\windows\some_file.exe" &` | Starts downloading a file named *some\_file.exe* in the background. |
+| `fg 1234` | Returns a download with command ID *1234* to the foreground. |
+
+### Put a file in the library
+
+Live response has a library where you can put files into. The library stores files (such as scripts) that can be run in a live response session at the tenant level.
+
+Live response allows PowerShell and Bash scripts to run; however, you must first upload the script files to the library before you can run the scripts.
+
+You can maintain a collection of PowerShell and Bash scripts that you can run on devices during live response sessions.
+
+#### To upload a file in the library
+
+You can either upload a file to the library from the live response session console or from the [Library management](configure-libraries-live-response) page.
+
+To upload a file to the library from the live response session console:
+
+Note
+
+There are restrictions on the characters that can be uploaded to the library. Use alphanumeric characters and some symbols (specifically, `-`, `_`, or `.`).
+
+1. Select **Upload file to library**.
+2. Select **Browse** and select the file.
+3. Provide a brief description.
+4. Specify if you'd like to overwrite a file with the same name.
+5. If you'd like to be, know what parameters are needed for the script, select the script parameters check box. In the text field, enter an example and a description.
+6. Select **Confirm**.
+7. (Optional) To verify that the file was uploaded to the library, run the `library` command or check the [Library management](configure-libraries-live-response) page.
+
+### Cancel a command
+
+Warning
+
+Pressing CTRL + C only cancels the command in the Microsoft Defender portal. It doesn't stop the command on the agent side. Changing operations such as "remediate" may continue even if the command is canceled.
+
+To cancel a command in the portal during a session, press CTRL + C.
+
+## Run a script
+
+Before you can run a PowerShell/Bash script, you must first upload it to the library.
+
+You can upload a script to the library from the live response session console or from the [Library management](configure-libraries-live-response) page.
+
+If you plan to use an unsigned PowerShell script in the session, you'll need to enable the setting in the [Advanced features settings](advanced-features) page.
+
+Warning
+
+Allowing the use of unsigned scripts may increase your exposure to threats.
+
+After uploading the script to the library, use the `run` command to run the script.
+
+## Apply command parameters
+
+Use the following approaches to view and apply command parameters.
+
+- To view syntax and available parameters for a specific command, use the built-in help command:
+
+    ```powershell
+    help <command name>
+    ```
+- When applying parameters to commands, note that parameters are handled based on a fixed order. The following example shows the basic syntax for invoking a command with positional parameters:
+
+    ```powershell
+    <command name> param1 param2
+    ```
+- When specifying parameters outside of the fixed order, specify the name of the parameter with a hyphen before providing the value. The following example shows named parameter usage:
+
+    ```powershell
+    <command name> -param2_name param2
+    ```
+- When using commands that have prerequisite commands, you can use flags. The following example shows how to target a file by path and run the prerequisite command automatically:
+
+    ```powershell
+    <command name> -type file -id <file path> -auto
+    ```
+
+    Or, to automatically remediate a detected file, run:
+
+    ```powershell
+    remediate file <file path> -auto
+    ```
+
+## Supported output types
+
+Live response supports table and JSON format output types. For each command, there's a default output behavior. You can modify the output in your preferred output format using the following commands:
+
+- `-output json`
+- `-output table`
+
+Note
+
+Fewer fields are shown in table format due to the limited space. To see more details in the output, you can use the JSON output command so that more details are shown.
+
+## Supported output pipes
+
+Live response supports output piping to CLI and file. CLI is the default output behavior. You can pipe the output to a file using the following command: `[command] > [filename].txt`.
+
+For example, to save the process list to a text file instead of displaying it on screen, redirect the output as shown here:
+
+```console
+processes > output.txt
+```
+
+## View the command log
+
+Select the **Command log** tab to see the commands used on the device during a session. Each command is tracked with full details such as:
+
+- ID
+- Command line
+- Duration
+- Status and input or output side bar
+
+## Limitations
+
+The following limitations apply to live response sessions and commands.
+
+- Live response sessions are limited to 50 live response sessions at a time.
+- Live response session inactive timeout value is 30 minutes.
+- Individual live response commands have a time limit of 10 minutes, with the exception of `getfile`, `findfile`, and `run`, which have a limit of 30 minutes.
+- A user can initiate up to five concurrent sessions.
+- A device can only be in one session at a time.
+- The following file size limits apply:
+
+    - `getfile` limit: 3 GB
+    - `fileinfo` limit: 30 GB
+    - `library` limit: 250 MB
+
+    Note
+
+    Successful completion of a getfile operation depends on both file size and available network throughput. In low-bandwidth environments, a file transfer might not complete before the command timeout is reached, even when the file is within the supported size limit. If necessary, split large files into smaller parts and download them separately.
+
+## Related article
+
+For more examples, see the following article.
+
+- [Live response command examples](live-response-command-examples)

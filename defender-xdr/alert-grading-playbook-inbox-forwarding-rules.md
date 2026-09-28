@@ -1,0 +1,204 @@
+---
+layout: Conceptual
+title: Alert classification for suspicious inbox forwarding rules - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/alert-grading-playbook-inbox-forwarding-rules
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Investigate suspicious inbox forwarding rule alerts, classify them as true or false positives, and follow recommended remediation steps to protect your network.
+ms.service: defender-xdr
+ms.author: guywild
+author: guywi-ms
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier2
+ms.custom: admindeeplinkDEFENDER, msecd-doc-authoring-1016
+ms.topic: how-to
+ms.date: 2026-07-02T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: dce34ffd-67b0-4e4b-4f22-a3de3261e310
+document_version_independent_id: dce34ffd-67b0-4e4b-4f22-a3de3261e310
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/alert-grading-playbook-inbox-forwarding-rules.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: alert-grading-playbook-inbox-forwarding-rules
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/alert-grading-playbook-inbox-forwarding-rules.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
+- https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
+platformId: fe557e4e-d6cd-5637-cb73-c83250291a1d
+---
+
+# Alert classification for suspicious inbox forwarding rules - Microsoft Defender XDR | Microsoft Learn
+
+Threat actors can use compromised user accounts for several malicious purposes including reading emails in a user's inbox, creating inbox rules to forward emails to external accounts, sending phishing mails, among others. Malicious inbox rules are widely common during business email compromise (BEC) and phishing campaigns, and it important to monitor them consistently. This playbook helps you investigate alerts for suspicious inbox forwarding rules and quickly grade them as either a true positive (TP) or a false positive (FP). You can then take recommended actions for the TP alerts to remediate the attack.
+
+For an overview of alert classification for Microsoft Defender for Office 365 and Microsoft Defender for Cloud Apps, see the [Alert classification playbooks overview](alert-classification-playbooks).
+
+The results of using this playbook are:
+
+- You've identified the alerts associated with inbox forwarding rules as malicious (TP) or benign (FP) activities.
+
+    If malicious, you have removed malicious inbox forwarding rules.
+- You've taken the necessary action if emails have been forwarded to a malicious email address.
+
+## Overview of inbox forwarding rules
+
+You configure inbox rules to automatically manage email messages based on predefined criteria. For example, you can create an inbox rule to move all messages from your manager into another folder, or forward messages you receive to another email address.
+
+### How attackers use suspicious inbox forwarding rules
+
+After gaining access to users' mailboxes, attackers often create an inbox rule that allows them to exfiltrate sensitive data to an external email address and use it for malicious purposes.
+
+Malicious inbox rules automate the exfiltration process. With specific rules, every email in the target user's inbox that matches the rule criteria will be forwarded to the attacker's mailbox. For example, an attacker might want to gather sensitive data related to finance. They create an inbox rule to forward all emails that contain keywords, such as 'finance' and 'invoice' in the subject or message body, to their mailbox.
+
+Suspicious inbox forwarding rules might be difficult to detect because maintenance of inbox rules is common task done by users. Therefore, it's important to monitor the alerts.
+
+## Investigation workflow for suspicious inbox forwarding rules
+
+Here's the workflow to identify suspicious email forwarding rules.
+
+[![Alert investigation workflow for inbox forwarding rules](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-workflow.png)](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-workflow.png#lightbox)
+
+## Investigation steps
+
+Use the following steps to investigate suspicious inbox forwarding rule alerts, respond to the incident, and protect your organization from further attacks.
+
+### Review generated alerts
+
+Here's an example of an inbox forwarding rule alert in the alert queue.
+
+[![Example of a notification in the alert queue](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-alert-queue.png)](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-alert-queue.png#lightbox)
+
+Here's an example of the details of alert that was triggered by a malicious inbox forwarding rule.
+
+[![Details of alert that was triggered by a malicious inbox forwarding rule](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-alert-description.png)](media/alert-grading-playbook-inbox-forwarding-rules/alert-grading-playbook-inbox-forwarding-rules-alert-description.png#lightbox)
+
+### Investigate rule parameters
+
+The purpose of the rule-parameter investigation is to determine whether the rules look suspicious based on the following criteria:
+
+Recipients of the forwarding rule:
+
+- Validate destination email address isn't an additional mailbox owned by the same user (avoiding cases where the user is self-forwarding emails between personal mailboxes).
+- Validate the destination email address isn't an internal address or sub-domain that belongs to the company.
+
+Filters:
+
+- If the inbox rule contains filters, which search for specific keywords in the subject or body of the email, check whether the provided keywords, such as finance, credentials, and networking, among others, seem related to malicious activity. You can find these filters under the following attributes (which shows up in the event RawEventData column): "BodyContainsWords", "SubjectContainsWords" or "SubjectOrBodyContainsWords"
+- If the attacker chooses not to set any filter to the mails, and instead the inbox rule forwards all the mailbox items to the attacker's mailbox), then this behavior is suspicious as well.
+
+### Investigate IP address
+
+Review the attributes related to the IP address that performed the inbox rule creation event:
+
+1. Search for other suspicious cloud activities that originated from the same IP in the tenant. For instance, suspicious activity might be multiple failed login attempts.
+2. Is the ISP common and reasonable for this user?
+3. Is the location common and reasonable for this user?
+
+### Investigate any suspicious activity with the user inbox before creating rules
+
+You can review all user activities before creating rules, check for indicators of compromise, and investigate user actions that seem suspicious. For instance, multiple failed sign ins.
+
+- Sign ins:
+
+    Validate that the sign in activity prior to the rule creation event isn't suspicious (such as the common location, ISP, or user-agent).
+- Other alerts or incidents
+
+    - Did other alerts trigger for the user prior to the rule creation. If so, then this might indicate that the user got compromised.
+    - If the alert correlates with other alerts to indicate an incident, then does the incident contain other true positive alerts?
+
+## Advanced hunting queries
+
+[Advanced Hunting](advanced-hunting-overview) is a query-based threat hunting tool that lets you inspect events in your network and locate threat indicators.
+
+Run this query to find all the new inbox rule events during a specific time window.
+
+```kusto
+let start_date = now(-10h);
+let end_date = now();
+let user_id = ""; // enter here the user id
+CloudAppEvents
+| where Timestamp between (start_date .. end_date)
+| where AccountObjectId == user_id
+| where Application == @"Microsoft Exchange Online"
+| where ActionType in ("Set-Mailbox", "New-InboxRule", "Set-InboxRule") //set new inbox rule related operations
+| project Timestamp, ActionType, CountryCode, City, ISP, IPAddress, RuleConfig = RawEventData.Parameters, RawEventData
+```
+
+*RuleConfig* will contain the rule configuration.
+
+After you review the inbox rule events, check whether the ISP that created the rule is typical for the affected user. Run this query to compare the ISP against the user's 30-day history.
+
+```kusto
+let alert_date = now(); //enter alert date
+let timeback = 30d;
+let userid = ""; //enter here user id
+CloudAppEvents
+| where Timestamp between ((alert_date-timeback)..(alert_date-1h))
+| where AccountObjectId == userid
+| make-series ActivityCount = count() default = 0 on Timestamp  from (alert_date-timeback) to (alert_date-1h) step 12h by ISP
+```
+
+Run this query to check whether the country/region is common for the user by looking at the history of the user.
+
+```kusto
+let alert_date = now(); //enter alert date
+let timeback = 30d;
+let userid = ""; //enter here user id
+CloudAppEvents
+| where Timestamp between ((alert_date-timeback)..(alert_date-1h))
+| where AccountObjectId == userid
+| make-series ActivityCount = count() default = 0 on Timestamp  from (alert_date-timeback) to (alert_date-1h) step 12h by CountryCode
+```
+
+Run this query to check whether the user-agent is common for the user by looking at the history of the user.
+
+```kusto
+let alert_date = now(); //enter alert date
+let timeback = 30d;
+let userid = ""; //enter here user id
+CloudAppEvents
+| where Timestamp between ((alert_date-timeback)..(alert_date-1h))
+| where AccountObjectId == userid
+| make-series ActivityCount = count() default = 0 on Timestamp  from (alert_date-timeback) to (alert_date-1h) step 12h by UserAgent
+```
+
+Run this query to check if other users created forward rule to the same destination (could indicate that other users are compromised as well).
+
+```kusto
+let start_date = now(-10h);
+let end_date = now();
+let dest_email = ""; // enter here destination email as seen in the alert
+CloudAppEvents
+| where Timestamp between (start_date .. end_date)
+| where ActionType in ("Set-Mailbox", "New-InboxRule", "Set-InboxRule") //set new inbox rule related operations
+| project Timestamp, ActionType, CountryCode, City, ISP, IPAddress, RuleConfig = RawEventData.Parameters, RawEventData
+| where RuleConfig has dest_email
+```
+
+## Recommended actions
+
+If you confirm that the inbox forwarding rule is malicious, take the following actions to remediate the account compromise:
+
+1. Disable the malicious inbox rule.
+2. Reset the user's account credentials. You can also verify if the user account has been compromised with Microsoft Defender for Cloud Apps, which gets security signals from Microsoft Entra ID Protection.
+3. Search for other malicious activities performed by the impacted user.
+4. Check for other suspicious activity in the tenant originated from the same IP or from the same ISP (if the ISP is uncommon) to find other compromised users.

@@ -1,0 +1,897 @@
+---
+layout: Conceptual
+title: Simulation automations for Attack simulation training - Microsoft Defender for Office 365 | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-office-365/attack-simulation-training-simulation-automations
+breadcrumb_path: /defender-office-365/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+author: chrisda
+ms.author: chrisda
+ms.topic: how-to
+ms.service: defender-office-365
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier2
+description: Learn how to create and manage Attack simulation training automations, including payload selection, user assignment, scheduling, and delivery behavior.
+ms.date: 2026-08-20T00:00:00.0000000Z
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
+ai-usage: ai-assisted
+locale: en-us
+document_id: d28ac52c-a70e-934e-c9f1-f09a5a135edb
+document_version_independent_id: d28ac52c-a70e-934e-c9f1-f09a5a135edb
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-office-365/attack-simulation-training-simulation-automations.md
+site_name: Docs
+depot_name: Learn.defender-office-365
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: attack-simulation-training-simulation-automations
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-office-365/attack-simulation-training-simulation-automations.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
+platformId: 928cc1f9-7ea0-203b-85b2-ea8c5b6bc89e
+---
+
+# Simulation automations for Attack simulation training - Microsoft Defender for Office 365 | Microsoft Learn
+
+Tip
+
+*Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
+
+Simulation automations in Attack simulation training in Microsoft Defender for Office 365 Plan 2 let you create multiple benign phishing simulations from one reusable configuration. You select the techniques, payloads, users, training, notifications, schedule, and launch behavior. The automation then creates individual simulation runs when the schedule is eligible.
+
+Creating a simulation automation is similar to [creating an individual simulation](attack-simulation-training-simulations), except that you can select multiple techniques and payloads and configure an automated schedule.
+
+For getting started information about Attack simulation training, see [Get started using Attack simulation training](attack-simulation-training-get-started).
+
+To see any existing simulation automations that you created, open the Microsoft Defender portal at https://security.microsoft.com, go to **Email & collaboration** &gt; **Attack simulation training** &gt; **Automations** tab &gt; and then select **Simulation automations**. To go directly to the **Automations** tab where you can select **Simulation automations**, use https://security.microsoft.com/attacksimulator?viewid=automations. You can also see automated simulations in the **Simulations** tab, having a prefix **AutomatedSimulation\_** and the automation name available under the column **Created by**.
+
+The following information is shown for each simulation automation in the automation tab. You can sort the simulation automations by clicking on an available column header.
+
+- **Name campaign**
+- **Status**: **Active**, **Inactive**, or **Draft**.
+- **Next launch time**
+- **Last modified**
+- **Created by**
+
+## How simulation automations work
+
+Important
+
+A simulation automation, a simulation run, and a delivery batch are different objects. A delivery batch controls when messages are sent. It doesn't create another simulation run or select another payload.
+
+The following terms explain how an automation becomes one or more simulation runs:
+
+- **Simulation automation**: The reusable configuration that contains payload, user, training, notification, schedule, and launch settings.
+- **Eligible launch**: A point in the configured window when the schedule permits the service to create a run. Eligibility means that the automation can attempt to create a run. The final number of runs can vary based on schedule constraints, payload eligibility requirements, and run-creation outcomes.
+- **Simulation run**: An individual simulation created by the automation. Each run has one selected social engineering technique and one selected payload.
+- **Payload selection**: The selection of one payload when a run is created. Multiple selected payloads provide a pool for different runs. They don't distribute different payloads among recipients in the same run.
+- **User assignment**: The decision to distribute users across runs or include all selected users in every run.
+- **Delivery batch**: A group used to stagger send times. Delivery batches don't create runs or select payloads.
+- **Region-aware delivery**: Delivery scheduling based on the user's current time zone setting in Outlook on the web.
+
+The automation uses the following execution lifecycle:
+
+1. The automation schedule determines whether a simulation run is eligible to be created.
+2. When a run is created, the service selects one social engineering technique and one payload for that run.
+3. The service assigns users to the run based on the **Target all selected users in every simulation run** setting.
+4. The selected payload is used for all users assigned to that run.
+5. Region-aware delivery and randomized send times are applied to message delivery.
+6. Delivery batches stagger when messages are sent. They don't select more payloads.
+
+The execution flow is: automation configuration, schedule eligibility, simulation run creation, technique and payload selection, user assignment, delivery scheduling, and message delivery. Payload selection occurs once per run. Delivery scheduling occurs afterward.
+
+## Supported scenarios and limitations
+
+Use a simulation automation to:
+
+- Run a sequence of phishing simulations from one configuration.
+- Vary techniques or payloads between simulation runs.
+- Distribute users across runs or include all selected users in every run.
+- Use randomized or fixed schedules.
+- Align delivery with users' time zones.
+- Stagger message delivery.
+
+Simulation automations don't provide:
+
+- A guarantee that a randomized schedule creates the configured maximum number of runs.
+- A different payload for each recipient in one run.
+- A different payload for each randomized send-time batch.
+- A guarantee that small target populations receive messages at visibly different times.
+- Detailed diagnostics for every potential launch opportunity that doesn't result in a simulation run.
+
+## Create simulation automations
+
+Tip
+
+For creation instructions, check out this short video: https://youtu.be/QXElYtr7ZJ0.
+
+To create a simulation automation, do the following steps:
+
+1. In the Microsoft Defender portal at https://security.microsoft.com/, go to **Email & collaboration** &gt; **Attack simulation training** &gt; **Automations** tab &gt; **Simulation automations**. or, to go directly to the **Automations** tab where you can select **Simulation automations**, use https://security.microsoft.com/attacksimulator?viewid=automations.
+2. On the **Simulation automations** page, select ![](media/defender-portal-icon-create.png)**Create automation** to start the new simulation automation wizard.
+
+    [![The Create simulation button on the Simulation automations tab in Attack simulation training in the Microsoft Defender portal](media/attack-sim-training-sim-automations-create.png)](media/attack-sim-training-sim-automations-create.png#lightbox)
+
+    The wizard walks you through these configuration steps:
+
+    - Name and describe the simulation automation
+    - Select social engineering techniques
+    - Select payloads and login pages
+    - Target users
+    - Assign training
+    - Select end user notifications
+    - Simulation schedule
+    - Schedule details
+    - Launch details
+    - Review simulation automation.
+
+    Note
+
+    At any point after you name the simulation automation during the new simulation automation wizard, you can select **Save and close** to save your progress and continue later. The incomplete simulation automation has the **Status** value **Draft**. You can pick up where you left off by selecting the simulation automation from the list and then clicking the ![](media/defender-portal-icon-edit.png)**Edit automation** action that appears.
+
+## Name and describe the simulation automation
+
+On the **Automation name** page, configure the following settings:
+
+- **Name**: Enter a unique, descriptive name for the simulation.
+- **Description**: Enter an optional detailed description for the simulation.
+
+When you're finished on the **Automation name** page, select **Next**.
+
+## Select one or more social engineering techniques
+
+On the **Select social engineering techniques** page, select one or more of the available social engineering techniques, which were curated from the [MITRE ATT&CK® framework](https://attack.mitre.org/techniques/enterprise/). Different payloads are available for different techniques. The following social engineering techniques are available:
+
+- **Credential Harvest**: Attempts to collect credentials by taking users to a well-known looking website with input boxes to submit a username and password.
+- **Malware Attachment**: Adds a malicious attachment to a message. When the user opens the attachment, arbitrary code is run that helps the attacker compromise the target's device.
+- **Link in Attachment**: A type of credential harvest hybrid. An attacker inserts a URL into an email attachment. The URL within the attachment follows the same technique as credential harvest.
+- **Link to Malware**: Runs some arbitrary code from a file hosted on a well-known file sharing service. The message sent to the user contains a link to this malicious file. Opening the file helps the attacker compromise the target's device.
+- **Drive-by URL**: The malicious URL in the message takes the user to a familiar-looking website that silently runs and/or installs code on the user's device.
+- **OAuth Consent Grant**: The malicious URL asks users to grant permissions to data for a malicious Azure Application.
+
+If you select the **View details** link in the description, a details flyout opens that describes the technique and the simulation steps that result from the technique.
+
+![The Details flyout for the credential harvest technique on the Select social engineering techniques page](media/attack-sim-training-simulations-select-technique-sim-steps.png)
+
+When you're finished on the **Select social engineering techniques** page, select **Next**.
+
+## Select payloads and login pages
+
+On the **Select payloads and login page** page, you need to select at least one existing payload for each social engineering technique you selected, or you can create new payloads to use.
+
+For the **Credential Harvest** or **Link in Attachment** social engineering techniques, you can also view the login page that's used in the payload, select a different login page to use, or create a new login page to use. The selected login page will be used across the various selected payloads.
+
+### Select payloads
+
+On the **Select payloads and login page** page, select one of the following options:
+
+- **Randomize**: Payloads will be selected at random from the available global and tenant payloads. There's nothing else to configure on this page, so select **Next** to continue.
+- **Manually select**: The following details are shown for each payload. Select a column header to sort by that column:
+
+    - **Payload name**
+    - **Source**: For built-in payloads, the value is **Global**. For custom payloads, the value is **Tenant**.
+    - **Technique**: You need to select at least one payload per technique that you selected on the **Select social engineering techniques** page.
+    - **Language**: The language of the payload content. Microsoft's payload catalog (global) provides payloads in 29+ languages.
+    - **Predicted compromise rate (%)**: Historical data across Microsoft 365 that predicts the percentage of people who will be compromised by this payload (users compromised / total number of users who receive the payload). For more information, see [Predicted compromise rate](attack-simulation-training-get-started#predicted-compromise-rate).
+
+    Use the ![](media/defender-portal-icon-search.png)**Search** box to search for the name of an existing payload.
+
+    If you select a payload from the list by clicking anywhere in the row other than the check box next to the name, details about the payload are shown in a flyout:
+
+    - The **Overview** tab (named **Payload** in **Credential Harvest** and **Link in Attachment** payloads) contains details about the payload, include a preview.
+    - The **Login page** tab is available only for **Credential Harvest** or **Link in Attachment** payloads and is described in the Select login pages subsection.
+    - The **Attachment** tab is available only for **Malware Attachment**, **Link in Attachment**, and **Oauth Consent Grant** payloads. This tab contains details about the attachment, including a preview.
+    - The **Simulations launched** tab contains the **Simulation name**, **Click rate**, **Compromised rate**, and **Action**.
+
+    Tip
+
+    To see details about other payloads without leaving the details flyout, use ![](media/updownarrows.png)**Previous item** and **Next item** at the top of the flyout.
+
+    Leave the payload details flyout open to change the login page or create a new login page as described in Select login pages.
+
+    Or, if you're finished in the payload details flyout, select ![](media/defender-portal-icon-remove-selection.png)**Close** to return to the **Select payloads and login page** page, verify one or more of the required payloads are selected and then select **Next** to continue.
+
+    [![The Payload tab in the payload details flyout in Attack simulation training in the Microsoft Defender portal](media/attack-sim-training-simulations-select-payload-details-payload-tab.png)](media/attack-sim-training-simulations-select-payload-details-payload-tab.png#lightbox)
+
+### Select login pages
+
+Note
+
+The **Login page** tab is available only in the details flyout of **Credential Harvest** or **Link in Attachment** payloads.
+
+On the **Select payload and login page** page, select the **Credential Harvest** or **Link in Attachment** payload from the list by clicking anywhere in the row other than the check box next to the name to open the details flyout for the payload.
+
+In the details flyout of the payload, the **Login page** tab shows the login page that's currently selected for the payload.
+
+To view the complete login page, use the **Page 1** and **Page 2** links at the bottom of the page for two-page login pages.
+
+[![The login page tab in the payload details flyout in Attack simulation training in the Microsoft Defender portal](media/attack-sim-training-simulations-select-payload-details-login-page-tab.png)](media/attack-sim-training-simulations-select-payload-details-login-page-tab.png#lightbox)
+
+Use one of the following procedures to change the login page that's used in the payload or to create a new login page to use in the flyout:
+
+- Change the login page that's used in the payload: Select ![](media/defender-portal-icon-edit.png)**Change login page** on the **Login page** tab of the payload details flyout.
+
+    On the **Select login page** flyout that opens, The following information is shown for each login page:
+
+    - **Name**
+    - **Language**
+    - **Source**: For built-in login pages, the value is **Global**. For custom login pages, the value is **Tenant**.
+    - **Created by**: For built-in login pages, the value is **Microsoft**. For custom login pages, the value is the UPN of the user who created the login page.
+    - **Last modified**
+    - **Actions**: Select ![](media/defender-portal-icon-eye.png)**Preview** to preview the login page.
+
+    Use the ![](media/defender-portal-icon-search.png)**Search** box to find a login page in the list by typing part of the login name, and then pressing the ENTER key.
+
+    Select ![](media/defender-portal-icon-filter.png)**Filter** to filter the login pages by **Source** or **Language**.
+
+    When you're finished in the **Filter** flyout, select **Apply**. To clear the filters, select ![](media/defender-portal-icon-clear-filters.png)**Clear filters**.
+
+    [![The Select login page flyout from the Login page tab in payload details flyout in Attack simulation training in the Microsoft Defender portal.](media/attack-sim-training-simulations-select-payload-select-login-page.png)](media/attack-sim-training-simulations-select-payload-select-login-page.png#lightbox)
+
+    On the **Select login page** flyout, select the check box next to the name of the login page to use, and then select **Save**. Back on the **Login page** tab of the payload details flyout, select ![](media/defender-portal-icon-remove-selection.png)**Close** to return to the **Select payloads and login page** page.
+- Create a new login page to use in the payload: Select ![](media/defender-portal-icon-edit.png)**Change login page** on the **Login page** tab of the payload details flyout.
+
+    On the **Select login page** flyout that opens, select ![](media/defender-portal-icon-create.png)**Create new**.
+
+    To create a login page, follow the steps in [Create login pages](attack-simulation-training-login-pages#create-login-pages).
+
+    Back on the **Select login page** flyout, select the check box next to the name of the login page to use, and then select **Save**. Back on the **Login page** tab of the payload details flyout, select ![](media/defender-portal-icon-remove-selection.png)**Close** to return to the **Select payloads and login page** page.
+
+On the **Select payloads and login page** page, verify the payloads that you configured and/or want to use are selected.
+
+When you're finished on the **Select a payload and login page** page, select **Next**.
+
+### Configure OAuth payloads
+
+Note
+
+The **Configure OAuth payload** page is available only if you selected **OAuth Consent Grant** on the Select social engineering techniques page and a corresponding payload.
+
+On the **Configure OAuth payload** page, configure the following settings:
+
+- **App name**: Enter a name for the payload.
+- **App logo**: Select **Browse** to select a .png, .jpeg, or .gif file to use. To remove a file after you selected it, select **Remove**.
+- **Select app scope**: Choose one of the following values:
+    - **Read user calendars**
+    - **Read user contacts**
+    - **Read user mail**
+    - **Read all chat messages**
+    - **Read all files that user can access**
+    - **Read and write access to user mail**
+    - **Send mail as a user**
+
+When you're finished on the **Configure OAuth payload** page, select **Next**.
+
+## Select target users
+
+On the **Target users** page, select who receives the simulation. Use the following options to select users:
+
+- **Include all users in your organization**: **Include all users in your organization**: The unmodifiable list of users is shown in groups of 10. You can use **Next** and **Previous** below the list of users to scroll through the list. You can also use ![](media/defender-portal-icon-search.png)**Search** on the page to find specific users.
+- **Include only specific users and groups**: At first, no users or groups are shown on the **Targeted users** page. To add users or groups to the simulation, choose one of the following options:
+
+    - ![](media/defender-portal-icon-create.png)**Add users**: In the **Add users** flyout that opens, you find and select users and groups to receive the simulation. The following group types are supported:
+
+        - Microsoft 365 Groups (static and dynamic)
+        - Distribution groups (static only)
+        - Mail-enabled Security groups (static only)
+
+        Tip
+
+        Currently, hidden membership groups aren't supported.
+
+        The following search tools are available:
+
+        - **Search for users or groups**: If you click in the ![](media/defender-portal-icon-search.png)**Search** box and do one of the following actions, the **Filter users by categories** options on the **Add users** flyout are replaced by a **User list** section:
+
+            - Type three or more characters and then press the ENTER key. Any users or group names that contain those characters are shown in the **User list** section by **Name** and **Email**.
+            - Type less than three characters or no characters and then press the ENTER key. No users are shown in the **User list** section, but you can type three or more characters in the **Search** box to search for users and groups.
+
+            The number of results appears in the **Selected (0/x) users** label.
+
+            Note
+
+            Selecting **Add filters** clears and replaces any results the **User list** section with **Filter users by categories**.
+
+            When you have a list of users or groups in the **User list** section, select some or all of the results by selecting the check box next to the **Name** column. The number of selected results appears in the **Selected (y/x) users** label.
+
+            Select **Add x users** to add the selected users or groups on the **Target users** page and to return to the **Target users** page.
+        - **Filter users by categories**: Use the following options:
+
+            - **Suggested user groups**: Select from the following values:
+
+                - **All suggested user groups**: The same result as selecting **Users not targeted by a simulation in the last three months** and **Repeat offenders**.
+                - **Users not targeted by a simulation in the last three months**
+                - **Repeat offenders**: For more information, see [Configure the repeat offender threshold](attack-simulation-training-settings#configure-the-repeat-offender-threshold).
+            - **User tags**: User tags are identifiers for specific groups of users (for example, Priority accounts). For more information, see [User tags in Microsoft Defender for Office 365](user-tags-about). Use the following options:
+
+                - **Search**: In ![](media/defender-portal-icon-search.png)**Search by user tags**, you can type part of the user tag name and then press Enter. You can select some or all of the results.
+                - Select **All user tags**
+                - Select existing user tags. If the link is available, select **See all user tags** to see the complete list of available tags.
+            - **City**: Use the following options:
+
+                - **Search**: In ![](media/defender-portal-icon-search.png)**Search by City**, you can type part of the City value and then press Enter. You can select some or all of the results.
+                - Select **All City**
+                - Select existing City values. If the link is available, select **See all Cities** to see the complete list of available City values.
+            - **Country**: Use the following options:
+
+                - **Search**: In ![](media/defender-portal-icon-search.png)**Search by Country**, you can type part of the Country value and then press Enter. You can select some or all of the results.
+                - Select **All Country**
+                - Select existing City values. If the link is available, select **See all Countries** to see the complete list of available Country values.
+            - **Department**: Use the following options:
+
+                - **Search**: In ![](media/defender-portal-icon-search.png)**Search by Department**, you can type part the Department value and then press Enter. You can select some or all of the results.
+                - Select **All Department**
+                - Select existing Department values. If the link is available, select **See all Departments** to see the complete list of available Department values.
+            - **Title**: Use the following options:
+
+                - **Search**: In ![](media/defender-portal-icon-search.png)**Search by Title**, you can type part of the Title value and then press Enter. You can select some or all of the results.
+                - Select **All Title**
+                - Select existing Title values. If the link is available, select **See all Titles** to see the complete list of available Title values.
+
+            ![The User filtering on the Target users page in Attack simulation training in the Microsoft Defender portal.](media/attack-sim-training-simulations-target-users-filter-by-category.png)
+
+            You can use some or all of the search categories to find users and groups. If you select multiple categories, the AND operator is used. Any users or groups must match both values to be returned in the results (which is virtually impossible if you use the value **All** in multiple categories).
+
+            The number of values that were used as the search criteria by a specific category is shown next to the category tile (for example, **City 50** or **Priority accounts 10**).
+
+            When you're finished searching by category, select the **Apply(x)** button. The previous **Filter users by categories** options on the **Add users** flyout are replaced by the following information:
+
+            - **Filters** section: Show how many filter values you used and the names of the filter values. If it's available, select the **See all** link to see all filter values
+            - **User list** section: Shows the users or groups that match your category searches. The number of results appears in the **Selected (0/x) users** label.
+
+            When you have a list of users or groups in the **User list** section, select some or all of the results by selecting the check box next to the **Name** column. The number of selected results appears in the **Selected (y/x) users** label.
+
+            Select the **Add x users** button to add the selected users or groups on the **Target users** page and to return to the **Target users** page.
+    - ![](media/defender-portal-icon-create.png)**Import**: In the dialog that opens, specify a CSV file that contains one email address per line.
+
+        After you find a select the CSV file, the users are imported and shown on the **Targeted users** page.
+
+    On the main **Target users** page, you can use the ![](media/defender-portal-icon-search.png)**Search** box to find selected users. You can also select ![](media/defender-portal-icon-search.png)**Delete** and then **Confirm** in the confirmation dialog to remove specific users.
+
+    To add more users and groups, select ![](media/defender-portal-icon-create.png)**Add users** or ![](media/defender-portal-icon-create.png)**Import** on the **Target users** page and repeat the previous steps.
+
+When you're finished on the **Target users** page, select **Next**.
+
+## Configure training assignments
+
+On the **Assign training** page, you can assign trainings for the simulation. We recommend that you assign training for each simulation, as employees who go through training are less susceptible to similar attacks.
+
+Use the following options on the page to assign trainings as part of the simulation:
+
+- **Preferences** section: In **Select training content preference**, choose one of the following options in the dropdown list:
+
+    - **Microsoft training experience (Recommended)**: This value is the default. This value has the following associated options to configure on the page:
+
+        - Select one of the following values:
+            - **Assign training for me (Recommended)**: This value is the default. We assign training based on a user's previous simulation and training results.
+            - **Select training courses and modules myself**: If you select this value, the next step in the wizard is **Training assignment** where you find and select trainings. The steps are described in the Training assignment subsection.
+        - **Due date** section: In **Select a training due date**, choose one of the following values:
+            - **30 days after simulation ends** (this value is the default)
+            - **15 days after simulation ends**
+            - **7 days after simulation ends**
+    - **Redirect to a custom URL**: This value has the following associated options to configure on the page:
+
+        - **Custom training URL** (required)
+        - **Custom training name** (required)
+        - **Custom training description**
+        - **Custom training duration (in minutes)**: The default value is 0, which means there's no specified duration for the training.
+        - **Due date** section: In **Select a training due date**, choose one of the following values:
+            - **30 days after simulation ends** (this value is the default)
+            - **15 days after simulation ends**
+            - **7 days after simulation ends**
+    - **No training**: If you select this value, the only option on the page is **Next**.
+
+When you're finished on the **Assign training** page, select **Next**.
+
+### Select training courses
+
+Note
+
+The **Training assignment** page is available only if you selected **Select training courses and modules myself** on the **Assign training** page.
+
+On the **Training assignment** page, select the trainings that you want to add to the simulation by selecting ![](media/defender-portal-icon-create.png)**Add trainings**.
+
+In the **Add training** flyout that opens, use the following tabs to select trainings to include in the simulation:
+
+- **Recommended** tab: Shows the recommended built-in trainings based on the simulation configuration. These trainings are the same trainings that would have been assigned if you selected **Assign training for me (Recommended)** on the previous page.
+- **All trainings** tab: Shows all built-in trainings that are available.
+
+![The option to add the recommended training on the Training assignment page in Attack simulation training in the Microsoft Defender portal](media/attack-sim-training-simulations-assign-training-add-recommended-training.png)
+
+On either tab, the following information is shown for each training:
+
+- **Training name**
+- **Source**: The value is **Global**.
+- **Duration (mins)**
+- **Preview**: Select **Preview** to see the training.
+
+On either tab, you can use the ![](media/defender-portal-icon-search.png)**Search** box to find trainings. Type part of the training name and press the ENTER key.
+
+On either tab, select one or more trainings by selecting the check box next to the training name. To select all trainings, select the check box in the **Training name** column header. When you're finished, select **Add**.
+
+Back on the **Training assignment** page, the selected trainings are now listed. The following information is shown for each training:
+
+- **Training name**
+- **Source**
+- **Duration (mins)**
+- **Assign to**: For each training, select who gets the training by selecting from the following values:
+
+    - **All users**
+    - One or both of the values **Clicked payload** or **Compromised**.
+
+    Tip
+
+    **Clicked payload** doesn't apply to every social engineering technique. For more information, see [Training assignment trigger behavior by technique](attack-simulation-training-insights#training-assignment-trigger-behavior-by-technique).
+- **Delete**: Select ![](media/defender-portal-icon-delete.png)**Delete** to remove the training from the simulation.
+
+[![The Training assignment page in Attack simulation training in the Microsoft Defender portal](media/attack-sim-training-training-assignment.png)](media/attack-sim-training-training-assignment.png#lightbox)
+
+When you're finished on the **Training assignment** page, select **Next**.
+
+### Select a landing page
+
+On the **Select phish landing page** page, configure the web page that users are taken to if they open the payload in the simulation.
+
+Select one of the following options:
+
+- **Use landing pages from library**: The following options are available:
+
+    - **Payload indicators** section: Select **Add payload indicators to email**to help users learn how do identify phishing email.
+        - This setting isn't available if you selected **Malware Attachment** or **Link to Malware** on the Select one or more techniques page.
+        - For landing pages that you create on the **Tenant landing pages** tab, this setting is meaningful only if you use the **Dynamic tag** named **Insert Payload content** in the landing page content as described in the [Create landing pages](attack-simulation-training-landing-pages#create-landing-pages) subsection.
+    - **Show the interstitial page before the landing page**: This setting is available only if you selected **Drive-by URL** on the Select one or more techniques page. You can show the overlay that comes up for drive-by URL attacks. To hide the overlay and go directly to the landing page, don't select this option.
+
+    The remainder of the **Selecting phish landing page** page has two tabs where you select the landing page to use:
+
+    - **Global landing pages** tab: Contains the built-in landing pages. When you select a built-in landing page to use by selecting the check box next to name, an **Edit layout** section appears with the following options:
+
+        - **Add logo**: Select **Browse logo image** to find and select a .png, .jpeg, or .gif file. The logo size should be a maximum of 210 x 70 to avoid distortion. To remove the logo, select **Remove uploaded logo image**.
+        - **Select default language**: This setting is required. Select one of the following values: **Chinese (Simplified)**, **Chinese (Traditional, Taiwan)**, **Dutch**, **English**, **Spanish**, **French**, **German**, **Italian**, **Japanese**, **Korean**, \*\*Portuguese, or **Russian**.
+    - **Tenant landing pages** tab: Contains any custom landing pages that you created. To create a new landing page, select ![](media/defender-portal-icon-create.png)**Create new**. To create a landing page, follow the steps in [Create landing pages](attack-simulation-training-landing-pages#create-landing-pages).
+
+    On both tabs, the following information is shown for each landing page. You can sort the landing pages by clicking on an available column header. Select ![](media/defender-portal-icon-customize.png)**Customize columns** to change the columns that are shown. The default columns are marked with an asterisk (^\*^):
+
+    - **Name**^\*^
+    - **Language**^\*^: If the landing page contains multiple translations, the first two languages are shown directly. To see the remaining languages, hover over the numeric icon (for example, **+10**).
+    - **Source**
+    - **Default language**^\*^
+    - **Status**^\*^
+    - **Linked simulations**^\*^
+    - **Created by**
+    - **Created time**^\*^
+    - **Modified by**^\*^
+    - **Last modified**^\*^
+
+    To find a landing page in the list, type part of the landing page name in the ![](media/defender-portal-icon-search.png)**Search** box and then press the ENTER key.
+
+    Select ![](media/defender-portal-icon-filter.png)**Filter** to filter the landing pages by language.
+
+    When a landing page is selected, if you click anywhere in the row, a details flyout opens that shows more information about the landing page:
+
+    - The **Preview** tab shows what the landing page looks like to users.
+    - The **Details** tab shows the properties of the landing page.
+
+    Tip
+
+    To see details about other landing pages without leaving the details flyout, use ![](media/updownarrows.png)**Previous item** and **Next item** at the top of the flyout.
+
+    When you're finished in the landing page details flyout, select **Close**.
+
+    On the **Selecting phish landing page** page, select a landing page to use by selecting the check box next to the **Name** column.
+- **Use a custom URL**: This setting isn't available if you selected **Malware Attachment** or **Link to Malware** on the Select social engineering techniques page.
+
+    If you select **Use a custom URL**, you need to add the URL in the **Enter the custom landing page URL** box that appears. No other options are available on the **Selecting phish landing page** page.
+
+When you're finished on the **Selecting phish landing page** page, select **Next**.
+
+## Select end user notifications
+
+On the **Select end user notification** page, select from the following notification options:
+
+- **Do not deliver notifications**: No other configuration options are available on the page. Users don't receive **Training assignment notifications**, **Training reminder notifications** or **Positive reinforcement notifications** from the simulation. Select **Proceed** in the warning dialog.
+- **Microsoft default notification (recommended)**: The notifications that users receive are shown on the page:
+
+    - **Microsoft default positive reinforcement notification**
+    - **Microsoft default training assignment notification**
+    - **Microsoft default training reminder notification**
+
+    Select the default language to use in **Select default language**. The available values are: **Chinese (Simplified)**, **Chinese (Traditional, Taiwan)**, **English**, **French**, **German**, **Italian**, **Japanese**, **Korean**, **Portuguese**, **Russian**, **Spanish**, **Dutch**, **Polish**, **Arabic**, **Finnish**, **Greek**, **Hungarian**, **Indonesian**, **Norwegian Bokmål**, **Romanian**, **Slovak**, **Swedish**, **Thai**, **Turkish**, **Vietnamese**, **Catalan**, **Croatian**, or **Slovenian**.
+
+    For each notification, the following information is available:
+
+    - **Notifications**: The name of the notification.
+    - **Language**: If the notification contains multiple translations, the first two languages are shown directly. To see the remaining languages, hover over the numeric icon (for example, **+10**).
+    - **Type**: One of the following values:
+
+        - **Positive reinforcement notification**
+        - **Training assignment notification**
+        - **Training reminder notification**
+    - **Delivery preferences**: You need to configure the following delivery preferences before you can continue:
+
+        - For **Microsoft default positive reinforcement notification**, select **Do not deliver**, **Deliver after campaign ends**, or **Deliver during campaign**.
+        - For **Microsoft default training reminder notification**, select **Twice a week** or **Weekly**.
+    - **Actions**: If you select ![](media/defender-portal-icon-view.png)**View**, a **Review notification** page opens with the following information:
+
+        - **Preview**tab: View the notification message as users see it.
+            - To view the message in different languages, use the **Select language** box.
+            - Use the **Select payload to preview** box to select the notification message for simulations that contain multiple payloads.
+        - **Details**tab: View details about the notification:
+            - **Notification description**
+            - **Source**: For built-in notifications, the value is **Global**. For custom notifications, the value is **Tenant**.
+            - **Notification type**: One of the following types based on the notification you originally selected:
+                - **Positive reinforcement notification**
+                - **Training assignment notification**
+                - **Training reminder notification**
+            - **Modified by**
+            - **Last modified**
+
+        When you're finished on the **Review notification** page, select **Close** to return to the **Select end user notification** page.
+- **Customized end user notifications**: No other configuration options are available on the page. When you select **Next**, you need to select a **Training assignment notification**, a **Training reminder notification**, and (optionally) a **Positive reinforcement notification** to use for the simulation as described in the next three subsections.
+
+When you're finished on the **Select end user notification** page, select **Next**.
+
+### Select a training assignment notification
+
+Note
+
+The **Training assignment notification** page is available only if you selected **Customized end user notifications** on the Select end user notifications page.
+
+The **Training assignment notification** page shows the following notifications and their configured languages:
+
+- **Microsoft default training assignment notification**
+- **Microsoft default training only campaign-training assignment notification**
+- Any custom training assignment notifications that you previously created.
+
+These notifications are also available at **Attack simulation training** &gt; **Content library** tab &gt; **End user notifications**:
+
+- Built-in training assignment notifications are available on the **Global notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=global](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=global).
+- Custom training assignment notifications are available on the **Tenant notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=tenant](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=tenant).
+
+For more information, see [End-user notifications for Attack simulation training](attack-simulation-training-end-user-notifications).
+
+Do one of the following steps:
+
+- Select an existing notification to use:
+
+    - To search for an existing notification in the list, type part of the notification name in the ![](media/defender-portal-icon-search.png)**Search** box and then press the ENTER key.
+    - When you select a notification by clicking anywhere in the row other than the check box, a details flyout opens that shows more information about the notification:
+
+        - The **Preview** tab shows what the notification looks like to users.
+        - The **Details** tab shows the properties of the notification.
+
+        When you're finished in the notification details flyout, select **Close**.
+
+    On the **Training assignment notification** page, select a notification to use by selecting the check box next to the name.
+- Create a new notification to use: Select ![](media/defender-portal-icon-create.png)**Create new**. The creation steps are identical to [Create end-user notifications](attack-simulation-training-end-user-notifications#create-end-user-notifications).
+
+    Note
+
+    On the **Define details** page of the new notification wizard, be sure to select the value **Training assignment notification** for the notification type.
+
+    When you're finished creating the notification, you return to the **Training assignment notification** page where the new notification now appears in the list for you to select
+
+When you're finished on the **Training assignment notification** page, select **Next**.
+
+### Select a training reminder notification
+
+Note
+
+The **Training reminder notification** page is available only if you selected **Customized end user notifications** on the Select end user notifications page.
+
+The **Training reminder notification** page shows the following notifications and their configured languages:
+
+- **Microsoft default training reminder notification**
+- **Microsoft default training only campaign-training reminder notification**
+- Any custom training reminder notifications that you previously created.
+
+These notifications are also available at **Attack simulation training** &gt; **Content library** tab &gt; **End user notifications**:
+
+- Built-in training reminder notifications are available on the **Global notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=global](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=global).
+- Custom training reminder notifications are available on the **Tenant notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=tenant](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=tenant).
+
+For more information, see [End-user notifications for Attack simulation training](attack-simulation-training-end-user-notifications).
+
+In **Set frequency for reminder notification**, select **Weekly** (the default value) or **Twice a week**, and then do one of the following steps:
+
+- Select an existing notification to use:
+
+    - To search for an existing notification in the list, type part of the notification name in the ![](media/defender-portal-icon-search.png)**Search** box and then press the ENTER key.
+    - When you select a notification by clicking anywhere in the row other than the check box, a details flyout opens that shows more information about the notification:
+
+        - The **Preview** tab shows what the notification looks like to users.
+        - The **Details** tab shows the properties of the notification.
+
+        When you're finished in the notification details flyout, select **Close**.
+
+    On the **Training reminder notification** page, select a notification to use by selecting the check box next to the name.
+- **Create a new notification to use**: Select ![](media/defender-portal-icon-create.png)**Create new**. The creation steps are identical to [Create end-user notifications](attack-simulation-training-end-user-notifications#create-end-user-notifications).
+
+    Note
+
+    On the **Define details** page of the new notification wizard, be sure to select the value **Training reminder notification** for the notification type.
+
+    When you're finished creating the notification, you return to the **Training reminder notification** page where the new notification now appears in the list for you to select.
+
+When you're finished on the **Training reminder notification** page, select **Next**.
+
+### Select a positive reinforcement notification
+
+Note
+
+The **Positive reinforcement notification** page is available only if you selected **Customized end user notifications** on the Select end user notifications page.
+
+You have the following options in the **Delivery preferences** section for positive reinforcement notifications:
+
+- Don't use positive reinforcement notifications: Select **Do not deliver**. There's nothing else to configure on the page, so you go to the simulation schedule page when you select **Next**.
+- Use an existing positive reinforcement notification: Select one of the remaining values:
+
+    - **Deliver after the user reports a phish and campaign ends**
+    - **Deliver immediately after the user reports a phish**.
+
+    The following notifications and their configured languages appear on the page:
+
+    - **Microsoft default positive reinforcement notification**
+    - Any custom positive reinforcement notifications that you previously created.
+
+    These notifications are also available at **Attack simulation training** &gt; **Content library** tab &gt; **End user notifications**:
+
+    - Built-in positive reinforcement notifications are available on the **Global notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=global](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=global).
+    - Custom positive reinforcement notifications are available on the **Tenant notifications** tab at [https://security.microsoft.com/attacksimulator?viewid=contentlibrary&source=tenant](https://security.microsoft.com/attacksimulator?viewid=contentlibrary&amp;source=tenant).
+
+    For more information, see [End-user notifications for Attack simulation training](attack-simulation-training-end-user-notifications).
+
+    To search for an existing notification in the list, type part of the notification name in the ![](media/defender-portal-icon-search.png)**Search** box and then press the ENTER key.
+
+    When you select a notification by clicking anywhere in the row other than the check box, a details flyout opens that shows more information about the notification:
+
+    - The **Preview** tab shows what the notification looks like to users.
+    - The **Details** tab shows the properties of the notification.
+
+    When you're finished in the notification details flyout, select **Close**.
+
+    On the **Positive reinforcement notification** page, select an existing notification to use by selecting the check box next to the name.
+- Create a new positive reinforcement notification to use: Select ![](media/defender-portal-icon-create.png)**Create new**. The creation steps are identical to [Create end-user notifications](attack-simulation-training-end-user-notifications#create-end-user-notifications).
+
+    Note
+
+    On the **Define details** page of the new notification wizard, be sure to select the value **Positive reinforcement notification** for the notification type.
+
+    When you're finished creating the notification, you return to the **Positive reinforcement notification** page where the new notification now appears in the list for you to select.
+
+When you're finished on the **Positive reinforcement notification** page, select **Next**.
+
+## Configure the simulation schedule
+
+On the **Simulation schedule** page, select one of the following values:
+
+- **Randomized**: The service chooses eligible launch times within the configured schedule. The maximum number of simulations is an upper bound, not a guaranteed run count.
+- **Fixed**: Simulations launch according to the configured daily, weekly, or monthly recurrence.
+
+The following table can help you choose a schedule:
+
+| Required outcome | Recommended schedule | Reason |
+| --- | --- | --- |
+| Predictable daily, weekly, or monthly recurrence | Fixed | The recurrence and number of occurrences are explicitly configured. |
+| Runs at unpredictable times inside an eligible window | Randomized | The service chooses eligible launch times within the configured constraints. |
+| Exactly one run | Either | Set one fixed occurrence or a randomized maximum of one. |
+| Guaranteed exact count inside a randomized window | Not supported as a guarantee | The randomized maximum is an upper bound, not a committed count. |
+
+When you're finished, select **Next**.
+
+## Configure schedule details
+
+What you see on the **Schedule details** page depends on whether you selected **Randomized** or **Fixed** for the simulation schedule on the previous page.
+
+- **Randomized** simulation schedule: The following settings are available:
+
+    - **Automation start** section: Use **Select the date you want the automation to start from** to select the start date for the simulations. You can select any future date of up to a year.
+    - **Automation scoping** section: Configure the following settings:
+
+        - **Select the days of the week that simulations are allowed to start on**: Select one or more days of the week.
+        - **Enter the maximum number of simulations that can be started between the start and end dates**: Enter a value from 1 through 10. The value is the upper limit of runs that the automation can create, not an exact count. The actual count can be lower in the following scenarios:
+            - There are fewer eligible launch days.
+            - The automation reaches its end date.
+            - No selected payload matches:
+                - The selected technique.
+                - The configured language and filtering requirements.
+            - Run creation doesn't complete successfully.
+        - **Randomize the time of day that simulation emails can be sent for delivery**: Select **Randomize send times** to stagger simulation-message delivery over a 12-hour window after a run is created.
+    - **Automation end** section: Use **Select the date you want the automations to end** to select the end date for the simulations. You can select any future date of up to a year.
+
+        Tip
+
+        Only one simulation is launched in a day. Select at least as many eligible days as the maximum number of runs you want the automation to be able to create.
+- **Fixed** simulation schedule: The following settings are available:
+
+    - **Automation start** section: Use **Select the date you want the simulations to start from** to select the start date for the simulations. You can select any future date of up to a year.
+    - **Automation recurrence** section: Configure the following settings:
+
+        - **Select if you want simulations to launch weekly or monthly**: Select **Weekly** (default) or **Monthly**.
+        - **Enter interval you want between automation runs**: Enter a value from 1 to 99. For example, if you want to run simulations every week then enter 1. If you want to run alternate weeks then enter 2 and so on. Similarly, if you want to run simulations quarterly then enter 3.
+        - **Select the day of the week you want the simulations to start from**: For weekly simulations, select the day of the week that simulations start.
+        - **Enter the day of the month you want the simulations to start from**: For monthly simulations, enter the day in a month when simulations start. Enter a value from 1 to 31.
+    - **Automation end** section: Select one of the following values:
+
+        - Use **Select the date you want the automation to end** to select the end date for the simulations.
+        - Use **Enter the number of occurrences of the simulations to run before ending** to enter a value from 1 to 10.
+
+When you're finished on the **Schedule details** page, select **Next**.
+
+## Configure launch details
+
+On the **Launch details** page, configure the following additional settings for the automation:
+
+- **Use unique payloads across simulations within an automation** section: By default, **Unique payloads** isn't selected. When enabled, the automation attempts to avoid reusing a payload in different runs while sufficient eligible payloads remain. The setting doesn't assign a unique payload to every recipient in one run.
+- **Target all selected users in every simulation run** section: By default, selected users are distributed across the runs created by the automation. If you select this option, every selected user is included in every run. Every user in a given run receives the one payload selected for that run.
+- **Target repeat offenders** section: By default, **Target repeat offenders** is not selected. If you select it, use **Enter the maximum number of times a user can be targeted within this automation** that appears to enter a value from 1 to 10.
+- **Send simulation email based upon the user's current time zone setting from Outlook web app** section: By default, **Enable region aware delivery** isn't selected. When enabled, delivery is based on the user's current time zone setting in Outlook on the web. Users in different time zones can receive the same run at different times. The setting doesn't create more runs or select more payloads.
+
+The following table summarizes how the settings interact:
+
+| Setting | Controls | Doesn't control |
+| --- | --- | --- |
+| Maximum number of simulations | Upper bound on randomized runs | Exact guaranteed run count |
+| Selected payloads | Pool of eligible payloads used by runs | Number of payloads assigned inside one run |
+| Unique payloads | Payload reuse between runs | Per-user or per-batch payload variation |
+| Target all selected users | Whether all users participate in every run | Payload selection or delivery timing |
+| Randomize send times | Delivery-time staggering after run creation | Run creation or payload selection |
+| Region-aware delivery | Delivery timing based on user time zone | Run count or payload selection |
+
+When you're finished on the **Launch details** page, select **Next**.
+
+## Predict simulation automation results
+
+The following examples show how run count, payload selection, user assignment, and delivery batching interact:
+
+- **Eight selected payloads and one run**: With the maximum number of simulations set to one, **Unique payloads** enabled, and **Target all selected users** enabled, the automation can create one run. The service selects one of the eight payloads for that run, and all selected users receive that payload. The other payloads remain unused because no more runs are created.
+- **Eight eligible payloads and eight runs**: With a randomized maximum of eight, **Unique payloads** enabled, sufficient eligible days, and **Target all selected users** enabled, the automation can create up to eight runs. One payload is selected for each created run, and payloads can vary between runs. The maximum remains an upper bound. All eight runs aren't guaranteed.
+- **Users distributed across runs**: With four created runs and **Target all selected users** disabled, selected users are distributed across the four runs. Each user participates in the assigned run, and each run uses its own selected payload.
+- **Fewer than 100 users with randomized send times**: One payload is selected for the run. The target population fits within one documented 100-user batch. The setting doesn't create another run or payload selection, and visibly different recipient delivery times aren't guaranteed.
+
+## Review simulation automation
+
+On the **Review simulation automation** page, you can review the details of your simulation automation.
+
+Before you submit the automation, verify the following settings:
+
+1. Select **Fixed** for predictable recurrence or **Randomized** for an upper-bound schedule.
+2. Confirm that the schedule contains enough eligible days for the desired maximum.
+3. Treat the randomized value as a maximum, not an exact count.
+4. Confirm that payloads match the selected techniques and language requirements.
+5. Confirm that enough eligible payloads exist for the intended cross-run uniqueness.
+6. Decide whether users are distributed across runs or included in every run.
+7. Confirm whether region-aware delivery and randomized send times are required.
+8. Use the settings interaction table and examples to predict run count, payload selections, user participation, and delivery behavior.
+
+You can select **Edit** in each section to modify the settings within the section. Or you can select **Back** or the specific page in the wizard.
+
+When you're finished on the **Review simulation automation**, select **Submit**.
+
+When the simulation automation is created, the page title changes to **New automation created**, where you can use the links to turn on the automation or view all simulation automations.
+
+When you're finished on the **New automation created** page, select **Done**.
+
+Back on the **Simulation automations** page on the **Automations** tab, the simulation automation that you created is now listed with the **Status** value **Inactive**.
+
+To turn on the simulation automation, see Turn on or turn off a simulation automation.
+
+## Turn on or turn off a simulation automation
+
+- You can turn on simulations automations with the **Status** value **Inactive**.
+- You can turn off simulation automations with the **Status** value **Active**.
+- You can't turn on or turn off incomplete simulation automations with the **Status** value **Draft**.
+
+To turn on an **Inactive** simulation automation, select it from the list by clicking the check box next to the name. Select the ![](media/defender-portal-icon-turn-on-off.png)**Turn on** action that appears, and then select **Confirm** in the dialog. The **Status** value changes to **Active**.
+
+To turn off an **Active** simulation automation, select it from the list by clicking the check box next to the name. Select the ![](media/defender-portal-icon-turn-on-off.png)**Turn off** action that appears, and then select **Confirm** in the dialog. The **Status** value changes to **Inactive**.
+
+## Remove simulation automations
+
+To remove a simulation automation, select the check box next to its name. Select the ![](media/defender-portal-icon-delete.png)**Delete** action that appears, and then select **Confirm** in the dialog.
+
+## View simulation automation details
+
+For simulation automations with the **Status** value **Active** or **Inactive**, select the simulation from the **Simulation automations** page by clicking anywhere in the row other than the check box next to the name. The details flyout that opens contains the following information:
+
+- The simulation automation name and the number of items collected.
+- **General** tab:
+
+    - **Type**: The value is **Simulation**.
+    - **Name**
+    - **Description**
+    - **Run conditions** sections: Select **Edit** to open the simulation automation wizard on the related page.
+- **Run history** tab: This tab is available only for simulation automations with the **Status** value **Active** or **Inactive**.
+
+    Shows information about the run history of the simulation.
+
+Tip
+
+To see details about other simulation automations without leaving the details flyout, use ![](media/updownarrows.png)**Previous item** and **Next item** at the top of the flyout.
+
+## View reports of automated simulations
+
+You can view the simulation reports for automated campaigns in the **Simulations** tab. Click on the name of the simulation, having a prefix of **AutomatedSimulation\_** and automation name available under the column **Created by**. To view the report click anywhere in the simulation row other than the check box next to the name.
+
+## Troubleshoot simulation automations
+
+Use the following guidance to compare observed results with the configured schedule and launch settings:
+
+- **Fewer runs than the randomized maximum**: Check the configured start and end dates, eligible days, whether selected payloads match the selected techniques and configured language and filtering requirements, and run history. If the completed window and available run history don't explain the lower count, preserve the observed configuration and timestamps while you continue the investigation.
+- **All users received the same payload**: Check how many runs were created. One run means one payload for all users in that run. For multiple runs, compare the payload selected for each run. Don't use randomized send-time batches to infer payload selection.
+- **Users received messages at the same or a similar time**: Check **Randomize send times**, population size, documented batch size, region-aware delivery, user time zone settings, and whether the 12-hour delivery window is complete. Randomized send times stagger delivery but don't guarantee a unique time for every recipient.
+- **Automation shows Completed but an expected run is missing**: Compare the automation status, next launch time, run history, expected occurrence, and actual simulation creation time. If the status or next-launch value changes before the expected run appears, or a run is created substantially after its fixed occurrence, record the observed status, next-launch value, run history, and timestamps. More investigation might be required when the observed run history can't be reconciled with the configured schedule and documented behavior.
+- **A selected payload wasn't used**: Compare the number of created runs with the number and eligibility of selected payloads and the **Unique payloads** setting. A payload can remain unused when fewer runs are created than selected payloads.
+
+## Frequently asked questions (FAQ) for simulation automations
+
+The following frequently asked questions cover common issues with simulation automations.
+
+### Why does the Status value under Automations show Completed, but the Status value under Simulations show In progress?
+
+**Completed** on the **Simulation automations** page means the job of simulation automation is complete, and no more simulations are created by it. Simulation is a separate entity that will complete after 30 days of simulation launch time.
+
+### Why is the simulation end date 30 days after creation, even though I selected an automation end date of one week?
+
+A one week end date for the simulation automation means no new simulations are created by it after one week. For simulations created by a simulation automation, the default end date is 30 days after the creation of the simulation.
+
+### If we have multiple social engineering techniques and related payloads (for example, Credential harvest, Link to Malware, and Drive by URL) that target 300 users, how are the payloads sent to users? Do all payload types go to all users, or is the selection random?
+
+If you don't select **Target all selected users in every simulation run** on the Launch details page, all targeted users are distributed over the maximum number of simulations that are created by the simulation automation.
+
+If you select **Target all selected users in every simulation run** on the Launch details page, all targeted users are part of every simulation that's created by the simulation automation.
+
+Each created simulation run selects one technique and one payload. All users assigned to that run receive the selected payload. Selecting multiple payloads provides a pool for different runs. It doesn't send different payloads to users within one run.
+
+### How does the Randomize option on the Simulation schedule page work?
+
+The **Randomize** option on the Simulation schedule page optimally selects a day within the start date and end date range to launch simulations.
+
+### How does the Randomize option on the Select a payload and login page work?
+
+The **Randomize** option on the Select payloads and login pages page automatically picks a technique and a payload instead of requiring you to select them manually.
+
+For every run, a social engineering technique from the list of selected techniques is chosen, and then a random payload for that technique is chosen from both **Global payloads** (built-in) and **Tenant payloads** (custom). This behavior helps to ensure that the selected payload wasn't part of any previous run for this particular automation.
+
+### With a randomized schedule, the maximum number of simulations is between 1 and 10. How does this work?
+
+The **Max number of simulations** value is the upper limit of runs that the automation can create. For example, if you select 10, the automation can create up to 10 simulations. The actual count can be lower based on:
+
+- The configured window.
+- Eligible days.
+- Whether a selected payload matches the configured technique and filters.
+- Whether run creation completes successfully.
+
+### If I select only one specific day between two days (for example, Wednesday), how many simulations will I see on the Simulation tab?
+
+If there's only one Wednesday between the start date and end date, the automation has only one valid day to send out the simulation. Even if you selected a higher value for **Max number of simulations**, this value gets overwritten to one.
+
+### Does Randomize send times select a payload for every delivery batch?
+
+No. **Randomize send times** is applied after the run and payload are created. Delivery batches stagger send timing only.
+
+### If I select eight payloads and set the maximum to one, how many payloads are used?
+
+One payload is selected for the one created run. All users assigned to that run receive the selected payload.
+
+### Which schedule should I choose for one simulation every day?
+
+Use a **Fixed** recurrence. A **Randomized** schedule doesn't guarantee a daily launch or an exact run count.
+
+### How does Randomize send times work for fewer than 1,000 users?
+
+**Randomize send times** works in batches of 1,000 users and is intended for a large number of targeted users. If fewer than 1,000 users are involved in simulations created by automations, batches of 100 users are created for randomized send times.
+
+A target population below 100 users fits within one documented batch. Batching affects delivery timing only. It doesn't create more runs or payload selections.

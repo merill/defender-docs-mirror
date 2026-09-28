@@ -1,0 +1,158 @@
+---
+layout: Conceptual
+title: Microsoft Defender for Endpoint on Linux resources - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/linux-resources
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+ms.reviewer: gopkr, yujiao
+description: Describes resources for Microsoft Defender for Endpoint on Linux, including how to uninstall it, how to collect diagnostic logs, CLI commands, and known issues with the product.
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+- mde-linux
+ms.topic: troubleshooting-general
+ms.subservice: linux
+ms.date: 2026-04-16T00:00:00.0000000Z
+locale: en-us
+document_id: 16239835-e5e2-83b0-b58a-f109115be807
+document_version_independent_id: 16239835-e5e2-83b0-b58a-f109115be807
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/linux-resources.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: linux-resources
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/linux-resources.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+platformId: 6d067a9b-316a-ca8b-a20a-c0c2e647abda
+---
+
+# Microsoft Defender for Endpoint on Linux resources - Microsoft Defender for Endpoint | Microsoft Learn
+
+This article provides resources for resolving issues or configuring Microsoft Defender for Endpoint on Linux. This article describes how to collect diagnostic information, log installation issues, and configure Defender for Endpoint on Linux using the command line. This article also describes how to uninstall Defender for Endpoint on Linux.
+
+## Collect diagnostic information
+
+Tip
+
+Run the [Defender for Endpoint client analyzer](run-analyzer-linux) with live response or locally on the device to collect diagnostic information from Defender for Endpoint on Linux.
+
+If you can reproduce a problem, first increase the logging level, run the system for some time, and then restore the logging level to the default.
+
+1. Increase logging level:
+
+    ```bash
+    mdatp log level set --level debug
+    ```
+
+    ```console
+    Log level configured successfully
+    ```
+2. Reproduce the problem.
+3. Run the following command to back up Defender for Endpoint's logs. The files will be stored inside of a .zip archive.
+
+    ```bash
+    sudo mdatp diagnostic create
+    ```
+
+    This command will also print out the file path to the backup after the operation succeeds:
+
+    ```console
+    Diagnostic file created: <path to file>
+    ```
+4. Restore logging level:
+
+    ```bash
+    mdatp log level set --level info
+    ```
+
+    ```console
+    Log level configured successfully
+    ```
+
+## Log installation issues
+
+If an error occurs during installation, the installer will only report a general failure.
+
+The detailed log will be saved to `/var/log/microsoft/mdatp/install.log`. If you experience issues during installation, send us this file so we can help diagnose the cause.
+
+## Configure from the command line
+
+Important tasks, such as controlling product settings and triggering on-demand scans, can be done from the command line.
+
+### Global options
+
+By default, the command-line tool outputs the result in human-readable format. In addition, the tool also supports outputting the result as JSON, which is useful for automation scenarios. To change the output to JSON, pass `--output json` to any of the below commands.
+
+### Supported commands
+
+The following table lists commands for some of the most common scenarios. Run `mdatp help` from the Terminal to view the full list of supported commands.
+
+| Group | Scenario | Command |
+| --- | --- | --- |
+| Configuration | Turn on/off real-time protection | `mdatp config real-time-protection --value [enabled\|disabled]` |
+| Configuration | Turn on/off behavior monitoring | `mdatp config behavior-monitoring --value [enabled\|disabled]` |
+| Configuration | Turn on/off cloud protection | `mdatp config cloud --value [enabled\|disabled]` |
+| Configuration | Turn on/off product diagnostics | `mdatp config cloud-diagnostic --value [enabled\|disabled]` |
+| Configuration | Turn on/off automatic sample submission | `mdatp config cloud-automatic-sample-submission --value [enabled\|disabled]` |
+| Configuration | Turn on/off antivirus passive mode | `mdatp config passive-mode --value [enabled\|disabled]` |
+| Configuration | Add/remove an antivirus exclusion for a file extension | `mdatp exclusion extension [add\|remove] --name [extension]` |
+| Configuration | Add/remove an antivirus exclusion for a file | `mdatp exclusion file [add\|remove] --path [path-to-file]` |
+| Configuration | Add/remove an antivirus exclusion for a directory | `mdatp exclusion folder [add\|remove] --path [path-to-directory]` |
+| Configuration | Add/remove an antivirus exclusion for a process | `mdatp exclusion process [add\|remove] --path [path-to-process]`<br>`mdatp exclusion process [add\|remove] --name [process-name]` |
+| Configuration | Add/remove a global exclusion for a file | `mdatp exclusion file [add\|remove] --path [path-to-file] --scope global` |
+| Configuration | Add/remove a global exclusion for a directory | `mdatp exclusion folder [add\|remove] --path [path-to-directory] --scope global` |
+| Configuration | Add/remove a global exclusion for a process | `mdatp exclusion process [add\|remove] --path [path-to-process] --scope global` |
+| Configuration | List all antivirus exclusions | `mdatp exclusion list` |
+| Configuration | Add a threat name to the allowed list | `mdatp threat allowed add --name [threat-name]` |
+| Configuration | Remove a threat name from the allowed list | `mdatp threat allowed remove --name [threat-name]` |
+| Configuration | List all allowed threat names | `mdatp threat allowed list` |
+| Configuration | Turn on PUA protection | `mdatp threat policy set --type potentially_unwanted_application --action block` |
+| Configuration | Turn off PUA protection | `mdatp threat policy set --type potentially_unwanted_application --action off` |
+| Configuration | Turn on audit mode for PUA protection | `mdatp threat policy set --type potentially_unwanted_application --action audit` |
+| Configuration | Configure degree of parallelism for on-demand scans | `mdatp config maximum-on-demand-scan-threads --value [numerical-value-between-1-and-64]` |
+| Configuration | Turn on/off scans after security intelligence updates | `mdatp config scan-after-definition-update --value [enabled/disabled]` |
+| Configuration | Turn on/off archive scanning (on-demand scans only) | `mdatp config scan-archives --value [enabled/disabled]` |
+| Configuration | Turn on/off file hash computation | `mdatp config enable-file-hash-computation --value [enabled/disabled]` |
+| Diagnostics | Change the log level | `mdatp log level set --level verbose [error|warning|info|verbose]` |
+| Diagnostics | Generate diagnostic logs | `mdatp diagnostic create --path [directory]` |
+| Diagnostics | Size limits for retained product logs | `mdatp config  log-rotation-parameters [max-current-size/max-rotated-size] --size [value in MB]` |
+| Health | Check the product's health | `mdatp health` |
+| Protection | Scan a path | `mdatp scan custom --path [path] [--ignore-exclusions]` |
+| Protection | Do a quick scan | `mdatp scan quick` |
+| Protection | Do a full scan | `mdatp scan full` |
+| Protection | Cancel an ongoing on-demand scan | `mdatp scan cancel` |
+| Protection | Request a security intelligence update | `mdatp definitions update` |
+| Protection | Rollback security intelligence to the original default set | `mdatp definitions restore` |
+| Protection history | Print the full protection history | `mdatp threat list` |
+| Protection history | Get threat details | `mdatp threat get --id [threat-id]` |
+| Quarantine management | List all quarantined files | `mdatp threat quarantine list` |
+| Quarantine management | Remove all files from the quarantine | `mdatp threat quarantine remove-all` |
+| Quarantine management | Add a file detected as a threat to the quarantine | `mdatp threat quarantine add --id [threat-id]` |
+| Quarantine management | Remove a file detected as a threat from the quarantine | `mdatp threat quarantine remove --id [threat-id]` |
+| Quarantine management | Restore a file from the quarantine. Available in Defender for Endpoint version earlier than `101.23092.0012`. | `mdatp threat quarantine restore --id [threat-id] --path [destination-folder]` |
+| Quarantine management | Restore a file from the quarantine with Threat ID. Available in Defender for Endpoint version `101.23092.0012` or later. | `mdatp threat quarantine restore threat-id --id [threat-id] --destination-path [destination-folder]` |
+| Quarantine management | Restore a file from the quarantine with Threat Original Path. Available in Defender for Endpoint version `101.23092.0012` or later. | `mdatp threat quarantine restore threat-path --path [threat-original-path] --destination-path [destination-folder]` |
+| Endpoint Detection and Response | Set early preview | `mdatp edr early-preview [enabled\|disabled]` |
+| Endpoint Detection and Response | Set group-id | `mdatp edr group-ids --group-id [group-id]` |
+| Endpoint Detection and Response | Set / remove tag, only `GROUP` supported | `mdatp edr tag set --name GROUP --value [tag]` |
+
+## Quarantine directory for Defender for Endpoint Linux
+
+The default directory for files quarantined by MDATP is `/var/opt/microsoft/mdatp/quarantine`. For best results, use the command `MDATP threat quarantine` to manage quarantined files, rather than moving or modifying files directly in the quarantine directory. Direct file operations aren't recommended - always use the CLI for safe and supported quarantine management.

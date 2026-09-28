@@ -1,0 +1,185 @@
+---
+layout: Conceptual
+title: Alert grading for session cookie theft alert - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/session-cookie-theft-alert
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Review, manage, and grade the session cookie theft alert as True Positive (TP) or False Positive (FP), and if there's TP, take recommended actions to remediate the attack and mitigate the security risks arising because of it.
+search.appverid: met150
+ms.service: defender-xdr
+f1.keywords:
+- NOCSH
+ms.author: guywild
+author: guywi-ms
+ms.localizationpriority: medium
+audience: ITPro
+ms.collection:
+- m365-security
+- tier3
+ms.topic: how-to
+ms.custom:
+- msecd-doc-authoring-1014
+- autoir
+- admindeeplinkDEFENDER
+ms.reviewer: evaldm, isco
+ms.date: 2026-07-02T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: 4e148213-9ccf-0e1e-53c3-fb450e0682d0
+document_version_independent_id: 4e148213-9ccf-0e1e-53c3-fb450e0682d0
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/session-cookie-theft-alert.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: session-cookie-theft-alert
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/session-cookie-theft-alert.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+platformId: e2feeec2-5f7d-c6da-e8a7-63b848fd1ed1
+---
+
+# Alert grading for session cookie theft alert - Microsoft Defender XDR | Microsoft Learn
+
+**Applies to:**
+
+- Microsoft Defender XDR
+
+This article contains information about alert grading for Session Cookie theft alerts in Microsoft Defender:
+
+- **Stolen session cookie was used**
+- **Authentication request from AiTM-related phishing page**
+
+Threat actors use innovative ways to infiltrate their target environments. Taking inspiration from Adversary-in-the-Middle attacks, this type of attack uses phishing to steal credentials or their sign-in session in order to carry out malicious actions. BEC campaigns are an excellent example.
+
+This attack works by setting up an intermediate (phishing) site, effectively working as a proxy connection between the user and the legitimate website that the attacker is impersonating. By acting as an intermediary (proxy), the attacker is able to steal the target's password and session cookie. The attacker is therefore able to authenticate to a legitimate session as they're authenticating on behalf of the user.
+
+This playbook helps in investigating cases where suspicious behavior is observed indicative of an adversary-in-the-middle (AiTM) type of attack for cookie theft. This playbook helps security teams like security operations center (SOC) and IT administrators to review, manage, and grade the alerts as True Positive (TP) or False Positive (FP), and if it's TP, take recommended actions to remediate the attack and mitigate the security risks arising because of it.
+
+The results of using this playbook are:
+
+- You have identified the alerts associated with AiTM as malicious (TP) or benign (FP) activities.
+- If the alerts are identified as malicious, you've taken the necessary action to remediate the attack.
+
+## Investigation steps for session cookie theft alerts
+
+Perform the following investigation steps for session cookie theft alerts:
+
+1. Investigate whether the affected user has triggered any other security alerts.
+
+    - Focus on alerts that are based on geo-location anomalies for sign ins `[AadSignInEventsBeta or IdentityLogonEvents]`.
+    - Investigate for relevant sign-in events by looking at Session ID information `[AadSignInEventsBeta]`.
+        - Look for events associated with the identified (stolen) session ID to trace activities performed using the stolen cookie `[CloudAppEvents]`.
+        - Look for a time difference between sign-in activities where there's a difference in the geo-location. Multiple sessions shouldn't be possible for the same account with different locations (indicating that the session could be stolen).
+    - Check for alerts generated for the account from the corporate host.
+        - If the account is compromised, there could be alerts that preceded the compromise indicating attacks, for example, SmartScreen alerts `[NetworkConnectionEvents]`.
+2. Investigate suspicious behavior.
+
+    - Look for events indicating unusual patterns to identify suspicious patterns `[CloudAppEvents]` like uncommon properties for Users like ISP/Country/City, etc.
+    - Look for events that indicate new or previously unseen activities, such as sign-in attempts [success/failure] into new or never-before-used services, an increase in mail access activity, a change in Azure resource utilization, etc.
+    - Inspect any recent modifications in your environment starting from:
+        - Office 365 applications (like Exchange online permission changes, mail auto forwarding or redirection)
+        - PowerApps (like configuring automated data transmission through PowerAutomate)
+        - Azure environments (for example, Azure portal subscription modifications, etc.)
+        - SharePoint Online (accesses to multiple sites, or for files that have sensitive content like credential info, or financial statements), etc.)
+    - Inspect operations observed in multiple platforms (EXO, SPO, Azure, etc.) within a short time span for the affected user.
+        - For example, timelines for audit events of mail read/send operations and Azure resource allocation/modifications (new machine provisioning or adding to Microsoft Entra ID) shouldn't coincide with each other.
+3. Investigate possible follow-on attacks. AiTM attacks are usually a means-to-an-end and not the endgame, so inspect your environment for other attacks that follow for the affected accounts.
+
+    - An example would be looking into BEC cases
+        - Look for search activities seen on the alerted user account mailbox `[CloudAppEvents]`.
+            - Search activities in the mailbox could have keywords observed in financial fraud (for example, invoices, payments, etc.), which are suspicious.
+            - Also look for inbox rules created with the intention of moving and marking as read (something along the lines of ActionType in (New-InboxRule, UpdateInboxRules, Set-InboxRule) and RawEventData has\_all (MarkAsRead, MoveToFolder, Archive)).
+    - Look for mail flow events [EmailEvents & EmailUrlInfo on NetworkMessageId] where the multiple emails are sent with the same Url.
+        - Follow up with inspecting whether an increase or a high volume of mail deletion (ActivityType as Trash or Delete) is observed `[CloudAppEvents]` for the mailbox account.
+        - Matching behavior could be deemed as highly suspicious.
+    - Examine device events for Url events that match click events `[DeviceEvents on AccountName|AccountUpn]`for Office 365 emails.
+        - Matching the events for click sources (for example, different IP addresses for the same Url) could be an indication of malicious behavior.
+
+## Advanced hunting queries
+
+[Advanced hunting overview](advanced-hunting-overview) is a query-based threat hunting tool that lets you inspect events in your network and locate threat indicators.
+
+Before running these queries, ensure you have access to the following tables:
+
+- AadSignInEventsBeta - contains sign-in information for users.
+- IdentityLogonEvents - contains sign-in information for users.
+- CloudAppEvents - contains audit logs of user activities.
+- EmailEvents - contains mail flow/traffic information.
+- EmailUrlInfo - contains Url information contained in emails.
+- UrlClickEvents - contains Url click logs for Urls that were clicked in the emails.
+- DeviceEvents - contains device activity audit events.
+
+Use the following query to identify suspicious sign-in behavior:
+
+```kusto
+let OfficeHomeSessionIds = 
+AADSignInEventsBeta
+| where Timestamp > ago(1d)
+| where ErrorCode == 0
+| where ApplicationId == "4765445b-32c6-49b0-83e6-1d93765276ca" //OfficeHome application 
+| where ClientAppUsed == "Browser" 
+| where LogonType has "interactiveUser" 
+| summarize arg_min(Timestamp, Country) by SessionId;
+AADSignInEventsBeta
+| where Timestamp > ago(1d)
+| where ApplicationId != "4765445b-32c6-49b0-83e6-1d93765276ca"
+| where ClientAppUsed == "Browser" 
+| project OtherTimestamp = Timestamp, Application, ApplicationId, AccountObjectId, AccountDisplayName, OtherCountry = Country, SessionId
+| join OfficeHomeSessionIds on SessionId
+| where OtherTimestamp > Timestamp and OtherCountry != Country
+```
+
+Use the following query to identify uncommon countries/regions:
+
+```kusto
+AADSignInEventsBeta 
+| where Timestamp > ago(7d) 
+| where ApplicationId == "4765445b-32c6-49b0-83e6-1d93765276ca" //OfficeHome application 
+| where ClientAppUsed == "Browser" 
+| where LogonType has "interactiveUser" 
+| summarize Countries = make_set(Country) by AccountObjectId, AccountDisplayName
+```
+
+Use the following query to find new email Inbox rules created during a suspicious sign-in session. This query first identifies suspicious session IDs associated with Microsoft Entra ID "Anomalous Token" alerts, then checks whether any Inbox rules were created during those sessions:
+
+```kusto
+//Find suspicious tokens tagged by AAD "Anomalous Token" alert
+let suspiciousSessionIds = materialize(
+AlertInfo
+| where Timestamp > ago(7d)
+| where Title == "Anomalous Token"
+| join (AlertEvidence | where Timestamp > ago(7d) | where EntityType == "CloudLogonSession") on AlertId
+| project sessionId = todynamic(AdditionalFields).SessionId);
+//Find Inbox rules created during a session that used the anomalous token
+let hasSuspiciousSessionIds = isnotempty(toscalar(suspiciousSessionIds));
+CloudAppEvents
+| where hasSuspiciousSessionIds
+| where Timestamp > ago(21d)
+| where ActionType == "New-InboxRule"
+| where RawEventData.SessionId in (suspiciousSessionIds)
+```
+
+## Recommended actions
+
+Once you determine that the alert activities are malicious, classify those alerts as True Positive (TP) and perform the following actions:
+
+- Reset the user's account credentials. Also, disable/revoke tokens for the compromised account.
+- If the artifacts that were found were related to email, configure block based on Sender IP address and Sender domains.
+    - Domains that are typo-squatted might either clear DMARC, DKIM, SPF policies (since the domain is different altogether) or they might return "null results (as it's probably not configured by the threat actor).
+- Block URLs or IP addresses (on the network protection platforms) that were identified as malicious during the investigation.

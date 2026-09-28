@@ -1,0 +1,252 @@
+---
+layout: Conceptual
+title: Troubleshoot Microsoft Defender Antivirus scan issues - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-mdav-scan-issues
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Troubleshoot antivirus scan issues, such as scan not finishing or scans affecting device performance.
+ms.service: defender-endpoint
+ms.author: chrisda
+author: chrisda
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier3
+ms.topic: troubleshooting
+ms.subservice: ngp
+ms.date: 2026-08-20T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1015
+ai-usage: ai-assisted
+locale: en-us
+document_id: a9281d67-0ec1-ef29-6839-a6cd2c9150a5
+document_version_independent_id: a9281d67-0ec1-ef29-6839-a6cd2c9150a5
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/troubleshoot-mdav-scan-issues.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: troubleshoot-mdav-scan-issues
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/troubleshoot-mdav-scan-issues.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+platformId: d42837fd-efec-4fe4-6b71-c8a154759ba2
+---
+
+# Troubleshoot Microsoft Defender Antivirus scan issues - Microsoft Defender for Endpoint | Microsoft Learn
+
+If you're seeing issues with Microsoft Defender Antivirus scans, such as scans aren't finishing, or scans are causing performance issues on devices, you might need to troubleshoot the scan process. This article describes how to identify information to address issues with Microsoft Defender Antivirus scans. You learn how scans are launched, what policies are applied to scans, why scans ended, and what's impacting the performance of a scan.
+
+Note
+
+To understand differences between antivirus scan types, see [Comparing the quick scan, full scan, and custom scan](schedule-antivirus-scans#comparing-the-quick-scan-full-scan-and-custom-scan).
+
+## How scans are launched
+
+Understanding why a scan is launched can help identify what settings are applied to the scan and what can be adjusted. In Microsoft Defender for Endpoint, antivirus scans can be launched in several ways. The following table summarizes these options:
+
+| Method | Description |
+| --- | --- |
+| Schedule | Defined by policy as per policy table |
+| Scan after update | Defined by policy (Settings catalog in Intune) |
+| Catch up scan | Launched when a scheduled scan was missed twice |
+| Manually launched | A scan is launched manually by using any of the following methods: <br>- [MpCmdRun command-line tool](command-line-arguments-microsoft-defender-antivirus): `MpCmdRun.exe -Scan -ScanType <value>`<br>- [Taking a response action on a device](respond-machine-alerts#run-microsoft-defender-antivirus-scan-on-devices) in the Microsoft Defender portal.<br>- Using the Windows Security app or Microsoft Defender app on the device |
+
+## CPU performance and scan throttling in Microsoft Defender Antivirus
+
+Microsoft Defender Antivirus includes several configurable settings to manage CPU usage during scans. These settings help balance system performance and security by controlling how aggressively Defender uses system resources. If you use Group Policy, these settings are found under `Computer Configuration > Administrative Templates > Windows Components > Microsoft Defender Antivirus > Scan`. To check current value of these settings on a machine use the `Get-MpPreference` PowerShell command.
+
+The key settings to be aware of are listed in the following table:
+
+| Setting | Details |
+| --- | --- |
+| `ScanOnlyIfIdle` | **Description**: When enabled, Microsoft Defender Antivirus only performs scans when the system is idle.**Purpose**: This minimizes performance impact during active use by deferring scans until the system is not in use.**Typical Use Case**: Ideal for environments where user experience is a priority and scans can be delayed without compromising security.**Policy Name**:**Group Policy**: Not available. - **Intune**: `./Device/Vendor/MSFT/Defender/Configuration/ScanOnlyIfIdleEnabled`**Default**: True (Enabled) |
+| `DisableCpuThrottleOnIdleScans` | **Description**: When set to `true`, this disables CPU throttling during idle-time scans.**Purpose**: Allows Defender to use more CPU resources when the system is idle, potentially completing scans faster.**Interaction with Other Settings**: Works with `ScanOnlyIfIdle`. If both are enabled, scans run only when idle and aren't throttled.**Policy Name**:- **Group Policy**: Not available.- **Intune**: `./Device/Vendor/MSFT/Defender/Configuration/DisableCpuThrottleOnIdleScans`**Default**: True (Enabled) |
+| `AvgCPULoadFactor` | **Description**: Specifies the average CPU load (as a percentage) that Microsoft Defender Antivirus shouldn't exceed during scans. This setting doesn't apply to real time protection scans.**Purpose**: Helps maintain overall system responsiveness by limiting Defender's CPU usage.**Example**: A value of `50` means Microsoft Defender Antivirus attempts to keep its CPU usage below 50% during scans.**Interaction with Other Settings**: This setting is influenced by `DisableCpuThrottleOnIdleScans` and `ThrottleForScheduledScanOnly`, which can override or limit when throttling is applied.**Policy Name**: - **Group Policy**: `Specify the maximum percentage of CPU utilization during a scan`- **Intune**: `./Device/Vendor/MSFT/Policy/Config/Defender/AvgCPULoadFactor` |
+| `ThrottleForScheduledScanOnly` | **Description**: When enabled, CPU throttling is applied only to scheduled scans, not to manual scans.**Purpose**: Ensures that scheduled scans are less intrusive, while allowing manual scans to run at full speed if needed.**Interaction with Other Settings**: When used with `AvgCPULoadFactor`, throttling limits only apply to scheduled scans. Manual scans ignore the CPU load factor and might use more resources.**Policy Name**:- **Group Policy**: `Cpu throttling type`- **Intune**: `./Device/Vendor/MSFT/Policy/Config/Defender/ThrottleForScheduledScanOnly`**Default**: True (Enabled) |
+| `EnableLowCpuPriority` | **Description**: This policy setting allows you to enable or disable low CPU priority for scheduled scans.**Purpose**: Helps reduce the impact of scans on system performance by allowing other processes to take precedence over Microsoft Defender Antivirus's scanning tasks.**Interaction with Other Settings**: Complements `AvgCPULoadFactor` and `ThrottleForScheduledScanOnly` by further deprioritizing Microsoft Defender Antivirus's CPU usage. It's especially useful in environments where maintaining responsiveness during scans is critical.**Policy Name**: - **Group Policy**: `Configure low CPU priority for scheduled scans`- **Intune**: `./Device/Vendor/MSFT/Policy/Config/Defender/EnableLowCPUPriority`**Default**: False (Disabled) |
+
+## Policies that impact scanning
+
+Understanding the policies applied to the scan enables you to understand the behavior of the scan and what can be tuned to remediate scan challenges.
+
+The following table summarizes antivirus settings in Microsoft Intune for Windows devices:
+
+| Group | Setting | Description |
+| --- | --- | --- |
+| Scan | Allow Full Scan On Mapped Network Drives | This policy setting allows you to configure scanning mapped network drives. Keep in mind that configuring this setting can degrade performance on full scans. |
+| Scan | Allow Full Scan Removable Drive Scanning | This policy setting allows you to manage whether or not to scan for malicious software and unwanted software in the contents of removable drives, such as USB flash drives, when running a full scan. |
+| Scan | Allow Scanning Network Files | This policy setting allows you to configure scheduled scans and on-demand (manually initiated) scans for files that are accessed over the network. It's recommended to enable this setting. |
+| Scan | Avg CPU Load Factor | This policy setting allows you to configure the maximum percentage CPU utilization permitted during a scan. Valid values for this setting are a percentage represented by the integers 5 to 100. A value of 0 indicates that there should be no throttling of CPU utilization. The default value is 50. |
+| Scan | Allow Archive Scanning | This policy setting allows you to configure scans for malicious software and unwanted software in archive files such as .ZIP or .CAB files. Keep in mind that configuring this setting can degrade performance on a scan. |
+| Scan | Archive Max Depth |  |
+| Scan | Archive Max Size |  |
+| Scan | Check For Signatures Before Running Scan | This policy setting allows you to manage whether a check for new virus and spyware security intelligence occurs before running a scan. It applies to scheduled scans, but has no effect on scans initiated manually from the user interface or scans from the [Command Prompt](command-line-arguments-microsoft-defender-antivirus): `MpCmdrun.exe -Scan [Options]`. |
+| Scan | Disable Catchup Full Scan | This policy setting controls whether catch-up scans run after scheduled full scans are missed. Because the setting name begins with *Disable*, **Enabled** disables catch-up full scans, and **Disabled** enables them. If you disable this setting and a device misses two consecutive scheduled full scans, a catch-up scan starts the next time someone signs in. Catch-up scans require a configured scheduled scan. If you don't configure this setting, the client default applies, and catch-up full scans are disabled. |
+| Scan | Enable Low CPU Priority | This policy setting allows you to enable or disable low CPU priority for scheduled scans. - If you enable this setting, low CPU priority is used during scheduled scans. - If you disable or don't configure this setting, no changes are made to CPU priority for scheduled scans. |
+| General | Excluded Extensions |  |
+| General | Excluded Paths |  |
+| General | Excluded Processes |  |
+| Scan Schedule | Scan Parameter | This policy setting allows you to specify the scan type to use during a scheduled scan. Scan type options are: - 1 = Quick Scan (default) - 2 = Full Scan If you enable this setting, the scan type is set to the specified value. If you disable or don't configure this setting, the default scan type is used. |
+| Scan Schedule | Schedule Quick Scan Time | This policy setting allows you to specify the time of day at which to perform a daily quick scan. The time value is represented as the number of minutes past midnight (00:00). For example, 120 (0x78) is equivalent to 02:00 AM. By default, this setting is set to disabled. The schedule is based on local time on the computer where the scan is executing. If you enable this setting, a daily quick scan runs at the time of day specified. If you disable or don't configure this setting, daily quick scan controlled by this configuration doesn't run. |
+| Scan Schedule | Schedule Scan Day | This policy setting allows you to specify the day of the week on which to perform a scheduled scan. The scan can also be configured to run every day or to never run at all. This setting can be configured with the following ordinal number values: - (0x0) Every Day - (0x1) Sunday - (0x2) Monday - (0x3) Tuesday - (0x4) Wednesday - (0x5) Thursday - (0x6) Friday - (0x7) Saturday - (0x8) Never (*default*) If you enable this setting, a scheduled scan runs at the frequency specified. If you disable or don't configure this setting, a scheduled scan runs at a default frequency. |
+| Scan Schedule | Schedule Scan Time | This policy setting allows you to specify the time of day at which to perform a scheduled scan. The time value is represented as the number of minutes past midnight (00:00). For example, 120 (0x78) is equivalent to 02:00 AM. By default, this setting is set to a time value of 2:00 AM. The schedule is based on local time on the computer where the scan is executing. If you enable this setting, a scheduled scan runs at the time of day specified. If you disable or don't configure this setting, a scheduled scan runs at a default time. |
+| Scan Schedule | Randomize Schedule Task Times | Widen or narrow the randomization period for scheduled scans. Specify a randomization window of between 1 and 23 hours by using the setting `SchedulerRandomizationTime`. |
+| Scan Schedule | Scheduler Randomization Time |  |
+| Scan Schedule | Turn on scan after Security intelligence update | Turn on scan after Security intelligence update. Keep in mind that this setting is only available through Settings Catalog. |
+
+In an Intune policy and in [Defender for Endpoint Security Settings Management](/en-us/intune/intune-service/protect/mde-security-integration), you can configure two scanning schedules:
+
+- **A daily quick scan**: You can configure the time a daily quick scan runs. Disabling or not configuring disables a daily quick scan.
+
+    Setting: `Schedule Quick Scan Time`
+- **A Scheduled scan**: You can configure when a scheduled scan runs, you can choose the type of scan and when it runs.
+
+    Settings: `Scan Parameter`; `Schedule Scan Day`; and `Schedule Scan Time`
+
+If you're using Group Policy to manage your devices, see [Configure Microsoft Defender Antivirus with Group Policy](use-group-policy-microsoft-defender-antivirus#group-policy-settings-and-resources)
+
+For information about troubleshooting antivirus settings, see [Troubleshoot Microsoft Defender Antivirus settings](troubleshoot-settings)
+
+For more information about scan behaviors when Microsoft Defender Antivirus is in passive mode, see [Microsoft Defender Antivirus compatibility with other security products](microsoft-defender-antivirus-compatibility#notes-about-protection-states)
+
+## Frequently asked questions about scans
+
+- **Question**: My quick scans are scheduled for Mondays but they're happening daily. Why is that?
+
+    **Answer**: If you want the scheduled scans to be the only scans, set `ScheduleQuickScanTime` to `0`.
+- **Question**: Why are catch-up scans not running on my machine, even though `DisableCatchupQuickScan` is set to `0`?
+
+    **Answer**: Catch-up scans don't run when the device is running on battery.
+- **Question**: Why are daily quick scans not running on my machine even though I have scheduled them?
+
+    **Answer**: Check to see if daily quick scans are configured on the machine. If `ScanParameters` is set to `2`, then the default scheduled scan type is `Full Scan`. If `ScheduledQuickScanTime` is set to `0`, then daily quick scans aren't set.
+- **Question**: Why is my full scan failing due to memory issues (memory consumption/exceeding constraints)?
+
+    **Answer**: It's possible that there are a large number of cab/zip files on the machine. We recommend going through high size folders and either cleaning up or removing unused files, and/or implementing exclusions for specific cases (such as files under `C:\Windows`). See [Recommended antivirus exclusions for Configuration Manager](/en-us/troubleshoot/mem/configmgr/endpoint-protection/recommended-antivirus-exclusions).
+
+## How to confirm scan status
+
+Confirming if a scan has been canceled or finished successfully allows you to target devices that have failed scans. To find out what happened, you can use Event Viewer in Windows; reports, advanced hunting, and the Device page in the Microsoft Defender portal; or APIs.
+
+### Event Viewer
+
+The following Event IDs are related to scan operations on a device.
+
+- Event ID 1000 - An anti-malware scan started.
+- Event ID 1001 - An anti-malware scan finished.
+- Event ID 1002 - An anti-malware scan was stopped before it finished.
+
+For more information, see [Microsoft Defender Antivirus event IDs and error codes](troubleshoot-microsoft-defender-antivirus).
+
+Event viewer can be access on the machine by the application or PowerShell. For more information, see Review logs in Event Viewer (in this article).
+
+### Reports in the Microsoft Defender portal
+
+Reports are available that include current scan status. You can expand the view and export details. For more information, see [Device health report](device-health-microsoft-defender-antivirus-health).
+
+### Advanced hunting
+
+You can also find information about scan completion and cancellation in [advanced hunting](/en-us/defender-xdr/advanced-hunting-overview). To get help with advanced hunting, see the following articles:
+
+- [Proactively hunt for threats with advanced hunting in Microsoft Defender](/en-us/defender-xdr/advanced-hunting-overview)
+- [Choose between guided and advanced modes to hunt in Microsoft Defender XDR](/en-us/defender-xdr/advanced-hunting-modes)
+- [Learn the advanced hunting query language](/en-us/defender-xdr/advanced-hunting-query-language)
+
+### Device page in the Microsoft Defender portal
+
+In the Microsoft Defender portal, you can view information about scans on the device page. For more information, see the following articles:
+
+- [Device health reports in Microsoft Defender for Endpoint](device-health-reports)
+- [Device inventory](machines-view-overview)
+
+### APIs
+
+Data about scan status can be exported by using the export health reporting API, as follows:
+
+```console
+"quickScanResult": "Completed",
+"quickScanError": "",
+"quickScanTime": "2202-08-02T18:40:15.882Z",
+"fullScanResult": "",
+"fullScanError": "",
+"fullScanTime": null,
+```
+
+For more information, see [Export device antivirus health report](api/device-health-export-antivirus-health-report-api).
+
+## Reasons why scans are canceled or terminated
+
+Identifying why a scan was canceled enables you to identify what needs to be reviewed to enable scans to finish successfully. The following table lists reasons why scans didn't complete.
+
+| Reason | Details |
+| --- | --- |
+| The device restarts | Details of device restarts can be reviewed using Event Viewer on the device. <br>- Event Log: System<br>- Event IDs: 6005, 6006, 6007, and 6008 |
+| The scan times out | Scheduled scans use `MpCmdRun`, but if you use `MpCmdRun` to run an on-demand scan, the timer still applies. Antivirus scans launched by the Windows Security app (Local) and the Microsoft Defender portal don't use `MpCmdRun`. Each method starts a scan directly by using `mpclient`. <br>,li&gt;Scans initiated in the Microsoft Defender portal or the Windows Security app (Quick or Full): No time limit- Scheduled Full Scans or [MpCmdRun full scans](command-line-arguments-microsoft-defender-antivirus): Seven day limit<br>- Scheduled Quick Scans or [MpCmdRun quick scans](command-line-arguments-microsoft-defender-antivirus): One day limit |
+| The device is running on battery | If a device is unplugged and running on battery during a scheduled full scan, the scheduled scan stops with event 1002, which states that the scan stopped before completion. Microsoft Defender Antivirus runs a full scan at the next scheduled time. For more information, see [Schedule antivirus scans: Important points to keep in mind](schedule-antivirus-scans#important-points-to-keep-in-mind). |
+| Other power-related events | The following event IDs (from Kernel-Power) indicate changing of the power state of the device which could impact the scanning finishing in a timely manner: - 107: The system has resumed from sleep.- 42: The system is entering sleep. Sleep Reason: Hibernate from Sleep - Standby Battery Budget Exceeded- 507: The system is exiting Modern Standby. Reason: Sleep, Hibernate, or Shutdown.- 506: The system is entering Modern Standby. Reason: Lid.- 105: Power source change. |
+
+## Use performance analyzer on the device
+
+If, after following the guidance in this article, you haven't identified a misconfiguration issue on the device, you can use the `New-MpPerformanceRecording` command to generate a trace to identify problems on the device. This performance analyzer gives you the following information:
+
+- Top paths that impact scan time
+- Top files that impact scan time
+- Top processes that impact scan time
+- Top file extensions that impact scan time
+- Combinations, like these:
+    - Top files per extension
+    - Top paths per extension
+    - Top processes per path- Top scans per file
+- Top scans per file per process
+
+For more information, see [Performance analyzer for Microsoft Defender Antivirus](tune-performance-defender-antivirus).
+
+One outcome of this process might be identifying files or paths that you want to exclude from antivirus scans to improve performance. Make sure to review the following articles:
+
+- [Exclusions overview](defender-endpoint-exclusions-overview)
+- [Contextual file and folder exclusions](microsoft-defender-antivirus-exclusions-overview#contextual-exclusions)
+
+## Reviewing Event logs
+
+Local event logs can be reviewed either using the Event Viewer application or by using PowerShell.
+
+### Review logs in Event Viewer
+
+On Windows devices, Microsoft Defender Antivirus logs are located at **Application and Service Logs** &gt; **Microsoft** &gt; **Windows** &gt; **Windows Defender** &gt; **Operational**.
+
+The following screenshot shows scan logs in Event Viewer:
+
+[![Screenshot showing antivirus scan logs in Windows Event Viewer.](media/mdav-scan-logs-event-viewer.png)](media/mdav-scan-logs-event-viewer.png#lightbox)
+
+Here's an example of Event 1000 in Event Viewer:
+
+[![Screenshot showing Event 1000 in Event Viewer on a Windows device.](media/event-viewer-event1000.png)](media/event-viewer-event1000.png#lightbox)
+
+### Review events using PowerShell
+
+You can also access this information with PowerShell by using the [Get-WinEvent](/en-us/powershell/module/microsoft.powershell.diagnostics/get-winevent?view=powershell-7.4&amp;preserve-view=true) cmdlet.
+
+For example, to get all events, use this command:
+
+```powershell
+Get-WinEvent -LogName 'Microsoft-Windows-Windows Defender/Operational'
+```
+
+To view scan events, use this command:
+
+```powershell
+Get-WinEvent -LogName 'Microsoft-Windows-Windows Defender/Operational' | where id -eq '1000'
+```

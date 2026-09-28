@@ -1,0 +1,392 @@
+---
+layout: Conceptual
+title: Microsoft Defender Endpoint on Windows Server with SAP - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/mde-sap-windows-server
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Understand how Microsoft Defender for Endpoint with EDR and other advanced security capabilities interacts with SAP applications.
+author: paulinbar
+ms.author: painbar
+ms.date: 2026-09-15T00:00:00.0000000Z
+ms.topic: overview
+ms.service: defender-endpoint
+ms.subservice: ngp
+ms.localizationpriority: medium
+ms.collection: 
+ms.custom:
+- partner-contribution
+ms.reviewer: cgardin
+locale: en-us
+document_id: 32c907fd-7eac-5a02-eb77-639e561163d7
+document_version_independent_id: 32c907fd-7eac-5a02-eb77-639e561163d7
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/mde-sap-windows-server.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: mde-sap-windows-server
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/mde-sap-windows-server.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fc3f72c2-fb6f-4cea-95ee-b444e52254ee
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f12cf087-582d-48ac-a085-0c19adf1e391
+platformId: afa34353-5b2e-f363-3b0d-6772db3596ac
+---
+
+# Microsoft Defender Endpoint on Windows Server with SAP - Microsoft Defender for Endpoint | Microsoft Learn
+
+If your organization uses SAP, it's essential to understand the compatibility and support between [antivirus](microsoft-defender-antivirus-windows-server-configure) and [endpoint detection and response (EDR)](overview-endpoint-detection-response) capabilities in Microsoft Defender for Endpoint and your SAP applications. This article helps you understand the support provided by SAP for endpoint protection security solutions like Defender for Endpoint and how they interact with SAP applications.
+
+This article describes how to use Defender for Endpoint on Windows Server alongside SAP applications, such as NetWeaver and S4 Hana, and SAP standalone engines, such as LiveCache. In this article, we focus on antivirus and EDR capabilities in Defender for Endpoint; however, Defender for Endpoint includes additional capabilities. For an overview of all of the Defender for Endpoint capabilities, see [Microsoft Defender for Endpoint](microsoft-defender-endpoint).
+
+This article doesn't cover SAP client software, such as SAPGUI, or Microsoft Defender Antivirus on Windows client devices.
+
+## Enterprise security and your SAP Basis team
+
+Enterprise security is a specialist role and the activities described in this article should be planned as a joint activity between your enterprise security team and your SAP Basis team. The enterprise security team needs to coordinate with the SAP Basis team and jointly design your Defender for Endpoint configuration and analyze any exclusions.
+
+### Get an overview of Defender for Endpoint
+
+Defender for Endpoint is a component of [Microsoft Defender XDR](/en-us/defender-xdr/), and can be integrated with your SIEM/SOAR solution.
+
+Before you begin to plan or deploy Defender for Endpoint on Windows Server with SAP, take a moment to get an overview of Defender for Endpoint. The following video provides an overview:
+
+For more detailed information about Defender for Endpoint and Microsoft security offerings, see the following resources:
+
+- [Microsoft Defender for Endpoint](microsoft-defender-endpoint)
+- [Microsoft Security documentation and training](/en-us/security/)
+
+Defender for Endpoint includes capabilities that are beyond the scope of this article. In this article, we focus on two main areas:
+
+- **Next-generation protection** (which includes antivirus protection). [Next-generation protection](next-generation-protection) is an antivirus product like other antivirus solutions for Windows environments.
+- **EDR**. [EDR capabilities](overview-endpoint-detection-response) detect suspicious activity and system calls, and provide an extra layer of protection against threats that bypassed antivirus protection.
+
+Microsoft and other security software vendors track threats and provide trend information. For more information, see [Cyberthreats, viruses, and malware - Microsoft Security Intelligence](https://www.microsoft.com/en-us/wdsi/threats).
+
+Note
+
+For information on Microsoft Defender for SAP on Linux, see [Deployment guidance for Microsoft Defender for Endpoint on Linux for SAP](mde-linux-deployment-on-sap). Defender for Endpoint on Linux is significantly different than the Windows version.
+
+## SAP support statement on Defender for Endpoint and other security solutions
+
+SAP provides basic documentation for conventional file scan antivirus solutions. Conventional file scan antivirus solutions compare file signatures against a database of known threats. When an infected file is identified, the antivirus software typically alerts and quarantines the file. The mechanisms and behavior of file scan antivirus solutions are reasonably well known and are predictable; therefore, SAP support can provide a basic level of support for SAP applications interacting with file scan antivirus software.
+
+File-based threats are only one possible vector for malicious software. Fileless malware and malware that lives off the land, highly polymorphic threats that mutate faster than traditional solutions can keep up with, and human-operated attacks that adapt to what adversaries find on compromised devices. Traditional antivirus security solutions aren't sufficient to stop such attacks. Artificial intelligence (AI) and machine learning (ML) backed capabilities, such as behavioral blocking and containment are required. Security software such as Defender for Endpoint has advanced threat protection features to mitigate modern threats.
+
+Defender for Endpoint is continuously monitoring operating system calls, such as file read, file write, create socket, and other process level operations. The Defender for Endpoint EDR sensor acquires opportunistic locks on local NTFS files systems and is, therefore, unlikely to impact applications. Opportunistic locks aren't possible on remote network file systems. In rare cases, a lock could cause general nonspecific errors, such as *Access Denied* in SAP applications.
+
+SAP isn't able to provide any level of support for EDR/XDR software like [Microsoft Defender XDR](/en-us/defender-xdr/microsoft-365-defender) or [Defender for Endpoint](microsoft-defender-endpoint). The mechanisms in such solutions are adaptive; therefore, they're not predictable. Further, issues are potentially not reproducible. When problems are identified on systems running advanced security solutions, SAP recommends disabling the security software and then attempting to reproduce the problem. A support case can then be raised with the security software vendor.
+
+For more information about the SAP Support policy, see [3356389 - Antivirus or other security software affecting SAP operations](https://me.sap.com/notes/3356389).
+
+## Recommended SAP OSS Notes
+
+Here's a list of SAP articles you can use as needed:
+
+- [3356389 - Antivirus or other security software affecting SAP operations - SAP for Me](https://me.sap.com/notes/3356389)
+- [106267 - Virus scanner software on Windows - SAP for Me](https://me.sap.com/notes/106267)
+- [690449 - Transport buffer lock file (.LOB) remains blocked on Windows - SAP for Me](https://me.sap.com/notes/690449)
+- [2311946 - Filesystem errors on Windows - SAP for Me](https://me.sap.com/notes/2311946)
+- [2496239 - Ransomware / malware on Windows - SAP for Me](https://me.sap.com/notes/2496239)
+- [1497394 - Which files and directories should be excluded from an antivirus scan for SAP BusinessObjects Business Intelligence Platform products in Windows? - SAP for Me](https://me.sap.com/notes/1497394/E)
+
+Caution
+
+Microsoft Defender for Endpoint on includes a feature called [Endpoint Data Loss Prevention](/en-us/purview/endpoint-dlp-learn-about) (Endpoint DLP). Endpoint DLP should not be activated on any Windows Server running NetWeaver, S4, Adobe Document Server, Archive Servers, TREX, LiveCache or Content Server. In addition, it is critical that Windows clients, such as a Windows laptop running Windows 11 with Endpoint DLP enabled, to never access a network share used by any SAP application. Depending on configuration and policies, it is possible for a Windows client PC to write DLP attributes onto a Network Share.
+
+Adobe Document Servers or Archive systems that write many files rapidly onto SMB shares and/or Interface File Transfer shares with DLP enabled can cause file corruption or "access denied" messages.
+
+Do not expose SAP file systems to external Windows client PCs, and do not activate Endpoint DLP on Windows Servers running SAP software. Do not allow Windows clients to access SAP server shares. Use Robocopy or a similar tool to copy Adobe Document or other interface files to a Corporate NAS solution.
+
+## SAP applications on Windows Server: Top 10 recommendations
+
+1. **Limit access to SAP servers, block network ports, and take all other common security protection measures**. This first step is essential. The threat landscape has evolved from file-based viruses to file-less complex and sophisticated threats. Actions, such as **blocking ports and limiting logon/access** to VMs are **no longer considered sufficient** to fully mitigate modern threats.
+2. **Deploy Defender for Endpoint to nonproduction systems first before deploying to production systems**. Deploying Defender for Endpoint directly to production systems without testing is highly risky and can lead to downtime. If you can't delay deploying Defender for Endpoint to your production systems, consider temporarily disabling [tamper protection](tamper-protection-overview) and [real-time protection](configure-protection-features-microsoft-defender-antivirus).
+3. **Remember that real-time protection is enabled by default on Windows Server**. If problems are identified that might be related to Defender for Endpoint, it's recommended to [configure exclusions](defender-endpoint-exclusions-overview) and/or [open a support case](contact-support) via the [Microsoft Defender portal](https://security.microsoft.com).
+4. **Have the SAP Basis team and your security team work together on your Defender for Endpoint deployment**. The two teams need to jointly create a phased deployment, testing, and monitoring plan.
+5. **Use tools like PerfMon (Windows) to create a performance baseline before deploying and activating Defender for Endpoint**. Compare the performance utilization before and after activating Defender for Endpoint. For more information, see [perfmon](/en-us/windows-server/administration/windows-commands/perfmon).
+6. **Deploy the latest version of Defender for Endpoint and use the latest releases of Windows**, ideally Windows Server 2019 or newer. See [Minimum requirements for Microsoft Defender for Endpoint](minimum-requirements).
+7. **Configure certain exclusions for Microsoft Defender Antivirus**. These include:
+
+    - DBMS data files, log files, and temp files, including disks containing backup files
+    - The entire contents of the SAPMNT directory
+    - The entire contents of the SAPLOC directory
+    - The entire contents of the TRANS directory
+    - The entire contents of directories for standalone engines such as TREX
+
+    Advanced users can consider using [contextual file and folder exclusions](microsoft-defender-antivirus-exclusions-overview#contextual-exclusions).
+
+    For more information about DBMS exclusions, use the following resources:
+
+    - **SQL Server**: [Configure antivirus software to work with SQL Server](/en-us/troubleshoot/sql/database-engine/security/antivirus-and-sql-server)
+    - **Oracle**: [How To Configure Anti-Virus On Oracle Database Server (Doc ID 782354.1)](https://support.oracle.com/knowledge/Oracle%20Database%20Products/782354_1.html)
+    - **DB2**: [Which DB2 directories to exclude from Linux Anti-virus software](https://www.ibm.com/support/pages/which-db2-directories-exclude-linux-anti-virus-software) (use the same commands on Windows Server)
+    - **SAP ASE**: Contact SAP
+    - **MaxDB**: Contact SAP
+8. **Verify Defender for Endpoint settings**. Microsoft Defender Antivirus with SAP applications should have the following settings in most cases:
+
+    ```properties
+    
+    AntivirusEnabled                   : True
+    AntivirusSignatureAge              : 0
+    BehaviorMonitorEnabled             : True
+    DefenderSignaturesOutOfDate        : False
+    IsTamperProtected                  : True
+    RealTimeProtectionEnabled          : True
+    
+    ```
+9. **Use tools, such as [Intune](/en-us/intune/intune-service/protect/endpoint-security) or [Defender for Endpoint security settings management](/en-us/intune/intune-service/protect/mde-security-integration) to set up Defender for Endpoint**. Such tools can help ensure that Defender for Endpoint is configured correctly and uniformly deployed. To use Defender for Endpoint security settings management, follow these steps:
+
+    Note
+
+    Intune is a separate product that isn't part of Microsoft Defender for Endpoint, and it isn't included in all subscriptions. If you don't have Intune, use Defender for Endpoint security settings management as described in this step. For more information, see [Microsoft Intune licensing](/en-us/intune/intune-service/fundamentals/licenses).
+
+    1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **Endpoints** &gt; **Configuration management** &gt; **Endpoint security policies**.
+    2. Select **Create new Policy**, and follow the guidance. For more information, see [Manage endpoint security policies in Microsoft Defender for Endpoint](endpoint-security-policies-configure).
+10. **Use the latest release of Defender for Endpoint**. Several new features are being implemented in Defender for Endpoint on Windows, and these features were tested with SAP systems. These new features reduce blocking and lower CPU consumption. For more information about new features, see [What's new in Microsoft Defender for Endpoint](whats-new-in-microsoft-defender-endpoint).
+
+## Deployment methodology
+
+SAP and Microsoft both don't recommend deploying Defender for Endpoint on Windows directly to all development, QAS, and production systems simultaneously, and/or without careful testing and monitoring. Customers who deployed Defender for Endpoint and other similar software in an uncontrolled manner without adequate testing experienced system downtime as a result.
+
+Defender for Endpoint on Windows and any other software or configuration change should be deployed into development systems first, validated in QAS, and only then deployed into production environments.
+
+Using tools, such as [Defender for Endpoint security settings management](/en-us/intune/intune-service/protect/mde-security-integration) to deploy Defender for Endpoint to an entire SAP landscape without testing is likely to cause downtime.
+
+Here's a list of what to check:
+
+1. **Deploy Defender for Endpoint with [tamper protection](tamper-protection-overview) enabled**. If issues arise, enable [troubleshooting mode](troubleshooting-mode-enable), disable [tamper protection](tamper-protection-overview), disable [real-time protection](configure-protection-features-microsoft-defender-antivirus), and configure [scheduled scans](schedule-antivirus-scans).
+2. **Exclude DBMS files and executables** following your DBMS vendor recommendations.
+3. **Analyze SAPMNT, SAP TRANS\_DIR, Spool, and Job Log directories**. If there are more than 100,000 files, consider archiving to reduce the number of files.
+4. **Confirm the performance limits and quotas of the shared file system used for SAPMNT**. The SMB share source could be a NetApp appliance, a Windows Server shared disk, or Azure Files SMB.
+5. **Configure exclusions so that all SAP application servers aren't scanning the SAPMNT share simultaneously**, as it could overload your shared storage server.
+6. **In general, host interface files on a dedicated non-SAP file server**. Interface files are recognized as an attack vector. Real-time protection should be activated on this dedicated file server. SAP Servers should never be used as file servers for interface files.
+
+    Note
+
+    Some large SAP systems have more than 20 SAP application servers each with a connection to the same SAPMNT SMB share. 20 application servers simultaneously scanning the same SMB server may overload the SMB server. It is recommended to exclude SAPMNT from regular scans.
+
+## Important configuration settings for Defender for Endpoint on Windows Server with SAP
+
+1. **Get an overview of [Microsoft Defender for Endpoint](microsoft-defender-endpoint)**. In particular, review information about [next-generation protection](next-generation-protection) and [EDR](overview-endpoint-detection-response).
+
+    Note
+
+    The term *Defender* is sometimes used to refer to an entire suite of products and solutions. See [What is Microsoft Defender XDR?](/en-us/defender-xdr/microsoft-365-defender). In this article, we focus on antivirus and EDR capabilities in Defender for Endpoint.
+2. **Check the status of Microsoft Defender Antivirus**
+
+    - **[Get-MpPreference](/en-us/powershell/module/defender/get-mppreference)**: Run the following PowerShell command:
+
+        ```powershell
+        Get-MpPreference | Select-Object -Property DisableCpuThrottleOnIdleScans, DisableRealtimeMonitoring, DisableScanningMappedNetworkDrivesForFullScan , DisableScanningNetworkFiles, ExclusionPath, MAPSReporting 
+        ```
+
+        Expected output:
+
+        ```output
+        
+        DisableCpuThrottleOnIdleScans                 : True
+        DisableRealtimeMonitoring                     : False
+        DisableScanningMappedNetworkDrivesForFullScan : True
+        DisableScanningNetworkFiles                   : False
+        ExclusionPath                                 : <<configured exclusions show here>>
+        MAPSReporting                                 : 2
+        ```
+    - **[Get-MpComputerStatus](/en-us/powershell/module/defender/get-mpcomputerstatus?view=windowsserver2022-ps&amp;preserve-view=true)**: Run the following PowerShell command:
+
+        ```powershell
+        Get-MpComputerStatus |Select-Object -Property AMRunningMode, AntivirusEnabled, BehaviorMonitorEnabled, IsTamperProtected , OnAccessProtectionEnabled, RealTimeProtectionEnabled    
+        ```
+
+        Expected output:
+
+        ```output
+        AMRunningMode             : Normal
+        AntivirusEnabled          : True
+        BehaviorMonitorEnabled    : True
+        IsTamperProtected         : True
+        OnAccessProtectionEnabled : True
+        RealTimeProtectionEnabled : True
+        ```
+3. **Check the status of EDR**: Run the following PowerShell command Open Command Prompt, and then run the following command:
+
+    ```powershell
+    Get-Service -Name sense | Format-List *
+    ```
+
+    The output should resemble the following example:
+
+    ```output
+    Name        : sense
+    RequiredServices  : {}
+    CanPauseAndContinue : False
+    CanShutdown     : False
+    CanStop       : False
+    DisplayName     : Windows Defender Advanced Threat Protection Service
+    DependentServices  : {}
+    MachineName     : .
+    ServiceName     : sense
+    ServicesDependedOn : {}
+    ServiceHandle    :
+    Status       : Running
+    ServiceType     : Win32OwnProcess
+    StartType      : Automatic
+    Site        :
+    Container      :
+    ```
+
+    The values you want to see are `Status: Running` and `StartType: Automatic`. For more information, see [Review events and errors using Event Viewer](event-error-codes).
+4. **Make sure that Microsoft Defender Antivirus is up to date**. The best way to make sure your antivirus protection is up to date is by using Windows Update. If you encounter issues or get an error, contact your security team.
+
+    For more information about updates, see [Microsoft Defender Antivirus security intelligence and product updates](microsoft-defender-antivirus-updates).
+5. **Make sure [behavior monitoring](behavioral-blocking-containment) is turned on**. When tamper protection is enabled, behavior monitoring is turned on by default. Use the default configuration of tamper protection enabled, behavior monitoring enabled, and real-time monitoring enabled unless a specific problem is identified.
+
+    For more information, see [Built-in protection helps guard against ransomware](built-in-protection).
+6. **Make sure [real-time protection is enabled](configure-real-time-protection-microsoft-defender-antivirus)**. The current recommendation for Defender for Endpoint on Windows is to enable real-time scanning, with tamper protection enabled, behavior monitoring enabled, and real-time monitoring enabled, unless a specific problem is identified.
+
+    For more information, see [Built-in protection helps guard against ransomware](built-in-protection).
+7. **Keep in mind how scans work with network shares**. By default, the Microsoft Defender Antivirus component on Windows scans SMB shared network file systems (for example, a Windows server share `\\server\smb-share` or a NetApp share) when these files are accessed by processes.
+
+    [EDR in Defender for Endpoint](overview-endpoint-detection-response) on Windows might scan SMB shared network file systems. The EDR sensor scans certain files that are identified as interesting for EDR analysis during file modification, delete, and move operations.
+
+    Defender for Endpoint on Linux doesn't scan NFS file systems during [scheduled scans](schedule-antivirus-scan-crontab).
+8. **Troubleshoot sense health or reliability issues**. To troubleshoot such issues, use the [Defender for Endpoint client analyzer tool](overview-client-analyzer). The Defender for Endpoint client analyzer can be useful when diagnosing sensor health or reliability issues on onboarded Windows, Linux, or Mac devices. Get the latest version of the Defender for Endpoint client analyzer here: https://aka.ms/MDEClientAnalyzer.
+9. **Open a support case** if you need help. See [Contact Microsoft Defender for Endpoint support](contact-support).
+10. **If you're using production SAP VMs with [Microsoft Defender for Cloud](/en-us/azure/defender-for-cloud/defender-for-cloud-introduction), keep in mind that Defender for Cloud deploys the Defender for Endpoint extension to all VMs**. If a VM isn't onboarded to Defender for Endpoint, it could be used as an attack vector. If you need more time to test Defender for Endpoint before deploying to your production environment, [contact support](contact-support).
+
+## Useful Commands: Microsoft Defender for Endpoint with SAP on Windows Server
+
+This section includes commands to confirm or configure Defender for Endpoint settings by using PowerShell and Command Prompt:
+
+### Update Microsoft Defender Antivirus definitions manually
+
+Use one of the following methods:
+
+- Windows Update
+- [MpCmdRun command-line utility](configure-network-connections-microsoft-defender-antivirus):
+
+    In an elevated Command Prompt (a Command Prompt window you opened by selecting **Run as administrator**), run the following commands:
+
+    Tip
+
+    The first command changes the directory to the latest version of &lt;antimalware platform version&gt; in `%ProgramData%\Microsoft\Windows Defender\Platform\<antimalware platform version>`. If that path doesn't exist, it goes to `%ProgramFiles%\Windows Defender`.
+
+    ```dos
+    (set "_done=" & if exist "%ProgramData%\Microsoft\Windows Defender\Platform\" (for /f "delims=" %d in ('dir "%ProgramData%\Microsoft\Windows Defender\Platform" /ad /b /o:-n 2^>nul') do if not defined _done (cd /d "%ProgramData%\Microsoft\Windows Defender\Platform\%d" & set _done=1)) else (cd /d "%ProgramFiles%\Windows Defender")) >nul 2>&1
+    
+    MpCmdRun.exe -SignatureUpdate
+    ```
+
+    You should see output that looks like this:
+
+    ```console
+    UpdateLogging: UpdateSessionGuid: 5A694F08-0962-4358-A370-95419D0A2EAE
+    Signature update started . . .
+    
+    Service Version: 4.18.26010.5
+    Engine Version: 1.1.26010.1
+    AntiSpyware Signature Version: 1.445.727.0
+    AntiVirus Signature Version: 1.445.727.0
+    Signature update finished.
+    ```
+- [Update-MpSignature](/en-us/powershell/module/defender/update-mpsignature):
+
+    1. Open an elevated PowerShell session (a PowerShell window you opened by selecting **Run as administrator**). For example:
+
+        1. Open the **Start** menu, and then type **powershell**.
+        2. Right-click on the **PowerShell 7 (x64)** or **Windows PowerShell** result, and then select **Run as administrator**.
+    2. In the elevated PowerShell session, run the following command:
+
+        ```powershell
+        Update-MpSignature
+        ```
+
+### Determine whether EDR in block mode is turned on
+
+[EDR in block mode](edr-in-block-mode) provides added protection from malicious artifacts when Microsoft Defender Antivirus isn't the primary antivirus product and is running in passive mode. You can determine whether EDR in block mode is enabled by running the following command:
+
+```powershell
+Get-MPComputerStatus|select AMRunningMode
+```
+
+There are two modes: *Normal* and *Passive Mode*. We used `AMRunningMode = Normal` when testing SAP systems.
+
+For more information about this command, see [Get-MpComputerStatus](/en-us/powershell/module/defender/get-mpcomputerstatus?view=windowsserver2022-ps&amp;preserve-view=true).
+
+### Configure antivirus exclusions
+
+Before you configure exclusions, make sure that the SAP Basis team coordinates with your security team. Exclusions should be configured centrally and not at the VM level. Some exclusions, such as the shared SAPMNT file system exclusion should be configured with a policy in the [Microsoft Intune admin portal](https://intune.microsoft.com).
+
+To view exclusions, use the following command:
+
+```powershell
+
+Get-MpPreference | Select-Object -Property ExclusionPath
+
+```
+
+For more information about this command, see [Get-MpComputerStatus](/en-us/powershell/module/defender/get-mpcomputerstatus?view=windowsserver2022-ps&amp;preserve-view=true).
+
+For more information about exclusions, see the following resources:
+
+- [Exclusions overview](defender-endpoint-exclusions-overview)
+- [Configure custom exclusions for Microsoft Defender Antivirus](microsoft-defender-antivirus-exclusions-configure)
+- [Contextual file and folder exclusions](microsoft-defender-antivirus-exclusions-overview#contextual-exclusions)
+
+### Configure EDR exclusions
+
+It isn't recommended to exclude files, paths, or processes from EDR, because such exclusions compromise protection from modern, nonfile-based threats. If necessary, open a support case in the [Microsoft Defender portal](https://security.microsoft.com) and specify the executables and/or paths to exclude. For more information, see [Contact Microsoft Defender for Endpoint support](contact-support).
+
+### Disable Defender for Endpoint on Windows for testing purposes
+
+Caution
+
+It is not recommended to disable security software unless there is no other alternative to solve or isolate a problem.
+
+Defender for Endpoint should be configured with [tamper protection](tamper-protection-overview) turned on. To temporarily disable Defender for Endpoint to isolate problems, use [troubleshooting mode](troubleshooting-mode-enable).
+
+To shut down various subcomponents of the Microsoft Defender Antivirus solution, run the following commands:
+
+```powershell
+
+Set-MPPreference -DisableTamperProtection $true
+Set-MpPreference -DisableRealtimeMonitoring $true
+Set-MpPreference -DisableBehaviorMonitoring $true
+Set-MpPreference -MAPSReporting Disabled
+Set-MpPreference -DisableIOAVProtection $true
+Set-MpPreference -EnableNetworkProtection Disabled
+
+```
+
+For more information about these commands, see [Set-MpPreference](/en-us/powershell/module/defender/set-mppreference?view=windowsserver2022-ps&amp;preserve-view=true).
+
+Important
+
+You can't turn off EDR subcomponents on a device. The only way to turn off EDR is to [offboard the device](configure-endpoints-script#offboard-devices-using-a-local-script).
+
+To turn off [cloud-delivered protection](cloud-protection-microsoft-defender-antivirus) (also referred to as Microsoft Advanced Protection Service, or MAPS), run the following commands:
+
+```powershell
+
+PowerShell Set-MpPreference -MAPSReporting 0
+PowerShell Set-MpPreference -MAPSReporting Disabled
+
+```
+
+For more information about cloud-delivered protection, see the following resources:
+
+- [Cloud protection and Microsoft Defender Antivirus](cloud-protection-microsoft-defender-antivirus)
+- [Cloud protection and sample submission at Microsoft Defender Antivirus](cloud-protection-microsoft-antivirus-sample-submission) (if you're considering whether to use automatic sample submission with your security policies)

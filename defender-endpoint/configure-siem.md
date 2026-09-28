@@ -1,0 +1,149 @@
+---
+layout: Conceptual
+title: Migrate from the MDE SIEM API to the Microsoft Defender XDR alerts API - Microsoft Defender for Endpoint | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/configure-siem
+breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
+feedback_system: Standard
+permissioned-type: public
+feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: bagol
+description: Learn how to ingest incidents and alerts, and integrate SIEM tools.
+ms.service: defender-endpoint
+ms.author: painbar
+author: paulinbar
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier2
+ms.topic: upgrade-and-migration-article
+ms.date: 2024-09-21T00:00:00.0000000Z
+locale: en-us
+document_id: f7353a53-0067-900b-d423-f3213cd3b1b4
+document_version_independent_id: f7353a53-0067-900b-d423-f3213cd3b1b4
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-endpoint/configure-siem.md
+site_name: Docs
+depot_name: Learn.defender-endpoint
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: configure-siem
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-endpoint/configure-siem.md
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5fc61396-d075-4560-aece-fdbda73d243f
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/ad9437c1-8cda-4537-ad69-b4b263652e13
+platformId: ee8b3ea1-facb-49d1-986f-3de8e7e5f025
+---
+
+# Migrate from the MDE SIEM API to the Microsoft Defender XDR alerts API - Microsoft Defender for Endpoint | Microsoft Learn
+
+## Use the new Microsoft Defender XDR API for all your alerts
+
+The Microsoft Defender XDR alerts API, released to public preview in MS Graph, is the official and recommended API for customers migrating from the SIEM API. This API enables customers to work with alerts across all Microsoft Defender XDR products using a single integration. We expect the new API to reach general availability (GA) by Q1 CY 2023.
+
+The SIEM API was deprecated on December 31, 2023. It's declared to be "deprecated," but not "retired." This means that until this date, the SIEM API continues to function for existing customers. After the deprecation date, the SIEM API will continue to be available, however it will only be supported for security-related fixes.
+
+Effective December 31, 2024, three years after the original deprecation announcement, we reserve the right to turn off the SIEM API, without further notice.
+
+For additional information about the new APIs, see the blog announcement: [The new Microsoft Defender XDR APIs in Microsoft Graph are now available in public preview!](https://techcommunity.microsoft.com/t5/microsoft-365-defender-blog/the-new-microsoft-365-defender-apis-in-microsoft-graph-are-now/ba-p/3603099)
+
+API documentation: [Use the Microsoft Graph security API - Microsoft Graph](/en-us/graph/api/resources/security-api-overview#alerts-and-incidents-preview)
+
+If you're a customer using the SIEM API, we strongly recommend planning and executing the migration. This article includes information about the options available to migrate to a supported capability:
+
+1. Pulling MDE alerts into an external system (SIEM/SOAR).
+2. Calling the Microsoft Defender XDR alerts API directly.
+
+Read about the new Microsoft Defender XDR [alerts and incidents API](https://techcommunity.microsoft.com/t5/microsoft-365-defender-blog/the-new-microsoft-365-defender-apis-in-microsoft-graph-are-now/ba-p/3603099#:%7E:text=Incidents%3A%20Contain%20incident%20metadata%20and%20a%20collection%20of,richer%20and%20actionable%20information%20for%20your%20automation%20flows.)
+
+### Pulling Defender for Endpoint alerts into an external system
+
+If you're pulling Defender for Endpoint alerts into an external system, there are several supported options to give organizations the flexibility to work with the solution of their choice:
+
+1. **Microsoft Sentinel** is a scalable, cloud-native, SIEM and Security orchestration, automation, and response (SOAR) solution. Delivers intelligent security analytics and threat intelligence across the enterprise, providing a single solution for attack detection, threat visibility, proactive hunting, and threat response. The Microsoft Defender connector allows customers to easily pull in all their incidents and alerts from all Microsoft Defender products. To learn more about the integration, see [Microsoft Defender integration with Microsoft Sentinel](/en-us/azure/sentinel/microsoft-365-defender-sentinel-integration).
+2. **IBM Security QRadar** SIEM provides centralized visibility and intelligent security analytics to identify and prevent threats and vulnerabilities from disrupting business operations. [QRadar SIEM team has just announced the release of a new DSM](https://community.ibm.com/community/user/security/blogs/gaurav-sharma/2022/10/18/ibm-qradar-and-microsoft-defender) that is integrated with the new Microsoft Defender alerts API to pull in Microsoft Defender for Endpoint alerts. New customers are welcome to take advantage of the new DSM upon release. Learn more about the new DSM and how to easily migrate to it at [Microsoft Defender XDR - IBM Documentation](https://www.ibm.com/docs/en/dsm?topic=microsoft-365-defender).
+3. **Splunk SOAR** helps customers orchestrate workflows and automate tasks in seconds to work smarter and respond faster. Splunk SOAR is integrated with the new Microsoft Defender XDR APIs, including the alerts API. For more information, see [Microsoft Defender XDR | Splunkbase](https://splunkbase.splunk.com/app/6563)
+
+Other integrations are listed in [Technological partners of Microsoft Defender XDR](technological-partners), or contact your SIEM / SOAR provider to learn about integrations they provide.
+
+### Calling the Microsoft Defender XDR alerts API directly
+
+The below table provides a mapping between the SIEM API to the Microsoft Defender alerts API:
+
+| SIEM API property | Mapping | Microsoft Defender alert API property |
+| --- | --- | --- |
+| `AlertTime` | -&gt; | `createdDateTime` |
+| `ComputerDnsName` | -&gt; | `evidence/deviceEvidence: deviceDnsName` |
+| `AlertTitle` | -&gt; | `title` |
+| `Category` | -&gt; | `category` |
+| `Severity` | -&gt; | `severity` |
+| `AlertId` | -&gt; | `id` |
+| `Actor` | -&gt; | `actorDisplayName` |
+| `LinkToWDATP` | -&gt; | alertWebUrl |
+| `IocName` | X | IoC fields not supported |
+| `IocValue` | X | IoC fields not supported |
+| `CreatorIocName` | X | IoC fields not supported |
+| `CreatorIocValue` | X | IoC fields not supported |
+| `Sha1` | -&gt; | `evidence/fileEvidence/fileDetails: sha1 (or evidence/processEvidence/imageFile: sha1)` |
+| `FileName` | -&gt; | `evidence/fileEvidence/fileDetails: fileName (or evidence/processEvidence/image: fileName)` |
+| `FilePath` | -&gt; | `evidence/fileEvidence/fileDetails: filePath (or evidence/processEvidence/image: filePath)` |
+| `IPAddress` | -&gt; | `evidence/ipEvidence: ipAddress` |
+| `URL` | -&gt; | `evidence/urlEvidence: url` |
+| `IoaDefinitionId` | -&gt; | `detectorId` |
+| `UserName` | -&gt; | `evidence/userEvidence/userAccount: accountName` |
+| `AlertPart` | X | Obsolete (Defender for Endpoint alerts are atomic/complete that are updatable, while the SIEM API were immutable records of detections) |
+| `FullId` | X | IoC fields not supported |
+| `LastProcessedTimeUtc` | -&gt; | `lastActivityDateTime` |
+| `ThreatCategory` | -&gt; | `mitreTechniques []` |
+| `ThreatFamilyName` | -&gt; | `threatFamilyName` |
+| `ThreatName` | -&gt; | `threatDisplayName` |
+| `RemediationAction` | -&gt; | `evidence: remediationStatus` |
+| `RemediationIsSuccess` | -&gt; | `evidence: remediationStatus (implied)` |
+| `Source` | -&gt; | `detectionSource (use with serviceSource: microsoftDefenderForEndpoint)` |
+| `Md5` | X | Not supported |
+| `Sha256` | -&gt; | `evidence/fileEvidence/fileDetails: sha256 (or evidence/processEvidence/imageFile: sha256)` |
+| `WasExecutingWhileDetected` | -&gt; | `evidence/processEvidence: detectionStatus` |
+| `UserDomain` | -&gt; | `evidence/userEvidence/userAccount: domainName` |
+| `LogOnUsers` | -&gt; | `evidence/deviceEvidence: loggedOnUsers []` |
+| `MachineDomain` | -&gt; | Included in `evidence/deviceEvidence: deviceDnsName` |
+| `MachineName` | -&gt; | Included in `evidence/deviceEvidence: deviceDnsName` |
+| `InternalIPV4List` | X | Not supported |
+| `InternalIPV6List` | X | Not supported |
+| `FileHash` | -&gt; | Use `sha1` or `sha256` |
+| `DeviceID` | -&gt; | `evidence/deviceEvidence: mdeDeviceId` |
+| `MachineGroup` | -&gt; | `evidence/deviceEvidence: rbacGroupName` |
+| `Description` | -&gt; | `description` |
+| `DeviceCreatedMachineTags` | -&gt; | `evidence: tags [] (for deviceEvidence)` |
+| `CloudCreatedMachineTags` | -&gt; | `evidence: tags [] (for deviceEvidence)` |
+| `CommandLine` | -&gt; | `evidence/processEvidence: processCommandLine` |
+| `IncidentLinkToWDATP` | -&gt; | `incidentWebUrl` |
+| `ReportId` | X | Obsolete (Defender for Endpoint alerts are atomic/complete that are updatable, while the SIEM API were immutable records of detections) |
+| `LinkToMTP` | -&gt; | `alertWebUrl` |
+| `IncidentLinkToMTP` | -&gt; | `incidentWebUrl` |
+| `ExternalId` | X | Obsolete |
+| `IocUniqueId` | X | IoC fields not supported |
+
+## Ingest alerts using security information and events management (SIEM) tools
+
+Note
+
+[Microsoft Defender for Endpoint Alert](api/alerts) is composed from one or more suspicious or malicious events that occurred on the device and their related details. The Microsoft Defender for Endpoint Alert API is the latest API for alert consumption and contains a detailed list of related evidence for each alert. For more information, see [Alert methods and properties](api/alerts) and [List alerts](api/get-alerts).
+
+Microsoft Defender for Endpoint supports security information and event management (SIEM) tools ingesting information from your enterprise tenant in Microsoft Entra ID using the OAuth 2.0 authentication protocol for a registered Microsoft Entra application representing the specific SIEM solution or connector installed in your environment.
+
+For more information, see:
+
+- [Microsoft Defender for Endpoint APIs license and terms of use](/en-us/legal/microsoft-365/api-terms-of-use)
+- [Access the Microsoft Defender for Endpoint APIs](/en-us/defender-vulnerability-management/tvm-supported-os)
+- [Hello World example (describes how to register an application in Microsoft Entra ID)](api/api-hello-world)
+- [Get access with application context](api/exposed-apis-create-app-webapp)
+- [Microsoft Defender XDR SIEM integration](/en-us/defender-xdr/configure-siem-defender)

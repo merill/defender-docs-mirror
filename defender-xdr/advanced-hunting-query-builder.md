@@ -1,0 +1,198 @@
+---
+layout: Conceptual
+title: Build queries using guided mode in Microsoft Defender advanced hunting - Microsoft Defender XDR | Microsoft Learn
+canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-query-builder
+breadcrumb_path: /defender-xdr/breadcrumb/toc.json
+permissioned-type: public
+feedback_system: Standard
+feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
+uhfHeaderId: MSDocsHeader-MicrosoftDefender
+manager: orspodek
+description: Learn how to build queries in guided mode by combining different available filters and conditions.
+ms.service: defender-xdr
+ms.subservice: adv-hunting
+ms.author: pauloliveria
+author: poliveria
+ms.localizationpriority: medium
+ms.collection:
+- m365-security
+- tier2
+ms.custom:
+- msecd-doc-authoring-1014
+- cx-ti
+- cx-ah
+ms.topic: how-to
+ms.date: 2026-07-02T00:00:00.0000000Z
+ai-usage: ai-assisted
+locale: en-us
+document_id: 933aae97-1a77-beb7-8dd1-b334be948c3f
+document_version_independent_id: 933aae97-1a77-beb7-8dd1-b334be948c3f
+original_content_git_url: https://github.com/MicrosoftDocs/defender-docs-pr/blob/live/defender-xdr/advanced-hunting-query-builder.md
+site_name: Docs
+depot_name: MSDN.defender-xdr
+page_type: conceptual
+toc_rel: toc.json
+feedback_help_link_type: ''
+feedback_help_link_url: ''
+asset_id: advanced-hunting-query-builder
+moniker_range_name: 
+monikers: []
+item_type: Content
+source_path: defender-xdr/advanced-hunting-query-builder.md
+cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/a3955c7b-f5ee-420d-aff5-d7119738f38b
+spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b31948f4-2f38-404b-ac93-c3c8c5b3ae33
+platformId: 1b92b6a1-5c3e-0139-9615-e23fc8baa017
+---
+
+# Build queries using guided mode in Microsoft Defender advanced hunting - Microsoft Defender XDR | Microsoft Learn
+
+Important
+
+Some information relates to prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.
+
+The query builder in guided mode allows analysts to craft meaningful hunting queries *without knowing Kusto Query Language (KQL) or the data schema*. Analysts from every tier of experience can use the query builder to filter through data from the last 30 days to look for threats, expand incident investigations, perform data analytics on threat data, or focus on specific threat areas.
+
+The analyst can choose which data set to look at and which filters and conditions to use to narrow the data down to what they need.
+
+You can watch this video to get an overview of guided hunting:
+
+## Open a query in Query Builder
+
+In the **Advanced hunting** page, select **Create new** to open a new query tab and select **Query in builder**.
+
+![Screenshot of the advanced hunting page with the Query in builder option selected to open guided mode](media/advanced-hunting-query-builder/01-open-query-builder.png)
+
+Selecting **Query in builder** opens guided mode, where you can construct your query by selecting different components from dropdown menus.
+
+## Specify the data domain to hunt in
+
+You can control the scope of the hunt by selecting which domain the query covers:
+
+![Screenshot of the guided mode query builder with the data domain dropdown open for selecting a hunting scope](media/advanced-hunting-query-builder/02-specify-domain.png)
+
+Selecting **All** includes data from all domains you currently have access to. Narrowing down to a specific domain allows filters relevant to that domain only.
+
+You can choose from:
+
+- All domains - To look through all available data in your query.
+- Endpoints - To look through endpoint data as provided by Microsoft Defender for Endpoint.
+- Email and collaboration - To look through email and collaboration apps data like SharePoint, OneDrive and others; users familiar with [Threat Explorer](/en-us/defender-office-365/threat-explorer-real-time-detections-about) can find the same data here.
+- Apps and identities - To look through application and identity data as provided by Microsoft Defender for Cloud Apps and Microsoft Defender for Identity; users familiar with [Activity log](/en-us/defender-cloud-apps/activity-filters) can find the same data here.
+- Cloud infrastructure - To look through cloud infrastructure data as provided by Microsoft Defender for Cloud.
+- Exposure management - To look through exposure management data as provided by Microsoft Security Exposure Management.
+
+## Use basic filters
+
+By default, guided hunting includes a few basic filters to get you started fast.
+
+![Screenshot of the guided mode query builder showing the default basic filters available for defining a query](media/advanced-hunting-query-builder/03-use-basic-filters.png)
+
+When you choose one data source, for instance, **Endpoints**, the query builder displays only the applicable filter groups. You can then choose a filter you are interested in narrowing down by selecting that filter group, for instance, **EventType**, and selecting the filter of your choice.
+
+![Screenshot of the guided mode query builder with endpoint-specific filters displayed after selecting the Endpoints domain](media/advanced-hunting-query-builder/03a-use-basic-filters.png)
+
+Once the query is ready, select the blue **Run query** button. If the button is grayed out, the query needs to be filled out or edited further.
+
+Note
+
+The basic filter view uses the **AND** operator only, meaning running the query generates results for which all set filters are true.
+
+## Load sample queries
+
+Another quick way to get familiar with guided hunting is to load sample queries using the **Load sample queries** dropdown menu. ![Screenshot of the guided mode query builder showing predefined sample queries available to load from the dropdown menu](media/advanced-hunting-query-builder/05-load-sample-queries.png)
+
+Note
+
+Selecting a sample query overrides the existing query.
+
+Once the sample query is loaded, select **Run query**.
+
+![Screenshot of the guided mode query builder with a sample query loaded and ready to run](media/advanced-hunting-query-builder/06-load-sample-queries.png)
+
+If you have previously selected a domain, the list of available sample queries changes accordingly.
+
+![Screenshot of the guided mode query builder showing sample queries filtered to match the previously selected domain](media/advanced-hunting-query-builder/07-load-sample-queries.png)
+
+To restore the complete list of sample queries, select **All domains** then reopen **Load sample queries**.
+
+If the loaded sample query uses filters outside of the basic filter set, the **All filters** toggle is grayed out. To go back to the basic filter set, select **Clear all** then toggle **All filters**.
+
+## Use more filters
+
+To view more filter groups and conditions, select **Toggle to see more filters and conditions**.
+
+![Screenshot of the guided mode query builder showing the toggle option for enabling additional filters and conditions](media/advanced-hunting-query-builder/08-use-more-filters.png)
+
+When the **All filters** toggle is active, you can now use the full range of filters and conditions in guided mode.
+
+![Screenshot of the guided mode query builder with All filters enabled, showing expanded filter categories available for building more complex conditions](media/advanced-hunting-query-builder/09-use-more-filters.png)
+
+### Create conditions
+
+To specify a set of data to be used in the query, select **Select a filter**. Explore the different filter sections to find what is available to you.
+
+![Screenshot of the guided mode query builder showing the filter selection list for choosing a field to add as a query condition](media/advanced-hunting-query-builder/10-create-conditions.png)
+
+Type a section title in the search box at the top of the list to find the filter you want. Sections ending in *info* contain filters that provide information about the different components you can look at and filters for the states of entities. Sections ending in *events* contain filters that allow you to look for any monitored event on the entity. For instance, to hunt for activities involving certain devices, you can use the filters under the **Device events** section.
+
+Note
+
+Choosing a filter that isn't in the basic filters list deactivates or grays out the toggle to return to the basic filters view. To reset the query or remove existing filters in the current query, select **Clear all**. Selecting **Clear all** also reactivates the basic filters list.
+
+Next, set the appropriate condition to further filter the data by selecting it from the second dropdown menu and providing entries in the third dropdown menu if necessary:
+
+![Screenshot of the guided mode query builder showing the condition operator options available after selecting a filter](media/advanced-hunting-query-builder/11-create-conditions.png)
+
+You can add more conditions to your query by using **AND**, and **OR** conditions. AND returns results that fulfill all conditions in the query, while OR returns results that fulfill any of the conditions in the query.
+
+![Screenshot of the guided mode query builder showing AND and OR options for combining multiple query conditions](media/advanced-hunting-query-builder/12-create-conditions.png)
+
+Refining your query allows you to automatically sift through voluminous records to generate a list of results that is already targeted to your specific threat hunting need.
+
+To get to know what data types are supported and other guided mode capabilities to help you fine-tune your query, read [Refine your query in guided mode](advanced-hunting-query-builder-details).
+
+## Try sample query walk-throughs
+
+Another way to get familiar with guided hunting is to load sample queries pre-created in guided mode.
+
+In the **Getting started** section of the hunting page, we have provided three guided query examples that you can load. The query examples contain some of the most common filters and inputs you would typically need in your hunting. Loading any of the three sample queries opens a guided tour of how you would construct the entry using guided mode.
+
+![Screenshot of the Getting started section showing sample guided queries that open step-by-step teaching bubbles for building a query](media/advanced-hunting-query-builder/13-try-sample-query-walkthroughs.png)
+
+Follow the instructions in the blue teaching bubbles to construct your query. Select **Run query**.
+
+## Try some queries
+
+### Hunt for successful connections to specific IP
+
+To hunt for successful network communications to a specific IP address, start typing "ip" to get suggested filters:
+
+![Screenshot of the guided mode query builder showing IP-related filter suggestions after typing ip in the search box to hunt for connections to a specific IP address](media/advanced-hunting-query-builder/14-hunt-for-ips.png)
+
+To look for events involving a specific IP address where the IP is the destination of the communication, select `DestinationIPAddress` under the IP Address Events section. Then select the **equals** operator. Type the IP in the third dropdown menu and press **Enter**:
+
+![Screenshot of the guided mode query builder with a DestinationIPAddress equals condition set to the specified IP address](media/advanced-hunting-query-builder/15-hunt-for-ips.png)
+
+Then, to add a second condition which searches for successful network communication events, search for the filter of a specific event type:
+
+![Screenshot of the guided mode query builder adding an EventType condition to filter for successful network communication events](media/advanced-hunting-query-builder/16-hunt-for-ips.png)
+
+The **EventType** filter looks for the different event types logged. It is equivalent to the **ActionType** column which exists in most of the tables in advanced hunting. Select it to choose one or more event types to filter for. To look for successful network communication events, expand the **DeviceNetworkEvents** section and then choose `ConnectionSuccess`:
+
+![Screenshot of the guided mode query builder with the ConnectionSuccess event type selected under DeviceNetworkEvents as a condition for the IP address hunt](media/advanced-hunting-query-builder/17-hunt-for-ips.png)
+
+Finally, select **Run query** to hunt for all successful network communications to the 52.168.117.170 IP address:
+
+![Screenshot of query results showing successful network communication events to the specified destination IP address](media/advanced-hunting-query-builder/18-hunt-for-ips.png)
+
+### Hunt for high confidence phish or spam emails delivered to inbox
+
+To look for all high confidence phish and spam emails that were delivered to the inbox folder at the time of delivery, first select **ConfidenceLevel** under Email Events, select **equals** and choose **High** under both **Phish** and **Spam** from the suggested closed list which supports multi-selection:
+
+![Screenshot of the guided mode query builder with ConfidenceLevel set to High for both Phish and Spam under Email Events](media/advanced-hunting-query-builder/19-hunt-for-phish.png)
+
+Then, add another condition, this time specifying the folder or **DeliveryLocation, Inbox/folder**.
+
+![Screenshot of the guided mode query builder adding a DeliveryLocation condition set to Inbox/folder for the phishing email hunt](media/advanced-hunting-query-builder/20-hunt-for-phish.png)

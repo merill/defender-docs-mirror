@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "cursor": "https://learn.microsoft.com/en-us/unified-secops-platform/zero-trust",
   "pages": {
     "https://learn.microsoft.com/en-us/azure/defender-for-cloud/": {"etag":"\"4ZuFOR9C4PMZe5GblGFGWmZ5I9o=\"","gitCommitId":"e63d3e0c25c9cf9a5addb68b798c2a4aa1bc5756","path":"defender-for-cloud/index.md","sourcePath":"defender-for-cloud/index.yml","updatedAt":"2026-06-16T18:23:00.0000000Z"},
     "https://learn.microsoft.com/en-us/azure/defender-for-cloud/active-user": {"etag":"\"yUEv9/m2AvHdFTyiXBj4OKyunlM=\"","gitCommitId":"bf5177c78772764be3fc0e1407cb9c4eaff00ed0","path":"defender-for-cloud/active-user.md","sourcePath":"defender-for-cloud/active-user.md","updatedAt":"2026-08-08T07:35:00.0000000Z"},

@@ -6,16 +6,18 @@ feedback_system: Standard
 feedback_product_url: https://docs.microsoft.com/cloud-app-security/support-and-ts
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 breadcrumb_path: /defender-cloud-apps/breadcrumb/toc.json
-author: AbbyMSFT
+author: anandd512
 manager: bagol
-ms.author: abbyweisberg
+ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2025-08-18T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ms.topic: concept-article
 description: Learn about visibility and insights available for app governance with Microsoft Defender for Cloud Apps in Microsoft Defender XDR.
 ms.reviewer: shragar
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1016
 locale: en-us
 document_id: f7481f78-2987-1cda-5d81-70caa5b8b8fd
 document_version_independent_id: f7481f78-2987-1cda-5d81-70caa5b8b8fd
@@ -60,7 +62,7 @@ App governance provides access to the following data:
 - Data accessed and permissions used by all apps with workload and user level insights.
 - App information and metadata, such as Graph API and legacy permissions, registration date, last used date and certification.
 - Publisher information and metadata, such as name and verification status.
-- Usage of top resources, such emails and files across the tenant.
+- Usage of top resources, such as emails and files throughout the tenant.
 - A cumulative view of users accessing apps.
 - Insights on alerts, policies, and the following entities:
 
@@ -108,7 +110,7 @@ The dashboard on the **Overview** tab contains a summary of your app ecosystem:
 | **Apps that accessed data in Microsoft 365 services** | The count of apps that have accessed data with and without sensitivity labels on SharePoint, OneDrive, Exchange Online, and Teams in the last 30 days. For example, in the screenshot above, 99 apps accessed OneDrive in the last 30 days, out of which 27 apps accessed data with sensitivity labels. |
 | **Sensitivity labels accessed** | Count of apps that accessed labeled data in SharePoint, OneDrive, Exchange Online, and Teams in the last 30 days, sorted by the count. For example, in the screenshot above, 90 apps accessed confidential data on SharePoint, OneDrive, Exchange Online, and Teams. |
 | **Predefined policies** | Count of active and total predefined policies that identify risky apps, such as apps with excessive privileges, unusual characteristics, or suspicious activities. |
-| **App categories** | The top apps sorted by these categories: - **All categories**: Sorts by all available categories. - **Highly privileged**: High privilege is an internally determined category based on platform machine learning and signals. - **Overprivileged**: When app governance receives data that indicates that a permission granted to an application hasn't been used in the last 90 days, that application is overprivileged. App governance must be operating for at least 90 days to determine if any app is overprivileged. - **Unused**: Apps that have not signed in within the last 90 days - **Unverified publisher**: Applications that haven't received [publisher certification](/en-us/azure/active-directory/develop/publisher-verification-overview) are considered unverified. - **App only permissions**: [Application permissions](/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types) are used by apps that can run without a signed-in user present. Apps with permissions to access data in the tenant are potentially a higher risk.- **New apps**: New apps that have been registered in the last seven days. |
+| **App categories** | The top apps sorted by these categories: - **All categories**: Sorts by all available categories. - **Highly privileged**: High privilege is an internally determined category based on platform machine learning and signals. - **Risky apps**: Apps with a high risk score. - **Overprivileged**: When app governance receives data that indicates that a permission granted to an application hasn't been used in the last 90 days, that application is overprivileged. App governance must be operating for at least 90 days to determine if any app is overprivileged. - **Unused**: Apps that have not signed in within the last 90 days - **Unverified publisher**: Applications that haven't received [publisher certification](/en-us/azure/active-directory/develop/publisher-verification-overview) are considered unverified. - **App only permissions**: [Application permissions](/en-us/azure/active-directory/develop/v2-permissions-and-consent#permission-types) are used by apps that can run without a signed-in user present. Apps with permissions to access data in the tenant are potentially a higher risk.- **New apps**: New apps that have been registered in the last seven days. |
 
 ### View app insights
 
@@ -122,6 +124,7 @@ One of the primary value points for app governance is the ability to quickly vie
 2. Filter the apps listed using one or more of the following default filter options:
 
     - **API access**
+    - **Risk score**
     - **Privilege level**
     - **Permission**
     - **Permission usage**

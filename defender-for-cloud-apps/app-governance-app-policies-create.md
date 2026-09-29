@@ -6,16 +6,16 @@ feedback_system: Standard
 feedback_product_url: https://docs.microsoft.com/cloud-app-security/support-and-ts
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 breadcrumb_path: /defender-cloud-apps/breadcrumb/toc.json
-author: AbbyMSFT
+author: anandd512
 manager: bagol
-ms.author: abbyweisberg
+ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: shragar
-description: Create app governance policies to detect anomalous app behavior, trigger remediation, and enforce compliance for apps connected to Microsoft 365, Google Workspace, and Salesforce.
+description: Learn how to create app governance policies for OAuth apps in Microsoft 365, Google Workspace, and Salesforce to detect risk and take action.
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016
 locale: en-us
@@ -75,7 +75,7 @@ For apps connected to Microsoft Entra ID, create app policies from provided temp
 
 To create a new app policy based on an app policy template, on the **Choose App policy template page**, select a category of app template, select the name of the template, and then select **Next**.
 
-App policy templates are grouped into these categories: Usage, Permissions, and Certification.
+App policy templates are grouped into these categories: Usage, Permissions, Risk management, and Certification.
 
 ### Usage-based app policy templates
 
@@ -96,6 +96,14 @@ The following table lists the app governance templates supported to generate ale
 | **Overprivileged app** | Find apps that have unused Microsoft Graph API permissions. These apps have been granted permissions that could be unnecessary for regular use. |
 | **New highly privileged app** | Find newly registered apps that have been granted write access and other powerful permissions to Microsoft Graph and other common Microsoft first-party APIs. This policy checks the following conditions: <br>- Registration age: Seven days or less (customizable) |
 | **New app with non-Graph API permissions** | Find newly registered apps that have permissions to non-Graph APIs. These apps can expose you to risks if the APIs they access receive limited support and updates.  This policy checks the following conditions: <br>- Registration age: Seven days or less (customizable)<br>- Non-Graph API permissions: Yes |
+
+### Risk management based app policy templates
+
+The following table lists the app governance templates supported to generate alerts based on app risk.
+
+| Template name | Description |
+| --- | --- |
+| **New high risk app** | Find newly registered apps that have a high risk. This policy checks the following conditions: <br>- Registration age: Seven days or less (customizable)<br>- Risk score: Greater than 70 (customizable) |
 
 ### Certification-based app policy templates
 
@@ -135,6 +143,7 @@ Use a custom app policy when you need to do something not already done by one of
     | Condition | Condition values accepted | Description | More information |
     | --- | --- | --- | --- |
     | **Registration age** | Within last X days | Apps that were registered to Microsoft Entra ID within a specified period from the current date |  |
+    | **Risk score** | Greater than X | Apps with a risk score greater than the specified value |  |
     | **Certification** | No certification, Publisher attested, Microsoft 365 Certified | Apps that are Microsoft 365 Certified, have a publisher attestation report, or neither | [Microsoft 365 Certification framework overview](/en-us/microsoft-365-app-certification/docs/certification) |
     | **Publisher verified** | Yes or No | Apps that have verified publishers | [Publisher Verification](/en-us/entra/identity-platform/publisher-verification-overview) |
     | **Application permissions** (Graph only) | Select one or more API permissions from list | Apps with specific Graph API permissions that have been granted directly | [Microsoft Graph permissions reference](/en-us/graph/permissions-reference) |
@@ -162,29 +171,17 @@ Use a custom app policy when you need to do something not already done by one of
 9. On the **Define Policy Actions** page, select **Disable app** if you want app governance to disable the app when an alert based on this policy is generated, and then select **Next**. Use caution when applying actions because a policy may affect users and legitimate app use.
 10. On the **Define Policy Status** page, select one of these options:
 
-    - **Audit mode**: Policies are evaluated but configured actions won't occur. Audit mode policies appear with the status of **Audit** in the list of policies. You should use Audit mode for testing a new policy.
     - **Active**: Policies are evaluated and configured actions will occur.
     - **Inactive**: Policies aren't evaluated and configured actions won't occur.
 11. Carefully review all parameters of your custom policy. Select **Submit** when you're satisfied. You can also go back and change settings by selecting **Edit** beneath any of the settings.
 
-## Test and monitor your new app policy
+## Monitor your new app policy
 
-Now that your app policy is created, you should monitor it on the **Policies** page to ensure it's registering an expected number of active alerts and total alerts during testing.
+After you create an app policy, monitor it on the **Policies** page to confirm that it generates the expected number of active and total alerts.
 
 [![Screenshot of the app governance policies summary page in Microsoft Defender XDR, with a highlighted policy.](media/app-governance/mapg-cc-policies-policy.png)](media/app-governance/mapg-cc-policies-policy.png#lightbox)
 
-If the number of alerts is an unexpectedly low value, edit the settings of the app policy to ensure you've configured it correctly before setting the policy status.
-
-Here's an example of a process for creating a new policy, testing it, and then making it active:
-
-1. Create the new policy with severity, apps, conditions, and actions set to initial values and the status set to **Audit mode**.
-2. Check for expected behavior, such as alerts generated.
-3. If the behavior isn't expected, edit the policy apps, conditions, and action settings as needed and go back to step 2.
-4. If the behavior is expected, edit the policy and change its status to **Active**.
-
-    For example, the following flow chart shows the steps involved:
-
-    [![Screenshot illustrating the steps involved in the create app policy workflow.](media/app-governance/mapg-create-new-policy-process.png)](media/app-governance/mapg-create-new-policy-process.png#lightbox)
+If the number of alerts is unexpectedly low, review and update the app policy settings.
 
 ## Create a new policy for OAuth apps connected to Salesforce and Google Workspace
 
@@ -192,7 +189,7 @@ Policies for OAuth apps trigger alerts only on policies that are authorized by u
 
 **To create a new app policy for Salesforce, Google and other apps**:
 
-1. Go to **Microsoft Defender XDR &gt; App governance &gt; Policies &gt; Other apps**. For example:
+1. In Microsoft Defender XDR, go to **Cloud Apps** &gt; **App governance** &gt; **Policies** &gt; **Other apps**. For example:
 
     ![Screenshot of the Other apps policy creation page in App Governance](media/app-governance-app-policies-create/other-apps-policy-creation.jpg)
 2. Filter the apps according to your needs. For example, you might want to view all apps that request **Permission** to **Modify calendars in your mailbox**.

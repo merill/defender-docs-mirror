@@ -6,16 +6,18 @@ feedback_system: Standard
 feedback_product_url: https://docs.microsoft.com/cloud-app-security/support-and-ts
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 breadcrumb_path: /defender-cloud-apps/breadcrumb/toc.json
-author: AbbyMSFT
+author: anandd512
 manager: bagol
-ms.author: abbyweisberg
+ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2025-08-18T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ms.topic: quickstart
 description: Step-by-step guide to help you quickly get started with app governance in Microsoft Defender for Cloud Apps and Microsoft Defender XDR.
 ms.reviewer: shragar
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1016
 locale: en-us
 document_id: b1299c13-7049-6349-5157-d73d3616a2df
 document_version_independent_id: b1299c13-7049-6349-5157-d73d3616a2df
@@ -46,7 +48,7 @@ platformId: 6a167d81-ab48-28b2-65ec-7b2e6ce8b475
 
 App governance solutions require a deep understanding of app behavior within an environment to identify and address activities that fall within a tolerance level that requires more review to assess malicious intent. When layered over Defender for Cloud Apps, app governance gives you in-depth governance against risky app behavior in your environment.
 
-This article describes how to get started using app governance features in Microsoft Defender for Cloud Apps.
+Use this quickstart to begin using app governance features in Microsoft Defender for Cloud Apps.
 
 ## Prerequisites
 
@@ -61,7 +63,7 @@ This article describes how to get started using app governance features in Micro
 Start by using the following steps to get visibility and insights about your apps:
 
 1. **Sign in**: In your browser, go to the **Microsoft Defender XDR &gt; Cloud Apps &gt; [App governance](https://aka.ms/appgovernance)** page.
-2. **[Determine compliance posture](app-governance-visibility-insights-compliance-posture)**: Use the data on the **App governance &gt; Overview** tab to assess the compliance posture of your apps and incidents in your tenant. View details like how many overprivileged apps are in your tenant, the number of active incidents, the total Graph API data access, and more.
+2. **[Determine security posture](app-governance-visibility-insights-security-posture)**: Use the data on the **App governance &gt; Overview** tab to assess the security posture of your apps and incidents in your tenant. View details like how many overprivileged apps are in your tenant, the number of active incidents, the total Graph API data access, and more.
 
     Tip
 

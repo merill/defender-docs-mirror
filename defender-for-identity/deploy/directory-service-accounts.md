@@ -13,9 +13,11 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about how Microsoft Defender for Identity uses Directory Service accounts (DSAs).
-ms.date: 2024-01-16T00:00:00.0000000Z
+ms.date: 2026-09-29T00:00:00.0000000Z
 ms.topic: article
 ms.reviewer: rlitinsky
+ms.custom: msecd-doc-authoring-1015
+ai-usage: ai-assisted
 locale: en-us
 document_id: 0583491b-eeb3-568d-0984-55e9c4c7ee32
 document_version_independent_id: 0583491b-eeb3-568d-0984-55e9c4c7ee32
@@ -58,7 +60,7 @@ While a DSA is optional in some scenarios, we recommend that you configure a DSA
 
 For example, when you have a DSA configured, the DSA is used to connect to the domain controller at startup. A DSA can also be used to query the domain controller for data on entities seen in network traffic, monitored events, and monitored ETW activities
 
-A DSA is required for the following features and functionality:
+For sensor v2.x, a DSA is required for the following features and functionality:
 
 - When working with a sensor installed on an [AD FS, AD CS, or Microsoft Entra Connect server](active-directory-federation-services).
 - Requesting member lists for local administrator groups from devices seen in network traffic, events and ETW activities via a [SAM-R call](remote-calls-sam) made to the device.

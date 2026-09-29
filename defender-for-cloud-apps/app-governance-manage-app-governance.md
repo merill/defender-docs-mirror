@@ -6,16 +6,18 @@ feedback_system: Standard
 feedback_product_url: https://docs.microsoft.com/cloud-app-security/support-and-ts
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 breadcrumb_path: /defender-cloud-apps/breadcrumb/toc.json
-author: AbbyMSFT
+author: anandd512
 manager: bagol
-ms.author: abbyweisberg
+ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2025-08-12T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ms.reviewer: anandd512
 ms.topic: concept-article
 description: Implement Microsoft app governance capabilities over Microsoft Defender for Cloud Apps and Microsoft Defender XDR to govern your apps.
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1016
 locale: en-us
 document_id: 7bc9e017-1b79-5b5e-5775-1adb70a3d602
 document_version_independent_id: 7bc9e017-1b79-5b5e-5775-1adb70a3d602
@@ -46,7 +48,7 @@ platformId: 4510c6d5-ef8c-e337-dd8b-dc6de0798120
 
 Cyber attacks have become increasingly sophisticated in the ways they exploit the apps you have deployed in your on-premises and cloud infrastructure, establishing a starting point for privilege escalation, lateral movement, and data exfiltration.
 
-To understand the potential risks and stop these types of attacks, you need to gain clear visibility into your organization’s app compliance posture. You need to be able to quickly identify when an app exhibits anomalous behaviors and respond when these behaviors present risks to your environment, data, and users. 
+To understand the potential risks and stop these types of attacks, you need clear visibility into your organization's app security posture. You need to quickly identify when an app exhibits anomalous behaviors and respond when these behaviors present risks to your environment, data, and users. 
 
 ## App governance features
 
@@ -61,13 +63,13 @@ App governance insights enable you to make informed decisions around blocking or
 - **Detection**: Be alerted and notified when there are anomalies in app activity and when noncompliant, malicious, or risky apps are used.
 - **Remediation**: Along with automatic remediation capabilities, use remediation controls in a timely manner to respond to anomalous app activity detections.
 
-## Share data across Microsoft services
+## Share data between Microsoft services
 
 View app governance data together with other Defender for Cloud Apps data and Microsoft Entra data to aggregate information and jump between views.
 
 For example:
 
-- On the **App governance** page, view aggregated sign-in activity for each app. Select an app to view details in a side pane, and select **View in Azure AD** to view more details in the Microsoft Entra admin center.
+- On the **App governance** page, view app details and aggregated data and permission usage. Select an app to view details in a side pane, and select **View in Entra ID** to view more details in the Microsoft Entra admin center.
 - On other **Cloud apps** pages in Microsoft Defender XDR, view API usage levels and aggregate data transfer. From there, select links to go to the app governance **OAuth apps** page for more details.
 
 App governance alerts show up in the Microsoft Defender XDR alerts list as alerts with the **Detection source** field set to *App Governance*.

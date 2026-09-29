@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Configure private endpoints with Microsoft Security Private Link - Microsoft Defender for Cloud | Microsoft Learn
+title: Configure Private Endpoints with Microsoft Security Private Link - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/configure-private-endpoints
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -34,16 +34,16 @@ item_type: Content
 source_path: defender-for-cloud/configure-private-endpoints.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/16cd61cd-9ecf-429b-b494-91576c41f8e4
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/c4bdb33a-5524-4b66-b162-03f5621d7902
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: 391bf2a8-0f49-7272-ff00-5ecfccb01830
 ---
 
-# Configure private endpoints with Microsoft Security Private Link - Microsoft Defender for Cloud | Microsoft Learn
+# Configure Private Endpoints with Microsoft Security Private Link - Microsoft Defender for Cloud | Microsoft Learn
 
 Use a [private endpoint in Azure Private Link](/en-us/azure/private-link/private-endpoint-overview) with Microsoft Security Private Link. This private endpoint configuration connects workloads in your private network to Microsoft Defender for Cloud over [Azure Private Link](/en-us/azure/private-link/private-link-overview).
 
@@ -55,15 +55,15 @@ Microsoft Security Private Link isn't supported in sovereign cloud regions, such
 
 Before you begin, make sure that:
 
-- Defender for Cloud is enabled on your Azure subscription. If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- A virtual network and subnet where your workloads are deployed. If you need to create these networking resources first, see [Create a virtual network and subnet](/en-us/azure/virtual-network/quick-create-portal). The private endpoint is created in this subnet.
+- An Azure subscription with Defender for Cloud enabled. If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- A virtual network and subnet where your workloads are deployed. If you need to create these networking resources first, see [Create a virtual network and subnet](/en-us/azure/virtual-network/quick-create-portal). You create the private endpoint in this subnet.
 - You reviewed the required [Security Private Link roles and permissions](concept-private-links#roles-and-permissions).
 
 ## Create a private endpoint using a Security Private Link resource (Azure portal)
 
 You can create a private endpoint while creating a Security Private Link resource in the Azure portal.
 
-If you already have a Security Private Link resource, skip this procedure and follow the "Create a private endpoint for an existing Security Private Link resource (Azure portal)" section later on this page, which walks you through creating a private endpoint separately and connecting it to your existing resource.
+If you already have a Security Private Link resource, skip this procedure. Go to Create a private endpoint for an existing Security Private Link resource later in this article. That section shows you how to create a private endpoint separately and connect it to your existing resource.
 
 To create a private endpoint while creating a Security Private Link resource:
 
@@ -80,7 +80,7 @@ To create a private endpoint while creating a Security Private Link resource:
 
     Note
 
-    Microsoft Security Private Link currently supports the **containers** sub-resource, which is used by the Defender for Containers plan.
+    Microsoft Security Private Link currently supports the **containers** sub-resource, which the Microsoft Defender for Containers plan uses.
 9. Select **Create a private endpoint**.
 10. Enter a name and a location.
 
@@ -90,7 +90,7 @@ To create a private endpoint while creating a Security Private Link resource:
 13. Enable **Private DNS integration** to create a private DNS zone automatically.
 14. Select **Add**.
 15. Select **Next: Tags** and add any required tags.
-16. Select **Review + create**
+16. Select **Review + create**.
 17. Select **Create**.
 
 ## Create a private endpoint for an existing Security Private Link resource (Azure portal)
@@ -100,7 +100,7 @@ If you already have a Security Private Link resource, you can create a private e
 To create a private endpoint for an existing Security Private Link resource:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Navigate to **Network foundation** &gt; **Private Link** &gt; **Private endpoints**.
+2. Go to **Network foundation** &gt; **Private Link** &gt; **Private endpoints**.
 3. Select **Create**.
 
     [![Screenshot of the Network foundation Private endpoints page, showing the Create button.](media/configure-private-endpoints/network-foundation-create-private-endpoint.png)](media/configure-private-endpoints/network-foundation-create-private-endpoint.png#lightbox)
@@ -111,7 +111,7 @@ To create a private endpoint for an existing Security Private Link resource:
 
     Note
 
-    Microsoft Security Private Link currently supports the **containers** sub-resource, which is used by the Defender for Containers plan.
+    Microsoft Security Private Link currently supports the **containers** sub-resource, which the Microsoft Defender for Containers plan uses.
 8. Select **Connect to an Azure resource in my directory**.
 9. Select a subscription.
 10. Select **Microsoft.Security/privateLinks** as the resource type.
@@ -129,9 +129,9 @@ To create a private endpoint for an existing Security Private Link resource:
 
 ## Approve the private endpoint connection
 
-When the private endpoint is created, a connection request is sent to the Security Private Link resource.
+When you create the private endpoint, you send a connection request to the Security Private Link resource.
 
-- If the requester is an **Owner**, the connection is approved automatically.
+- If you're an **Owner**, the connection is approved automatically.
 - Otherwise, an **Owner** must approve the request from **Private endpoint connections** in the Azure portal.
 
 ## Validate the private endpoint connection

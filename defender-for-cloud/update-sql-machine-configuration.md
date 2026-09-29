@@ -61,24 +61,14 @@ Important
 
 The Defender for SQL servers on Machines plan is undergoing a transition to the new agent architecture. For more information, see [Defender for SQL servers on Machines plan transition](release-notes-archive#update-to-defender-for-sql-servers-on-machines-plan).
 
-## Update the plan on multiple subscriptions
-
-To update the plan configuration for multiple subscriptions at once, follow these steps:
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Search for and select **Microsoft Defender for Cloud**.
-3. On the **Overview** page, select **[Update the configuration in Defender for SQL Servers on Machines plan for multiple subscriptions](https://portal.azure.com/#view/Microsoft_Azure_Security_AzureDefenderForData/vNextUpgradeContextBlade)**.
-4. Select all the relevant subscriptions.
-5. Select **Update**.
-
-## Update the plan on a single subscription
+## Update the plan on subscription-level
 
 To update the plan configuration for a single subscription, follow these steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 2. Search for and select **Microsoft Defender for Cloud** &gt; **Environment settings**.
 3. Select the relevant subscription.
-4. Locate the Defender for Databases plan and select **Settings**.
+4. Locate the Defender for Databases plan and select **Action required**.
 5. Select **Update** in the pop-up window.
 
     [![Screenshot that shows where to locate the update button.](media/update-sql-machine-configuration/update-notification.png)](media/update-sql-machine-configuration/update-notification.png#lightbox)

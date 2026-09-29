@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Review security findings in the AKS security dashboard - Microsoft Defender for Cloud | Microsoft Learn
+title: Review Security Findings in the AKS Security Dashboard - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/cluster-security-dashboard
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -13,7 +13,7 @@ author: ElazarK
 ms.author: elkrieger
 manager: orspodek
 ms.service: defender-for-cloud
-description: Learn how to review and investigate alerts, vulnerabilities, misconfigurations, and compliance findings in the AKS security dashboard in Microsoft Defender for Cloud.
+description: Learn how to investigate alerts, vulnerabilities, misconfigurations, and compliance findings in the AKS security dashboard in Microsoft Defender for Cloud.
 ms.topic: how-to
 ms.date: 2026-07-03T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -43,21 +43,19 @@ spProducts:
 platformId: d8979d56-d0df-c3c8-81b8-a2d705082747
 ---
 
-# Review security findings in the AKS security dashboard - Microsoft Defender for Cloud | Microsoft Learn
+# Review Security Findings in the AKS Security Dashboard - Microsoft Defender for Cloud | Microsoft Learn
 
-The AKS security dashboard shows security findings for an Azure Kubernetes Service (AKS) cluster in Microsoft Defender for Cloud.
-
-This article explains how to review, investigate, and remediate security alerts, vulnerabilities, misconfigurations, and compliance findings in the dashboard.
+The AKS security dashboard shows security findings for an Azure Kubernetes Service (AKS) cluster in Microsoft Defender for Cloud. You can review, investigate, and remediate security alerts, vulnerabilities, misconfigurations, and compliance findings in the dashboard.
 
 ## Prerequisites
 
-To use the AKS Security dashboard, ensure you have:
+To use the AKS security dashboard, ensure you have:
 
 - A Microsoft Azure subscription. If you don't have an Azure subscription, you can [sign up for a free subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Microsoft Defender for Cloud](get-started#enable-defender-for-cloud-on-your-azure-subscription) enabled with one of the following plans:
 
     - [Defender for Containers](tutorial-enable-containers-azure)
-    - [Defender CSPM](tutorial-enable-cspm-plan)
+    - [Defender Cloud Security Posture Management (Defender CSPM)](tutorial-enable-cspm-plan)
 
 ## Review security findings
 
@@ -71,10 +69,10 @@ For example, the **Exposed Kubernetes service detected** alert is raised when a 
 
 Alerts are prioritized by severity to help you identify which issues to investigate first:
 
-- **High** High probability that the resource is compromised. Investigate immediately.
-- **Medium** Indicates suspicious activity that might represent a compromise.
-- **Low** Might indicate a benign or blocked activity.
-- **Informational** Provides context and might be relevant when correlated with other alerts.
+- **High**: High probability that the resource is compromised. Investigate immediately.
+- **Medium**: Indicates suspicious activity that might represent a compromise.
+- **Low**: Might indicate a benign or blocked activity.
+- **Informational**: Provides context and might be relevant when correlated with other alerts.
 
 ### Investigate a security alert
 
@@ -104,7 +102,7 @@ The vulnerability assessment section shows vulnerabilities for running container
 
 Findings are prioritized by severity. When Defender CSPM is enabled, prioritization also considers contextual risk signals.
 
-Each finding includes affected packages, associated CVEs, and the fixed version to remediate the issue.
+Each finding includes affected packages, associated common vulnerabilities and exposures (CVEs), and the fixed version to remediate the issue.
 
 Vulnerabilities can include:
 
@@ -127,7 +125,7 @@ In the details pane:
 
 - Review affected packages and associated CVEs.
 - Identify the fixed version for the vulnerable package.
-- Update the container image or dependency to remediate the issue.
+- Update the container image or dependency to fix the issue.
 
 If expected vulnerabilities don't appear, verify that the image, package type, and environment are supported. See the [support matrix for Defender for Containers](/en-us/azure/defender-for-cloud/support-matrix-defender-for-containers).
 
@@ -139,7 +137,7 @@ Misconfigurations identify security configuration issues in Kubernetes resources
 
 Findings are based on Azure Policy and Kubernetes configuration assessments.
 
-Review these findings with network exposure in mind, including Kubernetes Service types and ingress configurations that can unintentionally expose workloads to the internet.
+Review these findings with network exposure in mind, including Kubernetes service types and ingress configurations that can unintentionally expose workloads to the internet.
 
 Each finding includes remediation guidance. Some findings support automated remediation through **Quick Fix** or policy enforcement.
 
@@ -156,7 +154,7 @@ To review and remediate misconfigurations:
 In the details pane:
 
 - Review the description and remediation steps.
-- Review Kubernetes Service types and ingress exposure settings to reduce unintended internet-facing access.
+- Review Kubernetes service types and ingress exposure settings to reduce unintended internet-facing access.
 - For cluster-level misconfigurations, select **Quick Fix** when available.
 - For workload issues, apply the recommended Azure Policy to prevent recurrence.
 - Assign an owner to track remediation (requires Defender CSPM).
@@ -165,7 +163,7 @@ In the details pane:
 
 ## Compliance
 
-The compliance section shows the cluster’s status against regulatory standards and benchmarks.
+The compliance section shows the cluster's status against regulatory standards and benchmarks.
 
 It lists controls that the cluster doesn't meet and provides recommendations to help you remediate them.
 

@@ -49,7 +49,7 @@ The Defender for SQL Servers on Machines plan is part of Defender for Databases.
 
 ## What happens when you disable this plan
 
-Disabling the plan means Defender for Cloud no longer provides SQL alerts and recommendations for the selected machines.
+When you disable the plan, Defender for Cloud stops providing SQL alerts and recommendations for the selected machines.
 
 ## Prerequisites
 
@@ -61,12 +61,12 @@ Disabling the plan means Defender for Cloud no longer provides SQL alerts and re
 To disable Defender for SQL Servers on Machines, follow these steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Navigate to **Microsoft Defender for Cloud** &gt; **Environment settings**.
+2. Go to **Microsoft Defender for Cloud** &gt; **Environment settings**.
 3. Select the relevant subscription.
-4. On the Defender plans page, locate the Databases plan and select **Select types**.
+4. On **Defender plans**, find the Databases plan and select **Select types**.
 
     [![Screenshot that shows you where to select types on the Defender plans page.](media/disable-sql-on-machines/select-types.png)](media/disable-sql-on-machines/select-types.png#lightbox)
-5. In the Resource types selection window, toggle the **SQL Servers on Machines** plan to **Off**.
+5. In **Resource types selection**, set the **SQL Servers on Machines** plan to **Off**.
 
     [![Screenshot that shows where the Off button is located for SQL servers on machines.](media/disable-sql-on-machines/sql-servers-off.png)](media/disable-sql-on-machines/sql-servers-off.png#lightbox)
 6. Select **Continue** &gt; **Save**.
@@ -75,7 +75,7 @@ To disable Defender for SQL Servers on Machines, follow these steps:
 
 To disable Defender for SQL Servers on Machines at the resource level for an individual SQL Server instance or SQL virtual machine, follow these steps:
 
-1. In the [Azure portal](https://portal.azure.com/), navigate to one of the following options:
+1. In the [Azure portal](https://portal.azure.com/), go to one of the following options:
 
     - **Azure Arc** &gt; **Data services** &gt; **SQL Server instances**
     - **SQL virtual machines**

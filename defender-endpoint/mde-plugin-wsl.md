@@ -53,10 +53,6 @@ platformId: 15c0a1fe-9968-5f60-e8ff-4f3b211222e7
 
 This article explains how to install, configure, and troubleshoot the Microsoft Defender for Endpoint plug-in for Windows Subsystem for Linux (WSL) 2. The plug-in supports both traditional WSL 2 distributions and WSL containers (WSLc) running on supported Windows devices and are onboarded to Microsoft Defender for Endpoint Plan 2.
 
-Note
-
-WSL container (WSLc) support is currently in [Public Preview](https://devblogs.microsoft.com/commandline/wsl-container-is-now-available-for-public-preview/). To participate in the Public Preview and obtain the WSLc-compatible preview version of the Microsoft Defender for Endpoint plug-in for WSL, complete the [registration form](https://aka.ms/WSLcpublicpreviewregistration)
-
 ## Overview
 
 Windows Subsystem for Linux (WSL) 2, which replaces the previous version of WSL (supported by Microsoft Defender for Endpoint without a plug-in), provides a Linux environment that is seamlessly integrated with Windows, yet is isolated using virtualization technology. The Microsoft Defender for Endpoint plug-in supports both the traditional WSL 2 Linux distributions and the new WSL containers (WSLc). The Defender for Endpoint for WSL plug-in enables Defender for Endpoint to provide more visibility into all running WSL containers by plugging into the isolated subsystem.
@@ -66,7 +62,7 @@ Windows Subsystem for Linux (WSL) 2, which replaces the previous version of WSL 
 Before you install the Defender for Endpoint WSL plug-in, make sure the following prerequisites are met:
 
 - WSL version `2.0.7.0` or later must be running with at least one active distro. Run `wsl --update` to make sure you are on the latest version. If `wsl -–version` shows a version older than `2.0.7.0`, run `wsl --update --pre-release` to get the latest update.
-- For WSL containers (WSLc), WSL version 2.9.12 or later is required. WSLc support is currently in Public Preview and requires a supported preview version of the Microsoft Defender for Endpoint plug-in for WSL.
+- For WSL containers (WSLc), WSL version 2.9.12 or later is required.
 - The Windows client device must be onboarded to Defender for Endpoint.
 
 ### Supported operating systems
@@ -90,13 +86,7 @@ Be aware of the following considerations before you start:
 
 ## Software components and installer file names
 
-Installer: `Defenderplugin-x64-1.26.813.1.msi`. You can download the installer from the onboarding page in the [Microsoft Defender portal](https://security.microsoft.com). (Go to **Settings** &gt; **Endpoints** &gt; **Onboarding** &gt; **Windows Subsystem for Linux 2 (plug-in)**.)
-
-Note
-
-The installer referenced above is intended for WSL 2 deployments.
-
-Support for WSL containers (WSLc) is currently in Public Preview and requires a preview version of the Microsoft Defender for Endpoint plug-in for WSL. To participate in the WSLc Public Preview and obtain the preview installer, complete the following [registration form](https://aka.ms/WSLcpublicpreviewregistration)
+Installer: `Defenderplugin-x64-2.26.921.1.msi`. You can download the installer from the onboarding page in the [Microsoft Defender portal](https://security.microsoft.com). (Go to **Settings** &gt; **Endpoints** &gt; **Onboarding** &gt; **Windows Subsystem for Linux 2 (plug-in)**.)
 
 Installation directories:
 
@@ -117,14 +107,10 @@ If your Windows Subsystem for Linux isn't installed yet, follow these steps:
 3. Confirm that WSL is installed and running.
 
     1. Using Terminal or Command Prompt, run `wsl –-update` to make sure you have the latest version.
-
-        For WSL containers (WSLc), run `wsl --update --pre-release` to install the latest WSL preview release required for WSLc functionality.
     2. Run the `wsl` command to ensure WSL is running before testing.
 4. Install the plug-in by following these steps:
 
     1. Install the MSI file downloaded from the onboarding section in the Microsoft Defender portal (**Settings** &gt; **Endpoints** &gt; **Onboarding** &gt; **Windows Subsystem for Linux 2 (plug-in)**).
-
-        For WSL containers (WSLc), install the WSLc-compatible Public Preview version of the Microsoft Defender for Endpoint plug-in.
     2. Open a command prompt/terminal and run `wsl`.
 
     You can [deploy the package using Microsoft Intune](/en-us/intune/intune-service/apps/lob-apps-windows).
@@ -199,14 +185,23 @@ The investigation experience, including Device Timeline, Alerts, Incidents, and 
 After installing the plug-in, the subsystem and all its running containers are onboarded to the [Microsoft Defender portal](https://security.microsoft.com).
 
 1. Sign into the Microsoft Defender portal, and open the **Devices** view.
-2. Filter using the tag **WSL2**.
+2. Filter the device inventory using the tag WSL2. The filtered view shows the Windows host and the associated classic WSL and WSL container devices as separate entries.
 
     [![Screenshot showing device inventory filter](media/mdeplugin-wsl/wsl-device-inventory.png)](media/mdeplugin-wsl/wsl-device-inventory.png#lightbox)
+3. You can see all WSL instances in your environment with an active Defender for Endpoint plug-in for WSL. These instances represent all distributions running inside WSL on a given host. The hostname of a *device* matches that of the Windows host. However, it's represented as a Linux device.
 
-    You can see all WSL instances in your environment with an active Defender for Endpoint plug-in for WSL. These instances represent all distributions running inside WSL on a given host. The hostname of a *device* matches that of the Windows host. However, it's represented as a Linux device.
-3. For a WSLc instance, the device name consists of the Windows host name followed by the application name. In this example, the application name is wslc, resulting in `WinDev2407Eval-wslc`. The device is also tagged with **WSL2**.
+    If it's a WSLc instance, the application name is appended to the Windows host name to form the device name.
 
-    [![Screenshot showing device portal with WSLc entry.](media/mde-plugin-wsl/wslc-portal.png)](media/mde-plugin-wsl/wslc-portal.png#lightbox)
+    In the following example:
+
+    - LAB-HOST with device type Workstation is the Windows host.
+    - LAB-HOST with device type Server is the classic WSL Linux device.
+    - LAB-HOST-wslc is the WSLc device for the wslc application.
+    - LAB-HOST-WSLcHelloWorld is the WSLc device for the WSLcHelloWorld application.
+
+    When the Windows host and classic WSL device have the same name, use the Device type column to distinguish between them.
+
+    [![Screenshot showing device portal with WSL2 and WSLc entries.](media/mde-plugin-wsl/security-portal-multiple-windows-subsystem-for-linux-containers.png)](media/mde-plugin-wsl/security-portal-multiple-windows-subsystem-for-linux-containers.png#lightbox)
 4. Open the device page. In the **Overview** pane, the hosting link shows that the device is running on a Windows host. You can select this link to pivot to the Windows host for further investigation and/or response.
 
     [![Screenshot showing device overview.](media/mdeplugin-wsl/wsl-ui-overview.png)](media/mdeplugin-wsl/wsl-ui-overview.png#lightbox)
@@ -241,11 +236,11 @@ To test the plug-in after installation on either WSL2 or WSLc environments, foll
 1. Open Terminal or Command Prompt. (In Windows, go to **Start** &gt; **Command Prompt**. Or, right-click the start button and then select **Terminal**.)
 2. Run the command `wsl`.
 3. Download and extract the script file from the [MDE Linux EDR DIY test package](https://aka.ms/MDE-Linux-EDR-DIY).
-4. At the Linux prompt, run the command `./mde_linux_edr_diy.sh`. An alert should appear in the portal after a few minutes for a detection on the WSL2 instance.
+4. At the Linux prompt, run the command `./mde_linux_edr_diy.sh`.
 
     Note
 
-    It takes about five minutes for the events to appear on the Microsoft Defender portal.
+    It takes about five minutes for the events to appear on the Microsoft Defender portal. An alert should appear in the portal after a few minutes for a detection on the WSL2 instance.
 
 Treat the machine as if it were a regular Linux host in your environment to perform testing against. In particular, we would like to get your feedback on the ability to surface potentially malicious behavior using the new plug-in.
 
@@ -415,8 +410,7 @@ To collect diagnostic information for support, generate a support bundle using t
 
 Microsoft Defender Endpoint plug-in for WSL supports Linux distributions running on WSL 2. If those Linux distributions are associated with WSL 1, you might encounter issues. Therefore, it's advised to disable WSL 1. To do so with the Intune policy, perform the following steps:
 
-> 
-> Microsoft Intune is the recommended tool for configuring and distributing Defender for Endpoint features to devices. However, Intune is a separate product that isn't part of Defender for Endpoint, and it isn't included in all subscriptions. To use Intune, you need a subscription that includes it, or you can buy it separately as a standalone subscription or add-on. If you don't have Intune, you can use any of the other methods in this article. For more information, see [Microsoft Intune licensing](/en-us/intune/intune-service/fundamentals/licenses).
+Microsoft Intune is the recommended tool for configuring and distributing Defender for Endpoint features to devices. However, Intune is a separate product that isn't part of Defender for Endpoint, and it isn't included in all subscriptions. To use Intune, you need a subscription that includes it, or you can buy it separately as a standalone subscription or add-on. If you don't have Intune, you can use any of the other methods in this article. For more information, see [Microsoft Intune licensing](/en-us/intune/intune-service/fundamentals/licenses).
 
 1. Go to your [Microsoft Intune admin center](https://intune.microsoft.com).
 2. Go to **Devices** &gt; **Configuration Profiles** &gt; **Create** &gt; **New Policy**.

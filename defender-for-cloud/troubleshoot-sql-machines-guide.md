@@ -45,7 +45,7 @@ This article helps you identify and resolve configuration and protection issues 
 
 Important
 
-This article applies to commercial clouds. If you're using Government clouds, see the [Troubleshoot Defender for SQL on Machines configuration government](troubleshoot-sql-machines-guide-gov) article.
+This article applies to Azure commercial cloud and Azure Government cloud.
 
 Before you start the troubleshooting steps, [enable Defender for SQL Server on Machines](defender-for-sql-usage) at the [Azure subscription level](defender-for-sql-usage#enable-the-plan-on-an-azure-subscription) or [SQL Server resource level](defender-for-sql-usage#enable-the-plan-at-the-sql-server-resource-level).
 

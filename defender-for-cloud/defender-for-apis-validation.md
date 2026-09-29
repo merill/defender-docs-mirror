@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Validate your Microsoft Defender for APIs alerts - Microsoft Defender for Cloud | Microsoft Learn
+title: Validate Your Microsoft Defender for APIs Alerts - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-apis-validation
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -43,29 +43,29 @@ spProducts:
 platformId: 1b8dfc85-ee62-5ddd-dc24-f029e52ec720
 ---
 
-# Validate your Microsoft Defender for APIs alerts - Microsoft Defender for Cloud | Microsoft Learn
+# Validate Your Microsoft Defender for APIs Alerts - Microsoft Defender for Cloud | Microsoft Learn
 
-Microsoft Defender for APIs provides protection, detection, and response coverage for APIs published in Azure API Management. A key feature is the detection of OWASP API Top 10 vulnerabilities. It spots anomalies at runtime by using machine learning and rule-based methods.
+Microsoft Defender for APIs provides protection, detection, and response coverage for APIs published in Azure API Management. It spots anomalies at runtime by using machine learning and rule-based methods. A key feature is the detection of OWASP API Top 10 vulnerabilities.
 
-This article walks you through how to trigger a test alert for one of your API endpoints. The alert covers detection of a suspicious user agent. Before you start, make sure you meet the prerequisites, including having an API published and Defender for APIs onboarded.
+In this article, learn how to trigger a test alert for one of your API endpoints. The alert covers detection of a suspicious user agent.
 
 ## Prerequisites
 
-Before you begin, ensure that you've completed the following prerequisites:
+Before you begin, ensure that you have the following prerequisites:
 
 - Create a service instance by following [Create a new Azure API Management service instance in the Azure portal](/en-us/azure/api-management/get-started-create-service-instance).
-- Check the [support and prerequisites for Defender for APIs deployment](defender-for-apis-prepare)
+- Check the [support and prerequisites for Defender for APIs deployment](defender-for-apis-prepare).
 - Import and publish your API by using [Import and publish your first API](/en-us/azure/api-management/import-and-publish).
 - Deploy the feature by using [Onboard Defender for APIs](defender-for-apis-deploy).
 
 ## Simulate an alert
 
-Validate that Defender for APIs is working as expected. Send a request to your endpoint with a suspicious user agent to simulate an alert.
+Check that Defender for APIs is working as expected. Send a request to your endpoint with a suspicious user agent to simulate an alert.
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. Search for and select **API Management services**.
 
-    [![Screenshot that shows you where on the Azure portal to search for and select API Management service.](media/defender-for-apis-validation/api-management.png)](media/defender-for-apis-validation/api-management.png#lightbox)
+    [![Screenshot that shows where on the Azure portal to search for and select API Management service.](media/defender-for-apis-validation/api-management.png)](media/defender-for-apis-validation/api-management.png#lightbox)
 3. Select the relevant API.
 4. Select **APIs**.
 
@@ -74,15 +74,15 @@ Validate that Defender for APIs is working as expected. Send a request to your e
 
     ![Screenshot that shows where to select an API endpoint.](media/defender-for-apis-validation/api-endpoint.png)
 6. Select **Test** &gt; **Get Retrieve resource (cashed)**.
-7. In the Headers section, select **User-Agent** in the name drop-down menu.
+7. In the **Headers** section, select **User-Agent** in the name dropdown menu.
 
-    [![Screenshot of the Headers section of the APIs showing you how to select the User-Agent option under the name drop-down menu.](media/defender-for-apis-validation/user-agent.png)](media/defender-for-apis-validation/user-agent.png#lightbox)
-8. In the value field, enter `javascript:`.
-9. Select **Send**
+    [![Screenshot of the Headers section of the APIs showing how to select the User-Agent option under the name dropdown menu.](media/defender-for-apis-validation/user-agent.png)](media/defender-for-apis-validation/user-agent.png#lightbox)
+8. In the value field, enter *javascript:*.
+9. Select **Send**.
 
     A 200 OK appears, letting you know that it succeeded.
 
-    ![Screenshot that shows the result 200 OK.](media/defender-for-apis-validation/200-ok.png)
+    [![Screenshot that shows the result 200 OK.](media/defender-for-apis-validation/200-ok.png)](media/defender-for-apis-validation/200-ok.png#lightbox)
 
 ## Expected results
 

@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-for-cloud/release-notes.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cbe4ca68-43ac-4375-aba5-5945a6394c20
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ced846cc-6a3c-4c8f-9dfb-3de0e90e2742
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 8e52c7f4-0513-cf2a-2a7e-e8b7c4b9b436
 ---
 
@@ -61,9 +61,27 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| September 29, 2026 | GA | Enhanced agent for Defender for SQL Servers on Machines is fully available in Azure Government cloud |
 | September 23, 2026 | Upcoming deprecation | Upcoming deprecation of the Machines should have a vulnerability assessment solution recommendation |
 | September 3, 2026 | GA | AWS GuardDuty coverage status is now shown on the S3 asset page |
 | September 3, 2026 | GA | General availability of Defender for Cosmos DB in Azure Government cloud |
+
+### Enhanced agent for Defender for SQL Servers on Machines is fully available in Azure Government cloud
+
+September 29, 2026
+
+In Azure Government cloud, the Defender for SQL Servers on Machines plan in Microsoft Defender for Cloud protects SQL Server instances running on Azure virtual machines and on Azure Arc-enabled machines connected to that cloud.
+
+The enhanced agent is now fully available for both resource-level and subscription-level enablement, providing the same onboarding and configuration experience as in Azure commercial cloud. The enhanced agent eliminates the need to deploy the Azure Monitor Agent (AMA) and instead uses the existing SQL infrastructure. This solution simplifies onboarding and improves protection coverage.
+
+**Required customer actions:**
+
+1. [Update the Defender for SQL Servers on Machines plan configuration](update-sql-machine-configuration): Customers who previously enabled the plan should follow these instructions to update their configuration for automatic registration.
+2. [Verify SQL Server instance protection status](verify-machine-protection-gov): After enabling the plan, verify that your SQL Server instances are protected. To resolve deployment issues, see [Troubleshoot Defender for SQL Servers on Machines](troubleshoot-sql-machines-guide).
+
+Note
+
+After the agent upgrade, your bill might increase if the enhanced agent protects additional SQL Server instances under your enabled Defender for SQL Servers on Machines plan. For billing information, review the [Defender for Cloud pricing page](https://azure.microsoft.com/pricing/details/defender-for-cloud/).
 
 ### Upcoming deprecation of the Machines should have a vulnerability assessment solution recommendation
 

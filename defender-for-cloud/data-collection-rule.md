@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Use a Custom Data Collection Rule for Defender for Servers ingestion - Microsoft Defender for Cloud | Microsoft Learn
+title: Use a Custom Data Collection Rule for Defender for Servers Ingestion - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/data-collection-rule
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -43,9 +43,9 @@ spProducts:
 platformId: 8e4de81a-2f65-5ba9-ff26-927f4615e66d
 ---
 
-# Use a Custom Data Collection Rule for Defender for Servers ingestion - Microsoft Defender for Cloud | Microsoft Learn
+# Use a Custom Data Collection Rule for Defender for Servers Ingestion - Microsoft Defender for Cloud | Microsoft Learn
 
-You can use a custom Data Collection Rule (DCR) to control which Windows Security events are sent to Log Analytics for Defender for Servers. This can help reduce ingestion volume by filtering out events you don’t need.
+You can use a custom Data Collection Rule (DCR) to control which Windows Security events are sent to Log Analytics for Defender for Servers. This approach can help reduce ingestion volume by filtering out events you don't need.
 
 With a custom DCR, you can:
 
@@ -55,52 +55,54 @@ With a custom DCR, you can:
 
 ## Prerequisites
 
-Before you create a custom DCR, make sure:
+Before you create a custom DCR, ensure that you have:
 
-- Azure Monitor Agent (AMA) is installed on the machines that send data to Log Analytics.
-- A Log Analytics workspace exists in the same region as the DCR.
+- Azure Monitor Agent (AMA) installed on the machines that send data to Log Analytics.
+- A Log Analytics workspace in the same region as the DCR.
 
 ## Create a DCR
 
 To create a custom DCR in the Azure portal, follow these steps:
 
-1. Sign into the [Azure portal](https://portal.azure.com).
-2. Go to ▸ **Monitor** ▸ **Settings** ▸ **Data Collection Rules** ▸ **+ Create**.
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Go to **Monitor** &gt; **Settings** &gt; **Data Collection Rules**, and then select **+ Create**.
 3. Enter a name and a subscription.
 4. Choose or create a resource group.
-5. Select the region. The region must match the region of the Log Analytics workspace(s) you’ll send to.
-
-    - Under **Platform type**, select **Windows** to collect Windows Security events for the `SecurityEvent` ingestion benefit. *(Choose **Linux** or **All** if you also need those logs.)*
-    - Under **Data Collection Endpoint**, leave **&lt;none&gt;** unless you're using a Data Collection Endpoint for Private Link or another advanced network setup.
-6. Select **Next : Resources &gt;**.
-7. Select **+ Add resources** and choose the relevant resources.
-8. If your environment requires a Data Collection Endpoint (for example, when using Private Link), select **+ Create endpoint** and create it in the same region as the DCR.
-9. Select **Next : Collect and deliver &gt;**.
-10. Select **+ Add data source**.
-11. For **Data source type**, select **Windows Event Logs** and choose **Basic** or **Custom**:
+5. Select the region. The region must match the region of the Log Analytics workspaces you send to.
+6. Under **Platform type**, select **Windows** to collect Windows Security events for the `SecurityEvent` ingestion benefit.
+7. Choose **Linux** or **All** if you also need those logs.
+8. Under **Data Collection Endpoint**, leave **&lt;none&gt;** unless you're using a Data Collection Endpoint for Private Link or another advanced network setup.
+9. Select **Next : Resources &gt;**.
+10. Select **+ Add resources** and choose the relevant resources.
+11. If your environment requires a Data Collection Endpoint, for example, when using Private Link, select **+ Create endpoint**. Create the endpoint in the same region as the DCR.
+12. Select **Next : Collect and deliver &gt;**.
+13. Select **+ Add data source**.
+14. For **Data source type**, select **Windows Event Logs** and choose **Basic** or **Custom**:
 
     - **Basic:**
-        - Under **Security**, select **Audit success** and/or **Audit failure** to send Windows Security events to the `SecurityEvent` table.
-        - If needed select **Application** or **System** event logs to collect additional events. These events are sent to the `Event` table and are billed as regular ingestion. They aren’t covered by the Defender for Servers ingestion benefit.
-    - **Custom**:
-        - Enter an XPath query under **Use XPath queries to filter event logs and limit data collection**. For example, `Security!*[System[(EventID=4624 or EventID=4625 or EventID=4688)]]`
 
-            ![Screenshot of the Add data source window in the Create Data Collection Rule wizard showing Windows Event Logs selected with Basic/Custom options.](media/data-ingestion-benefit/add-data-source-window.png)
-12. Select **Add**.
-13. Select **Next : Destination &gt;**.
-14. Select **+ Add destination**.
+        - Under **Security**, select **Audit success** or **Audit failure** to send Windows Security events to the `SecurityEvent` table.
+        - If needed, select **Application** or **System** event logs to collect more events. These events go to the `Event` table and are billed as regular ingestion. The Defender for Servers ingestion benefit doesn't cover them.
+    - **Custom**:
+
+        - Under **Use XPath queries to filter event logs and limit data collection**, enter an XPath query. For example, `Security!*[System[(EventID=4624 or EventID=4625 or EventID=4688)]]`
+
+    ![Screenshot of the Add data source window in the Create Data Collection Rule wizard showing Windows Event Logs selected with Basic/Custom options.](media/data-ingestion-benefit/add-data-source-window.png)
+15. Select **Add**.
+16. Select **Next : Destination &gt;**.
+17. Select **+ Add destination**.
 
     [![Screenshot of the Add data source pane showing the Destination tab, where you click + Add destination.](media/data-ingestion-benefit/add-data-source-destination-tab.png)](media/data-ingestion-benefit/add-data-source-destination-tab.png#lightbox)
-15. For **Destination type**, choose **Azure Monitor Logs**.
-16. Select at least one Log Analytics workspace in the same region as the DCR.
-17. Select **Save**.
-18. Select **Next : Tags &gt;** and add any tags you need for resource organization or cost management.
-19. Select **Next : Review + create &gt;**.
-20. Select **Create** to deploy the DCR.
+18. For **Destination type**, choose **Azure Monitor Logs**.
+19. Select at least one Log Analytics workspace in the same region as the DCR.
+20. Select **Save**.
+21. Select **Next : Tags &gt;** and add any tags you need for resource organization or cost management.
+22. Select **Next : Review + create &gt;**.
+23. Select **Create** to deploy the DCR.
 
 ## Verify data ingestion
 
-After the DCR is deployed, allow a few minutes for data to start flowing.
+After you deploy the DCR, wait a few minutes for data to start flowing.
 
 Run the following KQL query in the Log Analytics workspace:
 
@@ -136,4 +138,4 @@ The following example shows a DCR configuration that collects selected Windows S
 
 ## Deploy using Azure Policy
 
-If you manage many subscriptions, use Azure Policy to create and assign DCRs at scale. The [Deploy AMA DCR for Security Events collection](https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Policy/Deploy%20AMA%20DCR%20for%20Security%20Events%20collection) policy initiative applies security event collection rules across your environment.
+If you manage many subscriptions, use Azure Policy to create and assign DCRs at scale. The [Deploy AMA DCR for Security Events collection](https://github.com/Azure/Microsoft-Defender-for-Cloud/tree/main/Policy/Deploy%20AMA%20DCR%20for%20Security%20Events%20collection) policy initiative applies security event collection rules for your environment.

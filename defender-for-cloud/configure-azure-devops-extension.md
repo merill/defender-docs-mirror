@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud | Microsoft Learn
+title: Configure the Microsoft Security DevOps Azure DevOps Extension - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/configure-azure-devops-extension
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -43,9 +43,9 @@ spProducts:
 platformId: bb9582e6-d1c3-fa34-363d-980fbc463e93
 ---
 
-# Configure the Microsoft Security DevOps Azure DevOps extension - Microsoft Defender for Cloud | Microsoft Learn
+# Configure the Microsoft Security DevOps Azure DevOps Extension - Microsoft Defender for Cloud | Microsoft Learn
 
-Microsoft Security DevOps is a command-line application that integrates static analysis into your development lifecycle. It installs, configures, and runs the latest SDL, security, and compliance analyzers using portable configurations to ensure consistent, deterministic execution across environments.
+Microsoft Security DevOps is a command-line application that integrates static analysis into your development lifecycle. It installs, configures, and runs the latest SDL, security, and compliance analyzers by using portable configurations to ensure consistent, deterministic execution in all environments.
 
 Microsoft Security DevOps uses the following open-source tools:
 
@@ -63,11 +63,11 @@ Microsoft Security DevOps uses the following open-source tools:
 
 Note
 
-As of September 20, 2023, the secrets scanning (CredScan) tool within the Microsoft Security DevOps (MSDO) Extension for Azure DevOps has been deprecated. MSDO secrets scanning is replaced with [GitHub Advanced Security for Azure DevOps](https://azure.microsoft.com/products/devops/github-advanced-security).
+As of September 20, 2023, the secrets scanning (CredScan) tool within the Microsoft Security DevOps (MSDO) Extension for Azure DevOps is deprecated. MSDO secrets scanning is replaced by [GitHub Advanced Security for Azure DevOps](https://azure.microsoft.com/products/devops/github-advanced-security).
 
 ## Prerequisites
 
-Before you install the extension, make sure you meet the following prerequisite:
+Before you install the extension, ensure you meet the following prerequisite:
 
 - You need Project Collection Administrator privileges in your Azure DevOps organization to install the extension. If you don't have access, request these privileges from your Azure DevOps administrator.
 
@@ -83,7 +83,7 @@ To install the Microsoft Security DevOps extension:
 
     Note
 
-    If you've already [installed the Microsoft Security DevOps extension](https://marketplace.visualstudio.com/items?itemName=ms-securitydevops.microsoft-security-devops-azdevops), it is listed in the Installed tab.
+    If you already [installed the Microsoft Security DevOps extension](https://marketplace.visualstudio.com/items?itemName=ms-securitydevops.microsoft-security-devops-azdevops), it's listed in the **Installed** tab.
 4. Select **Microsoft Security DevOps**.
 
     ![Screenshot that shows where to select Microsoft Security DevOps.](media/msdo-azure-devops-extension/marketplace-shared.png)
@@ -100,7 +100,7 @@ Optional: Install the SARIF SAST Scans Tab extension if you want SARIF analysis 
 
 To configure a pipeline with YAML:
 
-1. Sign into [Azure DevOps](https://dev.azure.com/).
+1. Sign in to [Azure DevOps](https://dev.azure.com/).
 2. Select your project.
 3. Go to **Pipelines** &gt; **New pipeline**.
 
@@ -146,7 +146,7 @@ To configure a pipeline with YAML:
 
     Note
 
-    Install the SARIF SAST Scans Tab extension to automatically display SARIF analysis results in the pipeline’s **Scans** tab.
+    Install the SARIF SAST Scans Tab extension to automatically display SARIF analysis results in the pipeline's **Scans** tab.
 
 ## Uploading findings from third-party security tools into Defender for Cloud
 

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Cloud security reporting in Microsoft Defender portal - Microsoft Defender for Cloud | Microsoft Learn
+title: Cloud Security Reporting in Microsoft Defender Portal - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/cloud-security-reporting
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -34,42 +34,42 @@ item_type: Content
 source_path: defender-for-cloud/cloud-security-reporting.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cd48b104-e308-4e08-a405-66f04a7df418
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ac23bdb5-c078-4620-8ee2-60eba45e97f8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 54fd021f-9d4e-e60b-b658-bdeb2fe4c25a
 ---
 
-# Cloud security reporting in Microsoft Defender portal - Microsoft Defender for Cloud | Microsoft Learn
+# Cloud Security Reporting in Microsoft Defender Portal - Microsoft Defender for Cloud | Microsoft Learn
 
-Microsoft Defender portal provides integrated reporting capabilities for cloud security data, enabling you to create, customize, and share security insights across your organization.
+The Defender portal provides integrated reporting capabilities for cloud security data. You can use it to create, customize, and share security insights with your organization.
 
-You can view built-in reports, create custom reports tailored to your needs, and export reports to PDF for sharing with stakeholders. Built-in reports, custom reports, and PDF export enable you to generate and manage reports based on cloud security data and tailor them to your organization's needs.
+You can view built-in reports, create custom reports tailored to your needs, and export reports to PDF for sharing with stakeholders. By using built-in reports, custom reports, and PDF export, you can generate and manage reports based on cloud security data and tailor them to your organization's needs.
 
 ## Cloud security reporting capabilities
 
 Cloud security reporting enables you to:
 
-- View built-in cloud security reports such as **CNAPP Executive Summary** and **Cloud Posture**
-- Customize existing reports by duplicating and modifying sections, cards, and layout
-- Create custom reports from scratch by defining sections and selecting relevant cards
-- Customize cards in custom reports to display data that matches your reporting needs
-- Export reports to PDF for sharing with stakeholders
-- Control report access using visibility settings (Private, Tenant-level access, or Public)
-- Filter and organize reports by type (built-in or custom) and visibility
+- View built-in cloud security reports such as **CNAPP Executive Summary** and **Cloud Posture**.
+- Customize existing reports by duplicating and modifying sections, cards, and layout.
+- Create custom reports from scratch by defining sections and selecting relevant cards.
+- Customize cards in custom reports to display data that matches your reporting needs.
+- Export reports to PDF for sharing with stakeholders.
+- Control report access by using visibility settings (Private, Tenant-level access, or Public).
+- Filter and organize reports by type (built-in or custom) and visibility.
 
 ## Prerequisites
 
-Before using cloud security reporting, ensure the following requirements are met:
+Before using cloud security reporting, meet the following requirements:
 
 ### Environment requirements
 
 The following environment requirement must be met:
 
-- A Microsoft Defender for Cloud paid plan is enabled
+- A Microsoft Defender for Cloud paid plan is enabled.
 
 ### Required roles and permissions
 
@@ -94,7 +94,7 @@ Or one of the following permissions:
 
 Cloud security reporting is available in the following cloud environments:
 
-- Available in commercial clouds (Azure, AWS, and GCP)
+- Available in commercial clouds: Azure, AWS, and GCP
 - Not available in sovereign clouds
 
 ## Access cloud security reports
@@ -104,13 +104,13 @@ To access cloud reporting:
 1. Go to the **Reporting** page in the Microsoft Defender portal.
 2. Select the **Cloud** tab.
 
-[![Screenshot of Microsoft Defender Reports page with the Cloud tab selected, showing Unified security summary and Query resources reports.](media/cloud-security-reporting/reports-cloud.png)](media/cloud-security-reporting/reports-cloud.png#lightbox)
+    [![Screenshot of Microsoft Defender Reports page with the Cloud tab selected, showing Unified security summary and Query resources reports.](media/cloud-security-reporting/reports-cloud.png)](media/cloud-security-reporting/reports-cloud.png#lightbox)
 
 ## View built-in reports
 
-Microsoft Defender for Cloud includes **built-in reports** that provide predefined views of cloud security data. These reports help security teams and stakeholders quickly understand risk, coverage, and compliance across environments.
+Microsoft Defender for Cloud includes *built-in reports* that provide predefined views of cloud security data. These reports help security teams and stakeholders quickly understand risk, coverage, and compliance across environments.
 
-**To view a built-in report:**
+To view a built-in report:
 
 1. From the **Reporting** page, select the **Cloud** tab.
 2. Select a report such as **CNAPP Executive Summary** or **Cloud Posture**.
@@ -119,7 +119,7 @@ Microsoft Defender for Cloud includes **built-in reports** that provide predefin
 
 ### CNAPP Executive summary report
 
-The **CNAPP Executive summary** report provides a consolidated, high-level summary of cloud-native application protection platform (CNAPP) signals across your environment. It is designed for security leaders and stakeholders who need a quick, holistic view of cloud risk, coverage, and trends.
+The **CNAPP Executive summary** report provides a consolidated, high-level summary of cloud-native application protection platform (CNAPP) signals across your environment. It's designed for security leaders and stakeholders who need a quick, holistic view of cloud risk, coverage, and trends.
 
 #### Overview
 
@@ -137,7 +137,7 @@ This section provides insights into vulnerability exposure and remediation acros
 
 #### Security recommendations
 
-This section displays detected security recommendations across the environment, highlighting configuration gaps and best practice deviations that can be remediated to reduce risk.
+This section displays detected security recommendations across the environment, highlighting configuration gaps and best practice deviations that you can remediate to reduce risk.
 
 #### Investigation & response
 
@@ -191,30 +191,30 @@ Use the **Cloud posture** report when you need to:
 
 You can create custom reports to address specific reporting needs.
 
-**To create a custom report:**
+To create a custom report:
 
 1. From the **Reporting** page, select **Create report**.
 2. Enter the report details:
 
-    - **Name**: Provide a descriptive name
-    - **Description**: Add context about the report purpose
-    - **Visibility**: Configure the visibility settings
+    - **Name**: Enter a descriptive name.
+    - **Description**: Add context about the report purpose.
+    - **Visibility**: Configure the visibility settings.
 3. Add content to your report:
 
-    - Create sections to organize information
-    - Add cards to display specific data
-    - Customize cards that are labeled **Customizable** to configure additional options
-    - Edit card titles as needed
-    - Adjust card sizes for optimal layout
+    - Create sections to organize information.
+    - Add cards to display specific data.
+    - Customize cards that are labeled **Customizable** to configure additional options.
+    - Edit card titles as needed.
+    - Adjust card sizes for optimal layout.
 
     ![Screenshot of Add card panel in a report showing secure score charts, filter options, and a search bar.](media/cloud-security-reporting/report-add-card.png)
 4. Select **Save**.
 
 ## Customize cards in a custom report
 
-When building or editing a custom report, you can browse the card catalog and configure each card before adding it to your report. Cards labeled **Customizable** support additional configuration options, such as filters for workload or recommendation category.
+When you build or edit a custom report, browse the card catalog and configure each card before you add it to your report. Cards labeled **Customizable** support additional configuration options, such as filters for workload or recommendation category.
 
-**To add and customize a card:**
+To add and customize a card:
 
 1. In your custom report, select **+ Add card**.
 
@@ -237,7 +237,7 @@ When building or editing a custom report, you can browse the card catalog and co
 
 You can duplicate existing reports and customize them to create variations.
 
-**To duplicate and edit a report:**
+To duplicate and edit a report:
 
 1. From the **Reporting** page, select a report.
 2. Select **Duplicate**.
@@ -262,12 +262,12 @@ You can duplicate existing reports and customize them to create variations.
 
 You can export reports to PDF for sharing or archival purposes.
 
-**To export a report:**
+To export a report:
 
 1. Open the report you want to export.
 2. Select **Export to PDF**.
 3. Wait for the export to complete.
-4. The PDF file downloads to your local device.
+4. Download the PDF file to your local device.
 
 [![Screenshot of an Export to PDF dialog in a report, showing upload logo option, Export to PDF and Cancel buttons.](media/cloud-security-reporting/export-report.png)](media/cloud-security-reporting/export-report.png#lightbox)
 
@@ -275,11 +275,12 @@ You can export reports to PDF for sharing or archival purposes.
 
 You can filter the reports list to find specific reports.
 
-**To filter reports:**
+To filter reports:
 
-1. From the **Reporting**page, use the filter options:
-    - **Report type**: Select Built-in or Custom
-    - **Visibility**: Select Private, Tenant-level access, or Public
+1. From the **Reporting** page, use the filter options:
+
+    - **Report type**: Select Built-in or Custom.
+    - **Visibility**: Select Private, Tenant-level access, or Public.
 2. The reports list updates to show only matching reports.
 
 ## Manage report visibility
@@ -298,7 +299,7 @@ The following visibility options are available for reports:
 
 ### Update report visibility
 
-**To change a report's visibility:**
+To change a report's visibility:
 
 1. Open the report.
 2. Select **Settings** or **Edit**.

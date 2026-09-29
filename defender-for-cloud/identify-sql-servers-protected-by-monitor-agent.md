@@ -82,4 +82,5 @@ You can identify SQL servers onboarded to the Defender for SQL Server on Machine
 
 - [Upcoming changes to Defender for SQL servers on Machines plan](release-notes-archive#update-to-defender-for-sql-servers-on-machines-plan)
 - [Verify SQL machine protection](verify-machine-protection)
+- [Verify SQL machine protection in government cloud](verify-machine-protection-gov)
 - [Troubleshoot Defender for SQL on Machines configuration](troubleshoot-sql-machines-guide)

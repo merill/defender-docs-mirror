@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Use the data ingestion benefit in Microsoft Defender for Cloud - Microsoft Defender for Cloud | Microsoft Learn
+title: Use the Data Ingestion Benefit in Microsoft Defender for Cloud - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/data-ingestion-benefit
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -39,19 +39,19 @@ spProducts:
 platformId: a0e137e4-1c92-dfe9-79e8-cd14deb1e507
 ---
 
-# Use the data ingestion benefit in Microsoft Defender for Cloud - Microsoft Defender for Cloud | Microsoft Learn
+# Use the Data Ingestion Benefit in Microsoft Defender for Cloud - Microsoft Defender for Cloud | Microsoft Learn
 
-When you enable Defender for Servers Plan 2 in Microsoft Defender for Cloud, you receive 500 MB of free data ingestion per node daily.
+When you enable Microsoft Defender for Servers Plan 2 in Defender for Cloud, you get 500 MB of free data ingestion per node each day.
 
-- The total daily data allowance granted equals the number of machines × 500 MB.
-- The daily data allowance is calculated across all machines in a subscription, not enforced per machine.
-- You aren’t charged for ingestion as long as the total data ingested across all machines in the subscription remains within the daily allowance, even if individual machines ingest more than 500 MB.
-- The benefit is applied at the Log Analytics workspace level.
+- The total daily data allowance granted equals the number of machines times 500 MB.
+- The daily data allowance is calculated for all machines in a subscription and isn't enforced per machine.
+- You aren't charged for ingestion as long as the total data ingested for all machines in the subscription stays within the daily allowance, even if individual machines ingest more than 500 MB.
+- The benefit applies at the Log Analytics workspace level.
 - The benefit doesn't appear on your invoice because it has zero cost. You can see it in the product UI and in Microsoft Cost Management exports. Learn how to [view your data allocation benefits](/en-us/azure/azure-monitor/fundamentals/cost-usage#view-data-allocation-benefits).
 
 ## How the data ingestion benefit is applied
 
-The 500 MB/day data ingestion benefit applies when:
+The 500 MB per day data ingestion benefit applies when:
 
 - Defender for Servers Plan 2 is enabled on the Log Analytics workspace that your machines report to. The allowance is calculated daily and applies only while Plan 2 is active.
 - Eligible security data is ingested into that workspace through Azure Monitor Agent (AMA), the Microsoft Defender for Endpoint sensor, or agentless file integrity monitoring (FIM). Agentless FIM events are reported to the `MDCFileIntegrityMonitoringEvents` table.
@@ -94,7 +94,7 @@ Follow Azure Monitor instructions to [create a Log Analytics workspace](/en-us/a
 
 To get the 500 MB/day data ingestion benefit, enable Defender for Servers Plan 2 on the Log Analytics workspace.
 
-1. Sign into the [Azure portal](https://portal.azure.com).
+1. Sign in to the [Azure portal](https://portal.azure.com).
 2. Go to **Microsoft Defender for Cloud**.
 3. Select **Environment settings**.
 4. Select the Log Analytics workspace that you want to configure.

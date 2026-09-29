@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Detect internet exposed IP addresses - Microsoft Defender for Cloud | Microsoft Learn
+title: Detect Internet Exposed IP Addresses - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/detect-exposed-ip-addresses
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -39,25 +39,25 @@ spProducts:
 platformId: 7fdc51fa-e872-3fbf-c426-a254b29fc0bd
 ---
 
-# Detect internet exposed IP addresses - Microsoft Defender for Cloud | Microsoft Learn
+# Detect Internet Exposed IP Addresses - Microsoft Defender for Cloud | Microsoft Learn
 
 This article shows you how to find internet-exposed IP addresses in Microsoft Defender for Cloud. You learn how to use cloud security explorer and attack path analysis to find and prioritize risk.
 
-Microsoft Defender for Cloud integrates with Defender External Attack Surface Management (Defender EASM). In cloud security explorer, this capability appears as Defender EASM (DEASM) findings. This integration provides recommendations and attack path visualizations that help reduce risk.
+Defender for Cloud integrates with Microsoft Defender External Attack Surface Management. In cloud security explorer, this capability appears as Defender External Attack Surface Management (DEASM) findings. This integration provides recommendations and attack path visualizations that help reduce risk.
 
 ## Prerequisites
 
 Before you begin, make sure that you meet the following requirements:
 
-- You need a Microsoft Azure subscription. If you don't have an Azure subscription, you can [sign up for a free subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- You must [enable the Defender cloud security posture management (Defender CSPM) plan](tutorial-enable-cspm-plan).
+- You have a Microsoft Azure subscription. If you don't have an Azure subscription, you can [sign up for a free subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- You enabled the [Defender cloud security posture management (Defender CSPM) plan](tutorial-enable-cspm-plan).
 
 ## Detect internet exposed IP addresses with the cloud security explorer
 
 Use cloud security explorer to build queries, such as outside-in scans, that detect internet-exposed IP addresses in your environment.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Search for and select **Microsoft Defender for Cloud** &gt; **Cloud security explorer**.
+2. Go to **Microsoft Defender for Cloud**, then select **Cloud security explorer**.
 3. In the dropdown menu, search for and select **IP addresses**.
 
     [![Screenshot that shows where to navigate to in Defender for Cloud to search for and select the IP addresses option.](media/detect-exposed-ip-addresses/search-ip-addresses.png)](media/detect-exposed-ip-addresses/search-ip-addresses.png#lightbox)
@@ -86,7 +86,7 @@ Use cloud security explorer to build queries, such as outside-in scans, that det
 Use attack path analysis to view paths that an attacker could use to reach critical assets.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Search for and select **Microsoft Defender for Cloud** &gt; **Attack path analysis**.
+2. Go to **Microsoft Defender for Cloud**, then select **Attack path analysis**.
 3. Search for **Internet exposed**.
 4. Review and select a result.
 5. [Remediate the attack path](how-to-manage-attack-path#remediate-attack-paths).

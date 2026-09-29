@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Use code-to-runtime visibility for security recommendations - Microsoft Defender for Cloud | Microsoft Learn
+title: Use Code-to-runtime Visibility for Security Recommendations - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/code-to-runtime-mapping
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -41,13 +41,11 @@ spProducts:
 platformId: d052ae56-a448-9e8e-78ca-0b204ceedbcd
 ---
 
-# Use code-to-runtime visibility for security recommendations - Microsoft Defender for Cloud | Microsoft Learn
-
-## Overview
+# Use Code-to-runtime Visibility for Security Recommendations - Microsoft Defender for Cloud | Microsoft Learn
 
 Modern cloud applications move through stages that might include source code, pipelines, registries, and runtime environments. A small code change can create many cloud workloads across your environments. When a security issue appears at runtime, you might not know where the issue starts or how many assets it affects.
 
-Code to runtime gives you end-to-end visibility across the software development lifecycle (SDLC). Code to runtime helps you find the origin of an issue, assess its blast radius, and fix the issue at the source.
+Code to runtime gives you end-to-end visibility throughout the software development lifecycle (SDLC). Code to runtime helps you find the origin of an issue, assess its impact, and fix the issue at the source.
 
 Before continuing, take a look at the [container image mapping prerequisites](container-image-mapping).
 
@@ -83,31 +81,31 @@ When SDLC context is available, the recommendation page shows:
 
 For any recommendation supported by code to runtime, Defender correlates data across the SDLC to identify:
 
-1. Where the issue originated (for example, in code or the build pipeline).
-2. Which intermediate stages are involved. These stages include the image in the registry and the CI/CD pipeline that was part of the deployment.
-3. How many assets are affected, giving you visibility into the blast radius.
-4. Which actions you can take at each stage.
+- Where the issue originated, such as in code or the build pipeline.
+- Which intermediate stages are involved. These stages include the image in the registry and the CI/CD pipeline that was part of the deployment.
+- How many assets are affected, so you can see the impact.
+- Which actions you can take at each stage.
 
 ## Why this feature matters
 
 Code to runtime matters for several reasons:
 
-- Fixing only at runtime can cause the issue to reappear during the next deployment.
-- Fixing at the source prevents recurring regressions.
-- Understanding impact helps you plan rollouts and coordinate work.
-- Helps you identify the owner for the fix.
+- If you fix the issue only at runtime, it can reappear during the next deployment.
+- Fixing the issue at the source prevents recurring regressions.
+- Understanding the impact helps you plan rollouts and coordinate work.
+- It helps you identify the owner for the fix.
 
 ## Walk the SDLC chain from runtime back to source
 
 The SDLC chain provides a clear, linear path that explains how the affected workload was created. Each stage appears as a card. You can expand each stage card to see metadata and available actions.
 
-## Understand the blast radius of the issue
+## Understand the impact of the issue
 
-Before taking action, you can open the **All impacted assets** grid for more information:
+Before taking action, open the **All impacted assets** grid for more information:
 
-1. The list shows the impacted assets from the same source. It includes assets in the cloud environment or code environment. Fixing the issue at the source can impact all the affected assets either by automated CI/CD processes or by manual deployment of new code.
-2. You can filter the list based on your preferences. For example, you can filter runtime assets by Kubernetes namespace to assign the issue to a specific development team. You can also filter by relevant asset metadata, such as image tags, labels and so on.
-3. When you select a line, the system shows more details for that instance of the issue.
+- The list shows the impacted assets from the same source. It includes assets in the cloud environment or code environment. Fixing the issue at the source can impact all the affected assets either by automated CI/CD processes or by manual deployment of new code.
+- Filter the list based on your preferences. For example, filter runtime assets by Kubernetes namespace to assign the issue to a specific development team. You can also filter by relevant asset metadata, such as image tags and labels.
+- When you select a line, the system shows more details for that instance of the issue.
 
 The grid shows:
 
@@ -139,7 +137,7 @@ For each gap, Defender shows:
 
 ## Act on these insights
 
-Once you understand the issue and its impact, choose the appropriate next step:
+After you understand the issue and its impact, choose the appropriate next step:
 
 ### Assign ownership
 
@@ -147,7 +145,7 @@ Assign the recommendation directly to a person or team inside Defender for Cloud
 
 ### Create or link a GitHub issue
 
-If repository integration is enabled, you can:
+If you enable repository integration, you can:
 
 - Auto populate an issue with the SDLC context
 - Route it directly to the relevant fixer
@@ -157,7 +155,7 @@ Learn more about [GitHub Advanced Security integration with Microsoft Defender f
 
 Note
 
-This is currently only available in the Azure portal.
+This feature is currently available only in the Azure portal.
 
 ::: zone pivot="azure-portal"
 
@@ -165,7 +163,7 @@ This is currently only available in the Azure portal.
 
 Apply exemptions in a consistent way.
 
-If you exempt a finding (temporarily or permanently), you can do so:
+If you exempt a finding, temporarily or permanently, you can do so:
 
 - At the SDLC stage where it makes the most sense
 - Once, instead of repeatedly across multiple workloads
@@ -194,4 +192,4 @@ Code to Runtime gives you a unified, contextual view across the software develop
 - Fix it once in the most effective place
 - Provide engineering teams with actionable, precise context
 
-This helps security and engineering teams work together and cut down on repeated manual fixes.
+This approach helps security and engineering teams work together and reduces repeated manual fixes.

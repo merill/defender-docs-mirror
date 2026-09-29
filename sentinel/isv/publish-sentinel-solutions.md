@@ -190,3 +190,5 @@ In this screenshot, only the **Offer setup**, **Properties**, and **Technical Co
 [![Screenshot of Review and publish page in Partner Center showing missing details.](media/publish-sentinel-solutions/partner-center-offers-missing-details.png)](media/publish-sentinel-solutions/partner-center-offers-missing-details.png#lightbox)
 
 After you fill out all the details and publish the solution, your solution goes through a series of checks before it goes live in Azure Marketplace and Microsoft Sentinel content hub.
+
+If your published solution includes a CCF data connector and you want to make it available in Azure Government, see [Publish CCF data connector solutions to Azure Government](azure-government-publishing-guidelines).

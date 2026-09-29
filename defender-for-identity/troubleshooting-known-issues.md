@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Describes how you can troubleshoot issues in Microsoft Defender for Identity.
-ms.date: 2026-09-02T00:00:00.0000000Z
+ms.date: 2026-09-23T00:00:00.0000000Z
 ms.topic: troubleshooting
 ms.reviewer: rlitinsky
 ms.custom:
@@ -37,15 +37,21 @@ source_path: defender-for-identity/troubleshooting-known-issues.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
 platformId: 6c06c105-31b2-b7f7-48cf-4ddaeb0100f3
 ---
 
 # Troubleshooting known issues - Microsoft Defender for Identity | Microsoft Learn
 
 This article describes how to troubleshoot known issues in Microsoft Defender for Identity.
+
+## Sensor migration isn't supported between different Microsoft tenants
+
+Migration from sensor v2.x to sensor v3.x isn't supported when the Defender for Identity workspace and Defender for Endpoint onboarding for the same server are associated with different Microsoft tenants. The server might appear **Ready for migration**, but sensor v3.x activation fails. Sensor v2.x continues reporting, and the unsuccessful migration eventually rolls back.
 
 ## Sensor service fails to start
 

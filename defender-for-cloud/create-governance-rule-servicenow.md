@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Create automatic tickets with governance rules - Microsoft Defender for Cloud | Microsoft Learn
+title: Create Automatic Tickets with Governance Rules - Microsoft Defender for Cloud | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/azure/defender-for-cloud/create-governance-rule-servicenow
 breadcrumb_path: /azure/breadcrumb/defender-for-cloud/toc.json
 feedback_help_link_url: https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/bd-p/MicrosoftDefenderCloud
@@ -39,16 +39,16 @@ spProducts:
 platformId: 018941fd-450c-ddcd-326a-5e1f5a4b2506
 ---
 
-# Create automatic tickets with governance rules - Microsoft Defender for Cloud | Microsoft Learn
+# Create Automatic Tickets with Governance Rules - Microsoft Defender for Cloud | Microsoft Learn
 
-The integration of ServiceNow's IT Service Management (ITSM) module and Defender for Cloud allow you to create governance rules that automatically open tickets in ServiceNow for specific recommendations or severity levels. ServiceNow tickets can be created, viewed, and linked to recommendations directly from Defender for Cloud, enabling seamless collaboration between the two platforms and facilitating efficient incident management.
+By integrating ServiceNow's IT Service Management (ITSM) module with Microsoft Defender for Cloud, you can create governance rules that automatically open tickets in ServiceNow for specific recommendations or severity levels. You can create, view, and link ServiceNow tickets to recommendations directly from Defender for Cloud. This integration enables seamless collaboration between the two platforms and facilitates efficient incident management.
 
 ## Prerequisites
 
-Before you create governance rules, make sure you meet the following requirements:
+Before you create governance rules, ensure you meet the following requirements:
 
-- Have an [application registry in ServiceNow](https://www.opslogix.com/knowledgebase/servicenow/kb-create-a-servicenow-api-key-and-secret-for-the-scom-servicenow-incident-connector).
-- Enable [Defender Cloud Security Posture Management (CSPM)](tutorial-enable-cspm-plan) on your Azure subscription.
+- An [application registry in ServiceNow](https://www.opslogix.com/knowledgebase/servicenow/kb-create-a-servicenow-api-key-and-secret-for-the-scom-servicenow-incident-connector).
+- [Defender Cloud Security Posture Management (CSPM)](tutorial-enable-cspm-plan) enabled on your Azure subscription.
 - Admin permissions to ServiceNow to create an assignment.
 
 ## Assign an owner with a governance rule
@@ -56,15 +56,15 @@ Before you create governance rules, make sure you meet the following requirement
 You can create a governance rule to automatically assign an owner to a recommendation in Defender for Cloud. The rule can be based on either the recommendation's severity or a specific recommendation.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Navigate to **Microsoft Defender for Cloud** &gt; **Environment settings**.
+2. Go to **Microsoft Defender for Cloud** &gt; **Environment settings**.
 3. Select **Governance rules**.
 
     ![Screenshot of the environment settings page that shows where the governance rules button is located.](media/integration-servicenow/governance-rules.png)
 4. Select **Create governance rule**.
 5. Enter a rule name and select a scope.
-6. Select **ServiceNow** In the Type field.
+6. In the **Type** field, select **ServiceNow**.
 7. Enter a priority.
-8. Select and integration instance.
+8. Select an integration instance.
 9. Select a ServiceNow ticket type.
 10. Select **Next**.
 11. Select either:
@@ -73,6 +73,6 @@ You can create a governance rule to automatically assign an owner to a recommend
     - **By recommendation** and the recommendation.
 12. Select an owner.
 13. Select a remediation timeframe.
-14. (Optional) Toggle the switch to apply a grace period.
+14. (Optional) Select whether to apply a grace period.
 15. (Optional) Set email notifications.
 16. Select **Create**.

@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to automatically or manually activate the Microsoft Defender for Identity sensor v3.x on eligible identity-role servers.
-ms.date: 2026-09-14T00:00:00.0000000Z
+ms.date: 2026-09-23T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1015
@@ -36,11 +36,11 @@ source_path: defender-for-identity/deploy/activate-sensor.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
 platformId: 6dfc672c-4e94-b9f1-bed3-3c261304a302
 ---
 
@@ -58,12 +58,16 @@ See [Microsoft Defender for Identity sensor v3.x prerequisites](deploy-sensor-v3
 
 ## Turn on automatic sensor activation
 
-Automatic activation applies only to eligible domain controllers onboarded to Defender for Endpoint.
+Note
 
-To turn on automatic sensor activation:
+When **Automatic sensor v3.x activation** is enabled, Defender for Identity automatically activates sensor v3.x on eligible domain controllers, AD FS, AD CS, or Microsoft Entra Connect servers that you onboard to Defender for Endpoint. The servers must run Windows Server 2019 or later.
 
-1. In the Microsoft Defender portal, go to **Settings** &gt; **Identities** &gt; **Advanced features**.
-2. Turn on **Automatic sensor v3.x activation**.
+Automatic activation doesn't install a separate Defender for Identity sensor package. It activates the sensor capability on eligible servers that are already onboarded to Defender for Endpoint. Servers that already have a Defender for Identity sensor aren't targeted by this flow.
+
+On the **Advanced features** page in the Microsoft Defender portal at https://security.microsoft.com/securitysettings/identities, use the **Automatic sensor v3.x activation** toggle to turn on automatic activation for eligible servers. Automatic activation applies only to eligible servers onboarded to Defender for Endpoint.
+
+- Turn on the setting to automatically activate eligible servers when they're discovered.
+- Turn off the setting to stop future automatic activations.
 
 The **Advanced features** page also includes **Automatic Windows auditing configuration**. For details, see [Configure automatic Windows event auditing](configure-windows-event-collection#configure-defender-for-identity-to-collect-windows-events-automatically).
 

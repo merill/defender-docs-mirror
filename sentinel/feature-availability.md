@@ -27,7 +27,7 @@ author: batamig
 ms.reviewer: noak
 ms.topic: feature-availability
 ms.custom: references_regions
-ms.date: 2026-08-18T00:00:00.0000000Z
+ms.date: 2026-09-29T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 4c31fbee-c47b-13bf-008c-625983560b8f
@@ -45,11 +45,11 @@ source_path: sentinel/feature-availability.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/653971be-c25b-47ce-b561-80221556af0c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/15545907-caea-48c1-a546-e84930c5b845
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/f998336e-f087-4bda-99f7-4001451d0bd2
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fd70c557-2c67-40b8-b517-cf047ce6d0c3
 platformId: f411eb92-137c-c7a4-367e-6c21f6991a90
 ---
 
@@ -108,7 +108,7 @@ For more information, see [Microsoft Defender XDR for US Government customers](/
 | [Azure SQL Databases](https://techcommunity.microsoft.com/t5/microsoft-sentinel-blog/azure-sentinel-sql-solution-query-deep-dive/ba-p/2597961) | GA | Yes | Yes |
 | [Azure Web Application Firewall (WAF)](data-connectors-reference#azure-web-application-firewall-waf) | GA | Yes | Yes |
 | [Cisco ASA](data-connectors-reference#cisco-asaftd-via-ama) | GA | Yes | Yes |
-| [Codeless Connectors Platform](isv/create-codeless-connector?tabs=deploy-via-arm-template,connect-via-the-azure-portal) | Public preview | Yes | No |
+| [Codeless Connectors Platform](isv/create-codeless-connector?tabs=deploy-via-arm-template,connect-via-the-azure-portal) | Public preview | Yes | Yes |
 | [Common Event Format (CEF)](connect-common-event-format) | GA | Yes | Yes |
 | [Common Event Format (CEF) via AMA](connect-cef-syslog-ama) | GA | Yes | Yes |
 | [DNS](data-connectors-reference#dns) | Public preview | Yes | No |

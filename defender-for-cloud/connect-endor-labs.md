@@ -49,17 +49,17 @@ This article explains the benefits and steps to connect Endor Labs to Defender f
 
 ## Prerequisites
 
-- You need a Microsoft Azure subscription. If you don't have an Azure subscription, you can [sign up for an Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- You must [enable Microsoft Defender for Cloud on your Azure subscription](get-started#enable-defender-for-cloud-on-your-azure-subscription).
-- You must [enable Defender Cloud Security Posture Management (CSPM)](tutorial-enable-cspm-plan) on your Azure subscription.
+- A Microsoft Azure subscription. If you don't have an Azure subscription, you can [sign up for an Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- [Microsoft Defender for Cloud on your Azure subscription](get-started#enable-defender-for-cloud-on-your-azure-subscription) enabled.
+- [Defender Cloud Security Posture Management (CSPM)](tutorial-enable-cspm-plan) enabled on your Azure subscription.
 - Connect your DevOps environments to Defender for Cloud:
 
     - [Connect Azure DevOps organizations to Defender for Cloud](quickstart-onboard-devops)
     - [Connect GitHub organizations to Defender for Cloud](quickstart-onboard-github)
     - [Connect GitLab groups to Defender for Cloud](quickstart-onboard-devops)
-- Have an Endor Labs account. For more information, see the [Endor Labs product site](https://www.endorlabs.com/).
-- Have an Endor Labs Application Programming Interface (API) key with read-only permissions. For setup instructions, see [Creating API keys in Endor Labs](https://docs.endorlabs.com/administration/api-keys/). We recommend an expiration date of 180 days.
-- You must have the appropriate role to:
+- An Endor Labs account. For more information, see the [Endor Labs product site](https://www.endorlabs.com/).
+- An Endor Labs Application Programming Interface (API) key with read-only permissions. For setup instructions, see [Creating API keys in Endor Labs](https://docs.endorlabs.com/administration/api-keys/). We recommend an expiration date of 180 days.
+- The appropriate roles for the following tasks:
 
     - **Create DevOps connectors**: Security Admin or Contributor assigned at the **subscription level** through Azure role-based-access control (RBAC).
     - **Create the Endor Labs connector**: Security Administrator (or higher) assigned at the **tenant level** through Microsoft Entra. Permissions can be granted through Privileged Identity Management (PIM). For details, see [Configure PIM](/en-us/entra/id-governance/privileged-identity-management/pim-configure).
@@ -72,7 +72,7 @@ This article explains the benefits and steps to connect Endor Labs to Defender f
 To connect your Endor Labs account to Defender for Cloud:
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Navigate to **Microsoft Defender for Cloud** &gt; **Environment settings**.
+2. Go to **Microsoft Defender for Cloud** &gt; **Environment settings**.
 3. Select **Integrations**.
 
     [![Microsoft Defender for Cloud Environment settings page with Integrations selected.](media/connect-endor-labs/integrations.png)](media/connect-endor-labs/integrations.png#lightbox)

@@ -142,7 +142,7 @@ You should [enable Defender for Servers](tutorial-enable-servers-plan) at the su
 | **Enable for a resource** | Yes | No |
 | **Disable for a resource** | Yes | Yes |
 
-- Enable and disable Plan 1 at the resource level per server.
+- Enable and disable Plan 1 at the resource level per server. A server is defined as a device running a server operating system. For information, refer to [Common questions about Defender for Servers](faq-defender-for-servers).
 - Plan 2 can't be enabled at the resource level, but you can disable it at the resource level.
 
 ## After enabling

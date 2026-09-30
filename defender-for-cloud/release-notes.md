@@ -61,10 +61,66 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| Sep 30, 2026 | Upcoming update | Upcoming billing updates for Defender for Servers |
 | September 29, 2026 | GA | Enhanced agent for Defender for SQL Servers on Machines is fully available in Azure Government cloud |
 | September 23, 2026 | Upcoming deprecation | Upcoming deprecation of the Machines should have a vulnerability assessment solution recommendation |
 | September 3, 2026 | GA | AWS GuardDuty coverage status is now shown on the S3 asset page |
 | September 3, 2026 | GA | General availability of Defender for Cosmos DB in Azure Government cloud |
+
+### Upcoming billing updates for Defender for Servers
+
+September 30, 2026
+
+Effective November 1, 2026, Microsoft Defender for Servers introduces two related updates:
+
+- **Billing policy update:**Productivity and desktop client devices, such as Windows 10 and Windows 11 PCs, are no longer billed as servers. For more information, see the Billing Policy Update Details section.
+    - **Affected plan:** Defender for Servers Plan 1.
+- **Billable Server identification mechanism update:**Defender for Servers is updating how it identifies protected servers for billing at a more granular level across environments. This may change the billed server count reflected on your bill based on your usage and configuration. For more information, see the Billable Server Identification Mechanism Update section.
+    - **Affected plans:** Defender for Servers Plan 1 and Plan 2.
+
+This section helps you understand both updates so you can anticipate how your devices are classified and billed after the updates take effect.
+
+#### Prerequisites
+
+- Defender for Servers Plan 1 or Plan 2 enabled.
+
+#### Billing Policy Update Details
+
+This update applies to Defender for Servers Plan 1 only.
+
+##### Understand how devices are classified and billed
+
+Microsoft Defender uses operating-system and device information to classify devices for licensing and billing. Classification doesn't depend on where a device is hosted, whether it's physical or virtual, or how you use it.
+
+The following examples aren't exhaustive and don't confirm product support or licensing eligibility. Classification depends on device information, not the OS or distribution name alone.
+
+| OS family | Desktop, workstation, or mobile examples | Server examples and classification signals |
+| --- | --- | --- |
+| Windows | Windows 11; Windows 10; Windows 8.1; Windows 7; Windows Enterprise multi-session / Windows Virtual Desktop (WVD); Windows 10 IoT Enterprise | Windows Server 2025, 2022, 2019, 2016, and 2012 R2; Server Core; Datacenter; Azure Stack HCI; Windows Server image or SKU information |
+| Linux and other non-Windows systems | Ubuntu Desktop; Fedora / Fedora Workstation; SLED; Kali; Mint; Pop!\_OS; KDE neon; elementary OS; Tuxedo OS | Ubuntu Server; RHEL; Debian; CentOS; SLES / SUSE; Mariner; Oracle Linux; Amazon Linux; Rocky Linux; AlmaLinux; Photon OS; Flatcar; COS; PAN-OS; Gaia |
+| Other desktop and mobile systems | macOS; iOS; Android | None listed |
+
+If the available information doesn't clearly identify a device as a desktop or workstation, it will be classified as a server for billing purposes.
+
+##### Licensing routes
+
+- **Desktop, workstation, and mobile devices:** Licensed through Defender for Endpoint, where supported.
+- **Servers:** Covered through Defender for Servers, billed per server-hour, or standalone Defender for Endpoint for Servers, licensed per device.
+
+##### Defender for Servers Plan 1 billing rules
+
+When Plan 1 is enabled, billing depends on the server's operating system:
+
+| Server operating system | Billing rule when Plan 1 is enabled |
+| --- | --- |
+| Windows | Windows servers in a connected environment, such as an Azure subscription, AWS accounts, or GCP projects and other supported environments, are billed because they receive built-in Plan 1 Windows Server protection without requiring you to manually deploy or manage the Microsoft Defender for Endpoint agent. |
+| Linux and other non-Windows | Linux and other non-Windows servers in a connected environment, such as Azure subscriptions, AWS accounts, or GCP projects and other supported environments, don't get built-in Plan 1 protection and are billed only when the Defender for Endpoint agent is deployed, because the applicable Defender for Servers Plan 1 capabilities depend on it. |
+
+#### Billable Server Identification Mechanism Update
+
+This update applies to both Defender for Servers Plan 1 and Plan 2.
+
+Defender for Server service will check for online machines multiple times per hour up from once per hour, and count each deployed machine separately, including machines created from a golden image that share an Azure Arc ID.
 
 ### Enhanced agent for Defender for SQL Servers on Machines is fully available in Azure Government cloud
 

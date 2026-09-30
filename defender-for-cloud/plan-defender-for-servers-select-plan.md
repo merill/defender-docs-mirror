@@ -80,7 +80,7 @@ We recommend enabling Defender for Servers at the subscription level, but you ca
 | **Enable for resource** | Yes | No |
 | **Disable for resource** | Yes | Yes |
 
-- Plan 1 can be enabled and disabled at resource level.
+- Plan 1 can be enabled and disabled at resource level. A server is defined as a device running a server operating system. For information, refer to [Common questions about Defender for Servers](faq-defender-for-servers).
 - Plan 2 can't be enabled at the resource level, but you can disable the plan at the resource level.
 
 Here are some use case examples to help you decide on Defender for Servers deployment scope.

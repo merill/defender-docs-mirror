@@ -36,9 +36,11 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/tenant-allow-block-list-urls-configure.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
 platformId: c6aa9dd7-6d2e-c708-92c2-4808bca840cf
@@ -360,7 +362,7 @@ For detailed syntax and parameter information, see [Remove-TenantAllowBlockListI
 
 - IPv4 and IPv6 addresses are allowed, but TCP/UDP ports aren't.
 - Filename extensions aren't allowed (for example, test.pdf).
-- Unicode isn't supported, but Punycode is.
+- Unicode isn't supported. Punycode is only allowed in hostname labels before a normal ASCII TLD.
 - Hostnames are allowed if all of the following statements are true:
 
     - The hostname contains a period.

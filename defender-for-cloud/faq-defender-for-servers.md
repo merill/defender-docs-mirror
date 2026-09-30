@@ -51,12 +51,12 @@ Get answers to common questions about Microsoft Defender for Servers.
 
 ### What servers do I pay for in a subscription?
 
-When you enable Defender for Servers on a subscription, you're charged for all machines based on their power states.
+When you enable Defender for Servers on a subscription, you're charged for all machines based on their power states. For more information, see [Upcoming billing updates for Defender for Servers](https://aka.ms/D4ServersUpcomingBillingPolicyChange).
 
 | State | Details | Billing |
 | --- | --- | --- |
 | **Azure VMs** |  |  |
-| Starting | VM starting up. | Not billed |
+| Starting | VM starting up. | Billed |
 | Running | Normal working state. | Billed |
 | Stopping | Transitional. Moves to Stopped state when finished. | Billed |
 | Stopped | VM shut down from within guest OS or by using PowerOff APIs. Hardware is still allocated, and the machine remains on the host. | Billed |

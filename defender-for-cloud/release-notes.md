@@ -240,7 +240,6 @@ For more information, see [Enable cloud infrastructure entitlement management (C
 | Date | Category | Update |
 | --- | --- | --- |
 | July 31, 2026 | Deprecation | Deprecation completed: Legacy grouped recommendations removed from Azure portal |
-| July 30, 2026 | Upcoming change | Foundational CSPM moves to opt-in model for new Azure subscriptions |
 | July 26, 2026 | GA | Database-level recommendations for SQL Vulnerability Assessment (GA) |
 | July 5, 2026 | Deprecation | Plan enablement API now blocks onboarding to five deprecated Defender plans |
 | July 1, 2026 | GA | New container security capabilities are now generally available |
@@ -252,18 +251,6 @@ For more information, see [Enable cloud infrastructure entitlement management (C
 July 31, 2026
 
 Retirement of legacy grouped recommendations (sub-assessments) has started. Customers can no longer access the deprecated data through the API. The Azure portal and Azure Resource Graph might take a few days to reflect the change. Individual recommendations replace the legacy grouped recommendations, as announced in May 2026. Customers who previously relied on grouped recommendations should validate existing automation, reporting, governance workflows, and queries, and migrate any remaining disable rules to exemptions. For more information, see [Transition from grouped to individual recommendations](transition-grouped-individual-recommendations)
-
-### Foundational CSPM moves to opt-in model for new Azure subscriptions
-
-July 30, 2026
-
-Starting October 27, 2026, Foundational CSPM will move to an opt-in model and will no longer be enabled by default for new Azure subscriptions. This change gives you more control over how security posture management is configured for each new Azure subscription and is part of the transition of cloud security posture management to the Microsoft Defender portal.
-
-Foundational CSPM will continue to be available at no cost and can be enabled at any time based on your organization's needs.
-
-This change applies only to new Azure subscriptions. Existing Azure subscriptions keep their current configuration, and AWS and GCP environments aren't affected.
-
-For more information, see [Opt in to Foundational CSPM](foundational-cspm-opt-in).
 
 ### Database-level recommendations for SQL Vulnerability Assessment (GA)
 

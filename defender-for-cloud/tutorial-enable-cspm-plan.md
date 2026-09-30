@@ -48,10 +48,6 @@ Defender for Cloud continually assesses your resources, subscriptions, and organ
 
 Foundational CSPM provides free security posture management capabilities in Defender for Cloud.
 
-Important
-
-Starting October 27, 2026, Foundational CSPM will move to an opt-in model and will no longer be enabled by default for new Azure subscriptions. The free plan will continue to be available at no cost and can be enabled at any time based on your organization's needs. Existing subscriptions that already have Foundational CSPM enabled will remain enabled unless you turn off the plan. For more information, see [Opt in to Foundational CSPM](foundational-cspm-opt-in).
-
 You can enable the **Defender CSPM** plan, which offers extra protections for your environments such as governance, regulatory compliance, cloud security explorer, attack path analysis, and agentless scanning for machines.
 
 Note

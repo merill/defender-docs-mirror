@@ -109,6 +109,7 @@ The following domains must be reachable from the machine or pipeline running the
 - `*.azurefd.net`
 - `*.login.microsoftonline.com`
 - `*.graph.microsoft.com`
+- `aspm-data-externalapi-prd.security.aspm.microsoft.com`
 
 **Required for GitHub Actions (OIDC)**
 

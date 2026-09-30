@@ -51,15 +51,11 @@ For Azure Database for PostgreSQL flexible server, Defender CSPM continuously ev
 
 When Foundational CSPM is enabled, the [Microsoft Cloud Security Benchmark (MCSB)](concept-regulatory-compliance) standard provides recommendations to help secure your multicloud environment. The [secure score](secure-score-security-controls) based on some of the MCSB recommendations helps you monitor cloud compliance. A higher score indicates a lower identified risk level.
 
-Important
-
-Starting October 27, 2026, Foundational CSPM will move to an opt-in model and will no longer be enabled by default for new Azure subscriptions. The free plan will continue to be available at no cost and can be enabled at any time based on your organization's needs. Existing subscriptions that already have Foundational CSPM enabled will remain enabled unless you turn off the plan. For more information, see [Opt in to Foundational CSPM](foundational-cspm-opt-in).
-
 ## CSPM plans
 
 Defender for Cloud offers two CSPM plans:
 
-- **Foundational CSPM** (free): Available at no cost. Starting October 27, 2026, new Azure subscriptions must opt in. AWS and GCP onboarding isn't affected.
+- **Foundational CSPM** (free): Available at no cost.
 - **Defender CSPM** (paid): Provides extra capabilities beyond the Foundational CSPM plan, including advanced CSPM tools for cloud visibility and compliance monitoring. This plan offers advanced security posture features such as AI security posture, attack path analysis, and risk prioritization.
 
 ### Plan availability

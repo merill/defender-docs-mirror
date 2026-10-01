@@ -49,7 +49,7 @@ platformId: cc27df32-d53e-0bfd-2af0-d741032d322e
 
 # Reports in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
-Several reports are available in the Microsoft Defender portal (https://security.microsoft.com). These reports enable your security team to view information about detected threats, device status, and more.
+Several reports are available in the [Microsoft Defender portal](https://security.microsoft.com). These reports enable your security team to view information about detected threats, device status, and more.
 
 This article describes these reports, how you can use them, and how to find them.
 
@@ -57,7 +57,7 @@ This article describes these reports, how you can use them, and how to find them
 
 [![Screenshot of monthly security summary report currently in preview.](media/mdb-monthly-security-summary-report.png)](media/mdb-monthly-security-summary-report.png#lightbox)
 
-The monthly security summary report (currently in preview) shows:
+The monthly security summary report, currently in preview, shows:
 
 - Threats detected and prevented by Defender for Business, so you can see how the service is working for you.
 - Your current status from [Microsoft Secure Score](/en-us/defender-xdr/microsoft-secure-score), which gives you an indication of your organization's security posture.
@@ -83,7 +83,7 @@ To access this report, in the navigation pane, choose **Reports** &gt; **General
 
 Tip
 
-You can view similar information on the home page of your Microsoft Defender portal (https://security.microsoft.com).
+You can view similar information on the home page of your [Microsoft Defender portal](https://security.microsoft.com).
 
 ## Threat protection report
 
@@ -108,7 +108,7 @@ To access this report, in the navigation pane, choose **Incidents** to view and 
 
 [![Screenshot of the device health report in Defender for Business.](media/mdb-device-health.png)](media/mdb-device-health.png#lightbox)
 
-The device health report provides information about device health and trends. You can use this report to determine whether Defender for Business sensors are working correctly on devices and the current status of Microsoft Defender Antivirus.
+The device health report provides information about device health and trends. Use this report to determine whether Defender for Business sensors are working correctly on devices and the current status of Microsoft Defender Antivirus.
 
 To access this report, in the navigation pane, choose **Reports** &gt; **Endpoints** &gt; **Device health**.
 
@@ -116,7 +116,7 @@ To access this report, in the navigation pane, choose **Reports** &gt; **Endpoin
 
 [![Screenshot of the device inventory report in Defender for Business.](media/mdb-device-inventory.png)](media/mdb-device-inventory.png#lightbox)
 
-You can use the **Devices** list to view information about your company's devices. To learn more, see [Manage devices in Defender for Business](mdb-manage-devices).
+Use the **Devices** list to view information about your company's devices. For more information, see [Manage devices in Defender for Business](mdb-manage-devices).
 
 To access this report, in the navigation pane, go to **Assets** &gt; **Devices**.
 
@@ -141,7 +141,7 @@ To access this report, in the navigation pane, choose **Reports** &gt; **Endpoin
 
 Note
 
-If you didn't configure web protection for your company, choose the **Settings** button in a report view. Then, under **Rules**, choose **Web content filtering**. To learn more about web content filtering, see [Web content filtering](/en-us/defender-endpoint/web-content-filtering).
+If you didn't configure web protection for your company, choose **Settings** in a report view. Then, under **Rules**, choose **Web content filtering**. For more information, see [Web content filtering](/en-us/defender-endpoint/web-content-filtering).
 
 ## Firewall report
 
@@ -153,7 +153,7 @@ To access this report, in the navigation pane, choose **Reports** &gt; **Endpoin
 
 Note
 
-If your firewall report has no data, it might be because you didn't configure firewall protection yet. In the navigation pane, choose **Endpoints** &gt; **Configuration management** &gt; **Device configuration**. To learn more, see [Firewall in Defender for Business](mdb-firewall).
+If your firewall report has no data, it might be because you didn't configure firewall protection yet. In the navigation pane, choose **Endpoints** &gt; **Configuration management** &gt; **Device configuration**. For more information, see [Firewall in Defender for Business](mdb-firewall).
 
 ## Device control report
 
@@ -173,6 +173,6 @@ The attack surface reduction rules report has three tabs:
 - **Configuration**: Filter on standard protection rules or other attack surface reduction rules.
 - **Add exclusions**: Define exclusions, if needed.
 
-To learn more, see [Attack surface reduction (ASR) rules report in the Microsoft Defender portal](/en-us/defender-endpoint/attack-surface-reduction-rules-report).
+For more information, see [Attack surface reduction (ASR) rules report in the Microsoft Defender portal](/en-us/defender-endpoint/attack-surface-reduction-rules-report).
 
 To access this report, in the navigation pane, choose **Reports** &gt; **Endpoints** &gt; **Attack surface reduction rules**.

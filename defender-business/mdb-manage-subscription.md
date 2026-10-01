@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Change your endpoint security subscription - Microsoft Defender for Business | Microsoft Learn
+title: Change Your Endpoint Security Subscription - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-manage-subscription
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Learn about your options for managing your Defender for Business or Defender for Endpoint subscription settings. Choose between Defender for Endpoint or Defender for Business.
+description: Learn about your options for managing your Defender for Business or Defender for Endpoint subscription settings.
 author: chrisda
 ms.author: chrisda
 ms.topic: overview
@@ -46,13 +46,13 @@ spProducts:
 platformId: 17c7c057-cda3-7440-68e5-ec23ffe871a9
 ---
 
-# Change your endpoint security subscription - Microsoft Defender for Business | Microsoft Learn
+# Change Your Endpoint Security Subscription - Microsoft Defender for Business | Microsoft Learn
 
-Microsoft Defender for Business and Microsoft Defender for Endpoint are security subscriptions that protect devices, such as computers, tablets, and phones. Defender for Business includes the features of Defender for Endpoint Plan 1, some features from Defender for Endpoint Plan 2, and some unique features for small to medium sized businesses. For more information, see [How does Defender for Business compare to Microsoft Defender for Endpoint?](mdb-overview#how-does-defender-for-business-compare-to-microsoft-defender-for-endpoint).
+Microsoft Defender for Business and Microsoft Defender for Endpoint are security subscriptions that protect devices, such as computers, tablets, and phones. Defender for Business includes the features of Defender for Endpoint Plan 1, some features from Defender for Endpoint Plan 2, and some unique features for small to medium sized businesses. For more information, see [How does Defender for Business compare to Microsoft Defender for Endpoint?](mdb-overview#how-does-defender-for-business-compare-to-microsoft-defender-for-endpoint)
 
-As your organization grows, you might be thinking about changing from Defender for Business to Defender for Endpoint. For example, you have [Microsoft 365 Business Premium](/en-us/microsoft-365/business-premium/m365bp-overview), which includes Defender for Business. When you add Microsoft 365 E5 Security, you get Defender for Endpoint Plan 2 capabilities while retaining the Defender for Business experience.
+As your organization grows, you might consider changing from Defender for Business to Defender for Endpoint. For example, you have [Microsoft 365 Business Premium](/en-us/microsoft-365/business-premium/m365bp-overview), which includes Defender for Business. When you add Microsoft 365 E5 Security, you get Defender for Endpoint Plan 2 capabilities while retaining the Defender for Business experience.
 
-This article describes how to view your current license state and, if needed, change your experience from Defender for Business to Defender for Endpoint.
+You can view your current license state and, if needed, change your experience from Defender for Business to Defender for Endpoint.
 
 ## Review license usage
 
@@ -60,9 +60,9 @@ The license usage report is estimated based on sign-in activities on the device.
 
 To reduce management overhead, there's no requirement for device-to-user mapping and assignment. Instead, the license report provides a utilization estimation that is calculated based on device usage seen across your organization. It might take up to one day for your usage report to reflect the active usage of your devices.
 
-1. Go to the Microsoft Defender portal (https://security.microsoft.com) and sign in.
+1. Go to the [Microsoft Defender portal](https://security.microsoft.com) and sign in.
 2. Choose **Settings** &gt; **Endpoints** &gt; **Licenses**.
-3. Review your available and assigned licenses. The calculation is based on detected users who accessed devices that are onboarded to Defender for Business (or Defender for Endpoint).
+3. Review your available and assigned licenses. The calculation is based on detected users who accessed devices that are onboarded to Defender for Business or Defender for Endpoint.
 
 ## Change your experience to Defender for Endpoint
 

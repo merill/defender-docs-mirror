@@ -11,7 +11,7 @@ manager: bagol
 description: Learn how configuration protection enforces cloud-managed Microsoft Defender Antivirus settings and prevents configuration drift and policy conflicts.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-09-29T00:00:00.0000000Z
 ms.topic: concept-article
 author: SecureITBlanket
 ms.author: jcedola
@@ -78,7 +78,7 @@ Although tamper protection and configuration protection can technically be turne
 
 - Devices must be onboarded to Microsoft Defender for Endpoint.
 - Devices must be managed through Microsoft Intune or Defender for Endpoint security settings management.
-- Devices must run Windows 10, Windows 11, or Windows Server 2019.
+- Devices must run Windows 10, Windows 11, Windows Server 2019, Windows Server 2022, or Windows Server 2025.
 - Devices must run Microsoft Defender for Endpoint EDR Sensor version later than 10.8804 (September 2025).
 - Devices must run Microsoft Defender Antivirus platform version 4.18.26060.3004 or later (June 2026).
 
@@ -110,7 +110,7 @@ Configuration protection enforces cloud-managed policy through three mechanisms:
 
     - Only Intune and Defender for Endpoint policies are honored for Defender Antivirus settings.
     - Group Policy Object (GPO), scripts, Configuration Manager, and local admin changes are ignored.
-    - Microsoft Defender Antivirus doesn't honor local exclusions. Organizations can still choose to allow local administrator-defined exclusions by enabling the local administrator merge setting through policy. When local administrator merge is enabled, locally defined exclusions can be merged with centrally managed exclusions.
+    - Microsoft Defender Antivirus doesn't honor local exclusions by default. Organizations can allow local administrator-defined antivirus exclusions by enabling local administrator merge through Defender or Intune policy. When local administrator merge is enabled, locally defined antivirus exclusions can be merged with centrally managed exclusions. Locally defined attack surface reduction (ASR) exclusions aren't currently honored, even when local administrator merge is enabled.
 - **Secure defaults**: If a setting isn't explicitly configured in a policy, configuration protection applies Microsoft-defined defaults. This behavior ensures that devices maintain a strong security posture even when administrators haven't configured every available setting.
 - **Conflict resolution**: Configuration protection uses a value-based precedence model rather than a last-write-wins model:
 

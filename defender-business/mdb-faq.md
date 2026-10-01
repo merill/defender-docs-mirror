@@ -1,6 +1,6 @@
 ---
 layout: FAQ
-title: Microsoft Defender for Business frequently asked questions - Microsoft Defender for Business | Microsoft Learn
+title: Microsoft Defender for Business Frequently Asked Questions - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-faq
 summary: >
   <p>Use this article to get answers to questions you might have about Defender for Business.</p>
@@ -51,13 +51,13 @@ spProducts:
 platformId: 30067397-a51b-3d5a-34d1-184dbcd30dbb
 ---
 
-# Microsoft Defender for Business frequently asked questions - Microsoft Defender for Business | Microsoft Learn
+# Microsoft Defender for Business Frequently Asked Questions - Microsoft Defender for Business | Microsoft Learn
 
 Use this article to get answers to questions you might have about Defender for Business.
 
 ## How do I try or buy Defender for Business?
 
-We recommend working with a [Microsoft partner](https://www.microsoft.com/security/business/find-a-partner)
+We recommend working with a [Microsoft partner](https://www.microsoft.com/security/business/find-a-partner).
 
 If you prefer to try or buy Defender for Business on your own, go to the [Defender for Business](https://www.microsoft.com/security/business/endpoint-security/microsoft-defender-business) product page, and select the option to try or buy Defender for Business.
 
@@ -150,7 +150,7 @@ See [Attack surface reduction in Microsoft Defender for Business](mdb-asr).
 
 ## How do I run custom reports with Defender for Business?
 
-Defender for Business uses Defender for Endpoint APIs for all available capabilities. You can use the APIs with a reporting tool. As an example scenario, you can use a Power BI connector and schedule a PowerShell script to generate executive summaries formatted in HTML, and send those summaries via email
+Defender for Business uses Defender for Endpoint APIs for all available capabilities. You can use the APIs with a reporting tool. As an example scenario, you can use a Power BI connector and schedule a PowerShell script to generate executive summaries formatted in HTML, and send those summaries by email.
 
 For more information, see the following resources:
 
@@ -190,7 +190,7 @@ For more information, see [Microsoft 365 User Subscription Suites for Small and 
 
 [Defender for Business](mdb-overview) is designed for small and medium-sized businesses who have up to 300 users. Capabilities in Defender for Business include next-generation protection, attack surface reduction, endpoint detection & response (EDR), and automated investigation and remediation. Defender for Business also features [simplified configuration](mdb-setup-configuration) and [device onboarding options](mdb-onboard-devices) that streamline the overall setup and configuration process.
 
-[Defender for Endpoint](/en-us/defender-endpoint/microsoft-defender-endpoint) is an enterprise endpoint security platform designed to help organizations prevent, detect, investigate, and respond to advanced threats
+[Defender for Endpoint](/en-us/defender-endpoint/microsoft-defender-endpoint) is an enterprise endpoint security platform designed to help organizations prevent, detect, investigate, and respond to advanced threats.
 
 - Defender for Endpoint Plan 1 includes next-generation protection and attack surface reduction capabilities
 - Defender for Endpoint Plan 2 extends Plan 1 capabilities with core vulnerability management capabilities, EDR, automated investigation & remediation, threat hunting, and six months of data retention

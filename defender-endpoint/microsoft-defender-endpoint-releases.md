@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Windows Antivirus | Platform 4.18.26080.4 / Engine 1.1.26080.3 | August 2026 | - Platform: 4.18.26080.4- Engine: 1.1.26080.3- Security intelligence: 1.159.11.0 | Release details and updates |
 | iOS | 1.1.81160103 | Sep 2026 | - Build: 1.1.81160103- Release: Sep 24, 2026 | Release details and updates |
 | Linux | 101.26081.0010 | September 2026 | - Release version: 30.126081.0010.0- Engine version: 1.1.26090.3000- Signature version: 1.459.287.0 | Release details and updates |
 | iOS | 1.1.81140101 | Sep 2026 | - Build: 1.1.81140101- Release: Sep 15, 2026 | Release details and updates |
@@ -639,6 +640,7 @@ If you have any concerns or need assistance during this transition, contact supp
 | Platform support | Added support for Ubuntu 26.04, openSUSE Leap 16, and Fedora 44. |
 | General | Reliability and quality improvements. |
 | Bug fix | Fixed an issue that could cause the `wdavdaemon` process to restart in rare cases while scanning running processes. |
+| Vulnerability Management | Microsoft Defender Vulnerability Management (MDVM) has expanded vulnerability detection on Linux to cover critical third-party software libraries across Node.js, Python, and Java, providing greater visibility into vulnerabilities in commonly used software components. |
 
 ### Linux | Aug 2026 | 101.26062.0007
 
@@ -654,8 +656,10 @@ If you have any concerns or need assistance during this transition, contact supp
 | --- | --- |
 | Bug fix | Resolved an issue that could cause on-demand antivirus scans (quick, full, and custom) to take longer than expected or appear unresponsive in certain environments. Protection capabilities remained unaffected while scans were in progress. |
 | Security | Engine signature verification is now enabled by default for new installations and upgrades. Defender for Endpoint verifies the engine's digital signature before loading it and doesn't load engines that fail verification. Legacy engine signature verification settings are deprecated. |
+| Security | Upgraded libcurl to version 8.20.0 to address CVE-2026-7168. |
 | Visibility | Resolved an issue where the `mdatp health` status could incorrectly show a device as healthy after it was offboarded. |
 | General | Reliability and quality improvements. |
+| Configuration | Scheduled antivirus scans (GA): Customers can centrally schedule antivirus scans on Linux using managed JSON and policy settings through the Defender Portal. For more information, see [Schedule AV scans](schedule-antivirus-scans-linux) |
 
 ### Linux | July 2026 | 101.26052.0012
 
@@ -1429,6 +1433,23 @@ For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
 ## Microsoft Defender Antivirus releases
 
 For more information about Microsoft Defender Antivirus updates, see [Microsoft Defender Antivirus security intelligence product updates and support](microsoft-defender-antivirus-updates).
+
+### Windows Antivirus | August 2026-2 | Platform 4.18.26080.4 | Engine 1.1.26080.3
+
+#### Release details
+
+| Component | Version | Date |
+| --- | --- | --- |
+| Platform | 4.18.26080.4 | September 17, 2026 |
+| Engine | 1.1.26080.3 | September 1, 2026 |
+| Security intelligence^1^ | 1.159.11.0 | September 1, 2026 |
+| Support phase | Security and Critical Updates | - |
+
+^1^The security intelligence version listed here is relevant to the listed engine release. Newer versions of security intelligence are released regularly. For more information, see [Security intelligence updates for Microsoft Defender Antivirus and other Microsoft anti-malware](https://www.microsoft.com/wdsi/defenderupdates).
+
+### Enhancements and features
+
+- Fixed an issue where Windows could incorrectly display a notification stating that “Microsoft Defender Antivirus is turned off” when Windows started or intermittently afterward, even though Defender Antivirus remained active and functioning correctly. For more information, see [Incorrect notifications that Microsoft Defender Antivirus is turned off](/en-us/windows/release-health/status-windows-11-25h2#4956msgdesc).
 
 ### Windows Antivirus | August 2026 | Platform 4.18.26080.3 | Engine 1.1.26080.3
 

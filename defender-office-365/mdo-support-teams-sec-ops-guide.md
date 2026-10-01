@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 description: A prescriptive playbook for SecOps personnel to manage Microsoft Teams protection in Microsoft Defender for Office 365.
 ms.service: defender-office-365
-ms.date: 2026-04-02T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 locale: en-us
 document_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
 document_version_independent_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
@@ -50,7 +50,7 @@ Another important step is to ensure SecOps team members have the appropriate per
 
 ## Integrate user reported Teams items into SecOps incident response
 
-When users report Teams messages or calls as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the [user reported settings in Defender for Office 365](submissions-user-reported-messages-custom-mailbox).
+When users report Teams messages or calls as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the [Teams user reported settings in Defender for Office 365](submissions-teams#user-reporting-settings-for-teams-items).
 
 The following alerts are automatically generated and correlated to Defender Incidents for malicious and non malicious user reported items in Teams:
 

@@ -46,24 +46,12 @@ platformId: a3839f82-6841-7c3f-b4da-791964f772d6
 
 # Microsoft 365 Lighthouse and Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
-## Microsoft Defender for Business integrates with Microsoft 365 Lighthouse
+If you're a Microsoft Cloud Solution Provider (CSP) or Managed Service Provider (MSP), you can use [Microsoft 365 Lighthouse](/en-us/microsoft-365/lighthouse/m365-lighthouse-overview) to manage security for your customers. Defender for Business and Microsoft Defender for Endpoint integrate with Microsoft 365 Lighthouse. CSPs and MSPs can use Lighthouse to secure and manage their customers' data and devices.
 
-If you're a Microsoft Cloud Solution Provider (CSP) or Managed Service Provider (MSP), you can use [Microsoft 365 Lighthouse](/en-us/microsoft-365/lighthouse/m365-lighthouse-overview) to manage security for your customers. Microsoft Defender for Business and Defender for Endpoint integrate with Microsoft 365 Lighthouse, an admin portal that CSPs and MSPs can use to secure and manage their customers' data and devices.
+![Screenshot of incidents list in Microsoft 365 Lighthouse.](media/lighthouse-incidents.png)
 
-![screenshot of incidents list in Microsoft 365 Lighthouse](media/lighthouse-incidents.png)
-
-You can use the Microsoft 365 Lighthouse portal (https://lighthouse.microsoft.com) to:
+You can use the [Microsoft 365 Lighthouse portal](https://lighthouse.microsoft.com) to:
 
 - Manage your customers' security settings and capabilities.
 - View and manage detected threats across your customer organizations.
 - Initiate antivirus scans on customers' devices to keep them up to date and protected.
-
-## Learn more about Microsoft 365 Lighthouse
-
-Microsoft 365 Lighthouse enables Microsoft CSPs and MSPs to secure and manage devices, data, and users for customers.
-
-To learn more, see:
-
-- [Overview of Microsoft 365 Lighthouse](/en-us/microsoft-365/lighthouse/m365-lighthouse-overview)
-- [Requirements for Microsoft 365 Lighthouse](/en-us/microsoft-365/lighthouse/m365-lighthouse-requirements)
-- [Sign up for Microsoft 365 Lighthouse](/en-us/microsoft-365/lighthouse/m365-lighthouse-sign-up)

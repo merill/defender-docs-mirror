@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Add users and assign licenses in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: Add Users and Assign Licenses in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-add-users
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -43,11 +43,11 @@ spProducts:
 platformId: 5cb20694-4458-a0a2-4b1e-1783d82e6154
 ---
 
-# Add users and assign licenses in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# Add Users and Assign Licenses in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
 After you sign up for Microsoft Defender for Business, your first step is to add users and assign licenses. This article describes how to add users and assign licenses, and how to verify multifactor authentication (MFA) is enabled for users.
 
-![Visual depicting step 2 - add users and assign licenses in Defender for Business.](media/mdb-setup-step2.png)
+![Diagram that depicts step 2 - add users and assign licenses in Defender for Business.](media/mdb-setup-step2.png)
 
 ## Add users and assign licenses in the Microsoft 365 admin center
 
@@ -61,4 +61,6 @@ To verify that security defaults is enabled in your organization, see [Set up mu
 
 Tip
 
-Organizations with Microsoft Entra ID P1 (for example, Microsoft 365 Business Premium or an add-on subscription) also have access to Conditional Access to enforce MFA and other security requirements. For more information, see [Multifactor authentication for Microsoft 365](/en-us/microsoft-365/admin/security-and-compliance/multi-factor-authentication-microsoft-365). If you don't have any licenses available, you can still add a user and buy additional licenses. For more information about adding users, see [Add users and assign licenses at the same time](/en-us/Microsoft-365/admin/add-users/add-users).
+Organizations with Microsoft Entra ID P1, for example, Microsoft 365 Business Premium or an add-on subscription, also have access to Conditional Access to enforce MFA and other security requirements. For more information, see [Multifactor authentication for Microsoft 365](/en-us/microsoft-365/admin/security-and-compliance/multi-factor-authentication-microsoft-365).
+
+If you don't have any licenses available, you can still add a user and buy more licenses. For more information about adding users, see [Add users and assign licenses at the same time](/en-us/Microsoft-365/admin/add-users/add-users).

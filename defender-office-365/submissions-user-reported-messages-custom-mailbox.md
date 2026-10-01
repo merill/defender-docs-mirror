@@ -20,7 +20,7 @@ ms.custom:
 - msecd-doc-authoring-1016
 description: Configure where user reported messages go for analysis in Microsoft Defender for Office 365. Set up a reporting mailbox and choose Microsoft, mailbox-only, or both.
 ms.service: defender-office-365
-ms.date: 2026-08-07T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: e375e39f-300f-21c4-2b9d-d1610e6288ba
@@ -40,11 +40,11 @@ source_path: defender-office-365/submissions-user-reported-messages-custom-mailb
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/3e34b70d-bca0-4369-a01b-71d1edfd427b
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cf9b82c5-b6dc-45f3-b005-b1bc5fc03bea
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c6f99e62-1cf6-4b71-af9b-649b05f80cce
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ca32b3f-fa14-46df-b09a-9c4a591d6396
 - https://authoring-docs-microsoft.poolparty.biz/devrel/0c85d34e-bfd2-4466-957c-f0b61e9692df
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3f56b378-07a9-4fa1-afe8-9889fdc77628
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
 platformId: 05b47eed-e77a-fef6-d01d-f7a641004710
 ---
 
@@ -315,8 +315,6 @@ When you're finished on the **User reported settings** page, select **Save**.
 
 Tip
 
-If **Monitor reported items in Microsoft Teams** is selected in the **Microsoft Teams** section when **Use a non-Microsoft add-in button** is also selected, the settings in the **Email notifications** sections are available. But, these settings apply only to user-reported Teams messages. For more information, see [User reported message settings in Microsoft Teams](submissions-teams).
-
 In [attack simulation training in Defender for Office 365 Plan 2](attack-simulation-training-get-started), simulation messages reported by non-Microsoft tools aren't captured in attack simulation reports.
 
 #### Message submission format for non-Microsoft reporting tools
@@ -578,14 +576,10 @@ The remaining settings are the default values in "Other settings" as described i
 
 In this example, the email address of the reporting mailbox is userreportedmessages@fabrikam.com in Exchange Online (you can't specify an external email address).
 
-Tip
-
-The value `-ReportChatMessageEnabled $false` is required to achieve **Send reported items to** &gt; **My reporting mailbox only**. Even when the *ReportChatMessageEnabled* property value is `$false` in PowerShell, the **Monitor reported message in Microsoft Teams** settings on the **User reported settings** page is selected. Selecting or unselecting **Monitor reported message in Microsoft Teams** on the **User reported settings** page doesn't change the value of the *ReportChatMessageEnabled* property in PowerShell.
-
 ```powershell
 $usersub = "userreportedmessages@fabrikam.com"
 
-New-ReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableUserEmailNotification $true -ReportJunkAddresses $usersub -ReportNotJunkAddresses $usersub -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -ReportChatMessageEnabled $false
+New-ReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableUserEmailNotification $true -ReportJunkAddresses $usersub -ReportNotJunkAddresses $usersub -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false
 
 New-ReportSubmissionRule -Name DefaultReportSubmissionRule -ReportSubmissionPolicy DefaultReportSubmissionPolicy -SentTo $usersub
 ```
@@ -608,14 +602,8 @@ This example creates the report submission policy with the following settings:
 
 The remaining settings are the default values in "Other settings" as described in the Use PowerShell to configure reporting in Outlook with report messages to Microsoft and the reporting mailbox section.
 
-Tip
-
-The value `-ReportChatMessageEnabled $false` is required to achieve **Send reported items to** &gt; **Microsoft only**. Even when the *ReportChatMessageEnabled* property value is `$false` in PowerShell, the **Monitor reported message in Microsoft Teams** setting on the **User reported settings** page is selected. Selecting or unselecting **Monitor reported message in Microsoft Teams** on the **User reported settings** page doesn't change the value of the *ReportChatMessageEnabled* property in PowerShell.
-
-The values `-EnableUserEmailNotification $true` and `-ReportChatMessageToCustomizedAddressEnabled $false` are required to achieve **Send reported items to** &gt; **Microsoft only**.
-
 ```powershell
-New-ReportSubmissionPolicy -ReportJunkToCustomizedAddress $false -ReportNotJunkToCustomizedAddress $false -ReportPhishToCustomizedAddress $false -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -EnableUserEmailNotification $true -ReportChatMessageToCustomizedAddressEnabled $false -ReportChatMessageEnabled $false
+New-ReportSubmissionPolicy -ReportJunkToCustomizedAddress $false -ReportNotJunkToCustomizedAddress $false -ReportPhishToCustomizedAddress $false -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -EnableUserEmailNotification $true
 ```
 
 Because a reporting mailbox isn't used, the report submission rule isn't needed or created.
@@ -694,7 +682,7 @@ The following examples show how to change the user reporting experience without 
     ```powershell
     $usersub = "reportedmessages@contoso.com"
     
-    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $true -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -ReportChatMessageEnabled $true
+    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $true -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false
     ```
 
     And then run one of the following commands, depending on the existing configuration:
@@ -714,7 +702,7 @@ The following examples show how to change the user reporting experience without 
     ```powershell
     $usersub = "userreportedmessages@fabrikam.com"
     
-    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -ReportChatMessageEnabled $false
+    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false
     ```
 
     And then run one of the following commands, depending on the existing configuration:
@@ -732,7 +720,7 @@ The following examples show how to change the user reporting experience without 
 - Turn on reporting in Outlook if necessary, select **Use the built-in Report button in Outlook**, and change **Send reported items to** to **Microsoft only**. This command clears any previously configured reporting mailbox addresses and sends user reported messages directly to Microsoft for analysis:
 
     ```powershell
-    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $true -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $false -ReportJunkAddresses $null -ReportNotJunkToCustomizedAddress $false -ReportNotJunkAddresses $null -ReportPhishToCustomizedAddress $false -ReportPhishAddresses $null -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -EnableUserEmailNotification $true -ReportChatMessageToCustomizedAddressEnabled $false -ReportChatMessageEnabled $false
+    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $true -EnableThirdPartyAddress $false -ThirdPartyReportAddresses $null -ReportJunkToCustomizedAddress $false -ReportJunkAddresses $null -ReportNotJunkToCustomizedAddress $false -ReportNotJunkAddresses $null -ReportPhishToCustomizedAddress $false -ReportPhishAddresses $null -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -EnableUserEmailNotification $true
     ```
 
     The following command is required only if the report submission rule already exists:
@@ -745,7 +733,7 @@ The following examples show how to change the user reporting experience without 
     ```powershell
     $usersub = "thirdpartyreporting@wingtiptoys.com"
     
-    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableThirdPartyAddress $true -ThirdPartyReportAddresses $usersub -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false -ReportChatMessageEnabled $true
+    Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy -EnableReportToMicrosoft $false -EnableThirdPartyAddress $true -ThirdPartyReportAddresses $usersub -ReportJunkToCustomizedAddress $true -ReportJunkAddresses $usersub -ReportNotJunkToCustomizedAddress $true -ReportNotJunkAddresses $usersub -ReportPhishToCustomizedAddress $true -ReportPhishAddresses $usersub -PreSubmitMessageEnabled $false -PostSubmitMessageEnabled $false
     ```
 
     And then run one of the following commands, depending on the existing configuration:

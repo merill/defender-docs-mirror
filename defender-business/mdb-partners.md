@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Resources for Microsoft partners working with small and medium-sized businesses - Microsoft Defender for Business | Microsoft Learn
+title: Resources for Microsoft Partners Working with Small and Medium-Sized Businesses - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-partners
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Download our new security guide or integrate your remote monitoring and management (RMM) tools and professional service automation (PSA) software with Defender for Business, Microsoft 365 Business Premium, Defender for Endpoint, and Microsoft 365 Lighthouse.
+description: Download our new security guide or integrate your remote monitoring and management (RMM) tools and professional service automation (PSA) software.
 author: chrisda
 ms.author: chrisda
 ms.topic: overview
@@ -46,7 +46,7 @@ spProducts:
 platformId: 3061b40a-e5e6-4165-f00a-6744f27eb5eb
 ---
 
-# Resources for Microsoft partners working with small and medium-sized businesses - Microsoft Defender for Business | Microsoft Learn
+# Resources for Microsoft Partners Working with Small and Medium-Sized Businesses - Microsoft Defender for Business | Microsoft Learn
 
 Small and medium-sized businesses recognize that security is important, but they often don't have the capacity or expertise to have a dedicated security operations team. These customers often need help with setup and configuration, managing security for their devices and network, and addressing alerts or detected threats. Microsoft partners can help.
 
@@ -60,9 +60,9 @@ Use this guidance to:
 
 - Adopt a formal, vendor-agnostic cybersecurity framework.
 - Create a plan that includes identity management, admin accounts, device management, licensing, and more.
-- Set up, configure, use, and maintain Microsoft 365 Business Premium, step by step.
+- Set up, configure, use, and maintain Microsoft 365 Business Premium.
 - Implement and use data protection capabilities, such as sensitivity labels and data loss prevention (DLP) policies.
-- Work with advanced capabilities, such as increased security, identity protection, and email & apps protection.
+- Work with advanced capabilities, such as increased security, identity protection, and email and apps protection.
 
 To access the guide and summary checklist, use the links in the following table:
 
@@ -73,18 +73,18 @@ To access the guide and summary checklist, use the links in the following table:
 
 Tip
 
-The information is also available in the following videos: https://aka.ms/M365GettingStarted.
+The information is also available in these videos: https://aka.ms/M365GettingStarted.
 
 ## Integrate Microsoft endpoint security with your RMM tools and PSA software
 
 If you're a Microsoft Managed Service Provider (MSP), you can integrate Microsoft endpoint security with your remote monitoring and management (RMM) tools and your professional service automation (PSA) software to:
 
-- Get access to your customers' Microsoft Defender portal to [address detected threats and incidents](mdb-respond-mitigate-threats).
+- Access your customers' Microsoft Defender portal to [address detected threats and incidents](mdb-respond-mitigate-threats).
 - Get [email notifications](mdb-email-notifications) about new alerts or vulnerabilities across your customer organization.
 - Fetch and view [incidents and alerts](mdb-view-manage-incidents) with your security information and event management (SIEM) tools.
 - Orchestrate [remediation actions](mdb-review-remediation-actions), such as approving actions following automated investigations, or taking manual response actions on a device.
 
-Integration can be done by using the [Defender for Endpoint APIs](/en-us/defender-endpoint/api/management-apis). Use the following resources to learn more:
+Use the [Defender for Endpoint APIs](/en-us/defender-endpoint/api/management-apis) to set up the integration. Use the following resources to learn more:
 
 | Resource | Description |
 | --- | --- |

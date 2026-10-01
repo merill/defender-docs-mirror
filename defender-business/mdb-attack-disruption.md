@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Automatic attack disruption in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: Automatic Attack Disruption in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-attack-disruption
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Learn about automatic attack disruption in Microsoft Defender for Business
+description: Automatic attack disruption helps businesses limit ransomware damage. Learn how Defender for Business contains threats and gives your team time to respond.
 author: chrisda
 ms.author: chrisda
 ms.date: 2024-06-07T00:00:00.0000000Z
@@ -45,7 +45,7 @@ spProducts:
 platformId: b334a62b-206e-4bcb-1767-7a1f6444971f
 ---
 
-# Automatic attack disruption in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# Automatic Attack Disruption in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
 A human-operated attack is an active attack with the following goals:
 
@@ -54,7 +54,7 @@ A human-operated attack is an active attack with the following goals:
 - Navigate the network.
 - Deploy ransomware or steal information.
 
-These types of attacks can be catastrophic to business operations, tend to be difficult to address, and sometimes continue to threaten business operations after the initial encounter. For more information, see [Human-operated ransomware attacks](/en-us/security/ransomware/human-operated-ransomware#human-operated-ransomware-attacks).
+These types of attacks can be catastrophic to business operations. They tend to be difficult to address and sometimes continue to threaten business operations after the initial encounter. For more information, see [Human-operated ransomware attacks](/en-us/security/ransomware/human-operated-ransomware#human-operated-ransomware-attacks).
 
 Automatic attack disruption is designed to:
 
@@ -66,38 +66,39 @@ This article describes how automatic attack disruption works in Microsoft Defend
 
 ## How automatic attack disruption works
 
-Automatic attack disruption uses insights from Microsoft security researchers and advanced AI models to counteract the complexities of advanced attacks. It limits attacker's progress early on and dramatically reduces the overall effect of an attack, from associated costs to loss of productivity. See some examples at the [Microsoft Security Blog](https://aka.ms/ContainUserSecBlog).
+Automatic attack disruption uses insights from Microsoft Security researchers and advanced AI models to counteract the complexities of advanced attacks. It limits an attacker's progress early on and dramatically reduces the overall effect of an attack, from associated costs to loss of productivity. See some examples at the [Microsoft Security Blog](https://aka.ms/ContainUserSecBlog).
 
-With automatic attack disruption, as soon as a human-operated attack is detected on a device, steps are taken immediately to contain the affected device and user accounts on the device. An incident is created in the Microsoft Defender portal (https://security.microsoft.com). There, your IT/security team can view details about the risk and containment status of compromised assets during and after the process. An **Incident** page provides details about the attack and up-to-date status of affected assets.
+By using automatic attack disruption, as soon as a human-operated attack is detected on a device, the system takes steps to contain the affected device and user accounts on the device. The system creates an incident in the Microsoft Defender portal: https://security.microsoft.com. Your IT or security team can view details about the risk and containment status of compromised assets during and after the process. An **Incident** page provides details about the attack and up-to-date status of affected assets.
 
 Automated response actions include:
 
-- Containing a device by blocking incoming/outgoing communication
+- Containing a device by blocking incoming or outgoing communication
 - Containing a user account by disconnecting current user connections at the device level
 
 Important
 
-- To view information about a detected advanced attack, you must have an appropriate role, such as Security Reader or Security Administrator assigned.
-- To take remediation actions, release a contained device/user, or re-enable a user account, you must have the Security Administrator role assigned.
-- For more information, see [Security roles and permissions in Defender for Business](mdb-roles-permissions).
+- To view information about a detected advanced attack, you must have an appropriate role, such as Security Reader or Security Administrator.
+- To take remediation actions, release a contained device/user, or re-enable a user account, you must have the Security Administrator role.
+
+For more information, see [Security roles and permissions in Defender for Business](mdb-roles-permissions).
 
 ## View details about an attack in the Microsoft Defender portal
 
 1. In the Microsoft Defender portal, go to **Incidents**.
-2. Select an incident that is tagged with *Attack Disruption*.
-3. Review the incident graph, which enables you to get the entire attack story and assess the attack disruption effect and status.
+2. Select an incident that's tagged with *Attack Disruption*.
+3. Review the incident graph. You can get the entire attack story and assess the attack disruption effect and status.
 4. When you're ready to release a contained device or user account, or re-enable a user account, take one of the following steps:
 
-    - To release a contained device, select the device, and then choose **Release from containment**.
+    - To release a contained device, select the device, and then select **Release from containment**.
     - To release a contained user, select the user account, and then, in the side pane, select **Undo**.
 
-Disrupted incidents include a tag for `Attack Disruption` and the specific threat type identified (such as ransomware). If your IT/security team receives [incident email notifications](mdb-email-notifications), these tags also appear in the emails.
+Disrupted incidents include a tag for `Attack Disruption` and the specific threat type identified, such as ransomware. If your IT or security team receives [incident email notifications](mdb-email-notifications), these tags also appear in the emails.
 
 When an incident is disrupted, highlighted text appears below the incident title. Contained devices or user accounts are listed with a label that indicates their status.
 
 ## Track attack disruption actions in the Action center
 
-The [Action center](mdb-review-remediation-actions) brings together all remediation and response actions, whether those actions were taken automatically or manually. You can view all automatic attack disruption actions in the Action center. And, after your IT/security team mitigates the risk and completed the investigation of an incident, they can release contained assets.
+The [Action center](mdb-review-remediation-actions) brings together all remediation and response actions, whether those actions were taken automatically or manually. You can view all automatic attack disruption actions in the Action center. After your IT or security team mitigates the risk and completes the investigation of an incident, they can release contained assets.
 
 1. In the Microsoft Defender portal, go to **Actions & submissions** &gt; **Action center**.
 2. Select the **History** tab.
@@ -107,6 +108,6 @@ For more information, see [Review remediation actions in the Action center](mdb-
 
 ## How to get automatic attack disruption
 
-Automatic attack disruption is built into Defender for Business; you don't have to explicitly turn on these capabilities. It's important to [onboard all your organization's devices](mdb-onboard-devices) (computers, phones, and tablets) to Defender for Business so that they're protected as soon as possible.
+Automatic attack disruption is built into Defender for Business. You don't have to explicitly turn on these capabilities. It's important to [onboard all your organization's devices](mdb-onboard-devices) (computers, phones, and tablets) to Defender for Business so that they're protected as soon as possible.
 
 Additionally, sign up to receive [preview features](/en-us/defender-xdr/preview) so that you get the latest and greatest capabilities as soon as they're available.

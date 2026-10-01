@@ -20,7 +20,7 @@ ms.custom:
 - sfi-ga-nochange
 description: Admins can configure whether users can report malicious messages or calls in Microsoft Teams.
 ms.service: defender-office-365
-ms.date: 2026-09-21T00:00:00.0000000Z
+ms.date: 2026-09-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 1d442262-3a46-5714-423c-d3a453a7b613
@@ -127,14 +127,69 @@ To modify the **Monitor reported items in Microsoft Teams** setting in the Defen
 
 The **Monitor reported items in Microsoft Teams** setting is meaningful only if Teams message or call reporting is turned on in the Teams admin center.
 
-1. In the Microsoft Defender portal at https://security.microsoft.com, go to **Settings** &gt; **Email & collaboration** &gt; **User reported settings** tab. To go directly to the **User reported settings** page, use https://security.microsoft.com/securitysettings/userSubmission.
-2. On the **User reported settings** page, go to the **Microsoft Teams** section for the **Monitor reported items in Microsoft Teams** setting.
+1. In the Microsoft Defender portal at https://security.microsoft.com, go to **Settings** &gt; **Email & collaboration** &gt; **Teams user reported settings** tab. To go directly to the **Teams user reported settings** page, use https://security.microsoft.com/securitysettings/teamsUserSubmission.
+2. On the **Teams user reported settings** page, go to the **Microsoft Teams** section for the **Monitor reported items in Microsoft Teams** setting.
 
-    The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it. Typically, you leave it turned on if message reporting is also turned on in Teams admin center. For more information, see [Report suspicious email messages to Microsoft](submissions-report-messages-files-to-microsoft#report-suspicious-email-messages-to-microsoft).
+    The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it. Typically, you leave it turned on if message or call reporting is also turned on in Teams admin center. For more information, see [Report suspicious email messages to Microsoft](submissions-report-messages-files-to-microsoft#report-suspicious-email-messages-to-microsoft).
 
     [![Screenshot of the 'Monitor reported items in Microsoft Teams' setting in the Microsoft Defender portal.](media/submissions-teams-turn-on-off-defender-portal.png)](media/submissions-teams-turn-on-off-defender-portal.png#lightbox)
 
-For more information about user reported items settings in the Defender portal, see [User reported settings](submissions-user-reported-messages-custom-mailbox).
+For more information about email user reported item settings in the Defender portal, see [Email user reported settings](submissions-user-reported-messages-custom-mailbox).
+
+### Use Exchange Online PowerShell to configure user reporting in Teams
+
+To view or configure user reporting in Teams by using PowerShell, connect to [Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell).
+
+To view the current Teams user reporting configuration, run the following command:
+
+```powershell
+Get-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy |
+    Format-List ReportChatMessageEnabled,ReportChatMessageToCustomizedAddressEnabled,ReportChatMessageAddresses
+```
+
+For detailed syntax and parameter information, see [Set-ReportSubmissionPolicy](/en-us/powershell/module/exchangepowershell/set-reportsubmissionpolicy).
+
+#### Send reported Teams items to Microsoft only
+
+Tip
+
+The value `-ReportChatMessageEnabled $true` is required to achieve **Send reported items to** &gt; **Microsoft only**. The values `-EnableUserEmailNotification $true` and `-ReportChatMessageToCustomizedAddressEnabled $false` are also required.
+
+```powershell
+Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `
+    -ReportChatMessageEnabled $true `
+    -ReportChatMessageToCustomizedAddressEnabled $false `
+    -EnableUserEmailNotification $true
+```
+
+#### Send reported Teams items to the reporting mailbox only
+
+Tip
+
+The value `-ReportChatMessageEnabled $false` is required to achieve **Send reported items to** &gt; **My reporting mailbox only**. The value `-ReportChatMessageToCustomizedAddressEnabled $true` is also required.
+
+```powershell
+Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `
+    -ReportChatMessageEnabled $false `
+    -ReportChatMessageToCustomizedAddressEnabled $true `
+    -ReportChatMessageAddresses "securityadmin@contoso.com"
+```
+
+#### Send reported Teams items to Microsoft and the reporting mailbox
+
+```powershell
+Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `
+    -ReportChatMessageEnabled $true `
+    -ReportChatMessageToCustomizedAddressEnabled $true `
+    -ReportChatMessageAddresses "securityadmin@contoso.com"
+```
+
+To change the reporting mailbox without changing the reported item destination, run the following command:
+
+```powershell
+Set-ReportSubmissionPolicy -Identity DefaultReportSubmissionPolicy `
+    -ReportChatMessageAddresses "securityadmin@contoso.com"
+```
 
 ## How users report items in Teams
 

@@ -3787,9 +3787,9 @@ Use this method for automated deployment of the Cisco ETD data connector using a
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
-The [Cisco Meraki](https://aka.ms/ciscomeraki) connector allows you to easily connect your Cisco Meraki organization events (Security events, Configuration Changes and API Requests) to Microsoft Sentinel. The data connector uses the [Cisco Meraki REST API](https://developer.cisco.com/meraki/api-v1/#!get-organization-appliance-security-events) to fetch logs and supports DCR-based [ingestion time transformations](/en-us/azure/azure-monitor/logs/custom-logs-overview) that parses the received data and ingests into ASIM and custom tables in your Log Analytics workspace. This data connector benefits from capabilities such as DCR based ingestion-time filtering, data normalization.
+The [Cisco Meraki](https://aka.ms/ciscomeraki) connector allows you to easily connect your Cisco Meraki organization events (Security events, Configuration Changes, API Requests, and File Scanned detections) to Microsoft Sentinel. The data connector uses the [Cisco Meraki REST API](https://developer.cisco.com/meraki/api-v1/#!get-organization-appliance-security-events) to fetch logs and supports DCR-based [ingestion time transformations](/en-us/azure/azure-monitor/logs/custom-logs-overview) that parses the received data and ingests into ASIM and custom tables in your Log Analytics workspace. This data connector benefits from capabilities such as DCR based ingestion-time filtering, data normalization.
 
-In addition to the ASIM-normalized events, this connector also ingests Cisco Meraki Dashboard inventory and wireless security data into custom tables - Organizations, Network Clients, Organization Networks, and wireless Air Marshal (rogue access point) events.
+In addition to the ASIM-normalized events, this connector also ingests Cisco Meraki Dashboard inventory and wireless security data into custom tables - Organizations, Network Clients, Organization Networks, wireless Air Marshal (rogue access point) events, and File Scanned events.
 
 **Supported ASIM schema:**
 
@@ -3808,6 +3808,7 @@ In addition to the ASIM-normalized events, this connector also ingests Cisco Mer
 | [`ASimWebSessionLogs`](/en-us/azure/azure-monitor/reference/tables/ASimWebSessionLogs) | Yes | Yes |
 | [`ASimAuditEventLogs`](/en-us/azure/azure-monitor/reference/tables/ASimAuditEventLogs) | Yes | Yes |
 | [`ASimNetworkSessionLogs`](/en-us/azure/azure-monitor/reference/tables/ASimNetworkSessionLogs) | Yes | Yes |
+| `CiscoMerakiFileScannedEvents_CL` | Yes | Yes |
 
 **Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
@@ -7741,7 +7742,7 @@ The F5 firewall connector allows you to easily connect your F5 logs with Microso
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `F5Telemetry_LTM_CL` | No | No |
+| `F5Telemetry_LTM_CL` | Yes | Yes |
 | `F5Telemetry_system_CL` | Yes | Yes |
 | `F5Telemetry_ASM_CL` | No | No |
 
@@ -16036,9 +16037,9 @@ Imports Recorded Future Identity Playbook Alerts into Microsoft Sentinel. Enable
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `RFI_PlaybookAlertResults_V2_CL` | No | No |
+| `RFI_PlaybookAlertResults_V2_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 

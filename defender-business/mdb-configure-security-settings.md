@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Set up, review, and edit your security policies and settings in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: Set up Security Policies and Settings in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-configure-security-settings
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: View and edit security policies and settings in Defender for Business
+description: Security policies in Microsoft Defender for Business help protect your devices. Learn how to review, create, and edit policies in the Defender portal or Intune.
 author: chrisda
 ms.author: chrisda
 ms.topic: overview
@@ -48,13 +48,13 @@ spProducts:
 platformId: 93619019-9868-9167-b0c0-975163c5825d
 ---
 
-# Set up, review, and edit your security policies and settings in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# Set up Security Policies and Settings in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
-This article walks you through how to review, create, or edit your security policies, and how to navigate advanced settings in [Microsoft Defender for Business](mdb-overview).
+This article shows you how to review, create, or edit your security policies, and how to navigate advanced settings in [Microsoft Defender for Business](mdb-overview).
 
-![Visual depicting step 6 - Review and edit security policies in Defender for Business.](media/mdb-setup-step6.png)
+![Diagram that depicts step 6 - Review and edit security policies in Defender for Business.](media/mdb-setup-step6.png)
 
-When you're setting up or maintaining Defender for Business, an important task is reviewing and configuring device policies:
+When you set up or maintain Defender for Business, an important task is reviewing and configuring device policies:
 
 - **Default policies**:
 
@@ -65,23 +65,23 @@ When you're setting up or maintaining Defender for Business, an important task i
     - [Attack surface reduction features](mdb-asr)
 - **Settings for advanced features**:
 
-    - [Turn on (or off) advanced features](mdb-portal-advanced-feature-settings#view-settings-for-advanced-features);
-    - [Specifying which time zone to use in the Microsoft Defender portal](mdb-portal-advanced-feature-settings#view-and-edit-other-settings-in-the-microsoft-365-defender-portal); and
-    - [Whether to receive preview features as they become available](/en-us/defender-xdr/preview).
+    - [Turn on (or off) advanced features](mdb-portal-advanced-feature-settings#view-settings-for-advanced-features)
+    - [Specifying which time zone to use in the Microsoft Defender portal](mdb-portal-advanced-feature-settings#view-and-edit-other-settings-in-the-microsoft-365-defender-portal)
+    - [Whether to receive preview features as they become available](/en-us/defender-xdr/preview)
 
 ## Choose where to manage security policies and devices
 
-Before you create or edit security policies, you need to decide which portal to use:
+Before you create or edit security policies, decide which portal to use:
 
-- **Microsoft Defender portal** at https://security.microsoft.com.
-- **Microsoft Intune admin center** at https://intune.microsoft.com.
+- [Microsoft Defender portal](https://security.microsoft.com)
+- [Microsoft Intune admin center](https://intune.microsoft.com)
 
 The following table explains both options.
 
 | Option | Description |
 | --- | --- |
-| Defender portal | A one-stop shop for managing company devices, security policies, and security settings in Defender for Business. With a simplified configuration process, you can use the Defender portal to: <br>- Onboard devices.<br>- Access your security policies and settings.<br>- Use the [Microsoft Defender Vulnerability Management dashboard](mdb-view-tvm-dashboard).<br>- [view and manage incidents](mdb-view-manage-incidents)<br><br>. |
-| Intune admin center | Although Defender for Business doesn't include Microsoft Intune, you can use the Intune admin center to: <br>- Manage your company devices and apps, including how they access your company data.<br>- Onboard devices and access your security policies and settings in Intune.<br>- Set up and configure attack surface reduction rules.<br><br> If your company has Intune, you can continue using Intune to manage your devices and security policies. To learn more, see [Manage device security with endpoint security policies in Microsoft Intune](/en-us/intune/intune-service/protect/endpoint-security-policy) |
+| Defender portal | A one-stop shop for managing company devices, security policies, and security settings in Defender for Business. With a simplified configuration process, you can use the Defender portal to: <br>- Onboard devices.<br>- Access your security policies and settings.<br>- Use the [Microsoft Defender Vulnerability Management dashboard](mdb-view-tvm-dashboard).<br>- [View and manage incidents](mdb-view-manage-incidents)<br><br>. |
+| Intune admin center | Although Defender for Business doesn't include Microsoft Intune, you can use the Intune admin center to: <br>- Manage your company devices and apps, including how they access your company data.<br>- Onboard devices and access your security policies and settings in Intune.<br>- Set up and configure attack surface reduction rules.<br><br> If your company has Intune, you can continue using Intune to manage your devices and security policies. To learn more, see [Manage device security with endpoint security policies in Microsoft Intune](/en-us/intune/intune-service/protect/endpoint-security-policy). |
 
 If you use Intune, and you attempt to view or edit security policies in the Defender portal by going to **Configuration management** &gt; **Device configuration**, you're prompted to choose whether to continue using Intune, or switch to using the Defender portal, as shown in the following screenshot:
 

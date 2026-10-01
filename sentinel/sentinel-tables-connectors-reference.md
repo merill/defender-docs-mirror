@@ -187,6 +187,7 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | CiscoETD\_CL | [Cisco ETD](/en-us/azure/sentinel/data-connectors-reference#cisco-etd) | No | No |
 | CiscoETDv2\_CL | [Cisco Email Threat Defense (ETD)](/en-us/azure/sentinel/data-connectors-reference#cisco-email-threat-defense-etd) | Yes | Yes |
 | CiscoMerakiAirMarshalEvents\_CL | [Cisco Meraki Events (using REST API) (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#cisco-meraki-events-using-rest-api-via-codeless-connector-framework) | Yes | Yes |
+| CiscoMerakiFileScannedEvents\_CL | [Cisco Meraki Events (using REST API) (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#cisco-meraki-events-using-rest-api-via-codeless-connector-framework) | Yes | Yes |
 | CiscoMerakiNetworkClients\_CL | [Cisco Meraki Events (using REST API) (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#cisco-meraki-events-using-rest-api-via-codeless-connector-framework) | Yes | Yes |
 | CiscoMerakiOrganizationNetworks\_CL | [Cisco Meraki Events (using REST API) (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#cisco-meraki-events-using-rest-api-via-codeless-connector-framework) | Yes | Yes |
 | CiscoMerakiOrganizations\_CL | [Cisco Meraki Events (using REST API) (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#cisco-meraki-events-using-rest-api-via-codeless-connector-framework) | Yes | Yes |
@@ -352,7 +353,7 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | ExchangeHttpProxy\_CL | [Microsoft Exchange HTTP Proxy Logs](/en-us/azure/sentinel/data-connectors-reference#microsoft-exchange-http-proxy-logs)[\[Deprecated\] Microsoft Exchange Logs and Events](/en-us/azure/sentinel/data-connectors-reference#deprecated-microsoft-exchange-logs-and-events) | Yes | Yes |
 | ExtraHop\_Detections\_CL | [ExtraHop Detections Data Connector](/en-us/azure/sentinel/data-connectors-reference#extrahop-detections-data-connector) | Yes | Yes |
 | F5Telemetry\_ASM\_CL | [F5 BIG-IP](/en-us/azure/sentinel/data-connectors-reference#f5-big-ip) | No | No |
-| F5Telemetry\_LTM\_CL | [F5 BIG-IP](/en-us/azure/sentinel/data-connectors-reference#f5-big-ip) | No | No |
+| F5Telemetry\_LTM\_CL | [F5 BIG-IP](/en-us/azure/sentinel/data-connectors-reference#f5-big-ip) | Yes | Yes |
 | F5Telemetry\_system\_CL | [F5 BIG-IP](/en-us/azure/sentinel/data-connectors-reference#f5-big-ip) | Yes | Yes |
 | FilewallExchange\_CL | [Filewall for Microsoft 365](/en-us/azure/sentinel/data-connectors-reference#filewall-for-microsoft-365) | Yes | Yes |
 | FinanceOperationsActivity\_CL | [Dynamics 365 Finance and Operations](/en-us/azure/sentinel/data-connectors-reference#dynamics-365-finance-and-operations) | Yes | Yes |
@@ -542,7 +543,7 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | RedSiftAuth\_CL | [Red Sift Events (CCP Push)](/en-us/azure/sentinel/data-connectors-reference#red-sift-events-ccp-push) | No | No |
 | RedSiftEmailForensics\_CL | [Red Sift Events (CCP Push)](/en-us/azure/sentinel/data-connectors-reference#red-sift-events-ccp-push) | No | No |
 | RelevanceSystemAlerts\_CL | [Google Threat Intelligence Relevance System Alerts](/en-us/azure/sentinel/data-connectors-reference#google-threat-intelligence-relevance-system-alerts) | Yes | Yes |
-| RFI\_PlaybookAlertResults\_V2\_CL | [Recorded Future Identity - Playbook Alert Importer](/en-us/azure/sentinel/data-connectors-reference#recorded-future-identity---playbook-alert-importer) | No | No |
+| RFI\_PlaybookAlertResults\_V2\_CL | [Recorded Future Identity - Playbook Alert Importer](/en-us/azure/sentinel/data-connectors-reference#recorded-future-identity---playbook-alert-importer) | Yes | Yes |
 | RSAIDPlus\_AdminLogs\_CL | [RSA ID Plus Admin Logs Connector](/en-us/azure/sentinel/data-connectors-reference#rsa-id-plus-admin-logs-connector) | No | No |
 | Rubrik\_Anomaly\_Data\_CL | [Rubrik Security Cloud Security Events (Push)](/en-us/azure/sentinel/data-connectors-reference#rubrik-security-cloud-security-events-push)[Rubrik Security Cloud data connector (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#rubrik-security-cloud-data-connector-using-azure-functions) | Yes | Yes |
 | Rubrik\_Events\_Data\_CL | [Rubrik Security Cloud Security Events (Push)](/en-us/azure/sentinel/data-connectors-reference#rubrik-security-cloud-security-events-push)[Rubrik Security Cloud data connector (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#rubrik-security-cloud-data-connector-using-azure-functions) | Yes | Yes |

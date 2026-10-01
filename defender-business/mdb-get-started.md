@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Visit the Microsoft Defender portal - Microsoft Defender for Business | Microsoft Learn
+title: Visit the Microsoft Defender Portal - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-get-started
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -47,9 +47,9 @@ spProducts:
 platformId: 0bff950d-af73-b931-0011-fd8d4b53cd0a
 ---
 
-# Visit the Microsoft Defender portal - Microsoft Defender for Business | Microsoft Learn
+# Visit the Microsoft Defender Portal - Microsoft Defender for Business | Microsoft Learn
 
-The Microsoft Defender portal at https://security.microsoft.com is your one-stop shop for using and managing Microsoft Defender for Business. The Defender portal includes callouts to help you get started, cards that surface relevant information, and a navigation bar to give you easy access to various features and capabilities.
+The [Microsoft Defender portal](https://security.microsoft.com) is your one-stop shop for using and managing Microsoft Defender for Business. The Defender portal includes callouts to help you get started, cards that surface relevant information, and a navigation bar to give you easy access to various features and capabilities.
 
 ![Screenshot of the Microsoft Defender portal.](media/defender-portal-home.png)
 
@@ -61,8 +61,8 @@ Use the navigation bar on the left side of the screen to access your incidents, 
 | --- | --- |
 | **Home** | The home page in the Microsoft Defender portal. The home page highlights any active threats that are detected, along with recommendations to help secure your company's data and devices. Recommendations based on industry best practices are included in Defender for Business to save your security team time and effort. For more information, see [Security recommendations - Microsoft Defender Vulnerability Management](/en-us/defender-vulnerability-management/tvm-security-recommendation). |
 | **Incidents & alerts** &gt; **Incidents** | A list of recent incidents. Incidents are created as alerts are triggered. An incident can include multiple alerts. Be sure to review your incidents regularly. For more information, see [View and manage incidents in Defender for Business](mdb-view-manage-incidents). |
-| **Actions & submissions** &gt; **Action center** | A list of response actions, including completed and pending actions. <br>- Select the **Pending** tab to view actions that require approval to proceed.<br>- Select the **History** tab to see the actions that were taken. Some actions are taken automatically; others are taken manually or complete after they're approved.&lt;/li.&gt;<br><br> For more information, see [Review remediation actions in the Action center](mdb-review-remediation-actions). |
-| **Actions & submissions** &gt; **Submissions** | The **Submissions** page where you can submit files to Microsoft for analysis. For more information, see [Submit files in Microsoft Defender for Endpoint](/en-us/defender-endpoint/admin-submissions-mde) (the process is similar for Defender for Business). |
+| **Actions & submissions** &gt; **Action center** | A list of response actions, including completed and pending actions. <br>- Select the **Pending** tab to view actions that require approval to proceed.<br>- Select the **History** tab to see the actions that were taken. Some actions are taken automatically. Others are taken manually or complete after they're approved.<br><br> For more information, see [Review remediation actions in the Action center](mdb-review-remediation-actions). |
+| **Actions & submissions** &gt; **Submissions** | The **Submissions** page where you can submit files to Microsoft for analysis. For more information, see [Submit files in Microsoft Defender for Endpoint](/en-us/defender-endpoint/admin-submissions-mde). The process is similar for Defender for Business. |
 | **Learning hub** | Security training and other resources are available online at [learn.microsoft.com](https://go.microsoft.com/fwlink/p/?linkid=2273118). You can filter by product, skill level, role, and more. The Learning hub can help your security team ramp up on security features and capabilities in Defender for Business and other Microsoft offerings. For example, [Microsoft Defender for Endpoint](/en-us/defender-endpoint/microsoft-defender-endpoint) and [Microsoft Defender for Office 365](/en-us/defender-office-365/mdo-about). |
 | **Trials** | Try other security and compliance capabilities by adding on a trial subscription. If you don't see **Trials** in your navigation bar, and you want to add on another trial, you can take one of the following steps: <br>- Visit the [Small Business Solutions page](https://www.microsoft.com/store/b/business?icid=CNavBusinessStore), and select **Chat now** in the **Can we help you?** dialog to get help adding on a trial subscription.<br>- Go to the **Purchase services** page in the Microsoft 365 admin center at https://admin.microsoft.com/Adminportal/Home?source=applauncher#/catalog, and the use the **Search** box to look for **Trial**. If you need help, select **Help & support**. |
 | **Partner catalog** | Lists Microsoft partners who provide technical and professional services. |
@@ -73,6 +73,6 @@ Use the navigation bar on the left side of the screen to access your incidents, 
 | **Reports** | Available security reports. These reports enable you to see your security trends, view details about threat detections and alerts, and learn more about your company's vulnerable devices. |
 | **Health** | View your service health status and plan for upcoming changes. <br>- Select **Service health** to view the health status of the Microsoft 365 services that are included in your company's subscription.<br>- Select **Message center** to learn about planned changes and what to expect. |
 | **Permissions** | Assign permissions to the people in your company: <br>- Manage security and view incidents and reports in the Microsoft Defender portal.<br>- Set up and manage device groups to onboard devices and assign threat protection policies. |
-| **Settings** | Edit settings for the Microsoft Defender portal and Defender for Business. For example, you can onboard (or offboard) your company's devices (also referred to as endpoints). You can also define rules, such as alert-suppression rules, and set up indicators to block or allow certain files or processes. |
+| **Settings** | Edit settings for the Microsoft Defender portal and Defender for Business. For example, you can onboard or offboard your company's devices, also referred to as endpoints. You can also define rules, such as alert-suppression rules, and set up indicators to block or allow certain files or processes. |
 | **More resources** | Navigate to other portals, such as Microsoft Entra ID. But keep in mind that the Microsoft Defender portal should meet your needs without requiring you to navigate to other portals. |
 | **Customize your navigation pane** | Select this option to hide or display options in your navigation bar. |

@@ -19,11 +19,11 @@ ms.collection:
 - m365initiative-m365-defender
 - tier2
 ms.custom:
-- msecd-doc-authoring-1014
+- msecd-doc-authoring-1030
 - cx-ti
 - cx-ah
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 76dfe3e6-2253-8172-d91e-df741bf40f4f
@@ -94,7 +94,7 @@ You can also take the following actions on the rule from the rule details page:
 
 - **Open detection rule page** - opens the detection rule page to view triggered alerts and review actions (for custom detection rules only)
 - **Run** - runs the rule immediately; this also resets the interval for the next run (for custom detection rules only)
-- **Edit** - opens the rule wizard where you can modify the rule settings and the query
+- **Edit** - opens the rule wizard where you can modify the rule settings and the query. Flexible frequency and lookback for all supported data sources are in public preview. For more information, see [Custom frequency and lookback](custom-detection-rules#custom-frequency-and-lookback-preview).
 - **Modify query** - opens the query directly in advanced hunting for editing
 - **Turn on** / **Turn off** - allows you to enable the rule or stop it from running
 - **Delete** - turns off the rule and permanently removes it

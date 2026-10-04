@@ -20,13 +20,13 @@ ms.collection:
 - m365initiative-m365-defender
 - tier2
 ms.custom:
-- msecd-doc-authoring-1014
+- msecd-doc-authoring-1030
 - sfi-ga-nochange
 - cx-ti
 - cx-ah
 - sfi-image-nochange
 ms.topic: how-to
-ms.date: 2026-09-02T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 889233db-f43a-794c-5a31-24ee96a226be
@@ -172,7 +172,7 @@ DeviceEvents
 
 Tip
 
-For better query performance, set a time filter that matches your intended run frequency for the rule. Since the least frequent run is *every 24 hours*, filtering for the past day covers all new data.
+For better query performance, set a time filter that matches the configured lookback period for the rule.
 
 #### Custom column for Microsoft Sentinel scoping
 
@@ -185,8 +185,8 @@ When you create custom detections and analytics rules, you must project the `Sen
 In the query editor, select **Create detection rule** and specify the following alert details:
 
 - **Detection name** - Name of the detection rule; make it unique.
-- **Frequency** - Interval for running the query and taking action. For more information, see Rule frequency.
-- **Lookback** - The time period covered by the query when the custom detection targets data from Microsoft Sentinel only. For more information, see Lookback.
+- **Frequency** - Interval for running the query and taking action. Custom frequency for all supported data sources is in public preview and supports intervals from 5 minutes to 14 days. For more information, see Rule frequency.
+- **Lookback** - Amount of historical data that the query evaluates each time it runs. Configurable lookback for all supported data sources is in public preview and supports periods from 5 minutes to 30 days. For more information, see Custom frequency and lookback.
 - **Alert title** - Title displayed with alerts triggered by the rule; make it unique and use plaintext. Strings are sanitized for security purposes, so HTML, Markdown, and other code don't work. Any URLs included in the title should follow the [percent-encoding format](https://en.m.wikipedia.org/wiki/Percent-encoding) for them to display properly.
 - **Severity** - Potential risk of the component or activity identified by the rule.
 - **Category** - Threat component or activity identified by the rule.
@@ -199,14 +199,14 @@ In the query editor, select **Create detection rule** and specify the following 
 
 #### Rule frequency
 
-When you save a new rule, it runs and checks for matches from the past 30 days of data. The rule then runs again at fixed intervals, applying a lookback period based on the frequency you choose:
+When you save a new rule, it runs and checks for matches from the past 30 days of data. The rule then runs again at the configured interval:
 
 - **Every 24 hours**
 - **Every 12 hours**
 - **Every 3 hours**
 - **Every hour**
 - **Continuous (NRT)** - Runs continuously, checking data from events as they're collected and processed in near real-time (NRT). For more information, see [Continuous (NRT) frequency](custom-detection-rules#continuous-nrt-frequency).
-- **Custom** - Runs according to the frequency you selected. This option is available if the rule is based only on data that is ingested to Microsoft Sentinel. For more information, see Custom frequency for Microsoft Sentinel data.
+- **Custom (public preview)** - Runs at an interval that you configure, from 5 minutes to 14 days. For more information, see Custom frequency and lookback.
 
 Tip
 
@@ -249,37 +249,30 @@ Note
 
 Only generally available columns support **Continuous (NRT)** frequency.
 
-###### Custom frequency for Microsoft Sentinel data
+##### Custom frequency and lookback (public preview)
 
-Microsoft Sentinel customers who onboard to Microsoft Defender can select **Custom** frequency when the rule is based only on data that Microsoft Sentinel ingests.
+Flexible frequency and lookback for custom detections are in public preview. You can configure these settings independently for rules that use any supported data source, including Microsoft Defender XDR and Microsoft Sentinel data.
 
-When you select this frequency option, the **Run query every input** component appears. Type the desired frequency for the rule and use the dropdown to select the units: minutes, hours, or days. The supported range is any value from 5 minutes to 14 days.
+Use these settings to:
 
-[![Screenshot that shows the Custom frequency option in the Custom detections setup guide.](media/custom-detection-rules/ah-custom-frequency.png)](media/custom-detection-rules/ah-custom-frequency.png#lightbox)
+- Run a rule as frequently as every 5 minutes.
+- Set the frequency from 5 minutes to 14 days.
+- Set the lookback from 5 minutes to 30 days.
+- Use a longer lookback while keeping the frequency needed for time-sensitive detections.
 
-Important
+To configure the schedule, select **Custom** frequency. In **Run query every**, enter the frequency, and then select minutes, hours, or days. In **Lookup data from the last**, configure the lookback period.
 
-When you select a custom frequency, Defender fetches your data from Microsoft Sentinel. This condition means that:
+[![Screenshot that shows the Custom frequency option in the custom detection rule wizard.](media/custom-detection-rules/ah-custom-frequency.png)](media/custom-detection-rules/ah-custom-frequency.png#lightbox)
 
-1. You must have data available in Microsoft Sentinel.
-2. Defender data doesn't support scoping, since Microsoft Sentinel doesn't support scoping.
+The lookback must be at least as long as the frequency to avoid coverage gaps. The frequency also determines the maximum supported lookback:
 
-#### Lookback
+| Frequency | Supported lookback |
+| --- | --- |
+| 5 minutes to less than 1 hour | At least the selected frequency and less than 48 hours |
+| 1 hour to less than 1 day | At least the selected frequency and up to 14 days |
+| 1 day to 14 days | At least the selected frequency and up to 30 days |
 
-The lookback period of your custom detections can range from five minutes to 30 days, depending on the target data and frequency of your query.
-
-If your custom detections include Defender XDR data, a fixed lookback period is applied depending on the rule frequency that you choose:
-
-- For detections set to run **every 24 hours**, the lookback period is **30 days**.
-- For detections set to run **every 12 hours**, the lookback period is **48 hours**.
-- For detections set to run **every three hours**, the lookback period is **12 hours**.
-- For detections set to run **hourly**, the lookback period is **four hours**.
-
-If your custom detections target Microsoft Sentinel data only, you can customize the lookback period depending on the rule frequency that you set:
-
-- For detections set to run in frequencies **higher (more frequent) than one hour**, the lookback period is limited to **less than 48 hours**.
-- For detections set to run in frequencies **higher than one day**, the lookback can be set **up to 14 days**.
-- For detections set to run in frequencies of **one day or less**, the lookback can be set **up to 30 days**.
+Rules that run more frequently have shorter maximum lookback periods to maintain performance.
 
 Important
 

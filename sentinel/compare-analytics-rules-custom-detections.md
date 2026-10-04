@@ -26,9 +26,10 @@ ms.author: pauloliveria
 author: poliveria
 ms.reviewer: nonutkev
 ms.topic: product-comparison
-ms.date: 2026-05-19T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection: ms-security
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: e077c24d-c9ad-2350-c27c-0ca841d756bc
 document_version_independent_id: a2c87e85-8daa-bb87-ecbb-87e92b0c29f8
@@ -70,11 +71,11 @@ Important
 |  | Enrich alerts with custom details | Supported | Supported |
 |  | Define alert title and description dynamically - Integrate query results in runtime | Supported | Supported |
 |  | Define all alerts properties dynamically - Integrate query results in runtime | Supported | Planned |
-| **Rule frequency** | Support flexible and high frequency for Sentinel data | Supported | Supported |
+| **Rule frequency** | Flexible rule frequency | Supported | [Supported (public preview)](/en-us/defender-xdr/custom-detection-rules#custom-frequency-and-lookback-preview) |
 |  | Near-real-time (NRT) rules on Sentinel data | Supported | [Supported](/en-us/defender-xdr/custom-detection-rules#queries-you-can-run-continuously) |
 |  | NRT streaming technology - Test events as they stream, not sensitive to ingestion delays | Not supported. Analytics NRT rules test events after they're ingested. | Supported |
 |  | Determine rule's first run | Supported | Not supported |
-| **Rule lookback** | Lookback support | Lookback is flexible:<br>- Up to 48 hours for frequency higher than one hour<br>- Up to 14 days for frequency of one hour and less | [In public preview](/en-us/defender-xdr/custom-detection-rules#lookback). Parity with analytics rules on Sentinel data. |
+| **Rule lookback** | Configurable lookback | Supported | [Supported (public preview)](/en-us/defender-xdr/custom-detection-rules#custom-frequency-and-lookback-preview) |
 | **Rule data** | Defender XDR data | Not supported | Supported |
 |  | Sentinel analytics tier | Supported | Supported |
 | **Automated actions** | Native Defender XDR remediation actions | Not supported | Supported |

@@ -13,11 +13,13 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: This article is updated frequently to let you know what's new in the latest release of Microsoft Defender for Cloud Apps.
-ms.date: 2026-06-14T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ms.topic: overview
 ms.custom:
+- msecd-doc-authoring-1026
 - sfi-ga-nochange
 - sfi-image-nochange
+ai-usage: ai-assisted
 locale: en-us
 document_id: 9a3d9f7b-4864-bde6-1ec0-292f4af822bd
 document_version_independent_id: 9a3d9f7b-4864-bde6-1ec0-292f4af822bd
@@ -58,6 +60,14 @@ For more information on what's new with other Microsoft Defender security produc
 - [What's new in Microsoft Defender for Identity](/en-us/defender-for-identity/whats-new)
 
 For news about earlier releases, see [Archive of past updates for Microsoft Defender for Cloud Apps](release-note-archive).
+
+## October 2026
+
+### Automatic enablement of SaaS accounts integration with Identity inventory
+
+Starting **October 15, 2026**, the SaaS accounts integration between Microsoft Defender for Cloud Apps and Identity inventory will transition from opt-in to automatic enablement. The integration will be enabled automatically for eligible tenants that don't use the **User group admin** or **App/instance admin** roles. Eligible tenants don't need to take any action.
+
+For more information, see [Identity inventory integration](https://aka.ms/saas-accounts-integration).
 
 ## August 2026
 

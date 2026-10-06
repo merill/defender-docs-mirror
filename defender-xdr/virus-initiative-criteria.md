@@ -41,7 +41,7 @@ spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ade36b61-c646-4bd8-87ee-f3a843461962
-platformId: 7f407783-4057-51c3-a8a4-6315e439adf9
+platformId: 2d79a272-a393-44ec-97ab-fbb4d2b413d2
 ---
 
 # Microsoft Virus Initiative - Microsoft Defender XDR | Microsoft Learn
@@ -73,7 +73,7 @@ To be considered for the MVI program, your organization must meet all the follow
 | [MRG Effitas](https://www.mrg-effitas.com/) | 360 Assessment and Certification | Level 2 |
 | [SE Labs](https://selabs.uk/en/reports/) | Endpoint Security (EPS) or Enterprise Advanced Security (EAS) | AAA |
 | [SKD Labs](https://www.skdlabs.com/html/english/) | Starcheck Anti-malware Real-time protection and cleaning | Starcheck Certified |
-| [VB 100](https://www.virusbulletin.com/testing/vb100/vb100-methodology/vb100-methodology-ver1-1) | VB100 | Detection rate of 95% with Grade C or higher |
+| [VB 100](https://www.virusbulletin.com/testing/vb100/vb100-methodology/vb100-methodology-ver1-1) | VB100 | Detection rate of 95% with Grade B or higher |
 | [West Coast Labs](https://www.westcoastlabs.com/wclvalid) | WCL Validated for Malware Detection and Malware Remediation technologies | Product Rating A |
 
 ## Apply now

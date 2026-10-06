@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Assign security roles and permissions in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: Assign Security Roles and Permissions in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-roles-permissions
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -41,38 +41,30 @@ item_type: Content
 source_path: defender-business/mdb-roles-permissions.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/68e4b2d8-b70c-4019-b49a-d1f8881e2aea
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/b11ae577-8d18-47ab-998c-ea182a941e71
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/67b2ba1a-6f74-4044-a48a-f0f8ad076b8f
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/87b1d24d-826d-4337-90a0-b6c35e4561f2
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
 platformId: 03e51be4-f26d-d07b-827c-9336457340a3
 ---
 
-# Assign security roles and permissions in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# Assign Security Roles and Permissions in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
 This article describes how to assign security roles and permissions in Defender for Business.
 
 ![Visual depicting step 3 - assign security roles and permissions in Defender for Business.](media/mdb-setup-step3.png)
 
-Your organization's security team needs certain permissions to perform tasks, such as
+Your organization's security team needs certain permissions to perform tasks, such as:
 
 - Configuring Defender for Business
-- Onboarding (or removing) devices
+- Onboarding or removing devices
 - Viewing reports about devices and threat detections
 - Viewing incidents and alerts
 - Taking response actions on detected threats
 
-Permissions are granted through certain roles in the [Microsoft Entra ID](/en-us/entra/identity/role-based-access-control/manage-roles-portal). These roles can be assigned in the Microsoft 365 admin center or in the Microsoft Entra admin center.
-
-## Choose where to assign roles and permissions
-
-Use the following links to learn about Defender for Business roles, manage assignments, and continue to the next steps:
-
-1. Learn about roles in Defender for Business.
-2. View or edit role assignments for your security team.
-3. Proceed to your next steps.
+You grant permissions through certain roles in the [Microsoft Entra ID](/en-us/entra/identity/role-based-access-control/manage-roles-portal). You can assign these roles in the Microsoft 365 admin center or in the Microsoft Entra admin center.
 
 ## Roles in Defender for Business
 
@@ -92,7 +84,7 @@ For more information about roles, see the following articles:
 
 Important
 
-Microsoft recommends that you grant people access to only what they need to perform their tasks. We call this concept *least privilege* for permissions. To learn more, see [Best practices for least-privileged access for applications](/en-us/entra/identity-platform/secure-least-privileged-access).
+Microsoft recommends that you grant people access to only what they need to perform their tasks. This concept is called *least privilege* for permissions. To learn more, see [Best practices for least-privileged access for applications](/en-us/entra/identity-platform/secure-least-privileged-access).
 
 You can use the Microsoft 365 admin center or the Microsoft Entra admin center to view and edit role assignments.
 
@@ -107,11 +99,11 @@ Use the following steps to open a user account in the Microsoft 365 admin center
 
     | Task | Procedure |
     | --- | --- |
-    | Add a role to a user account | 1. Select **Admin center access**, scroll down, and then expand **Show all by category**.<br>    2. Select one of the following roles:<br>        - Security Administrator (listed under **Security & Compliance**)<br>        - Security Reader (listed under **Read-only**)<br>/ul&gt;<br>    3. Select **Save changes**. |
+    | Add a role to a user account | 1. Select **Admin center access**, scroll down, and then expand **Show all by category**.<br>    2. Select one of the following roles:<br>        - Security Administrator (listed under **Security & Compliance**)<br>        - Security Reader (listed under **Read-only**)<br>    3. Select **Save changes**. |
     | Remove a role from a user account | 1. Either select **User (no admin center access)** to remove *all* admin roles, or clear the checkbox next to one or more of the assigned roles.<br>    2. Select **Save changes**. |
 
 # [Microsoft Entra admin center](#tab/Entra)
-Use the following steps in the Microsoft Entra admin center to open a user account and manage assigned roles:
+Use the following steps in the Entra admin center to open a user account and manage assigned roles:
 
 1. Go to the [Microsoft Entra admin center](https://entra.microsoft.com/) and sign in.
 2. In the navigation pane, go to **Users** &gt; **All users**.

@@ -67,6 +67,7 @@ Schema references outline the fields that comprise each schema. ASIM currently d
 | [Authentication Event](normalization-schema-authentication) | `Authentication` | 1.0.0 | GA |
 | [DHCP Activity](normalization-schema-dhcp) | `DhcpEvent` | 1.0.0 | GA |
 | [DNS Activity](normalization-schema-dns) | `Dns` | 1.0.0 | GA |
+| [Email Event](normalization-schema-email) | `EmailEvent` | 1.0.0 | GA |
 | [File Activity](normalization-schema-file-event) | `FileEvent` | 1.0.0 | GA |
 | [Network Session](normalization-schema) | `NetworkSession` | 1.0.0 | GA |
 | [Process Event](normalization-schema-process-event) | `ProcessEvent` | 1.0.0 | GA |

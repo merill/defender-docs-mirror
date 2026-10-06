@@ -18,9 +18,9 @@ ms.collection:
 ms.custom:
 - msecd-doc-authoring-1016
 - sfi-ga-nochange
-description: Admins can configure whether users can report malicious messages or calls in Microsoft Teams.
+description: Admins can configure whether users can report malicious messages, calls, meetings, or meeting participants in Microsoft Teams.
 ms.service: defender-office-365
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-10-05T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 1d442262-3a46-5714-423c-d3a453a7b613
@@ -50,42 +50,44 @@ Tip
 
 *Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
 
-In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages or calls in Microsoft Teams. The following clients support reporting:
+In organizations with Microsoft Defender for Office 365 Plan 1 or Plan 2, or Microsoft Defender XDR, admins can decide whether users can report messages, calls, meetings, or meeting participants in Microsoft Teams. The following clients support reporting:
 
 - The Microsoft Teams desktop client.
 - The Microsoft Teams Web App.
 - The Microsoft Teams app for iOS/iPadOS: Version 7.15 or later (messages only).
 - The Microsoft Teams app for Android: Version 1416/1.0.0.2025153104 or later (messages only).
 
-Users can report Teams messages from chats, channels, and meeting conversations as malicious or non-malicious. They can also report Teams calls from their call history as scam or not scam. Admins can view the Teams messages and calls that users report.
+Users can report Teams messages from chats, channels, and meeting conversations as malicious or non-malicious. They can also report Teams calls from their call history as scam or not scam. Admins can view the Teams messages, calls, meetings, and meeting participants that users report.
 
 For more information, watch the following video:
 
 Note
 
-User reporting of calls and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).
+User reporting of calls, meetings, and messages in Teams is not supported in U.S. Government organizations (Microsoft 365 GCC, GCC High, and DoD).
 
 For information about user reporting of email messages, see [Report suspicious email messages to Microsoft](submissions-report-messages-files-to-microsoft).
 
 ## User reporting settings for Teams items
 
-User reporting of messages or calls in Teams consists of two separate settings:
+User reporting of messages, calls, or meetings in Teams consists of two separate settings:
 
-- **In the Teams admin center**: On by default and controls whether users are able to report items from Teams. When this setting is turned off, users can't report items within Teams, so the corresponding setting in the Microsoft Defender portal is irrelevant.
-- **In the Microsoft Defender portal**: On by default for new tenants. Existing tenants need to enable it. If user reporting of messages is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported messages to show up correctly on the **User reported** tab on the **Submissions** page.
+- **In the Teams admin center**: Controls whether users are able to report items from Teams. When the applicable setting is turned off, users can't report those items within Teams, so the corresponding setting in the Microsoft Defender portal is irrelevant.
+- **In the Microsoft Defender portal**: On by default for new tenants. Existing tenants need to enable it. If user reporting of messages, calls, or meetings is turned on in the Teams admin center, it also needs to be turned on in the Defender portal for user reported items to show up correctly on the **User reported** tab on the **Submissions** page.
 
 Important
 
-- When a user reports a Teams message or call to Microsoft, all data directly associated with the item is copied and included in ongoing algorithm reviews. This information includes:
+- When a user reports a Teams item to Microsoft, the following data associated with the item is copied and included in ongoing algorithm reviews, as applicable:
 
     - Message content.
     - Headers.
     - Attachments.
     - Routing metadata.
     - Call metadata and any other related information.
+    - Meeting metadata.
+    - Meeting participant metadata.
 - The submission might also include contextual data for the reported message. Specifically, up to fifteen messages before and after the reported message might also be shared for analysis.
 - Microsoft treats this feedback as your organization's authorization to analyze the submitted information to improve hygiene algorithms. Submitted content is stored in secured, compliance-audited data centers located in the USA and is deleted as soon as it's no longer required.
-- Microsoft personnel might read submitted messages, calls, and files, which is typically not permitted for Teams items in Microsoft 365. However, your submission remains confidential between you and Microsoft and isn't shared with any third party during the review process. Microsoft might also use AI to evaluate and generate responses tailored to your submission. Microsoft doesn't use customer data to train any generative AI foundation models, except pursuant to the customer's documented instructions.
+- Microsoft personnel might read submitted messages and files and review submitted call, meeting, and participant metadata, which is typically not permitted for Teams items in Microsoft 365. However, your submission remains confidential between you and Microsoft and isn't shared with any third party during the review process. Microsoft might also use AI to evaluate and generate responses tailored to your submission. Microsoft doesn't use customer data to train any generative AI foundation models, except pursuant to the customer's documented instructions.
 
 ### Turn off or turn on user reporting in the Teams admin center
 
@@ -118,19 +120,20 @@ Microsoft strongly advocates for the principle of least privilege. Assigning acc
     If the value is ![](media/scc-toggle-off.png)**Off**, move the toggle to ![](media/scc-toggle-on.png)**On**, and then select **Save**.
 
     [![Screenshot of the Report a call toggle on the Calling settings page in the Microsoft Teams admin center.](media/submissions-teams-turn-on-off-tac-security-risk-call.png)](media/submissions-teams-turn-on-off-tac-security-risk-call.png#lightbox)
+9. To turn meeting reporting on or off, configure the **Allow users to report meetings** policy in the Teams admin center. For instructions, see [Turn off or turn on user reporting for meetings in the Teams admin center](/en-us/microsoftteams/end-user-reporting-teams-meeting#turn-off-or-turn-on-user-reporting-for-meetings-in-the-teams-admin-center).
 
-For more information about messaging policies in Teams, see [Manage messaging policies in Teams](/en-us/microsoftteams/messaging-policies-in-teams). For more information about calling policies in Teams, see [Manage calling policies in Teams](/en-us/microsoftteams/teams-calling-policy).
+For more information about messaging policies in Teams, see [Manage messaging policies in Teams](/en-us/microsoftteams/messaging-policies-in-teams). For more information about calling policies in Teams, see [Manage calling policies in Teams](/en-us/microsoftteams/teams-calling-policy). For more information about meeting reporting, see [Report a security concern in Microsoft Teams meetings](/en-us/microsoftteams/end-user-reporting-teams-meeting).
 
 ### Turn off or turn on user reporting in the Defender portal
 
 To modify the **Monitor reported items in Microsoft Teams** setting in the Defender portal, you need to be a member of the **Organization Management** or **Security Administrator** role groups. For more information about permissions in the Defender portal, see [Permissions in the Microsoft Defender portal](mdo-portal-permissions).
 
-The **Monitor reported items in Microsoft Teams** setting is meaningful only if Teams message or call reporting is turned on in the Teams admin center.
+The **Monitor reported items in Microsoft Teams** setting is meaningful only if Teams message, call, or meeting reporting is turned on in the Teams admin center.
 
 1. In the Microsoft Defender portal at https://security.microsoft.com, go to **Settings** &gt; **Email & collaboration** &gt; **Teams user reported settings** tab. To go directly to the **Teams user reported settings** page, use https://security.microsoft.com/securitysettings/teamsUserSubmission.
 2. On the **Teams user reported settings** page, go to the **Microsoft Teams** section for the **Monitor reported items in Microsoft Teams** setting.
 
-    The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it. Typically, you leave it turned on if message or call reporting is also turned on in Teams admin center. For more information, see [Report suspicious email messages to Microsoft](submissions-report-messages-files-to-microsoft#report-suspicious-email-messages-to-microsoft).
+    The **Monitor reported items in Microsoft Teams** setting is turned on by default for new tenants; existing tenants need to enable it. Typically, you leave it turned on if message, call, or meeting reporting is also turned on in Teams admin center. For more information, see [Report suspicious email messages to Microsoft](submissions-report-messages-files-to-microsoft#report-suspicious-email-messages-to-microsoft).
 
     [![Screenshot of the 'Monitor reported items in Microsoft Teams' setting in the Microsoft Defender portal.](media/submissions-teams-turn-on-off-defender-portal.png)](media/submissions-teams-turn-on-off-defender-portal.png#lightbox)
 
@@ -223,6 +226,56 @@ Follow these steps to report a non-malicious message in Teams:
 1. In the Teams chat or channel, hover over the message without selecting it, then select ![](media/defender-portal-icon-more-actions.png)**More options** &gt; **Report this message**.
 2. In the **Report this message** dialog that opens, select **Not a security concern**, then select **Report**.
 
+### Report meetings in Teams
+
+Users can report a meeting or an individual meeting participant as a security concern during or after a meeting.
+
+#### Report a security concern during a meeting
+
+1. In the meeting, select **More** (...).
+2. Select **Report a concern**.
+
+    [![Screenshot of the Report a concern option in the More menu during a Teams meeting.](media/submissions-user-report-meeting-in-teams-client-click-path.png)](media/submissions-user-report-meeting-in-teams-client-click-path.png#lightbox)
+3. In the reporting dialog, provide more information about the security concern. To report participants, select them in the **Report participants (optional)** box.
+
+    [![Screenshot of the dialog to report a Teams meeting and optional meeting participants.](media/submissions-user-report-meeting-in-teams-client-click-report.png)](media/submissions-user-report-meeting-in-teams-client-click-report.png#lightbox)
+4. Review the information, and then select **Report**.
+
+#### Report a meeting participant from the participant tile
+
+1. In the meeting gallery, locate the participant that you want to report.
+2. On the participant tile, select **More options** (...), and then select **Report**.
+3. In the reporting dialog, optionally provide more information about the security concern.
+4. Select **Report**.
+
+#### Report a meeting participant from the participant roster
+
+1. Open the **People** or participant roster pane in the meeting.
+2. Locate the participant that you want to report.
+3. Select **More options** (...) next to the participant's name, and then select **Report**.
+4. In the reporting dialog, optionally provide more information about the security concern.
+5. Select **Report**.
+
+The participant tile and participant roster entry points open the same reporting flow for the selected participant.
+
+#### Report a security concern after a meeting
+
+1. Open the meeting from the Teams post-meeting experience.
+2. Select **More options** (...), and then select **Report a concern**.
+
+    [![Screenshot of the Report a concern option in the meeting chat menu.](media/submissions-user-report-meeting-in-teams-chat-click-path.png)](media/submissions-user-report-meeting-in-teams-chat-click-path.png#lightbox)
+3. In the reporting dialog, provide more information about the security concern. To report participants, select them in the **Report participants (optional)** box.
+4. Select **Report**.
+
+#### Report a meeting or participant as not a security concern
+
+If Teams identifies a meeting or participant as suspicious, but you believe it isn't a security concern, use the following steps:
+
+1. Open the relevant meeting or participant experience.
+2. Select **Report as not a security concern**.
+3. Provide more information explaining why the meeting or participant isn't a security concern.
+4. Select **Report**.
+
 ### Report calls in Teams
 
 All completed or missed one-to-one and group calls are supported.
@@ -237,15 +290,15 @@ All completed or missed one-to-one and group calls are supported.
 
 ## What happens after a user reports items from Teams?
 
-What happens to a user reported Teams item depends on the settings in the **Reported items destinations** section on the **User reported settings** page at https://security.microsoft.com/securitysettings/userSubmission:
+What happens to a user reported Teams item depends on the settings in the **Reported item destinations** section on the **Teams user reported settings** page at https://security.microsoft.com/securitysettings/teamsUserSubmission:
 
-User reporting in Teams is supported only for users with an online Teams mailbox. The reporting mailbox configured in **User reported settings** must also be an Exchange Online mailbox. On-premises mailboxes aren't supported in either scenario.
+User reporting in Teams is supported only for users with an online Teams mailbox. The reporting mailbox configured in **Teams user reported settings** must also be an Exchange Online mailbox. On-premises mailboxes aren't supported in either scenario.
 
 - **Send the reported items to** &gt; **Microsoft and my reporting mailbox**: The default user reporting mailbox is the Exchange Online mailbox of the global admin. The value for older Microsoft 365 organizations is unchanged.
 - **Send the reported items to** &gt; **Microsoft only**
 - **Send the reported items to** &gt; **My reporting mailbox only**
 
-For more information, see [User reported settings](submissions-user-reported-messages-custom-mailbox).
+For information about email user reported item settings, see [Email user reported settings](submissions-user-reported-messages-custom-mailbox).
 
 **Notes**:
 
@@ -253,8 +306,8 @@ For more information, see [User reported settings](submissions-user-reported-mes
 - If you select **Send the reported items to** &gt; **My reporting mailbox only**, reported items don't go to Microsoft for analysis unless an admin manually submits the item from the **User reported** tab on the **Submissions** page at https://security.microsoft.com/reportsubmission?viewid=user. Reporting items to Microsoft is an important part of training the service to help improve the accuracy of filtering (reduce false positives and false negatives). That's why we use **Send the reported items to** &gt; **Microsoft and my reporting mailbox** as the default.
 - Regardless of the **Send the reported items to** setting, the following actions occur when a user reports a Teams item:
 
-    - Metadata from the reported Teams items (for example, senders/callers, recipients, reported by, and item details) is available on the **User reported** tab on the **Submissions** page.
-    - The alert policies named **Teams message reported by user as a security risk**, **Teams message reported by user as a not security risk**, **Teams call reported by user as a security risk**, and **Teams call reported by user as a not security risk** generate alerts by default. For more information, see [Manage alerts](/en-us/defender-xdr/alert-policies#manage-alerts).
+    - Metadata from the reported Teams items (for example, senders/callers, recipients, reported by, meeting and participant details, and item details) is available on the **User reported** tab on the **Submissions** page.
+    - The alert policies named **Teams message reported by user as a security risk**, **Teams message reported by user as a not security risk**, **Teams call reported by user as a security risk**, and **Teams call reported by user as a not security risk** generate alerts by default. Reports for meetings and meeting participants generate the same alert policies as reported calls. For more information, see [Manage alerts](/en-us/defender-xdr/alert-policies#manage-alerts).
 
     To view the corresponding alert for a user reported item in Teams, go to the **User reported** tab on the **Submissions** page, and then double-click the item to open the submission flyout. Select ![](media/defender-portal-icon-more-actions.png)**More options** and then select **View alert**.
 

@@ -26,7 +26,7 @@ ms.author: edbaynash
 author: EdB-MSFT
 ms.reviewer: vakohl
 ms.topic: concept-article
-ms.date: 2026-08-07T00:00:00.0000000Z
+ms.date: 2026-09-10T00:00:00.0000000Z
 locale: en-us
 document_id: 54d58780-a978-3776-469c-10c15f1d322b
 document_version_independent_id: fe3df63b-d4cc-be79-b7f0-608d65337c6f
@@ -98,6 +98,7 @@ ASIM currently defines the following schemas:
 - [Authentication Event](normalization-schema-authentication)
 - [DHCP Activity](normalization-schema-dhcp)
 - [DNS Activity](normalization-schema-dns)
+- [Email Event](normalization-schema-email)
 - [File Activity](normalization-schema-file-event)
 - [Network Session](normalization-schema-network)
 - [Process Event](normalization-schema-process-event)

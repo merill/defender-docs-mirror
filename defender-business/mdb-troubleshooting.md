@@ -1,6 +1,6 @@
 ---
 layout: FAQ
-title: Microsoft Defender for Business troubleshooting - Microsoft Defender for Business | Microsoft Learn
+title: Microsoft Defender for Business Troubleshooting - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-troubleshooting
 summary: >
   <p>Use this article as a guide to resolve issues you might encounter in Defender for Business.</p>
@@ -51,7 +51,7 @@ spProducts:
 platformId: f24ad4a9-f348-d5d6-944e-7739efa7b2d8
 ---
 
-# Microsoft Defender for Business troubleshooting - Microsoft Defender for Business | Microsoft Learn
+# Microsoft Defender for Business Troubleshooting - Microsoft Defender for Business | Microsoft Learn
 
 Use this article as a guide to resolve issues you might encounter in Defender for Business.
 
@@ -67,7 +67,7 @@ To confirm that real-time protection is turned on, you can view, and if necessar
 
 We recommend using Microsoft Defender Antivirus together with Defender for Business to get better coordinated protection across products and services. To learn more, see [Better together - Microsoft Defender Antivirus and Microsoft Defender for Endpoint](/en-us/defender-endpoint/why-use-microsoft-defender-antivirus).
 
-## Users are unable to onboard mobile devices using the Microsoft Defender app.
+## Users are unable to onboard mobile devices using the Microsoft Defender app
 
 If Defender for Business isn't finished provisioning, users might not be able to onboard their mobile devices using the Microsoft Defender app. To confirm whether provisioning is complete, follow these steps:
 
@@ -77,7 +77,7 @@ If Defender for Business isn't finished provisioning, users might not be able to
     - If you see a message that says, "Hang on! We're preparing new spaces for your data and connecting them," it means that Defender for Business isn't finished provisioning. This process is happening now, and can take up to 24 hours to complete.
     - If you see a list of devices, or you're prompted to onboard devices, it means Defender for Business provisioning is complete. Users should now be able to onboard their mobile devices as expected.
 
-## Users are running into issues with the Microsoft Defender app on their mobile devices.
+## Users are running into issues with the Microsoft Defender app on their mobile devices
 
 If users are reporting issues with the Microsoft Defender app, see the following resources to help troubleshoot their issues:
 
@@ -92,8 +92,8 @@ Suppose that Lee has been using Microsoft Intune to manage devices and security 
 
 Fortunately, policy conflicts can be resolved by taking one or more of the following actions:
 
-- Delete your existing policies in the Intune admin center
-- See [Troubleshoot policies in Microsoft Intune](/en-us/troubleshoot/mem/intune/device-configuration/troubleshoot-policies-in-microsoft-intune)
+- Delete your existing policies in the Intune admin center.
+- See [Troubleshoot policies in Microsoft Intune](/en-us/troubleshoot/mem/intune/device-configuration/troubleshoot-policies-in-microsoft-intune).
 
 See the following articles to learn more about your security policies in Defender for Business:
 

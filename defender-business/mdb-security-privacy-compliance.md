@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Security, privacy, and compliance - Microsoft Defender for Business | Microsoft Learn
+title: Security, Privacy, and Compliance - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-security-privacy-compliance
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Learn about security, privacy, and compliance in Defender for Business.
+description: Microsoft Defender for Business uses defense in depth and security hardening to protect your devices. Explore our security, privacy, and compliance commitments.
 author: chrisda
 ms.author: chrisda
 ms.topic: overview
@@ -45,7 +45,7 @@ spProducts:
 platformId: 22daccbe-fbc9-47d3-f979-8bf62d26648e
 ---
 
-# Security, privacy, and compliance - Microsoft Defender for Business | Microsoft Learn
+# Security, Privacy, and Compliance - Microsoft Defender for Business | Microsoft Learn
 
 At Microsoft, we're committed to security, privacy, and compliance in Defender for Business. Your administrators and security teams can use the information in this article to see the steps we take to keep your organization and data secure.
 
@@ -58,7 +58,7 @@ Defender for Business helps protect your organization's devices with enterprise-
 - Security hardening.
 - Operational best practices for Microsoft 365.
 
-For information, see the [Microsoft Trust Center - Security](https://www.microsoft.com/security).
+For more information, see [Microsoft Trust Center - Security](https://www.microsoft.com/security).
 
 For related configuration information, see the following articles:
 
@@ -69,14 +69,9 @@ For related configuration information, see the following articles:
 
 For information about privacy in Defender for Business, see:
 
-- [Microsoft Trust Center - Data protection and privacy](https://www.microsoft.com/trust-center/privacy).
+- [Microsoft Trust Center - Data protection and privacy](https://www.microsoft.com/trust-center/privacy)
 - [Privacy at Microsoft](https://privacy.microsoft.com/)
 
 ## Compliance
 
 For information about compliance in Defender for Business, see the [Microsoft Trust Center - Compliance](https://www.microsoft.com/trust-center/compliance/compliance-overview).
-
-## Related resources
-
-- [Small business Zero Trust guidance - Threat protection for Microsoft 365 Business Premium](/en-us/security/zero-trust/guidance-smb-partner#additional-threat-protection)
-- [Privacy & data management overview](/en-us/compliance/assurance/assurance-privacy)

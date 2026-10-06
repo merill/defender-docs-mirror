@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn about new, updated, and deprecated features in Microsoft Defender for Cloud, including preview releases, general availability updates, and upcoming changes.
 ms.topic: overview
-ms.custom: references_regions
+ms.custom: references_regions, msecd-doc-authoring-1030
 ms.date: 2026-10-05T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
@@ -61,7 +61,16 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| October 5, 2026 | GA | KSPM misconfiguration recommendations moving to controller-level scope |
 | October 5, 2026 | GA | On-demand malware scanning now supports scanning specific blobs, files, containers, and file shares |
+
+### KSPM misconfiguration recommendations moving to controller-level scope (GA)
+
+October 5, 2026
+
+Kubernetes security posture management (KSPM) misconfiguration recommendations are being updated to align their resource scope with Kubernetes workload controllers. Previously, recommendations appeared at the individual running container instance level. They will now appear at the container deployment or top-level controller scope, such as Deployment or StatefulSet. As a result, you might see changes to affected recommendations and their Secure Score impact.
+
+Learn more about [container security recommendations](recommendations-reference-container).
 
 ### On-demand malware scanning now supports scanning specific blobs, files, containers, and file shares (GA)
 

@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 description: A prescriptive playbook for SecOps personnel to manage Microsoft Teams protection in Microsoft Defender for Office 365.
 ms.service: defender-office-365
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-10-05T00:00:00.0000000Z
 locale: en-us
 document_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
 document_version_independent_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
@@ -50,14 +50,16 @@ Another important step is to ensure SecOps team members have the appropriate per
 
 ## Integrate user reported Teams items into SecOps incident response
 
-When users report Teams messages or calls as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the [Teams user reported settings in Defender for Office 365](submissions-teams#user-reporting-settings-for-teams-items).
+When users report Teams messages or calls or report meetings or meeting participants as malicious or non malicious, the reported items are sent to Microsoft and/or the reporting mailbox as defined by the [Teams user reported settings in Defender for Office 365](submissions-teams#user-reporting-settings-for-teams-items).
 
-The following alerts are automatically generated and correlated to Defender Incidents for malicious and non malicious user reported items in Teams:
+The following alerts are automatically generated and correlated to Defender Incidents for malicious and nonmalicious user reported items in Teams:
 
 - **Teams message reported by user as security risk**
-- **Teams message message by user as not security risk**
+- **Teams message reported by user as not security risk**
 - **Teams call reported by user as a security risk**
 - **Teams call reported by user as a not security risk**
+
+Reported meetings and meeting participants generate the same alert policies as reported calls.
 
 Tip
 
@@ -65,7 +67,7 @@ Currently, these alerts don't generate automated investigation and response (AIR
 
 We strongly recommend that SecOps team members start triage and investigation from the [Defender incidents queue in the Microsoft Defender portal](/en-us/defender-office-365/mdo-sec-ops-manage-incidents-and-alerts) or SIEM/SOAR integration.
 
-SecOps team members can review submitted Teams message or call details in the following locations in the Defender portal:
+SecOps team members can review submitted Teams message, call, meeting, or meeting participant details in the following locations in the Defender portal:
 
 - The **View submission** action in the Defender XDR incident.
 - The **User reported** tab of the **Submissions** page at https://security.microsoft.com/reportsubmission?viewid=user:

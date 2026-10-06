@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 description: Admins can learn about Microsoft Teams features in Microsoft Defender for Office 365.
 ms.service: defender-office-365
-ms.date: 2026-09-21T00:00:00.0000000Z
+ms.date: 2026-10-05T00:00:00.0000000Z
 locale: en-us
 document_id: d0b8c854-23d3-7deb-f05a-d3f0e1eaab7c
 document_version_independent_id: d0b8c854-23d3-7deb-f05a-d3f0e1eaab7c
@@ -46,7 +46,7 @@ Tip
 
 *Did you know you can try the features in Microsoft Defender for Office 365 Plan 2 for free?* Use the 90-day Defender for Office 365 trial at the [Microsoft Defender portal trials hub](https://security.microsoft.com/trialHorizontalHub?sku=MDO&amp;ref=DocsRef). Learn about who can sign up and trial terms on [Try Microsoft Defender for Office 365](/en-us/defender-office-365/try-microsoft-defender-for-office-365).
 
-With the increased use of collaboration tools like Microsoft Teams, the possibility of malicious attacks using chat messages has also increased. This article describes the Microsoft 365 and Microsoft Defender for Office 365 protection features for Microsoft Teams.
+With the increased use of collaboration tools like Microsoft Teams, the possibility of malicious activity in Teams messages, calls, and meetings has also increased. This article describes the Microsoft 365 and Microsoft Defender for Office 365 protection features for Microsoft Teams.
 
 All licenses of Microsoft Teams in Microsoft 365 include the following built-in protections:
 
@@ -67,7 +67,7 @@ Microsoft Defender for Office 365 Plan 1 provides the following extra Teams prot
     Instructions to configure ZAP for Teams protection are in the next section.
 - **Teams messages in quarantine**: By default, only admins are allowed to manage Teams messages quarantined by ZAP for Teams. This is the same default limitation for email messages identified as malware or high confidence phishing. For more information, see [Manage quarantined Teams messages](quarantine-admin-manage-messages-files#use-the-microsoft-defender-portal-to-manage-microsoft-teams-quarantined-messages).
 - **Teams message entity panel**: A single place to store all Teams message metadata for immediate SecOps review. Any threats coming from Teams chats, group chats, meeting chats, and other channels can be found in one place as soon as they're assessed. For more information, see [the Teams message entity panel](teams-message-entity-panel).
-- **Report Teams items**: Users can report Teams items (messages or calls) as malicious or not malicious. Depending on the reported items settings in the organization, reported items go to the specified reporting mailbox, to Microsoft, or both. For more information, see [User reported settings in Teams](submissions-teams) and the following video:
+- **Report Teams items**: Users can report Teams messages, calls, meetings, or meeting participants as malicious or not malicious. Depending on [Teams user reported settings](submissions-teams#user-reporting-settings-for-teams-items), reported items go to the specified reporting mailbox, to Microsoft, or both.
 
 Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with a set of extra capabilities designed to disrupt the attack chain:
 
@@ -88,7 +88,7 @@ These features are summarized in the following table:
 | Teams messages in quarantine (admin-managed) |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
 | Teams message entity panel |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
 | Teams call entity panel |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
-| User-reported Teams items |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
+| User-reported Teams items (messages, calls, meetings, and meeting participants) |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
 | Remove users from Teams chats (admin remediation) |  |  | ![](media/feature_present_icon.png) |
 | Advanced hunting on Teams messages |  |  | ![](media/feature_present_icon.png) |
 

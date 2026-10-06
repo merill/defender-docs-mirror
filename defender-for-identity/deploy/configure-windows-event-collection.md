@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Configure Windows event auditing for Defender for Identity sensors. Learn automatic, manual, and PowerShell methods to enable required audit policies.
-ms.date: 2026-09-23T00:00:00.0000000Z
+ms.date: 2026-10-06T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom:
 - msecd-doc-authoring-1015
@@ -66,6 +66,8 @@ If you're deploying the Defender for Identity sensor v3.x, use automatic Windows
 ### Control automatic Windows auditing
 
 Note
+
+Automatic sensor activation and automatic Windows auditing are available only after your organization has an active license that includes Microsoft Defender for Identity.
 
 When **Automatic sensor v3.x activation** and **Automatic Windows auditing configuration** are enabled, Defender for Identity automatically activates sensor v3.x and configures Windows auditing on eligible domain controllers, AD FS, AD CS, or Microsoft Entra Connect servers that you onboard to Defender for Endpoint. The servers must run Windows Server 2019 or later.
 

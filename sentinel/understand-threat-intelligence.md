@@ -266,6 +266,8 @@ When an indicator is created, updated, or deleted, Microsoft Sentinel creates a 
 
 The `Id` property is a concatenation of the base64-encoded `SourceSystem` value, `---` (three dashes), and the `stixId` (which is the `Data.Id` value).
 
+Cost for this re-ingestion matches the standard log ingestion pricing for paid tables. Note: Your exact final cost will reflect any tenant-level discounts or commitment tiers currently active on your account.
+
 ### View your GeoLocation and WhoIs data enrichments (public preview)
 
 Microsoft enriches IP and domain indicators with extra `GeoLocation` and `WhoIs` data to provide more context for investigations where the selected IOC is found.

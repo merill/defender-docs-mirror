@@ -20,7 +20,8 @@ ms.collection:
 - mde-linux
 ms.topic: install-set-up-deploy
 ms.subservice: linux
-ms.date: 2025-09-16T00:00:00.0000000Z
+ms.date: 2026-10-05T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 3ea4d58e-c2c0-3ad8-dce0-673b9b1019d0
 document_version_independent_id: 3ea4d58e-c2c0-3ad8-dce0-673b9b1019d0
@@ -85,6 +86,59 @@ Note
 
 Once Defender is successfully deployed on the golden image, there's no requirement to install and onboard it individually on each cloned machine.
 
+### Add the onboarding package to the golden image
+
+You can include the tenant-specific onboarding package in the golden image so that every machine created from the image onboards to Microsoft Defender for Endpoint automatically when the Defender service starts. Each clone onboards directly, without waiting for a separate deployment or extension to run. This approach is useful for short-lived or autoscaled virtual machines.
+
+Important
+
+Copy the onboarding file to the golden image **only while the `mdatp` service is stopped**. If the service is running when you add the onboarding file, the golden image virtual machine onboards immediately and creates device identity state. That state is then captured in the image and carried over to every clone, which might cause multiple machines to report as the same device in the Microsoft Defender portal.
+
+#### Prerequisites
+
+- Microsoft Defender for Endpoint is installed on the golden image virtual machine, as described in Step 1. Use a current, supported version of the package.
+- You have access to the Microsoft Defender portal with permissions to download the onboarding package.
+
+#### Download the onboarding package
+
+1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **Settings** &gt; **Endpoints** &gt; **Device management** &gt; **Onboarding**.
+2. Select **Linux Server** as the operating system.
+3. For **Deployment method**, select **Your preferred Linux configuration management tool**.
+4. Select **Download onboarding package**, and save `WindowsDefenderATPOnboardingPackage.zip`.
+5. Extract the package. It contains the `mdatp_onboard.json` onboarding file.
+
+    ```bash
+    unzip WindowsDefenderATPOnboardingPackage.zip
+    ```
+
+#### Add the onboarding file to the image
+
+Run the following steps on the golden image virtual machine:
+
+1. Stop the Defender service.
+
+    ```bash
+    sudo systemctl stop mdatp
+    ```
+2. Confirm that the service is stopped before you continue.
+
+    ```bash
+    systemctl is-active mdatp
+    ```
+
+    The command must return `inactive`. Don't continue until the service is stopped.
+3. Copy the onboarding file to `/etc/opt/microsoft/mdatp/`, set its ownership to `root:root`, and restrict read and write access to the root user.
+
+    ```bash
+    sudo cp mdatp_onboard.json /etc/opt/microsoft/mdatp/mdatp_onboard.json
+    sudo chown root:root /etc/opt/microsoft/mdatp/mdatp_onboard.json
+    sudo chmod 600 /etc/opt/microsoft/mdatp/mdatp_onboard.json
+    ```
+
+Note
+
+The onboarding file is tenant-specific. Store golden images that contain the onboarding file securely, and rebuild the image if you need to onboard machines to a different tenant.
+
 ## Step 2: Prepare the golden image for cloning
 
 When deploying Defender for Endpoint on virtual machines, the hardware UUID reported by the system (system-uuid from dmidecode) is used to uniquely identify each instance.
@@ -114,6 +168,66 @@ Hyper-V automatically generates a new hardware UUID when you create a virtual ma
 
 Cloud platforms (for example, Azure, AWS, GCP) automatically inject unique metadata and identifiers via their instance metadata services (IMDS). No manual steps are required. Microsoft Defender for Endpoint automatically detects and uses these values to generate unique machine IDs.
 
-## Hostname Management
+## Handle hostname changes on cloned machines
 
-If the hostname of a Linux server is changed after successful deployment of Defender, then you must restart the `mdatp` service to ensure the new hostname is correctly recognized by product.
+Defender for Endpoint reads the machine's hostname when the `mdatp` service starts and uses it to represent the device in the Microsoft Defender portal. If the hostname changes after the service starts, Defender for Endpoint continues to report the machine with the temporary or template hostname and its associated device ID until the service restarts. When the `mdatp` service restarts, Defender for Endpoint assigns the machine a new device ID and reports it with the current hostname.
+
+On machines created from a golden image, the final hostname is often set during first boot by a provisioning service, such as `cloud-init`, a cloud platform agent, or a custom startup script. These services can run at the same time as the `mdatp` service. If `mdatp` starts first, it picks up the hostname from the golden image instead of the clone's final hostname.
+
+Important
+
+If the hostname is set by a service that can run at the same time as the `mdatp` service, make sure the hostname is stable before you start the `mdatp` service on the cloned machine.
+
+### Start Defender only after the hostname is stable
+
+1. **On the golden image**, after you stop the service, disable it so that it doesn't start automatically when a clone boots.
+
+    ```bash
+    sudo systemctl stop mdatp
+    sudo systemctl disable mdatp
+    ```
+2. **On each cloned machine**, wait until the service that sets the hostname has finished and the hostname has its final value.
+3. Enable and start the Defender service.
+
+    ```bash
+    sudo systemctl enable --now mdatp
+    ```
+
+You can run the last two steps from your existing provisioning or startup automation after the hostname is set. For example, if `cloud-init` sets the hostname:
+
+```bash
+#!/bin/bash
+# Wait for cloud-init to finish provisioning, including setting the hostname.
+cloud-init status --wait
+
+# Optional: Confirm that the hostname is no longer the golden image hostname.
+GOLDEN_IMAGE_HOSTNAME="<golden-image-hostname>"
+until [ "$(hostname)" != "$GOLDEN_IMAGE_HOSTNAME" ]; do
+  sleep 5
+done
+
+# Start Defender for Endpoint after the hostname is stable.
+systemctl enable --now mdatp
+```
+
+Adjust the wait condition to match the service that sets the hostname in your environment.
+
+### Verify the cloned machine
+
+After the service starts on the cloned machine, verify onboarding and health:
+
+```bash
+mdatp health --field org_id
+mdatp health --field healthy
+mdatp health --field licensed
+```
+
+Confirm that `org_id` shows your organization ID and that `healthy` and `licensed` both return `true`. In the Microsoft Defender portal, confirm that the device appears with the clone's final hostname.
+
+### If the hostname changes after Defender starts
+
+If the hostname of a Linux server changes after Defender for Endpoint starts, restart the `mdatp` service so that the new hostname is used:
+
+```bash
+sudo systemctl restart mdatp
+```

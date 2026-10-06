@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about the latest Microsoft Defender for Identity features, sensor updates, security alerts, enhancements, and preview capabilities.
-ms.date: 2026-09-23T00:00:00.0000000Z
+ms.date: 2026-10-06T00:00:00.0000000Z
 ms.topic: overview
 ms.reviewer: AbbyMSFT
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
@@ -35,12 +35,12 @@ item_type: Content
 source_path: defender-for-identity/whats-new.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 40ff3b63-e58a-65f9-679b-e6b024715b88
 ---
 
@@ -60,9 +60,17 @@ For more information, see also:
 
 For updates about versions and features released six months ago or earlier, see the [What's new archive for Microsoft Defender for Identity](whats-new-archive).
 
+## October 2026
+
+### General availability of sensor v3.x activation without Defender for Endpoint
+
+Defender for Identity sensor v3.x activation without Defender for Endpoint is now generally available for eligible domain controllers running Windows Server 2019 or later. This activation method supports only new sensor v3.x deployments on eligible domain controllers without an existing Defender for Identity sensor. Sensor v2.x migration isn't supported. For more information, see [Activate the Defender for Identity sensor](deploy/activate-sensor).
+
 ## September 2026
 
 ### Automatic sensor v3.x activation and Windows auditing by default
+
+Automatic sensor v3.x activation and automatic Windows auditing apply only to organizations with an active license that includes Microsoft Defender for Identity.
 
 The rollout differs for new Microsoft Defender for Endpoint customers and existing Defender for Identity customers:
 

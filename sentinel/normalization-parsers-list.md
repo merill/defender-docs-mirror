@@ -26,7 +26,7 @@ description: This article lists Advanced Security Information Model (ASIM) parse
 ms.author: edbaynash
 author: EdB-MSFT
 ms.topic: reference
-ms.date: 2024-12-31T00:00:00.0000000Z
+ms.date: 2026-10-07T00:00:00.0000000Z
 locale: en-us
 document_id: 359873a1-56e3-33cb-bb05-d57cb8277b90
 document_version_independent_id: 2f824408-b725-e53d-b632-5a3f4b09ca0b
@@ -56,6 +56,12 @@ platformId: f0d4b803-2365-93eb-480d-0e58a6bf1ae3
 This document provides a list of Advanced Security Information Model (ASIM) parsers. For an overview of ASIM parsers refer to the [parsers overview](normalization-parsers-overview). To understand how parsers fit within the ASIM architecture, refer to the [ASIM architecture diagram](normalization#asim-components).
 
 Parsers that don't have a value under `Uses pack parameter` don't have the `AdditionalFields` column populated.
+
+## Agent Event parsers
+
+| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- |
+| **Anthropic Claude Compliance** | Anthropic Claude Compliance events collected using the Codeless Connector Framework by BlueVoyant. | `_Im_AgentEvent_AnthropicClaudeCompliance` | `true` |
 
 ## Alert Event parsers
 

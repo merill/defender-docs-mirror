@@ -97,6 +97,8 @@ Note
 
 If you enabled Defender for Servers Plan 2 on a Log Analytics workspace, you need to disable it explicitly. To do that, navigate to the plans page for the workspace and toggle the switch to **Off**.
 
+For Azure subscriptions in the public preview, turning off Defender for Servers triggers automatic offboarding for eligible servers. Changing from Plan 2 to Plan 1 doesn't trigger automatic offboarding. For more information, see [Automatic Azure offboarding](/en-us/defender-endpoint/offboard-machines#automatic-azure-offboarding).
+
 ## Enable Defender for Servers at the resource level
 
 Although we recommend enabling the plan for an entire Azure subscription, you might need to mix plans, exclude specific resources, or enable Defender for Servers on specific machines only. To do this, you can enable or disable Defender for Servers at the resource level. Review [deployment scope options](plan-defender-for-servers-select-plan#decide-on-deployment-scope) before you start.

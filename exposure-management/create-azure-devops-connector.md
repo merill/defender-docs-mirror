@@ -78,8 +78,7 @@ If the tenant hasn't used Cloud Security in the Defender portal:
 
 In the Defender portal, go to **MDASH Initiative** &gt; **Settings**. For information about accessing the MDASH Initiative, see [Entry points](/en-us/security-exposure-management/ai-code-security-onboarding).
 
-- Select **Create and Manage connectors**. You'll be redirected to the **Cloud Security Connectors** page.
-- On the **Connectors** tab, select the Azure DevOps connector from the list.
+- In **Agentic code scanning management**, next to **Source code environment**, select **Add another**, and then select **Azure DevOps.***You'll be redirected to the***Azure DevOps*****connector flow.***
 - Optionally, enter a connector name. If you leave it blank, a default name is assigned automatically.
 - Select **Next**.
 

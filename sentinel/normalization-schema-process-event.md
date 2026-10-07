@@ -26,7 +26,7 @@ description: This article describes the Microsoft Sentinel Process Event normali
 ms.author: edbaynash
 author: EdB-MSFT
 ms.topic: reference
-ms.date: 2026-09-18T00:00:00.0000000Z
+ms.date: 2026-10-07T00:00:00.0000000Z
 locale: en-us
 document_id: e20742cf-3f2b-d516-662b-af1b8554b5de
 document_version_independent_id: 0746209f-5a4b-98f5-c8ad-e122b378a681
@@ -61,10 +61,10 @@ For more information about normalization in Microsoft Sentinel, see [Normalizati
 
 ## Parsers
 
-To use the unifying parsers that unify all of listed parsers and ensure that you analyze across all the configured sources, use the following table names in your queries:
+Use `imProcessEvent` to query all process event types from every configured source. You can also use the following specialized unifying parsers:
 
-- **imProcessCreate** for queries that require process creation information. These queries are the most common case.
-- **imProcessTerminate** for queries that require process termination information.
+- `imProcessCreate` for queries that require process creation information.
+- `imProcessTerminate` for queries that require process termination information.
 
 For the list of the Process Event parsers Microsoft Sentinel provides out-of-the-box refer to the [ASIM parsers list](normalization-parsers-list#process-event-parsers).
 
@@ -74,7 +74,7 @@ For more information, see [ASIM parsers overview](normalization-parsers-overview
 
 ## Add your own normalized parsers
 
-When implementing custom process event parsers, name your KQL functions using the following syntax: `imProcessCreate<vendor><Product>` and `imProcessTerminate<vendor><Product>`. Replace `im` with `ASim` for the parameter-less version.
+When you implement custom process event parsers, use `vimProcessEvent<vendor><Product>` for filtering parsers and `ASimProcessEvent<vendor><Product>` for parameter-less parsers.
 
 Add your KQL function to the unifying parsers as described in [Managing ASIM parsers](normalization-manage-parsers).
 
@@ -101,10 +101,10 @@ The following filtering parameters are available:
 | **hashes\_has\_any** | dynamic | Filter only process events for which any of the target process hashes matches any of the listed values. |
 | **eventtype** | string | Filter only process events of the specified type. |
 
-For example, to filter only process creation events from the last day for a specific target username, use:
+For example, to filter process creation events from the last day for a specific target username, use:
 
 ```kusto
-imProcessCreate (targetusername_has = 'johndoe', starttime = ago(1d), endtime=now())
+imProcessEvent(targetusername_has='johndoe', eventtype='ProcessCreated', starttime=ago(1d), endtime=now())
 ```
 
 Tip

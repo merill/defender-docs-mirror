@@ -17,7 +17,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Get answers to frequently asked questions about Microsoft Defender for Servers.
 ms.topic: faq
-ms.date: 2026-06-09T00:00:00.0000000Z
+ms.date: 2026-09-23T00:00:00.0000000Z
 locale: en-us
 document_id: 27311548-4fee-6cf7-791e-8b3b07749108
 document_version_independent_id: b484d8ec-ad01-0c58-0609-2a0d559b3ff5

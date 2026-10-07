@@ -26,7 +26,8 @@ description: This article explains how to manage and use workspace deployed Adva
 ms.author: edbaynash
 author: EdB-MSFT
 ms.topic: concept-article
-ms.date: 2024-11-11T00:00:00.0000000Z
+ms.date: 2026-10-07T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: f21b0388-f96a-6e57-9aa1-a0e4db6d5a46
 document_version_independent_id: a87cb520-6d3a-c625-e806-4e1fa552c300
@@ -42,9 +43,11 @@ item_type: Content
 source_path: sentinel/normalization-about-workspace-parsers.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/4e834929-0ce1-4c1d-9c81-fcb14721edfb
 - https://authoring-docs-microsoft.poolparty.biz/devrel/9bdc1705-9b40-49d6-8377-caa0b71fda66
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/75670257-a3f0-4627-9981-8046f99219e6
 - https://authoring-docs-microsoft.poolparty.biz/devrel/686ed158-d915-41e9-9760-efa46ba88f6d
 platformId: 84d759c6-9204-e861-6af0-47e6459aa2f6
 ---
@@ -67,14 +70,17 @@ The following table lists the available unifying parsers:
 
 | Schema | Unifying parser |
 | --- | --- |
+| Agent Event | imAgentEvent |
 | Alert Event | imAlertEvent |
+| Asset Entity | imAssetEntity |
 | Audit Event | imAuditEvent |
 | Authentication | imAuthentication |
 | DHCP Event | imDhcpEvent |
 | Dns | imDns |
+| Email Event | imEmailEvent |
 | File Event | imFileEvent |
 | Network Session | imNetworkSession |
-| Process Event | imProcessCreate imProcessTerminate |
+| Process Event | imProcessEventimProcessCreateimProcessTerminate |
 | Registry Event | imRegistry |
 | User Management | imUserManagement |
 | Web Session | imWebSession |
@@ -89,17 +95,20 @@ Make sure to add both a filtering custom parser and a parameter-less custom pars
 
 | Schema | Parser | Line to add |
 | --- | --- | --- |
-| AlertEvent | `imAlertEvent` | `_parser_name_ (starttime, endtime, ipaddr_has_any_prefix, hostname_has_any, username_has_any, attacktactics_has_any, attacktechniques_has_any, threatcategory_has_any, alertverdict_has_any, eventseverity_has_any)` |
-| AuditEvent | `imAuditEvent` | `_parser_name_ (starttime, endtime, srcipaddr_has_any_prefix, eventtype_in, eventresult, actorusername_has_any, operation_has_any, object_has_any, newvalue_has_any)` |
-| Authentication | `imAuthentication` | `_parser_name_ (starttime, endtime, targetusername_has_any, actorusername_has_any, srcipaddr_has_any_prefix, srchostname_has_any, targetipaddr_has_any_prefix, dvcipaddr_has_any_prefix, dvchostname_has_any, eventtype_in, eventresultdetails_in, eventresult)` |
-| DhcpEvent | `imDhcpEvent` | `_parser_name_ (starttime, endtime, srcipaddr_has_any_prefix, srchostname_has_any, srcusername_has_any, eventresult)` |
-| Dns | `imDns` | `_parser_name_ (starttime, endtime, srcipaddr, domain_has_any, responsecodename, response_has_ipv4, response_has_any_prefix, eventtype)` |
-| FileEvent | `imFileEvent` | `_parser_name_ (starttime, endtime, eventtype_in, srcipaddr_has_any_prefix, actorusername_has_any, targetfilepath_has_any, srcfilepath_has_any, hashes_has_any, dvchostname_has_any)` |
-| NetworkSession | `imNetworkSession` | `_parser_name_ (starttime, endtime, srcipaddr_has_any_prefix, dstipaddr_has_any_prefix, ipaddr_has_any_prefix, dstportnumber, hostname_has_any, dvcaction, eventresult)` |
-| ProcessEvent | `imProcessCreate`, `imProcessTerminate` | `_parser_name_ (starttime, endtime, commandline_has_any, commandline_has_all, commandline_has_any_ip_prefix, actingprocess_has_any, targetprocess_has_any, parentprocess_has_any, targetusername_has, actorusername_has, dvcipaddr_has_any_prefix, dvchostname_has_any, eventtype)` |
-| RegistryEvent | `imRegistry` | `_parser_name_ (starttime, endtime, eventtype_in, actorusername_has_any, registrykey_has_any, registryvalue_has_any, registryvaluedata_has_any, dvchostname_has_any)` |
-| UserManagement | `imUserManagement` | `_parser_name_ (starttime, endtime, srcipaddr_has_any_prefix, targetusername_has_any, actorusername_has_any, eventtype_in)` |
-| WebSession | `imWebSession` | `_parser_name_ (starttime, endtime, srcipaddr_has_any_prefix, ipaddr_has_any_prefix, url_has_any, httpuseragent_has_any, eventresultdetails_in, eventresult)` |
+| AgentEvent | `imAgentEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, agentid_has_any=agentid_has_any, agentname_has_any=agentname_has_any, username_has_any=username_has_any, pack=pack)` |
+| AlertEvent | `imAlertEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, ipaddr_has_any_prefix=ipaddr_has_any_prefix, hostname_has_any=hostname_has_any, username_has_any=username_has_any, attacktactics_has_any=attacktactics_has_any, attacktechniques_has_any=attacktechniques_has_any, threatcategory_has_any=threatcategory_has_any, alertverdict_has_any=alertverdict_has_any, eventseverity_has_any=eventseverity_has_any, pack=pack)` |
+| AssetEntity | `imAssetEntity` | `_parser_name_ (starttime=starttime, endtime=endtime, entityid_has_any=entityid_has_any, entityname_has_any=entityname_has_any, assettype_in=assettype_in, path_has_any=path_has_any, assetowner_has_any=assetowner_has_any, entitysource_has_any=entitysource_has_any, pack=pack)` |
+| AuditEvent | `imAuditEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, actorusername_has_any=actorusername_has_any, operation_has_any=operation_has_any, eventtype_in=eventtype_in, eventresult=eventresult, object_has_any=object_has_any, newvalue_has_any=newvalue_has_any, pack=pack)` |
+| Authentication | `imAuthentication` | `_parser_name_ (starttime=starttime, endtime=endtime, username_has_any=username_has_any, targetappname_has_any=targetappname_has_any, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, srchostname_has_any=srchostname_has_any, eventtype_in=eventtype_in, eventresultdetails_in=eventresultdetails_in, eventresult=eventresult, pack=pack)` |
+| DhcpEvent | `imDhcpEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, srchostname_has_any=srchostname_has_any, srcusername_has_any=srcusername_has_any, eventresult=eventresult, disabled=disabled, pack=pack)` |
+| Dns | `imDns` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr=srcipaddr, domain_has_any=domain_has_any, responsecodename=responsecodename, response_has_ipv4=response_has_ipv4, response_has_any_prefix=response_has_any_prefix, eventtype=eventtype, pack=pack)` |
+| EmailEvent | `imEmailEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, ipaddr_has_any_prefix=ipaddr_has_any_prefix, emailfromaddress_has_any=emailfromaddress_has_any, emailrecipient_has_any=emailrecipient_has_any, emailsubject_has_any=emailsubject_has_any, emaildirection_in=emaildirection_in, emaildeliverylocation_in=emaildeliverylocation_in, eventresult=eventresult, pack=pack)` |
+| FileEvent | `imFileEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, eventtype_in=eventtype_in, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, actorusername_has_any=actorusername_has_any, targetfilepath_has_any=targetfilepath_has_any, srcfilepath_has_any=srcfilepath_has_any, hashes_has_any=hashes_has_any, dvchostname_has_any=dvchostname_has_any, disabled=disabled, pack=pack)` |
+| NetworkSession | `imNetworkSession` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, dstipaddr_has_any_prefix=dstipaddr_has_any_prefix, ipaddr_has_any_prefix=ipaddr_has_any_prefix, dstportnumber=dstportnumber, hostname_has_any=hostname_has_any, dvcaction=dvcaction, eventresult=eventresult, pack=pack)` |
+| ProcessEvent | `imProcessEvent` | `_parser_name_ (starttime=starttime, endtime=endtime, commandline_has_any=commandline_has_any, commandline_has_all=commandline_has_all, commandline_has_any_ip_prefix=commandline_has_any_ip_prefix, actingprocess_has_any=actingprocess_has_any, targetprocess_has_any=targetprocess_has_any, parentprocess_has_any=parentprocess_has_any, actorusername_has=actorusername_has, targetusername_has=targetusername_has, dvcipaddr_has_any_prefix=dvcipaddr_has_any_prefix, dvchostname_has_any=dvchostname_has_any, hashes_has_any=hashes_has_any, eventtype=eventtype)` |
+| RegistryEvent | `imRegistry` | `_parser_name_ (starttime=starttime, endtime=endtime, eventtype_in=eventtype_in, actorusername_has_any=actorusername_has_any, registrykey_has_any=registrykey_has_any, registryvalue_has_any=registryvalue_has_any, registrydata_has_any=registrydata_has_any, dvchostname_has_any=dvchostname_has_any, disabled=disabled, pack=pack)` |
+| UserManagement | `imUserManagement` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, targetusername_has_any=targetusername_has_any, actorusername_has_any=actorusername_has_any, eventtype_in=eventtype_in, pack=pack)` |
+| WebSession | `imWebSession` | `_parser_name_ (starttime=starttime, endtime=endtime, srcipaddr_has_any_prefix=srcipaddr_has_any_prefix, ipaddr_has_any_prefix=ipaddr_has_any_prefix, url_has_any=url_has_any, httpuseragent_has_any=httpuseragent_has_any, eventresultdetails_in=eventresultdetails_in, eventresult=eventresult, eventresultdetails_has_any=eventresultdetails_has_any, disabled=disabled, pack=pack)` |
 
 When adding an additional parser to a unifying parser, make sure you add a comma at the end of the previous line.
 

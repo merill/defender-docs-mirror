@@ -61,8 +61,26 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| October 6, 2026 | Public preview | New Defender server security experience |
 | October 5, 2026 | GA | KSPM misconfiguration recommendations moving to controller-level scope |
 | October 5, 2026 | GA | On-demand malware scanning now supports scanning specific blobs, files, containers, and file shares |
+
+### New Defender server security experience
+
+October 6, 2026
+
+The new Defender server security experience brings together cloud and endpoint data from Microsoft Defender for Endpoint and Defender for Servers.
+
+In the Microsoft Defender portal, you can:
+
+- Review unified server inventory and combined cloud and endpoint details.
+- Investigate servers across alerts, incidents, and the attack graph.
+- Use **Go hunt** to investigate related events.
+- Manage access with role-based access control (RBAC), server device groups, and cloud scopes.
+
+In Microsoft Defender for Cloud in the Azure portal, you can:
+
+- Automatically offboard eligible servers from Defender for Endpoint by turning off Defender for Servers for the subscription.
 
 ### KSPM misconfiguration recommendations moving to controller-level scope (GA)
 

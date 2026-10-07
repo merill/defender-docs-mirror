@@ -26,7 +26,7 @@ description: This article explains how to use Kusto Query Language (KQL) functio
 ms.author: edbaynash
 author: EdB-MSFT
 ms.topic: concept-article
-ms.date: 2024-11-11T00:00:00.0000000Z
+ms.date: 2026-10-07T00:00:00.0000000Z
 locale: en-us
 document_id: 02c4e393-775d-e665-7b81-2c6d8bc45ce9
 document_version_independent_id: 89fa9f69-c787-f12b-d4a3-203d04f638ac
@@ -43,11 +43,11 @@ source_path: sentinel/normalization-about-parsers.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
 - https://authoring-docs-microsoft.poolparty.biz/devrel/26e1a60c-4ce1-41de-b2d1-e5f3b7e68e6e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/540ac133-a371-4dbb-8f94-28d6cc77a70b
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c6f99e62-1cf6-4b71-af9b-649b05f80cce
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ad3bd485-5ca9-4865-afde-baec02586899
-- https://authoring-docs-microsoft.poolparty.biz/devrel/60bfc045-f127-4841-9d00-ea35495a5800
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3f56b378-07a9-4fa1-afe8-9889fdc77628
 platformId: 26f9b0fe-eebc-2272-a9f5-0f9a59358f1f
 ---
 
@@ -86,9 +86,10 @@ The following table lists the available unifying parsers:
 | Authentication | \_Im\_Authentication |
 | DHCP Event | \_Im\_DhcpEvent |
 | Dns | \_Im\_Dns |
+| Email Event | \_Im\_EmailEvent |
 | File Event | \_Im\_FileEvent |
 | Network Session | \_Im\_NetworkSession |
-| Process Event | \_Im\_ProcessCreate \_Im\_ProcessTerminate |
+| Process Event | \_Im\_ProcessEvent\_Im\_ProcessCreate\_Im\_ProcessTerminate |
 | Registry Event | \_Im\_RegistryEvent |
 | User Management | \_Im\_UserManagement |
 | Web Session | \_Im\_WebSession |

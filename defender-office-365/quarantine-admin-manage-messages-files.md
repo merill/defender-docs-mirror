@@ -17,13 +17,13 @@ ms.collection:
 - m365-security
 - tier1
 ms.custom:
-- msecd-doc-authoring-1016
+- msecd-doc-authoring-1030
 - seo-marvel-apr2020
 - sfi-ga-nochange
 - sfi-image-nochange
 description: Admins can learn how to view and manage quarantined messages for all users in Microsoft 365 organizations with cloud mailboxes. Admins in organizations with Microsoft Defender for Office 365 can also manage quarantined files in SharePoint, OneDrive, and Microsoft Teams.
 ms.service: defender-office-365
-ms.date: 2026-08-31T00:00:00.0000000Z
+ms.date: 2026-10-07T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 63f8cdbb-7429-da44-41cb-c85bb9f27e99
@@ -429,10 +429,7 @@ After you select the message, use either of the following methods to preview it:
 - **On the Email tab**: Select ![](media/defender-portal-icon-preview-message.png)**Preview message**.
 - **In the details flyout of the selected message**: Select ![](media/defender-portal-icon-more-actions.png)**More options** &gt; ![](media/defender-portal-icon-preview-message.png)**Preview message**.
 
-In the flyout that opens, choose one of the following tabs:
-
-- **Source**: Shows the HTML version of the message body with all links disabled.
-- **Plain text**: Shows the message body in plain text.
+In the flyout that opens, the **Source** tab shows the HTML version of the message body with all links disabled.
 
 #### View email message headers
 
@@ -902,10 +899,7 @@ After you select the Teams message, use either of the following methods to previ
 - **On the Teams messages tab**: Select ![](media/defender-portal-icon-preview-message.png)**Preview message**.
 - **In the details flyout of the selected message**: Select ![](media/defender-portal-icon-more-actions.png)![](media/defender-portal-icon-preview-message.png)**Preview message**.
 
-In the flyout that opens, choose one of the following tabs:
-
-- **Source**: Shows the HTML version of the message body with all links disabled.
-- **Plain text**: Shows the message body in plain text.
+In the flyout that opens, the **Source** tab shows the HTML version of the message body with all links disabled.
 
 #### Submit Teams messages to Microsoft for review from quarantine
 

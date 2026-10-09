@@ -1419,6 +1419,43 @@ Verfify the API protection is connected to the 42Crunch platform, and then exerc
 
 After approximately 20 minutes access the Log Analytics workspace on your Microsoft Sentinel installation, and locate the *Custom Logs* section verify that a *apifirewall\_log\_1\_CL* table exists. Use the sample queries to examine the data.
 
+**Application Vulnerability Report for SAP BTP**
+
+**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
+
+The SAP Application Vulnerability Report Service connector ingests vulnerability findings in custom apps deployed on SAP BTP into Microsoft Sentinel. The findings can be correlated with SAP BTP audit activity to identify risky applications and investigate related security events.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SAPBTPAVL_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Client Id and Client Secret for Application Vulnerability Report Service**: Enable API access in BTP.
+
+**Setup Instructions:**
+
+Step 1 - Configuration steps for the SAP Application Vulnerability Report Service
+
+Configure SAP Application Vulnerability Report Service and create a dedicated service key for this connector [see Finding Provider Service API](https://api.sap.com/api/sap-FindingProviderService-v1/resource/get_Findings). Take a note of the **url (Finding Provider API URL), uaa.url (User Account and Authentication Server url) and the associated uaa.clientid**.
+
+> 
+> **NOTE:** This connector uses separate credentials and does not share the service key used by the SAP BTP audit log connector.
+
+**Connect SAP BTP AVL findings to Microsoft Sentinel**
+
+Connect using OAuth client credentials
+
+**Connections**
+
+Each row represents a connected subaccount
+
+- Data Connectors Grid (configure in portal)
+
 **ARGOS Cloud Security**
 
 **Supported by:**[ARGOS Cloud Security](https://argos-security.io/contact-us)
@@ -1795,19 +1832,19 @@ The [Atlassian Confluence](https://www.atlassian.com/software/confluence) Audit 
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `ConfluenceAuditLogs_CL` | Yes | Yes |
+| `ConfluenceAuditLogs` | No | No |
 
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+**Data collection rule support:** Not currently supported
 
 **Prerequisites:**
 
-- **Atlassian Confluence API access**: Permission of [Administer Confluence](https://developer.atlassian.com/cloud/confluence/rest/v1/intro/#auth) is required to get access to the Confluence Audit logs API. See [Confluence API documentation](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-audit/#api-wiki-rest-api-audit-get) to learn more about the audit API.
+- **Atlassian Confluence API access**: The account requires the [Confluence Administrator global permission](https://developer.atlassian.com/cloud/confluence/rest/v1/api-group-audit/#api-wiki-rest-api-audit-get). Scoped API tokens also require the `read:audit-log:confluence` scope.
 
 **Setup Instructions:**
 
-**Connect to Atlassian Confluence API to start collecting audit logs in Microsoft Sentinel**
+**Connect Atlassian Confluence to Microsoft Sentinel**
 
-To enable the Atlassian Confluence connector for Microsoft Sentinel, click to add an organization, fill the form with the Confluence environment credentials and click to Connect. Follow [these steps](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to create an API token.
+Add one connection per Atlassian Confluence site. Follow the [Atlassian API token instructions](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to create an API token.
 
 - Data Connectors Grid (configure in portal)
 
@@ -4637,18 +4674,18 @@ When prompted, supply:
 
 | Parameter | Value |
 | --- | --- |
-| `workspace` | The **name of your Log Analytics workspace (not the ID). Maximum 18 characters** -- see the note below |
+| `workspace` | The **name** of your Log Analytics workspace (not the ID) |
 | `workspace-location` | The Azure region of the workspace |
 | `resourceId` | The full resource ID of the workspace |
 
 The deployment creates:
 
-- One Data Collection Endpoint named `dce-corelight-<workspace>`
+- One Data Collection Endpoint named `dce-corelight-<workspace>` (workspace name truncated to 17 characters)
 - One custom table per Corelight log type, named `Corelight_v3_<log_type>_CL`
 - One Data Collection Rule per log type, named `dcr-corelight-<workspace>-<log_type>`, each tagged with `corelight-log-type`
 
 > 
-> **IMPORTANT: The workspace name must be 18 characters or fewer**. Each Data Collection Rule is named `dcr-corelight-<workspace>-<log_type>` and Azure limits resource names to 64 characters. The longest Corelight log type is 32 characters, so a longer workspace name makes some rule names exceed the limit and the deployment fails preflight validation with `'Name' must be between 1 and 64 characters`. If your workspace name is longer, deploy Microsoft Sentinel on a workspace with a shorter name.
+> **NOTE: Azure limits resource names to 64 characters and the longest Corelight log type is 32 characters, so the template uses only the first 17 characters** of the workspace name when it builds the endpoint and rule names. If your workspace name is longer than 17 characters, the deployed resources are named after that truncated prefix, for example `dcr-corelight-<first-17-chars>-<log_type>`.
 
 > 
 > **NOTE:** The deployment can take several minutes to complete because a large number of tables and rules are created. Wait for it to finish before continuing.
@@ -4675,20 +4712,32 @@ You now have the **Tenant ID, Client ID, and Client Secret** required by the Cor
 
 For more information, see [Register an application with Microsoft Entra ID](/en-us/entra/identity-platform/quickstart-register-app).
 
-**3. Grant the application permission to send data**
+**3. Grant the application access to the DCRs**
 
-Assign the **Monitoring Metrics Publisher** role so the application can publish to the Data Collection Rules created in step 1.
+The app needs two Azure roles on the DCRs:
 
-Assign the role once at the **resource group** scope so it covers every Corelight Data Collection Rule in a single assignment.
+- **Monitoring Metrics Publisher** — to write log data to the DCRs.
+- **Reader** — so the exporter can query the DCRs and match each log type to its DCR by the `corelight-log-type` tag at startup.
+
+Assign both at the **resource group** scope so they apply to all Corelight Data Collection Rules created in step 1.
 
 1. Go to the resource group that contains the deployed DCE and DCRs.
 2. Select **Access control (IAM) &gt; Add &gt; Add role assignment**.
 3. On the **Role tab, search for and select Monitoring Metrics Publisher**.
 4. On the **Members tab, choose User, group, or service principal**, then select the application you registered in step 2.
 5. Select **Review + assign**.
+6. Repeat the role assignment for the **Reader** role.
 
 > 
 > **NOTE:** Role assignments can take a few minutes to take effect. If the sensor reports authorization errors immediately after assignment, wait and retry.
+
+#### Grant the Microsoft Graph permission
+
+The exporter also needs the Microsoft Graph permission it uses to look up the DCR IDs from their tags.
+
+1. In the app registration, go to **API permissions**.
+2. Confirm that **Microsoft Graph User.Read (Delegated)** is listed. New app registrations include this permission by default, so no action is usually required.
+3. If it is missing, select **Add a permission &gt; Microsoft Graph &gt; Delegated permissions, search for `User.Read`, select it, and select Add permissions**.
 
 **4. Collect the values needed by the Corelight exporter**
 
@@ -6562,6 +6611,36 @@ For more information, see the [Microsoft Sentinel documentation](https://go.micr
 
 **Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
+**DomainTools Threat Intelligence Domain Feed**
+
+**Supported by:**[DomainTools](https://www.domaintools.com/support/)
+
+The DomainTools CCF Domain Data Connector retrieves threat-intelligence domain data from multiple DomainTools APIs—including Newly Observed Domains (NOD), Newly Active Domains (NAD), Newly Observed Hostnames (NOH), and Domain Discovery—and ingests it into Microsoft Sentinel for analysis and detection
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `DomainToolsThreatIntelDomains_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **DomainTools API Key is Required**: To access DomainTools Real Time Feed APIs We need the DomainTools API Key
+
+**Setup Instructions:**
+
+**Configure DomainTools API**
+
+Enter your DomainTools API key, select the feeds, and provide a session ID and polling window. Top is optional.
+
+- **API Key**: (Enter your DomainTools API Key)
+- **Session ID**: (mySOC)
+- **Query Window in Minutes**: (10)
+- **Top (optional)**: (100)
+- Enable/Disable Connection
+
 **Doppel Data Connector**
 
 **Supported by:**[Doppel](https://www.doppel.com/request-a-demo)
@@ -7810,6 +7889,29 @@ Ingest events from Filewall into Microsoft Sentinel (Exchange, SharePoint, OneDr
 Click **Add connection, paste your Filewall API key, and click Connect**. This will create 4 polling connections (Exchange, SharePoint, OneDrive, Teams).
 
 - Data Connectors Grid (configure in portal)
+
+**FireCompass Risks**
+
+**Supported by:**[FireCompass](https://firecompass.com/support/)
+
+The FireCompass data connector allows ingesting risk and vulnerability data from the FireCompass API into Microsoft Sentinel. The data connector is built on the Microsoft Sentinel Codeless Connector Framework.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `FCRisks_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Setup Instructions:**
+
+Configuration steps for the FireCompass API Generate your API Token from the FireCompass platform and paste it below to authenticate the connector.
+
+- **FIRECOMPASS Management URL**: (`https://example.FIRECOMPASSTEST.net/`)
+- **API endpoint path**: (/internal\_risks/v1/risk)
+- **FireCompass API Token**: (Enter API Token)
+- Enable/Disable Connection
 
 **Flare Push Connector**
 
@@ -9144,28 +9246,24 @@ The [Google Workspace](https://workspace.google.com/) Activities data connector 
 
 **Prerequisites:**
 
-- **Google Workspace API access**: Access to the Google Workspace activities API through Oauth are required.
+- **Google Workspace API access**: Access to the Google Workspace activities API through OAuth is required.
 
 **Setup Instructions:**
 
-**Connect to Google Workspace to start collecting user activity logs into Microsoft Sentinel**
+**Connect to Google Workspace**
+
+Add and manage independent Google Workspace tenant connections.
 
 Configuration steps for the Google Reports API
 
-1. Login to Google cloud console with your Workspace Admin credentials https://console.cloud.google.com.
-2. Using the search option (available at the top middle), Search for ***APIs & Services***
-3. From ***APIs & Services* -&gt; *Enabled APIs & Services*, enable Admin SDK API** for this project.
-4. Go to ***APIs & Services* -&gt; *OAuth Consent Screen***. If not already configured, create a OAuth Consent Screen with the following steps:
-    1. Provide App Name and other mandatory information.
-    2. Pick External as User Type for the Audience.
-5. Go to ***APIs & Services* -&gt; *Credentials***and create OAuth 2.0 Client ID
-    1. Click on Create Credentials on the top and select Oauth client Id.
-    2. Select Web Application from the Application Type drop down.
-    3. Provide a suitable name to the Web App and add the Redirect URI in the form below as the Authorized redirect URIs.
-    4. Once you click Create, you will be provided with the Client ID and Client Secret. Copy these values and use them in the configuration steps below.
-6. Go to ***Google Auth Platform* -&gt; *Data Access*: Add *Admin SDK API*** scope
+1. In Google Cloud Console, enable the **Admin SDK API**.
+2. Configure the OAuth consent screen.
+3. Create an OAuth 2.0 Client ID for a web application.
+4. Add the redirect URI shown by the connection form.
+5. Add the Admin SDK audit read-only scope.
 
-Configure steps for the Google Reports API oauth access. Then, provide the required information below and click on Connect.
+> 
+> Note: Create a separate connection alias for each Google Workspace tenant.
 
 - Data Connectors Grid (configure in portal)
 
@@ -14241,6 +14339,50 @@ If data is not appearing:
 - **Workspace ID**: &lt;variable value provided at install time&gt;
 - **Primary Key**: &lt;variable value provided at install time&gt;
 
+**Netskope AI SecOps**
+
+**Supported by:**[Netskope](https://support.netskope.com/access/)
+
+The Netskope AI SecOps connector pushes AI SecOps case and risk-scoring events (case lifecycle, investigation enrichment, and entity risk-score changes) directly into Microsoft Sentinel using the Codeless Connector Framework (CCF) Push pattern and the Azure Monitor Logs Ingestion API. Events are written to the `NetskopeAISecOps_CL` table; parse the `Data` column at query time with the `NetskopeAISecOpsEvents` function.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `NetskopeAISecOps_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires Entra ID Application Developer role or higher.
+- **Microsoft Azure**: Permission to assign Monitoring Metrics Publisher role on the data collection rule (DCR). Typically requires Azure RBAC Owner or User Access Administrator role.
+- **Netskope AI SecOps admin console**: Permission to configure an outbound event destination in the Netskope tenant's AI SecOps settings.
+
+**Setup Instructions:**
+
+**1. Create ARM Resources and Provide the Required Permissions**
+
+This connector enables your Netskope tenant's AI SecOps module to push case and risk-scoring events directly to Microsoft Sentinel via the Azure Monitor Logs Ingestion API.
+
+Automated configuration and secure data ingestion with Entra application Clicking on "Deploy push connector resources" will trigger the creation of the `NetskopeAISecOps_CL` Log Analytics table and a data collection rule (DCR) and data collection endpoint (DCE). It will then create a Microsoft Entra app registration, link the DCR to it, and set the entered secret in the application. This setup enables Netskope to send AI SecOps events securely to the DCR using an Entra token.
+
+**2. Configure the event destination in the Netskope AI SecOps admin console**
+
+Copy the values below into the **Outbound webhook** for the *Microsoft Sentinel* destination in the Netskope AI SecOps admin console (Auth type: OAuth2 client credentials). The fields are listed in the same order as the webhook form. Refer to the [Netskope Community guide](https://community.netskope.com/discussions-37/sending-netskope-ai-secops-events-to-microsoft-sentinel-8909) for the console steps.
+
+> 
+> **NOTE:** The Token URL is generated for the Microsoft Entra authority of the Azure cloud this workspace is deployed in (commercial or Government), so copy it exactly as shown.
+
+- **Destination URL (Data Collection Endpoint)**: &lt;variable value provided at install time&gt;
+- **Token URL**: &lt;variable value provided at install time&gt;
+- **Client ID (Entra Application ID)**: &lt;variable value provided at install time&gt;
+- **Client secret (Entra application secret value)**: &lt;variable value provided at install time&gt;
+- **Scope**: &lt;variable value provided at install time&gt;
+- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
+- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
+- **Stream Name**: &lt;variable value provided at install time&gt;
+
 **Netskope Alerts and Events**
 
 **Supported by:**[Netskope](https://support.netskope.com/access/)
@@ -14271,13 +14413,59 @@ Follow the [Netskope documentation](https://docs.netskope.com/en/rest-api-v2-ove
 Enter your Netskope organisation url & API Token below:
 
 - **Organisation Url**: (Enter your organisation url)
-- **API Key**: (Enter your API Key) **OPTIONAL: Specify the Index the API uses.**
+- **API Key**: (Enter your API Key)
+
+**OPTIONAL: Specify the Index the API uses.**
 
 Configuring the index is optional and only required in advanced scenario's. Netskope uses an [index](https://docs.netskope.com/en/using-the-rest-api-v2-dataexport-iterator-endpoints/#how-do-iterator-endpoints-function) to retrieve events. In some advanced cases (consuming the event in multiple Microsoft Sentinel workspaces, or pre-fatiguing the index to only retrieve recent data), a customer might want to have direct control over the index.
 
 - **Index**: (NetskopeCCF)
 
 **STEP 3 - Click Connect**
+
+Verify all fields above were filled in correctly. Press the Connect to connect Netskope to Microsoft Sentinel.
+
+- Enable/Disable Connection
+
+**Netskope Client Status**
+
+**Supported by:**[Netskope](https://support.netskope.com/access/)
+
+The Netskope Client Status connector ingests Netskope client device status records (installation, connectivity, health, and last-seen posture events) into Microsoft Sentinel via the Codeless Connector Framework (CCF) REST API poller. Data is delivered by the Netskope API as CSV and stored in the `NetskopeClientStatus_CL` table. Enumeration codes are retained in their original columns and translated during ingestion into adjacent human-readable `*_name` columns.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `NetskopeClientStatus_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Netskope organisation url**: The Netskope data connector requires you to provide your organisation url. You can find your organisation url by signing into the Netskope portal.
+- **Netskope API key**: The Netskope data connector requires you to provide a valid API key. You can create one by following the [Netskope documentation](https://docs.netskope.com/en/rest-api-v2-overview-312207/).
+- **Netskope Client Status iterator**: Unlike the other Netskope Alerts and Events data types, Client Status is only exposed through Netskope's REST API v2 Management-API iterator endpoints. There is no default or auto-created index for this data type — you must create the iterator yourself before connecting; see the [Netskope iterator endpoints documentation](https://docs.netskope.com/en/using-the-rest-api-v2-dataexport-iterator-endpoints/).
+
+**Setup Instructions:**
+
+**STEP 1 - Create a Netskope API key.**
+
+Follow the [Netskope documentation](https://docs.netskope.com/en/rest-api-v2-overview-312207/) for guidance on this step.
+
+**STEP 2 - Create a Client Status iterator**
+
+Client Status does not support the shared `index=` convention used by the other Netskope event types — you must create a dedicated iterator for this data type before Microsoft Sentinel can poll it. Using the [Netskope REST API v2 iterator endpoints](https://docs.netskope.com/en/using-the-rest-api-v2-dataexport-iterator-endpoints/), call the Create Iterator API once (for example `POST https://<your-org>/api/v2/dataexport/iterator/<a-name-you-choose>?eventtype=clientstatus` with your API token) and record the iterator name/ID you used — you will enter it below. Confirm the exact request shape against the linked Netskope documentation, as iterator management is a separate API surface from the events you are polling.
+
+**STEP 3 - Enter your Netskope product Details**
+
+Enter your Netskope organisation url, API Token, and the Client Status iterator ID you created in Step 2:
+
+- **Organisation Url**: (Enter your organisation url)
+- **API Key**: (Enter your API Key)
+- **Client Status Iterator ID**: (Enter the iterator name/ID you created in Step 2)
+
+**STEP 4 - Click Connect**
 
 Verify all fields above were filled in correctly. Press the Connect to connect Netskope to Microsoft Sentinel.
 
@@ -14450,92 +14638,6 @@ Prerequisites:
 - **Storage Account Subscription ID**:
 - **Event Grid Topic Name (if exists)**: (Leave empty to create new topic)
 - Enable/Disable Connection
-
-**Netskope Web Transactions Data Connector**
-
-**Supported by:**[Netskope](https://support.netskope.com/access/)
-
-The [Netskope Web Transactions](https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/) data connector provides the functionality of a docker image to pull the Netskope Web Transactions data from google pubsublite, process the data and ingest the processed data to Log Analytics. As part of this data connector two tables will be formed in Log Analytics, one for Web Transactions data and other for errors encountered during execution.
-
-For more details related to Web Transactions refer to the below documentation:
-
-1. Netskope Web Transactions documentation:
-
-> 
-> https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `NetskopeWebtxData_CL` | No | No |
-| `NetskopeWebtxErrors_CL` | No | No |
-
-**Data collection rule support:** Not currently supported
-
-**Prerequisites:**
-
-- **Azure Subscription**: Azure Subscription with owner role is required to register an application in Microsoft Entra ID and assign role of contributor to app in resource group.
-- **Microsoft.Compute permissions**: Read and write permissions to Azure VMs is required. For more information, see [Azure VMs](/en-us/azure/virtual-machines/overview).
-- **TransactionEvents Credentials and Permissions**: **Netskope Tenant** and **Netskope API Token** is required. For more information, see [Transaction Events.](https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/)
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector provides the functionality of ingesting Netskope Web Transactions data using a docker image to be deployed on a virtual machine (Either Azure VM/On Premise VM). Check the [Azure VM pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux) for details.
-
-**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-STEP 1 - Steps to create/get Credentials for the Netskope account
-
-Follow the steps in this section to create/get **Netskope Hostname and Netskope API Token**:
-
-1. Login to your **Netskope Tenant and go to the Settings menu** on the left navigation bar.
-2. Click on Tools and then **REST API v2**
-3. Now, click on the new token button. Then it will ask for token name, expiration duration and the endpoints that you want to fetch data from.
-4. Once that is done click the save button, the token will be generated. Copy the token and save at a secure place for further usage.
-
-STEP 2 - Choose one from the following two deployment options to deploy the docker based data connector to ingest Netskope Web Transactions data
-
-> 
-> **IMPORTANT:** Before deploying Netskope data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following) readily available, as well as the Netskope API Authorization Key(s) [Make sure the token has permissions for transaction events].
-
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
-
-**Option 1 - Using Azure Resource Manager (ARM) Template to deploy VM [Recommended]**
-
-Using the ARM template deploy an Azure VM, install the prerequisites and start execution.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentinel-NetskopeV2WebTransactions-azuredeploy)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the below information : Docker Image Name (mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions) Netskope HostName Netskope API Token Seek Timestamp (The epoch timestamp that you want to seek the pubsublite pointer, can be left empty) Workspace ID Workspace Key Backoff Retry Count (The retry count for token related errors before restarting the execution.) Backoff Sleep Time (Number of seconds to sleep before retrying) Idle Timeout (Number of seconds to wait for Web Transactions Data before restarting execution) VM Name Authentication Type Admin Password or Key DNS Label Prefix Ubuntu OS Version Location VM Size Subnet Name Network Security Group Name Security Type
-4. Click on **Review+Create**.
-5. Then after validation click on **Create** to deploy.
-
-**Option 2 - Manual Deployment on previously created virtual machine**
-
-Use the following step-by-step instructions to deploy the docker based data connector manually on a previously created virtual machine.
-
-1. Install docker and pull docker Image
-
-> 
-> **NOTE:** Make sure that the VM is linux based (preferably Ubuntu).
-
-1. Firstly you will need to [SSH into the virtual machine](/en-us/azure/virtual-machines/linux-vm-connect?tabs=Linux).
-2. Now install [docker engine](https://docs.docker.com/engine/install/).
-3. Now pull the docker image from docker hub using the command: 'sudo docker pull mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'.
-4. Now to run the docker image use the command: 'sudo docker run -it -v $(pwd)/docker\_persistent\_volume:/app mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'. You can replace mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions with the image id. Here docker\_persistent\_volume is the name of the folder that would be created on the vm in which the files will get stored.
-5. Configure the Parameters
-6. Once the docker image is running it will ask for the required parameters.
-7. Add each of the following application settings individually, with their respective values (case-sensitive): Netskope HostName Netskope API Token Seek Timestamp (The epoch timestamp that you want to seek the pubsublite pointer, can be left empty) Workspace ID Workspace Key Backoff Retry Count (The retry count for token related errors before restarting the execution.) Backoff Sleep Time (Number of seconds to sleep before retrying) Idle Timeout (Number of seconds to wait for Web Transactions Data before restarting execution)
-8. Now the execution has started but is in interactive mode, so that shell cannot be stopped. To run it as a background process, stop the current execution by pressing Ctrl+C and then use the command: 'sudo docker run -d -v $(pwd)/docker\_persistent\_volume:/app mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'.
-9. Stop the docker container
-10. Use the command 'sudo docker container ps' to list the running docker containers. Note down your container id.
-11. Now stop the container using the command: 'sudo docker stop *&lt;container-id&gt;*'.
 
 **Network Security Groups**
 
@@ -15535,7 +15637,7 @@ Proofpoint Websocket API service requires Remote Syslog Forwarding license. Plea
 
 **Proofpoint TAP (via Codeless Connector Framework)**
 
-**Supported by:**[Proofpoint, Inc.](https://proofpoint.my.site.com/community/s/)
+**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
 The [Proofpoint Targeted Attack Protection (TAP)](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) connector provides the capability to ingest Proofpoint TAP logs and events into Microsoft Sentinel. The connector provides visibility into Message and Click events in Microsoft Sentinel to view dashboards, create custom alerts, and to improve monitoring and investigation capabilities.
 
@@ -15573,7 +15675,7 @@ Configuration steps for the Proofpoint TAP API
 
 **Proofpoint TAP (via Codeless Connector Framework)**
 
-**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
+**Supported by:**[Proofpoint, Inc.](https://proofpoint.my.site.com/community/s/)
 
 The [Proofpoint Targeted Attack Protection (TAP)](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) connector provides the capability to ingest Proofpoint TAP logs and events into Microsoft Sentinel. The connector provides visibility into Message and Click events in Microsoft Sentinel to view dashboards, create custom alerts, and to improve monitoring and investigation capabilities.
 
@@ -17190,25 +17292,25 @@ The Snowflake data connector provides the capability to ingest Snowflake [Login 
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `SnowflakeLoginV2_CL` | Yes | Yes |
-| `SnowflakeQueryV2_CL` | Yes | Yes |
-| `SnowflakeUserGrantV2_CL` | Yes | Yes |
-| `SnowflakeRoleGrantV2_CL` | Yes | Yes |
-| `SnowflakeLoadV2_CL` | Yes | Yes |
-| `SnowflakeMaterializedViewV2_CL` | Yes | Yes |
-| `SnowflakeRolesV2_CL` | Yes | Yes |
-| `SnowflakeTablesV2_CL` | Yes | Yes |
-| `SnowflakeTableStorageMetricsV2_CL` | Yes | Yes |
-| `SnowflakeUsersV2_CL` | Yes | Yes |
+| `SnowflakeLoginV3_CL` | No | No |
+| `SnowflakeQueryV3_CL` | No | No |
+| `SnowflakeUserGrantV3_CL` | No | No |
+| `SnowflakeRoleGrantV3_CL` | No | No |
+| `SnowflakeLoadV3_CL` | No | No |
+| `SnowflakeMaterializedViewV3_CL` | No | No |
+| `SnowflakeRolesV3_CL` | No | No |
+| `SnowflakeTablesV3_CL` | No | No |
+| `SnowflakeTableStorageMetricsV3_CL` | No | No |
+| `SnowflakeUsersV3_CL` | No | No |
 
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+**Data collection rule support:** Not currently supported
 
 **Setup Instructions:**
 
 **Connect Snowflake to Microsoft Sentinel**
 
 > 
-> Note: **Notice:** Solution version 3.1.0 and later uses the SnowflakeV2 tables (e.g., SnowflakeQueryV2\_CL, SnowflakeLoginV2\_CL). The parsers have been updated accordingly.
+> Note: **Notice:** Solution version 3.2.0 and later uses the SnowflakeV3 tables (e.g., SnowflakeQueryV3\_CL, SnowflakeLoginV3\_CL). The parsers have been updated accordingly.
 
 > 
 > **NOTE: To ensure data is presented in separate columns for each field, execute the parser using the Snowflake()** function
@@ -18120,32 +18222,6 @@ Follow the instructions to configure the TheHive connector.
 Enable the TheHive connector.
 
 - Enable/Disable Connection
-
-**Theom**
-
-**Supported by:**[Theom](https://www.theom.ai/contact-us)
-
-Theom Data Connector enables organizations to connect their Theom environment to Microsoft Sentinel. This solution enables users to receive alerts on data security risks, create and enrich incidents, check statistics and trigger SOAR playbooks in Microsoft Sentinel
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `TheomAlerts_CL` | No | No |
-
-**Data collection rule support:** Not currently supported
-
-**Setup Instructions:**
-
-1. In **Theom UI Console click on Manage -&gt; Alerts** on the side bar.
-2. Select **Sentinel** tab.
-3. Click on **Active** button to enable the configuration.
-4. Enter `Primary` key as `Authorization Token`
-5. Enter `Endpoint URL` as `https://<Workspace ID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01`
-6. Click on `SAVE SETTINGS`
-
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
 
 **Thinkst Canary**
 
@@ -22522,188 +22598,91 @@ In 'Logs' explorer of your Microsoft Sentinel's log analytics, copy the content 
 
 Click on save button. No parameter is needed for this parser. Click save again.
 
-**[Deprecated] Okta Single Sign-On (using Azure Function) (using Azure Functions)**
+**[Deprecated] Netskope Web Transactions Data Connector (using Azure Function)**
 
-**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
+**Supported by:**[Netskope](https://support.netskope.com/access/)
 
-The [Okta Single Sign-On (SSO) (using Azure Function)](https://www.okta.com/products/single-sign-on/) connector provides the capability to ingest audit and event logs from the Okta API into Microsoft Sentinel. The connector provides visibility into these log types in Microsoft Sentinel to view dashboards, create custom alerts, and to improve monitoring and investigation capabilities.
+The [Netskope Web Transactions](https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/) data connector provides the functionality of a docker image to pull the Netskope Web Transactions data from google pubsublite, process the data and ingest the processed data to Log Analytics. As part of this data connector two tables will be formed in Log Analytics, one for Web Transactions data and other for errors encountered during execution.
+
+For more details related to Web Transactions refer to the below documentation:
+
+1. Netskope Web Transactions documentation:
+
+> 
+> https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/
 
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `Okta_CL` | Yes | Yes |
+| `NetskopeWebtxData_CL` | No | No |
+| `NetskopeWebtxErrors_CL` | No | No |
 
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+**Data collection rule support:** Not currently supported
 
 **Prerequisites:**
 
+- **Azure Subscription**: Azure Subscription with owner role is required to register an application in Microsoft Entra ID and assign role of contributor to app in resource group.
+- **Microsoft.Compute permissions**: Read and write permissions to Azure VMs is required. For more information, see [Azure VMs](/en-us/azure/virtual-machines/overview).
+- **TransactionEvents Credentials and Permissions**: **Netskope Tenant** and **Netskope API Token** is required. For more information, see [Transaction Events.](https://docs.netskope.com/en/netskope-help/data-security/transaction-events/netskope-transaction-events/)
 - **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **Okta API Token**: An Okta API Token is required. See the documentation to learn more about the [Okta System Log API](https://developer.okta.com/docs/reference/api/system-log/).
 
 **Setup Instructions:**
 
 > 
-> **NOTE:** This connector uses Azure Functions to connect to Okta SSO to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-> 
-> **NOTE:** This connector has been updated, if you have previously deployed an earlier version, and want to update, please delete the existing Okta Azure Function before redeploying this version.
+> **NOTE:** This connector provides the functionality of ingesting Netskope Web Transactions data using a docker image to be deployed on a virtual machine (Either Azure VM/On Premise VM). Check the [Azure VM pricing page](https://azure.microsoft.com/pricing/details/virtual-machines/linux) for details.
 
 **(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
 
-STEP 1 - Configuration steps for the Okta SSO API
+STEP 1 - Steps to create/get Credentials for the Netskope account
 
-[Follow these instructions](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/) to create an API Token.
+Follow the steps in this section to create/get **Netskope Hostname and Netskope API Token**:
 
-**Note - For more information on the rate limit restrictions enforced by Okta, please refer to the [documentation](https://developer.okta.com/docs/reference/rl-global-mgmt/)**.
+1. Login to your **Netskope Tenant and go to the Settings menu** on the left navigation bar.
+2. Click on Tools and then **REST API v2**
+3. Now, click on the new token button. Then it will ask for token name, expiration duration and the endpoints that you want to fetch data from.
+4. Once that is done click the save button, the token will be generated. Copy the token and save at a secure place for further usage.
 
-STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+STEP 2 - Choose one from the following two deployment options to deploy the docker based data connector to ingest Netskope Web Transactions data
 
 > 
-> **IMPORTANT:** Before deploying the Okta SSO connector, have the Workspace ID and Workspace Primary Key (can be copied from the following), as well as the Okta SSO API Authorization Token, readily available.
+> **IMPORTANT:** Before deploying Netskope data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following) readily available, as well as the Netskope API Authorization Key(s) [Make sure the token has permissions for transaction events].
 
 - **Workspace ID**: &lt;variable value provided at install time&gt;
 - **Primary Key**: &lt;variable value provided at install time&gt;
 
-**Option 1 - Azure Resource Manager (ARM) Template**
+**Option 1 - Using Azure Resource Manager (ARM) Template to deploy VM [Recommended]**
 
-This method provides an automated deployment of the Okta SSO connector using an ARM Tempate.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentineloktaazuredeployv2-solution)[aka.ms](https://aka.ms/sentineloktaazuredeployv2-solution-gov)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the **Workspace ID, Workspace Key, API Token and URI**.
-
-- Use the following schema for the `uri` value: `https://<OktaDomain>/api/v1/logs?since=` Replace `<OktaDomain>` with your domain. [Click here](https://developer.okta.com/docs/reference/api-overview/#url-namespace) for further details on how to identify your Okta domain namespace. There is no need to add a time value to the URI, the Function App will dynamically append the inital start time of logs to UTC 0:00 for the current UTC date as time value to the URI in the proper format.
-- Note: If using Azure Key Vault secrets for any of the values above, use the`@Microsoft.KeyVault(SecretUri={Security Identifier})`schema in place of the string values. Refer to [Key Vault references documentation](/en-us/azure/app-service/app-service-key-vault-references) for further details.
-
-1. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
-2. Click **Purchase** to deploy.
-
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the Okta SSO connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-**Step 1 - Deploy a Function App**
-
-1. Download the [Azure Function App](https://aka.ms/sentineloktaazurefunctioncodev2) file. Extract archive to your local development computer.
-2. Follow the [function app manual deployment instructions](https://github.com/Azure/Azure-Sentinel/blob/master/DataConnectors/AzureFunctionsManualDeployment.md#function-app-manual-deployment-instructions) to deploy the Azure Functions app using VSCode.
-3. After successful deployment of the function app, follow next steps for configuring it.
-
-**Step 2 - Configure the Function App**
-
-1. Go to Azure Portal for the Function App configuration.
-2. In the Function App, select the Function App Name and select **Configuration**.
-3. In the **Application settings tab, select + New application setting**.
-4. Add each of the following five (5) application settings individually, with their respective string values (case-sensitive): apiToken workspaceID workspaceKey uri logAnalyticsUri (optional)
-
-- Use the following schema for the `uri` value: `https://<OktaDomain>/api/v1/logs?since=` Replace `<OktaDomain>` with your domain. [Click here](https://developer.okta.com/docs/reference/api-overview/#url-namespace) for further details on how to identify your Okta domain namespace. There is no need to add a time value to the URI, the Function App will dynamically append the inital start time of logs to UTC 0:00 for the current UTC date as time value to the URI in the proper format.
-- Note: If using Azure Key Vault secrets for any of the values above, use the`@Microsoft.KeyVault(SecretUri={Security Identifier})`schema in place of the string values. Refer to [Key Vault references documentation](/en-us/azure/app-service/app-service-key-vault-references) for further details.
-- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: https://&lt;CustomerId&gt;.ods.opinsights.azure.us.
-
-1. Once all application settings have been entered, click **Save**.
-
-**[Deprecated] SentinelOne (using Azure Function) (using Azure Functions)**
-
-**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
-
-The [SentinelOne](https://www.sentinelone.com/) data connector provides the capability to ingest common SentinelOne server objects such as Threats, Agents, Applications, Activities, Policies, Groups, and more events into Microsoft Sentinel through the REST API. Refer to API documentation: `https://<SOneInstanceDomain>.sentinelone.net/api-doc/overview` for more information. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `SentinelOne_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **SentinelOneAPIToken** is required. See the documentation to learn more about API on the `https://<SOneInstanceDomain>.sentinelone.net/api-doc/overview`.
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to the SentinelOne API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-> 
-> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected which is deployed as part of the solution. To view the function code in Log Analytics, open Log Analytics/Microsoft Sentinel Logs blade, click Functions and search for the alias SentinelOne and load the function code or click [here](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/SentinelOne/Parsers/SentinelOne.txt). The function usually takes 10-15 minutes to activate after solution installation/update.
-
-STEP 1 - Configuration steps for the SentinelOne API
-
-Follow the instructions to obtain the credentials.
-
-1. Log in to the SentinelOne Management Console with Admin user credentials.
-2. In the Management Console, click **Settings**.
-3. In the **SETTINGS view, click USERS**
-4. Click **New User**.
-5. Enter the information for the new console user.
-6. In Role, select **Admin**.
-7. Click **SAVE**
-8. Save credentials of the new user for using in the data connector.
-
-**NOTE :-** Admin access can be delegated using custom roles. Please review SentinelOne [documentation](https://www.sentinelone.com/blog/feature-spotlight-fully-custom-role-based-access-control/) to learn more about custom RBAC.
-
-STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
-
-> 
-> **IMPORTANT:** Before deploying the SentinelOne data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following).
-
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
-
-**Option 1 - Azure Resource Manager (ARM) Template**
-
-Use this method for automated deployment of the SentinelOne Audit data connector using an ARM Tempate.
+Using the ARM template deploy an Azure VM, install the prerequisites and start execution.
 
 1. Click the **Deploy to Azure** button below.
 
-    [aka.ms](https://aka.ms/sentinel-SentinelOneAPI-azuredeploy)[aka.ms](https://aka.ms/sentinel-SentinelOneAPI-azuredeploy-gov)
+    [aka.ms](https://aka.ms/sentinel-NetskopeV2WebTransactions-azuredeploy)
 2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the below information : Docker Image Name (mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions) Netskope HostName Netskope API Token Seek Timestamp (The epoch timestamp that you want to seek the pubsublite pointer, can be left empty) Workspace ID Workspace Key Backoff Retry Count (The retry count for token related errors before restarting the execution.) Backoff Sleep Time (Number of seconds to sleep before retrying) Idle Timeout (Number of seconds to wait for Web Transactions Data before restarting execution) VM Name Authentication Type Admin Password or Key DNS Label Prefix Ubuntu OS Version Location VM Size Subnet Name Network Security Group Name Security Type
+4. Click on **Review+Create**.
+5. Then after validation click on **Create** to deploy.
+
+**Option 2 - Manual Deployment on previously created virtual machine**
+
+Use the following step-by-step instructions to deploy the docker based data connector manually on a previously created virtual machine.
+
+1. Install docker and pull docker Image
 
 > 
-> **NOTE:** Within the same resource group, you can't mix Windows and Linux apps in the same region. Select existing resource group without Windows apps in it or create new resource group. 3. Enter the **SentinelOneAPIToken, SentinelOneUrl**`(https://<SOneInstanceDomain>.sentinelone.net)` and deploy. 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 5. Click **Purchase** to deploy.
+> **NOTE:** Make sure that the VM is linux based (preferably Ubuntu).
 
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the SentinelOne Reports data connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-1. Deploy a Function App
-
-> 
-> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
-
-1. Download the [Azure Function App](https://aka.ms/sentinel-SentinelOneAPI-functionapp) file. Extract archive to your local development computer.
-2. Start VS Code. Choose File in the main menu and select Open Folder.
-3. Select the top level folder from extracted files.
-4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
-5. Provide the following information at the prompts:
-
-    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
-
-    b. **Select Subscription:** Choose the subscription to use.
-
-    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
-
-    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. SOneXXXXX).
-
-    e. **Select a runtime:** Choose Python 3.11.
-
-    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
-6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
-7. Go to Azure Portal for the Function App configuration.
-8. Configure the Function App
-9. In the Function App, select the Function App Name and select **Configuration**.
-10. In the **Application settings tab, select New application setting**.
-11. Add each of the following application settings individually, with their respective string values (case-sensitive): SentinelOneAPIToken SentinelOneUrl WorkspaceID WorkspaceKey logAnalyticsUri (optional)
-
-- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
-
-1. Once all application settings have been entered, click **Save**.
+1. Firstly you will need to [SSH into the virtual machine](/en-us/azure/virtual-machines/linux-vm-connect?tabs=Linux).
+2. Now install [docker engine](https://docs.docker.com/engine/install/).
+3. Now pull the docker image from docker hub using the command: 'sudo docker pull mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'.
+4. Now to run the docker image use the command: 'sudo docker run -it -v $(pwd)/docker\_persistent\_volume:/app mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'. You can replace mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions with the image id. Here docker\_persistent\_volume is the name of the folder that would be created on the vm in which the files will get stored.
+5. Configure the Parameters
+6. Once the docker image is running it will ask for the required parameters.
+7. Add each of the following application settings individually, with their respective values (case-sensitive): Netskope HostName Netskope API Token Seek Timestamp (The epoch timestamp that you want to seek the pubsublite pointer, can be left empty) Workspace ID Workspace Key Backoff Retry Count (The retry count for token related errors before restarting the execution.) Backoff Sleep Time (Number of seconds to sleep before retrying) Idle Timeout (Number of seconds to wait for Web Transactions Data before restarting execution)
+8. Now the execution has started but is in interactive mode, so that shell cannot be stopped. To run it as a background process, stop the current execution by pressing Ctrl+C and then use the command: 'sudo docker run -d -v $(pwd)/docker\_persistent\_volume:/app mgulledge/netskope-microsoft-sentinel-plugin:netskopewebtransactions'.
+9. Stop the docker container
+10. Use the command 'sudo docker container ps' to list the running docker containers. Note down your container id.
+11. Now stop the container using the command: 'sudo docker stop *&lt;container-id&gt;*'.
 
 **[Deprecated] Sophos Endpoint Protection (using Azure Function) (using Azure Functions)**
 

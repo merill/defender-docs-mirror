@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Query the enterprise exposure graph in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/query-enterprise-exposure-graph
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

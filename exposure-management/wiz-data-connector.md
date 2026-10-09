@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Wiz data connector in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/wiz-data-connector
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

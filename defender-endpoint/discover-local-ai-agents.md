@@ -13,7 +13,8 @@ author: lwainstein
 ms.author: lwainstein
 ms.service: defender-endpoint
 ms.topic: how-to
-ms.date: 2026-09-16T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1030
+ms.date: 2026-10-07T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 3ab263d3-69ba-bccb-3caf-8a3d135be6b6
@@ -43,7 +44,7 @@ platformId: 02bd370a-d6ee-28a3-0704-0b8885819855
 
 # Discover local AI agents with Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
 
-Microsoft Defender automatically discovers supported local AI agents and MCP servers configured on onboarded devices and surfaces them in the AI agent inventory and advanced hunting. To learn more about local AI agent discovery, see [Local AI agent discovery with Microsoft Defender for Endpoint](local-agent-discovery-overview).
+Microsoft Defender discovers supported AI agents and their MCP servers after it observes agent activity on onboarded devices and surfaces them in the AI agent inventory and advanced hunting. An installed agent might not appear until Defender observes agent activity. To learn more about local AI agent discovery, see [Local AI agent discovery with Microsoft Defender for Endpoint](local-agent-discovery-overview). For coverage by agent, operating system, and MCP server configuration, see [Microsoft Defender for Endpoint AI agent support matrix](ai-agent-support-matrix).
 
 In this article, you learn how to view discovered agents in the inventory, review their configuration and risk, explore their relationships with devices and identities, and investigate agent presence using advanced hunting.
 
@@ -131,7 +132,7 @@ Three advanced hunting tables describe local AI agents. Each answers a different
 
 | Table | What it contains | Use it to answer |
 | --- | --- | --- |
-| [AgentsInfo](/en-us/defender-xdr/advanced-hunting-agentsinfo-table) | A profile record for every AI agent that Microsoft Defender discovers, across all agent platforms. For local AI agents, the record includes the publisher, version, host process, trust and auto-approve settings, configured MCP servers, and the device and account where the agent was seen. | What is this agent, and how is it configured? |
+| [AgentsInfo](/en-us/defender-xdr/advanced-hunting-agentsinfo-table) | A profile record for every AI agent that Microsoft Defender discovers on all agent platforms. For local AI agents, the record includes the publisher, version, host process, trust and auto-approve settings, configured MCP servers, and the device and account where the agent was seen. | What is this agent, and how is it configured? |
 | [ExposureGraphNodes](/en-us/defender-xdr/advanced-hunting-exposuregraphnodes-table) | Every entity in your organization as a node, including AI agents, devices, identities, and cloud resources, along with properties such as asset criticality and whether the entity holds sensitive data. | What is this entity, and how much does it matter? |
 | [ExposureGraphEdges](/en-us/defender-xdr/advanced-hunting-exposuregraphedges-table) | The relationships between nodes, such as the device an agent runs on, or the resources an identity can access. | What can this agent reach? |
 
@@ -243,6 +244,8 @@ AgentsInfo
 ```
 
 Each `AgentId` represents one agent profile, which is a single agent on a single device for a single account. `Installations` counts those profiles, so an agent that two people use on the same device counts twice, while `DeviceCount` counts the device once.
+
+Compare the `Name` and `Vendor` values returned by the query with the [AI agent discovery support matrix](ai-agent-support-matrix#ai-agent-discovery-support).
 
 ### Review the MCP servers and tools that local AI agents use
 

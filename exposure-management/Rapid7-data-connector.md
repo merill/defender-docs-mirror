@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Rapid7 data connector in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/rapid7-data-connector
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

@@ -2,7 +2,7 @@
 layout: Conceptual
 title: External Attack Surface Management Initiative in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/external-attack-surface-management-initiative
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

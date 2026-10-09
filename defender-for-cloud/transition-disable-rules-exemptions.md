@@ -9,8 +9,8 @@ permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 adobe-target: true
-author: dlanger
-ms.author: dlanger
+author: ElazarK
+ms.author: elkrieger
 manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to migrate from disable rules to exemptions in Microsoft Defender for Cloud. Grouped recommendations are deprecated in favor of individual recommendations.

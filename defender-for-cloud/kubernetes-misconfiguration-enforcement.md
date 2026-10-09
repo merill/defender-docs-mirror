@@ -9,8 +9,8 @@ permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 adobe-target: true
-author: dlanger
-ms.author: dlanger
+author: ElazarK
+ms.author: elkrieger
 manager: orspodek
 ms.service: defender-for-cloud
 description: Learn about Kubernetes misconfiguration enforcement in Microsoft Defender for Containers to audit or block misconfigured workloads at deployment time.

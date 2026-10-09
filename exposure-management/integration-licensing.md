@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Integration and licensing for Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/integration-licensing
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

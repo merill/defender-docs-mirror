@@ -2,7 +2,7 @@
 layout: Conceptual
 title: What is Microsoft Security Exposure Management? - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/microsoft-security-exposure-management
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

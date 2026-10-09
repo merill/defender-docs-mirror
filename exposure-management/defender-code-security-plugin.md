@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Defender Code Security skills overview - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/defender-code-security-plugin
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

@@ -3,8 +3,8 @@ layout: Hub
 title: Microsoft Defender products and services - Microsoft Defender | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender/
 summary: Explore the Microsoft Defender products and services available for your business or organization.
-author: guywi-ms
-ms.author: guywild
+author: poliveria
+ms.author: pauloliveria
 manager: orspodek
 ms.reviewer: aroland
 ms.service: defender-xdr

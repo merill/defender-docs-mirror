@@ -9,8 +9,8 @@ permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 adobe-target: true
-author: TimShererWithAquent
-ms.author: v-tishe
+author: ElazarK
+ms.author: elkrieger
 manager: orspodek
 ms.service: defender-for-cloud
 description: Simulate alerts for SQL servers on machines to safely validate your Defender for Cloud detection and response workflows. Learn how to run and verify test alerts.

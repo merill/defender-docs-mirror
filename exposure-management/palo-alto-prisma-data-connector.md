@@ -2,7 +2,7 @@
 layout: Conceptual
 title: Palo Alto Prisma data connector in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/palo-alto-prisma-data-connector
-author: dlanger
+author: DebLanger
 ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management

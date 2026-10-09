@@ -2,8 +2,8 @@
 layout: Conceptual
 title: OT data connectors in Microsoft Security Exposure Management - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/ot-data-connectors
-author: limwainstein
-ms.author: lwainstein
+author: DebLanger
+ms.author: dlanger
 manager: orspodek
 ms.service: exposure-management
 breadcrumb_path: /security-exposure-management/breadcrumb/toc.json

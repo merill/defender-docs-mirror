@@ -9,8 +9,8 @@ permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 adobe-target: true
-author: TimShererWithAquent
-ms.author: v-tishe
+author: ElazarK
+ms.author: elkrieger
 manager: orspodek
 ms.service: defender-for-cloud
 description: Automate security response in Microsoft Defender for Cloud using Azure Logic Apps. Explore triggers, manual runs, and DeployIfNotExist policies.

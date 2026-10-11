@@ -15,8 +15,8 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Configure File Integrity Monitoring in Microsoft Defender for Cloud. Use the Defender for Endpoint scanning to collect monitoring data.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1013
+ms.date: 2026-10-06T00:00:00.0000000Z
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 435e1a40-0037-f9fa-2c63-24b0e267705b
@@ -61,7 +61,8 @@ Note
 - Install the [Defender for Endpoint](/en-us/defender-endpoint/microsoft-defender-endpoint) agent through the [Defender for Servers extensions](faq-defender-for-servers) on machines you want to monitor.
 - Connect non-Azure machines with [Azure Arc](/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm).
 - Enable [agentless machine scanning](concept-agentless-data-collection) on your subscription to gain extra coverage and the ability to monitor custom paths.
-- Have **Workspace owner** and **Security admin** permissions to enable and disable File Integrity Monitoring. **Security reader** permissions can view results.
+- To enable, disable, or change the File Integrity Monitoring configuration, have the **Security Admin** and **Owner** roles on the subscription that contains the Log Analytics workspace.
+- The **Security Reader** role can view results.
 
 ## Verify Defender for Endpoint client version
 

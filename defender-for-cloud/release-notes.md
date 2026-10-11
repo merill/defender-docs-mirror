@@ -73,14 +73,16 @@ The new Defender server security experience brings together cloud and endpoint d
 
 In the Microsoft Defender portal, you can:
 
-- Review unified server inventory and combined cloud and endpoint details.
+- Review the new server asset page with combined cloud and endpoint details.
 - Investigate servers across alerts, incidents, and the attack graph.
 - Use **Go hunt** to investigate related events.
 - Manage access with role-based access control (RBAC), server device groups, and cloud scopes.
 
 In Microsoft Defender for Cloud in the Azure portal, you can:
 
-- Automatically offboard eligible servers from Defender for Endpoint by turning off Defender for Servers for the subscription.
+- [Automatically offboard servers](/en-us/defender-endpoint/offboard-machines) from Defender for Endpoint by turning off Defender for Servers plan for the subscription.
+
+Learn more about [the new Defender server security experience](/en-us/defender-endpoint/azure-server-integration).
 
 ### KSPM misconfiguration recommendations moving to controller-level scope (GA)
 

@@ -170,6 +170,19 @@ iOS Dedicated/shared/kiosk device enrollment isn't supported.
 - [Microsoft Intune: Android Enterprise - Setup Always-on VPN](/en-us/intune/intune-service/protect/microsoft-defender-deploy-android#set-up-always-on-vpn)
 - [iOS - Autosetup of VPN profile](ios-install#auto-onboarding-of-vpn-profile-simplified-onboarding)
 
+## Standard Device Connectivity URLs
+
+This article provides the standard connectivity requirements for onboarding and maintaining devices in Microsoft Defender for Endpoint on Android and iOS. Network and security administrators should allow the below URLs through their firewalls and proxy servers to ensure devices can communicate with Microsoft Defender for Endpoint services for onboarding and ongoing operation.
+
+- **Commercial cloud environments:**
+
+    - \*.securitycenter.windows.com
+    - \*.endpoint.security.microsoft.com
+- **US Government cloud environments (Government Community Cloud (GCC), Government Community Cloud High (GCC High), United States Department of Defense (DoD)):**
+
+    - \*.securitycenter.windows.us
+    - \*.endpoint.security.microsoft.us
+
 ## Pilot evaluation
 
 While evaluating mobile threat defense with Microsoft Defender for Endpoint, you can verify that certain criteria is met before proceeding to deploy the service to a larger set of devices. You can define the exit criteria and ensure that they're satisfied before deploying widely.

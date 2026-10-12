@@ -74,7 +74,7 @@ Device tagging is supported on:
 
 ### Performance notes
 
-- Each device can have multiple tags.
+- Each device can have multiple tags. However, the number of tags that you can configure might depend on the tagging method. For example, registry-based tagging on Windows supports one tag.
 - Dynamic tags update approximately every hour.
 - There might be some latency between the time a tag is added to a device and its availability in the devices list and device page.
 - Large numbers of tags don't significantly affect performance.
@@ -98,7 +98,9 @@ You can add tags to devices using the following methods. Each method is suited f
 
 Note
 
-Device group creation is supported in Defender for Endpoint Plan 1 and Plan 2.
+- Device group creation is supported in Defender for Endpoint Plan 1 and Plan 2.
+- When you configure a device tag by using the `DeviceTagging` registry key, you can specify only one tag in the `Group` value. To assign multiple tags to a device, use another supported tagging method.
+- Tags assigned through other methods, such as the Microsoft Defender portal, aren't written to the `Group` registry value. Therefore, don't use the registry key to determine all tags currently assigned to a device.
 
 To add device tags using API, see [Add or remove device tags API](api/add-or-remove-machine-tags).
 

@@ -98,7 +98,13 @@ The Microsoft Defender mobile app is a security app that needs to constantly be 
 ### Apps required to exclude
 
 1. **MicrosoftDefenderATP XPlat app (a0e84e36-b067-4d5c-ab4a-3db38e598ae2)**: MicrosoftDefenderATP XPlat app is the application responsible for forwarding Defender risk signals to the Defender backend. However, the presence of restrictive CA policies can result in Defender blocked from reporting signals. In these scenarios, we recommend excluding the MicrosoftDefenderATP XPlat app. Note, that **MicrosoftDefenderATP XPlat app** is also used by other platforms like Mac and Linux. So if the policy is same for these platforms, it is better to create a separate Conditional Access policy for Mobile.
-2. **Microsoft Defender for Mobile TVM app (e724aa31-0f56-4018-b8be-f8cb82ca1196)**: Microsoft Defender for Mobile TVM (Threat and Vulnerability Management) is the service, which provides the vulnerability assessment for the installed apps on the iOS devices. However, the presence of restrictive CA policies can result in Defender blocked from communicating the onboarding requests to the TVM backend services. This service should be excluded if MDVM (Vulnerability Assessment) is used in the organization.
+2. **Microsoft Defender for Mobile TVM app (e724aa31-0f56-4018-b8be-f8cb82ca1196)**: This service is used by Microsoft Defender client for multiple use-cases -
+
+- Onboard new devices for Android and iOS
+- Periodically report security alerts, events and other information for Android and iOS
+- Provide TVM (Threat Vulnerability and Management) feature in iOS
+
+    However, the presence of restrictive CA policies can prevent Defender client from communicating to this service causing disruption in the above mentioned flows. Hence, we recommend excluding it from the CA policies.
 
 ### Steps to exclude
 

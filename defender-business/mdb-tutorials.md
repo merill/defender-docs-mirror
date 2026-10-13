@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Learning resources for Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: Learning Resources for Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-tutorials
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -37,18 +37,18 @@ item_type: Content
 source_path: defender-business/mdb-tutorials.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/b11ae577-8d18-47ab-998c-ea182a941e71
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/a72e95ff-4b4f-4cc1-90c6-7dcba67ff05f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/a72e95ff-4b4f-4cc1-90c6-7dcba67ff05f
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/87b1d24d-826d-4337-90a0-b6c35e4561f2
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/24dc3ccd-591a-4415-a1fe-8759afafcb12
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/24dc3ccd-591a-4415-a1fe-8759afafcb12
 platformId: 1e1cfa30-a1c9-0e80-9631-b8eb89c99e88
 ---
 
-# Learning resources for Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# Learning Resources for Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
-Whether you're new to security or Defender for Business, or you want to increase your security skills, this article describes some scenarios to try and learning resources that are available for you to use.
+Whether you're new to security or Defender for Business, or you want to increase your security skills, you can use the available learning resources and try the suggested scenarios.
 
 ## Try these scenarios
 
@@ -56,11 +56,11 @@ The following table summarizes several scenarios to try with Defender for Busine
 
 | Scenario | Description |
 | --- | --- |
-| Onboard devices using a local script | In Defender for Business, you can onboard Windows and Mac devices by using a script that you download and run on each device. The script creates a trust with Microsoft Entra ID as needed, enrolls the device with Microsoft Intune (if you have Intune), and onboards the device to Defender for Business. To learn more, see [Onboard devices to Defender for Business](mdb-onboard-devices). |
-| Onboard devices using Intune | If you already used Intune before getting Defender for Business, you can continue to use Intune admin center to onboard devices. Try onboarding your Windows, Mac, iOS, and Android devices with Microsoft Intune. To learn more, see [Device enrollment in Microsoft Intune](/en-us/intune/intune-service/fundamentals/deployment-guide-enrollment). |
+| Onboard devices by using a local script | In Defender for Business, you can onboard Windows and Mac devices by using a script that you download and run on each device. The script creates a trust with Microsoft Entra ID as needed, enrolls the device with Microsoft Intune if you have Intune, and onboards the device to Defender for Business. To learn more, see [Onboard devices to Defender for Business](mdb-onboard-devices). |
+| Onboard devices by using Intune | If you already used Intune before getting Defender for Business, you can continue to use the Intune admin center to onboard devices. Try onboarding your Windows, Mac, iOS, and Android devices with Intune. To learn more, see [Microsoft Intune enrollment](/en-us/intune/intune-service/fundamentals/deployment-guide-enrollment). |
 | Edit security policies | If you're managing your security policies in Defender for Business, use the **Device configuration** page to view and edit your policies. Defender for Business comes with default policies that use recommended settings to secure your company's devices as soon as they're onboarded. You can keep the default policies, edit them, and define your own policies to suit your business needs. To learn more, see [View or edit policies in Defender for Business](mdb-view-edit-create-policies). |
 | View your security recommendations | Defender for Business includes a vulnerability management dashboard that provides an exposure score and relevant security recommendations. See [Use your vulnerability management dashboard in Microsoft Defender for Business](mdb-view-tvm-dashboard). |
-| View incidents in Microsoft 365 Lighthouse (for Microsoft partners) | If you're a [Microsoft Cloud Solution Provider](/en-us/partner-center/enroll/enrolling-in-the-csp-program) using Microsoft 365 Lighthouse, you can view incidents across your customer organizations in your Microsoft 365 Lighthouse portal. To learn more, see [Microsoft 365 Lighthouse and Defender for Business](mdb-lighthouse-integration). |
+| View incidents in Microsoft 365 Lighthouse (for Microsoft partners) | If you're a [Microsoft Cloud Solution Provider](/en-us/partner-center/enroll/enrolling-in-the-csp-program) who uses Microsoft 365 Lighthouse, you can view incidents across your customer organizations in your Microsoft 365 Lighthouse portal. To learn more, see [Microsoft 365 Lighthouse and Defender for Business](mdb-lighthouse-integration). |
 
 ## Recommended training for Defender for Business
 

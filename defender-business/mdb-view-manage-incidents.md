@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: View and manage incidents in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: View and Manage Incidents in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-view-manage-incidents
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -49,11 +49,11 @@ spProducts:
 platformId: 63f11864-038b-fbc0-535b-9bf734a029fa
 ---
 
-# View and manage incidents in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# View and Manage Incidents in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
-As threats are detected and alerts are triggered, incidents are created. Your company's security team can view and manage incidents in the Microsoft Defender portal. You must have appropriate permissions assigned to perform the tasks in this article. See [Security roles and permissions in Microsoft Defender for Business](mdb-roles-permissions).
+When Defender for Business detects threats and triggers alerts, it creates incidents. Your company's security team can view and manage incidents in the Microsoft Defender portal. To perform the tasks in this article, you need to have the appropriate permissions assigned. See [Security roles and permissions in Microsoft Defender for Business](mdb-roles-permissions).
 
-**This article includes**:
+This article includes:
 
 - How to monitor your incidents and alerts
 - Understand alert severity levels
@@ -67,14 +67,14 @@ Important
 
 If you see an incident tagged with `Attack disruption`, it means an advanced attack was detected. See [Automatic attack disruption](mdb-attack-disruption).
 
-1. In the [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, go to **Incidents & alerts**, and then select **Incidents**. Any incidents that were created are listed on the page.
+1. In the [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, go to **Incidents & alerts**, and then select **Incidents**. The page lists any created incidents.
 2. Select an alert to open its flyout pane, where you can learn more about the alert.
 
-    ![Screenshot of incident selected with flyout open](media/mdb-incident-flyout.png)
+    [![Screenshot of incident selected with flyout pane open.](media/mdb-incident-flyout.png)](media/mdb-incident-flyout.png#lightbox)
 3. In the flyout pane, you can do the following tasks:
 
     - See the alert title.
-    - View a list of assets (such as devices or user accounts) that were affected.
+    - View a list of assets, such as devices or user accounts, that were affected.
     - Take available actions.
     - Use links to view more information and even open the details page for the selected alert.
 
@@ -84,10 +84,11 @@ Defender for Business is designed to help you address detected threats by recomm
 
 ## Alert severity
 
-When a threat is detected, a severity level is assigned to each alert that is generated.
+When a threat is detected, the system assigns a severity level to each generated alert.
 
-- Microsoft Defender Antivirus assigns an alert severity based on the absolute severity of a detected threat (such as malware) and the potential risk to an individual device (if infected).
+- Microsoft Defender Antivirus assigns an alert severity based on the absolute severity of a detected threat, such as malware, and the potential risk to an individual device if infected.
 - Defender for Business assigns an alert severity based on the following factors:
+
     - The severity of the detected behavior.
     - The actual risk to a device.
     - The potential risk to your company.
@@ -96,8 +97,8 @@ The following table lists a few examples of alerts and their severity levels:
 
 | Scenario | Alert severity and reason |
 | --- | --- |
-| [Automated attack disruption](mdb-attack-disruption) detects an advanced attack, and contains devices or user accounts to help prevent the attack from proceeding. | **High**. Attack disruption capabilities help contain an attack so your IT/security team can address it. |
+| [Automated attack disruption](mdb-attack-disruption) detects an advanced attack. It contains devices or user accounts to help prevent the attack from proceeding. | **High**. Attack disruption capabilities help contain an attack so your IT or security team can address it. |
 | Microsoft Defender Antivirus detects and stops a threat before it does any damage. | **Informational**. The threat was stopped before any damage was done. |
-| Microsoft Defender Antivirus detects malware that was executing within your company. The malware is stopped and remediated. | **Low**. Although some damage might occur to an individual device, the malware no longer poses a threat to your company. |
+| Microsoft Defender Antivirus detects malware that executed in your company. The malware is stopped and remediated. | **Low**. Although some damage might occur to an individual device, the malware no longer poses a threat to your company. |
 | Defender for Business detects active malware. The malware is blocked almost immediately. | **Medium** or **High**. The malware poses a threat to individual devices and to your company. |
 | Suspicious behavior is detected but no remediation actions are taken yet. | **Low**, **Medium**, or **High**. The severity depends on the degree to which the behavior poses a threat to your company. |

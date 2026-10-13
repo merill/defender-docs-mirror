@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: View your Microsoft Defender Vulnerability Management dashboard in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+title: View Your Microsoft Defender Vulnerability Management Dashboard in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-business/mdb-view-tvm-dashboard
 breadcrumb_path: /defender-business/breadcrumb/toc.json
 feedback_system: Standard
@@ -47,12 +47,13 @@ spProducts:
 platformId: cade0aef-4965-b19f-3f08-e0f5e73ad459
 ---
 
-# View your Microsoft Defender Vulnerability Management dashboard in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
+# View Your Microsoft Defender Vulnerability Management Dashboard in Microsoft Defender for Business - Microsoft Defender for Business | Microsoft Learn
 
 Defender for Business includes a vulnerability management dashboard that is designed to save your security team time and effort. In addition to providing an exposure score, that dashboard enables you to view information about exposed devices and see relevant security recommendations. You can use your Defender Vulnerability Management dashboard to:
 
 - View your exposure score, which is associated with devices in your company.
 - View your top security recommendations. For example:
+
     - Address impaired communications with devices.
     - Turn on firewall protection.
     - Update Microsoft Defender Antivirus definitions.
@@ -70,9 +71,9 @@ Vulnerability management features and capabilities in Microsoft Defender for Bus
 
     [![Screenshot of Microsoft Defender Vulnerability Management-Remediation.](media/mdb-mdvm-remediation.png)](media/mdb-mdvm-remediation.png#lightbox)
 - **Inventories**: Lists software and apps currently in use in your organization. You see browsers, operating systems, and other software on devices, along with identified weaknesses and threats.
-- **Weaknesses**: Lists vulnerabilities along with the number of exposed devices in your organization. If you see "0" in the Exposed devices column, you don't have to take any immediate action. However, you can learn more about each vulnerability listed on this page. Select an item to learn more about it and what you can do to mitigate the potential threat to your company.
+- **Weaknesses**: Lists vulnerabilities along with the number of exposed devices in your organization. If you see "0" in the Exposed devices column, you don't have to take any immediate action. You can learn more about each vulnerability listed on this page. Select an item to learn more about it and what you can do to mitigate the potential threat to your company.
 
     [![Screenshot of Microsoft Defender Vulnerability Management-Weaknesses.](media/mdb-mdvm-weakness-details.png)](media/mdb-mdvm-weakness-details.png#lightbox)
 - **Event timeline**: Lists vulnerabilities that affect your organization in a timeline view.
 
-[Learn more about Microsoft Defender Vulnerability Management](/en-us/defender-vulnerability-management/defender-vulnerability-management).
+Learn more about [Microsoft Defender Vulnerability Management](/en-us/defender-vulnerability-management/defender-vulnerability-management).

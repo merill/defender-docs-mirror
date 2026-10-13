@@ -108,7 +108,7 @@ As previously described, the action for bulk mail that meets or exceeds the BCL 
 
 But you can configure anti-spam policies to deliver bulk mail below the BCL threshold (even messages with the BCL value 0 identified as bulk) to a **Promotions** folder in supported versions of Outlook by using the **Bulk moves enabled** setting in anti-spam policies.
 
-As of July 2026, all messages identified as bulk (regardless of BCL value) automatically receive the **Promotions** tag. When you turn on the **Bulk moves enabled** setting in anti-spam policies, bulk mail that would normally be delivered to the Inbox is delivered to the **Promotions** folder instead.
+As of July 2026, all messages identified as bulk that are promotional in nature (regardless of BCL value) automatically receive the **Promotions** tag. When you turn on the **Bulk moves enabled** setting in anti-spam policies, bulk mail(which are promotional in nature) that would normally be delivered to the Inbox is delivered to the **Promotions** folder instead.
 
 The system learns from user activity in the **Promotions** folder (moving messages in or out), and remembers the action for future messages.
 

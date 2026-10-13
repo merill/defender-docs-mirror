@@ -92,6 +92,63 @@ This article provides troubleshooting guidance for common deployment and operati
     - **Kubernetes API access:** Ensure this component is toggled **On** in the AWS connector settings.
     - **IAM identity mapping:** Ensure the `aws-auth` ConfigMap has been updated to include the Defender for Cloud role, or that an **EKS Access Entry** has been created for the role.
 
+### Troubleshoot Defender sensor auto provisioning
+
+If automatic provisioning is enabled but the Defender sensor isn't installed on your EKS cluster, check the following conditions with your AWS or Azure administrator.
+
+Automatic provisioning depends on the permissions, network configuration, and resource lifecycle managed in your environment. Your administrator is responsible for maintaining the required access and removing confirmed stale resources when roles or clusters are recreated.
+
+#### The Defender provisioning IAM role was recreated
+
+**Cause:** Deleting and recreating the `MDCContainersK8sRole` IAM role changes its underlying identity, even if its name and ARN remain unchanged. An existing EKS access entry can still reference the previous identity, preventing Defender from authenticating to the cluster.
+
+**Diagnosis:** Check whether your team or deployment automation recently recreated `MDCContainersK8sRole`. Compare the role's creation time with the corresponding EKS access entry's creation time:
+
+```bash
+aws iam get-role --role-name MDCContainersK8sRole --query "Role.CreateDate"
+aws eks describe-access-entry --cluster-name <cluster-name> --principal-arn arn:aws:iam::<aws-account-id>:role/MDCContainersK8sRole --region <region> --query "accessEntry.createdAt"
+```
+
+Replace the placeholders with your cluster name, AWS account ID, and region. If your deployment uses a custom role name or path, use that role's name and ARN instead.
+
+An access entry created before the confirmed role recreation supports this diagnosis. Use the entry's creation time, not the access-policy association time.
+
+**Resolution:** Record the stale entry's settings and associated access policies, then remove only the EKS access entry for the recreated Defender role. Don't delete the IAM role or unrelated access entries.
+
+Keep automatic provisioning enabled and retain the required provisioning permissions so a subsequent attempt can recreate the entry. Restore any required custom settings.
+
+For more information, see [Amazon EKS access entry considerations](https://docs.aws.amazon.com/eks/latest/userguide/creating-access-entries.html).
+
+#### Cluster-management automation removes required Kubernetes API access
+
+**Cause:** Defender provisioning requires network access to the EKS Kubernetes API endpoint. Infrastructure-management tools, such as Crossplane, can reconcile the endpoint allowlist with their declared configuration. If that configuration excludes the required Defender provisioning CIDR ranges, reconciliation can remove ranges added during provisioning and prevent installation from completing.
+
+**Diagnosis:** In the Amazon EKS console, review the affected cluster's endpoint allowlist. Compare it with the configuration maintained by your infrastructure-management tool and check whether reconciliation removes Defender provisioning ranges added to the allowlist.
+
+Your AWS administrator can review AWS CloudTrail configuration-change events to help identify these changes. If you need the required Defender provisioning ranges for your environment, contact Microsoft Support.
+
+**Resolution:** Ensure that your infrastructure-management configuration retains the required Defender provisioning CIDR ranges:
+
+- Include the ranges in the declared configuration that manages the endpoint allowlist.
+- Alternatively, where your management tool supports it, configure reconciliation to preserve the required Defender entries.
+- If you add the ranges manually, also ensure that subsequent reconciliation doesn't remove them. A manual change alone might be overwritten.
+
+Preserve other required allowlist entries and restrict access to the required ranges rather than opening the endpoint to all IP addresses. Keep automatic provisioning enabled after correcting the configuration.
+
+For endpoint configuration instructions, see [Configure network access to the Amazon EKS API server endpoint](https://docs.aws.amazon.com/eks/latest/userguide/config-cluster-endpoint.html).
+
+#### A previous Azure Arc registration remains after the EKS cluster is recreated
+
+**Cause:** Deleting an EKS cluster and creating another with the same name can leave the previous cluster's Azure Arc registration behind. The disconnected registration can interfere with onboarding the replacement cluster.
+
+**Diagnosis:** Check whether your team recently deleted and recreated the EKS cluster. In Azure, review the associated Arc-enabled Kubernetes resource and its connection status. Compare the current EKS cluster's creation time with the Arc resource's creation and last-connectivity times, and use your deployment history to confirm whether the registration belongs to the deleted cluster.
+
+**Resolution:** After confirming that the Arc registration belongs to the deleted cluster, your Azure administrator should review its dependent extensions and configurations, then remove the stale registration. Removing only the Defender extension doesn't remove the Arc registration.
+
+Keep Defender automatic provisioning enabled so the replacement cluster can be onboarded. Preserve any Arc registration that is still used by an existing cluster.
+
+For resource-removal guidance, see [Clean up Azure Arc-enabled Kubernetes resources](/en-us/azure/azure-arc/kubernetes/quickstart-connect-cluster#clean-up-resources).
+
 ### Vulnerability scan issues
 
 - **Missing vulnerability findings for images in Amazon Elastic Container Registry**

@@ -26,9 +26,10 @@ ms.author: pauloliveria
 author: poliveria
 ms.reviewer: nonutkev
 ms.topic: product-comparison
-ms.date: 2026-05-19T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection: ms-security
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: e077c24d-c9ad-2350-c27c-0ca841d756bc
 document_version_independent_id: a2c87e85-8daa-bb87-ecbb-87e92b0c29f8
@@ -85,7 +86,7 @@ Important
 | **Control alerts and events grouping** | Customize alert grouping logic | Supported | Not supported. In the SIEM and XDR solutions, the correlation engine takes care of the alerts' grouping logic and can address the need to configure the grouping logic. |
 |  | Choose between all events under one alert and one alert per event | Supported | Not supported |
 |  | Group events to one alert when custom details, alert dynamic details, and entities are identical | Not supported | Supported |
-| **Control incidents and alerts creation** | Exclude incidents from correlation engine - Ensure that incidents from different rules remain separated | Planned | Planned |
+| **Control incidents and alerts creation** | Exclude a rule from the correlation engine | Supported | [Supported (public preview)](/en-us/defender-xdr/exclude-analytics-rules-correlation#configure-custom-detection-correlation) |
 |  | Create alerts without incidents | Supported | Not supported |
 |  | Alerts suppression - Define alert suppression after the rule runs | Supported | Not supported |
 | **Rules management** | Rerun rule on demand on a previous time window | Supported | Planned |

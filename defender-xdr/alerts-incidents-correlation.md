@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - sentinel-only
 ms.topic: concept-article
-ms.date: 2026-06-09T00:00:00.0000000Z
+ms.date: 2026-10-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 11ef3ff8-0b63-1e8e-c5a3-837e19da4a14
@@ -112,7 +112,7 @@ The contents of the incidents are handled in the following ways:
 - Any tags applied to the source incident are removed from the source incident and added to the target incident.
 - A **`Redirected`** tag is added to the source incident.
 - Entities (assets etc.) follow the alerts they're linked to.
-- Analytics rules recorded as involved in the creation of the source incident are added to the rules recorded in the target incident. To exclude an analytics rule from correlation, see [Manage analytics rule correlation settings in Microsoft Defender XDR](exclude-analytics-rules-correlation).
+- Detection rules recorded as involved in the creation of the source incident are added to the rules recorded in the target incident. To control whether alerts from an analytics rule or custom detection participate in correlation, see [Manage detection rule correlation settings in Microsoft Defender XDR](exclude-analytics-rules-correlation). Correlation settings for custom detections are in public preview.
 - Currently, migration of comments and audits of activity log entries is in *preview*.To see the source incident's comments and activity history if you don't have access to the preview, open the incident in Microsoft Sentinel in the Azure portal. The activity history includes the closing of the incident and the adding and removal of alerts, tags, and other items related to the incident merge. These activities are attributed to the identity *Microsoft Defender XDR - alert correlation*.
 
 ### When incidents aren't merged

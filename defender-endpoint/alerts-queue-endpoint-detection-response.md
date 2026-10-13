@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Alerts queue in Microsoft Defender - Microsoft Defender for Endpoint | Microsoft Learn
+title: Alerts Queue in Microsoft Defender - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/alerts-queue-endpoint-detection-response
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,8 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: 
-description: View and manage the alerts surfaced in Microsoft Defender XDR
+description: Use the alerts queue in Microsoft Defender XDR to view, organize, and manage security alerts. Learn how to investigate threats involving devices, files, and users.
 keywords: 
 ms.service: defender-endpoint
 ms.author: lwainstein
@@ -40,14 +39,14 @@ source_path: defender-endpoint/alerts-queue-endpoint-detection-response.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/062d60c9-ee0f-402e-a046-b4e67c3572d6
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://authoring-docs-microsoft.poolparty.biz/devrel/17d3b3f6-a66e-4c69-9774-14a73c38e669
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 2aab145a-22e1-fb60-14d5-759b0ea94173
 ---
 
-# Alerts queue in Microsoft Defender - Microsoft Defender for Endpoint | Microsoft Learn
+# Alerts Queue in Microsoft Defender - Microsoft Defender for Endpoint | Microsoft Learn
 
 Learn how you can view and manage the queue so that you can effectively investigate threats seen on entities such as devices, files, or user accounts.

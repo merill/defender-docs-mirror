@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Aggregated reporting in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
+title: Aggregated Reporting in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/aggregated-reporting
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -42,7 +42,7 @@ spProducts:
 platformId: f98f50c4-8b66-fd7f-b59f-8f9189f493ec
 ---
 
-# Aggregated reporting in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
+# Aggregated Reporting in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
 
 Aggregated reporting addresses constraints on event reporting in Microsoft Defender for Endpoint. Aggregated reporting extends signal reporting intervals to significantly reduce the size of reported events while preserving essential event properties.
 
@@ -57,22 +57,21 @@ When aggregated reporting is turned on, you can query for a summary of all suppo
 The following requirements must be met before turning on aggregated reporting:
 
 - Permissions to enable advanced features
+- Supported operating systems:
 
-### Supported operating systems:
-
-- Windows 10 (20H2, 21H1, 21H2)
-- Windows 11 (22H2, Enterprise)
-- Windows Server 2019 and later
-- Windows Server version 20H2 or Azure Stack HCI OS, version 23H2 and later
-- Client version: Windows version 24H and later
+    - Windows 10 (20H2, 21H1, 21H2)
+    - Windows 11 (22H2, Enterprise)
+    - Windows Server 2019 and later
+    - Windows Server version 20H2 or Azure Stack HCI OS, version 23H2 and later
+    - Client version: Windows version 24H and later
 
 ## Turn on aggregated reporting
 
-To turn aggregated reporting on, go to **Settings &gt; Endpoints &gt; Advanced features**. Toggle on the **Aggregated reporting** feature.
+To turn aggregated reporting on, go to **Settings** &gt; **Endpoints** &gt; **Advanced features**. Turn on the **Aggregated reporting** feature.
 
 ![Screenshot of the aggregated reporting toggle in the Microsoft Defender portal settings page.](media/reports/aggregated-reporting/aggregated-reporting-toggle.png)
 
-Once aggregated reporting is turned on, it can take up to seven days for aggregated reports to become available. You can then begin to query new data after the feature is turned on.
+After aggregated reporting is turned on, it can take up to seven days for aggregated reports to become available. You can then begin to query new data after the feature is turned on.
 
 When you turn off aggregated reporting, the changes take a few hours to be applied. All previously collected data remains.
 
@@ -97,14 +96,14 @@ Turning on aggregated reporting improves signal visibility, which might incur hi
 
 To query new data with aggregated reports:
 
-1. Go to **Investigation & response &gt; Hunting &gt; Custom detection rules**.
+1. Go to **Investigation & response** &gt; **Hunting** &gt; **Custom detection rules**.
 2. Review and modify [existing rules and queries](/en-us/defender-xdr/custom-detection-rules) that might be affected by aggregated reporting.
 3. When necessary, create new custom rules to incorporate new action types.
 4. Go to the **Advanced Hunting** page and query the new data.
 
-    Here is an example of advanced hunting query results with aggregated reports.
+Here is an example of advanced hunting query results with aggregated reports.
 
-    [![Screenshot of advanced hunting query results with aggregated reports.](media/reports/aggregated-reporting/sample-results-aggregated-reports-small.png)](media/reports/aggregated-reporting/sample-results-aggregated-reports.png#lightbox)
+[![Screenshot of advanced hunting query results with aggregated reports.](media/reports/aggregated-reporting/sample-results-aggregated-reports-small.png)](media/reports/aggregated-reporting/sample-results-aggregated-reports.png#lightbox)
 
 ## Sample advanced hunting queries
 
@@ -114,7 +113,7 @@ You can use the following KQL queries to gather specific information using aggre
 
 The following query highlights noisy process activity, which can be correlated with malicious signals.
 
-```Kusto
+```kusto
 DeviceProcessEvents
 | where Timestamp > ago(1h)
 | where ActionType == "ProcessCreatedAggregatedReport"
@@ -127,7 +126,7 @@ DeviceProcessEvents
 
 The following query identifies repeated sign-in attempt failures.
 
-```Kusto
+```kusto
 DeviceLogonEvents
 | where Timestamp > ago(30d)
 | where ActionType == "LogonFailedAggregatedReport"
@@ -141,7 +140,7 @@ DeviceLogonEvents
 
 The following query identifies suspicious RDP connections, which might indicate malicious activity.
 
-```Kusto
+```kusto
 DeviceNetworkEvents
 | where Timestamp > ago(1d)
 | where ActionType endswith "AggregatedReport"

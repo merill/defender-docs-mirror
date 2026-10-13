@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Access the Microsoft Defender XDR MSSP customer portal - Microsoft Defender for Endpoint | Microsoft Learn
+title: Access the Microsoft Defender XDR MSSP Customer Portal - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/access-mssp-portal
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -38,33 +38,33 @@ item_type: Content
 source_path: defender-endpoint/access-mssp-portal.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 platformId: bed3291f-bd9f-92ae-14f6-7782f2cd8236
 ---
 
-# Access the Microsoft Defender XDR MSSP customer portal - Microsoft Defender for Endpoint | Microsoft Learn
-
-## Access an MSSP customer tenant in Microsoft Defender XDR
+# Access the Microsoft Defender XDR MSSP Customer Portal - Microsoft Defender for Endpoint | Microsoft Learn
 
 Important
 
-Some information relates to prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.
+Some information relates to prereleased product which might be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.
 
 Note
 
 The following steps show MSSPs how to find a customer tenant ID and access the tenant-specific Microsoft Defender XDR portal URL.
 
-By default, MSSP customers access their Microsoft Defender XDR tenant through the following URL: `https://security.microsoft.com/`.
+By default, Managed Security Service Provider (MSSP) customers access their Microsoft Defender XDR tenant through the following URL: `https://security.microsoft.com/`.
 
-MSSPs however, will need to use a tenant-specific URL in the following format: `https://security.microsoft.com?tid=customer_tenant_id` to access the MSSP customer portal.
+MSSPs however, need to use a tenant-specific URL in the following format: `https://security.microsoft.com?tid=customer_tenant_id` to access the MSSP customer portal.
 
-In general, MSSPs will need to be added to each of the MSSP customer's Microsoft Entra ID that they intend to manage.
+In general, MSSPs need to be added to each of the MSSP customer's Microsoft Entra ID that they intend to manage.
 
 Use the following steps to obtain the MSSP customer tenant ID and then use the tenant ID to access the tenant-specific URL:
 
-1. As an MSSP, log in to Microsoft Entra ID with your credentials.
+1. As an MSSP, sign in to Microsoft Entra ID with your credentials.
 2. Switch directory to the MSSP customer's tenant.
-3. Select **Microsoft Entra ID &gt; Properties**. You'll find the tenant ID in the Tenant ID field.
+3. Select **Microsoft Entra ID** &gt; **Properties**. You find the tenant ID in the Tenant ID field.
 4. Access the MSSP customer portal by replacing the `customer_tenant_id` value in the following URL: `https://security.microsoft.com/?tid=customer_tenant_id`.
 5. Access a Unified View for MSSP (Preview) in `https://mto.security.microsoft.com/`

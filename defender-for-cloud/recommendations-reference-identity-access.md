@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-for-cloud/recommendations-reference-identity-access.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/f488294d-f483-456e-94e3-755f933b811b
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/02662057-0b9b-40f4-a3c7-537125b6d283
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: 81ce51af-0056-0652-edcf-56ff1c63ad28
 ---
 
@@ -58,6 +58,12 @@ If a recommendation description says *No related policy*, usually it's because t
 For example, the recommendation *Endpoint protection health failures should be remediated* relies on the recommendation that checks whether an endpoint protection solution is installed (*Endpoint protection solution should be installed*). The underlying recommendation *does* have a policy. Limiting policies to only foundational recommendations simplifies policy management.
 
 ## Azure identity and access recommendations
+
+Note
+
+Some Azure identity and access recommendations might appear even when the Azure CSPM standard isn't assigned, but exemptions aren't supported for recommendations without an Azure CSPM standard assignment. For the list of recommendations that don't support exemptions, see [Are there any recommendations that don't support exemption?](faq-general#are-there-any-recommendations-that-don-t-support-exemption-).
+
+To assign the Azure CSPM standard, follow the steps in [Assign regulatory compliance standards in Microsoft Defender for Cloud](assign-regulatory-compliance-standards).
 
 ### A maximum of 3 owners should be designated for subscriptions
 

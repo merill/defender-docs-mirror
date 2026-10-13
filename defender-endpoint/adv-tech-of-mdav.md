@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Advanced technologies at the core of Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
+title: Advanced Technologies at the Core of Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/adv-tech-of-mdav
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Microsoft Defender Antivirus engines and advanced technologies
+description: Microsoft Defender Antivirus uses client and cloud engines, machine learning, and behavior monitoring to stop threats in real time. Learn about these technologies.
 author: chrisda
 ms.author: chrisda
 ms.reviewer: yongrhee
@@ -44,7 +44,7 @@ spProducts:
 platformId: 34e83cd2-d71d-b8cb-de57-b7fe35c27546
 ---
 
-# Advanced technologies at the core of Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
+# Advanced Technologies at the Core of Microsoft Defender Antivirus - Microsoft Defender for Endpoint | Microsoft Learn
 
 Microsoft Defender Antivirus and the multiple engines that lead to the advanced detection and prevention technologies under the hood to detect and stop a wide range of threats and attacker techniques at multiple points, as depicted in the following diagram:
 
@@ -55,21 +55,21 @@ Many of these engines are built into the client and provide advanced protection 
 These next-generation protection engines provide [industry-best](/en-us/defender-xdr/top-scoring-industry-tests) detection and blocking capabilities and ensure that protection is:
 
 - **Accurate**: Threats both common and sophisticated, many which are designed to try to slip through protections, are detected and blocked.
-- **Real-time**: Threats are prevented from getting on to devices, stopped in real-time at first sight, or detected and remediated in the least possible time (typically within a few milliseconds).
+- **Real-time**: Threats are prevented from getting on to devices, stopped in real-time at first sight, or detected and remediated in the least possible time, typically in a few milliseconds.
 - **Intelligent**: Through the power of the cloud, machine learning (ML), and Microsoft's industry-leading optics, protection is enriched and made even more effective against new and unknown threats.
 
 ## Hybrid detection and protection
 
-Microsoft Defender Antivirus does hybrid detection and protection. What this means is, detection and protection occur on the client device first, and works with the cloud for newly developing threats, which results in faster, more effective detection and protection.
+Microsoft Defender Antivirus does hybrid detection and protection. Detection and protection occur on the client device first and works with the cloud for newly developing threats, which results in faster, more effective detection and protection.
 
-When the client encounters unknown threats, it sends metadata or the file itself to the cloud protection service, where more advanced protections examine new threats on the fly and integrate signals from multiple sources.
+When the client encounters unknown threats, it sends metadata or the file itself to the cloud protection service. More advanced protections examine new threats on the fly and integrate signals from multiple sources.
 
 | On the client | In the cloud |
 | --- | --- |
-| **Machine learning (ML) engine** A set of light-weight machine learning models make a verdict within milliseconds. These models include specialized models and features that are built for specific file types commonly abused by attackers. Examples include models built for portable executable (PE) files, PowerShell, Office macros, JavaScript, PDF files, and more. | **Metadata-based ML engine** Specialized ML models, which include file type-specific models, feature-specific models, and adversary-hardened [monotonic models](https://www.microsoft.com/security/blog/2019/07/25/new-machine-learning-model-sifts-through-the-good-to-unearth-the-bad-in-evasive-malware/), analyze a featurized description of suspicious files sent by the client. Stacked ensemble classifiers combine results from these models to make a real-time verdict to allow or block files pre-execution. |
+| **Machine learning (ML) engine** A set of light-weight machine learning models make a verdict within milliseconds. These models include specialized models and features that are built for specific file types commonly abused by attackers. Examples include models built for portable executable (PE) files, PowerShell, Office macros, JavaScript, and PDF files. | **Metadata-based ML engine** Specialized ML models analyze a featurized description of suspicious files sent by the client. These models include file type-specific models, feature-specific models, and adversary-hardened [monotonic models](https://www.microsoft.com/security/blog/2019/07/25/new-machine-learning-model-sifts-through-the-good-to-unearth-the-bad-in-evasive-malware/). Stacked ensemble classifiers combine results from these models to make a real-time verdict to allow or block files pre-execution. |
 | **Behavior monitoring engine** The behavior monitoring engine monitors for potential attacks post-execution. It observes process behaviors, including behavior sequence at runtime, to identify and block certain types of activities based on predetermined rules. | **Behavior-based ML engine** Suspicious behavior sequences and advanced attack techniques are monitored on the client as triggers to analyze the process tree behavior using real-time cloud ML models. Monitored attack techniques span the attack chain, from exploits, elevation, and persistence all the way through to lateral movement and exfiltration. |
-| **Memory scanning engine** This engine scans the memory space used by a running process to expose malicious behavior that could be hiding through code obfuscation. | **Antimalware Scan Interface (AMSI)-paired ML engine** Pairs of client-side and cloud-side models perform advanced analysis of scripting behavior pre- and post-execution to catch advanced threats like fileless and in-memory attacks. These models include a pair of models for each of the scripting engines covered, including PowerShell, JavaScript, VBScript, and Office VBA macros. Integrations include both dynamic content calls and/or behavior instrumentation on the scripting engines. |
-| **AMSI integration engine** Deep in-app integration engine enables detection of fileless and in-memory attacks through [AMSI](/en-us/windows/desktop/AMSI/antimalware-scan-interface-portal), defeating code obfuscation. This integration blocks malicious behavior of scripts client-side. | **File classification ML engine** Multi-class, deep neural network classifiers examine full file contents, provides an extra layer of defense against attacks that require more analysis. Suspicious files are held from running and submitted to the cloud protection service for classification. Within seconds, full-content deep learning models produce a classification and reply to the client to allow or block the file. |
+| **Memory scanning engine** This engine scans the memory space used by a running process to expose malicious behavior that could be hiding through code obfuscation. | **Antimalware Scan Interface (AMSI)-paired ML engine** Pairs of client-side and cloud-side models perform advanced analysis of scripting behavior pre- and post-execution to catch advanced threats like fileless and in-memory attacks. These models include a pair of models for each of the scripting engines covered, including PowerShell, JavaScript, VBScript, and Office VBA macros. Integrations include both dynamic content calls and behavior instrumentation on the scripting engines. |
+| **AMSI integration engine** Deep in-app integration engine enables detection of fileless and in-memory attacks through [AMSI](/en-us/windows/desktop/AMSI/antimalware-scan-interface-portal), defeating code obfuscation. This integration blocks malicious behavior of scripts client-side. | **File classification ML engine** Multi-class, deep neural network classifiers examine full file contents, which provides an extra layer of defense against attacks that require more analysis. Suspicious files are held from running and submitted to the cloud protection service for classification. Within seconds, full-content deep learning models produce a classification and reply to the client to allow or block the file. |
 | **Heuristics engine** Heuristic rules identify file characteristics that have similarities with known malicious characteristics to catch new threats or modified versions of known threats. | **Detonation-based ML engine** Suspicious files are detonated in a sandbox. Deep learning classifiers analyze the observed behaviors to block attacks. |
 | **Emulation engine** The emulation engine dynamically unpacks malware and examines how they would behave at runtime. The dynamic emulation of the content and scanning both the behavior during emulation and the memory content at the end of emulation defeat malware packers and expose the behavior of polymorphic malware. | **Reputation ML engine** Domain-expert reputation sources and models from across Microsoft are queried to block threats that are linked to malicious or suspicious URLs, domains, emails, and files. Sources include Windows Defender SmartScreen for URL reputation models and Defender for Office 365 for email attachment expert knowledge, among other Microsoft services through the Microsoft Intelligent Security Graph. |
 | **Network engine** Network activities are inspected to identify and stop malicious activities from threats. | **Smart rules engine** Expert-written smart rules identify threats based on researcher expertise and collective knowledge of threats. |

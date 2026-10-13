@@ -178,6 +178,13 @@ The following generally available recommendations don't support exemption:
 - Unused API endpoints should be disabled and removed from Logic Apps
 - Authentication should be enabled on API endpoints hosted in Function Apps
 - Authentication should be enabled on API endpoints hosted in Logic Apps
+- A maximum of 3 owners should be designated for your subscription
+- There should be more than one owner assigned to your subscription
+- Disabled accounts with owner permissions on Azure resources should be removed
+- Disabled accounts with read and write permissions on Azure resources should be removed
+- Guest accounts with owner permissions on Azure resources should be removed
+- Guest accounts with write permissions on Azure resources should be removed
+- Guest accounts with read permissions on Azure resources should be removed
 
 ### Are there any limitations to Defender for Cloud's identity and access protections?
 

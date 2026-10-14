@@ -77,7 +77,7 @@ As part of the ongoing transition to a unified alerting experience across Micros
 | Account enumeration reconnaissance | 2003 | [Suspected account enumeration (Kerberos, NTLM, AD FS)](alerts-xdr#suspected-account-enumeration-kerberos-ntlm-ad-fs) | xdr\_SuspectedAccountEnumeration |
 | Suspected brute-force attack (LDAP) | 2004 | [Suspected brute-force attack on Lightweight Directory Access Protocol (LDAP) authentication](alerts-xdr#suspected-brute-force-attack-on-lightweight-directory-access-protocol-ldap-authentication) | xdr\_LdapBindBruteforce |
 |  |  | [Suspected password spray attack on Lightweight Directory Access Protocol (LDAP) authentication](alerts-xdr#suspected-password-spray-attack-on-lightweight-directory-access-protocol-ldap-authentication) | xdr\_LdapBindBruteforce |
-| Suspicious network connection over Encrypting File System Remote Protocol | 2416 | [Suspicious network connection over Encrypting File System Remote Protocol](alerts-xdr#suspicious-network-connection-over-encrypting-file-system-remote-protocol) | xdr\_SuspiciousConnectionOverEFSRPC |
+| Suspicious network connection over Encrypting File System Remote Protocol | 2416 | [Suspicious network connection over Encrypting File System Remote Protocol](alerts-xdr#suspected-petitpotam-coercion-attack) | xdr\_SuspiciousConnectionOverEFSRPC |
 
 ### Additional security value in the Defender for Identity sensor v3.x
 

@@ -350,6 +350,20 @@ Agentless scanning runs once every 24 hours. After enabling scanning or changing
 | ☐ | Wait for member connectors | Allow up to 24 hours for member-account connectors to be created. |
 | ☐ | Check the AMI | AMIs that require third-party licensing, including applicable AWS Marketplace images, aren't supported. |
 
+### AWS scanning stopped
+
+In order to limit additional storage charges, deletion authorization failures with 250 or more accumulated Defender-tagged snapshots suspend new scans for the affected AWS scanning scope.
+
+| Done | Action | Guidance |
+| --- | --- | --- |
+| ☐ | Check snapshot deletion permissions | Confirm that the scanner role has `ec2:DeleteSnapshot` permission for snapshots tagged `CreatedBy=Microsoft Defender for Cloud`. |
+| ☐ | Check policy restrictions | Review IAM policies, permissions boundaries, and AWS Organizations service control policies for restrictions that prevent snapshot deletion. |
+| ☐ | Verify cleanup and recovery | After restoring permissions, verify that cleanup succeeds. Cleanup attempts continue while scans are suspended; successful deletion clears the block. |
+
+Note
+
+Existing snapshots continue to incur storage charges until deleted. The safeguard doesn't guarantee a maximum of 250 snapshots.
+
 ### GCP machines aren't scanned
 
 | Done | Action | Guidance |

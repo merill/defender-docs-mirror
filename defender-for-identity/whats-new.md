@@ -35,11 +35,11 @@ item_type: Content
 source_path: defender-for-identity/whats-new.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 40ff3b63-e58a-65f9-679b-e6b024715b88
 ---
@@ -61,6 +61,38 @@ For more information, see also:
 For updates about versions and features released six months ago or earlier, see the [What's new archive for Microsoft Defender for Identity](whats-new-archive).
 
 ## October 2026
+
+### New Defender for Identity security alerts
+
+The October announcement includes the following new alerts:
+
+**New alerts related to Entra ID**:
+
+- [Suspicious sign-in via Temporary Access Pass](alerts-xdr#suspicious-sign-in-via-temporary-access-pass)
+
+**New alerts related to Active Directory**:
+
+- [Kerberos privilege escalation using a diamond ticket](alerts-xdr#kerberos-privilege-escalation-using-a-diamond-ticket)
+- [Malicious Kerberos activity and CVE-2025-33073 exploitation attempt](alerts-xdr#malicious-kerberos-activity-and-cve-2025-33073-exploitation-attempt)
+- [Malicious request of Data Protection API (DPAPI) master key](alerts-xdr#malicious-request-of-data-protection-api-dpapi-master-key)
+- [Possible data exfiltration over DNS](alerts-xdr#possible-data-exfiltration-over-dns)
+- [Suspicious Active Directory Certificate Services (AD CS) certificate request](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-certificate-request)
+- [Suspicious Active Directory Certificate Services (AD CS) machine certificate issuance abuse (ESC8)](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-machine-certificate-issuance-abuse-esc8)
+- [Suspicious Active Directory Certificate Services (AD CS) machine certificate issuance over RPC (ESC11)](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-machine-certificate-issuance-over-rpc-esc11)
+- [Suspicious Active Directory Certificate Services (AD CS) misconfigured certificate template abuse (ESC1)](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-misconfigured-certificate-template-abuse-esc1)
+- [Suspicious Certificate Authority (CA) certificate and private key theft](alerts-xdr#suspicious-certificate-authority-ca-certificate-and-private-key-theft)
+- [Suspicious Kerberos PKINIT authentication (AS-REQ)](alerts-xdr#suspicious-kerberos-pkinit-authentication-as-req)
+- [Suspicious Kerberos ticket authorization data](alerts-xdr#suspicious-kerberos-ticket-authorization-data)
+
+**New alerts related to other identity providers**:
+
+- [Anomalous volume of failed Okta authentication attempts](alerts-xdr#anomalous-volume-of-failed-okta-authentication-attempts)
+- [Multifactor authentication method added for a privileged Okta account](alerts-xdr#multifactor-authentication-method-added-for-a-privileged-okta-account)
+- [Okta access or refresh token grant from a risky context](alerts-xdr#okta-access-or-refresh-token-grant-from-a-risky-context)
+- [Okta anomalous privileged account authentication](alerts-xdr#okta-anomalous-privileged-account-authentication)
+- [Okta consent grant from a risky context](alerts-xdr#okta-consent-grant-from-a-risky-context)
+- [Password of a privileged Okta account was reset by another account](alerts-xdr#password-of-a-privileged-okta-account-was-reset-by-another-account)
+- [Secondary identity provider added in Okta](alerts-xdr#secondary-identity-provider-added-in-okta)
 
 ### General availability of sensor v3.x activation without Defender for Endpoint
 

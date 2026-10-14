@@ -289,11 +289,20 @@ Note
 
 The [Microsoft Security Copilot Phishing Triage Agent](/en-us/defender-xdr/phishing-triage-agent) doesn't classify alerts suppressed by [alert tuning](/en-us/defender-xdr/investigate-alerts#tune-an-alert). Be sure to disable the **Auto-Resolve - Email reported by user as malware or phish** built-in alert tuning rule and any custom tuning rules that suppress this alert.
 
+### Disable a built-in alert tuning rule
+
+To disable a built-in alert tuning rule, follow these steps:
+
+1. On the **Alert tuning** page, select the built-in rule.
+2. In the rule details pane, select **Disable**.
+
+    [![Screenshot of a built-in alert tuning rule details pane with the Disable action.](/en-us/defender-xdr/media/built-in-alert-tuning-rules/disable-built-in-alert-tuning-rule.png)](/en-us/defender-xdr/media/built-in-alert-tuning-rules/disable-built-in-alert-tuning-rule.png#lightbox)
+
 ## Tune an alert
 
 As a security operations center (SOC) analyst, one of the top issues is triaging the sheer number of alerts that are triggered daily. While wanting to focus only on high severity and high priority alerts, analysts are also required to triage and resolve lower priority alerts, which tend to be a manual process. Alert tuning (previously *alert suppression*) lets you hide or resolve alerts automatically when expected organizational behavior occurs and rule conditions are met. This streamlines your alert queue and saves triage time.
 
-Alert tuning rules support conditions based on *evidence types* such as files, processes, scheduled tasks, and other types of evidence that trigger alerts. After creating an alert tuning rule, apply it to the selected alert or any alert type that meets the defined conditions to tune the alert.
+Alert tuning rules support conditions based on *evidence types* such as files, processes, scheduled tasks, and other types of evidence that trigger alerts. You can add **up to 200** conditions to each alert tuning rule. After creating an alert tuning rule, apply it to the selected alert or any alert type that meets the defined conditions to tune the alert.
 
 Microsoft Defender XDR includes built-in alert tuning rules that help reduce reporting noise from common benign activity. These built-in rules suppress alerts without affecting other features like AIR investigations and email notifications. If the AIR investigation detects malicious or suspicious activity, Defender XDR reactivates the suppressed alert.
 

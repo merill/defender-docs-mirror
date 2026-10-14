@@ -97,6 +97,15 @@ Note
 
 The [Microsoft Security Copilot Phishing Triage Agent](/en-us/defender-xdr/phishing-triage-agent) doesn't classify alerts suppressed by [alert tuning](/en-us/defender-xdr/investigate-alerts#tune-an-alert). Be sure to disable the **Auto-Resolve - Email reported by user as malware or phish** built-in alert tuning rule and any custom tuning rules that suppress this alert.
 
+### Disable a built-in alert tuning rule
+
+To disable a built-in alert tuning rule, follow these steps:
+
+1. On the **Alert tuning** page, select the built-in rule.
+2. In the rule details pane, select **Disable**.
+
+    [![Screenshot of a built-in alert tuning rule details pane with the Disable action.](/en-us/defender-xdr/media/built-in-alert-tuning-rules/disable-built-in-alert-tuning-rule.png)](/en-us/defender-xdr/media/built-in-alert-tuning-rules/disable-built-in-alert-tuning-rule.png#lightbox)
+
 ## Open alert policies
 
 In the Microsoft Defender portal at https://security.microsoft.com, go to **Email & collaboration** &gt; **Policies & rules** &gt; **Alert policy**. Or, to go directly to the **Alert policy** page, use https://security.microsoft.com/alertpoliciesv2.

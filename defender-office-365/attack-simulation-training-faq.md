@@ -136,9 +136,13 @@ Unexpected clicks and compromise events can occur when other security devices or
 - Endpoint security or anti-virus software.
 - Security orchestration, automation, and response (SOAR) playbooks that automatically triage or automatically respond to reported messages.
 
-Outlook add-ins, email security tools, endpoint security software, and SOAR playbooks can inspect web content to detect phishing, so you need to define exclusions for simulation messages in those tools.
+These tools can inspect web content to detect phishing. This inspection can generate click telemetry even when the end user didn't manually click the link, so you need to define exclusions for simulation messages in those tools.
 
 EmailLinkClicked\_IP and EmailLinkClicked\_TimeStamp data might give more details about the event. For example, if a click occurred a few seconds after delivery, and the IP address doesn't belong to Microsoft, your company, or the user, then it's likely that a non-Microsoft filtering system or another service intercepted the message.
+
+For reporting on user activity related to simulation messages, we recommend using the [built-in simulation reports](attack-simulation-training-insights). Reports from other sources (for example, [Advanced hunting](/en-us/defender-xdr/advanced-hunting-overview)) might not be accurate.
+
+Safe Links doesn't wrap simulation URLs, so the URLs are considered unwrapped links. Not all clicks on unwrapped links go through Safe Links, so user activity related to simulation messages might not be recorded in the [UrlClickEvents logs](/en-us/defender-xdr/advanced-hunting-urlclickevents-table).
 
 For any non-Microsoft filtering systems or services, you need to allow or exempt the following items:
 

@@ -113,6 +113,8 @@ The role **VmScanner** is assigned to the scanner when you enable agentless scan
 | Resources | arn:aws:ec2:::snapshot/ |
 | Effect | Allow |
 
+In order to limit additional storage charges, deletion authorization failures with 250 or more accumulated Defender-tagged snapshots suspend new scans for the affected AWS scanning scope.
+
 | Attribute | Value |
 | --- | --- |
 | SID | **VmScannerAccess** |

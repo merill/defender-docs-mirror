@@ -63,7 +63,7 @@ Naming changes are automatically applied to queries that are saved in Microsoft 
 
 ## June 2026
 
-- The [`AIAgentsInfo`](advanced-hunting-aiagentsinfo-table) table is transitioning to the [`AgentsInfo`](advanced-hunting-agentsinfo-table) table. The `AIAgentsInfo` table was originally built for Copilot Studio scenarios, and many of its columns were specific to that platform. The new `AgentsInfo` table provides a unified schema that supports agent inventory and governance for all agent types, including Copilot Studio, Microsoft Foundry, Microsoft Copilot, third-party agents, and endpoint-discovered agents. Microsoft Agent 365 customers should use the `AgentsInfo` table today.
+- The `AIAgentsInfo` table is transitioning to the [`AgentsInfo`](advanced-hunting-agentsinfo-table) table. The `AIAgentsInfo` table was originally built for Copilot Studio scenarios, and many of its columns were specific to that platform. The new `AgentsInfo` table provides a unified schema that supports agent inventory and governance for all agent types, including Copilot Studio, Microsoft Foundry, Microsoft Copilot, third-party agents, and endpoint-discovered agents. Microsoft Agent 365 customers should use the `AgentsInfo` table today.
 
     Key changes in the new table include expanded coverage for agent identity, authentication, permissions, lifecycle, and configuration. The new schema also includes a `RawAgentInfo` column that stores additional agent data in JSON format, ensuring no data loss as the schema evolves.
 

@@ -51,8 +51,6 @@ platformId: f0d38fa7-edfd-67a4-933c-45340e42fe5d
 
 Important
 
-Some information relates to prereleased product that may be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.
-
 The `AIAgentsInfo` table is transitioning to the `AgentsInfo` table. Microsoft Agent 365 customers should use the `AgentsInfo` table today. The `AIAgentsInfo` table remains accessible until July 1, 2026. Migrate your queries from `AIAgentsInfo` to `AgentsInfo` before this date. For more information, see [Advanced hunting schema - Naming changes](advanced-hunting-schema-changes).
 
 The `AgentsInfo` table in the [advanced hunting](advanced-hunting-overview) schema contains information about AI agents and their properties from various platforms. Use this reference to construct queries that return information from this table.

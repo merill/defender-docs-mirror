@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to migrate from the Defender for Identity sensor v2.x to the sensor v3.x with no downtime using the Sensors page in the Microsoft Defender portal.
-ms.date: 2026-09-14T00:00:00.0000000Z
+ms.date: 2026-10-14T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom: msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -60,7 +60,7 @@ To migrate, each server must meet the following requirements:
 - Domain controller, including a domain controller that also runs AD FS, AD CS, or Microsoft Entra Connect
 - Defender for Identity sensor v2.x (version 2.254.19112.470 or later)
 - Windows Server 2019 or later
-- Microsoft Defender for Endpoint deployed, with the July 2026 or later Windows Server cumulative update installed.
+- Microsoft Defender for Endpoint deployed, with the September 2026 or later Windows Server cumulative update installed.
 
 For the full list of v3.x requirements, see [Defender for Identity sensor v3.x prerequisites](deploy-sensor-v3).
 
@@ -110,7 +110,7 @@ The following table lists each reason that can appear in the tooltip, how to ver
 | Reason shown in the tooltip | How to verify | Resolution |
 | --- | --- | --- |
 | Device isn't properly onboarded to Microsoft Defender for Endpoint. | Run the Microsoft Defender for Endpoint Client Analyzer and check `RegOnboardingInfoPolicy.Json` in the results ZIP. The connectivity log shows *"OnboardingInfo could not be found in the registry"* if the onboarding info is missing. | Re-onboard the server to Microsoft Defender for Endpoint. |
-| Operating system version isn't supported. Requires Windows Server 2019 or later. | Run `winver` to confirm the operating system version and build number. | Upgrade the operating system to Windows Server 2019 or later and install the July 2026 or later cumulative update. |
+| Operating system version isn't supported. Requires Windows Server 2019 or later. | Run `winver` to confirm the operating system version and build number. | Upgrade the operating system to Windows Server 2019 or later and install the September 2026 or later cumulative update. |
 | Microsoft Defender for Endpoint sensor version is outdated or unsupported. | In the Client Analyzer report, check the **Sense version** field. | Update the Microsoft Defender for Endpoint sensor to the latest version. |
 | Microsoft Defender for Endpoint (Sense) service isn't running. | In the Client Analyzer report, confirm the **Sense service Status** is **Running**. | Start the Sense service and verify Microsoft Defender for Endpoint onboarding is complete. |
 | Migration is currently supported only for domain controllers. | Confirm the server is a domain controller. | In-place migration is available only for domain controllers. |
@@ -124,7 +124,9 @@ If a server shows a **Migration failed** status, run the [Microsoft Defender for
 
 ## Clean up the v2.x sensor
 
-The migration disables the v2.x sensor service, but the v2.x sensor software remains installed on the server. Complete the following cleanup steps to fully clean your server from the v2.x sensor files:
+The migration disables the v2.x sensor service, but the v2.x sensor software remains installed on the server. Complete the following cleanup steps after migration:
 
 - **Uninstall the v2.x sensor**: Remove the v2.x sensor software from the server. This step might require a server restart. For instructions, see [Delete and uninstall a sensor v2.x from a domain controller](../uninstall-sensor#delete-and-uninstall-a-sensor-v2x-from-a-domain-controller).
 - **Remove Npcap**: Npcap was used by the v2.x sensor but isn't required by the v3.x sensor. If Npcap isn't used by other applications on the server, remove it. Leaving Npcap installed doesn't affect the v3.x sensor.
+- **Remove workspace DSA or gMSA configuration**: Wait until all sensors are migrated to v3.x and no remaining v2.x sensors require the account. Then manually remove the workspace-level DSA or gMSA configuration. Migration doesn't remove this configuration automatically.
+- **Retire unused gMSA accounts**: Removing the workspace configuration doesn't delete the gMSA account in Active Directory. Before retiring the account, verify that no other services use it. For guidance, see [Deprovision service accounts](/en-us/entra/architecture/service-accounts-govern-on-premises#deprovision-service-accounts).

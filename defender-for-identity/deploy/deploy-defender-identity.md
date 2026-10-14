@@ -60,7 +60,7 @@ For eligible domain controllers running Windows Server 2019 or later, sensor v3.
 
 | Server configuration | Server operating system | Recommended deployment | Onboarding options |
 | --- | --- | --- | --- |
-| Any supported server type | Windows Server 2019 or later with the July 2026 or later cumulative update | [Defender for Identity sensor v3.x](deploy-sensor-v3) | For servers onboarded to Defender for Endpoint, activate sensor v3.x directly. For domain controllers that aren't onboarded to Defender for Endpoint, use the sensor v3.x onboarding package. AD FS, AD CS, and Microsoft Entra Connect servers must be onboarded to Defender for Endpoint before activation. |
+| Any supported server type | Windows Server 2019 or later with the September 2026 or later cumulative update | [Defender for Identity sensor v3.x](deploy-sensor-v3) | For servers onboarded to Defender for Endpoint, activate sensor v3.x directly. For domain controllers that aren't onboarded to Defender for Endpoint, use the sensor v3.x onboarding package. AD FS, AD CS, and Microsoft Entra Connect servers must be onboarded to Defender for Endpoint before activation. |
 | Any supported server type | Windows Server 2016 or earlier | [Defender for Identity sensor v2.x](prerequisites-sensor-version-2) | [Install the sensor v2.x package](install-sensor). |
 
 Defender for Identity supports sensor v3.x and sensor v2.x in the same workspace. For example, you might deploy sensor v3.x on servers running Windows Server 2019 or later and sensor v2.x on servers running Windows Server 2016 or earlier.

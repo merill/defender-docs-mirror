@@ -98,13 +98,30 @@ Follow these steps to create a new playbook in Microsoft Sentinel:
 1. In the [Defender portal](https://security.microsoft.com/) or in the [Azure portal](https://portal.azure.com), go to your Microsoft Sentinel workspace. On the workspace menu, under **Configuration**, select **Automation**.
 
 # [Defender portal](#tab/defender-portal)
-[![Screenshot shows Defender portal and Microsoft Sentinel Automation page with Create selected.](../media/create-playbooks/add-new-playbook-defender.png)](../media/create-playbooks/add-new-playbook-defender.png#lightbox)
+[![Screenshot showing the Logic App playbook creation menu in the Defender portal, including alert, case, blank, and legacy playbook options.](../media/create-playbooks/sentinel-logic-app-playbook-light-mode.png)](../media/create-playbooks/sentinel-logic-app-playbook-light-mode.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
 [![Screenshot shows Azure portal and Microsoft Sentinel Automation page with Create selected.](../media/create-playbooks/add-new-playbook.png)](../media/create-playbooks/add-new-playbook.png#lightbox)
 
 ---
-2. From the top menu, select **Create**, and then select one of the following options:
+2. From the top menu, select **Create** &gt; **Logic App playbook**, and then select one of the following options:
+
+    - If you're creating a **Consumption** playbook, select one of the following options, depending on the trigger you want to use, and then follow the steps to [prepare a **Consumption** logic app playbook](create-playbooks?tabs=consumption#prepare-playbook-logic-app):
+
+        - **Playbook with alert trigger**: Create a playbook that runs in response to an alert.
+        - **Playbook with case trigger**: Create a playbook that runs in response to a case in Microsoft Defender.
+        - **Playbook with incident trigger (Legacy)**: Create a playbook that uses the legacy incident trigger.
+        - **Playbook with alert trigger (Legacy)**: Create a playbook that uses the legacy alert trigger.
+        - **Playbook with entity trigger (Legacy)**: Create a playbook that uses the legacy entity trigger.
+
+        In this example, select **Playbook with entity trigger (Legacy)**.
+    - If you're creating a **Standard** playbook, select **Blank playbook** and then [prepare a **Standard** logic app playbook](create-playbooks?tabs=standard#prepare-playbook-logic-app).
+
+    Note
+
+    Microsoft Defender uses the term **case**, while Azure Logic Apps uses **incident** terminology for the corresponding Microsoft Sentinel connector triggers and actions. When you create a playbook with a case trigger in Microsoft Defender, the corresponding trigger in Azure Logic Apps is called **Microsoft Sentinel incident**.
+
+    For more information, see [Supported logic app types](logic-apps-playbooks#supported-logic-app-types) and [Supported triggers and actions in Microsoft Sentinel playbooks](playbook-triggers-actions).
 
     - If you're creating a **Consumption** playbook, select one of the following options, depending on the trigger you want to use, and then follow the steps to [prepare a **Consumption** logic app playbook](create-playbooks?tabs=consumption#prepare-playbook-logic-app):
 
@@ -128,7 +145,7 @@ If your playbooks need access to protected resources that are inside or connecte
 Standard workflows run in single-tenant Azure Logic Apps and support using private endpoints for inbound traffic so that your workflows can communicate privately and securely with virtual networks. Standard workflows also support virtual network integration for outbound traffic. For more information, see [Secure traffic between virtual networks and single-tenant Azure Logic Apps using private endpoints](/en-us/azure/logic-apps/secure-single-tenant-workflow-virtual-network-private-endpoint).
 
 # [Consumption](#tab/consumption)
-After you select the trigger, which includes an incident, alert, or entity trigger, the **Create playbook** wizard appears, for example:
+After you select a playbook trigger, the **Create playbook** wizard appears, for example:
 
 [![Screenshot shows Create playbook wizard and Basics tab for a Consumption workflow-based playbook.](../media/create-playbooks/create-playbook-basics-consumption.png)](../media/create-playbooks/create-playbook-basics-consumption.png#lightbox)
 

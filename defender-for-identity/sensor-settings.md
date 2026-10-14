@@ -99,7 +99,7 @@ For a server to be eligible for migration, it must:
 - Be a domain controller, including a domain controller that also runs AD FS, AD CS, or Microsoft Entra Connect.
 - Run Defender for Identity sensor v2.x.
 - Run Windows Server 2019 or later.
-- Have the July 2026 or later cumulative update installed.
+- Have the September 2026 or later cumulative update installed.
 - Have Microsoft Defender for Endpoint deployed.
 
 For the full list of v3.x requirements, see [Defender for Identity sensor v3.x prerequisites](deploy/deploy-sensor-v3).

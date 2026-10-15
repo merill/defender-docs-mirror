@@ -13,7 +13,7 @@ keywords: what's new in Microsoft Defender for Office 365, ga, generally availab
 author: chrisda
 ms.author: chrisda
 ms.localizationpriority: medium
-ms.date: 2026-10-05T00:00:00.0000000Z
+ms.date: 2026-10-15T00:00:00.0000000Z
 ms.collection:
 - m365-security
 - tier1
@@ -72,6 +72,7 @@ For more information on what's new with other Microsoft Defender security produc
 
 ## October 2026
 
+- **New ApproverUpn field in the EmailPostDeliveryEvents table**: The [EmailPostDeliveryEvents table](/en-us/defender-xdr/advanced-hunting-emailpostdeliveryevents-table) in Microsoft Defender XDR Advanced Hunting now includes the **ApproverUpn** field. This field identifies the user or administrator who approved a remediation action, helping security teams investigate and audit post-delivery email actions more efficiently.
 - **Expanding user reporting in Teams to include meetings**: Users can report scheduled or Meet now [Microsoft Teams meetings](submissions-teams#report-meetings-in-teams) or individual meeting participants as a security concern during or after the meeting. Users can also report a meeting participant that was incorrectly identified as suspicious as not a security concern. Depending on [Teams user reported settings](submissions-teams#user-reporting-settings-for-teams-items), reported meeting and participant metadata is sent to the specified reporting mailbox, to Microsoft, or both.
 
 ## September 2026

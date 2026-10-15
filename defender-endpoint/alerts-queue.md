@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: View and organize the Microsoft Defender for Endpoint Alerts queue - Microsoft Defender for Endpoint | Microsoft Learn
+title: View and Organize the Microsoft Defender for Endpoint Alerts Queue - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/alerts-queue
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -44,13 +44,15 @@ spProducts:
 platformId: 1b04b7c5-cda2-6ba7-cbf9-263ea40ad7f1
 ---
 
-# View and organize the Microsoft Defender for Endpoint Alerts queue - Microsoft Defender for Endpoint | Microsoft Learn
+# View and Organize the Microsoft Defender for Endpoint Alerts Queue - Microsoft Defender for Endpoint | Microsoft Learn
 
-The **Alerts queue** shows a list of alerts that were flagged from devices in your network. By default, the queue displays alerts seen in the last 7 days in a grouped view. The most recent alerts are shown at the top of the list helping you see the most recent alerts first.
+The **Alerts queue** shows a list of alerts that were flagged from devices in your network. By default, the queue displays alerts seen in the last seven days in a grouped view. The most recent alerts are shown at the top of the list.
 
 Note
 
-The alerts are significantly reduced with automated investigation and remediation, allowing security operations experts to focus on more sophisticated threats and other high value initiatives. When an alert contains a supported entity for automated investigation (for example, a file) in a device that has a supported operating system for it, an automated investigation and remediation can start. For more information on automated investigations, see [Overview of Automated investigations](automated-investigations).
+The alerts are significantly reduced with automated investigation and remediation. This practice allows security operations experts to focus on more sophisticated threats and other high value initiatives.
+
+When an alert contains a supported entity for automated investigation, such as a file, in a device that has a supported operating system for it, automated investigation and remediation can start. For more information, see [Overview of Automated investigations](automated-investigations).
 
 There are several options you can choose from to customize the alerts view.
 
@@ -62,7 +64,7 @@ On the top navigation you can:
 - Export the alerts list to excel
 - Manage Alerts
 
-[![The Alerts queue page](media/alerts-queue-list.png)](media/alerts-queue-list.png#lightbox)
+[![Screenshot shows the Alerts queue page.](media/alerts-queue-list.png)](media/alerts-queue-list.png#lightbox)
 
 ## Sort and filter alerts
 
@@ -73,36 +75,35 @@ You can apply the following filters to limit the list of alerts and get a more f
 | Alert severity | Description |
 | --- | --- |
 | High  (Red) | Alerts commonly seen associated with advanced persistent threats (APT). These alerts indicate a high risk because of the severity of damage they can inflict on devices. Some examples are: credential theft tools activities, ransomware activities not associated with any group, tampering with security sensors, or any malicious activities indicative of a human adversary. |
-| Medium  (Orange) | Alerts from endpoint detection and response post-breach behaviors that might be a part of an advanced persistent threat (APT). These behaviors include observed behaviors typical of attack stages, anomalous registry change, execution of suspicious files, and so forth. Although some might be part of internal security testing, it requires investigation as it might also be a part of an advanced attack. |
-| Low  (Yellow) | Alerts on threats associated with prevalent malware. For example, hack-tools, non-malware hack tools, such as running exploration commands, clearing logs, etc., that often do not indicate an advanced threat targeting the organization. It could also come from an isolated security tool testing by a user in your organization. |
-| Informational  (Grey) | Alerts that might not be considered harmful to the network but can drive organizational security awareness on potential security issues. |
+| Medium  (Orange) | Alerts from endpoint detection and response post-breach behaviors that might be a part of an advanced persistent threat (APT). These behaviors include observed behaviors typical of attack stages, anomalous registry change, and execution of suspicious files. Although some might be part of internal security testing, this severity requires investigation because it might also be a part of an advanced attack. |
+| Low  (Yellow) | Alerts on threats associated with prevalent malware. For example, hack-tools, non-malware hack tools, such as running exploration commands and clearing logs, that often do not indicate an advanced threat targeting the organization. This level could also come from an isolated security tool testing by a user in your organization. |
+| Informational  (Gray) | Alerts that might not be considered harmful to the network but can drive organizational security awareness on potential security issues. |
 
 #### Understanding alert severity
 
 Microsoft Defender Antivirus and Defender for Endpoint alert severities are different because they represent different scopes.
 
-The Microsoft Defender Antivirus threat severity represents the absolute severity of the detected threat (malware), and is assigned based on the potential risk to the individual device, if infected.
+- The Microsoft Defender Antivirus threat severity represents the absolute severity of the detected threat (malware). It's assigned based on the potential risk to the individual device, if infected.
+- The Defender for Endpoint alert severity represents the severity of the detected behavior, which is the actual risk to the device but more importantly the potential risk to the organization.
 
-The Defender for Endpoint alert severity represents the severity of the detected behavior, the actual risk to the device but more importantly the potential risk to the organization.
+For example:
 
-So, for example:
-
-- The severity of a Defender for Endpoint alert about a Microsoft Defender Antivirus detected threat that was prevented and did not infect the device is categorized as "Informational" because there was no actual damage.
-- An alert about a commercial malware was detected while executing, but blocked and remediated by Microsoft Defender Antivirus, is categorized as "Low" because it may have caused some damage to the individual device but poses no organizational threat.
-- An alert about malware detected while executing which can pose a threat not only to the individual device but to the organization, regardless if it was eventually blocked, may be ranked as "Medium" or "High".
-- Suspicious behavioral alerts, which weren't blocked or remediated will be ranked "Low", "Medium" or "High" following the same organizational threat considerations.
+- The severity of a Defender for Endpoint alert about a Microsoft Defender Antivirus detected threat that was prevented and did not infect the device is categorized as *Informational* because there was no actual damage.
+- Commercial malware that is detected while running but blocked and remediated by Microsoft Defender Antivirus generates a *Low* alert because it might have caused some damage to the individual device but poses no organizational threat.
+- Malware that is detected while running and can pose a threat both to the individual device and to the organization might be ranked as *Medium* or *High*, regardless of whether it is eventually blocked.
+- Suspicious behavioral alerts, which weren't blocked or remediated, are ranked *Low*, *Medium*, or *High* following the same organizational threat considerations.
 
 ### Status
 
-You can choose to filter the list of alerts based on their Status.
+You can choose to filter the list of alerts based on their status.
 
 Note
 
-If you see an *Unsupported alert type* alert status, it means that automated investigation capabilities cannot pick up that alert to run an automated investigation. However, you can [investigate these alerts manually](/en-us/defender-xdr/investigate-incidents#alerts).
+If you see an *Unsupported alert type* alert status, it means that automated investigation capabilities can't pick up that alert to run an automated investigation. You can [investigate these alerts manually](/en-us/defender-xdr/investigate-incidents#alerts).
 
 ### Categories
 
-We've redefined the alert categories to align to the [enterprise attack tactics](https://attack.mitre.org/tactics/enterprise/) in the [MITRE ATT&CK matrix](https://attack.mitre.org/). New category names apply to all new alerts. Existing alerts will keep the previous category names.
+Microsoft redefined the alert categories to align to the [enterprise attack tactics](https://attack.mitre.org/tactics/enterprise/) in the [MITRE ATT&CK matrix](https://attack.mitre.org/). New category names apply to all new alerts. Existing alerts keep the previous category names.
 
 ### Service sources
 
@@ -120,7 +121,7 @@ Microsoft Endpoint Notification customers can now filter and see detections from
 
 Note
 
-The Antivirus filter will only appear if devices are using Microsoft Defender Antivirus as the default real-time protection antimalware product.
+The Antivirus filter only appears if devices are using Microsoft Defender Antivirus as the default real-time protection antimalware product.
 
 ### Tags
 

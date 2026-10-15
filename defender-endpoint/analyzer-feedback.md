@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Provide feedback on the Microsoft Defender for Endpoint Client Analyzer tool - Microsoft Defender for Endpoint | Microsoft Learn
+title: Provide Feedback on the Microsoft Defender for Endpoint Client Analyzer Tool - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/analyzer-feedback
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -44,18 +44,16 @@ spProducts:
 platformId: 0792d74f-a9be-7e7f-57ae-b07de94dd67c
 ---
 
-# Provide feedback on the Microsoft Defender for Endpoint Client Analyzer tool - Microsoft Defender for Endpoint | Microsoft Learn
-
-## Submit feedback for the client analyzer
+# Provide Feedback on the Microsoft Defender for Endpoint Client Analyzer Tool - Microsoft Defender for Endpoint | Microsoft Learn
 
 If you have feedback or suggestions that would help us improve the Microsoft Defender for Endpoint client analyzer, use either of these options to submit feedback:
 
-- In the Microsoft Defender portal at https://security.microsoft.com, select **Feedback** at the top of the page, and then fill out the information in the **Submit feedback to Microsoft** flyout that opens:
+- In the [Microsoft Defender portal](https://security.microsoft.com), select **Feedback** at the top of the page, and then fill out the information in the **Submit feedback to Microsoft** flyout that opens:
 
     [![Screenshot of the Feedback icon at the top of the Microsoft Defender portal.](media/defender-portal-feedback.png)](media/defender-portal-feedback.png#lightbox)
 
     [![Screenshot of the Submit feedback to Microsoft flyout in the Microsoft Defender portal.](media/defender-portal-submit-feedback.png)](media/defender-portal-submit-feedback.png#lightbox)
-- Select **Send feedback** on the centralized feedback platform for Microsoft Defender XDR and related services at https://aka.ms/M365Defender/Feedback and fill out the information in the **Post public feedback** page that opens:
+- On the [centralized feedback platform for Microsoft Defender XDR and related services](https://aka.ms/M365Defender/Feedback), select **Send feedback**, and then fill out the information on the **Post public feedback** page that opens:
 
     [![Screenshot of the Post public feedback page from the Microsoft Defender XDR feedback page.](media/defender-feedback.png)](media/defender-feedback.png#lightbox)
 

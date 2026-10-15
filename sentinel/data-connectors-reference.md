@@ -228,7 +228,7 @@ Connects the 42Crunch API protection to Microsoft Sentinel via the Azure Monitor
 
 This connector receives data from external security systems that push logs to Microsoft Sentinel. The external system must be configured to send raw event data to the Microsoft Sentinel Ingestion API. Clicking on **Deploy** will trigger the creation of Log Analytics tables and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
 
-[Learn more about the connector setup process](https://review.learn.microsoft.com/azure/sentinel/create-push-codeless-connector)
+[Learn more about the connector setup process](isv/create-push-codeless-connector)
 
 Azure Resource Deployment
 
@@ -580,7 +580,7 @@ The [Airlock Digital](https://www.airlockdigital.com/)**SaaS** connector periodi
 
 Set up API access in your Airlock Digital SaaS tenant before connecting.
 
-Your server URL comes from your portal address: take `https://portal.au.YourDomain.com/tenant/XYZ/dashboard` and drop the `portal.` prefix and everything after the top-level domain, leaving `https://au.YourDomain.com`.
+Your server URL comes from your portal address: take `https://portal.au.example.com/tenant/XYZ/dashboard` and drop the `portal.` prefix and everything after the top-level domain, leaving `https://au.example.com`.
 
 The user API key, directory ID and tenant ID are in Airlock Digital under **User Menu &gt; My Profile**.
 
@@ -2371,7 +2371,7 @@ The Azure DevOps Audit Logs data connector allows you to ingest audit events fro
 
 **Prerequisites:**
 
-- **Azure DevOps Prerequisite**: Please ensure the following: 1. Register an Entra App in Microsoft Entra Admin Center under App Registrations. 2. In 'API permissions' - add Permissions to 'Azure DevOps - vso.auditlog'. 3. In 'Certificates & secrets' - generate 'Client secret'. 4. In 'Authentication' - add the Redirect URI found below in the corresponding field. 5. In the Azure DevOps settings - enable audit log and set **View audit log** for the user. [Azure DevOps Auditing](/en-us/azure/devops/organizations/audit/azure-devops-auditing?view=azure-devops&amp;tabs=preview-page). 6. Ensure the user assigned to connect the data connector has the View audit logs permission explicitly set to Allow at all times. This permission is essential for successful log ingestion. If the permission is revoked or not granted, data ingestion will fail or be interrupted.
+- **Azure DevOps Prerequisite**: Please ensure the following: 1. Register an Entra App in Microsoft Entra Admin Center under App Registrations. 2. In 'API permissions' - add Permissions to 'Azure DevOps - vso.auditlog'. 3. In 'Certificates & secrets' - generate 'Client secret'. 4. In 'Authentication' - add the Redirect URI found below in the corresponding field. 5. In the Azure DevOps settings - enable audit log and set **View audit log** for the user. [Azure DevOps Auditing](/en-us/azure/devops/organizations/audit/azure-devops-auditing?tabs=preview-page). 6. Ensure the user assigned to connect the data connector has the View audit logs permission explicitly set to Allow at all times. This permission is essential for successful log ingestion. If the permission is revoked or not granted, data ingestion will fail or be interrupted.
 
 **Setup Instructions:**
 
@@ -5240,7 +5240,13 @@ Requirements: In order to use the Falcon Data Replicator feature the following a
 2. Choose the ‘Specify template’ option, then ‘Upload a template file’ by clicking on ‘Choose file’ and selecting the appropriate CloudFormation template file provided below. click ‘Choose file’ and select the downloaded template.
 3. Click 'Next' and 'Create stack'.
 
-Make sure that your bucket will be created in the same AWS region as your Falcon CID where the FDR feed is provisioned. | CrowdStrike region | AWS region | |-----------------|-----------| | US-1 | us-west-1 | | US-2 | us-west-2 | | EU-1 | eu-central-1
+Make sure that your bucket will be created in the same AWS region as your Falcon CID where the FDR feed is provisioned.
+
+| CrowdStrike region | AWS region |
+| --- | --- |
+| US-1 | us-west-1 |
+| US-2 | us-west-2 |
+| EU-1 | eu-central-1 |
 
 - **Template 1: OpenID connect authentication deployment**: &lt;variable value provided at install time&gt;
 - **Template 2: AWS CrowdStrike resources deployment**: &lt;variable value provided at install time&gt; Using your own S3 Bucket In order to use your own S3 bucket you can refernace the following guide [Use your own S3 bucket](https://falcon.us-2.crowdstrike.com/documentation/page/fa572b1c/falcon-data-replicator#g4f79236) or follow this steps:
@@ -14241,7 +14247,7 @@ MuleSoft CloudHub Log4j push-based connector for receiving application logs dire
 
 This connector receives data from external security systems that push logs to Microsoft Sentinel. The external system must be configured to send raw event data to the Microsoft Sentinel Ingestion API. Clicking on **Deploy** will trigger the creation of Log Analytics tables and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
 
-[Learn more about the connector setup process](https://review.learn.microsoft.com/azure/sentinel/create-push-codeless-connector)
+[Learn more about the connector setup process](isv/create-push-codeless-connector)
 
 Azure Resource Deployment
 

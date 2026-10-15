@@ -12,10 +12,10 @@ description: This article describes new features available in Microsoft Defender
 ms.topic: whats-new
 ms.service: defender-endpoint
 author: lwainstein
-ms.author: lwainstein
+ms.author: yaronyahav
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-09-16T00:00:00.0000000Z
+ms.date: 2026-10-14T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection:
 - m365-security
@@ -54,6 +54,12 @@ For recent releases of Microsoft Defender for Endpoint, including build numbers,
 
 Learn more about [Preview features](/en-us/defender-xdr/preview).
 
+## October 2026
+
+| Type | Feature | Preview/GA | Description |
+| --- | --- | --- | --- |
+| Feature | [Vulnerability assessment for Microsoft Store applications](/en-us/defender-vulnerability-management/tvm-software-inventory#microsoft-store-applications) | GA | Vulnerability assessment for applications installed via the Microsoft Store is now generally available. Defender Vulnerability Management detects supported Microsoft Store applications, adds them to the software inventory, and assesses them for vulnerabilities. Coverage is currently limited to a select set of commonly used applications. Use the **Software evidence** area on the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location. |
+
 ## September 2026
 
 | Type | Feature | Preview/GA | Description |
@@ -73,7 +79,6 @@ Learn more about [Preview features](/en-us/defender-xdr/preview).
 | Feature | [Antivirus audit mode for Linux](linux-preferences#antivirus-antimalware-and-edr-settings-in-defender-for-endpoint-on-linux) | Preview | Provides real-time malware detection and alerting without automatically quarantining files or terminating processes. This enables organizations to evaluate Defender detection efficacy and performance on sensitive workloads before enabling enforcement.**Available in Microsoft Defender for Endpoint on Linux version 101.26062.0007 or later.** |
 | Feature | [Offboarding API support for Linux](api/offboard-machine-api) | GA | Enables organizations to automate the offboarding of Linux servers from Microsoft Defender for Endpoint through the Offboard machine API, simplifying device lifecycle management at scale.**Available in Microsoft Defender for Endpoint on Linux version 101.26062.0007 or later.** |
 | Release - macOS | Build 101.26062.0012 | GA | Release version 20.126062.12.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--august-2026--101260620012). |
-| Feature | [Vulnerability assessment for Microsoft Store applications](/en-us/defender-vulnerability-management/tvm-software-inventory#microsoft-store-applications-preview) | Preview | You can now monitor vulnerabilities on devices running Microsoft Store applications, including Microsoft Teams, Mozilla Firefox, WhatsApp, Slack, Dropbox, DuckDuckGo, Dell Command | Update, HP Smart, NVIDIA Control Panel, 1Password, Beyond Compare, and Evernote (see [Microsoft Store applications](/en-us/defender-vulnerability-management/tvm-software-inventory#microsoft-store-applications-preview) for the full list). Use the **Software evidence** area in the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location. |
 | Release - macOS | Build 101.26062.0011 | GA | Release version 20.126062.11.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--august-2026--101260620011). |
 
 ## July 2026

@@ -12,9 +12,9 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-09-24T00:00:00.0000000Z
+ms.date: 2026-10-15T00:00:00.0000000Z
 ms.topic: how-to
-ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done, msecd-doc-authoring-1016
+ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done, msecd-doc-authoring-1028
 description: Learn how to investigate threat detection alerts from app governance in Microsoft Defender XDR with Microsoft Defender for Cloud Apps.
 ms.reviewer: shragar
 ai-usage: ai-assisted
@@ -34,13 +34,9 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/app-governance-anomaly-detection-alerts.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5fc61396-d075-4560-aece-fdbda73d243f
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ad9437c1-8cda-4537-ad69-b4b263652e13
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: f2eb3b8d-96d7-cf47-2705-574122a4de11
 ---
 
@@ -50,7 +46,7 @@ App governance provides security detections and alerts for malicious activities.
 
 Important
 
-On October 15, 2026, Microsoft Defender for Cloud Apps will retire the Exchange Web Services (EWS)-based detections marked **Retiring soon** in this article. After that date, these detections will no longer generate alerts.
+As of October 15, 2026, Microsoft Defender for Cloud Apps has retired the Exchange Web Services (EWS)-based detections marked **Retired** in this article. These detections no longer generate alerts.
 
 For more information, see [App governance in Microsoft Defender for Cloud Apps](app-governance-manage-app-governance)
 
@@ -598,7 +594,7 @@ This detection verifies whether the API calls were made for mailbox rule creatio
 
         Review consent grants to the application made by users and admins. Investigate all activities done by the app, especially access to mailbox of associated users and admin accounts. If you suspect that the app is suspicious, consider disabling the application and rotating credentials of all affected accounts.
 
-### Suspicious OAuth app email activity through EWS API **(Retiring soon)**
+### Suspicious OAuth app email activity through EWS API **(Retired)**
 
 **Severity**: High
 
@@ -1131,7 +1127,7 @@ This detection generates alerts for non-Microsoft OAuth apps with metadata, such
 2. Review the scopes granted to the app.
 3. Review the user activity associated with the app.
 
-### App with EWS application permissions accessing numerous emails **(Retiring soon)**
+### App with EWS application permissions accessing numerous emails **(Retired)**
 
 **Severity**: Medium
 

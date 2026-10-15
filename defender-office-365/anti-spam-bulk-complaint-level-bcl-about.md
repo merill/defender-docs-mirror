@@ -18,7 +18,7 @@ ms.collection:
 - tier2
 description: Admins can learn about bulk email detection, including the bulk complain level (BCL) values that are used in Microsoft 365.
 ms.service: defender-office-365
-ms.date: 2026-08-25T00:00:00.0000000Z
+ms.date: 2026-10-15T00:00:00.0000000Z
 locale: en-us
 document_id: ca3bed41-6b2a-7917-f084-c920d4aaa0b6
 document_version_independent_id: ca3bed41-6b2a-7917-f084-c920d4aaa0b6
@@ -133,6 +133,8 @@ To prevent mail *from specific senders* or *to specific recipients* from receivi
     - **Set rule settings** page: Verify **Stop processing more rules** isn't selected.
 
 For previous Preview customers, the rule that set `X-MS-Exchange-Organization-BulkStamping` to the value `1` to tag messages as **Bulk** is no longer required.
+
+The `X-MS-Exchange-Organization-BulkStamping` header is an internal header that's used only during message transport. The header is removed before the message is delivered to the mailbox, so it isn't visible in the message headers that recipients see. This behavior is by design.
 
 To enable bulk mail delivery to the **Promotions** folder, do the following steps:
 

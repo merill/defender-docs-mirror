@@ -14,7 +14,7 @@ ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: Migrate your Microsoft Defender for Cloud Apps file policies to Microsoft Purview DLP or auto-labeling policies before the January 6, 2027 retirement deadline.
 ms.topic: how-to
-ms.custom: msecd-doc-authoring-106
+ms.custom: msecd-doc-authoring-1030
 ms.date: 2026-08-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
@@ -78,12 +78,11 @@ Before you begin, confirm you meet the following requirements:
 
 ### What the tool supports
 
-The migration tool supports SharePoint and OneDrive DLP file policies only. The following aren't supported yet:
+The migration tool supports:
 
-- Auto-labeling policy migration for Microsoft workloads.
-- DLP and auto-labeling policy migration for non-Microsoft apps, including Google Workspace, Box, Dropbox, and Salesforce.
-
-The wizard shows these unsupported scenarios in a **Coming soon** callout in Step 1, so you can see what's planned for future releases.
+1. DLP file policy migration for Microsoft workloads: SharePoint and OneDrive.
+2. Auto-labeling policy migration for Microsoft workloads: SharePoint and OneDrive.
+3. DLP file policy migration for non-Microsoft workloads, including Google Workspace, Box, Dropbox, and Salesforce.
 
 Tip
 
@@ -181,7 +180,7 @@ No. Migration creates new equivalent policies in Purview. Review your source and
 
 #### What is the "Coming soon" section in Step 1?
 
-It highlights migration capabilities planned for upcoming releases, including auto-labeling policy migration for Microsoft workloads and policy migration for Google Workspace, Box, Dropbox, and Salesforce.
+It highlights migration capabilities planned for upcoming releases.
 
 ### Known issues with the migration tool
 

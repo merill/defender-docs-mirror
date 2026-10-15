@@ -11,7 +11,7 @@ manager: bagol
 author: chrisda
 ms.author: chrisda
 ms.topic: overview
-ms.date: 2026-05-22T00:00:00.0000000Z
+ms.date: 2026-10-14T00:00:00.0000000Z
 ms.localizationpriority: medium
 ms.collection:
 - Strat_O365_IP
@@ -136,7 +136,7 @@ For *automatic* forwarding by Inbox rules or SMTP forwarding, the URL isn't rewr
 - The recipient is also protected by Safe Links.
 - The URL was already rewritten in a previous communication.
 
-As long as Safe Links protection is turned on, URLs are scanned prior to message delivery, regardless of whether the URLs are rewritten or not. If rewriting is enabled, links are scanned on click. If rewriting is disabled, unwrapped URLs are checked by a client-side Safe Links API call at the time of click in supported versions of Outlook (Windows, Mac, and Outlook on the web),
+As long as Safe Links protection is turned on, URLs are scanned prior to message delivery, regardless of whether the URLs are rewritten or not. If rewriting is enabled, links are scanned on click. If rewriting is disabled, unwrapped URLs are checked by a client-side Safe Links API call at the time of click in supported versions of Outlook (Windows, Mac, iOS, Android, and Outlook on the web).
 
 The settings in Safe Links policies that apply to email messages are described in the following list:
 

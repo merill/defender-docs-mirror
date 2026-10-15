@@ -13,11 +13,11 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: Learn about known limitations for working with Conditional Access app control in Microsoft Defender for Cloud Apps.
-ms.date: 2026-08-28T00:00:00.0000000Z
+ms.date: 2026-10-14T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: AmitMishaeli
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 81db79b3-9a9b-e0eb-bdb1-bc97c64a0de1
 document_version_independent_id: 81db79b3-9a9b-e0eb-bdb1-bc97c64a0de1
@@ -34,12 +34,12 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/caac-known-issues.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5287f575-02f0-405f-92b7-800456526b0c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 - https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/06e86142-34c2-4b94-ab9c-9477c21f7152
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 - https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 platformId: 9e0fda27-87df-f894-c0ad-cd7f65820b61
 ---
@@ -151,7 +151,7 @@ To work around this limitation, access Microsoft Teams directly rather than laun
 
 ## Limitations for sessions that are served with Microsoft Edge in-browser protection
 
-The following Google Workspace, deep link, and outdated policy enforcement limitations apply only to sessions that are served with Microsoft Edge in-browser protection.
+The following Google Workspace, deep link, cross-tenant session behavior, and outdated policy enforcement limitations apply only to sessions that are served with Microsoft Edge in-browser protection.
 
 ### Secure Microsoft Edge Session Controls can't be used with Google Workspace in Enterprise Microsoft Edge browsers
 
@@ -168,6 +168,14 @@ If the URL points to a resource within the secured application, the user is dire
 A user who starts a session in Microsoft Edge with a profile other than their work profile, is prompted to switch to their work profile by clicking the ‘Switch to work profile’ button.
 
 If the URL points to a resource within the secured application, the user is directed to the application's homepage in Microsoft Edge.
+
+### Cross-tenant session behavior
+
+Microsoft Edge in-browser protection is applied at the browser session level. It doesn't provide a separate enforcement boundary for each tenant within the same Edge work-profile session.
+
+In B2B or cross-tenant scenarios, a protected session can be established while accessing a resource in one tenant. The protection can continue to apply when the user accesses resources in another tenant within the same Edge work-profile session.
+
+If separate session enforcement is required between tenants, use separate Microsoft Edge work profiles.
 
 ### Outdated session policy enforcement with Microsoft Edge
 

@@ -15,7 +15,7 @@ author: lwainstein
 ms.author: lwainstein
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-09-25T00:00:00.0000000Z
+ms.date: 2026-10-12T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: a82695da-2a19-ab7b-fd85-324ba1ae897f
@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Windows Antivirus | Platform 4.18.26090.9 / Engine 1.1.26090.9 | September 2026 | - Platform: 4.18.26090.9- Engine: 1.1.26090.9- Security intelligence: 1.461.1.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26080.4 / Engine 1.1.26080.3 | August 2026 | - Platform: 4.18.26080.4- Engine: 1.1.26080.3- Security intelligence: 1.159.11.0 | Release details and updates |
 | Android | 1.0.9330.0101 | Sep 2026 | - Build: 1.0.9330.0101- Release: Sep 30, 2026 | Release details and updates |
 | iOS | 1.1.81160103 | Sep 2026 | - Build: 1.1.81160103- Release: Sep 24, 2026 | Release details and updates |
@@ -1448,6 +1449,29 @@ For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
 ## Microsoft Defender Antivirus releases
 
 For more information about Microsoft Defender Antivirus updates, see [Microsoft Defender Antivirus security intelligence product updates and support](microsoft-defender-antivirus-updates).
+
+### Windows Antivirus | September 2026 | Platform 4.18.26090.9 | Engine 1.1.26090.9
+
+#### Release details
+
+| Component | Version | Date |
+| --- | --- | --- |
+| Platform | 4.18.26090.9 | October 12, 2026 |
+| Engine | 1.1.26090.9 | October 12, 2026 |
+| Security intelligence^1^ | 1.461.1.0 | October 12, 2026 |
+| Support phase | Security and Critical Updates | - |
+
+^1^The security intelligence version listed here is relevant to the listed engine release. Newer versions of security intelligence are released regularly. For more information, see [Security intelligence updates for Microsoft Defender Antivirus and other Microsoft anti-malware](https://www.microsoft.com/wdsi/defenderupdates).
+
+### Enhancements and features
+
+- Added automatic protection-engine refresh when the device's resolved license tier changes.
+- Fixed a stalled security-intelligence update worker which could block all subsequent updates.
+- Addressed an update configuration issue that could leave DisableBmNetworkSensor = 1 after platform updates.
+- Renamed the PowerShell configuration-protection property from ControlledConfigurationState to ConfigurationProtection.
+- Retained the feature-control cache during signature updates to preserve cached settings through the update lifecycle.
+- Improved path-normalization handling for Attack Surface Reduction rules.
+- Fixed attack surface reduction exclusions being dropped when multiple policies target the same rule.
 
 ### Windows Antivirus | August 2026-2 | Platform 4.18.26080.4 | Engine 1.1.26080.3
 

@@ -36,9 +36,11 @@ source_path: defender-xdr/security-for-ai/ai-agent-real-time-protection.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/46e3c7c4-fe77-4a6e-b40a-44c569819fa5
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/d0c6fab8-2d7d-4bb0-bf40-589e08d7c132
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 platformId: 73fadc8f-aa21-1c5c-2ed6-d59cde94cfa5
 ---
 
@@ -73,6 +75,34 @@ When Microsoft Defender audits or blocks an action, it records the event as a be
 Note
 
 Block events from Microsoft Prompt Shields for Foundry and Microsoft Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
+
+## Supported threat scenarios for real-time protection
+
+Real-time protection inspects agent interactions for threats. When you enable a blocking rule for a threat scenario, interactions that match that scenario are blocked at the intervention point where the threat is detected.
+
+#### Malicious content propagation
+
+Malicious content propagation occurs when an agent receives, generates, or passes along content identified as malicious. For example, an attacker might include a malicious URL in a user request or tool response, which the agent could then share with a user or pass to another tool.
+
+**When blocking is enabled:** Interactions containing detected malicious content are blocked. Depending on where detection occurs, this prevents a user request from reaching the model, a model response from being delivered, a tool request from executing, or a tool response from being passed back to the model.
+
+#### Secret exfiltration
+
+Secret exfiltration occurs when an agent interaction exposes or attempts to transfer secrets, such as API keys, credentials, or access tokens. For example, an agent might retrieve a secret from a connected data source and include it in a response or pass it as an argument to a tool.
+
+**When blocking is enabled:** Interactions identified as secret exfiltration are blocked. This can stop a user request containing an exfiltration attempt, prevent a model response from disclosing a secret, stop a tool call that would transmit a secret, or prevent a tool response containing detected secret exfiltration from reaching the model.
+
+#### Evasion techniques
+
+Evasion techniques attempt to conceal malicious instructions or content to bypass security controls. For example, an attacker might encode or obfuscate content so that its intent is harder to detect.
+
+**When blocking is enabled:** Interactions containing detected evasion techniques are blocked. Protection applies to user requests, model responses, tool requests, and tool responses, preventing the detected content from proceeding through the interaction.
+
+#### Unsafe email domain
+
+An unsafe email domain scenario occurs when an agent attempts to send an email to a recipient whose domain is identified as unsafe or untrusted. For example, an attacker might instruct an agent to send information to an email address on an untrusted domain.
+
+**When blocking is enabled:** A tool call identified as sending email to an unsafe domain is blocked before the tool executes. This scenario is evaluated only at the tool request intervention point. An email address appearing in a user request, model response, or tool response does not, by itself, trigger blocking for this scenario.
 
 ## Configure real-time protection rules
 

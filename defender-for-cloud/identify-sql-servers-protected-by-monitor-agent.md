@@ -62,16 +62,36 @@ You can identify SQL servers onboarded to the Defender for SQL Server on Machine
 3. Copy and paste the following query into the query window:
 
     ```kusto
-    securityresources 
-    | where type == "microsoft.security/assessments/subassessments" 
-    | extend assessmentKey = extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) 
-    | where assessmentKey == "f97aa83c-9b63-4f9a-99f6-b22c4398f936" 
-    | where tostring(properties.resourceDetails.source) == "OnPremiseSql" 
-    | extend lastScanTime = todatetime(properties.timeGenerated) 
-    | where lastScanTime > ago(30d) 
-    | extend machineName = tostring(properties.resourceDetails.machineName) 
-    | extend machineUuid = tostring(properties.resourceDetails.vmuuid) 
-    | distinct machineName, machineUuid
+        securityresources
+        | where type =~ "microsoft.security/assessments"
+        | extend scanner = (// AssessmentsQueryBuilder.columnDefinitions.scanner
+                (tostring(
+            coalesce(bag_keys(parse_json(tostring(properties.additionalData.ScannersDetails)))[0], bag_keys(parse_json(tostring(properties.additionalData.ScannersDetails)))[0],
+            properties.additionalData.scanner, properties.additionalData.scanner, 
+            properties.additionalData.Scanner, properties.additionalData.Scanner, 
+            properties.additionalData.SecretScannerName, properties.additionalData.SecretScannerName,
+            properties.additionalData.ToolName, properties.additionalData.ToolName,
+            properties.additionalData.ScannerName, properties.additionalData.ScannerName,
+            "N/A"))))
+                        | where scanner in~ ("SQL Vulnerability Assessment")
+        | extend source = (// AssessmentsQueryBuilder.columnDefinitions.source
+                (trim(' ', tolower(coalesce(tostring(properties.resourceDetails.Source), tostring(properties.resourceDetails.source))))))
+        | extend resourceId = (// AssessmentsQueryBuilder.columnDefinitions.resourceId
+                (tolower(trim(" ", tostring(case(source =~ "azure", coalesce(properties.resourceDetails.Id, properties.resourceDetails.id),
+            (// AssessmentsQueryBuilder.predicates.newAwsAssessmentIndicator
+            (source =~ "aws" and isnotempty(tostring(properties.resourceDetails.ConnectorId)))), coalesce(properties.resourceDetails.Id, properties.resourceDetails.id),
+            (// AssessmentsQueryBuilder.predicates.newGcpAssessmentIndicator
+            (source =~ "gcp" and isnotempty(tostring(properties.resourceDetails.ConnectorId)))), coalesce(properties.resourceDetails.Id, properties.resourceDetails.id),
+            source =~ "aws", properties.resourceDetails.AzureResourceId,
+            source =~ "gcp", properties.resourceDetails.AzureResourceId,
+            split(id, "/providers/Microsoft.Security/assessments/")[0]
+            ))))))
+        | where resourceId contains "microsoft.operationalinsights"
+        | extend workspaceId = tostring(properties.resourceDetails.WorkspaceId) 
+        | extend machineName = tostring(properties.resourceDetails.MachineName) 
+        | extend machineUuid = tostring(properties.resourceDetails.VMUUID)
+        | distinct workspaceId, machineName, machineUuid 
+    
     ```
 4. Select **Run query**.
 

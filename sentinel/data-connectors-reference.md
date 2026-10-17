@@ -5013,7 +5013,7 @@ The [CrowdStrike Data Connector](https://www.crowdstrike.com/) allows ingesting 
 
 **Prerequisites:**
 
-- **Crowdstrike OAuth2 API Client and Scopes**: #### Required API Scopes In your CrowdStrike Falcon console, go to **Support and resources &gt; API clients and keys**, select your API client, and enable the following scopes with **Read** access: **Alerts**, **Cases**, **Detections**, **Hosts**, **Spotlight Vulnerabilities**. For more information, see [API](https://falcon.us-2.crowdstrike.com/documentation/page/a2a7fc0e/crowdstrike-oauth2-based-apis).
+- **Crowdstrike OAuth2 API Client and Scopes**: **API Integrations**, **App Logs**, **Alerts**, **Cases**, **Detections**, **Hosts**, **Spotlight Vulnerabilities** are required for REST API.
 
 **Setup Instructions:**
 
@@ -5023,7 +5023,7 @@ Retrieve API URL and Client Credentials Log in to your CrowdStrike Console and n
 
 For detailed instructions on retrieving the Base API URL, Client ID, and Client Secret, please refer to the [Connector Tutorial](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/CrowdStrike%20Falcon%20Endpoint%20Protection/Data%20Connectors/CrowdStrikeAPI_ccp/README.md).
 
-Solution version 3.4.0 and later uses the CrowdStrike V2 tables. Please use updated parser for any existing queries. Refer to the release notes of the solution [here](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/CrowdStrike%20Falcon%20Endpoint%20Protection/ReleaseNotes.md)
+Solution version 3.4.0 and later uses the CrowdStrike V2 tables. Please use updated parser for any existing queries. For more information, refer to the upgrade notes [here](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/CrowdStrike%20Falcon%20Endpoint%20Protection/README.md#upgrade-notes)
 
 **Manage CrowdStrike Connections**
 
@@ -15303,6 +15303,8 @@ This precision-driven approach helps security teams drastically reduce false pos
 
 By combining business-context intelligence with advanced analytics, Pathlock enables enterprises to strengthen detection accuracy, streamline response actions, and maintain continuous control across their SAP environments—without adding complexity or redundant monitoring layers.
 
+For detailed guidance on how to deploy this connector, refer to the [Pathlock help portal](https://help.pathlock.com).
+
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
@@ -15326,7 +15328,7 @@ Automated deployment of Azure resources Clicking on "Deploy push connector resou
 
 **2. Maintain the data collection endpoint details and authentication info in your central instance of Pathlock's Cybersecurity Application Controls: Threat Detection and Response**
 
-Share the data collection endpoint URL and authentication info with the Pathlock administrator to configure the plug and play forwarding in Threat Detection and Response to send data to the data collection endpoint. Please do not hesitate to contact Pathlock if support is needed.
+Share the data collection endpoint URL and authentication info with the Pathlock administrator to configure the plug and play forwarding in Threat Detection and Response to send data to the data collection endpoint. For detailed deployment guidance, refer to the [Pathlock help portal](https://help.pathlock.com). Please do not hesitate to contact Pathlock if support is needed.
 
 - **Use this value to configure as Tenant ID in the LogIngestionAPI credential.**: &lt;variable value provided at install time&gt;
 - **Entra Application ID**: &lt;variable value provided at install time&gt;
@@ -15643,7 +15645,7 @@ Proofpoint Websocket API service requires Remote Syslog Forwarding license. Plea
 
 **Proofpoint TAP (via Codeless Connector Framework)**
 
-**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
+**Supported by:**[Proofpoint, Inc.](https://proofpoint.my.site.com/community/s/)
 
 The [Proofpoint Targeted Attack Protection (TAP)](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) connector provides the capability to ingest Proofpoint TAP logs and events into Microsoft Sentinel. The connector provides visibility into Message and Click events in Microsoft Sentinel to view dashboards, create custom alerts, and to improve monitoring and investigation capabilities.
 
@@ -15681,7 +15683,7 @@ Configuration steps for the Proofpoint TAP API
 
 **Proofpoint TAP (via Codeless Connector Framework)**
 
-**Supported by:**[Proofpoint, Inc.](https://proofpoint.my.site.com/community/s/)
+**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
 The [Proofpoint Targeted Attack Protection (TAP)](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) connector provides the capability to ingest Proofpoint TAP logs and events into Microsoft Sentinel. The connector provides visibility into Message and Click events in Microsoft Sentinel to view dashboards, create custom alerts, and to improve monitoring and investigation capabilities.
 
@@ -16179,45 +16181,6 @@ Deploys the Logic App that imports Recorded Future Identity Playbook Alerts and 
 Creates Microsoft Sentinel incidents from the `RFI_PlaybookAlertResults_V2_CL` table. The rule is also available under **Microsoft Sentinel → Configuration → Analytics → Rule Templates**.
 
 [portal.azure.com](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FRecorded%20Future%20Identity%2FData%20Connectors%2Fazuredeploy-incident-creation-analytic-rule.json)
-
-**Red Canary Threat Detection (via Codeless Connector Framework)**
-
-**Supported by:**[Red Canary](https://support.redcanary.com/hc/en-us)
-
-The [Red Canary](https://www.redcanary.com/) data connector enables Red Canary to publish detections into Microsoft Sentinel using the Codeless Connector Framework push pattern and the Azure Monitor Logs Ingestion API.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `RedCanaryDetections_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires the Application Developer role or higher.
-- **Microsoft Azure**: Permission to assign the Monitoring Metrics Publisher role on the data collection rule. Typically requires Azure RBAC Owner or User Access Administrator.
-- **Red Canary**: Access to configure the Microsoft Sentinel response action in Red Canary.
-
-**Setup Instructions:**
-
-**1. Create connector resources**
-
-Deploy the CCF push resources required for Red Canary detection ingestion.
-
-Automated configuration and secure data ingestion Clicking **Deploy** creates the Log Analytics table, Data Collection Rule (DCR), Data Collection Endpoint (DCE), Microsoft Entra application, application secret, and role assignment required to ingest Red Canary detections through the Azure Monitor Logs Ingestion API.
-
-**2. Configure Red Canary**
-
-Use the generated values to configure Red Canary to send detections to this Microsoft Sentinel workspace.
-
-- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
-- **Entra App Registration Application ID**: &lt;variable value provided at install time&gt;
-- **Entra App Registration Secret**: &lt;variable value provided at install time&gt;
-- **Data Collection Endpoint URI**: &lt;variable value provided at install time&gt;
-- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
-- **Detections Stream Name**: &lt;variable value provided at install time&gt; Configure the Red Canary Microsoft Sentinel response action with the values above. Red Canary should post detection records to the Logs Ingestion API endpoint using the stream name `Custom-RedCanaryDetections`.
 
 **Red Sift Events (CCF Push)**
 
@@ -17199,6 +17162,35 @@ The [ServiceNow CMDB Data Connector](https://www.servicenow.com/) allows ingesti
 Configure your ServiceNow instance connection and select a CMDB table to collect.
 
 - Data Connectors Grid (configure in portal)
+
+**SilentPush Feeds**
+
+**Supported by:**[SilentPush](https://www.silentpush.com/contact/)
+
+Native codeless data connector for monitoring Silent Push threat actor feeds. Supports feed exports in CSV format with a header row (e.g. `*_enriched.csv`). Not compatible with headerless plaintext indicator lists (e.g. `*_ips.txt`, `*_domains.txt`) -- use the SilentPush Export Enrichment playbooks for those instead.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SLP_Feeds_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Silent Push API access**: Sign up to https://app.silentpush.com
+
+**Setup Instructions:**
+
+**Connect to Silent Push and collect feed**
+
+In order to start collecting Silent Push feeds, please provide the required information below. Note: the feed you select must export as a CSV file with a header row (e.g. an \*\_enriched.csv export) -- headerless plaintext indicator lists (e.g. \*\_ips.txt, \*\_domains.txt) are not supported here, use the SilentPush Export Enrichment playbooks for those instead.
+
+- **API key**: (YOUR-SILENT-PUSH-API-KEY)
+- **Data source**: (organization-exports)
+- **Feed file name**: (e.g. 01234567-0123-4567-8901-012345678901\_enriched.csv)
+- Enable/Disable Connection
 
 **Silverfort Admin Console**
 
@@ -18228,6 +18220,143 @@ Follow the instructions to configure the TheHive connector.
 Enable the TheHive connector.
 
 - Enable/Disable Connection
+
+**Theom**
+
+**Supported by:**[Microsoft](https://support.microsoft.com/)
+
+Theom Data Connector enables organizations to connect their Theom environment to Microsoft Sentinel. This solution enables users to receive alerts on data security risks, create and enrich incidents, check statistics and trigger SOAR playbooks in Microsoft Sentinel
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `TheomAlerts_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Setup Instructions:**
+
+1. In **Theom UI Console click on Manage -&gt; Alerts** on the side bar.
+2. Select **Sentinel** tab.
+3. Click on **Active** button to enable the configuration.
+4. Enter `Primary` key as `Authorization Token`
+5. Enter `Endpoint URL` as `https://<Workspace ID>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01`
+6. Click on `SAVE SETTINGS`
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Theom (via Codeless Connector Framework)**
+
+**Supported by:**[Microsoft](https://support.microsoft.com/)
+
+Theom Data Connector enables organizations to connect their Theom environment to Microsoft Sentinel. This solution enables users to receive alerts on data security risks, create and enrich incidents, check statistics and trigger SOAR playbooks in Microsoft Sentinel.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `TheomAlertsV2_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft.Insights/dataCollectionEndpoints**: Data Collection Endpoint is required for the modern push connector to receive data from the external security system.
+- **Microsoft.Insights/dataCollectionRules**: Data Collection Rule is required to define the schema and transformations for incoming data.
+- **Microsoft.Authorization/roleAssignments**: Role assignment is required to grant the Entra application permissions to send data to the Data Collection Rule.
+
+**Setup Instructions:**
+
+**1. Create ARM Resources and Provide the Required Permissions**
+
+This connector receives data from external security systems that push logs to Microsoft Sentinel. The external system must be configured to send raw event data to the Microsoft Sentinel Ingestion API. Clicking on **Deploy** will trigger the creation of Log Analytics tables and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
+
+[Learn more about the connector setup process](/en-us/azure/sentinel/create-push-codeless-connector)
+
+Azure Resource Deployment
+
+The deployment process will create the following resources:
+
+- Log Analytics custom table(s)
+- Data Collection Endpoint (DCE)
+- Data Collection Rule (DCR)
+- Entra ID Application Registration
+- Role assignments for data ingestion
+
+Configuration Values
+
+After deployment, copy the following values to configure your external security system:
+
+- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
+- **Entra App Registration Application ID**: &lt;variable value provided at install time&gt;
+- **Entra App Registration Secret**: &lt;variable value provided at install time&gt;
+- **Data Collection Endpoint Url**: &lt;variable value provided at install time&gt;
+- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
+- **Stream Name (TheomAlertsV2)**: &lt;variable value provided at install time&gt;
+
+> 
+> Note: Keep these values secure. You will need them to configure your external security system.
+
+**2. Configure your external system to push logs**
+
+Use the following parameters to configure your external security system to send logs to the workspace.
+
+### Configuration Steps
+
+1. Access your external security system's configuration interface.
+2. Navigate to the data forwarding, integration, or SIEM settings.
+3. Select **Azure Monitor or Microsoft Sentinel** as the destination.
+4. Select **Data Collection Endpoint** as the authentication method.
+5. Configure the required fields using the values from the previous step:
+    - **Tenant ID**: Copy from above
+    - **Application (Client) ID**: Copy from above
+    - **Client Secret**: Copy from above
+    - **Data Collection Endpoint**: Copy from above
+    - **Data Collection Rule Immutable ID**: Copy from above
+    - **Stream Name**: Copy the appropriate stream name from above
+6. Save the configuration and enable/start the forwarder.
+
+### Validation
+
+> 
+> **Note: Data will appear in the TheomAlertsV2** table in your Log Analytics workspace within a few minutes.
+
+To verify data is being received, run the following query in your Log Analytics workspace:
+
+```kusto
+TheomAlertsV2
+| where TimeGenerated > ago(1h)
+| take 10
+```
+
+### Troubleshooting
+
+If data is not appearing:
+
+- Verify the configuration values are correct
+- Check that the forwarder/integration is enabled and running
+- Review logs in your external security system for any errors
+- Ensure network connectivity from your system to Azure
+- Verify the Entra application has the correct permissions
+
+Configure the Theom Microsoft Sentinel Integration
+
+In the Theom UI console, navigate to **Manage -&gt; Alerts -&gt; Microsoft Sentinel, click Active**, and configure the integration with the values from Step 1:
+
+| Theom field | Value from connector deployment |
+| --- | --- |
+| \*\*Endpoint URL | Data Collection Endpoint Url\*\* |
+| \*\*DCR Immutable ID | Data Collection Rule Immutable ID\*\* |
+| **Stream Name** | `Custom-TheomAlertsV2_CL` |
+| \*\*Application (Client) ID | Entra App Registration Application ID\*\* |
+| \*\*Client Secret | Entra App Registration Secret\*\* |
+| \*\*Tenant ID | Entra Tenant ID\*\* |
+| **Data Scopes** | `ROOT` |
+| **Data Format** | `JSON` |
+
+Then click **SAVE SETTINGS** in Theom.
 
 **Thinkst Canary**
 

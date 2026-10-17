@@ -102,7 +102,7 @@ For more information, see [Bulk senders insight](anti-spam-bulk-senders-insight)
 
 Note
 
-The features described in this section are rolling out, and should be available in all organizations by mid-September, including security operations center (SOC) experiences.
+The features described in this section are rolling out, and should be available in all organizations by end of October, including security operations center (SOC) experiences.
 
 As previously described, the action for bulk mail that meets or exceeds the BCL threshold is defined in anti-spam policies. For example, deliver to the Junk Email folder or quarantine.
 

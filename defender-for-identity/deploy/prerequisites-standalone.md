@@ -13,9 +13,11 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: This article describes the prerequisites required for a successful Microsoft Defender for Identity deployment using a standalone sensor.
-ms.date: 2023-11-26T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: install-set-up-deploy
 ms.reviewer: rlitinsky
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1015
 locale: en-us
 document_id: 794db7e5-8fbe-b790-310c-83ad16c8b46e
 document_version_independent_id: 794db7e5-8fbe-b790-310c-83ad16c8b46e
@@ -44,7 +46,7 @@ platformId: 0d77395c-3e5d-e7a2-e5b3-1d4f6185c426
 
 # Standalone sensor prerequisites - Microsoft Defender for Identity | Microsoft Learn
 
-This article lists prerequisites for deploying a Microsoft Defender for Identity standalone sensor where they differ from the [main deployment prerequisites](../prerequisites).
+Prepare a dedicated server for a Microsoft Defender for Identity standalone sensor. Review the [main deployment prerequisites](../prerequisites), then complete the additional standalone requirements below.
 
 For more information, see [Plan capacity for Microsoft Defender for Identity deployment](../capacity-planning).
 
@@ -56,7 +58,7 @@ Defender for Identity standalone sensors do not support the collection of Event 
 
 Standalone sensors differ from Defender for Identity sensor [prerequisites](../prerequisites) as follows:
 
-- Standalone sensors require a minimum of 5 GB of disk space
+- Standalone sensors require a minimum of 5 GB of disk space.
 - Standalone sensors can also be installed on servers that are in a workgroup.
 - Standalone sensors can support monitoring multiple domain controllers, depending on the amount of network traffic to and from the domain controllers.
 - If you're working with [multiple forests](multi-forest), your standalone sensor machines must be allowed to communicate with all remote forest domain controllers using LDAP.
@@ -81,7 +83,7 @@ Standalone sensors require at least one of each of the following network adapter
     Important
 
     - [Configure port mirroring](configure-port-mirroring) for the capture adapter as the destination of the domain controller network traffic. Typically, you need to work with the networking or virtualization team to configure port mirroring.
-    - Configure a static non-routable IP address (with /32 mask) for your environment with no default sensor gateway and no DNS server addresses. For example: `10.10.0.10/32. This configuration ensures that the capture network adapter can capture the maximum amount of traffic and that the management network adapter is used to send and receive the required network traffic.
+    - Configure a static non-routable IP address (with /32 mask) for your environment with no default sensor gateway and no DNS server addresses. For example: `10.10.0.10/32`. This configuration ensures that the capture network adapter can capture the maximum amount of traffic and that the management network adapter is used to send and receive the required network traffic.
 
 Note
 
@@ -108,7 +110,8 @@ The following table lists the extra ports that the Defender for Identity standal
 
 Defender for Identity detection relies on specific [Windows Event logs](configure-windows-event-collection) that the sensor parses from your domain controllers. For the correct events to be audited and included in the Windows Event log, your domain controllers require accurate Windows Advanced Audit Policy settings.
 
-For more information, see, [Advanced audit policy check](../configure-windows-event-collection) and [Advanced security audit policies](/en-us/windows/security/threat-protection/auditing/advanced-security-auditing) in the Windows documentation.
+For more information, see [Advanced audit policy check](../configure-windows-event-collection) and [Advanced security audit policies](/en-us/windows/security/threat-protection/auditing/advanced-security-auditing) in the Windows documentation.
 
 - To make sure that [Windows Event 8004 is audited](../configure-windows-event-collection#configure-ntlm-auditing) as needed by the service, review your [NTLM audit settings](/en-us/archive/blogs/askds/ntlm-blocking-and-you-application-analysis-and-auditing-methodologies-in-windows-7).
-- For sensors running on AD FS / AD CS servers, configure the auditing level to **Verbose**. For more information, see [Event auditing information for AD FS](/en-us/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#event-auditing-information-for-ad-fs-on-windows-server-2016) and [Event auditing information for AD CS](/en-us/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging).
+- For AD FS servers, configure the auditing level to **Verbose**. See [Event auditing information for AD FS](/en-us/windows-server/identity/ad-fs/troubleshooting/ad-fs-tshoot-logging#event-auditing-information-for-ad-fs-on-windows-server-2016).
+- For AD CS servers, follow [Configure auditing on an AD CS server](configure-windows-event-collection#configure-auditing-on-an-ad-cs-server).

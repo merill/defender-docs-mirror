@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to test whether the server where you're installing your Microsoft Defender for Identity sensor can access the Defender for Identity cloud service.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
@@ -36,19 +36,21 @@ source_path: defender-for-identity/deploy/test-connectivity.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/486161dc-fa28-4625-9b1c-1a21d690bc8d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5dd28c86-729c-4723-ab5a-57e26fcec2a8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
 platformId: f28aac24-5233-b0d8-9c4f-2306cfec5c58
 ---
 
 # Test connectivity for Microsoft Defender for Identity sensor servers - Microsoft Defender for Identity | Microsoft Learn
 
-The Defender for Identity sensor requires network connectivity to the Defender for Identity service. Depending on which version of the sensor you deployed, see [Sensor v2.x prerequisites](prerequisites-sensor-version-2) or [Sensor v3.x prerequisites](prerequisites-sensor-version-2).
+The Defender for Identity sensor requires network connectivity to the Defender for Identity service. Depending on which version of the sensor you deployed, see [Sensor v2.x prerequisites](prerequisites-sensor-version-2) or [Sensor v3.x prerequisites](deploy-sensor-v3).
 
-After preparing the server that you're going to use for your Microsoft Defender for Identity sensor we recommend that you test connectivity to make sure that your server can access the Defender for Identity cloud service. Use the browser connectivity test or PowerShell connectivity test procedures in this article even after deploying if your sensor server is experiencing connectivity issues.
+Test connectivity before deployment to verify that the sensor server can reach the Defender for Identity cloud service. Use the browser connectivity test or PowerShell connectivity test. You can also use these tests to troubleshoot connectivity after deployment.
 
-For more information, see [Required ports](../prerequisites#ports).
+For more information, see [v2.x required ports](prerequisites-sensor-version-2#required-ports).
 
 Note
 
@@ -56,7 +58,7 @@ To get the name and other important details about your Defender for Identity wor
 
 ## Test connectivity using a browser
 
-Perform the following steps to test sensor connectivity from a browser:
+Use this procedure to test v2.x sensor connectivity from a browser:
 
 1. Open a browser. If you're using a proxy, make sure that your browser uses the same proxy settings being used by the sensor.
 
@@ -67,7 +69,7 @@ Perform the following steps to test sensor connectivity from a browser:
 
     You must specify `HTTPS`, not `HTTP`, to properly test connectivity.
 
-    **Result**: You should get the latest sensor version number, which indicates you were successfully able to route to the Defender for Identity HTTPS endpoint. This is the desired result.
+    **Expected result**: The response shows the latest sensor version number, confirming that the server can reach the Defender for Identity HTTPS endpoint.
 
     For some older workspaces, the message returned could be *Error 503 The service is unavailable*. This is a temporary state that still indicates success. For example:
 
@@ -82,9 +84,11 @@ Perform the following steps to test sensor connectivity from a browser:
 
 ## Test service connectivity using PowerShell
 
+These commands test v2.x connectivity to the workspace sensor API.
+
 **Prerequisites**: Before running Defender for Identity PowerShell commands, make sure that you downloaded the [Defender for Identity PowerShell module](https://www.powershellgallery.com/packages/DefenderForIdentity/).
 
-Sign into your server and run one of the following commands:
+Sign in to your server and run one of the following commands:
 
 - To use the current server's settings, run:
 
@@ -103,3 +107,7 @@ Sign into your server and run one of the following commands:
     - `https://myproxy.contoso.com:8080` is an example of your proxy URL
 
 For more information, see the [MDI PowerShell documentation](/en-us/powershell/module/defenderforidentity/test-mdisensorapiconnection).
+
+## Check v3.x connectivity requirements
+
+The v3.x sensor uses Microsoft Defender for Endpoint service endpoints. Follow the [v3.x network requirements](deploy-sensor-v3#network-requirements) for the applicable Defender for Endpoint connectivity guidance.

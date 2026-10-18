@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Configure Microsoft Defender for Identity sensor settings to start collecting data, validate your deployment, and prepare additional integrations for full functionality.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ai-usage: ai-assisted
@@ -44,11 +44,11 @@ platformId: 13afe88e-daf3-aed8-5946-c16b2539ff91
 
 # Configure sensor settings in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
 
-In this article, you'll learn how to correctly configure Microsoft Defender for Identity sensor settings to start seeing data. You'll need to do additional configuration and integration to take advantage of Defender for Identity's full capabilities.
+Configure Microsoft Defender for Identity v2.x sensor settings to collect data and validate the installation. For v3.x sensors, follow [Configure settings after activation](deploy-sensor-v3#after-you-activate). To check portal data for either version, see [Validate sensor deployment](test-sensor).
 
 ## View and configure sensor settings
 
-After the Defender for Identity sensor is installed, do the following to view and configure Defender for Identity sensor settings:
+After installing a v2.x sensor, follow these steps to view and configure its settings:
 
 1. In [Microsoft Defender XDR](https://security.microsoft.com), go to **Settings** &gt; **Identities** &gt; **Sensors**. For example:
 
@@ -94,7 +94,7 @@ For more information, see [Sensor details](../sensor-settings#sensor-details).
 
 ## Validate installations
 
-Use the following procedures to validate your Defender for Identity sensor installation.
+Use the following procedures to validate your v2.x sensor installation.
 
 Note
 

@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about how Microsoft Defender for Identity uses Directory Service accounts (DSAs).
-ms.date: 2026-09-29T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: article
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1015
@@ -46,7 +46,7 @@ platformId: 114c57b4-cbb8-b80d-5121-9d48f99bc424
 
 # Directory Service Accounts for Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
 
-Defender for Identity uses Directory Service Accounts (DSAs) to read data from Active Directory, such as querying objects, tracking changes, and resolving entities. This is separate from the [action account](manage-action-accounts), which performs remediation actions like disabling users or resetting passwords.
+Defender for Identity v2.x sensors use Directory Service Accounts (DSAs) to read data from Active Directory, such as querying objects, tracking changes, and resolving entities. This is separate from the [action account](manage-action-accounts), which performs remediation actions like disabling users or resetting passwords.
 
 Note
 
@@ -56,21 +56,21 @@ Note
 
 Regardless of the Directory Service Accounts configured, the sensor service operates under the LocalSystem identity, and the updater service operates under the LocalSystem identity.
 
-While a DSA is optional in some scenarios, we recommend that you configure a DSA for Defender for Identity for full security coverage.
+For v2.x sensors, a DSA is optional in some scenarios, but we recommend configuring one for full security coverage.
 
-For example, when you have a DSA configured, the DSA is used to connect to the domain controller at startup. A DSA can also be used to query the domain controller for data on entities seen in network traffic, monitored events, and monitored ETW activities
+For example, when you have a DSA configured, the DSA is used to connect to the domain controller at startup. A DSA can also be used to query the domain controller for data on entities seen in network traffic, monitored events, and monitored ETW activities.
 
 For sensor v2.x, a DSA is required for the following features and functionality:
 
 - When working with a sensor installed on an [AD FS, AD CS, or Microsoft Entra Connect server](active-directory-federation-services).
-- Requesting member lists for local administrator groups from devices seen in network traffic, events and ETW activities via a [SAM-R call](remote-calls-sam) made to the device.
+- Requesting member lists for local administrator groups from devices seen in network traffic, events, and ETW activities via a [SAM-R call](remote-calls-sam) made to the device.
 - Accessing the *DeletedObjects* container to collect information about deleted users and computers.
 - Domain and trust mapping, which occurs at sensor startup, and again every 10 minutes.
 - Querying another domain via LDAP for details, when detecting activities from entities in those other domains.
 
 When you're using a single DSA, the DSA must have *Read* permissions to all the domains in the forests. In an untrusted, multi-forest environment, a DSA account is required for each forest.
 
-One sensor in each domain is defined as the *domain synchronizer*, and is responsible for tracking changes to the entities in the domain. For examples, changes might include objects created, entity attributes tracked by Defender for Identity, and so on.
+One sensor in each domain acts as the *domain synchronizer* and tracks changes to domain entities, such as new objects and changes to entity attributes.
 
 Note
 
@@ -78,7 +78,7 @@ By default, Defender for Identity supports up to 30 credentials. To add more cre
 
 ## Supported DSA account options
 
-Defender for Identity supports the following DSA options:
+For v2.x sensors, Defender for Identity supports the following DSA options:
 
 | Option | Description | Configuration |
 | --- | --- | --- |
@@ -92,7 +92,7 @@ While the local service account is used with the sensor by default, and a DSA is
 
 ## DSA entry usage
 
-This section describes how DSA entries are used, and how the sensor selects a DSA entry in any given scenario. Sensor attempts differ, depending on the type of DSA entry:
+A v2.x sensor selects a DSA entry based on the target domain and configured credentials. Authentication attempts differ by DSA type:
 
 | Type | Description |
 | --- | --- |
@@ -108,7 +108,7 @@ The following logic is applied:
 
 ### Sample logic with a DSA
 
-This section provides an example of how the sensor tries the DSA entires when you have multiple accounts, including both a gMSA account and a regular account.
+The following example shows how the sensor tries DSA entries when you configure both a gMSA and a regular account.
 
 The following logic is applied:
 

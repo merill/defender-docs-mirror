@@ -13,10 +13,11 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Describes how you can troubleshoot issues in Microsoft Defender for Identity.
-ms.date: 2026-09-23T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: troubleshooting
 ms.reviewer: rlitinsky
 ms.custom:
+- msecd-doc-authoring-1015
 - sfi-image-nochange
 - sfi-ropc-nochange
 locale: en-us
@@ -37,11 +38,11 @@ source_path: defender-for-identity/troubleshooting-known-issues.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: 6c06c105-31b2-b7f7-48cf-4ddaeb0100f3
 ---
 
@@ -411,7 +412,7 @@ There are two possible workarounds for this issue:
     ```cmd
     psexec -s -i "C:\MDI\Azure ATP Sensor Setup.exe"
     ```
-2. Install the sensor with a Scheduled Task configured to run as **LocalSystem**. The command-line syntax to use is mentioned in [Defender for Identity sensor silent installation](install-sensor#defender-for-identity-sensor-silent-installation).
+2. Install the sensor with a Scheduled Task configured to run as **LocalSystem**. The command-line syntax to use is mentioned in [Defender for Identity sensor silent installation](deploy/install-sensor#perform-a-defender-for-identity-silent-installation).
 
 ## Sensor installation fails due to certificate management client
 
@@ -447,7 +448,7 @@ Ensure that the sensor can browse to \*.atp.azure.com directly or through the co
 
 `"Azure ATP sensor Setup.exe" [ProxyUrl="http://proxy.internal.com"] [ProxyUserName="domain\proxyuser"] [ProxyUserPassword="ProxyPassword"]`
 
-For more information, see [Run a silent installation with a proxy configuration](install-sensor#run-a-silent-installation-with-a-proxy-configuration) and [Install the Microsoft Defender for Identity sensor](deploy/install-sensor).
+For more information, see [Run a silent installation with a proxy configuration](deploy/install-sensor#command-for-running-a-silent-installation-with-a-proxy-configuration) and [Install the Microsoft Defender for Identity sensor](deploy/install-sensor).
 
 Important
 

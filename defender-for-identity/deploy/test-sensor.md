@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Validate your Microsoft Defender for Identity sensor deployment by checking the Identity Security dashboard, entity pages, advanced hunting, and alert functionality.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1016
@@ -36,17 +36,15 @@ source_path: defender-for-identity/deploy/test-sensor.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 platformId: 958d0c23-8abd-cb0d-deb1-c937e70deb0e
 ---
 
 # Validate sensor deployment on domain controllers - Microsoft Defender for Identity | Microsoft Learn
 
-Use the following procedures to check that your sensors are working.
+Validate Microsoft Defender for Identity sensor deployment on domain controllers by checking portal data, advanced hunting results, and test alerts.
 
 Note
 
@@ -54,9 +52,13 @@ The first time you activate the sensor on your domain controller, it might take 
 
 ## Check the Identity Security dashboard
 
+Review the dashboard to check identity data from your deployment:
+
 1. In the Defender portal, select **Identities** &gt; **Dashboard**, and review the details shown. Check for expected results from your environment. For more information, see [Identity Security dashboard](../dashboard).
 
 ## Confirm entity data in the Defender portal
+
+Check device, user, and group data collected from your environment:
 
 1. In the Defender portal, select **Assets &gt; Devices**, and select the machine for your new sensor. Confirm that Defender for Identity events appear on the device timeline.
 2. Select **Assets &gt; Users** and check for users from a newly onboarded domain. You can also use the global search to find specific users. Confirm that user details pages include **Overview**, **Observed in organization**, and **Timeline** data.
@@ -68,7 +70,7 @@ For more information, see [Investigate assets](../investigate-assets).
 
 ## Verify data in advanced hunting tables
 
-Use advanced hunting queries to confirm that sensor data is written to the expected tables.
+Use advanced hunting queries to confirm that sensor data appears in the expected tables. Run each query separately. Replace `DC_FQDN` and `domain` with your domain controller's fully qualified domain name and domain.
 
 1. In the Defender portal's **Advanced hunting** page, run the following queries to verify that data appears in the expected tables:
 
@@ -110,7 +112,7 @@ We recommend simulating risky behavior in a test environment to trigger supporte
     ```
 2. In Microsoft Secure Score, select **Recommended Actions** to check for a new **Resolve unsecure domain configurations** recommendation. You might want to filter recommendations by the **Defender for Identity** product.
 
-For more information, see [Microsoft Defender for Identity's security posture assessments](../security-assessment)
+For more information, see [Microsoft Defender for Identity's security posture assessments](../security-assessment).
 
 ## Test alert functionality
 

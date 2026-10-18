@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about the latest Microsoft Defender for Identity features, sensor updates, security alerts, enhancements, and preview capabilities.
-ms.date: 2026-10-06T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: overview
 ms.reviewer: AbbyMSFT
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
@@ -35,12 +35,12 @@ item_type: Content
 source_path: defender-for-identity/whats-new.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 40ff3b63-e58a-65f9-679b-e6b024715b88
 ---
 
@@ -61,6 +61,16 @@ For more information, see also:
 For updates about versions and features released six months ago or earlier, see the [What's new archive for Microsoft Defender for Identity](whats-new-archive).
 
 ## October 2026
+
+### Automatic sensor v3.x activation and Windows auditing for existing customers
+
+This rollout applies only to organizations that are licensed for Defender for Identity and have an active workspace. Eligible organizations included in the rollout see a banner on the **Sensor management** tab of the **On-premises** settings page for 30 days.
+
+After the 30-day notice period, **Automatic sensor v3.x activation** and **Automatic Windows auditing configuration** are enabled by default through a very gradual rollout, including settings currently set to **Off**. To keep your current settings, select **Opt out** in the banner during the notice period.
+
+While the banner appears, select **Go to Advanced features** to enable the settings yourself, or **Opt out** to prevent automatic enablement.
+
+For more information, see [Activate the Defender for Identity sensor v3.x](deploy/activate-sensor#control-automatic-activation) and [Configure Windows event auditing](deploy/configure-windows-event-collection#control-automatic-windows-auditing).
 
 ### New Defender for Identity security alerts
 
@@ -106,15 +116,15 @@ Automatic sensor v3.x activation and automatic Windows auditing apply only to or
 
 The rollout differs for new Microsoft Defender for Endpoint customers and existing Defender for Identity customers:
 
-**New Microsoft Defender for Endpoint customers:** If your organization is licensed for Defender for Identity, its first device was onboarded to Defender for Endpoint on or after September 13, 2026, and it doesn't already have a Defender for Identity workspace, Defender for Identity automatically creates a workspace when it identifies an eligible identity-role server. It also enables automatic sensor v3.x activation and Windows auditing by default.
+**New Microsoft Defender for Endpoint customers:** This applies to organizations licensed for Defender for Identity whose first device was onboarded to Defender for Endpoint on or after September 13, 2026. Automatic sensor v3.x activation and Windows auditing are enabled by default when Defender for Identity identifies an eligible identity-role server that's onboarded to Defender for Endpoint. A Defender for Identity workspace is also created automatically.
 
 This flow activates the Defender for Identity sensor capability on eligible servers that are already onboarded to Defender for Endpoint. It doesn't add a separate Defender for Identity installation, activate the sensor on other Defender for Endpoint servers, or affect servers that already have a Defender for Identity sensor.
 
-**Existing Defender for Identity customers:** The change becomes available gradually. The Defender portal displays a notice before it enables the settings automatically. After the notice period ends, the portal enables the settings.
+**Existing Defender for Identity customers:** This rollout applies only to organizations that are licensed for Defender for Identity and have an active workspace. Eligible organizations included in the rollout see a banner on the **Sensor management** tab of the **On-premises** settings page for 30 days.
 
-While the notice appears, select **Go to Advanced features** to enable the settings or **Opt out** to prevent automatic enablement.
+After the 30-day notice period, **Automatic sensor v3.x activation** and **Automatic Windows auditing configuration** are enabled by default through a very gradual rollout, including settings currently set to **Off**. To keep your current settings, select **Opt out** in the banner during the notice period.
 
-The notice appears on the **Sensor management** tab of the **On-premises** settings page.
+While the banner appears, select **Go to Advanced features** to enable the settings yourself, or **Opt out** to prevent automatic enablement.
 
 For more information, see [Activate the Defender for Identity sensor v3.x](deploy/activate-sensor#control-automatic-activation) and [Configure Windows event auditing](deploy/configure-windows-event-collection#control-automatic-windows-auditing).
 
@@ -154,7 +164,7 @@ Automatic Windows event auditing now configures auditing for AD FS, AD CS, and M
 | --- | --- |
 | 2.255.19295.47272 | This sensor update adds support for a new Event Tracing for Windows (ETW) provider and includes other improvements. |
 
-### Sensor v2.x to v3.x migration is now generally available
+### General availability of sensor v2.x to v3.x migration
 
 Migration of Defender for Identity sensors from v2.x to v3.x is now generally available. For more information, see [Migrate to Defender for Identity sensor v3.x](deploy/migrate-to-sensor-v3).
 
@@ -170,7 +180,7 @@ When a server is marked **Not ready for migration** on the **Sensors** page, you
 
 The Password protection page now includes password risks from SaaS apps connected through Microsoft Defender for Cloud Apps, in addition to Active Directory, Microsoft Entra ID, and Okta. SaaS apps that support SaaS Security Posture Management (SSPM), such as Salesforce and ServiceNow, appear on the Password Hygiene and Password Policies tabs. Each SaaS app requires a Defender for Cloud Apps app connector. For more information, see [Investigate identity password protection](password-protection).
 
-### The **Domain investigation page** is now generally available
+### General availability of the Domain investigation page
 
 The **Domain investigation** page allows you to investigate an Active Directory domain. It shows Active Directory domain security, including domain properties, deployment health, identity summary, service account breakdown, sensitive entities, active recommendations, group policies, and trust relationships. For more information, see [Investigate a domain](investigate-domain).
 
@@ -242,7 +252,7 @@ These new alerts were added to the Defender for Identity security alerts:
 
 ### Known limitation: Migration of domain controllers with Windows Server 2025 from sensor v2.x to sensor v3.x is not supported
 
-Migrating domain controllers running Windows Server 2025 to sensor v3.x isn't currently supported. Continue using the v2.x sensor on Windows Server 2025 domain controllers until support for migration to v3.x is available.
+When announced in May 2026, migration of Windows Server 2025 domain controllers from sensor v2.x to sensor v3.x wasn't supported. This limitation was resolved in July 2026. See Windows Server 2025 migration support and the [current migration requirements](deploy/migrate-to-sensor-v3#prerequisites).
 
 ### Defender for Identity sensor updates
 

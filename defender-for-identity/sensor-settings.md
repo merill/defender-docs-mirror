@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to view, manage, and update Microsoft Defender for Identity sensors in the Microsoft Defender portal, including sensor health, migration state, and delayed updates.
-ms.date: 2026-09-09T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
@@ -251,11 +251,11 @@ The following example runs the sensor installer silently from the command line w
 "Azure ATP sensor Setup.exe" /quiet NetFrameworkCommandLineArguments="/q"
 ```
 
-## Remove RPC auditing from a device
+## Remove legacy RPC auditing tags
 
 From sensor version 3.0.8, RPC auditing is enabled automatically when the sensor is upgraded and no longer requires a tag.
 
-If you configured RPC auditing for an earlier v3.x sensor using the **Unified Sensor RPC Audit** tag, you can remove it by deleting the asset rule or modifying the rule conditions so the device no longer matches.
+If you configured RPC auditing for an earlier v3.x sensor using the **Unified Sensor RPC Audit** tag, you can remove the legacy tag by deleting the asset rule or modifying the rule conditions so the device no longer matches. Removing the tag doesn't disable automatic RPC auditing on v3.x sensors that no longer require it.
 
 To manage asset rules, in the [Microsoft Defender portal](https://security.microsoft.com), go to **System &gt; Settings &gt; Microsoft Defender XDR &gt; Asset Rule Management**.
 

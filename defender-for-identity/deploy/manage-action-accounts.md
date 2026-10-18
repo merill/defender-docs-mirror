@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to manage action accounts to work with Microsoft Defender for Identity. This step is optional.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -45,11 +45,11 @@ platformId: 2eb17f4c-78b1-35e8-dbb5-bc334d6c412b
 
 # Manage action accounts in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
 
-Defender for Identity allows you to take [remediation actions](../remediation-actions) targeting on-premises Active Directory accounts in the event that an identity is compromised. To take these actions, Microsoft Defender for Identity needs to have the required permissions to do so. This action account configuration is separate from the [Directory Service Account](directory-service-accounts), which is for reading AD data.
+Use an action account with the required permissions to take [remediation actions](../remediation-actions) on compromised on-premises Active Directory accounts. Action accounts are separate from [Directory Service Accounts](directory-service-accounts), which read Active Directory data.
 
 Important
 
-This configuration applies to the Defender for Identity sensor v2.x on domain controllers only. Remediation actions aren't performed by sensors on AD FS, AD CS, or Microsoft Entra Connect servers that aren't domain controllers. The sensor v3.x always uses the domain controller's local system account for remediation actions. If all your sensors are v3.x, no action account configuration is needed.
+This configuration applies to the Defender for Identity sensor v2.x on domain controllers only. Remediation actions aren't performed by sensors on AD FS, AD CS, or Microsoft Entra Connect servers that aren't domain controllers. The sensor v3.x always uses the domain controller's local system account for remediation actions. If your workspace uses v3.x sensors, verify that **Automatically use the sensor's local system account** is selected. If the setting is already selected, no additional action-account configuration is needed.
 
 By default, the Microsoft Defender for Identity sensor impersonates the `LocalSystem` account of the domain controller and performs the actions, including [attack disrupting scenarios from Microsoft Defender](/en-us/microsoft-365/security/defender/automatic-attack-disruption).
 

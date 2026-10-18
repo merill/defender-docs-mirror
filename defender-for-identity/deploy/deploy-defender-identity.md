@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to deploy Microsoft Defender for Identity sensors on domain controllers and identity servers. Choose the right sensor version for your environment.
-ms.date: 2026-09-10T00:00:00.0000000Z
+ms.date: 2026-10-18T00:00:00.0000000Z
 ms.topic: overview
 ms.custom: msecd-doc-authoring-1015
 ms.reviewer: rlitinsky
@@ -52,7 +52,7 @@ Install Defender for Identity sensors on all domain controllers, including read-
 
 ## Select your deployment method
 
-The sensor version you deploy depends on the server role and operating system. Use the following table to select the appropriate deployment for each server in your environment.
+The sensor version you deploy depends on the server role and operating system. Use the following table to select the recommended deployment. For supported v2.x platforms, see [v2.x server requirements](prerequisites-sensor-version-2#server-requirements). Review the [migration prerequisites](migrate-to-sensor-v3#prerequisites) separately before upgrading an existing v2.x sensor.
 
 For eligible domain controllers running Windows Server 2019 or later, sensor v3.x supports onboarding with or without Microsoft Defender for Endpoint deployment. Other eligible identity-role servers require Defender for Endpoint onboarding.
 
@@ -114,7 +114,7 @@ Choose the sensor deployment flow that matches the server configuration:
 
 - If the server is onboarded to Microsoft Defender for Endpoint, [activate sensor v3.x from the Sensor management tab](activate-sensor#activate-the-defender-for-identity-sensor).
 - If an eligible domain controller isn't onboarded to Defender for Endpoint, [download and run the sensor v3.x onboarding package](activate-sensor#onboard-the-domain-controller-preview).
-- If the server already runs sensor v2.x, [migrate the sensor to v3.x](migrate-to-sensor-v3).
+- If an eligible domain controller already runs sensor v2.x, [migrate the sensor to v3.x](migrate-to-sensor-v3). In-place migration isn't yet available for servers that aren't domain controllers.
 - If the server supports sensor v2.x only, [install sensor v2.x](install-sensor).
 
 ## Deployment steps for sensor v3.x

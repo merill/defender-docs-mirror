@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Learn how the Android Mobile Threat Defense (MTD) Role gives Microsoft Defender for Endpoint anti-tampering and reliability protections on managed Android devices.
+description: Learn how the Android Mobile Threat Defense Role gives Microsoft Defender for Endpoint anti-tampering and reliability protections on managed Android devices.
 ms.service: defender-endpoint
 ms.author: painbar
 author: paulinbar
@@ -53,7 +53,7 @@ Organizations that deploy Microsoft Defender for Endpoint on managed Android dev
 
 Note
 
-The Android MTD Role is an Android Enterprise platform role. It's different from the Microsoft Defender for Endpoint mobile threat defense capability. For an overview of the Defender for Endpoint mobile solution, see [Microsoft Defender for Endpoint mobile threat defense on Android and iOS](mtd).
+The Android MTD Role is an Android Enterprise platform role. It's different from the Microsoft Defender for Endpoint mobile threat defense capability. For more information, see [Microsoft Defender for Endpoint mobile threat defense on Android and iOS](mtd).
 
 ## Capabilities provided by the MTD Role
 
@@ -70,11 +70,11 @@ Before an administrator assigns the Android MTD Role to Defender for Endpoint, m
 
 - Defender for Endpoint is deployed to managed Android devices.
 - Microsoft Intune manages the target Android devices.
-- The Defender for Endpoint and Intune integration (the mobile threat defense connector) is configured.
+- The Defender for Endpoint and Intune integration is configured. This element is the mobile threat defense connector.
 - Devices are enrolled through the [Android Management API](https://developers.google.com/android/management) with a supported Android Enterprise enrollment scenario.
 - Defender for Endpoint is assigned to devices as a required application.
 
-For the enrollment scenarios that Defender for Endpoint supports on Android, see [Supported Android enrollment scenarios](mtd#supported-android-enrollment-scenarios).
+For enrollment scenarios, see [Supported Android enrollment scenarios](mtd#supported-android-enrollment-scenarios).
 
 ## Supported enrollment scenarios
 
@@ -104,11 +104,11 @@ These protections don't affect users' day-to-day device usage.
 
 ## Deploy the Android MTD Role
 
-The Android MTD Role is assigned through your device management solution. In Microsoft Intune, you grant the role to Defender for Endpoint through the Defender for Endpoint mobile threat defense connector, and then target the configuration to supported Android Enterprise device groups. After the policy is deployed, the role is assigned automatically during device enrollment or through policy synchronization on existing managed devices.
+The Android MTD Role is assigned through your device management solution. In Microsoft Intune, you grant the role to Defender for Endpoint through the Defender for Endpoint mobile threat defense connector. Then target the configuration to supported Android Enterprise device groups. After the policy is deployed, the role is assigned automatically during device enrollment or through policy synchronization on existing managed devices.
 
 For an overview of the role, see [Mobile Threat Defense role for Android](/en-us/intune/device-security/mobile-threat-defense/overview#mobile-threat-defense-role-for-android). For the connector toggle options that grant the role, see [Mobile Threat Defense role](/en-us/intune/device-security/mobile-threat-defense/enable-connector#mobile-threat-defense-role) in the Microsoft Intune documentation.
 
-For the Defender for Endpoint connector, you can also turn on a separate toggle that automatically launches Defender during setup on COBO and COPE devices. This toggle requires that you grant the MTD Role permissions to Defender for Endpoint.
+For the Defender for Endpoint connector, you can also turn on a separate switch that automatically launches Defender during setup on COBO and COPE devices. This switch requires that you grant the MTD Role permissions to Defender for Endpoint.
 
 ### Assign the role to existing deployments
 
@@ -116,7 +116,7 @@ You can assign the Android MTD Role to devices that are already enrolled and pro
 
 ## Verify MTD Role protections
 
-After the MTD Role is assigned to Defender for Endpoint, verify that the protections are active on a managed Android device:
+After you assign the MTD Role to Defender for Endpoint, verify that the protections are active on a managed Android device:
 
 1. On the device, go to **Settings** &gt; **Apps** &gt; **Microsoft Defender**.
 2. Confirm that Microsoft Defender is exempt from Android battery optimization restrictions. On Android 14 and later, the battery optimization options in the app settings are unavailable and set to **Unrestricted**.

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: User experiences in Microsoft Defender for Endpoint on Android - Microsoft Defender for Endpoint | Microsoft Learn
+title: User Experiences in Microsoft Defender for Endpoint on Android - Microsoft Defender for Endpoint | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-endpoint/android-new-ux
 breadcrumb_path: /defender-endpoint/breadcrumb/toc.json
 feedback_system: Standard
@@ -8,7 +8,7 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Learn about the newest updates to Microsoft Defender for Endpoint on Android.
+description: Microsoft Defender for Endpoint on Android gets a refreshed interface with new dashboards, feature tiles, and alert cards. Learn how these updates help your users.
 ms.service: defender-endpoint
 ms.author: painbar
 author: paulinbar
@@ -48,7 +48,7 @@ spProducts:
 platformId: 0eb65400-0bb4-6c16-ea52-d70c3773feb7
 ---
 
-# User experiences in Microsoft Defender for Endpoint on Android - Microsoft Defender for Endpoint | Microsoft Learn
+# User Experiences in Microsoft Defender for Endpoint on Android - Microsoft Defender for Endpoint | Microsoft Learn
 
 As part of our ongoing commitment to deliver exceptional user experiences, we're excited to announce a series of upcoming changes to the user interface and overall experience of our **Microsoft Defender for Endpoint** mobile app.
 
@@ -56,7 +56,7 @@ The new enhancements are designed to improve usability, streamline navigation, a
 
 ## November 2025
 
-In this release, we've made it easier for users to share feedback, including logs, to the Microsoft Defender team. The changes include:
+In this release, it's easier for users to share feedback, including logs, with the Microsoft Defender team. The changes include:
 
 - A new bottom pane that makes it easier for users to share feedback and logs
 - A new **Send logs to Microsoft** option that enables users to quickly send logs to Microsoft
@@ -65,13 +65,15 @@ In this release, we've made it easier for users to share feedback, including log
 
 When users select **Help and Feedback** in the left navigation pane (Screen 1, accessible by tapping the profile picture), a new bottom feedback pane opens (Screen 2). This pane has been updated to improve readability and make it easier for users to share feedback.
 
-The **Send feedback** option in the updated bottom pane enables users to share positive or negative feedback, along with Microsoft Defender and authenticator logs, which will be accessible to the Microsoft Defender team. When a user selects **Send feedback**, they are redirected to a new screen (Screen 3) where they can include logs along with their feedback submission.
+The **Send feedback** option in the updated bottom pane enables users to share positive or negative feedback, along with Microsoft Defender and authenticator logs. These resources are accessible to the Microsoft Defender team. When a user selects **Send feedback**, they are redirected to a new screen (Screen 3) where they can include logs along with their feedback submission.
 
 ![Screenshots showing how to send feedback and logs from the Microsoft Defender mobile app options menu.](media/android-new-ux/bottom-experience-android.png)
 
 ### One-click *Send Logs* experience
 
-A new **Send logs to Microsoft** option has been added directly to the left navigation pane. This enables users to quickly send logs to Microsoft. It redirects them to the logs submission page (Screen 2). This option is particularly useful when a support case has been created and a support engineer is assigned, providing a convenient way for users to submit logs. Because this option doesn't allow users to include written feedback, the Defender team will not have access to the logs unless an incident ID is explicitly shared via mail or support request. This option collects logs from both the Defender and Authenticator apps.
+A new **Send logs to Microsoft** option has been added directly to the left navigation pane. This enables users to quickly send logs to Microsoft. It redirects them to the logs submission page (Screen 2).
+
+This option is particularly useful when a support case has been created and a support engineer is assigned, providing a convenient way for users to submit logs. Because this option doesn't allow users to include written feedback, the Defender team doesn't have access to the logs unless an incident ID is explicitly shared by email or through a support request. This option collects logs from both the Defender and Authenticator apps.
 
 ![Screenshots showing how to send logs directly to Microsoft from the Microsoft Defender mobile app options menu.](media/android-new-ux/one-click-feedback-android.png)
 
@@ -91,15 +93,15 @@ The primary changes are as follows:
 
 ### Permission consolidation screen changes
 
-![Permission consolidation screen after redesign in light mode.](media/android-new-ux/permissions-consolidation-light.png)
+![Screenshot showing the permission consolidation screen after redesign in light mode.](media/android-new-ux/permissions-consolidation-light.png)
 
 #### New bottom sheet for permission information
 
-![Permissions information bottom sheet.](media/android-new-ux/permissions-information.png)
+![Screenshot showing permissions information bottom sheet.](media/android-new-ux/permissions-information.png)
 
 ### Optional VPN consent screen
 
-![Optional VPN consent screen in light mode.](media/android-new-ux/vpn-consent-screen-light.png)
+![Screenshot showing optional VPN consent screen in light mode.](media/android-new-ux/vpn-consent-screen-light.png)
 
 ### Intermediate screens that come up during the permission flow
 
@@ -107,11 +109,11 @@ These are the following screens that have been shifted from old Enterprise scree
 
 #### Network Protection consent screen
 
-![NP consent screen in light mode.](media/android-new-ux/np-consent-screen-light.png)
+![Screenshot showing NP consent screen in light mode.](media/android-new-ux/np-consent-screen-light.png)
 
 #### Microsoft Defender Vulnerability Management consent screen
 
-![Discover vulnerable apps consent screen in light mode.](media/android-new-ux/discover-vulnerable-apps-consent-screen-light.png)
+![Screenshot showing discover vulnerable apps consent screen in light mode.](media/android-new-ux/discover-vulnerable-apps-consent-screen-light.png)
 
 ## May 2025
 
@@ -120,7 +122,7 @@ These are the following screens that have been shifted from old Enterprise scree
 Starting May 19, 2025, security operations center (SOC) analysts can now view the following as events instead of alerts:
 
 - Connecting or disconnecting to open wireless networks
-- Download/installation/removal of self-signed certificates
+- Download, installation, and removal of self-signed certificates
 
 These events can be viewed in the Timeline tab of a device page. For more information, see [Network protection](android-configure#configure-network-protection).
 
@@ -139,7 +141,7 @@ For more information, see [Deploy Defender for Endpoint prerelease builds on And
 
 ## March 2025
 
-We're pleased to introduce the Device Protection feature card for our enterprise users which includes **App Security**, **Web Protection**, **Security History** features are designed to be more user-friendly and accessible.
+We're pleased to introduce the Device Protection feature card for our enterprise users which includes **App Security**, **Web Protection**, and **Security History** features are designed to be more user-friendly and accessible.
 
 The updated **feature cards** also include recommendation cards, which prominently display any active alerts, ensuring you stay informed. Features are now displayed as tiles on L2 screens to improve user experience and navigation efficiency.
 
@@ -164,7 +166,7 @@ The **App Security** and **Web Protection** features are now consolidated under 
 
 ### Detailed feature experience
 
-We updated all the subordinating screens associated with the feature
+All the subordinating screens associated with the feature are updated.
 
 1. **Web Protection**:
 
@@ -198,8 +200,8 @@ Defender for Endpoint is ending support for Android 8, 8.1, and 9 on April 30, 2
 
 How does this change affect your organization's users?
 
-- **New Users**: The application will no longer be available for new installations on devices running below Android 10. When users with Android versions below 10 attempt to download the Microsoft Defender app, Google Play store will notify them that the device is incompatible.
-- **Existing users**: The Microsoft Defender app continues to function for existing users on Android 8, 8.1, and 9 versions, but they don't receive updates from the Google Play store as they don't meet the minimum SDK version requirements. Therefore, any new updates on the app aren't available to users running an Android version prior to version 10.
+- **New Users**: The application is no longer available for new installations on devices running below Android 10. When users with Android versions below 10 attempt to download the Microsoft Defender app, the Google Play Store notifies them that the device is incompatible.
+- **Existing users**: The Microsoft Defender app continues to function for existing users on Android 8, 8.1, and 9 versions, but they don't receive updates from the Google Play store because they don't meet the minimum SDK version requirements. Any new updates on the app aren't available to users running an Android version prior to version 10.
 
 After discontinuing support for deprecated versions, Microsoft no longer addresses bugs or provides maintenance for unsupported operating system versions. Any issues occurring on devices running Android version prior to version 10 won't be investigated.
 
@@ -219,7 +221,9 @@ The following screenshot is an example of what the user sees in their dashboard:
 
 **Recommendation cards for alerts**:
 
-The structure of the dashboard has been updated to include a recommendation card that contains active alerts (if any). In case there are multiple alerts, resolving the top alert brings forward the next one. Recommendation cards have been implemented to provide a more cohesive user experience. These cards are designed to display important alerts and notifications prominently on the dashboard, as shown in the following table:
+The structure of the dashboard has been updated to include a recommendation card that contains active alerts, if any. In case there are multiple alerts, resolving the top alert brings forward the next one.
+
+Recommendation cards have been implemented to provide a more cohesive user experience. These cards are designed to display important alerts and notifications prominently on the dashboard, as shown in the following table:
 
 | Card | Description |
 | --- | --- |

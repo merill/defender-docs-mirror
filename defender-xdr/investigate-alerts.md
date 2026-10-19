@@ -320,6 +320,10 @@ Use alert tuning with caution, for scenarios where known, internal business appl
 
 Create alert tuning rules from the Microsoft Defender XDR **Settings** area or from an alert details page. Select one of the following tabs to continue.
 
+Note
+
+**Detection-source selection, available in preview, lets you choose specific detection sources within each service source** for more precise alert tuning. During the current preparation period, you can edit your existing rules to include or exclude detection sources. Your selections take effect on November 8, 2026. Rules that you don't update continue to apply to all detection sources under their selected service sources, **including custom detections**.
+
 # [Create a rule from the Settings page](#tab/settings)
 To create an alert tuning rule from the Settings page, follow these steps:
 
@@ -327,9 +331,9 @@ To create an alert tuning rule from the Settings page, follow these steps:
 
     [![Screenshot of Alert tuning option in Microsoft Defender XDR's Settings page.](media/investigate-alerts/alert-tuning-settings.png)](media/investigate-alerts/alert-tuning-settings.png#lightbox)
 2. Select **Add new rule** to tune a new alert, or select an existing rule row to make changes. Selecting the rule title opens a rule details page, where you can view a list of associated alerts, edit conditions, or turn the rule on and off.
-3. In the **Tune alert** pane, under **Select service sources**, select the service sources where you want to the rule to apply. Only services where you have permissions are shown in the list. For example:
+3. In the **Tune alert** pane, under **Select service sources**, select the service sources and detection sources where you want the rule to apply. Only services where you have permissions are shown in the list. For example:
 
-    [![Screenshot of service source dropdown menu in Tune an alert page.](media/investigate-alerts/alert-tuning-select-service.png)](media/investigate-alerts/alert-tuning-select-service.png#lightbox)
+    [![Screenshot of the Service/Detection sources area with detection sources expanded in the Tune alert pane.](media/investigate-alerts/alert-tuning-select-service.png)](media/investigate-alerts/alert-tuning-select-service.png#lightbox)
 4. In the **Conditions** area, add a condition for the alert's triggers. For example, if you want to prevent an alert from being triggered when a specific file is created, define a condition for the **File:Custom** trigger, and define the file details:
 
     [![Screenshot of the IOC menu in Tune an alert page.](media/investigate-alerts/alert-tuning-choose-ioc2.png)](media/investigate-alerts/alert-tuning-choose-ioc2.png#lightbox)
@@ -349,9 +353,9 @@ To create an alert tuning rule from an alert details page, follow these steps:
     The **Tune alert** pane opens on the side, where you can define conditions for the alert. For example:
 
     ![Screenshot of the Tune alert pane from the Alerts page.](media/investigate-alerts/tune-alert-pane-alert-details.png)
-2. In the **Alert types** area, select to apply the alert tuning rule only to alerts of the selected type, or any alert type based on the same conditions. If you select **Any alert type based on certain conditions**, also select the service sources where you want the rule to apply. Only services where you have permissions are shown in the list. For example:
+2. In the **Alert types** area, select to apply the alert tuning rule only to alerts of the selected type, or any alert type based on the same conditions. If you select **Any alert type based on certain conditions**, also select the service sources and detection sources where you want the rule to apply. Only services where you have permissions are shown in the list. For example:
 
-    ![Screenshot of the Service sources area showing in the Tune alert pane.](media/investigate-alerts/alert-tuning-alert-details-service-sources.png)
+    ![Screenshot of the Service/Detection sources area with detection sources expanded in the Tune alert pane.](media/investigate-alerts/alert-tuning-alert-details-service-sources.png)
 3. In the **Conditions** area, add a condition for the alert's triggers. For example, if you want to prevent an alert from being triggered when a specific file is created, define a condition for the **File:Custom** trigger, and define the file details:
 
     ![Screenshot of the Conditions area in the Alert tuning pane.](media/investigate-alerts/alert-tuning-alert-details-conditions.png)
@@ -367,10 +371,6 @@ To create an alert tuning rule from an alert details page, follow these steps:
 Note
 
 The **alert title (Name)** is based on the **alert type (IoaDefinitionId)**, which decides the alert title. Two alerts that have the same alert type can change to a different alert title. The *Hide alert* feature is only available in Defender for Endpoint alerts.
-
-Note
-
-Alert suppression is not compatible for custom detections. Make sure to fine-tune your custom detections to avoid false positives.
 
 After creating your alert tuning rule from an alert details page, in the **Successful rule creation** page that appears, add any of the alert-related IOCs as indicators to an *allow list* to prevent them from being blocked in the future. IOCs that are configured as part of the alert tuning rule are selected by default. For example:
 

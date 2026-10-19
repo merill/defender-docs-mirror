@@ -76,8 +76,8 @@ For information on other tables in the advanced hunting schema, see [advanced hu
 | `ImageName` | `string` | Container image name or ID |
 | `ProcessName` | `string` | The name of the process that initiated the DNS query |
 | `ProcessId` | `long` | Process ID that initiated the DNS query |
-| `DnsEventType` | `string` | Type of event associated with DNS operation (for example, query) |
-| `DnsEventSubType` | `string` | Either request or response |
+| `EventType` | `string` | Type of event associated with DNS operation (for example, query) |
+| `EventSubType` | `string` | Either request or response |
 | `DnsQuery` | `string` | The domain that needs to be resolved |
 | `DnsQueryTypeName` | `string` | The DNS resource record type name as defined by the Internet Assigned Numbers Authority (IANA) |
 | `DnsResponseCodeName` | `string` | The DNS response code name as defined by the Internet Assigned Numbers Authority (IANA). |
@@ -97,7 +97,7 @@ CloudDnsEvents
 | where AzureResourceId == "<Azure resource ID>"
 | where KubernetesNamespace == "<namespace>"
 | where KubernetesPodName == "<pod name>"
-| where DnsEventSubType == "request"
+| where EventSubType == "request"
 | summarize count() by DnsQuery
 | top 10 by count_ desc
 ```

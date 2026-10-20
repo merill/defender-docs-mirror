@@ -47,6 +47,28 @@ platformId: 7bd1b969-08e0-e36d-008e-97170cf2c136
 
 Get answers to common questions about Microsoft Defender for Servers.
 
+## New Defender server security experience
+
+### Do servers already running Defender for Endpoint need any changes?
+
+No. They continue running as usual; no onboarding, reinstallation, or migration is required. See [Existing deployments](/en-us/defender-endpoint/azure-server-integration#servers-already-running-defender-for-endpoint).
+
+### Where do I start with new servers?
+
+Use [Onboard servers](/en-us/defender-endpoint/onboard-server) to choose a method and prepare deployment. For an on-premises connection to Defender for Servers, see [Connection options](quickstart-onboard-machines).
+
+### Can I limit Direct onboarding to selected servers?
+
+No. It applies to existing and future eligible servers in the same tenant, rather than a selected pilot group. Review [who is affected](onboard-machines-with-defender-for-endpoint#who-is-affected) before enabling it.
+
+### Which offboarding method should I use?
+
+For an Azure environment, turning off Defender for Servers starts the automatic flow for eligible servers. Use manual endpoint offboarding for individual endpoints. Neither path should be treated as proof that installed software was removed. See [Offboarding options and outcome checks](/en-us/defender-endpoint/offboard-machines).
+
+### Why does an offboarded server still appear?
+
+Historical data can remain visible under the retention policy. A retained record doesn't prove that protection or reporting is active. See [Historical records](/en-us/defender-endpoint/offboard-machines#historical-records).
+
 ## Pricing
 
 ### What servers do I pay for in a subscription?
@@ -147,7 +169,7 @@ If the extension isn't showing, check that the machine meets the [prerequisites]
 
 Important
 
-If you delete the **MDE.Windows**/**MDE.Linux** extension, it won't remove Microsoft Defender for Endpoint. Learn about [offboard Windows servers from Defender for Endpoint](/en-us/defender-endpoint/configure-server-endpoints#offboard-windows-servers).
+If you delete the **MDE.Windows**/**MDE.Linux** extension, it won't remove Microsoft Defender for Endpoint. Learn how to [offboard servers from Microsoft Defender for Endpoint](/en-us/defender-endpoint/offboard-machines#offboard-servers).
 
 ## Machine support and scanning
 

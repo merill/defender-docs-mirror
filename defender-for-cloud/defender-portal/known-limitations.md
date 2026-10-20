@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-for-cloud/defender-portal/known-limitations.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/cd48b104-e308-4e08-a405-66f04a7df418
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ac23bdb5-c078-4620-8ee2-60eba45e97f8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: f0310ff1-79da-0122-ff41-4f5940182cc1
 ---
 
@@ -63,6 +63,14 @@ Enabling the Defender portal experience won't impact your experience in the Azur
 - Exposure Management experiences (recommendations, initiatives, attack path, etc.) aren't visible to users with MDI scoping. Until this issue is resolved, it's advisable, where feasible, to grant users full access to Exposure Management, including nonscoped MDI data.
 - This is currently not supported in Government clouds.
 - Identity‑scoped recommendations ignore domain/tenant and device‑group filters: Identity-based recommendations in the Identity Security initiative are scoped to identity objects rather than devices. As a result, domain or tenant filters may not fully exclude identities from other domains (such as acquired environments), and device‑group filters do not apply. These filters appear in the UI but are disabled for identity‑scoped views, and changing them does not affect results.
+
+## Azure onboarding and plan management (preview)
+
+- Onboarding and plan management in the Defender portal currently support Azure commercial environments. Continue to use the Azure portal to onboard and configure AWS, GCP, and Azure national or sovereign cloud environments. GitHub is supported separately in public preview. For setup instructions, see [Create a GitHub connector](/en-us/security-exposure-management/create-github-connector).
+- Resource-level plan configuration isn't supported. Plans and settings are configured at the management group or subscription level and apply to the resources under that scope.
+- Existing resource-level configurations aren't preserved when an environment moves from Azure-based plan management to Defender-based plan management. The resource-level configurations are replaced by the scope-based configuration.
+- Some Defender for Cloud management capabilities remain in the Azure portal, including security policy management, continuous export, and workflow automation.
+- Cloud security cost can fluctuate from day to day even when there are no changes to the connected environments or their resources.
 
 ## Opt-In (preview)
 

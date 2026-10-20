@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Comprehensive overview of Microsoft Defender for Cloud in the Defender portal, including navigation hub, dashboard features, and unified security management capabilities.
 ms.topic: overview
-ms.date: 2026-04-28T00:00:00.0000000Z
+ms.date: 2026-07-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 97ec41ae-46fa-6726-04f0-7e8e3ae26734
@@ -33,8 +33,10 @@ item_type: Content
 source_path: defender-for-cloud/defender-portal/defender-for-cloud-defender-portal.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 platformId: aa9aa5e3-3250-972f-7524-2bf860c6002b
 ---
 
@@ -56,13 +58,15 @@ Our documentation will be continuously updated to reflect these changes, so chec
 
 This article provides a comprehensive overview of Microsoft Defender for Cloud's integration with the Defender portal, covering key features, benefits, and capabilities available in this unified security experience.
 
-## Overview
-
 Microsoft Defender for Cloud (MDC) is now deeply integrated into the Defender portal at security.microsoft.com and part of the broader Microsoft Security eco-system. With threat protection already deeply embedded into the Defender portal, this integration adds posture management—bringing together a complete cloud-native application protection platform (CNAPP) solution in one unified experience. This native-integration eliminates silos so security teams can see and act on threats across all cloud, hybrid, and code environments - all from one place and eliminates the need to switch between tools and portals.
 
 [![Screenshot of the Defender for Cloud overview dashboard in the Defender portal.](../media/defender-portal-dashboard/overview-dashboard.png)](../media/defender-portal-dashboard/overview-dashboard.png#lightbox)
 
-The cloud-agnostic expansion supports Azure, AWS, GCP, and other platforms in a single interface, making it ideal for hybrid and multicloud organizations seeking comprehensive exposure management too. In the first phase, the journey for new customers still starts in the Azure portal for initial onboarding, connecting environments for protection, and setting policies and configurations. Once this is complete, users can consume the data in the Defender portal. In a later phase, users will also be able to manage and configure settings directly in Defender, enabling them to perform all MDC end-to-end use cases within a single portal.
+The Defender portal provides a unified view of security data across Azure, AWS, and GCP environments. In this public preview, you can also connect Azure commercial environments and manage their Defender for Cloud plans in the Defender portal.
+
+Azure environments can be connected at the subscription or management group level. You can then configure plan coverage for selected environments or apply a global configuration across current and future connected environments. When an Azure subscription moves to Defender-based plan management, its usage and billing are based on Defender Workload Units (DWUs).
+
+Continue to use the Azure portal to onboard and configure AWS, GCP, and unsupported Azure environments. Some Defender for Cloud management capabilities also remain in the Azure portal.
 
 ## Supported experiences in the Defender portal
 
@@ -86,9 +90,12 @@ Cloud security data and signals can be accessed through several experiences. Som
 - [Response actions](../continuous-export)
 - [Advanced hunting](../concept-integration-365#advanced-hunting-in-xdr)
 
-#### Configurations
+#### Configuration
 
-- [Cloud Scopes & RBAC](../cloud-scopes-unified-rbac?pivots=defender-portal)
+- [Cloud scopes and Unified RBAC](../cloud-scopes-unified-rbac?pivots=defender-portal)
+- [Connect Azure environments](connect-azure-environments-defender-portal)
+- [Manage Defender for Cloud plans](manage-plans-defender-portal)
+- [Estimate Defender Workload Unit (DWU) usage and cost, and track Cloud security costs](estimate-track-costs)
 
 ## Key values and benefits
 
@@ -104,15 +111,23 @@ Cloud security data and signals can be accessed through several experiences. Som
 
 The Microsoft Defender portal delivers a unified security operations experience across endpoints, identities, email, and cloud resources. By integrating Defender solutions, such as Defender for Cloud, Defender for Endpoint, and others, it provides comprehensive protection, detection, investigation, and response capabilities in one place. This unified approach streamlines threat detection, correlates insights, and strengthens your organization’s security posture. Powered by advanced AI and Microsoft’s global threat intelligence, it helps identify emerging risks faster and enables proactive defense against sophisticated attacks.
 
-### How to get started?
+## Get started
 
-Defender for Cloud customers with at any paid plan can access the consumption experiences in the Defender portal.
+Defender for Cloud customers with at least one paid plan can access the Defender portal experiences.
 
-To get started, go to **Defender portal** → **Cloud security** → **Overview**, and select **Prepare my tenant**.
+To prepare your tenant for cloud security data:
+
+1. In the Microsoft Defender portal, select **Cloud security** &gt; **Overview**.
+2. Select **Prepare my tenant**.
 
 Note
 
-Data might take up to 24 hours to appear.
+Data can take up to 24 hours to appear.
 
-- Read the [known limitations](known-limitations)
-- Read the [FAQ](integration-faq)
+To set up and manage Azure environments in the Defender portal:
+
+- [Connect Azure environments](connect-azure-environments-defender-portal).
+- [Manage Defender for Cloud plans](manage-plans-defender-portal).
+- [Estimate and track Cloud security costs](estimate-track-costs).
+
+For current restrictions and additional information, see [Known limitations](known-limitations) and [FAQ for the Defender portal](integration-faq).

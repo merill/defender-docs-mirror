@@ -69,6 +69,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
 
 ### Sensor v0.11 (deployed by Helm or Arc for K8s)
 
+**Sensor v0.11.8 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Security updates to sensor components and dependencies.
+
 **Sensor v0.11.7 — GA**
 
 - **Released:** September 2026
@@ -99,6 +106,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - General Availability of EKS/GKE Private clusters support. For the private clusters documentation page [Private clusters](defender-for-containers-private-clusters)
 
 ### Sensor v0.10 (deployed by Helm or Arc for K8s)
+
+**Sensor v0.10.11 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Security updates to sensor components and dependencies.
 
 **Sensor v0.10.10 — GA**
 
@@ -168,6 +182,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - Binary drift blocking
 
 ### Sensor v0.9 (AKS 1.35 or by Helm)
+
+**Sensor v0.9.69 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Security updates to sensor components and dependencies.
 
 **Sensor v0.9.68 — GA**
 
@@ -291,6 +312,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - Bug fixes and security enhancements
 
 ### Sensor v0.8 (AKS versions 1.34 and below)
+
+**Sensor v0.8.62 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Security updates to sensor components and dependencies.
 
 **Sensor v0.8.61 — GA**
 

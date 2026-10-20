@@ -11,7 +11,7 @@ manager: orspodek
 description: Learn how to use advanced hunting in the portal unifying Defender XDR and Sentinel data
 ms.service: defender-xdr
 ms.subservice: adv-hunting
-ms.author: pauloliveria
+ms.author: kschwabacher
 author: poliveria
 ms.localizationpriority: medium
 ms.collection:

@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Frequently asked questions about integrating and using Microsoft Defender for Cloud in the Defender portal, including migration, compatibility, and feature questions.
 ms.topic: faq
-ms.date: 2026-04-28T00:00:00.0000000Z
+ms.date: 2026-07-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 9f9181fa-9c39-bee7-58c0-a59834dfa266
@@ -34,9 +34,11 @@ source_path: defender-for-cloud/defender-portal/integration-faq.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 5c6a485f-e27e-241a-d386-b163da6cb054
 ---
 
@@ -54,21 +56,31 @@ Note
 
 The new cloud features in the Defender portal are currently only supported in public/commercial clouds.
 
-### What environments are supported with this expansion in the Defender portal?
+### Which environments are supported in the Defender portal?
 
-Yes, Azure, AWS, GCP, and on-premises environments are supported.
+Cloud security data experiences in the Defender portal support Azure, AWS, and GCP environments.
+
+Onboarding and plan management in the Defender portal currently support Azure commercial environments only. Continue to use the Azure portal to onboard and configure AWS, GCP, and Azure national or sovereign cloud environments. GitHub is supported separately in public preview. For setup instructions, see [Create a GitHub connector](/en-us/security-exposure-management/create-github-connector).
 
 ### What are the risks associated with this move?
 
-There's no operational risk in transitioning to the Defender portal. The experience is designed with parallel functionalities in both the Azure and Defender portal. Customers can choose to enable the new experience without disrupting their experience in the Azure portal. However, there are known limitations that customers should be aware of while testing new capabilities. Read more in the official documentation here, [Known limitations](known-limitations).
+Viewing Defender for Cloud data in the Defender portal doesn't change your existing plan configuration.
+
+Before moving plan management for an Azure environment to the Defender portal, review [what changes when managing cloud security plans in the Defender portal](plan-management-changes-defender-portal) and the [known limitations](known-limitations). Resource-level plan configurations aren't preserved during migration and are replaced by settings applied at the management-group or subscription scope.
 
 ### What happens to MDC in the Azure portal? Is MDC being deprecated from the Azure portal?
 
-We recognize that MDC serves multiple personas including security admins, cloud security architects, workload owners, DevOps teams, and more. With this release, MDC in the Azure portal remains as is, and we have no plans to deprecate it. Hence, adding security for new resources continues to remain in the Azure portal. Defender portal focuses on security teams overseeing cloud security across cloud and code environments. The Azure portal continues to serve Azure-focused personas such as workload owners and DevOps engineers. Our goal is to provide tailored experiences in each portal, ensuring every persona has the most relevant tools and insights for their needs.
+Defender for Cloud isn't being deprecated from the Azure portal. The Azure and Defender portals continue to work in parallel.
 
-### Will enabling this feature lead to changes or new deployments that might impact other Defender for Cloud plans, features, or configurations in the future?
+For Azure commercial environments, you can now connect environments and manage Defender for Cloud plans in the Defender portal. Continue to use the Azure portal for AWS, GCP, unsupported Azure environments, and management capabilities that aren't yet available in the Defender portal, including security policy configuration, continuous export, and workflow automation.
 
-No.
+After an Azure environment moves to Defender-based plan management, its plan configuration becomes view-only in the Azure portal.
+
+### Does using Defender for Cloud in the Defender portal change my existing configuration?
+
+Viewing cloud security data in the Defender portal doesn't change your Defender for Cloud plans.
+
+For more information, see [What changes when managing cloud security plans in the Defender portal](plan-management-changes-defender-portal). Existing resource-level plan configurations aren't preserved, and billing for the migrated subscription uses Defender Workload Units.
 
 ### Is there a feature parity list for all the features expanding into the Defender portal?
 
@@ -76,13 +88,39 @@ Yes, a feature parity list is available in the official Defender for Cloud docum
 
 ### What if I only use the Azure portal and not the Defender portal?
 
-The expansion to the Defender portal runs in addition to and in parallel with the Azure portal. Customers who use the Azure portal exclusively can continue to do so without any changes or impact.
+You can continue to use the Azure portal. Azure environments that haven't moved to Defender-based plan management continue to use their existing Azure portal configuration and billing model during the transition period.
+
+After an environment moves to Defender-based plan management, plan settings for that environment are managed in the Defender portal and appear as view-only in the Azure portal.
 
 ## Billing implications
 
-### Is there any billing impact with this expansion?
+### Is there any billing impact from using the Defender portal?
 
-As of now, there's no billing impact. Existing customers will be able to turn on preview features and experience the new capabilities with no extra charge.
+When an Azure subscription moves to Defender-based plan management, its billing uses [Defender Workload Units](estimate-track-costs). Subscriptions that haven't moved continue to use their existing billing model during the transition period.
+
+### What is a Defender Workload Unit?
+
+A Defender Workload Unit (DWU) is a unified unit for measuring Defender for Cloud usage across supported protected workloads. Workload types use defined counting models, and the resulting DWU usage is used to estimate costs, calculate billing, and report cloud security costs.
+
+For more information, see [Estimate and track Cloud security cost](estimate-track-costs).
+
+### Is moving to Defender Workload Unit billing mandatory?
+
+Not at the start of the transition. The move is performed per Azure subscription. Subscriptions that haven't moved to Defender-based plan management can continue to use their existing billing model during the transition period.
+
+## Azure plan management
+
+### What changes when I move an Azure environment to Defender-based plan management?
+
+After an Azure environment moves:
+
+- Plan configuration is managed in the Defender portal.
+- Plan configuration becomes view-only in the Azure portal.
+- Resource-level plan configurations aren't preserved.
+- The migrated subscription uses Defender Workload Unit billing.
+- Cloud security cost becomes available in the Defender portal, in addition to the Azure portal.
+
+For the complete procedure, see [Manage Defender for Cloud plans in the Defender portal](manage-plans-defender-portal).
 
 ## Customer impact & experience
 

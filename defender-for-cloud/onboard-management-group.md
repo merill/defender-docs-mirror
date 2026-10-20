@@ -15,8 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to use a supplied Azure Policy definition to enable Microsoft Defender for Cloud for all the subscriptions in a management group.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1013
+ms.date: 2026-07-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 75ca6720-966a-440e-396f-6afca92bc304
@@ -34,8 +33,10 @@ item_type: Content
 source_path: defender-for-cloud/onboard-management-group.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://authoring-docs-microsoft.poolparty.biz/devrel/eea02214-631d-404a-92d1-5a3357c32a26
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://authoring-docs-microsoft.poolparty.biz/devrel/f42c31d7-eed9-43b7-9757-54caffb53cdc
 platformId: 3119948b-2ba2-823e-04bf-3545cd53cf25
 ---
 
@@ -44,6 +45,10 @@ platformId: 3119948b-2ba2-823e-04bf-3545cd53cf25
 ## Overview
 
 You can use Azure Policy to enable Microsoft Defender for Cloud on all the Azure subscriptions in the same management group. This approach is more convenient than accessing them individually from the portal, and works even if the subscriptions belong to different owners.
+
+Note
+
+This article describes how to use Azure Policy to enable Defender for Cloud across subscriptions in a management group. To connect an Azure management group to the Microsoft Defender portal and manage plan coverage there, see [Connect Azure environments in the Defender portal](defender-portal/connect-azure-environments-defender-portal) and [Manage Defender for Cloud plans in the Defender portal](defender-portal/manage-plans-defender-portal).
 
 ## Prerequisites
 

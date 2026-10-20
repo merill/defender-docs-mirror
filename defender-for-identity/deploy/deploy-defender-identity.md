@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to deploy Microsoft Defender for Identity sensors on domain controllers and identity servers. Choose the right sensor version for your environment.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-10-19T00:00:00.0000000Z
 ms.topic: overview
 ms.custom: msecd-doc-authoring-1015
 ms.reviewer: rlitinsky
@@ -54,13 +54,13 @@ Install Defender for Identity sensors on all domain controllers, including read-
 
 The sensor version you deploy depends on the server role and operating system. Use the following table to select the recommended deployment. For supported v2.x platforms, see [v2.x server requirements](prerequisites-sensor-version-2#server-requirements). Review the [migration prerequisites](migrate-to-sensor-v3#prerequisites) separately before upgrading an existing v2.x sensor.
 
-For eligible domain controllers running Windows Server 2019 or later, sensor v3.x supports onboarding with or without Microsoft Defender for Endpoint deployment. Other eligible identity-role servers require Defender for Endpoint onboarding.
+Eligible domain controllers, AD FS, AD CS, and Microsoft Entra Connect servers running Windows Server 2019 or later support sensor v3.x. You can onboard these servers with or without Microsoft Defender for Endpoint deployment.
 
 ![Diagram of sensor deployment: use sensor v3.x on supported servers running Windows Server 2019 or later, and v2.x on earlier versions.](media/deploy-defender-identity/sensor-deployment-decision.png)
 
 | Server configuration | Server operating system | Recommended deployment | Onboarding options |
 | --- | --- | --- | --- |
-| Any supported server type | Windows Server 2019 or later with the September 2026 or later cumulative update | [Defender for Identity sensor v3.x](deploy-sensor-v3) | For servers onboarded to Defender for Endpoint, activate sensor v3.x directly. For domain controllers that aren't onboarded to Defender for Endpoint, use the sensor v3.x onboarding package. AD FS, AD CS, and Microsoft Entra Connect servers must be onboarded to Defender for Endpoint before activation. |
+| Any supported server type | Windows Server 2019 or later with the September 2026 or later cumulative update | [Defender for Identity sensor v3.x](deploy-sensor-v3) | For servers onboarded to Defender for Endpoint, activate sensor v3.x directly. Otherwise, use the sensor v3.x onboarding package. |
 | Any supported server type | Windows Server 2016 or earlier | [Defender for Identity sensor v2.x](prerequisites-sensor-version-2) | [Install the sensor v2.x package](install-sensor). |
 
 Defender for Identity supports sensor v3.x and sensor v2.x in the same workspace. For example, you might deploy sensor v3.x on servers running Windows Server 2019 or later and sensor v2.x on servers running Windows Server 2016 or earlier.
@@ -73,7 +73,7 @@ If any of your sensors are v3.x, select **Automatically use the sensor's local s
 
 Before you activate the Defender for Identity sensor v3.x, note that v3.x:
 
-- Supports onboarding through Defender for Endpoint. Eligible domain controllers can instead use the sensor v3.x onboarding package.
+- Supports onboarding through Defender for Endpoint. Eligible servers can instead use the sensor v3.x onboarding package.
 - Doesn't support VPN integration.
 - Doesn't support [syslog notifications](../notifications#configure-syslog-notifications).
 - Has limitations working with Azure ExpressRoute. For more information, see [Azure ExpressRoute for Microsoft 365](/en-us/microsoft-365/enterprise/azure-expressroute).
@@ -113,7 +113,7 @@ The table combines deployed sensors with servers discovered through Device Inven
 Choose the sensor deployment flow that matches the server configuration:
 
 - If the server is onboarded to Microsoft Defender for Endpoint, [activate sensor v3.x from the Sensor management tab](activate-sensor#activate-the-defender-for-identity-sensor).
-- If an eligible domain controller isn't onboarded to Defender for Endpoint, [download and run the sensor v3.x onboarding package](activate-sensor#onboard-the-domain-controller-preview).
+- If an eligible server isn't onboarded to Defender for Endpoint, [download and run the sensor v3.x onboarding package](activate-sensor#onboard-a-server-without-defender-for-endpoint-deployment).
 - If an eligible domain controller already runs sensor v2.x, [migrate the sensor to v3.x](migrate-to-sensor-v3). In-place migration isn't yet available for servers that aren't domain controllers.
 - If the server supports sensor v2.x only, [install sensor v2.x](install-sensor).
 

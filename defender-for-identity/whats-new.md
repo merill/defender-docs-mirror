@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about the latest Microsoft Defender for Identity features, sensor updates, security alerts, enhancements, and preview capabilities.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ms.topic: overview
 ms.reviewer: AbbyMSFT
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
@@ -106,7 +106,7 @@ The October announcement includes the following new alerts:
 
 ### General availability of sensor v3.x activation without Defender for Endpoint
 
-Defender for Identity sensor v3.x activation without Defender for Endpoint is now generally available for eligible domain controllers running Windows Server 2019 or later. This activation method supports only new sensor v3.x deployments on eligible domain controllers without an existing Defender for Identity sensor. Sensor v2.x migration isn't supported. For more information, see [Activate the Defender for Identity sensor](deploy/activate-sensor).
+Defender for Identity sensor v3.x activation without Defender for Endpoint is now generally available. Supported servers include eligible domain controllers, AD FS, AD CS, and Microsoft Entra Connect servers running Windows Server 2019 or later. This activation method supports only new sensor v3.x deployments on eligible servers without an existing Defender for Identity sensor. Sensor v2.x migration isn't yet available. For more information, see [Activate the Defender for Identity sensor](deploy/activate-sensor).
 
 ## September 2026
 

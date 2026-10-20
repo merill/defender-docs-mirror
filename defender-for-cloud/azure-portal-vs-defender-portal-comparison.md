@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Compare Microsoft Defender for Cloud features and capabilities between the Azure portal and Defender portal experiences to understand the enhanced functionality available in each platform.
 ms.topic: article
-ms.date: 2026-03-29T00:00:00.0000000Z
+ms.date: 2026-07-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: e69c729e-c7f4-30e1-a1f9-c785b703a4e8
@@ -33,9 +33,11 @@ item_type: Content
 source_path: defender-for-cloud/azure-portal-vs-defender-portal-comparison.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 platformId: 323c969b-ccd4-c049-79c2-1826ec8d5dc0
 ---
@@ -65,8 +67,11 @@ This article provides a comprehensive comparison of Microsoft Defender for Cloud
 | **Security recommendations** | Yes | Yes - Integrated into Exposure Management**Note**: In the Defender portal, some recommendations that previously appeared as a single aggregated item now display as multiple individual recommendations. |
 | **Asset inventory** | Yes**Note**: Only assets that have security issues detected on them are reflected. | Yes**Note**: All discovered resources in customers' environments are reflected, even if there are no security issues detected on them. |
 | **Secure score** | Yes | Yes - New risk-based secure score |
+| **Environment onboarding** | Yes - Azure, AWS, and GCP environments | Yes (Preview) - Azure commercial subscriptions and management groups |
+| **Plan management** | Yes | Yes (Preview) - Configure connected Azure environments individually or apply plan coverage across current and future connected environments |
+| **Cloud security cost reporting** | Yes with filter applied | Yes (Preview) - Available under Licenses & usage or Cost & usage |
 | **Data visualization and reporting with Azure Workbooks** | Yes | No |
-| **Data exporting** | Yes | No |
+| **Data exporting** | Yes | No - Data export capabilities remain in the Azure portal |
 | **Workflow automation** | Yes | No |
 | **Tools for remediation (quick fixes)** | Yes | No |
 | **Microsoft Cloud Security Benchmark** | Yes | Partial - Security recommendations appear but security policies management is only in Azure. You can see the results in the Defender portal. |

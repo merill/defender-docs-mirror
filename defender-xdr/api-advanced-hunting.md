@@ -10,8 +10,8 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how to run advanced hunting queries using Microsoft Defender XDR's advanced hunting API
 ms.service: defender-xdr
-ms.author: edbaynash
-author: EdB-MSFT
+ms.author: kschwabacher
+author: Karinschwabacher13
 ms.localizationpriority: medium
 ms.collection:
 - m365-security

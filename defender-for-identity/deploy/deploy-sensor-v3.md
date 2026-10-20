@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn the requirements and configuration steps to deploy the Defender for Identity sensor v3.x on eligible identity-role servers.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-10-19T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom: msecd-doc-authoring-1016
 ms.reviewer: rlitinsky
@@ -64,7 +64,7 @@ Before you activate the Defender for Identity sensor v3.x, note that v3.x:
 
 Make sure that the server on which you're activating the sensor:
 
-- Is onboarded to Defender for Endpoint. The Microsoft Defender Antivirus component can be in either active or passive mode. For eligible domain controllers, you can instead use [sensor v3.x onboarding without Defender for Endpoint deployment](activate-sensor#onboard-the-domain-controller-preview).
+- Is onboarded to Defender for Endpoint. The Microsoft Defender Antivirus component can be in either active or passive mode. For eligible servers, you can instead use [sensor v3.x onboarding without Defender for Endpoint deployment](activate-sensor#onboard-a-server-without-defender-for-endpoint-deployment).
 - Doesn't have a Defender for Identity sensor v2.x already deployed.
 - Runs Windows Server 2019 or later.
 - Has the Windows Server September 2026 or later cumulative update installed (Defender for Identity sensor version 3.0.10 or later).

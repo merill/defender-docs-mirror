@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to automatically or manually activate the Microsoft Defender for Identity sensor v3.x on eligible identity-role servers.
-ms.date: 2026-10-06T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1015
@@ -83,13 +83,13 @@ To activate the Defender for Identity sensor v3.x on an eligible server, follow 
 
     [![Screenshot of the successful sensor activation banner with a link to view onboarded servers.](media/activated-sensor.png)](media/activated-sensor.png#lightbox)
 
-## Onboard a domain controller without Defender for Endpoint deployment
+## Onboard a server without Defender for Endpoint deployment
 
-Use onboarding without Defender for Endpoint deployment to activate the Defender for Identity sensor v3.x without first onboarding the domain controller to Defender for Endpoint:
+Use onboarding without Defender for Endpoint deployment to activate the Defender for Identity sensor v3.x on eligible servers. Supported servers include domain controllers, AD FS, AD CS, and Microsoft Entra Connect.
 
 Note
 
-This onboarding method supports new Defender for Identity sensor v3.x deployments on eligible domain controllers that don't have sensor v2.x installed. The standalone onboarding package activates sensor v3.x on the Windows Sense platform in restricted identity-only mode. It doesn't deploy or license the full Defender for Endpoint experience. The server still requires connectivity to Defender for Endpoint cloud services because the underlying Sense component uses that infrastructure.
+This onboarding method supports new Defender for Identity sensor v3.x deployments on eligible servers that don't have sensor v2.x installed. The standalone onboarding package activates sensor v3.x on the Windows Sense platform in restricted identity-only mode. It doesn't deploy or license the full Defender for Endpoint experience. The server still requires connectivity to Defender for Endpoint cloud services because the underlying Sense component uses that infrastructure.
 
 1. [Configure your network environment to ensure connectivity with Defender for Endpoint](/en-us/defender-endpoint/configure-environment#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server) by using [streamlined URLs](/en-us/defender-endpoint/configure-device-connectivity#option-1-configure-connectivity-using-the-simplified-domain).
 2. On the **Sensor management** tab of the **On-premises** page in the Microsoft Defender portal, select **Download onboarding package**.
@@ -101,7 +101,7 @@ This onboarding method supports new Defender for Identity sensor v3.x deployment
     Important
 
     The access key is used only during sensor installation. Regenerating the key invalidates the existing key, and installations that use the previous key fail.
-5. Copy the downloaded package to the domain controller.
+5. Copy the downloaded package to the server.
 6. Extract the package, making sure the `resources` subfolder is preserved.
 7. Open PowerShell as an administrator, change to the extracted folder, and run the onboarding script:
 
@@ -123,8 +123,8 @@ The first Defender for Identity sensor v3.x activation in your environment might
 
 ## What if I want to add Defender for Endpoint later?
 
-If you onboarded a domain controller with Defender for Identity only and now want to add Defender for Endpoint, follow these steps:
+If you onboarded a server with Defender for Identity only and now want to add Defender for Endpoint, follow these steps:
 
-1. [Offboard the domain controller and remove the sensor](../uninstall-sensor#offboard-a-domain-controller-that-isnt-onboarded-to-defender-for-endpoint-preview).
-2. [Onboard the domain controller to Defender for Endpoint](/en-us/defender-endpoint/onboard-server).
-3. After the domain controller appears on the **Sensor management** tab, activate the Defender for Identity sensor v3.x.
+1. [Offboard the server and remove the v3.x sensor](../uninstall-sensor#offboard-a-server-without-defender-for-endpoint-deployment).
+2. [Onboard the server to Defender for Endpoint](/en-us/defender-endpoint/onboard-server).
+3. After the server appears on the **Sensor management** tab, activate the Defender for Identity sensor v3.x.

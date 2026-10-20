@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Discover how to use the Microsoft Defender for Cloud Cost Calculator to estimate your cloud security expenses.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-07-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1013
 locale: en-us
@@ -35,15 +35,21 @@ source_path: defender-for-cloud/cost-calculator.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/64b65f6c-101f-411a-9b83-9f577fab52d0
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1a667fd1-8145-4b11-af0f-9f5de205a6e5
 platformId: 879921ba-e374-469a-bed9-5ee10b5fcc6e
 ---
 
 # Estimate costs with the Microsoft Defender for Cloud cost calculator - Microsoft Defender for Cloud | Microsoft Learn
 
 The Microsoft Defender for Cloud cost calculator helps you estimate potential costs for your cloud security needs. You can configure plans and environments and get a detailed cost breakdown, including applicable discounts.
+
+Important
+
+This article describes the Defender for Cloud cost calculator for the existing plan-pricing model. To estimate costs using the Defender Workload Unit (DWU) pricing model, see [Estimate and track Cloud security cost](defender-portal/estimate-track-costs).
 
 ## Access the cost calculator
 

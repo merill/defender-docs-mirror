@@ -8,9 +8,9 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-description: Onboard Windows devices, servers, non-Windows devices from the Microsoft Defender for Endpoint service
+description: Learn how to offboard Windows devices, servers, and non-Windows devices from Microsoft Defender for Endpoint.
 ms.service: defender-endpoint
-ms.author: painbar
+ms.author: kschwabacher
 author: paulinbar
 ms.localizationpriority: medium
 ms.collection:
@@ -36,12 +36,12 @@ item_type: Content
 source_path: defender-endpoint/offboard-machines.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 9e9462b4-ab59-e1bb-7a01-048875fcc7ec
 ---
 
@@ -74,25 +74,35 @@ You can also use other methods, such as:
 
 ## Offboard servers
 
-In the [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, select **Settings** &gt; **Offboard**, and then select an operating system to start the offboarding process.
+Choose automatic Azure offboarding or manual endpoint offboarding based on the intended outcome. Verify plan coverage, endpoint reporting, and software removal separately.
 
-You can also use other methods, such as:
+### Choose the required outcome
 
-- [Offboard devices using Group Policy](configure-endpoints-gp#offboard-devices-using-group-policy)
-- [Offboard devices using Configuration Manager](configure-endpoints-sccm#offboard-devices-using-configuration-manager)
-- [Offboard devices using Mobile Device Management tools](configure-endpoints-mdm#offboard-devices-using-mobile-device-management-tools)
-- [Offboard devices using a local script](configure-endpoints-script#offboard-devices-using-a-local-script)
-- [Offboard devices using the API](api/offboard-machine-api)
+| Outcome | What to do |
+| --- | --- |
+| Offboard an Azure environment | Use automatic Azure offboarding. |
+| Change Defender for Servers coverage | Use the [plan-change procedure](/en-us/azure/defender-for-cloud/tutorial-enable-servers-plan#disable-defender-for-servers-on-a-subscription). Review the affected subscription and resource settings first. |
+| Offboard individual endpoints | Use manual endpoint offboarding. |
+| Remove endpoint software | Use the supported uninstall procedure for that operating system. Don't assume a plan change or offboarding package removes it. |
+
+### Prepare the change
+
+1. Record affected servers, existing coverage, and deployment policies.
+2. Review open investigations, evidence-retention needs, and any plans to onboard the server again or reinstall endpoint software.
+3. Remove conflicting onboarding assignments so deployment tools don't reverse the change.
+4. For Direct onboarding, review [who is affected](/en-us/azure/defender-for-cloud/onboard-machines-with-defender-for-endpoint#who-is-affected) before changing a shared setting.
 
 ### Automatic Azure offboarding
 
 Turning off Defender for Servers for a subscription in the Azure portal automatically offboards eligible servers from Microsoft Defender for Endpoint. Changing from Plan 2 to Plan 1 or moving a machine between subscriptions doesn't trigger automatic offboarding.
 
+Before starting, complete the steps in Prepare the change.
+
 To start offboarding and verify the result:
 
 1. In **Microsoft Defender for Cloud** in the Azure portal, identify the subscription where you want to turn off Defender for Servers.
 2. Turn off the plan using the [plan-change procedure](/en-us/azure/defender-for-cloud/tutorial-enable-servers-plan#disable-defender-for-servers-on-a-subscription). This is the only action required to initiate offboarding. The software automatically handles intent validation, MDE extension removal, and endpoint offboarding.
-3. Allow processing to complete, and then verify the result. Offboarding can take up to one hour for large subscriptions. If machines are powered off, the software retries later.
+3. Allow processing to complete, and then verify each outcome. Offboarding can take up to one hour for large subscriptions. If machines are powered off, the software retries later.
 
 Use the subscription's plan control to initiate offboarding, not deletion of the Azure environment connection.
 
@@ -101,6 +111,44 @@ Automatic offboarding disconnects the endpoint from its current Defender for End
 Note
 
 If you turn the plan back on before offboarding completes, the offboarding and onboarding actions run asynchronously. Defender for Endpoint is onboarded again after a few hours. Turning the plan back on doesn't immediately cancel offboarding.
+
+### Manual endpoint offboarding
+
+Use a supported endpoint tool to offboard individual servers, including manually onboarded on-premises servers, or to complete an intended endpoint change after reviewing the automatic flow's result.
+
+Follow one of the methods below. Manual endpoint offboarding isn't a substitute for changing Defender for Servers coverage.
+
+#### Download an offboarding package
+
+Open the [Offboarding page](https://security.microsoft.com/securitysettings/endpoints/offboarding) in Microsoft Defender. Use an account authorized to download the package, and then follow the relevant method's operating-system and package selections.
+
+Download a current package for the correct tenant, check its expiration, and store it securely. Package formats and validity periods differ by method.
+
+For local-script or Configuration Manager offboarding, select the Windows version group specified in that method's instructions. The generic **Windows** option opens the separate Defender deployment tool workflow, not the version-specific package workflow.
+
+Choose the supported method for your operating system and management environment:
+
+| Method | Procedure |
+| --- | --- |
+| Linux script, JSON file, API, or uninstall | [Offboard or uninstall on Linux](linux-off-board-endpoints) |
+| Windows Configuration Manager | [Offboard with Configuration Manager](configure-endpoints-sccm#offboard-devices-using-configuration-manager) |
+| Windows local script | [Offboard with a local script](configure-endpoints-script#offboard-devices-using-a-local-script) |
+| Windows Group Policy | [Group Policy offboarding](configure-endpoints-gp#offboard-devices-using-group-policy) |
+| Mobile device management | [Mobile Device Management offboarding](configure-endpoints-mdm#offboard-devices-using-mobile-device-management-tools) |
+| API automation | [Offboard machine API](api/offboard-machine-api) |
+
+### Verify each outcome
+
+| Intended change | Check |
+| --- | --- |
+| Plan coverage | Confirm the intended plan state in Defender for Cloud. |
+| Endpoint offboarding | Confirm the local offboarding state using the method-specific procedure, and then check that new endpoint data stops. Inactivity alone isn't proof of offboarding. |
+| Software removal | Confirm the relevant application, package, or service is absent using operating-system tools. |
+| No automatic return | Recheck after the deployment system's policy refresh. |
+
+### Historical records
+
+Past endpoint data can remain visible under the configured retention policy. A retained device record doesn't prove that protection or reporting is still active. See [data retention](data-storage-privacy#data-retention).
 
 ## Offboard Mac devices
 

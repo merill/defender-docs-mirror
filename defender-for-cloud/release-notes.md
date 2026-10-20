@@ -61,9 +61,50 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| October 20, 2026 | Public preview | Expanded server onboarding experience |
+| October 20, 2026 | Public preview | Cloud security plan management in the Defender portal |
 | October 6, 2026 | Public preview | New Defender server security experience |
 | October 5, 2026 | GA | KSPM misconfiguration recommendations moving to controller-level scope |
 | October 5, 2026 | GA | On-demand malware scanning now supports scanning specific blobs, files, containers, and file shares |
+
+### Expanded server onboarding experience
+
+October 20, 2026
+
+The new Defender server security experience expands to include onboarding guidance for Azure and on-premises servers, building on the investigation and access management capabilities released on October 6.
+
+With this update, you can:
+
+- Onboard supported Azure virtual machines and Azure Arc-enabled servers automatically through Defender for Servers.
+- Choose a supported deployment method to onboard Windows and Linux servers manually to Defender for Endpoint.
+- Connect on-premises servers to Defender for Servers by using Azure Arc or Direct onboarding.
+- Verify server onboarding and review available offboarding methods.
+
+Servers already running Defender for Endpoint don't require reinstallation or migration to maintain their existing protection.
+
+For more information, see:
+
+- [Onboard servers to Microsoft Defender](/en-us/defender-endpoint/onboard-server).
+- [Connect on-premises servers to Defender for Servers](/en-us/azure/defender-for-cloud/quickstart-onboard-machines).
+- [Use Direct onboarding for on-premises servers](/en-us/azure/defender-for-cloud/onboard-machines-with-defender-for-endpoint).
+- [Offboard servers from Microsoft Defender](/en-us/defender-endpoint/offboard-machines#offboard-servers).
+
+### Cloud security plan management in the Defender portal
+
+October 20, 2026
+
+Cloud security plan management is scheduled to become available in public preview in the Microsoft Defender portal for Azure commercial environments on October 20, 2026.
+
+With this experience, you can:
+
+- Connect Azure subscriptions and management groups to cloud security in the Defender portal.
+- Enable and manage cloud security plans globally across connected environments or configure plans for selected management groups and subscriptions.
+- Estimate and track Cloud security costs, including cost under the new billing model, where usage is measured in Defender Workload Units (DWUs).
+- Start a 30-day free trial for eligible cloud security plans when enabling plans.
+
+When plan management moves to the Defender portal, plan configuration will be managed in the Defender portal and become view-only in the Azure portal. Migrated subscriptions will use DWU-based billing.
+
+For more information, see [Microsoft Defender for Cloud in the Microsoft Defender portal](defender-portal/defender-for-cloud-defender-portal).
 
 ### New Defender server security experience
 

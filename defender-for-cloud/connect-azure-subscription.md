@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to connect your Azure subscriptions to Microsoft Defender for Cloud and protect your cloud-based applications.
 ms.topic: install-set-up-deploy
-ms.date: 2025-10-23T00:00:00.0000000Z
+ms.date: 2026-07-28T00:00:00.0000000Z
 ms.custom: mode-other
 ai-usage: ai-assisted
 locale: en-us
@@ -44,6 +44,10 @@ platformId: 2e607d03-c195-499e-910b-bb5e829b6782
 # Connect your Azure Subscriptions - Microsoft Defender for Cloud | Microsoft Learn
 
 In this guide, you learn how to enable Microsoft Defender for Cloud on your Azure subscription.
+
+Important
+
+This article describes how to enable Defender for Cloud on an Azure subscription in the Azure portal. To connect Azure commercial subscriptions or management groups in the Microsoft Defender portal, see [Connect Azure environments in the Defender portal](defender-portal/connect-azure-environments-defender-portal).
 
 Microsoft Defender for Cloud is a cloud-native application protection platform (CNAPP) with a set of security measures and practices designed to protect your cloud-based applications end-to-end by combining these capabilities:
 

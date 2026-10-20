@@ -12,7 +12,7 @@ description: Review cloud and endpoint information, investigate threats, and che
 ms.service: defender-endpoint
 ms.subservice: onboard
 author: limwainstein
-ms.author: lwainstein
+ms.author: kschwabacher
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
@@ -36,13 +36,13 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/azure-server-integration.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 platformId: 817db59c-37d9-fa07-ed5d-ac8bd80554bc
 ---
 
@@ -57,6 +57,12 @@ On this page: Server asset page | Investigate an incident | Go hunt | RBAC and d
 ## Servers already running Defender for Endpoint
 
 Servers already running Defender for Endpoint continue operating with their existing configuration. You don't need to onboard, reinstall, or migrate them to maintain their existing protection. Review the requirements for each unified capability before changing your configuration.
+
+## Onboard new servers
+
+For new deployments, see [Onboard servers to Microsoft Defender](onboard-server) to choose an automatic or manual deployment method and verify onboarding.
+
+To connect on-premises servers to Defender for Servers, see [Connect on-premises servers to Defender for Servers](/en-us/azure/defender-for-cloud/quickstart-onboard-machines).
 
 ## Review the server asset page
 

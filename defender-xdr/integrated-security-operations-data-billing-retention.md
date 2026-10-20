@@ -10,7 +10,7 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how Microsoft security data and additional Microsoft and non-Microsoft security data are handled and billed with ISOC in Microsoft Defender.
 author: mberdugo
-ms.author: monaberdugo
+ms.author: kschwabacher
 ms.localizationpriority: high
 ms.collection:
 - m365-security

@@ -16,9 +16,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to configure cloud scopes and unified role-based access control for granular permissions management across your cloud environments.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-10-19T00:00:00.0000000Z
 zone_pivot_groups: defender-portal-experience
-ms.custom: msecd-doc-authoring-1013
+ms.custom: msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0e1c53e4-9393-37c1-409f-20fd13d2bf48
@@ -35,9 +35,11 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud/cloud-scopes-unified-rbac.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: a1e37217-fb8f-5927-0ecf-21558927ac95
@@ -114,7 +116,7 @@ Relationship to unified RBAC:
 
 - Unified RBAC roles reference one or more scopes (or "All").
 - A user’s effective cloud data visibility and permitted actions are the union of all scopes tied to their assigned roles.
-- Scope changes (adding or removing environments) immediately alter access for users relying on that scope.
+- Scope changes (adding or removing environments) alter access for users relying on that scope.
 - Least privilege: Granularity allows narrowing powerful permissions (for example, response or manage) to only the intended environments.
 
 Planning guidance:
@@ -226,6 +228,14 @@ To access the Scope filter:
 2. Select **Scope filter**. [![Screenshot of the Defender for Cloud Overview dashboard, with the 'Scope filter' action link highlighted.](media/cloud-scopes-unified-rbac/scope-filtering-1.png)](media/cloud-scopes-unified-rbac/scope-filtering-1.png#lightbox)
 3. Apply your desired filters. [![Screenshot of contextual filtering behavior for scopes filter.](media/cloud-scopes-unified-rbac/scope-filtering-2.png)](media/cloud-scopes-unified-rbac/scope-filtering-2.png#lightbox)
 
+### Cloud scope updates may take time to appear in filtering
+
+After you create or update a cloud scope, such as by adding or removing subscriptions, the change might not appear immediately in portal filters and scoped data views. In some cases, the refresh can take about 8–10 hours.
+
+During this time, filters might return incomplete or empty results even though the cloud scope configuration was saved successfully. If this happens, wait for the refresh to finish, and then try again.
+
+We're working to improve freshness for this experience.
+
 ### Use the environment filter
 
 Purpose: The Environment filter enables deep investigation, mitigation, and remediation focus.
@@ -306,6 +316,7 @@ These globally visible asset types appear in inventory, attack paths, maps, and 
 | RBAC model separation | Unified RBAC is independent of Azure RBAC (must be configured separately). |
 | API support | Portal only today for scope CRUD & assignments; API coming soon. |
 | Dynamic selection | Conditional/dynamic inclusion rules not yet supported. |
+| Cloud scope refresh | Cloud scope changes can take about 8–10 hours to appear in filters and scoped data views. For more information, see Cloud scope updates may take time to appear in filtering. |
 | Filtering in XDR (incidents/alerts) | Global scopes filter not fully integrated; partial table-level inheritance only. |
 | Cross-experience coverage | Some aggregated scores (for example: exposure score, Secure Score variants) may not fully scope-filter. |
 | Visualization constraints | Asset-rich views honor scoping but may limit related asset detail due to permission boundaries. |

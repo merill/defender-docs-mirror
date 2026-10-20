@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Understand how billing, configuration scope, and cloud security plans change when you manage plans in the Microsoft Defender portal.
 ms.topic: concept-article
-ms.date: 2026-07-28T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 6bbdef1a-16bd-baa5-124e-d3d4dd3a658e
@@ -49,6 +49,8 @@ Important
 This feature is in preview. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 When you move Defender for Cloud plan management from the Azure portal to the Microsoft Defender portal, the way that plans are billed, configured, and applied changes.
+
+[![Screenshot showing the Migrate to Defender dialog with billing changes, security management changes, and a comparison of legacy and new Defender for Cloud plans.](media/plan-management-changes-defender-portal/migrate-to-defender-plan-comparison.png)](media/plan-management-changes-defender-portal/migrate-to-defender-plan-comparison.png#lightbox)
 
 Before moving an Azure environment, review the following changes:
 
@@ -97,20 +99,24 @@ After an environment moves to Defender portal management:
 
 Some existing plans are replaced, consolidated, or measured differently when they move to the Defender portal.
 
-| Current plan | Updated plan or behavior |
+| Legacy plan | New plan |
 | --- | --- |
-| Defender for Key Vault billed by transaction | Defender for Key Vault billed per resource |
-| Defender for Storage V1 billed by transaction | Defender for Storage V2 billed per resource |
-| Defender for Resource Manager billed by transaction | Defender for Resource Manager billed per resource |
-| Defender for Containers billed by vCPU | Defender for Containers billed by protected node |
-| Defender for Azure SQL Databases, Defender for SQL Servers on Machines, and Defender for Open-Source Relational Databases | Consolidated Defender for Databases plan |
-| Defender for DNS | Continue without DNS protection, or enable Defender for Servers Plan 2 |
+| **Defender CSPM**. Serverless Protection and Serverless Containers were optional capabilities. | **Defender CSPM**. Serverless Protection and Serverless Containers are included by default with no opt-out. Eligible resources are protected and billed based on usage. |
+| **Storage Accounts**. Billed by transaction. | **Storage**. Billed per resource. |
+| **Containers**. Billed by vCPU. | **Containers**. Billed per node. |
+| **Kubernetes Service**. Billed by vCores. | **Containers**. Billed per node. |
+| **Container Registry**. Billed per image. | **Containers**. Billed per image. |
+| **Defender for Azure SQL Databases**, **SQL Servers on Machines**, and **Open-Source Relational Databases**. | **Databases**. A single consolidated plan, billed per instance. |
+| **Key Vaults**. Billed by transaction. | **Key Vaults**. Billed per resource. |
+| **DNS**. Discontinued. | **None**. Manually enable Defender for Servers Plan 2 for equivalent coverage. |
+| **ARM**. Billed by transaction. | **Resource Manager**. Billed per subscription. |
+| **API**. P2, P3, P4, P5. | **API**. A single consolidated plan (P1). |
 
 Most supported plans are mapped automatically to the new model.
 
-Defender for DNS isn't carried forward automatically. During migration, choose whether to:
+Defender for DNS isn't carried forward automatically. After migration, you can:
 
 - Continue without DNS protection.
-- Enable Defender for Servers Plan 2, which includes DNS protection and might result in additional charges.
+- Manually enable Defender for Servers Plan 2 to maintain equivalent DNS protection. Additional charges might apply.
 
 Review the changes shown in the Defender portal before confirming the migration.

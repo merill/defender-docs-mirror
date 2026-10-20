@@ -11,8 +11,8 @@ manager: bagol
 description: Find release details for Microsoft Defender for Endpoint on Windows, macOS, Linux, Android, and iOS from the past six months.
 ms.topic: whats-new
 ms.service: defender-endpoint
-author: lwainstein
-ms.author: lwainstein
+author: abhisheksh
+ms.author: abhisheksh
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
 ms.date: 2026-10-12T00:00:00.0000000Z
@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Linux | 101.26091.0003 | October 2026 | - Release version: 30.126091.0003.0- Engine version: 1.1.26090.3000- Signature version: 1.461.35.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26090.9 / Engine 1.1.26090.9 | September 2026 | - Platform: 4.18.26090.9- Engine: 1.1.26090.9- Security intelligence: 1.461.1.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26080.4 / Engine 1.1.26080.3 | August 2026 | - Platform: 4.18.26080.4- Engine: 1.1.26080.3- Security intelligence: 1.159.11.0 | Release details and updates |
 | Android | 1.0.9330.0101 | Sep 2026 | - Build: 1.0.9330.0101- Release: Sep 30, 2026 | Release details and updates |
@@ -609,6 +610,21 @@ If you have any concerns or need assistance during this transition, contact supp
 ### Linux known issues
 
 - **Intermittent issue during process scanning**: In version `101.26072.0004`, `wdavdaemon` might restart in rare cases while scanning running processes. The process recovers automatically, and no action is required. A fix will be available in an upcoming release. **Resolution**: Upgrade to platform version 101.26072.0005 or later.
+
+### Linux | October 2026 | 101.26091.0003
+
+#### Release details
+
+| Release version | Engine version | Signature version |
+| --- | --- | --- |
+| 30.126091.0003.0 | 1.1.26090.3000 | 1.461.35.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| Security | Upgraded libcurl to version 8.22.0 to address CVE-2026-9546. |
+| Security | Hardened quarantine operations by enforcing authorization checks and protecting against file-path manipulation that could lead to privilege escalation. |
 
 ### Linux | September 2026 | 101.26081.0010
 

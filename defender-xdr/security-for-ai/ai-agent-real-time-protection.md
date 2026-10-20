@@ -74,7 +74,7 @@ When Microsoft Defender audits or blocks an action, it records the event as a be
 
 Note
 
-Block events from Microsoft Prompt Shields for Foundry and Microsoft Copilot Agent Builder are also recorded as behaviors. This isn't yet supported for agents built with Microsoft Copilot Studio.
+Block events from Microsoft Prompt Shields for Foundry, Copilot Studio and Microsoft Copilot Agent Builder are also recorded as behaviors.
 
 ## Supported threat scenarios for real-time protection
 

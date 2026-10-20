@@ -78,6 +78,12 @@ The October announcement includes the following new alerts:
 
 **New alerts related to Entra ID**:
 
+- [Malicious registration of a device with strong MFA](alerts-xdr#malicious-registration-of-a-device-with-strong-mfa)
+- [Malicious registration of an attacker controlled MFA device](alerts-xdr#malicious-registration-of-an-attacker-controlled-mfa-device)
+- [Newly created user performed organization branding change](alerts-xdr#newly-created-user-performed-organization-branding-change)
+- [Suspicious registration of a new Authenticator MFA method](alerts-xdr#suspicious-registration-of-a-new-authenticator-mfa-method)
+- [Suspicious registration of a new Email MFA method](alerts-xdr#suspicious-registration-of-a-new-email-mfa-method)
+- [Suspicious registration of a new Phone MFA method](alerts-xdr#suspicious-registration-of-a-new-phone-mfa-method)
 - [Suspicious sign-in via Temporary Access Pass](alerts-xdr#suspicious-sign-in-via-temporary-access-pass)
 
 **New alerts related to Active Directory**:
@@ -86,6 +92,7 @@ The October announcement includes the following new alerts:
 - [Malicious Kerberos activity and CVE-2025-33073 exploitation attempt](alerts-xdr#malicious-kerberos-activity-and-cve-2025-33073-exploitation-attempt)
 - [Malicious request of Data Protection API (DPAPI) master key](alerts-xdr#malicious-request-of-data-protection-api-dpapi-master-key)
 - [Possible data exfiltration over DNS](alerts-xdr#possible-data-exfiltration-over-dns)
+- [Potential Certighost (CVE-2026-54121) AD CS abuse](alerts-xdr#potential-certighost-cve-2026-54121-ad-cs-abuse)
 - [Suspicious Active Directory Certificate Services (AD CS) certificate request](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-certificate-request)
 - [Suspicious Active Directory Certificate Services (AD CS) machine certificate issuance abuse (ESC8)](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-machine-certificate-issuance-abuse-esc8)
 - [Suspicious Active Directory Certificate Services (AD CS) machine certificate issuance over RPC (ESC11)](alerts-xdr#suspicious-active-directory-certificate-services-ad-cs-machine-certificate-issuance-over-rpc-esc11)

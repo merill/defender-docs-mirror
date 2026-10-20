@@ -32,13 +32,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/alerts-xdr.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
 platformId: 2d7db945-a5bf-40fc-86df-6433f315687c
 ---
 
@@ -91,7 +91,6 @@ The following alerts indicate that a malicious actor might be attempting to stea
 | Security alert name | Severity | MITRE Technique | Detector ID |
 | --- | --- | --- | --- |
 | A compromised user account signed in<br>**Description**:Credential stuffing led to a successful sign in, confirming an account has been compromised and accessed by an unauthorized party. | High | [T1078](https://attack.mitre.org/techniques/T1078) | xdr\_CredentialStuffingToolObserved |
-| AADInternals private key extraction attempt<br>**Description**:AADInternals was used to decrypt a certificate's private key as an administrator. A successfully decrypted private key might be used to impersonate hybrid components such as Pass-through Authentication (PTA) and Microsoft Entra Cloud Sync, which might lead to lateral movement to the cloud. | High | [T1552.004](https://attack.mitre.org/techniques/T1552/004) | xdr\_AADInternalsPrivateKeyExtractAttempt |
 | Anomalous OAuth device code authentication activity<br>**Description**:An OAuth device code authentication was detected in a context that deviates from the user’s typical behavior and sign-in patterns. Device code flow is generally associated with command-line tools, IoT devices, or non-browser-based applications. This anomalous activity may indicate a potential device code phishing attack and requires immediate investigation due to the risk of unauthorized token issuance or post-authentication token abuse. | Medium | [T1528](https://attack.mitre.org/techniques/T1528), [T1078.004](https://attack.mitre.org/techniques/T1078/004) | xdr\_AnomalousDeviceCodeAuthV2 |
 | Anomalous OAuth device code authentication activity<br>**Description**:An OAuth device code authentication was detected in a context that deviates from the user’s typical behavior and sign-in patterns. Device code flow is generally associated with command-line tools, IoT devices, or non-browser-based applications. This anomalous activity may indicate a potential device code phishing attack and requires immediate investigation due to the risk of unauthorized token issuance or post-authentication token abuse. | Medium | [T1528](https://attack.mitre.org/techniques/T1528), [T1078.004](https://attack.mitre.org/techniques/T1078/004) | xdr\_AnomalousDeviceCodeAuthV3 |
 | Anomalous token exchange following device code authentication<br>**Description**:An OAuth Device Code authentication was detected in an unusual context based on user behavior and sign-in patterns. Due to the design of Device Code flows, this activity requires immediate investigation as it may indicate unauthorized token issuance or post-authentication abuse. | High | [T1528](https://attack.mitre.org/techniques/T1528), [T1078.004](https://attack.mitre.org/techniques/T1078/004) | xdr\_AnomalousDeviceCodeAuth |

@@ -37,12 +37,12 @@ item_type: Content
 source_path: defender-for-identity/identity-inventory.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
-- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: f514b218-b4d7-7a81-523f-78fc7425be9d
 ---
 
@@ -132,7 +132,7 @@ The **Identities** list highlights key details for each human identity, includin
 | Domain | The Active Directory domain to which the identity belongs. |
 | Object ID | A unique identifier for the identity in Microsoft Entra ID. |
 | UPN (User Principal Name) | The unique sign-in name of the identity in an email-like format. |
-| Identity environment | Indicates whether the identity is on-premises (originates from Active Directory), Cloud only (Entra ID) or Hybrid (synced from Azure Active Directory to Microsoft Entra ID). |
+| Identity environment | Indicates whether the identity is on-premises (originates from Active Directory), Cloud only (Entra ID), or Hybrid (synced from on-premises Active Directory to Microsoft Entra ID). |
 | Identity provider | The name of the identity provider. |
 | Risk score | A score from 0 to 100 that's dynamically calculated for the identity. The score reflects how likely the identity is to be compromised and how much damage a compromise could cause. For details, see [Risk score tab](/en-us/defender-xdr/investigate-users#risk-score-tab). |
 | Criticality level | The criticality level assigned to the identity. |
@@ -156,7 +156,7 @@ These statistics highlight non-human identities that might need prioritization. 
 
 | Name | Description |
 | --- | --- |
-| Risky | The number of non-human identities with a high risk score. Risk scores are based on factors described in the [Risk score tab of the identity](/en-us/defender-cloud-apps/app-governance-visibility-insights-view-apps#getting-detailed-information-on-an-app). |
+| Risky | The number of non-human identities with a high risk score. Risk scores are based on factors described in the [Risk score tab of the identity](/en-us/defender-cloud-apps/app-governance-visibility-insights-view-apps#risk-score-tab). |
 | Highly privileged | The number of non-human identities that have at least one high-privilege API permission or high-privilege Microsoft Entra role. |
 | Overprivileged | The number of non-human identities with more permissions than they use. |
 | Unused | The number of non-human identities with no recent sign-in activity. |
@@ -197,5 +197,5 @@ For Microsoft Entra ID identities, select **Create new policy** to set up a gove
 ### Related articles
 
 - [Investigate users in Microsoft Defender](/en-us/defender-xdr/investigate-users)
-- [Investigate non-human identities in Microsoft Defender](/en-us/defender-xdr/investigate-users)
+- [Investigate non-human identities in Microsoft Defender](/en-us/defender-xdr/investigate-non-human-identities)
 - [Investigate cloud application accounts](/en-us/defender-cloud-apps/accounts)

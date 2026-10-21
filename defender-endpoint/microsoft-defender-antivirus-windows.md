@@ -11,11 +11,11 @@ manager: bagol
 description: Learn how to manage, configure, and use Microsoft Defender Antivirus, built-in anti-malware and antivirus protection.
 ms.service: defender-endpoint
 ms.localizationpriority: high
-ms.date: 2025-10-20T00:00:00.0000000Z
+ms.date: 2026-10-05T00:00:00.0000000Z
 ms.topic: overview
 author: chrisda
 ms.author: chrisda
-ms.reviewer: mkaminska, yongrhee, pahuijbr
+ms.reviewer: mkaminska, yongrhee, pahuijbr, ericlaw
 ms.custom: nextgen
 ms.subservice: ngp
 ms.collection:
@@ -85,6 +85,7 @@ The following table summarizes Microsoft Defender Antivirus processes and servic
 | **Microsoft Defender Antivirus Core service**(`MdCoreSvc`) | - **Processes** tab: `Antimalware Core Service`<br>- **Details** tab: `MpDefenderCoreService.exe`<br>- **Services** tab: `Microsoft Defender Core Service` |
 | **Microsoft Defender Antivirus service**(`WinDefend`) | - **Processes** tab: `Antimalware Service Executable`<br>- **Details** tab: `MsMpEng.exe`<br>- **Services** tab: `Microsoft Defender Antivirus` |
 | **Microsoft Defender Antivirus Network Realtime Inspection service**(`WdNisSvc`) | - **Processes** tab: `Microsoft Network Realtime Inspection Service`<br>- **Details** tab: `NisSrv.exe`<br>- **Services** tab: `Microsoft Defender Antivirus Network Inspection Service` |
+| **Microsoft Defender Clipboard Protection** | - **Processes** tab: N/A<br>- **Details** tab: `DefenderSessionHelper.exe`<br>- **Services** tab: N/A |
 | **Microsoft Defender Antivirus command-line utility** | - **Processes** tab: N/A<br>- **Details** tab: `MpCmdRun.exe`<br>- **Services** tab: N/A |
 | **Microsoft Security Client Policy Configuration Tool** | - **Processes** tab: N/A<br>- **Details** tab: `ConfigSecurityPolicy.exe`<br>- **Services** tab: N/A |
 

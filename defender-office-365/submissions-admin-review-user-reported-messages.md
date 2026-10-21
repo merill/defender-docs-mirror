@@ -16,11 +16,11 @@ ms.collection:
 - m365-security
 - tier2
 ms.custom:
-- msecd-doc-authoring-1016
+- msecd-doc-authoring-1030
 - sfi-ga-nochange
 description: Admins can learn how to review messages that were reported by users and give them feedback.
 ms.service: defender-office-365
-ms.date: 2026-07-30T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: b2212a7d-8193-2555-ba08-55f179ffbfd1
@@ -116,6 +116,8 @@ Before you begin, review the following requirements and access details:
 The reported message is marked with the selected verdict, and an email message is automatically sent to notify the user who reported the message.
 
 When automatic notifications use the default template, users receive notification emails in their preferred language based on their Outlook language settings. Localized default templates are enabled automatically when automatic notifications are turned on. Localized templates don't change message verdicts, classification logic, or automated investigation behavior.
+
+Localized default notification templates support the following languages: English, Japanese, Spanish, Chinese (Simplified), Chinese (Traditional, Taiwan), Korean, Portuguese, Russian, Dutch, Arabic, Catalan, Croatian, Finnish, Greek, Hungarian, Indonesian, Polish, Romanian, Slovak, Slovenian, Swedish, Thai, Turkish, Vietnamese, French, Italian, and German.
 
 To customize the notification email, see Customize the messages used to notify users.
 

@@ -124,7 +124,7 @@ You can also get product updates and important notifications through the [messag
     - The [`IdentityAccountInfo`](advanced-hunting-identityaccountinfo-table) table contains information about account information from various sources, including Microsoft Entra ID. It also includes information and link to the identity that owns the account.
     - The [`EntraIdSignInEvents`](advanced-hunting-entraidsigninevents-table) table contains information about Microsoft Entra interactive and non-interactive sign-ins.
     - The [`EntraIdSpnSignInEvents`](advanced-hunting-entraidspnsigninevents-table) table contains information about Microsoft Entra service principal and managed identity sign-ins.
-    - The [`GraphApiAuditEvents`](advanced-hunting-graphapiauditevents-table) table provides information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
+    - The [`GraphAPIAuditEvents`](advanced-hunting-graphapiauditevents-table) table provides information about Microsoft Entra ID API requests made to Microsoft Graph API for resources in the tenant.
 
 ## January 2026
 

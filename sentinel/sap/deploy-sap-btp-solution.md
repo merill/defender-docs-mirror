@@ -23,11 +23,11 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: Learn how to deploy the Microsoft Sentinel solution for SAP Business Technology Platform (BTP) system.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell, msecd-doc-authoring-1016
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-10-02T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 79dae81d-051f-7109-31d7-c6bbd696105a
@@ -51,7 +51,7 @@ platformId: becf73c8-2cb1-670b-64b7-f982321c80bc
 
 # Deploy Microsoft Sentinel solution for SAP BTP | Microsoft Learn
 
-This article describes how to deploy the Microsoft Sentinel solution for SAP Business Technology Platform (BTP) system. The Microsoft Sentinel solution for SAP BTP monitors and protects your SAP BTP system. It collects audit logs and activity logs from the BTP infrastructure and BTP-based apps, and then detects threats, suspicious activities, illegitimate activities, and more. [SAP BTP solution overview](sap-btp-solution-overview).
+Deploy the Microsoft Sentinel solution for SAP Business Technology Platform (BTP) to collect audit and activity logs from BTP infrastructure and apps, detect suspicious activity, and investigate threats. For an overview, see [Microsoft Sentinel Solution for SAP BTP](sap-btp-solution-overview).
 
 Important
 
@@ -66,6 +66,7 @@ Before you begin, verify that:
 - Your organization uses SAP BTP (in a Cloud Foundry environment) to streamline interactions with SAP applications and other business applications.
 - You have an SAP BTP Subaccount (which supports BTP Subaccounts in the Cloud Foundry environment). You can also use a [SAP BTP trial account](https://cockpit.hanatrial.ondemand.com/).
 - You have the SAP BTP auditlog-management service and service key (see Set up the BTP Subaccount and solution).
+- To ingest application vulnerability findings, you have the SAP Application Vulnerability Report Service enabled and a service key for it. This connector uses separate credentials from the SAP BTP audit-log connector.
 - You have the Microsoft Sentinel Contributor role on the target Microsoft Sentinel workspace.
 
 ## Set up the BTP subaccount and solution
@@ -119,6 +120,28 @@ To set up the BTP subaccount and the solution manually from the SAP BTP cockpit 
     2. Allow 20 to 30 minutes for the logs to start flowing.
     3. On the **SAP BTP** connector page, confirm that Microsoft Sentinel receives the BTP data, or query the **SAPBTPAuditLog\_CL** table directly.
 19. Enable the [SAP BTP workbook](sap-btp-security-content#sap-btp-workbook) and the [SAP BTP built-in analytics rules](sap-btp-security-content#built-in-analytics-rules) that are provided as part of the solution by following the [guidelines for deploying Microsoft Sentinel analytics rules](../sentinel-solutions-deploy#analytics-rule).
+
+## Configure the Application Vulnerability Report connector (Preview)
+
+Important
+
+This connector is in Preview. The [Azure Preview Supplemental Terms](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) include additional legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+Use this connector to ingest findings from the [SAP Application Vulnerability Report Service](https://community.sap.com/t5/technology-blog-posts-by-sap/from-blind-spot-to-threat-signal-feed-sap-application-vulnerability-report/ba-p/14508028). It can monitor SAP BTP apps in multiple subaccounts across regions. It doesn't share the service key or credentials used by the SAP BTP audit-log connector.
+
+1. In SAP BTP, configure the Application Vulnerability Report Service and create a dedicated service key. For more information, see the SAP [Finding Provider Service API](https://api.sap.com/api/sap-FindingProviderService-v1/resource/get_Findings).
+2. From the service key, record the Finding Provider API URL (`url`), authorization server URL (`uaa.url`), client ID (`uaa.clientid`), and client secret (`uaa.clientsecret`). Also record the subaccount ID.
+3. In your Microsoft Sentinel workspace, select **Data connectors** and search for **Application Vulnerability Report for SAP BTP**.
+4. Open the connector page, select **Add account**, and enter the subaccount name and ID, client ID and secret, authorization server URL, and Finding Provider API URL.
+5. Configure the advanced options if needed:
+
+    - **Polling Frequency**: The connector polls every 60 to 120 minutes. The default is 60 minutes.
+    - **Log Ingest Delay**: The delay, in minutes, used to account for findings published late by SAP BTP. The supported range is 120 to 300 minutes. The default is 300 minutes.
+6. Submit the account configuration to save the connection.
+7. Verify that findings arrive in the `SAPBTPAVL_CL` table. Allow for the configured log-ingest delay before expecting recent findings.
+8. Enable the **SAP BTP - Use of custom app with high or critical vulnerability** analytics rule and use the **Application Vulnerabilities** tab in the [SAP BTP workbook](sap-btp-security-content#sap-btp-workbook). For more information, see [SAP BTP security content](sap-btp-security-content#sap-application-vulnerability-report-service-preview).
+
+Learn more about the integration of SAP Application Vulnerability Report Service with Microsoft Sentinel for SAP in the [SAP community blog post](https://community.sap.com/t5/technology-blog-posts-by-sap/from-blind-spot-to-threat-signal-feed-sap-application-vulnerability-report/ba-p/14508028).
 
 Note
 

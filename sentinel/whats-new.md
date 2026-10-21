@@ -25,7 +25,7 @@ description: Learn about the latest new features and announcement in Microsoft S
 author: guywi-ms
 ms.author: guywild
 ms.topic: concept-article
-ms.date: 2026-08-24T00:00:00.0000000Z
+ms.date: 2026-10-21T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom:
 - build-2025
@@ -61,6 +61,14 @@ The listed features were released in the last six months. For information about 
 Note
 
 For information about feature availability in US Government clouds, see the Microsoft Sentinel tables in [Cloud feature availability for US Government customers](/en-us/azure/security/fundamentals/feature-availability).
+
+## October 2026
+
+- Detect use of vulnerable SAP BTP custom apps (Preview)
+
+### Detect use of vulnerable SAP BTP custom apps (Preview)
+
+The SAP BTP solution adds an analytics rule that correlates SAP Application Vulnerability Report findings with BTP audit logs to detect use of custom apps with open high or critical vulnerabilities. The rule identifies interactive XSUAA logins that match a vulnerable app and application audit events in the same subaccount, Cloud Foundry organization, and space. It uses a default CVSS threshold of 7.0 and a 14-day finding lookback. For details, see [SAP BTP security content](sap/sap-btp-security-content#sap-application-vulnerability-report-service-preview).
 
 ## September 2026
 

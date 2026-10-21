@@ -23,10 +23,11 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: This article introduces the Microsoft Sentinel Solution for SAP BTP.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: concept-article
-ms.date: 2024-08-08T00:00:00.0000000Z
+ms.date: 2026-10-02T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: f7c30d40-a710-3f16-6115-ba7803c3a4de
 document_version_independent_id: fe353760-5e4a-0f41-2339-a135cba835d3
@@ -42,8 +43,10 @@ item_type: Content
 source_path: sentinel/sap/sap-btp-solution-overview.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: f4b58eb3-a8af-ef7a-a91a-051d6123589d
 ---
 
@@ -57,6 +60,8 @@ The Microsoft Sentinel solution for SAP BTP monitors and protects your SAP Busin
 
 The Microsoft Sentinel Solution for SAP BTP covers all SAP BTP services that log security-relevant events to the [SAP Audit Log Management service](https://help.sap.com/docs/btp/sap-business-technology-platform/security-events-logged-by-cf-services). See [SAP's official documentation](https://help.sap.com/docs/btp/sap-business-technology-platform/security-events-logged-by-cf-services) for the latest list of supported services and logged events.
 
+The solution also includes a separate preview connector for the SAP Application Vulnerability Report Service. It ingests vulnerability findings for custom apps deployed on SAP BTP. You can use these findings with BTP audit activity to investigate vulnerable applications and related security events.
+
 Among the supported services are, but not limited to:
 
 - **SAP Cloud Integration - Integration Suite**: A service that enables you to connect different SAP applications and systems, both on-premises and in the cloud, to facilitate data exchange and integration processes.
@@ -66,7 +71,7 @@ Among the supported services are, but not limited to:
 - **SAP Build Work Zone**: A unified point of access to SAP applications (such as SAP S/4HANA), custom-built, and third party applications and extensions, both on the cloud and on premise.
 - **SAP Datasphere - SAP Business Data Cloud**: A cloud-based data management and analytics platform that enables you to collect, store, process, and analyze large volumes of data from various sources, including SAP and non-SAP systems.
 - **SAP AI Core**: A service that allows you to build, deploy, and manage AI models and applications on SAP BTP, leveraging machine learning and deep learning techniques to enhance business processes and decision-making.
-- **SAP Event Mesh**: A service that enables event-driven architecture and real-time data processing on SAP BTP, allowing you to create, publish, and subscribe to events across different applications and systems.
+- **SAP Event Mesh**: A service that enables event-driven architecture and real-time data processing on SAP BTP, allowing you to create, publish, and subscribe to events between different applications and systems.
 
 ## Solution architecture
 
@@ -108,4 +113,6 @@ The solution includes:
 
 - The **SAP BTP** connector, which allows you to connect your BTP subaccounts and global account to Microsoft Sentinel via the [Audit Log service for SAP BTP API](https://help.sap.com/docs/btp/sap-business-technology-platform/security-events-logged-by-cf-services). Learn how to [install the solution and data connector](deploy-sap-btp-solution).
 - **[Built-in analytics rules](sap-btp-security-content#built-in-analytics-rules)** for identity management and low-code application development scenarios using the Trust and Authorization Provider and Business Application Studio (BAS) event sources in BTP.
+- The **Application Vulnerability Report for SAP BTP** connector (Preview), which ingests vulnerability findings from the SAP Application Vulnerability Report Service. Configure this connector separately from the audit log connector. Learn how to [configure the Application Vulnerability Report connector](deploy-sap-btp-solution#configure-the-application-vulnerability-report-connector-preview).
+- A preview analytics rule that detects critical vulnerability findings in custom apps, and an **Application Vulnerabilities** workbook tab with a vulnerability posture KPI. For details, see the [security content reference](sap-btp-security-content#sap-application-vulnerability-report-service-preview).
 - The **[BTP activity workbook](sap-btp-security-content#sap-btp-workbook)**, which provides a dashboard overview of subaccounts and a grid of identity management events.

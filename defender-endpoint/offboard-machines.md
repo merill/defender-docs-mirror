@@ -53,17 +53,20 @@ Past data, such as alerts, vulnerabilities, and the device timeline, for an offb
 
 ## Prerequisites
 
-### Supported operating systems
+Offboarding is supported on devices running the following operating systems:
 
-- Windows client devices
+- Windows client operating systems
 - Windows Server 2012 R2 and later
+- Linux (client and server)
+- macOS
+- Android and iOS
 - Azure Stack HCI OS, version 23H2 and later
-- Mac devices
-- Linux devices
 
-For information about offboarding and uninstalling Microsoft Defender for Endpoint on Linux, see [Offboard Microsoft Defender for Endpoint on Linux](linux-off-board-endpoints).
+## Offboard client devices
 
-In the [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, select **Settings** &gt; **Offboard**, and then select an operating system to start the offboarding process.
+### Offboard Windows client devices
+
+Navigate to [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, select **Settings** &gt; **Offboard**, and then select an operating system to start the offboarding process.
 
 You can also use other methods, such as:
 
@@ -72,31 +75,58 @@ You can also use other methods, such as:
 - [Offboard devices using Mobile Device Management tools](configure-endpoints-mdm#offboard-devices-using-mobile-device-management-tools)
 - [Offboard devices using the API](api/offboard-machine-api)
 
-## Offboard servers
+### Offboard Linux client devices
 
-Choose automatic Azure offboarding or manual endpoint offboarding based on the intended outcome. Verify plan coverage, endpoint reporting, and software removal separately.
+For information about offboarding and uninstalling Microsoft Defender for Endpoint on Linux clients, see [Offboard Microsoft Defender for Endpoint on Linux](linux-off-board-endpoints).
 
-### Choose the required outcome
+### Offboard MacOS devices
+
+In the following procedure, steps 1 and 2 are optional if you do not want to see these devices as retired in the "Device inventory" for 180 days.
+
+1. Create a [device tag](machine-tags), and name the tag `decommissioned`. Assign the tag to the Mac devices that you want to offboard from Defender for Endpoint.
+2. Create a [Device group](machine-groups) and name it something like, `Decommissioned Mac`. Assign this tag to an appropriate user group.
+3. Remove policies for [Tamper Protection](tamper-protection-macos-configure). See [Set preferences on Mac: Tamper protection](mac-preferences#tamper-protection), or turn off tamper protection by using [local configuration](tamper-protection-macos-configure#configure-tamper-protection-locally).
+4. In the [Microsoft Defender portal](https://security.microsoft.com), navigate to, **System** &gt; **Settings** &gt; **Endpoints** &gt; **Device management** &gt; **Offboarding**. Select **macOS** in Step 1, then choose your preferred deployment method, and select **Download package** to download the offboarding package.
+
+    Or, if you're using a non-Microsoft device management solution, disable integration with Defender for Endpoint.
+5. Uninstall the Defender for Endpoint app on Mac devices.
+6. Remove Mac devices from the group for system extension policies if an MDM was used to set them.
+
+### Offboard Android or iOS devices
+
+To offboard an Android or iOS device, uninstall the Microsoft Defender app on the device.
+
+## Offboard cloud and on-premises servers
+
+Offboard an Azure environment in one step by turning off Defender for Servers for the subscription. Eligible servers are offboarded automatically, without running an offboarding package on each server. To offboard only selected servers, use manual offboarding.
+
+### Choose an offboarding path
+
+Choose a path based on whether you want to offboard servers across an Azure subscription or only selected servers.
 
 | Outcome | What to do |
 | --- | --- |
-| Offboard an Azure environment | Use automatic Azure offboarding. |
-| Change Defender for Servers coverage | Use the [plan-change procedure](/en-us/azure/defender-for-cloud/tutorial-enable-servers-plan#disable-defender-for-servers-on-a-subscription). Review the affected subscription and resource settings first. |
-| Offboard individual endpoints | Use manual endpoint offboarding. |
-| Remove endpoint software | Use the supported uninstall procedure for that operating system. Don't assume a plan change or offboarding package removes it. |
+| Offboard an Azure subscription and all servers in it | Turn off Defender for Servers for the subscription. Follow automatic Azure offboarding. |
+| Offboard individual servers | Follow manual endpoint offboarding using a supported method for the operating system. |
 
-### Prepare the change
+Note
+
+- **Change active Defender for Servers plan:** Follow the [plan-change procedure](/en-us/azure/defender-for-cloud/tutorial-enable-servers-plan#disable-defender-for-servers-on-a-subscription). Review the subscription and resource settings before making changes.
+- **Uninstall Microsoft Defender for Endpoint:** Follow the uninstall instructions for the server's operating system. Offboarding doesn't uninstall the software.
+
+### Prepare for server offboarding
 
 1. Record affected servers, existing coverage, and deployment policies.
 2. Review open investigations, evidence-retention needs, and any plans to onboard the server again or reinstall endpoint software.
 3. Remove conflicting onboarding assignments so deployment tools don't reverse the change.
 4. For Direct onboarding, review [who is affected](/en-us/azure/defender-for-cloud/onboard-machines-with-defender-for-endpoint#who-is-affected) before changing a shared setting.
 
-### Automatic Azure offboarding
+### Offboard servers in an Azure subscription
 
-Turning off Defender for Servers for a subscription in the Azure portal automatically offboards eligible servers from Microsoft Defender for Endpoint. Changing from Plan 2 to Plan 1 or moving a machine between subscriptions doesn't trigger automatic offboarding.
+To offboard an Azure environment, turn off Defender for Servers for its subscription in the Azure portal. This automatically offboards eligible servers from Defender for Endpoint. No need to run an offboarding package on each server.
 
-Before starting, complete the steps in Prepare the change.
+- Use the subscription's Defender for Servers plan setting, not deletion of the Azure environment connector.
+- Changing from Plan 2 to Plan 1 or moving a server between subscriptions doesn't trigger automatic offboarding.
 
 To start offboarding and verify the result:
 
@@ -112,21 +142,23 @@ Note
 
 If you turn the plan back on before offboarding completes, the offboarding and onboarding actions run asynchronously. Defender for Endpoint is onboarded again after a few hours. Turning the plan back on doesn't immediately cancel offboarding.
 
-### Manual endpoint offboarding
+### Offboard individual servers
 
-Use a supported endpoint tool to offboard individual servers, including manually onboarded on-premises servers, or to complete an intended endpoint change after reviewing the automatic flow's result.
+Use manual offboarding to stop selected servers from reporting to Defender for Endpoint. Follow the method below for your operating system and management tool.
 
-Follow one of the methods below. Manual endpoint offboarding isn't a substitute for changing Defender for Servers coverage.
+**Download an offboarding package (if required)**
 
-#### Download an offboarding package
+Navigate to [Microsoft Defender portal](https://security.microsoft.com), in the navigation pane, select **Settings** &gt; **Cloud Security** &gt; **Server security - Onboard and Manage** &gt; **Manage offboarding**, and then select an operating system to start the offboarding process.
 
-Open the [Offboarding page](https://security.microsoft.com/securitysettings/endpoints/offboarding) in Microsoft Defender. Use an account authorized to download the package, and then follow the relevant method's operating-system and package selections.
+Note
+
+Use an account authorized to download the package, and then follow the relevant method's operating-system and package instructions.
 
 Download a current package for the correct tenant, check its expiration, and store it securely. Package formats and validity periods differ by method.
 
 For local-script or Configuration Manager offboarding, select the Windows version group specified in that method's instructions. The generic **Windows** option opens the separate Defender deployment tool workflow, not the version-specific package workflow.
 
-Choose the supported method for your operating system and management environment:
+Choose a method for your operating system and management tool. Download an offboarding package only if the selected procedure requires one.
 
 | Method | Procedure |
 | --- | --- |
@@ -137,7 +169,7 @@ Choose the supported method for your operating system and management environment
 | Mobile device management | [Mobile Device Management offboarding](configure-endpoints-mdm#offboard-devices-using-mobile-device-management-tools) |
 | API automation | [Offboard machine API](api/offboard-machine-api) |
 
-### Verify each outcome
+### Validate server offboarding
 
 | Intended change | Check |
 | --- | --- |
@@ -146,23 +178,6 @@ Choose the supported method for your operating system and management environment
 | Software removal | Confirm the relevant application, package, or service is absent using operating-system tools. |
 | No automatic return | Recheck after the deployment system's policy refresh. |
 
-### Historical records
+### Historical records and retention
 
 Past endpoint data can remain visible under the configured retention policy. A retained device record doesn't prove that protection or reporting is still active. See [data retention](data-storage-privacy#data-retention).
-
-## Offboard Mac devices
-
-In the following procedure, steps 1 and 2 are optional if you do not want to see these devices that are retired in the "Device inventory" for 180 days.
-
-1. Create a [device tag](machine-tags), and name the tag `decommissioned`. Assign the tag to the Mac devices that you want to offboard from Defender for Endpoint.
-2. Create a [Device group](machine-groups) and name it something like, `Decommissioned Mac`. Assign this tag to an appropriate user group.
-3. Remove policies for [Tamper Protection](tamper-protection-macos-configure). See [Set preferences on Mac: Tamper protection](mac-preferences#tamper-protection), or turn off tamper protection by using [local configuration](tamper-protection-macos-configure#configure-tamper-protection-locally).
-4. In the [Microsoft Defender portal](https://security.microsoft.com), navigate to, **System** &gt; **Settings** &gt; **Endpoints** &gt; **Device management** &gt; **Offboarding**. Select **macOS** in Step 1, then choose your preferred deployment method, and select **Download package** to download the offboarding package.
-
-    Or, if you're using a non-Microsoft device management solution, disable integration with Defender for Endpoint.
-5. Uninstall the Defender for Endpoint app on Mac devices.
-6. Remove Mac devices from the group for system extension policies if an MDM was used to set them.
-
-## Offboard Android or iOS devices
-
-To offboard an Android or iOS device, uninstall the Microsoft Defender app on the device.

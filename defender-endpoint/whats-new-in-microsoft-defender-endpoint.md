@@ -15,7 +15,7 @@ author: lwainstein
 ms.author: yaronyahav
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-10-14T00:00:00.0000000Z
+ms.date: 2026-10-16T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection:
 - m365-security
@@ -58,6 +58,7 @@ Learn more about [Preview features](/en-us/defender-xdr/preview).
 
 | Type | Feature | Preview/GA | Description |
 | --- | --- | --- | --- |
+| Release - macOS | Build 101.26082.0012 | GA | Release version 20.126082.12.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--october-2026--101260820012). |
 | Feature | [Vulnerability assessment for Microsoft Store applications](/en-us/defender-vulnerability-management/tvm-software-inventory#microsoft-store-applications) | GA | Vulnerability assessment for applications installed via the Microsoft Store is now generally available. Defender Vulnerability Management detects supported Microsoft Store applications, adds them to the software inventory, and assesses them for vulnerabilities. Coverage is currently limited to a select set of commonly used applications. Use the **Software evidence** area on the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location. |
 
 ## September 2026

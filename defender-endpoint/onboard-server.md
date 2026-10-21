@@ -258,7 +258,7 @@ Direct onboarding isn't required merely to keep an existing Defender for Endpoin
 
 ## Offboard Windows servers
 
-For automatic Azure offboarding, manual endpoint offboarding, and separate software-removal checks, see [Offboard servers from Microsoft Defender](offboard-machines#offboard-servers).
+For automatic Azure offboarding, manual endpoint offboarding, and separate software-removal checks, see [Offboard servers from Microsoft Defender](offboard-machines).
 
 You can manually offboard Windows servers by using the same methods that are available for Windows client devices:
 

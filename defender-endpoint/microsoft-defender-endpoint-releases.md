@@ -15,7 +15,7 @@ author: abhisheksh
 ms.author: abhisheksh
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-10-12T00:00:00.0000000Z
+ms.date: 2026-10-16T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: a82695da-2a19-ab7b-fd85-324ba1ae897f
@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| macOS | 101.26082.0012 | October 2026 | - Release version: 20.126082.12.0- Engine version: 1.1.26100.3000- Signature version: 1.461.61.0 | Release details and updates |
 | Linux | 101.26091.0003 | October 2026 | - Release version: 30.126091.0003.0- Engine version: 1.1.26090.3000- Signature version: 1.461.35.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26090.9 / Engine 1.1.26090.9 | September 2026 | - Platform: 4.18.26090.9- Engine: 1.1.26090.9- Security intelligence: 1.461.1.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26080.4 / Engine 1.1.26080.3 | August 2026 | - Platform: 4.18.26080.4- Engine: 1.1.26080.3- Security intelligence: 1.159.11.0 | Release details and updates |
@@ -273,6 +274,27 @@ To share feedback, open Defender for Endpoint on macOS and go to **Help &gt; Sen
 To get latest features, configure your device for the Beta channel (formerly Insider-Fast) device.
 
 For known issues, see macOS known issues.
+
+### macOS | October-2026 | 101.26082.0012
+
+#### Versions
+
+| Release version | Engine version | Signature version |
+| --- | --- | --- |
+| 20.126082.12.0 | 1.1.26100.3000 | 1.461.61.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| General | Device Control: Device health reporting now shows Bluetooth permission status. |
+| General | UI: Improved keyboard accessibility in side panes by moving focus into the open pane and keeping Tab navigation within its controls. |
+| General | UI: Improved accessibility of feedback rating controls so individual stars can receive focus without an extra group focus target. |
+| General | Antivirus: Improved health reporting to indicate when the protection engine connection is unavailable. |
+| General | Antivirus: Improved reliability by preventing a rare service crash. |
+| General | EDR: Added support for configuring AI agent runtime protection on macOS. |
+| General | EDR: Improved authentication reliability after startup and wake by waiting for network connectivity to recover before resuming cloud communication. |
+| General | Bug and performance fixes. |
 
 ### macOS | September-2026 | 101.26072.0017
 

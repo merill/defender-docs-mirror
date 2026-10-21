@@ -10,8 +10,8 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Configure governance relationships in the Microsoft Defender portal to delegate access across customer or organizational tenants for multitenant organizations and MSSPs.
 ms.service: defender-xdr
-ms.author: monaberdugo
-author: mberdugo
+ms.author: saggiehaim
+author: Saggiehaim
 ms.topic: how-to
 ms.date: 2026-08-07T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -140,9 +140,7 @@ After the approval is complete, users in the specified security groups receive p
 
 ## Configure tenant governance permissions for Microsoft Sentinel
 
-Security groups used in the relationship template are synchronized to the governed tenant as "remote tenant groups." You can assign these groups to Microsoft Sentinel roles in the governed tenant to enable multitenant management capabilities. You can assign these groups to Azure Resource Manager (ARM) resources to enable Microsoft Sentinel management capabilities.
-
-The Microsoft Sentinel Azure RBAC assignments described in this section grant management-plane access to the selected resources. They don't automatically grant data-plane access, such as permission to read Azure Storage blob data or Azure Key Vault secrets. Assign any required data-plane roles separately and follow least-privilege principles.
+Security groups used in the relationship template are synchronized to the governed tenant as "remote tenant groups." You can assign these groups to Microsoft Sentinel roles in the governed tenant to enable multitenant management capabilities. You can assign these groups to Defender URBAC or Azure Resource Manager (ARM) resources to enable Microsoft Sentinel management capabilities.
 
 Assigning Microsoft Sentinel roles enables multitenant management features including:
 
@@ -152,11 +150,35 @@ Assigning Microsoft Sentinel roles enables multitenant management features inclu
 - Content distribution
 - Direct management through the Defender portal
 
-### Assign permissions to resource group
+### Option 1 - Assign permissions with URBAC
+
+To create custom roles in Microsoft Defender unified RBAC, you must be assigned one of the following roles or permissions:
+
+- At least Security Administrator in Microsoft Entra ID.
+- All Authorization permissions assigned in Microsoft Defender Unified RBAC.
+
+Follow these steps to grant Microsoft Sentinel permissions to your delegated remote tenant group.
+
+1. In the governed tenant, sign in to the [Defender Portal](https://security.microsoft.com)
+2. Navigate to **Setup & Configuration** &gt; **Permissions**.
+3. Select Roles.
+4. Select or Create the role you want to assign ([Map Sentinel roles to Defender URBAC](/en-us/defender-xdr/compare-rbac-roles)).
+5. Create a new assignment or edit an existing one.
+
+    ![Screenshot of the URBAC Sentinel Contributor role with Add new assignment highlighted in the Assignments section.](media/governance-relationships/new-role-assignment.png)
+6. Add the Remote tenant groups you want to grant access to Sentinel.
+7. On the **Data Collections** select the workspaces in scope.
+
+    ![Screenshot of the Add assignment pane with the assignment name, selected remote tenant group, and Microsoft Sentinel data collections highlighted.](media/governance-relationships/remote-tenant-group-selection.png)
+8. Select **Add** to complete the assignment.
+
+### Option 2 - Assign permissions to a resource group
+
+The Microsoft Sentinel Azure RBAC assignments described in this section grant management-plane access to the selected resources. They don't automatically grant data-plane access, such as permission to read Azure Storage blob data or Azure Key Vault secrets. Assign any required data-plane roles separately and follow least-privilege principles.
 
 Before you assign permissions, ensure you have the [User Access Administrator](/en-us/azure/role-based-access-control/built-in-roles/privileged#user-access-administrator) role in Azure RBAC and at least the [User Administrator](/en-us/entra/identity/role-based-access-control/permissions-reference#user-administrator) role in Entra RBAC.
 
-Follow these steps to grant Microsoft Sentinel permissions to your delegated access groups.
+Follow these steps to grant Microsoft Sentinel permissions to your delegated remote tenant group.
 
 1. In the governed tenant, sign in to the [Azure portal](https://portal.azure.com).
 2. Navigate to your resource group.

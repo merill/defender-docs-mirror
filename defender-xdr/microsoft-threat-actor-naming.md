@@ -23,7 +23,7 @@ ms.custom:
 - msecd-doc-authoring-1012
 ms.topic: article
 ai-usage: ai-assisted
-ms.date: 2026-10-19T00:00:00.0000000Z
+ms.date: 2026-10-21T00:00:00.0000000Z
 locale: en-us
 document_id: 5e5b3874-aec8-372b-d35d-f710fe4a6852
 document_version_independent_id: 5e5b3874-aec8-372b-d35d-f710fe4a6852
@@ -184,7 +184,6 @@ The following table lists publicly disclosed threat actor names with their origi
 | Spandex Tempest | Financially motivated | MONTY SPIDER, TA505 |
 | [Star Blizzard](https://www.microsoft.com/en-us/security/blog/tag/star-blizzard-seaborgium/) | Russia | SEABORGIUM, COLDRIVER, Callisto Group, BlueCharlie, TA446 |
 | Storm-0133 | Iran | HEXANE, Lyceum, Siamesekitten, Spirlin |
-| Storm-0156 | Pakistan | MYTHIC LEOPARD, SideCopy, APT36, Transparent Tribe |
 | Storm-0216 | Financially motivated | TUNNEL SPIDER, UNC2198 |
 | Storm-0230 | Group in development | WIZARD SPIDER, Conti Team 1 |
 | Storm-0247 | China | ToddyCat, Websiic |
@@ -217,7 +216,6 @@ The following table lists publicly disclosed threat actor names with their origi
 | [Storm-1674](https://www.microsoft.com/en-us/security/blog/2023/12/28/financially-motivated-threat-actors-misusing-app-installer/) | Financially motivated |  |
 | [Storm-1747](https://www.microsoft.com/en-us/security/blog/2026/03/04/inside-tycoon2fa-how-a-leading-aitm-phishing-kit-operated-at-scale/) | Group in development |  |
 | [Storm-1811](https://www.microsoft.com/en-us/security/blog/2024/05/15/threat-actors-misusing-quick-assist-in-social-engineering-attacks-leading-to-ransomware/) | Financially motivated | CURLY SPIDER |
-| Storm-1849 | China | UAT4356 |
 | [Storm-1865](https://www.microsoft.com/en-us/security/blog/2025/03/13/phishing-campaign-impersonates-booking-com-delivers-a-suite-of-credential-stealing-malware/) | Group in development |  |
 | Storm-1982 | China | SneakyCheff, UNK\_SweetSpecter |
 | [Storm-2035](https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/microsoft/final/en-us/microsoft-brand/documents/5bc57431-a7a9-49ad-944d-b93b7d35d0fc.pdf) | Iran, Influence operations |  |
@@ -250,7 +248,7 @@ The following table lists publicly disclosed threat actor names with their origi
 | [Storm-3168](https://www.microsoft.com/en-us/security/blog/2026/09/25/storm-3168-agentic-driven-cloud-attacks-using-compromised-service-principals/) | Group in development | JADEPUFFER |
 | Storm-3189 | Group in development | ExfilSquad |
 | Strawberry Tempest | Financially motivated | DEV-0537, SLIPPY SPIDER, LAPSUS$ |
-| Sunglow Blizzard |  | DEV-0665 |
+| Sunglow Blizzard | Russia | DEV-0665 |
 | Swirl Typhoon | China | TELLURIUM, STALKER PANDA, Tick, Bronze Butler, REDBALDKNIGHT |
 | Taffeta Typhoon | China | TECHNETIUM, TURBINE PANDA, TG-0055, Red Kobold, JerseyMikes, APT26, BEARCLAW |
 | Taizi Flood | China, Influence operations | Dragonbridge, Spamouflage |

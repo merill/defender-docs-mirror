@@ -33,13 +33,13 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/microsoft-defender-endpoint-releases.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ec6774-09b8-473e-a17e-b17b518bbad7
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/e0ffb20c-01c6-407b-a9bd-29111652a1dc
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ade36b61-c646-4bd8-87ee-f3a843461962
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/3904bce4-d817-48cf-85fd-b6146fca83b7
 platformId: 489b2a93-728e-0a40-5b05-d494dd07e66f
 ---
 
@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
 | macOS | 101.26082.0012 | October 2026 | - Release version: 20.126082.12.0- Engine version: 1.1.26100.3000- Signature version: 1.461.61.0 | Release details and updates |
 | Linux | 101.26091.0003 | October 2026 | - Release version: 30.126091.0003.0- Engine version: 1.1.26090.3000- Signature version: 1.461.35.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26090.9 / Engine 1.1.26090.9 | September 2026 | - Platform: 4.18.26090.9- Engine: 1.1.26090.9- Security intelligence: 1.461.1.0 | Release details and updates |
@@ -955,6 +956,21 @@ Fixed in platform version 101.26052.0011 and later. FIPS-enabled RHEL 8/9 device
 ## Android releases
 
 See the full list of [Android UX improvements](android-new-ux).
+
+### Android | Oct 2026 | Platform: 1.0.9406.0102
+
+#### Release details
+
+| Platform version | Release Date |
+| --- | --- |
+| 1.0.9406.0102 | Oct 23, 2026 |
+
+#### Enhancements and features
+
+| Feature Area | Update Summary |
+| --- | --- |
+| Shared Device Management | Added **[Preview] Silent running mode** as a managed configuration for shared devices. Administrators can use `SilentRunMode` to enable (`1`) or disable (`0`, default) the setting. |
+| General | Performance improvements and general bug fixes. |
 
 ### Android | Sep 2026 | Platform: 1.0.9330.0101
 

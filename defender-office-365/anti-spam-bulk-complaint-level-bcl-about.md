@@ -35,13 +35,13 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/anti-spam-bulk-complaint-level-bcl-about.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
 - https://authoring-docs-microsoft.poolparty.biz/devrel/3e34b70d-bca0-4369-a01b-71d1edfd427b
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ca32b3f-fa14-46df-b09a-9c4a591d6396
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 52df21d8-6252-f809-99fc-9b89a2768418
 ---
 
@@ -179,11 +179,11 @@ The only scenario that requires an opt-in group is if all users are included in 
 
 After you complete the previous steps, members of the **opt-in** group (users who have the **opt-in** anti-spam policy applied) *currently* have the following experiences, based on their version of Outlook:
 
-| Feature | Outlook onthe web | Outlook for Windows | Outlook foriOS and Android | Classic Outlook |
-| --- | --- | --- | --- | --- |
-| All messages identified as bulk have the **Promotions** tag applied, regardless of the message location. | ✔ | ✔ |  |  |
-| The **Promotions** tag is available as a condition in [Inbox rules](https://support.microsoft.com/office/8400435c-f14e-4272-9004-1548bb1848f2). For example: [![Screenshot of the Inbox rule creation steps in Outlook on the web to use the Bulk tag as a condition to move messages into the Promotions folder.](media/promotions-folder-inbox-rules.png)](media/promotions-folder-inbox-rules.png#lightbox) | ✔ | ✔ |  |  |
-| Bulk mail below the BCL threshold that invokes the bulk action in the anti-spam policy is delivered to the **Promotions** folder, and the system learns as the users moves messages into and out of the folder. | ✔ | ✔ | ✔ | ✔ |
+| Feature | Outlook onthe web | Outlook for Windows | Outlook foriOS and Android | Classic Outlook | Outlook for MAC |
+| --- | --- | --- | --- | --- | --- |
+| All messages identified as bulk have the **Promotions** tag applied, regardless of the message location. | ✔ | ✔ |  |  |  |
+| The **Promotions** tag is available as a condition in [Inbox rules](https://support.microsoft.com/office/8400435c-f14e-4272-9004-1548bb1848f2). For example: [![Screenshot of the Inbox rule creation steps in Outlook on the web to use the Bulk tag as a condition to move messages into the Promotions folder.](media/promotions-folder-inbox-rules.png)](media/promotions-folder-inbox-rules.png#lightbox) | ✔ | ✔ |  |  |  |
+| Bulk mail below the BCL threshold that invokes the bulk action in the anti-spam policy is delivered to the **Promotions** folder, and the system learns as the users moves messages into and out of the folder. | ✔ | ✔ | ✔ | ✔ | ✔ |
 
 ### About the Promotions folder
 
@@ -192,7 +192,7 @@ The **Promotions** folder in user mailboxes has the following characteristics:
 - **Promotions**is a regular folder, not a system folder.
     - After the anti-spam policy is applied to a user, the **Promotions** folder is created in the mailbox when the first bulk message is delivered to the mailbox.
     - If you soft delete the folder (available in **Deleted items**), bulk messages are delivered to the folder in **Deleted items**.
-    - Currently, if you hard delete the folder (available in **Recoverable items**), future bulk messages are delivered to the Inbox.
+    - Currently, if you hard delete the folder (available in **Recoverable items**), the folder will get recreated in a few minutes.
     - If an unrelated **Promotions** folder already exists in the mailbox, a new folder named **Promotions(1)** is created and used.
     - If you rename or move the **Promotions** folder, it continues to work (the name or location of the folder doesn't matter).
 - Bulk mail that would normally be delivered to the **Promotions**folder is delivered to the Inbox in the following scenarios:

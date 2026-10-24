@@ -39,12 +39,12 @@ item_type: Content
 source_path: defender-endpoint/update-agent-mma-windows.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fc3f72c2-fb6f-4cea-95ee-b444e52254ee
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fc3f72c2-fb6f-4cea-95ee-b444e52254ee
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f12cf087-582d-48ac-a085-0c19adf1e391
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f12cf087-582d-48ac-a085-0c19adf1e391
 platformId: d4ff7be2-2511-89be-bc9b-ae361b76f834
 ---
 
@@ -52,7 +52,7 @@ platformId: d4ff7be2-2511-89be-bc9b-ae361b76f834
 
 Important
 
-If you've arrived on this page as a result of clicking on a notification at the [Microsoft Defender portal](https://security.microsoft.com), you have devices in your environment with outdated agents, and you need to take action (described in this article) to avoid service disruption. For more details, please reference message center post MC598631 (requires access to [Message Center](/en-us/microsoft-365/admin/manage/message-center)).
+If you've arrived on this page as a result of clicking on a notification at the [Microsoft Defender portal](https://security.microsoft.com), you have devices in your environment with outdated agents, and you need to take action (described in this article) to avoid service disruption. For more details, please reference message center post MC1465767 (requires access to [Message Center](/en-us/microsoft-365/admin/manage/message-center)).
 
 If you're using the Microsoft Monitoring Agent (MMA) on Windows devices, it's important to keep this agent updated. Microsoft recommends upgrading to the latest version of Defender for Endpoint. This article describes how to:
 
@@ -63,7 +63,7 @@ If you're using the Microsoft Monitoring Agent (MMA) on Windows devices, it's im
 
 *This option applies to devices running Windows 8.1 Pro and Windows 8.1 Enterprise.*
 
-- To help you identify older versions of the MMA inside of your organization, you can use the "EOSDate" column in advanced hunting. Or, follow the instructions in [Plan for end-of-support software and software versions](/en-us/defender-vulnerability-management/tvm-end-of-support-software) to use the vulnerability management feature inside of Microsoft Defender for Endpoint to track remediation.
+- Follow the instructions in [Plan for end-of-support software and software versions](/en-us/defender-vulnerability-management/tvm-end-of-support-software) to use the vulnerability management feature inside of Microsoft Defender for Endpoint to track remediation.
 - See [Manage and maintain the Log Analytics agent for Windows and Linux](/en-us/azure/azure-monitor/agents/agent-manage?tabs=PowerShellLinux) for instructions on how to upgrade the agent using Azure Automation or a command-line approach to use with various deployment tools and methods.
 - Update MMA by using [Microsoft Update](/en-us/windows/deployment/update/how-windows-update-works), through [Windows Server Update Services](/en-us/windows/deployment/update/waas-manage-updates-wsus) or [Configuration Manager](/en-us/intune/configmgr/osd/deploy-use/manage-windows-as-a-service). Use the method that was configured when MMA was first installed on the device.
 - Download the MMA setup file:

@@ -43,9 +43,11 @@ source_path: sentinel/azure-storage-blob-connector-troubleshoot.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/de8ce683-cbe1-461b-bae7-77db0888ec6d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/467aaae1-e916-4fcd-a463-5b27f9d4745c
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/a06cf482-4ca9-4582-a142-bcf842258d42
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fbd4eef5-2258-406b-95d3-2c68fa333b20
 platformId: f9488950-bfb1-b82a-f119-2d6239e83018
 ---
 
@@ -120,6 +122,11 @@ Review the [Set up your Azure Storage connector](setup-azure-storage-connector) 
 2. Verify that the service principal has the **Storage Blob Data Reader** role on the storage accounts hosting the blob container.
 3. Verify that the service principal has the **Storage Queue Data Contributor** role on the storage accounts hosting the message queues.
 
+Steps to add roles to the service principal on the storage accounts:
+
+1. Select **Add Connection**. Under **Connection configuration**, copy **Sentinel azure storage enterprise application - service principal ID**.
+2. On the storage account, open **Access Control (IAM)** → **Add role assignment**. Assign **Storage Blob Data Reader** and **Storage Queue Data Contributor** to that service principal.
+
 Tip
 
 Clues to failures of this kind are exposed on connectivity check issues during installation and in the `SentinelHealth` table for active connectors.
@@ -174,3 +181,11 @@ The Data Collection Rule (DCR) or Data Collection Endpoint (DCE) referenced by t
 4. If the DCR uses a KQL transformation query, test the query independently in the Log Analytics workspace to ensure it's valid.
 5. Verify that the destination table defined in the DCR exists in the Log Analytics workspace and has the expected schema.
 6. For more information on configuring the DCR, see the [DCR configuration](data-connection-rules-reference-azure-storage#dcr-configuration) section in the API reference.
+
+### Cause 6: Event Grid permissions aren't set properly
+
+**Managed Identity Authorization Error:**
+
+This error can happen when user pick "Use an existing storage-account role assignment" under **Event Grid Storage Queue Data Message Sender assignment**, however, the identity of Event Grid System Topic doesn't have Storage Queue Data Message Sender role on the storage account. To resolve the issue, select "Create the required storage-account role assignment" under **Event Grid Storage Queue Data Message Sender assignmen**t.**RoleAssignmentExists:**
+
+This error can happen when user pick "Create the required storage-account role assignment" under **Event Grid Storage Queue Data Message Sender assignmen**t, however, there is an existing Storage Queue Data Message Sender role on the Event Grid System Topic has been assigned on the storage account. To resolve the issue, pick "Use an existing storage-account role assignment" or delete the existing Storage Queue Data Message Sender role on the identity of the Event Grid System Topic from the storage account, then reconnect.

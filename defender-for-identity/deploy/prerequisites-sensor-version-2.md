@@ -16,6 +16,8 @@ description: Learn the prerequisites for installing the Microsoft Defender for I
 ms.date: 2026-06-08T00:00:00.0000000Z
 ms.topic: install-set-up-deploy
 ms.reviewer: rlitinsky
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1015
 locale: en-us
 document_id: a31922aa-4d5a-2498-069b-6be52931a01d
 document_version_independent_id: a31922aa-4d5a-2498-069b-6be52931a01d
@@ -33,12 +35,8 @@ item_type: Content
 source_path: defender-for-identity/deploy/prerequisites-sensor-version-2.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
-- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: c304004a-dc1c-3f16-66c0-517afa2f5e9c
 ---
 
@@ -120,6 +118,8 @@ For all operating systems:
 - Installations are supported for domain controllers, AD FS, AD CS, and Entra Connect servers.
 
 #### Legacy operating systems
+
+Plan to upgrade servers running [Windows Server 2016](/en-us/lifecycle/products/windows-server-2016), which is approaching extended end of support. After extended support ends, sensors on Windows Server 2016 continue to report to Defender for Identity and receive sensor updates. However, some functionality that relies on operating system capabilities might not be available.
 
 Windows Server 2012 and Windows Server 2012 R2 reached extended end of support on October 10, 2023. Sensors running on these operating systems continue to report to Defender for Identity and even receive the sensor updates, but some functionality that relies on operating system capabilities might not be available. We recommend that you upgrade any servers using these operating systems.
 

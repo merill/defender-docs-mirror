@@ -23,7 +23,7 @@ ms.custom:
 - sfi-image-nochange
 description: Admins can learn how to view and manage quarantined messages for all users in Microsoft 365 organizations with cloud mailboxes. Admins in organizations with Microsoft Defender for Office 365 can also manage quarantined files in SharePoint, OneDrive, and Microsoft Teams.
 ms.service: defender-office-365
-ms.date: 2026-10-07T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 63f8cdbb-7429-da44-41cb-c85bb9f27e99
@@ -41,13 +41,13 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/quarantine-admin-manage-messages-files.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 platformId: 85cbf2a3-474a-771b-1f87-d273d68c2782
 ---
 
@@ -87,7 +87,8 @@ Before you begin, review the following portal access, permissions, and retention
 - You need to be assigned permissions before you can do the procedures in this article. You have the following options:
 
     - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell):
-        - *Take action on quarantined messages for all users*: **Security operations / Security data / Email & collaboration quarantine (manage)**.
+        - *View and release emails and messages from quarantine*: **Security operations / Security data / Email & collaboration quarantine (manage)**.
+        - *Submit messages from quarantine to Microsoft*: **Security operations / Security data / Security data basics (read)**, **Security operations / Raw data (Email & collaboration) / Email & collaboration metadata (read)**, and **Security operations / Raw data (Email & collaboration) / Email & collaboration content: Quarantine Emails (read)**.
         - *Read-only access to quarantined messages for all users*: **Security operations / Security data / Security data basics (read)**.
         - *Preview and download quarantined messages for all users*: **Security operations/Raw data (email & collaboration)/Email and Collaboration content: Quarantine Emails (read)**.
     - [Email & collaboration permissions in the Microsoft Defender portal](mdo-portal-permissions):

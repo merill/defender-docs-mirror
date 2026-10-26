@@ -23,10 +23,10 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: Learn how to troubleshoot specific issues that might occur in your Microsoft Sentinel solution for SAP applications agentless data connector deployment.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: troubleshooting
-ms.date: 2026-09-16T00:00:00.0000000Z
+ms.date: 2026-10-26T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
 locale: en-us
@@ -44,8 +44,10 @@ item_type: Content
 source_path: sentinel/sap/sap-deploy-troubleshoot.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 platformId: 68904cdb-308c-2c44-fdec-c62872ad562b
 ---
 
@@ -131,6 +133,35 @@ If you see sudden spikes in message volumes and processing times on SAP Cloud In
 
 Note that log filters on NetWeaver impact what is written to the audit log on the source while a filter on SAP Cloud Integration only chooses not to read the problematic entries.
 
+## Intermittent failures in the SAP logging pipeline
+
+Brief network interruptions, SAP system downtime, or temporary resource constraints can cause a collection request to fail. The agentless data connector automatically retries failed collection windows, so a failed request doesn't immediately mean that logs are permanently lost.
+
+### Automatic retries and checkpoints
+
+The Microsoft Sentinel poller uses the Codeless Connector Framework (CCF) to request logs for collection windows bounded by `startTimeUTC` and `endTimeUTC`. When a window fails:
+
+- The poller retries the same `startTimeUTC` and `endTimeUTC` window according to the configured request retry count. If those retries fail, the poller waits before attempting the same window again. This delay is called backoff.
+- Checkpoint advancement occurs only after successful ingestion. A failed window isn't marked as successfully ingested.
+- Later collection windows continue without waiting for the failed window to succeed. The failed window remains eligible for retries, even when newer logs are arriving.
+
+For example, if collection fails for the five-minute window from 10:00 to 10:05 UTC and the configured retry count is three, the poller retries that window three times. If all three retries fail, the poller waits before attempting the same window again. Meanwhile, later collection windows can continue. When a retry succeeds, logs from 10:00 to 10:05 UTC are ingested later. The next scheduled collection doesn't replace the retry for the failed interval.
+
+For background on CCF query windows and request-level retry settings, see the [RestApiPoller data connector reference](../data-connector-connection-rules-reference). Request-level retry settings aren't the same as the failed-window recovery limit described next.
+
+### Seven-day automatic recovery limit
+
+The poller retries a failed collection window for up to seven days. If the window can't complete successfully within that period, automatic retries no longer recover it, and a permanent ingestion gap can remain unless you recover the missing logs manually.
+
+### Investigate and recover a failed window
+
+To check recovery and address persistent failures:
+
+1. Review the [SAP Cloud Integration message processing logs](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/monitor-message-processing-monitor). Identify the affected SAP system (SID), the failed UTC collection window, and the reported error.
+2. Resolve the underlying connectivity, permissions, or resource issue with your SAP Basis team. For connection interruptions, see Connection reset or Connection broken on handle errors. For requests that repeatedly exceed the polling timeout, follow the timeout guidance.
+3. Allow automatic retries to recover the failed window, and verify that the expected records for that SID and original event-time interval arrive in the relevant SAP log table. Don't check only the most recent records. See [Monitor the health and role of your SAP systems](../monitor-sap-system-health) for connectivity and ingestion checks.
+4. If you need to selectively recover previously failed windows, call the **Data Collector** iFlow from a REST client or script, specifying the affected `startTimeUTC` and `endTimeUTC` values. This manual recovery is separate from the automatic retry policy and requires the source logs to remain available in SAP. For supporting utilities and troubleshooting references, see the [SAP tools folder on GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Tools).
+
 ## Timeouts during connector registration or log polling
 
 The Microsoft Sentinel agentless poller enforces two timeouts when calling the SAP Cloud Integration **Data Collector** iflow. Exceeding either limit causes incomplete ingestion or repeated retries. Error messages on SAP Cloud Integration may vary based on which part of the data extraction pipeline fails first.
@@ -149,14 +180,14 @@ For an end-to-end discussion of the tradeoffs, see the blog post [Run agentless 
 
 ### Long-running iflow (180-second limit) – PROCESSING/ABANDONED states and retry snowball
 
-For ongoing log polling, the Data Collector iflow must complete a single message within **180 seconds**. When the iflow exceeds this limit, you typically see message processing log states such as **PROCESSING** or **ABANDONED** in SAP Cloud Integration. Because the Microsoft Sentinel poller doesn't receive a successful response, it retries the **same time slice** repeatedly, which can snowball into overlapping long-running iflow runs and further slow down the SAP system.
+If an HTTP connection times out and the poller doesn't receive a successful response, the poller retries the same collection window using the request retry count and backoff described in Automatic retries and checkpoints. Review SAP Cloud Integration message processing logs to diagnose the failure. States such as **PROCESSING** or **ABANDONED** don't by themselves establish that the HTTP connection timed out. Repeated failed requests can contribute to overlapping iflow runs and increased SAP system load.
 
 To recover and prevent recurrence:
 
 1. Delete the connector from Microsoft Sentinel and wait for the scheduled Sentinel requests to calm down. This breaks the retry snowball.
 2. Run the [Prerequisite checker](preparing-sap#run-the-prerequisite-checker) iflow to identify the root cause of the slow audit log read response times on SAP (for example, missing indexes, oversized audit log, expensive user master reads on legacy releases).
 3. Apply the relevant remediation — audit log filter tuning ([SM19/RSAU best practices](https://community.sap.com/t5/application-development-and-automation-blog-posts/analysis-and-recommended-settings-of-the-security-audit-log-sm19-rsau/ba-p/13297094)), Data Collector parameter overrides such as `max-rows`, `offset-in-seconds`, and `force-sal-filesystem` (see [Customize data connector behavior](deploy-data-connector-agentless#customize-data-connector-behavior-optional)) — before reconnecting the data connector in Microsoft Sentinel.
-4. If response times still can't be reduced below the 180-second limit, deploy the **Data Collector Scheduler** iflow from the [Microsoft Sentinel for SAP community repository](https://github.com/Azure-Samples/Sentinel-For-SAP-Community). Switching to the SAP CPI–internal scheduler compromises real-time threat protection but avoids the retry pattern enforced by the Microsoft Sentinel poller.
+4. If HTTP connections continue to reach the 180-second timeout, deploy the **Data Collector Scheduler** iflow from the [Microsoft Sentinel for SAP community repository](https://github.com/Azure-Samples/Sentinel-For-SAP-Community). Switching to the SAP CPI–internal scheduler compromises real-time threat protection but avoids the retry pattern enforced by the Microsoft Sentinel poller.
 
 ### "Connection reset" or "Connection broken on handle" errors
 
@@ -173,7 +204,7 @@ To resolve these errors:
 5. Review SAP Cloud Connector connection limits, and use SAP note [3403815](https://me.sap.com/notes/0003403815) to tune the limits.
 6. Isolate the affected SID log data flow, and review the other timeout-related guidance in this section.
 
-The Microsoft Sentinel log poller handles brief interruptions through limited retries, so no action is required if ingestion resumes. Longer downtime can result in abandoned time slices to preserve stable operation.
+The Microsoft Sentinel log poller retries failed collection windows for up to seven days, using the configured request retry count and delaying further attempts if those retries fail. Later windows continue independently. Verify recovery of the affected interval, not just the arrival of newer logs. For the recovery limit and selective manual recovery, see Intermittent failures in the SAP logging pipeline.
 
 ## "Memory Exhaustions" reported by SAP Cloud Integration
 
@@ -228,3 +259,9 @@ It uses a simplified scheduler. The SAP threat protection scope remains the same
 This error can occur for various reasons in a variety of SAP Support Package levels that require import of SAP notes to fix the underlying bugs in the SAP standard code. Ensure the function module RSAU\_API\_GET\_LOG\_DATA is **remote enabled**, trigger a [manual run from the SAP transaction code SE37](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/SAP/Tools/IntegrationSuite/AUDIT-LOG-SMOKE-TEST.md), and **inspect the output**. The response must show at least one entry in ET\_LOG export parameters table.
 
 The [connector prerequisites section](prerequisites-for-deploying-sap-continuous-threat-monitoring#sap-prerequisites-for-the-agentless-data-connector) lists typical SAP support notes that helped customers in such situations before. The list is not considered complete and only serves as entry point into a customer's individual path to fix SAP's standard functions, which may vary based on their current support package level and associated upgrade journey.
+
+## Does ISOC in Microsoft Defender affect my existing SAP security content?
+
+No, Integrated Security Operations Center (ISOC) in Microsoft Defender doesn't affect your existing security content for the Microsoft Sentinel solution for SAP applications. Your existing analytics rules, workbooks, and playbooks continue to work.
+
+For more information about the offering, see [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview).

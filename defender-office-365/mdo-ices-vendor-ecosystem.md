@@ -37,9 +37,11 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/mdo-ices-vendor-ecosystem.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 0cb7ac76-4ad4-418b-d195-215f34335d68
 ---
 
@@ -71,6 +73,7 @@ Currently, specific API details aren't available.
 
     - Darktrace/EMAIL
     - KnowBe4 Defend Platform
+    - Proofpoint Core Email Protection API
     - VIPRE Integrated Email Security (IES)
 3. **Enable integration**: After you onboard to the non-Microsoft security vendor, their solution is seamlessly and automatically incorporated into your security architecture.
 4. **Monitor and manage**: Use the unified dashboards and quarantine in Defender for Office 365 to monitor threat activity and take action.
@@ -202,7 +205,7 @@ A: The highest verdict takes precedence using the following order (from most ser
 
 ### Q: What if I use a different non-Microsoft vendor?
 
-A: Currently, ICES Vendor Ecosystem integration is available only for Darktrace, KnowBe4, and VIPRE Security Group. If you use a different ICES/CAPES vendor, you can't take advantage of this integration.
+A: This integration is supported only with the vendors listed in Get Started. Other ICES/CAPES vendors aren't supported.
 
 ### Q: Is there a charge for the non-Microsoft verdict data and actions by Defender for Office 365 policies?
 

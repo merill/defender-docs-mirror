@@ -10,7 +10,7 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn about the custom permissions available in Microsoft Defender Security role-based access control (RBAC)
 ms.service: defender-xdr
-ms.author: monaberdugo
+ms.author: mberdugo
 author: mberdugo
 ms.localizationpriority: medium
 ms.collection:
@@ -18,7 +18,7 @@ ms.collection:
 - tier3
 ms.custom: 
 ms.topic: concept-article
-ms.date: 2026-05-25T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.reviewer: 
 locale: en-us
@@ -39,11 +39,11 @@ source_path: defender-xdr/custom-permissions-details.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8f37329d-5c2f-4d50-b9b8-aa5cf54dbffe
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://authoring-docs-microsoft.poolparty.biz/devrel/e13db295-3de6-46d5-bcdf-8785a76e3843
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 6ff0415e-f9d4-591f-4ed6-880ed939b8d6
 ---
 
@@ -74,7 +74,7 @@ Permissions for managing day-to-day operations and responding to incidents and a
 
 | Permission name | Level | Description |
 | --- | --- | --- |
-| Email & collaboration metadata | Read | View email and collaboration data in hunting scenarios, including advanced hunting, threat explorer, campaigns, and email entity. |
+| Email & collaboration metadata | Read | View email and collaboration data in hunting scenarios, including advanced hunting, threat explorer, campaigns, and email entity, and submit email messages by using a Network message ID on the Submissions page. |
 | Email & collaboration content | Read | View and download email content and attachments. |
 | Email & collaboration content: Emails associated with alerts | Read | View and download email content associated with security alerts. |
 | Email & collaboration content: Quarantine Emails | Read | View and download quarantined messages for all users. |

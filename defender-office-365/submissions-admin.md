@@ -21,7 +21,7 @@ ms.custom:
 - sfi-image-nochange
 description: 'Admins can learn how to use the Submissions page in the Microsoft Defender portal to submit messages, URLs, and email attachments to Microsoft for analysis. Reasons for submission include: legitimate messages that were blocked, suspicious messages that were allowed, suspected phishing email, spam, malware, and other potentially harmful messages.'
 ms.service: defender-office-365
-ms.date: 2026-07-30T00:00:00.0000000Z
+ms.date: 2026-10-20T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 316e988c-f8f1-0687-d41c-fdf6ed808f8b
@@ -39,13 +39,13 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/submissions-admin.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
 platformId: 80e38bb0-f287-72bb-525a-80cdaa78776f
 ---
 
@@ -90,7 +90,7 @@ Before you use the **Submissions** page, review the following requirements and c
 - You open the Microsoft Defender portal at https://security.microsoft.com/. To go directly to the **Submissions** page, use https://security.microsoft.com/reportsubmission.
 - You need to be assigned permissions before you can do the procedures in this article. You have the following options:
 
-    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell): **Security operations/Security data/Response (manage)** or **Security operations/Security data/Security data basics (read)**.
+    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell): **Security operations/Security data/Response (manage)** or **Security operations/Security data/Security data basics (read)**. To submit email messages by using a Network message ID, you also need **Security operations/Raw data (Email & collaboration)/Email & collaboration metadata (read)**.
     - [Email & collaboration permissions in the Microsoft Defender portal](mdo-portal-permissions): Membership in the **Security Administrator** or **Security Reader** role groups.
     - [Microsoft Entra permissions](/en-us/entra/identity/role-based-access-control/manage-roles-portal): Membership in the **Security Administrator** or **Security Reader** roles gives users the required permissions *and* permissions for other features in Microsoft 365.
 - Admins can submit email messages as old as 30 days if they're still available in the mailbox and haven't been purged by the user or an admin.

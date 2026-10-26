@@ -11,11 +11,11 @@ manager: bagol
 description: Find release details for Microsoft Defender for Endpoint on Windows, macOS, Linux, Android, and iOS from the past six months.
 ms.topic: whats-new
 ms.service: defender-endpoint
-author: abhisheksh
-ms.author: abhisheksh
+author: Vjindal
+ms.author: vjindal
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-10-16T00:00:00.0000000Z
+ms.date: 2026-10-23T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: a82695da-2a19-ab7b-fd85-324ba1ae897f
@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
 | Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
 | macOS | 101.26082.0012 | October 2026 | - Release version: 20.126082.12.0- Engine version: 1.1.26100.3000- Signature version: 1.461.61.0 | Release details and updates |
 | Linux | 101.26091.0003 | October 2026 | - Release version: 30.126091.0003.0- Engine version: 1.1.26090.3000- Signature version: 1.461.35.0 | Release details and updates |
@@ -633,6 +634,21 @@ If you have any concerns or need assistance during this transition, contact supp
 ### Linux known issues
 
 - **Intermittent issue during process scanning**: In version `101.26072.0004`, `wdavdaemon` might restart in rare cases while scanning running processes. The process recovers automatically, and no action is required. A fix will be available in an upcoming release. **Resolution**: Upgrade to platform version 101.26072.0005 or later.
+
+### Linux | October 2026 | 101.26091.0004
+
+#### Release details
+
+| Release version | Engine version | Signature version |
+| --- | --- | --- |
+| 30.126091.0004.0 | 1.1.26070.5001 | 1.457.364.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| Platform Support | Added support for Azure Linux 4. |
+| Visibility | Added TCP socket bind telemetry, improving visibility into processes binding to local network addresses and ports.The feature will roll out gradually to customers over the next month. Once enabled, these events will be available in Advanced Hunting in the `DeviceNetworkEvents` table with `ActionType` set to `ListeningConnectionCreated`. |
 
 ### Linux | October 2026 | 101.26091.0003
 

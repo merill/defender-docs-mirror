@@ -32,13 +32,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud/defender-for-containers-troubleshoot.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d44a5346-5de4-439c-b804-7b2a536cbb55
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d44a5346-5de4-439c-b804-7b2a536cbb55
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/da41a22b-b7a0-42d3-9c35-50da1c2b7b87
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://authoring-docs-microsoft.poolparty.biz/devrel/da41a22b-b7a0-42d3-9c35-50da1c2b7b87
 platformId: 6cf2543f-075f-2fe7-e688-67041cddff41
 ---
 
@@ -60,9 +60,25 @@ This article provides troubleshooting guidance for common deployment and operati
 
     - **Symptoms:** Clusters show as "Healthy" but specific recommendations like "AKS clusters should have **Defender profile** enabled" are missing.
     - **Resolution:**
+
         - **Wait time:** Assessment scans can take up to 24 hours to reflect in the dashboard.
         - **Exclusion tags:** Check if the resource has the tag `ms_defender_container_exclude_sensors` = `true`.
         - **Policy Add-on:** Ensure the Azure Policy add-on is installed; without it, configuration-based recommendations will not trigger.
+- Security Gating Fails to provision
+
+    - **Symptoms:** Security Gating is enabled, but its admission-controller resources are missing or Admission Monitoring shows no data.
+    - **Diagnosis:** In the affected AKS cluster's **Activity log**, look for a failed `Microsoft.ContainerService/managedClusters/write` operation with the error `RequestDisallowedByPolicy`. Inspect the error details to identify the blocking policy assignment. A policy assignment using the `Deny` effect can reject provisioning even when the existing cluster is compliant.
+    - Policies enforcing the following AKS settings can be involved:
+
+        - Disabled local authentication.
+        - Customer-managed encryption keys for operating-system and data disks.
+        - Encryption at host for temporary disks and agent-node-pool caches.
+        - Private clusters.
+    - **Resolution:**
+
+        - Work with your Azure Policy administrator to resolve the identified conflict using an approved, narrowly scoped change, such as an exemption for the affected cluster.
+        - Preserve the cluster's required security configuration. Don't enable local authentication or disable policy enforcement at a broader scope to work around the failure.
+        - If provisioning remains incomplete, contact Microsoft Support for the supported recovery procedure.
 
 ### Vulnerability scan issues
 

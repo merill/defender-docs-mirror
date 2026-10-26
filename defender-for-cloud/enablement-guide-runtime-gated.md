@@ -31,12 +31,12 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud/enablement-guide-runtime-gated.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cb49e66a-8528-497d-adaa-eade2d009d1b
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/472c9d15-157b-443c-afa2-e209c8fecf58
 platformId: 01dd134b-60c1-7135-98ab-04515f56b9c1
 ---
@@ -60,7 +60,9 @@ Before you begin, make sure that:
 
     Note
 
-    If the Kubernetes cluster and container registry are in different environments, enable Defender for Containers and the required components for both environments.
+    1. If the Kubernetes cluster and container registry are in different environments, enable Defender for Containers and the required components for both environments.
+    2. Before enabling Security Gating on an AKS cluster, review Azure Policy assignments targeting `Microsoft.ContainerService/managedClusters`. Assignments using the `Deny` effect can block Security Gating provisioning with `RequestDisallowedByPolicy`, even when the existing cluster is compliant.
+    3. Check the AKS Activity Log to identify the blocking assignment. Work with your Azure Policy administrator to use `Audit` or create a narrowly scoped exemption for the affected cluster. Don’t disable policies across a broader scope.
 - **AKS clusters:** The cluster has an [OpenID Connect (OIDC) issuer](/en-us/azure/aks/use-oidc-issuer) enabled.
 - Your Kubernetes environment and container registry are supported for gated deployment. See the [Defender for Containers support matrix](support-matrix-defender-for-containers#containers-software-supply-chain-protection-features).
 - Vulnerability scan results are available for the container images you want to evaluate. Gated deployment uses vulnerability assessment findings from supported registries.

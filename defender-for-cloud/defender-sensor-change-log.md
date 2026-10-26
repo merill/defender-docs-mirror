@@ -32,13 +32,11 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud/defender-sensor-change-log.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d44a5346-5de4-439c-b804-7b2a536cbb55
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d44a5346-5de4-439c-b804-7b2a536cbb55
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/da41a22b-b7a0-42d3-9c35-50da1c2b7b87
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/da41a22b-b7a0-42d3-9c35-50da1c2b7b87
 platformId: 98e82ee6-a65f-0e14-34ab-06fc584820cd
 ---
 
@@ -68,6 +66,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
 ## Sensor versions available per release
 
 ### Sensor v0.11 (deployed by Helm or Arc for K8s)
+
+**Sensor v0.11.9 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Updated sensor images to remove trust in certificate authorities affected by the eMudhra compromise.
 
 **Sensor v0.11.8 — GA**
 
@@ -106,6 +111,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - General Availability of EKS/GKE Private clusters support. For the private clusters documentation page [Private clusters](defender-for-containers-private-clusters)
 
 ### Sensor v0.10 (deployed by Helm or Arc for K8s)
+
+**Sensor v0.10.12 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Updated sensor images to remove trust in certificate authorities affected by the eMudhra compromise.
 
 **Sensor v0.10.11 — GA**
 
@@ -182,6 +194,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - Binary drift blocking
 
 ### Sensor v0.9 (AKS 1.35 or by Helm)
+
+**Sensor v0.9.70 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Updated sensor images to remove trust in certificate authorities affected by the eMudhra compromise.
 
 **Sensor v0.9.69 — GA**
 
@@ -312,6 +331,13 @@ Each stable (GA) version is supported for 12 months from its GA release date. Af
     - Bug fixes and security enhancements
 
 ### Sensor v0.8 (AKS versions 1.34 and below)
+
+**Sensor v0.8.63 — GA**
+
+- **Released:** October 2026
+- **What's included:**
+
+    - Updated sensor images to remove trust in certificate authorities affected by the eMudhra compromise.
 
 **Sensor v0.8.62 — GA**
 

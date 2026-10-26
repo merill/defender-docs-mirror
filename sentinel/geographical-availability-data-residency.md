@@ -26,7 +26,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: concept-article
-ms.date: 2026-08-18T00:00:00.0000000Z
+ms.date: 2026-10-26T00:00:00.0000000Z
 ms.custom: references_regions
 locale: en-us
 document_id: 61e5a8c4-456d-cb08-452f-19bf7026b89d
@@ -54,18 +54,12 @@ After your data is collected, stored, and processed, compliance can become an im
 
 This article can help you meet compliance requirements by describing where Microsoft Sentinel data is stored.
 
-Important
-
-Microsoft Sentinel was retired in Azure operated by 21Vianet on August 18, 2026, as described in the [announcement posted by 21Vianet](https://aka.ms/sentinelretirementinchina). Microsoft Sentinel is no longer available in this region.
-
-We recommend that customers work with their account representatives for Microsoft Azure operated by 21Vianet to assess the impact of this retirement on their own operations.
-
 ## Collected data
 
 Microsoft Sentinel collects the following types of data:
 
 - **Raw data**, such as event data collected from connected Microsoft services and partner systems. Data from multiple clouds and sources are streamed to the customer’s Azure Log Analytics workspace associated with Microsoft Sentinel, under the customer’s tenant’s subscription. This approach gives the customer the ability to choose region and retention and deletion policies.
-- **Processed data**, such as incidents, alerts, behaviors, and so on.
+- **Processed data**, such as incidents, alerts, behaviors, cases, and so on.
 - **Configuration data**, such as connector settings, rules, and so on.
 
 ## Data storage location
@@ -78,7 +72,7 @@ Microsoft Sentinel processes data in one of the following locations:
 - For Log Analytics workspaces located in Israel, Microsoft Sentinel processes customer data in Israel.
 - For workspaces located in any other location, Microsoft Sentinel processes customer data in a US region.
 
-When you onboard Microsoft Sentinel from the Defender portal, the service might process data in the destination regions specified during onboarding, or in the existing Microsoft Defender XDR regions if applicable. The raw data storage location, however, remains unchanged. For more information, see [Data security and retention in Microsoft Defender XDR](/en-us/defender-xdr/data-privacy).
+When you onboard Microsoft Sentinel from the Defender portal, the service will process and store "Processed data" and "Configuration data" in the destination regions specified during onboarding, or in the existing Microsoft Defender XDR regions if applicable. The raw data storage location, however, remains unchanged. For more information, see [Data security and retention in Microsoft Defender XDR](/en-us/defender-xdr/data-privacy).
 
 ### Supported regions
 

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: AI agent posture risk in Microsoft Defender (Preview) - Microsoft Defender XDR | Microsoft Learn
+title: AI agent posture risk in Microsoft Defender - Microsoft Defender XDR | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-risk-assessment
 breadcrumb_path: /defender-xdr/breadcrumb/toc.json
 permissioned-type: public
@@ -14,7 +14,8 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: itaicohen
 ms.topic: concept-article
-ms.date: 2026-07-14T00:00:00.0000000Z
+ms.date: 2026-10-26T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1032
 audience: Admin
 ai-usage: ai-assisted
 locale: en-us
@@ -34,12 +35,16 @@ item_type: Content
 source_path: defender-xdr/security-for-ai/ai-agent-risk-assessment.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 3c35c4c3-f22a-d94a-ceb0-c45a8032ee6a
 ---
 
-# AI agent posture risk in Microsoft Defender (Preview) - Microsoft Defender XDR | Microsoft Learn
+# AI agent posture risk in Microsoft Defender - Microsoft Defender XDR | Microsoft Learn
 
 Microsoft Defender assesses posture risk for AI agents in your organization, including agents registered with [Microsoft Agent 365](/en-us/microsoft-agent-365/overview) and local agents discovered on endpoint devices. Each agent is evaluated against risk indicators and assigned an overall risk level based on the likelihood of compromise and the potential impact if compromised.
 

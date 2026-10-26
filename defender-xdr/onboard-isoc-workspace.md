@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defen
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how to create an ISOC workspace in the Microsoft Defender portal for Integrated Security Operations Center (ISOC) capabilities that require a workspace.
-author: mberdugo
-ms.author: monaberdugo
+author: CelesteDG
+ms.author: CelesteD
 ms.localizationpriority: high
 ms.collection:
 - m365-security
@@ -23,7 +23,7 @@ ms.collection:
 ms.topic: how-to
 ms.service: microsoft-sentinel
 ai-usage: ai-assisted
-ms.date: 2026-09-14T00:00:00.0000000Z
+ms.date: 2026-10-26T00:00:00.0000000Z
 ms.custom: msecd-doc-authoring-1014
 locale: en-us
 document_id: d4cd8f9f-a172-c40e-e447-98402fd7e6eb
@@ -42,9 +42,11 @@ item_type: Content
 source_path: defender-xdr/onboard-isoc-workspace.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 platformId: 3c927217-7087-4c29-9f05-9e3aa5f2b7b7
 ---
@@ -54,6 +56,11 @@ platformId: 3c927217-7087-4c29-9f05-9e3aa5f2b7b7
 Use this procedure to create an Integrated Security Operations Center (ISOC) workspace in the Microsoft Defender portal for capabilities that require a workspace.
 
 Before you begin, review the eligibility and workspace requirements in [ISOC in Microsoft Defender](isoc-overview).
+
+An ISOC workspace follows the same data residency and retention behavior as an Azure Log Analytics workspace. For more information, see:
+
+- [Geographical availability and data residency in Microsoft Sentinel](/en-us/azure/sentinel/geographical-availability-data-residency#data-storage-location).
+- [Manage data retention in a Log Analytics workspace](/en-us/azure/azure-monitor/logs/data-retention-configure#configure-the-default-analytics-retention-period-of-analytics-tables).
 
 ## Prerequisites
 

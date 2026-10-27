@@ -36,13 +36,13 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/whats-new-in-microsoft-defender-endpoint.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 53b2af8b-65e4-503a-c3f9-fc8305f396d4
 ---
 
@@ -58,6 +58,7 @@ Learn more about [Preview features](/en-us/defender-xdr/preview).
 
 | Type | Feature | Preview/GA | Description |
 | --- | --- | --- | --- |
+| Release - macOS | Build 101.26092.0009 | GA | Release version 20.126092.9.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--october-2026--101260920009). |
 | Release - macOS | Build 101.26082.0012 | GA | Release version 20.126082.12.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--october-2026--101260820012). |
 | Feature | [Vulnerability assessment for Microsoft Store applications](/en-us/defender-vulnerability-management/tvm-software-inventory#microsoft-store-applications) | GA | Vulnerability assessment for applications installed via the Microsoft Store is now generally available. Defender Vulnerability Management detects supported Microsoft Store applications, adds them to the software inventory, and assesses them for vulnerabilities. Coverage is currently limited to a select set of commonly used applications. Use the **Software evidence** area on the software page to view the file path for the vulnerable application, along with a suggested query showing the vulnerable app, version, and file location. |
 

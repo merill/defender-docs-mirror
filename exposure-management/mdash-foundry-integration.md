@@ -31,9 +31,13 @@ monikers: []
 item_type: Content
 source_path: exposure-management/mdash-foundry-integration.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/64b65f6c-101f-411a-9b83-9f577fab52d0
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/de19c5b8-e208-412e-9238-db3f631dea5b
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1a667fd1-8145-4b11-af0f-9f5de205a6e5
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ea7bf5d6-7154-4ba9-8ebc-59117ccacd49
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: fa300fee-25bf-e572-1ee3-fd32d6d42e7d
 ---
 
@@ -120,8 +124,8 @@ Deploy the models required for the agentic code security integration.
     - `gpt-5.4`
     - `gpt-5.3-codex`
     - `gpt-5.4-mini`
-    - **MAI Cyber** **(Preview)**: To use this configuration, deploy the three models listed previously and:
-    - `MAI-Cyber-1-Flash`
+    - **MAI Cyber** **(Preview)**: - Recommended: MAI Cyber (Preview) is the recommended scan configuration. To use this configuration, deploy the three models listed previously and:
+    - `MAI-Cyber-1.1-Flash`
 
 Important
 

@@ -31,12 +31,8 @@ monikers: []
 item_type: Content
 source_path: exposure-management/defender-cli.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: d12a27c5-2994-47ac-0173-6671d7b64406
 ---
@@ -111,12 +107,12 @@ In the following commands, replace the `<TARGET_SOURCE>` placeholder with one of
 
 ### Scan with a scan configuration (Preview)
 
-A **scan configuration** selects which AI models run your scan. Two configuations are available:
+A **scan configuration** selects which AI models run your scan. Two configurations are available. MAI Cyber (Preview) is the recommended scan configuration.
 
 | Configuration | Models | Use when |
 | --- | --- | --- |
 | `Standard` | GPT-5.4, GPT-5.3-Codex, GPT-5.4-Mini | General-purpose agentic code scanning (the standard configuration). |
-| `mai-cyber` (preview) | GPT-5.4, GPT-5.3-Codex, GPT-5.4-Mini + MAI-Cyber-1-Flash | You want the baseline models augmented with the cyber-specialized MAI-Cyber-1-Flash model. |
+| `mai-cyber` (preview) | GPT-5.4, GPT-5.3-Codex, GPT-5.4-Mini + MAI-Cyber-1.1-Flash | You want the baseline models augmented with the cyber-specialized MAI-Cyber-1.1-Flash model. |
 
 See available configuraitons and the current default:
 

@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
 | Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
 | Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
 | macOS | 101.26082.0012 | October 2026 | - Release version: 20.126082.12.0- Engine version: 1.1.26100.3000- Signature version: 1.461.61.0 | Release details and updates |
@@ -276,6 +277,33 @@ To share feedback, open Defender for Endpoint on macOS and go to **Help &gt; Sen
 To get latest features, configure your device for the Beta channel (formerly Insider-Fast) device.
 
 For known issues, see macOS known issues.
+
+### macOS | October-2026 | 101.26092.0009
+
+#### Versions
+
+| Release version | Engine version c | Signature version |
+| --- | --- | --- |
+| 20.126092.9.0 | 1.1.26060.12000 | 1.453.151.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| General | Agent Protection: Improved reliability when applying managed protection policies. |
+| General | Antivirus: Reduced CPU usage during high-volume file activity by. |
+| General | Antivirus: Improved service reliability. |
+| General | Antivirus: Improved health reporting to indicate when the protection engine connection is unavailable. |
+| General | Antivirus: Added health reporting to help administrators verify that managed configuration profiles are correctly set up for Microsoft Defender system extensions. |
+| General | Antivirus: Review recent performance profile suggestions and apply or remove eligible profiles directly in the Defender app. |
+| General | Device Control: Legacy Device Control v1 is retired. |
+| General | Device Control: Device health reporting now shows Bluetooth permission status, helping administrators verify that Device Control is configured correctly. |
+| General | EDR: Improved authentication reliability after startup and wake. |
+| General | EDR: Added support for configuring AI agent runtime protection on macOS. |
+| General | EDR: Improved macOS device isolation. |
+| General | GUI: Improved accessibility. |
+| General | TVM: Improved software inventory reporting for macOS applications that do not provide standard display-name metadata. |
+| General | Bug and performance fixes |
 
 ### macOS | October-2026 | 101.26082.0012
 

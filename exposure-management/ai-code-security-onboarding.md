@@ -34,11 +34,11 @@ source_path: exposure-management/ai-code-security-onboarding.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/de19c5b8-e208-412e-9238-db3f631dea5b
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5bd2b3fa-c186-4b92-a3c8-09f22a249d37
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ea7bf5d6-7154-4ba9-8ebc-59117ccacd49
-- https://authoring-docs-microsoft.poolparty.biz/devrel/7eba7926-b7b2-4a7a-bf89-e6ac53b3e7f6
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: 0a7a754f-2d1a-2e18-f9d1-43bfd0069a17
 ---
 
@@ -121,7 +121,7 @@ Provide the required details to connect your Microsoft Foundry resource and vali
 3. Select Validate to verify the connection.
 4. Select **Save** to finish onboarding. You must successfully validate the resource before you can select Save.
 
-***Note:** MDASH uses the **Standard** scan configuration by default. You can update the default configuration during onboarding or change it later*
+***Note:*** MDASH uses the ***Standard*** scan configuration by default. MAI Cyber (Preview) is the recommended scan configuration. You can select MAI Cyber (Preview) during onboarding or change the scan configuration later.
 
 ## Step 4: Set up AI scanning
 

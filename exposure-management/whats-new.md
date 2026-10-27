@@ -32,12 +32,12 @@ item_type: Content
 source_path: exposure-management/whats-new.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
-- https://authoring-docs-microsoft.poolparty.biz/devrel/cd48b104-e308-4e08-a405-66f04a7df418
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ac23bdb5-c078-4620-8ee2-60eba45e97f8
 platformId: d94ea0f3-e909-d861-920c-d8f484d56861
 ---
 
@@ -54,6 +54,16 @@ Tip
 Get notified when this page is updated by copying and pasting the following URL into your feed reader:
 
 `https://aka.ms/msem/rss`
+
+## October 2026
+
+### Codename MDASH - MAI Cyber configuration now uses MAI-Cyber-1.1-Flash
+
+The MAI Cyber (Preview) scan configuration now uses MAI-Cyber-1.1-Flash instead of MAI-Cyber-1-Flash.
+
+If your Foundry already uses MAI-Cyber-1-Flash, it’s automatically upgraded in Foundry to MAI-Cyber-1.1-Flash.
+
+MAI Cyber (Preview) is now the recommended scan configuration for MDASH.
 
 ## September 2026
 

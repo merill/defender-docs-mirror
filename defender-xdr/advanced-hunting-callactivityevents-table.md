@@ -21,7 +21,7 @@ ms.custom:
 - cx-ti
 - cx-ah
 ms.topic: reference
-ms.date: 2026-08-04T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 87de4e2c-e3dd-515e-5a2a-d47f0fa355ac
@@ -55,10 +55,6 @@ The `CallActivityEvents` table in the [advanced hunting](advanced-hunting-overvi
 
 This advanced hunting table is populated by records from Microsoft Defender for Office 365. If your organization hasn't deployed the service in Microsoft Defender, queries that use the table don't work or return any results. For more information about how to deploy Defender for Office 365 in the Defender portal, read [Deploy supported services](deploy-supported-services).
 
-Note
-
-Support for the event streaming API, Microsoft Sentinel integration, and more attributes is planned for the coming weeks.
-
 ## Schema
 
 For information on other tables in the advanced hunting schema, [see the advanced hunting reference](advanced-hunting-schema-tables).
@@ -77,3 +73,23 @@ For information on other tables in the advanced hunting schema, [see the advance
 | `CallJoinUrl` | `string` | Link that participants use to join the call |
 | `OriginatorUserDisplayName` | `string` | Display name of the caller who initiated the call |
 | `OriginatorUpn` | `string` | User principal name of the caller who initiated the call |
+| `CallType` | `string` | Type of call, for example, peer-to-peer (P2P) or group call (meeting, conference, or escalated call) |
+| `CallName` | `string` | Name of the call as displayed in the calendar invite |
+| `ActivityDetail` | `string` | Additional information about the activity performed |
+| `ActivityStatus` | `string` | Success or failure of the activity performed |
+| `IsPerformedOnSelf` | `boolean` | Indicates whether the activity initiator performed the action on themselves (`True`) or on another call participant (`False`) |
+| `ActivityInitiatorPhoneNumber` | `string` | Third-party or Microsoft Teams phone number of the caller's account |
+| `ActivityInitiatorAccountType` | `string` | Classification of how the activity initiator is provisioned in the organization; possible values: Entra, consumer, Azure Communication Services, Public Switched Telephone Network, Unauthenticated |
+| `ActivityInitiatorMembershipType` | `string` | Membership type of the activity initiator relative to the tenant from which the activity is made |
+| `ActivityInitiatorTenantDisplayName` | `string` | Name of the organization that the activity initiator belongs to |
+| `ActivityInitiatorTenantRegion` | `string` | Geographical region of the tenant that the activity initiator belongs to |
+| `ActivityInitiatorPlatformName` | `string` | Display name of the activity initiator's Teams client |
+| `ActivityInitiatorPlatformCategory` | `string` | Category of the activity initiator's client platform; possible values: Desktop, Mobile, Web |
+| `OriginatorObjectId` | `string` | Unique identifier for the user who organized the call or meeting invite |
+| `OriginatorTenantId` | `string` | Unique identifier for the tenant of the user who organized the call or meeting invite |
+| `ActivityRecipientId` | `string` | Unique identifier for the activity recipient |
+| `ActivityRecipientUpn` | `string` | Unique identifier for the account of the activity recipient |
+| `ActivityRecipientPhoneNumber` | `string` | Third-party or Microsoft Teams phone number of the activity recipient |
+| `ActivityRecipientDisplayName` | `string` | Display name of the activity recipient's Teams client platform |
+| `ActivityRecipientAccountType` | `string` | Classification of how the activity recipient is provisioned in the organization; possible values: Entra, consumer, Azure Communication Services, Public Switched Telephone Network, Unauthenticated |
+| `ActivityRecipientTenantDisplayName` | `string` | Name of the organization that the activity recipient belongs to |

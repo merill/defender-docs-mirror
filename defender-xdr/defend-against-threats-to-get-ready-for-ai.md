@@ -40,9 +40,7 @@ platformId: d6680523-98d0-291d-be22-d4563fe5d28f
 
 # Defend Against Threats - Microsoft Defender XDR | Microsoft Learn
 
-**Security imperative:** Get ready for AI
-
-**Job to be done:** Defend against threats
+**Security imperative: Get ready for AI** **Job to be done: Defend against threats**
 
 ## Context and problem
 
@@ -60,53 +58,13 @@ Five sequential steps can get you there: deploy comprehensive protection, set up
 
 Security practitioners, including SOC analysts, threat hunters, detection engineers, and incident responders, can strengthen threat defense by following this step-by-step guidance, implemented through Microsoft Defender.
 
-### Step
-
-1. Deploy Defender workloads for comprehensive protection
-
-#### Recommended action
-
-    Deploy the Defender workloads relevant to your environment across endpoints, identities, email and collaboration, and cloud apps so Microsoft Defender can correlate threat signals and coordinate prevention, detection, investigation, and response across those domains.
-
-#### Resource
-
-    [Setup guides for Microsoft Defender](deploy-configure-m365-defender)
-2. Set up attack disruption to detect and contain active attacks
-
-#### Recommended action
-
-    Review the licensing, permissions, and product-specific prerequisites for automatic attack disruption, then deploy and configure the required Defender workloads so compromised assets can be automatically contained during high-confidence attacks.
-
-#### Resource
-
-    [Configure automatic attack disruption in Microsoft Defender](configure-attack-disruption)
-3. Respond to incidents and validate the threat containment
-
-#### Recommended action
-
-    Triage and investigate incidents in the Defender portal, contain and eradicate the threat, recover affected resources to a trusted state, and validate that the threat is no longer active before resolving the incident.
-
-#### Resource
-
-    [Plan an incident response workflow in the Microsoft Defender portal](plan-incident-response)
-4. Hunt for related and recurring activity.
-
-#### Recommended action
-
-    Hunt across Defender data for related or recurring activity, then turn what you learn into custom detections that continuously identify and respond to suspected breach activity and other findings.
-
-#### Resource
-
-    [Advanced hunting overview in Microsoft Defender](advanced-hunting-overview)
-5. Optimize protection to reduce exposure
-
-#### Recommended action
-
-    Use SOC optimization recommendations to identify gaps in security coverage and adjust controls and data as threats and business priorities change, helping continuously reduce exposure across the environment.
-
-#### Resource
-
-    [Optimize security operations](/en-us/azure/sentinel/soc-optimization/soc-optimization-access?tabs=defender-portal)
+| Step | Recommended action | Resource |
+| --- | --- | --- |
+| 1. Deploy Defender workloads for comprehensive protection. | Deploy the Defender workloads relevant to your environment for endpoints, identities, email and collaboration, and cloud apps so Microsoft Defender can correlate threat signals and coordinate prevention, detection, investigation, and response for those domains. | [Setup guides for Microsoft Defender](deploy-configure-m365-defender) |
+| 2. Set up attack disruption to detect and contain active attacks. | Review the licensing, permissions, and product-specific prerequisites for automatic attack disruption, then deploy and configure the required Defender workloads so compromised assets can be automatically contained during high-confidence attacks. | [Configure automatic attack disruption in Microsoft Defender](configure-attack-disruption) |
+| 3. Respond to incidents and validate the threat containment. | Triage and investigate incidents in the Defender portal, contain and eradicate the threat, recover affected resources to a trusted state, and validate that the threat is no longer active before resolving the incident. | [Plan an incident response workflow in the Microsoft Defender portal](plan-incident-response) |
+| 4. Hunt for related and recurring activity. | Hunt in Defender data for related or recurring activity, then turn what you learn into custom detections that continuously identify and respond to suspected breach activity and other findings. | [Advanced hunting overview in Microsoft Defender](advanced-hunting-overview) |
+| 5. Optimize protection to reduce exposure. | Use SOC optimization recommendations to identify gaps in security coverage and adjust controls and data as threats and business priorities change, helping continuously reduce exposure throughout the environment. | [Optimize security operations](/en-us/azure/sentinel/soc-optimization/soc-optimization-access?tabs=defender-portal) |
 
 ## Outcomes
 

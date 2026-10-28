@@ -13,7 +13,7 @@ keywords: what's new in Microsoft Defender for Office 365, ga, generally availab
 author: chrisda
 ms.author: chrisda
 ms.localizationpriority: medium
-ms.date: 2026-10-15T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ms.collection:
 - m365-security
 - tier1
@@ -43,11 +43,11 @@ source_path: defender-office-365/defender-for-office-365-whats-new.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
 - https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: a8ee67f9-1346-7d44-f055-b3d2168bb53a
 ---
 
@@ -72,6 +72,7 @@ For more information on what's new with other Microsoft Defender security produc
 
 ## October 2026
 
+- **Hunt across activities in Microsoft Teams calls and meetings**: The [CallActivityEvents table](/en-us/defender-xdr/advanced-hunting-callactivityevents-table) in Microsoft Defender XDR advanced hunting contains details about activities performed during Microsoft Teams calls and meetings in your organization, helping security teams investigate suspicious call activity.
 - **New ApproverUpn field in the EmailPostDeliveryEvents table**: The [EmailPostDeliveryEvents table](/en-us/defender-xdr/advanced-hunting-emailpostdeliveryevents-table) in Microsoft Defender XDR Advanced Hunting now includes the **ApproverUpn** field. This field identifies the user or administrator who approved a remediation action, helping security teams investigate and audit post-delivery email actions more efficiently.
 - **Expanding user reporting in Teams to include meetings**: Users can report scheduled or Meet now [Microsoft Teams meetings](submissions-teams#report-meetings-in-teams) or individual meeting participants as a security concern during or after the meeting. Users can also report a meeting participant that was incorrectly identified as suspicious as not a security concern. Depending on [Teams user reported settings](submissions-teams#user-reporting-settings-for-teams-items), reported meeting and participant metadata is sent to the specified reporting mailbox, to Microsoft, or both.
 

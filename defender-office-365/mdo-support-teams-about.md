@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 description: Admins can learn about Microsoft Teams features in Microsoft Defender for Office 365.
 ms.service: defender-office-365
-ms.date: 2026-10-05T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 locale: en-us
 document_id: d0b8c854-23d3-7deb-f05a-d3f0e1eaab7c
 document_version_independent_id: d0b8c854-23d3-7deb-f05a-d3f0e1eaab7c
@@ -73,6 +73,7 @@ Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with
 
 - **Remove users from Teams chat**: To remediate malicious attacks, you can remove users from teams chats directly from the [Teams message entity panel](teams-message-entity-panel#remove-users-from-teams-chats-in-the-teams-message-entity-panel).
 - **Hunting on Teams messages with URLs**: You can hunt for Teams messages containing URL across three new advanced hunting tables: [MessageEvents](/en-us/defender-xdr/advanced-hunting-messageevents-table), [MessagePostDeliveryEvents](/en-us/defender-xdr/advanced-hunting-messagepostdeliveryevents-table), and [MessageURLInfo](/en-us/defender-xdr/advanced-hunting-messageurlinfo-table).
+- **Hunting on Teams calls and meetings**: You can hunt across activities performed during Microsoft Teams calls and meetings using the [CallActivityEvents](/en-us/defender-xdr/advanced-hunting-callactivityevents-table) advanced hunting table.
 
 These features are summarized in the following table:
 
@@ -91,6 +92,7 @@ These features are summarized in the following table:
 | User-reported Teams items (messages, calls, meetings, and meeting participants) |  | ![](media/feature_present_icon.png) | ![](media/feature_present_icon.png) |
 | Remove users from Teams chats (admin remediation) |  |  | ![](media/feature_present_icon.png) |
 | Advanced hunting on Teams messages |  |  | ![](media/feature_present_icon.png) |
+| Advanced hunting on Teams calls and meetings |  |  | ![](media/feature_present_icon.png) |
 
 ## Configure ZAP for Teams protection in Defender for Office 365
 

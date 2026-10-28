@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-endpoint/microsoft-defender-endpoint-releases.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ec6774-09b8-473e-a17e-b17b518bbad7
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ec6774-09b8-473e-a17e-b17b518bbad7
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ade36b61-c646-4bd8-87ee-f3a843461962
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ade36b61-c646-4bd8-87ee-f3a843461962
 platformId: 489b2a93-728e-0a40-5b05-d494dd07e66f
 ---
 
@@ -59,7 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
-| iOS | 1.1.82230103 | Oct 2026 | - Build: 1.1.82230103- Release: Oct 24, 2026 | Release details and updates |
+| Windows Antivirus | Platform 4.18.26100.4 / Engine 1.1.26100.4 | October 2026 | - Platform: 4.18.26100.4- Engine: 1.1.26100.4- Security intelligence: 1.463.1.0 | Release details and updates |
 | macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
 | Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
 | Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
@@ -1562,6 +1562,25 @@ For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
 ## Microsoft Defender Antivirus releases
 
 For more information about Microsoft Defender Antivirus updates, see [Microsoft Defender Antivirus security intelligence product updates and support](microsoft-defender-antivirus-updates).
+
+### Windows Antivirus | October 2026 | Platform 4.18.26100.4 | Engine 1.1.26100.4
+
+#### Release details
+
+| Component | Version | Date |
+| --- | --- | --- |
+| Platform | 4.18.26100.4 | October 27, 2026 |
+| Engine | 1.1.26100.4 | October 27, 2026 |
+| Security intelligence^1^ | 1.463.1.0 | October 27, 2026 |
+| Support phase | Security and Critical Updates | - |
+
+^1^The security intelligence version listed here is relevant to the listed engine release. Newer versions of security intelligence are released regularly. For more information, see [Security intelligence updates for Microsoft Defender Antivirus and other Microsoft anti-malware](https://www.microsoft.com/wdsi/defenderupdates).
+
+### Enhancements and features
+
+- Reduced CPU usage after full scans by avoiding repeated decompression of Windows image archives (WIM).
+- Recognize devices configured using Defender for Endpoint security settings management as managed devices.
+- Completed rollout of Microsoft Defender Clipboard Protection- DefenderSessionHelper.exe.
 
 ### Windows Antivirus | September 2026 | Platform 4.18.26090.9 | Engine 1.1.26090.9
 

@@ -40,13 +40,13 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/advanced-hunting-emailevents-table.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
+- https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 64d3cb1e-9710-b910-0184-abc7e00f5073
 ---
 
@@ -119,8 +119,7 @@ Some information relates to prereleased product which may be substantially modif
 | `ThreatClassification` | `string` | Threat classification applied to the email |
 | `RecipientDomain` | `string` | Domain address of the recipient |
 | `EmailSize` | `long` | Size of the email message in bytes |
-| `IsFirstContact` | `int` | Whether the email was the first contact between the sender and recipient (1 if yes, 0 if no) |
-| `Topics` | `string` | Topics column provides granular, multi-label topic classifications that describe what an email is about. |
+| `IsFirstContact` | `int` | Whether the email was the first contact between the sender and recipient (1 if yes, 0 if no). IsFirstContact is applicable to inbound email only |
 
 Note
 

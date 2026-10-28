@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 description: A prescriptive playbook for SecOps personnel to manage Microsoft Teams protection in Microsoft Defender for Office 365.
 ms.service: defender-office-365
-ms.date: 2026-10-05T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 locale: en-us
 document_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
 document_version_independent_id: 92aff1cd-08c4-9c50-3fe1-dd32992345be
@@ -118,6 +118,7 @@ SecOps team members can proactively hunt for potentially malicious Teams message
     - [MessagePostDeliveryEvents](/en-us/defender-xdr/advanced-hunting-messagepostdeliveryevents-table): Contains raw data about ZAP events on Teams messages.
     - [MessageUrlInfo](/en-us/defender-xdr/advanced-hunting-messageurlinfo-table): Contains raw data about URLs in Teams messages.
     - [UrlClickEvents](/en-us/defender-xdr/advanced-hunting-urlclickevents-table): Contains raw data about every allowed or blocked URL click by users in Teams clients.
+    - [CallActivityEvents](/en-us/defender-xdr/advanced-hunting-callactivityevents-table): Contains raw data about activities performed during Microsoft Teams calls and meetings in your organization.
 
     SecOps team members can join these hunting tables with other workload tables (for example, EmailEvents or Device-related tables) to gain insight into end to end user activities.
 

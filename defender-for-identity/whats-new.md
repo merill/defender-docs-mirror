@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about the latest Microsoft Defender for Identity features, sensor updates, security alerts, enhancements, and preview capabilities.
-ms.date: 2026-10-20T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ms.topic: overview
 ms.reviewer: AbbyMSFT
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
@@ -34,12 +34,12 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/whats-new.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 platformId: 40ff3b63-e58a-65f9-679b-e6b024715b88
 ---
@@ -115,7 +115,15 @@ The October announcement includes the following new alerts:
 
 Defender for Identity sensor v3.x activation without Defender for Endpoint is now generally available. Supported servers include eligible domain controllers, AD FS, AD CS, and Microsoft Entra Connect servers running Windows Server 2019 or later. This activation method supports only new sensor v3.x deployments on eligible servers without an existing Defender for Identity sensor. Sensor v2.x migration isn't yet available. For more information, see [Activate the Defender for Identity sensor](deploy/activate-sensor).
 
+### Known limitation: Sensor v3.x activation without Defender for Endpoint isn't supported in government clouds
+
+Activating the Defender for Identity v3.x sensor on servers without Microsoft Defender for Endpoint deployment is temporarily not supported in government cloud environments.
+
 ## September 2026
+
+### Sensor v2.x installation restriction for new workspaces (Preview)
+
+The sensor v2.x installation restriction for new workspaces is in preview. Starting in October 2026, Defender for Identity will restrict sensor v2.x installation in new workspaces. In these workspaces, sensor v3.x is the supported onboarding option for eligible servers running Windows Server 2019 or later. You can onboard sensor v2.x only to servers running Windows Server 2016 or earlier.
 
 ### Automatic sensor v3.x activation and Windows auditing by default
 

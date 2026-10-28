@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to download and install the Microsoft Defender for Identity sensor v2.x on domain controllers, AD FS servers, AD CS servers, or Microsoft Entra Connect servers.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ai-usage: ai-assisted
@@ -34,13 +34,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/deploy/install-sensor.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/7696cda6-0510-47f6-8302-71bb5d2e28cf
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/69c76c32-967e-4c65-b89a-74cc527db725
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: e266c008-0685-4766-32e5-6accdc1786ae
 ---
 
@@ -50,7 +50,9 @@ Download and install the Defender for Identity sensor v2.x on domain controllers
 
 Tip
 
-For eligible domain controllers running Windows Server 2019 or later, use the [Defender for Identity sensor v3.x deployment guidance](deploy-sensor-v3). The v2.x installer procedures below don't apply to v3.x. To onboard without Defender for Endpoint deployment, use the [v3.x onboarding package](activate-sensor#onboard-the-domain-controller-preview).
+For eligible domain controllers running Windows Server 2019 or later, use the [Defender for Identity sensor v3.x deployment guidance](deploy-sensor-v3). To onboard without Defender for Endpoint deployment, use the [v3.x onboarding package](activate-sensor#onboard-the-domain-controller-preview).
+
+The sensor v2.x installation restriction for new workspaces is in preview. For workspaces created starting in October 2026, [Defender for Identity sensor v3.x](deploy-sensor-v3) is the supported onboarding option for eligible servers running Windows Server 2019 or later. You can onboard sensor v2.x only to servers running Windows Server 2016 or earlier.
 
 We recommend alternate installation methods for these use cases:
 

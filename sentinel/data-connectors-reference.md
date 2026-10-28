@@ -228,7 +228,7 @@ Connects the 42Crunch API protection to Microsoft Sentinel via the Azure Monitor
 
 This connector receives data from external security systems that push logs to Microsoft Sentinel. The external system must be configured to send raw event data to the Microsoft Sentinel Ingestion API. Clicking on **Deploy** will trigger the creation of Log Analytics tables and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
 
-[Learn more about the connector setup process](isv/create-push-codeless-connector)
+[Learn more about the connector setup process](https://review.learn.microsoft.com/azure/sentinel/create-push-codeless-connector)
 
 Azure Resource Deployment
 
@@ -580,7 +580,7 @@ The [Airlock Digital](https://www.airlockdigital.com/)**SaaS** connector periodi
 
 Set up API access in your Airlock Digital SaaS tenant before connecting.
 
-Your server URL comes from your portal address: take `https://portal.au.example.com/tenant/XYZ/dashboard` and drop the `portal.` prefix and everything after the top-level domain, leaving `https://au.example.com`.
+Your server URL comes from your portal address: take `https://portal.au.YourDomain.com/tenant/XYZ/dashboard` and drop the `portal.` prefix and everything after the top-level domain, leaving `https://au.YourDomain.com`.
 
 The user API key, directory ID and tenant ID are in Airlock Digital under **User Menu &gt; My Profile**.
 
@@ -1429,9 +1429,9 @@ The SAP Application Vulnerability Report Service connector ingests vulnerability
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `SAPBTPAVL_CL` | No | No |
+| `SAPBTPAVL_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -1847,96 +1847,6 @@ The [Atlassian Confluence](https://www.atlassian.com/software/confluence) Audit 
 Add one connection per Atlassian Confluence site. Follow the [Atlassian API token instructions](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) to create an API token.
 
 - Data Connectors Grid (configure in portal)
-
-**Atlassian Jira Audit (using Azure Functions)**
-
-**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
-
-The [Atlassian Jira](https://www.atlassian.com/software/jira) Audit data connector provides the capability to ingest [Jira Audit Records](https://support.atlassian.com/jira-cloud-administration/docs/audit-activities-in-jira-applications/) events into Microsoft Sentinel through the REST API. Refer to [API documentation](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/) for more information. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `Jira_Audit_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **JiraAccessToken**, **JiraUsername** is required for REST API. For more information, see [API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/). Check all [requirements and follow the instructions](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#authentication) for obtaining credentials.
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to the Jira REST API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-> 
-> **NOTE: This data connector depends on a parser based on a Kusto Function to work as expected. [Follow these steps](https://aka.ms/sentinel-jiraauditapi-parser) to create the Kusto functions alias, JiraAudit**
-
-STEP 1 - Configuration steps for the Jira API
-
-[Follow the instructions](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#authentication) to obtain the credentials.
-
-STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
-
-> 
-> **IMPORTANT:** Before deploying the Workspace data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following).
-
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
-
-**Option 1 - Azure Resource Manager (ARM) Template**
-
-Use this method for automated deployment of the Jira Audit data connector using an ARM Tempate.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentineljiraauditazuredeploy)[aka.ms](https://aka.ms/sentineljiraauditazuredeploy-gov)
-2. Select the preferred **Subscription, Resource Group and Location**.
-
-> 
-> **NOTE:** Within the same resource group, you can't mix Windows and Linux apps in the same region. Select existing resource group without Windows apps in it or create new resource group. 3. Enter the **JiraAccessToken, JiraUsername, JiraHomeSiteName** (short site name part, as example HOMESITENAME from https://community.atlassian.com) and deploy. 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 5. Click **Purchase** to deploy.
-
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the Jira Audit data connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-1. Deploy a Function App
-
-> 
-> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
-
-1. Download the [Azure Function App](https://aka.ms/sentinel-jiraauditapi-functionapp) file. Extract archive to your local development computer.
-2. Start VS Code. Choose File in the main menu and select Open Folder.
-3. Select the top level folder from extracted files.
-4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
-5. Provide the following information at the prompts:
-
-    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
-
-    b. **Select Subscription:** Choose the subscription to use.
-
-    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
-
-    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. JiraAuditXXXXX).
-
-    e. **Select a runtime:** Choose Python 3.11.
-
-    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
-6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
-7. Go to Azure Portal for the Function App configuration.
-8. Configure the Function App
-9. In the Function App, select the Function App Name and select **Configuration**.
-10. In the **Application settings tab, select New application setting**.
-11. Add each of the following application settings individually, with their respective string values (case-sensitive): JiraUsername JiraAccessToken JiraHomeSiteName WorkspaceID WorkspaceKey logAnalyticsUri (optional)
-
-- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
-
-1. Once all application settings have been entered, click **Save**.
 
 **Atlassian Jira Audit (via Codeless Connector Framework)**
 
@@ -2359,7 +2269,7 @@ Connect to Azure DDoS Protection Standard logs via Public IP Address Diagnostic 
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
-The Azure DevOps Audit Logs data connector allows you to ingest audit events from Azure DevOps into Microsoft Sentinel. This data connector is built using the Microsoft Sentinel Codeless Connector Framework, ensuring seamless integration. It leverages the Azure DevOps Audit Logs API to fetch detailed audit events and supports DCR-based [ingestion time transformations](/en-us/azure/azure-monitor/logs/custom-logs-overview). These transformations enable parsing of the received audit data into a custom table during ingestion, improving query performance by eliminating the need for additional parsing. By using this connector, you can gain enhanced visibility into your Azure DevOps environment and streamline your security operations.
+The Azure DevOps Audit Logs data connector allows you to ingest audit events from Azure DevOps into Microsoft Sentinel. This data connector is built using the Microsoft Sentinel Codeless Connector Framework, ensuring seamless integration. It leverages the Azure DevOps Audit Logs API to fetch detailed audit events and supports DCR-based [ingestion time transformations](/en-us/azure/azure-monitor/logs/custom-logs-overview). These transformations enable parsing of the received audit data into a custom table during ingestion, improving query performance by eliminating the need for additional parsing. By using this connector, you can gain enhanced visibility into your Azure DevOps environment and streamline your security operations. This version supports connecting **multiple Azure DevOps organizations**: each organization is added as its own connection from the grid below, and all audit events flow into the same ADOAuditLogs\_CL table.
 
 **Log Analytics table(s):**
 
@@ -2371,21 +2281,15 @@ The Azure DevOps Audit Logs data connector allows you to ingest audit events fro
 
 **Prerequisites:**
 
-- **Azure DevOps Prerequisite**: Please ensure the following: 1. Register an Entra App in Microsoft Entra Admin Center under App Registrations. 2. In 'API permissions' - add Permissions to 'Azure DevOps - vso.auditlog'. 3. In 'Certificates & secrets' - generate 'Client secret'. 4. In 'Authentication' - add the Redirect URI found below in the corresponding field. 5. In the Azure DevOps settings - enable audit log and set **View audit log** for the user. [Azure DevOps Auditing](/en-us/azure/devops/organizations/audit/azure-devops-auditing?tabs=preview-page). 6. Ensure the user assigned to connect the data connector has the View audit logs permission explicitly set to Allow at all times. This permission is essential for successful log ingestion. If the permission is revoked or not granted, data ingestion will fail or be interrupted.
+- **Azure DevOps Prerequisite**: Please ensure the following: 1. Register an Entra App in Microsoft Entra Admin Center under App Registrations. 2. In 'API permissions' - add Permissions to 'Azure DevOps - vso.auditlog'. 3. In 'Certificates & secrets' - generate 'Client secret'. 4. In 'Authentication' - add the Redirect URI found below in the corresponding field. 5. In the Azure DevOps settings - enable audit log and set **View audit log** for the user. [Azure DevOps Auditing](/en-us/azure/devops/organizations/audit/azure-devops-auditing?view=azure-devops&amp;tabs=preview-page). 6. Ensure the user assigned to connect the data connector has the View audit logs permission explicitly set to Allow at all times. This permission is essential for successful log ingestion. If the permission is revoked or not granted, data ingestion will fail or be interrupted.
 
 **Setup Instructions:**
 
-\*\*Connect to Azure DevOps to start collecting Audit logs in Microsoft Sentinel. \*\*
+\*\*Connect Azure DevOps organizations to start collecting Audit logs in Microsoft Sentinel. \*\*
 
-1. Enter the App you have registered.
-2. In the 'Overview' section, copy the Application (client) ID.
-3. Select the 'Endpoints' button, and copy the 'OAuth 2.0 authorization endpoint (v2)' value and the 'OAuth 2.0 token endpoint (v2)' value.
-4. In the 'Certificates & secrets' section, copy the 'Client Secret value', and store it securely.
-5. Provide the required information below and click 'Connect'.
+Use **Add organization** to connect each Azure DevOps organization. Connected organizations are listed below and can be removed individually.
 
-- **Token Endpoint**: ([concat(variables('\_loginUrl'), '/{TenantId}/oauth2/v2.0/token')])
-- **Authorization Endpoint**: ([concat(variables('\_loginUrl'), '/{TenantId}/oauth2/v2.0/authorize')])
-- **API Endpoint**: ([https://auditservice.dev.azure.com/{organizationName}/_apis/audit/auditlog?api-version=7.2-preview](https://auditservice.dev.azure.com/%7BorganizationName%7D/_apis/audit/auditlog?api-version=7.2-preview))
+- Data Connectors Grid (configure in portal)
 
 **Azure Event Hub**
 
@@ -3336,9 +3240,9 @@ Check Point provides a Microsoft Sentinel integration to ingest high-fidelity In
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `emiocintel_CL` | No | No |
+| `emiocintel_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -3368,8 +3272,8 @@ The [Check Point Email Security (Harmony Email Collaboration)](https://www.check
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
 | `CheckPointEmailSecurityEvents_CL` | Yes | Yes |
-| `CheckPointEmailSecAntiPhishingExceptions_CL` | Yes | Yes |
-| `CheckPointEmailSecuritySpamExceptions_CL` | Yes | Yes |
+| `CheckPointEmailSecAntiPhishingExceptions` | No | No |
+| `CheckPointEmailSecuritySpamExceptions` | No | No |
 | `CheckPointEmailSecurityAuditLogs_CL` | Yes | Yes |
 
 **Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
@@ -5240,13 +5144,7 @@ Requirements: In order to use the Falcon Data Replicator feature the following a
 2. Choose the ‘Specify template’ option, then ‘Upload a template file’ by clicking on ‘Choose file’ and selecting the appropriate CloudFormation template file provided below. click ‘Choose file’ and select the downloaded template.
 3. Click 'Next' and 'Create stack'.
 
-Make sure that your bucket will be created in the same AWS region as your Falcon CID where the FDR feed is provisioned.
-
-| CrowdStrike region | AWS region |
-| --- | --- |
-| US-1 | us-west-1 |
-| US-2 | us-west-2 |
-| EU-1 | eu-central-1 |
+Make sure that your bucket will be created in the same AWS region as your Falcon CID where the FDR feed is provisioned. | CrowdStrike region | AWS region | |-----------------|-----------| | US-1 | us-west-1 | | US-2 | us-west-2 | | EU-1 | eu-central-1
 
 - **Template 1: OpenID connect authentication deployment**: &lt;variable value provided at install time&gt;
 - **Template 2: AWS CrowdStrike resources deployment**: &lt;variable value provided at install time&gt; Using your own S3 Bucket In order to use your own S3 bucket you can refernace the following guide [Use your own S3 bucket](https://falcon.us-2.crowdstrike.com/documentation/page/fa572b1c/falcon-data-replicator#g4f79236) or follow this steps:
@@ -5432,125 +5330,6 @@ Many applications log information to text or JSON files instead of standard logg
 Custom logs are collected from both Windows and Linux agents.
 
 - Install Agent: &lt;variable value provided at install time&gt;
-
-**CyberArk EPM**
-
-**Supported by:**[CyberArk Support](https://www.cyberark.com/services-support/technical-support/)
-
-The [CyberArk Endpoint Privilege Manager](https://www.cyberark.com/products/endpoint-privilege-manager/) data connector enables Microsoft Sentinel to ingest security event logs and other events from CyberArk EPM via REST API.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `CyberArk_EPMEvents_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **CyberArk EPM Platform**: Access to perform required configurations in CyberArk EPM platform
-
-**Setup Instructions:**
-
-**Connect to CyberArk EPM API to start collecting event logs in Microsoft Sentinel**
-
-Follow the configuration steps [here](https://docs.cyberark.com/epm/latest/en/content/webservices/authenticate-with-identity-administration.htm) to integrate Microsoft Sentinel with CyberArk EPM and enable centralized monitoring of endpoint events within Microsoft Sentinel.
-
-- **Web App ID**: (The OAuth2 server web app ApplicationID)
-- **Region based Tenant URL**: (e.g. api-na.epm.cyberark.cloud)
-- **Set ID**: (List of comma seperated EPM Set IDs to poll events from)
-- **Identity Endpoint**: (e.g. kln9281.id.cyberark.cloud)
-
-**CyberArkEPM (using Azure Functions)**
-
-**Supported by:**[CyberArk Support](https://www.cyberark.com/services-support/technical-support/)
-
-The [CyberArk Endpoint Privilege Manager](https://www.cyberark.com/products/endpoint-privilege-manager/) data connector provides the capability to retrieve security event logs of the CyberArk EPM services and more events into Microsoft Sentinel through the REST API. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `CyberArkEPM_Events_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **OauthUsername**, **OauthPassword**, **IdentityEndpoint**, **EPMRegionHost** and **WebAppID** are required for making API calls.
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to the CyberArk EPM API to pull logs into Microsoft Sentinel. This might result in additional costs for data ingestion and for storing data in Azure Blob Storage costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) and [Azure Blob Storage pricing page](https://azure.microsoft.com/pricing/details/storage/blobs/) for details.
-
-> 
-> **NOTE:** API authorization key(s) or token(s) are securely stored in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values.
-
-> 
-> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected [**CyberArkEPM**](https://aka.ms/sentinel-CyberArkEPM-parser) which is deployed with the Microsoft Sentinel Solution.
-
-STEP 1 - Configuration steps for the CyberArk EPM API
-
-Follow the [instructions](https://docs.cyberark.com/epm/latest/en/content/webservices/authenticate-with-identity-administration.htm) to obtain the OAuth2 credentials.
-
-1. Obtain the **OauthUsername, OauthPassword, WebAppID, IdentityEndpoint and EPMRegionHost** for your CyberArk EPM account.
-
-STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
-
-> 
-> **IMPORTANT:** Before deploying the CyberArk EPM data connector, have the Workspace Name and Workspace Location (can be copied from the following).
-
-- **Workspace Name**: &lt;variable value provided at install time&gt;
-- **Workspace Location**: &lt;variable value provided at install time&gt;
-
-**Option 1 - Azure Resource Manager (ARM) Template**
-
-Use this method for automated deployment of the CyberArk EPM data connector using an ARM Template.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentinel-CyberArkEPMAPI-azuredeploy)
-2. Select the preferred **Subscription, Resource Group and Location**.
-
-> 
-> **NOTE:** Within the same resource group, you can't mix Windows and Linux apps in the same region. Select existing resource group without Windows apps in it or create new resource group. 3. Enter the **OauthUsername, OauthPassword, IdentityEndpoint, EPMRegionHost and WebAppID** and deploy. 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 5. Click **Purchase** to deploy.
-
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the CyberArk EPM data connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-1. Deploy a Function App
-
-> 
-> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
-
-1. Download the [Azure Function App](https://aka.ms/sentinel-CyberArkEPMAPI-functionapp) file. Extract archive to your local development computer.
-2. Start VS Code. Choose File in the main menu and select Open Folder.
-3. Select the top level folder from extracted files.
-4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
-5. Provide the following information at the prompts:
-
-    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
-
-    b. **Select Subscription:** Choose the subscription to use.
-
-    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
-
-    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. CyberArkXXXXX).
-
-    e. **Select a runtime:** Choose Python 3.12.
-
-    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
-6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
-7. Go to Azure Portal for the Function App configuration.
-8. Configure the Function App
-9. In the Function App, select the Function App Name and select **Configuration**.
-10. In the **Application settings tab, select New application setting**.
-11. Add each of the following application settings individually, with their respective string values (case-sensitive): OAuthUsername OAuthPassword IdentityEndpoint EPMRegionHost WebAppID
-12. Once all application settings have been entered, click **Save**.
 
 **Cybersixgill Actionable Alerts (using Azure Functions)**
 
@@ -6485,6 +6264,32 @@ The next step is to install the Datawiza log forwarder to send logs to Microsoft
 
 After approximately 20 minutes access the Log Analytics workspace on your Microsoft Sentinel installation, and locate the *Custom Logs* section verify that a *datawizaserveraccess\_CL* table exists. Use the sample queries to examine the data.
 
+**Delinea Platform Audit Events**
+
+**Supported by:**[Delinea](https://delinea.com/support)
+
+Ingests privileged-access audit events from the **Delinea Platform** (`/audit/api/audit-events`) into Microsoft Sentinel. Covers secret access, session recording, user activity, and configuration changes.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `DelineaAuditEvents_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Delinea Platform API access**: A service user with **Auditor** role is required. Create the user under **Access → Users** and assign it to a group with audit read permissions.
+
+**Setup Instructions:**
+
+To enable the Delinea Platform connector, click **Add tenant, fill in your Delinea base URL and service user credentials, then click Connect**.
+
+Create a service user in your Delinea tenant under **Access → Roles / Groups / Users and assign the Auditor** role.
+
+- Data Connectors Grid (configure in portal)
+
 **Derdack SIGNL4**
 
 **Supported by:**[Derdack](https://signl4.zendesk.com/hc/en-us)
@@ -6518,9 +6323,9 @@ The Digital Shadows data connector provides ingestion of the incidents and alert
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `DigitalShadows_V2_CL` | No | No |
+| `DigitalShadows_V2_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -7710,6 +7515,7 @@ The [ExtraHop](https://extrahop.com/) Detections Data Connector enables you to i
 - **Azure Subscription**: Azure Subscription with owner role is required to register an application in Microsoft Entra ID, create a Data Collection Endpoint, Data Collection Rule, and assign the required roles.
 - **Microsoft Entra App Registration**: A Microsoft Entra ID App Registration (Service Principal) with a Client Secret is required. The app's Object ID must be provided so the deployment can assign it the necessary role to publish logs via the Log Ingestion API.
 - **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **Microsoft.Network permissions (optional)**: Only required if you choose to lock the storage account down behind private endpoints (StorageAccountAccessType = Private). Read and write permissions on the VNet/subnets (or permission to create a new VNet), and on the private DNS zones used to resolve the storage private endpoints, are required.
 - **ExtraHop RevealX permissions**: The following is required on your ExtraHop RevealX system:
 
 1. Your RevealX system must be running firmware version 9.9.2 or later.
@@ -7797,6 +7603,34 @@ Use this method for automated deployment of the ExtraHop Detections Data connect
     i. **LogLevel** - Select log level or log severity value from Debug, Info, Error, Warning. By default it is set to Info
 
     j. **AppInsightsWorkspaceResourceID** - Migrate Classic Application Insights to Log Analytic Workspace which is retiring by 29 Febraury 2024. Use 'Log Analytic Workspace--&gt;Properties' blade having 'Resource ID' property value. This is a fully qualified resourceId which is in format '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}'
+
+    k. **HostingPlanType** - Select the Function App hosting plan: `FlexConsumption` (recommended, required if you choose Private storage below) or `LinuxConsumption` (legacy, only supports Public storage, and retires 30 September 2028). Default is `FlexConsumption`
+
+    l. **StorageAccountAccessType** - Select `Public` (default, matches historical connector behavior) or `Private` to lock the storage account down behind private endpoints (blob/file/queue/table). `Private` requires HostingPlanType = `FlexConsumption`
+
+    m. **NetworkDeploymentMode** - Only used when StorageAccountAccessType is `Private`. `Existing` (default) uses subnet/private DNS zone resource IDs you already have; `New` has this template create its own VNet, subnets, and private DNS zones automatically
+
+    n. **VNetAddressPrefix** - Only used when NetworkDeploymentMode is `New`. Address space for the VNet this template creates. Default `10.42.0.0/24`
+
+    o. **FunctionAppOutboundSubnetPrefix** - Only used when NetworkDeploymentMode is `New`. Subnet prefix for the Function App's outbound VNet integration. Default `10.42.0.0/27`
+
+    p. **StoragePrivateEndpointSubnetPrefix** - Only used when NetworkDeploymentMode is `New`. Subnet prefix for the storage account's private endpoints. Default `10.42.0.32/27`
+
+    q. **FunctionAppOutboundSubnetId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of an empty subnet delegated to `Microsoft.App/environments`, used for the Function App's regional VNet integration
+
+    r. **StoragePrivateEndpointSubnetId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of the subnet where the storage account's blob/file/queue/table private endpoints will be created
+
+    s. **CreatePrivateDnsZoneLinks** - Only used when NetworkDeploymentMode is `Existing`. If `true`, links StorageVNetId (below) to the private DNS zones below. If `false` (default), your VNet must already be linked to these zones
+
+    t. **StorageVNetId** - Required only when CreatePrivateDnsZoneLinks is `true`. Resource ID of the VNet that contains the subnets above, to link to the private DNS zones below
+
+    u. **BlobPrivateDnsZoneId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of an existing private DNS zone for Blob storage (`privatelink.blob`)
+
+    v. **FilePrivateDnsZoneId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of an existing private DNS zone for File storage (`privatelink.file`)
+
+    w. **QueuePrivateDnsZoneId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of an existing private DNS zone for Queue storage (`privatelink.queue`)
+
+    x. **TablePrivateDnsZoneId** - Required when StorageAccountAccessType is `Private` and NetworkDeploymentMode is `Existing`. Resource ID of an existing private DNS zone for Table storage (`privatelink.table`)
 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
 5. Click **Purchase** to deploy.
 
@@ -8367,6 +8201,8 @@ The [GitHub](https://www.github.com) webhook data connector provides the capabil
 
 **Note:** If you are intended to ingest Github Audit logs, Please refer to GitHub Enterprise Audit Log Connector from "**Data Connectors**" gallery.
 
+**Azure Government Cloud:** This V1 connector is **not supported** in Azure Government Cloud. Use **GitHub (using Webhooks) V2**, which uses the Azure Monitor Logs Ingestion API with managed identity, instead. V2 is also the recommended replacement for existing V1 deployments. Follow the [V1-to-V2 migration instructions](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/GitHub/Data%20Connectors/GithubWebhookV2/README.md#migrating-from-v1).
+
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
@@ -8418,10 +8254,12 @@ Use the following step-by-step instructions to deploy the GitHub webhook data co
 
 **Step 2 - Configure the Function App**
 
+These V1 configuration instructions apply to Azure public cloud only. For Azure Government Cloud, use **GitHub (using Webhooks) V2** instead.
+
 1. Go to Azure Portal for the Function App configuration.
 2. In the Function App, select the Function App Name and select **Configuration**.
 3. In the **Application settings tab, select New application setting**.
-4. Add each of the following application settings individually, with their respective string values (case-sensitive): WorkspaceID WorkspaceKey logAnalyticsUri (optional) - Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
+4. Add each of the following application settings individually, with their respective string values (case-sensitive): WorkspaceID WorkspaceKey
 5. Once all application settings have been entered, click **Save**.
 
 Post Deployment steps
@@ -8476,6 +8314,14 @@ Events are written to the `GitHubAdvancedSecurityAlerts_CL` table. The `githubsc
 > 
 > **NOTE: This connector is built on an HTTP trigger based Azure Function using the Logs Ingestion API (CLv2) with Managed Identity** authentication. There is no need to configure a Workspace Key — authentication is handled automatically by the Function App's system-assigned managed identity. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
 
+**Azure public cloud and Azure Government**
+
+This webhook connector can ingest events into Azure public cloud or Azure Government. Choose the matching deployment link below. The ARM template configures the DCE endpoint automatically, and the Function App selects the matching Azure Monitor token scope and Microsoft Entra authority from that endpoint. No additional cloud, scope, or authority parameters are required.
+
+For manual deployment, copy the **Logs ingestion endpoint from a DCE in the same cloud as your Function App, DCR, and workspace into DCE\_ENDPOINT**: `https://<dce-host>.ingest.monitor.azure.com` for Azure public cloud or `https://<dce-host>.ingest.monitor.azure.us` for Azure Government. Use the actual resource endpoint; do not change an existing endpoint's suffix. The cloud-specific scopes and authorities are described in the [Azure Monitor SDK documentation](/en-us/python/api/overview/azure/monitor-ingestion-readme#configure-clients-for-non-public-azure-clouds).
+
+GitHub must be able to reach the Function App's HTTPS webhook URL. This connector uses webhooks, not GitHub audit-log streaming to Blob Storage; the Azure Government restriction on the Azure Storage audit-log connector does not apply to this ingestion path.
+
 **(Optional Step)** Securely store the GitHub Webhook Secret in Azure Key Vault. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
 
 Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
@@ -8489,9 +8335,11 @@ Choose ONE from the following two deployment options to deploy the connector and
 
 Use this method for automated deployment of the GitHub V2 data connector using an ARM Template.
 
-1. Click the **Deploy to Azure** button below.
+1. Choose the deployment button for your workspace's cloud. No extra Government-specific parameters are required.
 
     [portal.azure.com](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FGitHub%2FData%2520Connectors%2FGithubWebhookV2%2Fazuredeploy_GithubWebhookV2_API_FunctionApp.json)
+
+    [portal.azure.us](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FGitHub%2FData%2520Connectors%2FGithubWebhookV2%2Fazuredeploy_GithubWebhookV2_API_FunctionApp.json)
 2. Select the **Subscription and Resource Group — deploy to the same resource group** as your Log Analytics workspace.
 
 > 
@@ -8509,10 +8357,10 @@ Use the following step-by-step instructions to deploy the GitHub V2 webhook data
 
 **Step 2 - Configure the Function App**
 
-1. Go to Azure Portal for the Function App configuration.
+1. Open your Function App in the [Azure public portal](https://portal.azure.com) or [Azure Government portal](https://portal.azure.us).
 2. In the Function App, select the Function App Name and select **Configuration**.
 3. In the **Application settings tab, select New application setting**.
-4. Add each of the following application settings individually, with their respective string values (case-sensitive): DCE\_ENDPOINT - The logs ingestion endpoint of your Data Collection Endpoint DCR\_RULE\_ID - The immutableId of your Data Collection Rule DCR\_STREAM\_NAME - Custom-GitHubAdvancedSecurityAlerts\_CL GithubWebhookSecret (optional) - Your GitHub webhook secret for payload validation
+4. Add each of the following application settings individually, with their respective string values (case-sensitive): DCE\_ENDPOINT - Copy your DCE's Logs ingestion endpoint: `https://<dce-host>.ingest.monitor.azure.com` for Azure public cloud or `https://<dce-host>.ingest.monitor.azure.us` for Azure Government. The Function App automatically selects the matching authentication scope and authority. DCR\_RULE\_ID - The immutableId of your Data Collection Rule in the same cloud DCR\_STREAM\_NAME - Custom-GitHubAdvancedSecurityAlerts\_CL GithubWebhookSecret (optional) - Your GitHub webhook secret for payload validation
 5. Once all application settings have been entered, click **Save**.
 6. Ensure the Function App has a **System Assigned Managed Identity** enabled.
 7. Grant the Managed Identity the **Monitoring Metrics Publisher** role on your Data Collection Rule.
@@ -8557,6 +8405,8 @@ If you are currently using the original **GitHub (using Webhooks) connector (`gi
 
 The GitHub audit log connector ingests GitHub Enterprise audit logs into Microsoft Sentinel from Azure Blob Storage with near real-time latency. GitHub streams audit logs to Blob Storage in near real time, and the connector polls the Azure Storage Queue for new blob-created notifications every 5 minutes (default polling interval). By connecting GitHub audit logs to Microsoft Sentinel, you can view this data in workbooks, create custom alerts, and improve your investigation process.
 
+**Azure Government Cloud:** This connector is **not supported** in Azure Government Cloud. [GitHub documentation](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/streaming-the-audit-log-for-your-enterprise#setting-up-streaming-to-azure-blob-storage) states: "Audit log streaming to blob storage in Azure Government is not supported".
+
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
@@ -8586,25 +8436,15 @@ The GitHub audit log connector ingests GitHub Enterprise audit logs into Microso
 - **Storage Account Requirements**: The Azure Blob Storage account must meet the following requirements:
 - **Azure Data Lake Storage Gen2 (hierarchical namespace enabled)** - standard storage accounts are not supported.
 - A blob container already configured to receive GitHub Enterprise audit log streaming.
-- **Storage Account Network Configuration**: IP-based network rules (selected networks / IPv4 CIDR) are **not supported** for this connector due to [Azure Storage firewall restrictions and limitations](/en-us/azure/storage/common/storage-network-security-limitations):
-- IP network rules have **no effect** on requests originating from the same Azure region as the storage account.
-- IP network rules **cannot restrict** access to Azure services deployed in the same region, as these services use private Azure IP addresses for communication.
-- Virtual network service endpoint rules do not apply to clients in a paired region.
+- **Storage Account Network Configuration**: **First-time setup (recommended):** On the storage account's **Networking** page, set **Public network access** to **Enabled from all networks**. A Network Security Perimeter (NSP) is optional.
 
-**Options:**
+**If using NSP:** Only **Transition** access mode is supported. In the NSP's **Associated resources**, set the storage account's access mode to **Transition**, and keep **Enabled from all networks** on the storage account. [Transition mode](/en-us/azure/private-link/network-security-perimeter-transition) falls back to the storage account's network rules.
 
-- **No network restrictions needed?** Set the storage account's **Networking** blade to **Enabled from all networks**.
-- **Need to restrict access?** Use [Network Security Perimeter (NSP)](/en-us/azure/sentinel/enable-storage-network-security) to whitelist Scuba IPv4 addresses. Note: only IPv4 addresses are currently supported for NSP inbound rules; IPv6 is not supported. There is an ongoing effort with the NSP team to support service tags, which will eliminate the need for manual IP management in the future.
-
-**Important:** Do **not** configure network rules based on GitHub IP ranges. GitHub does not provide stable IP ranges as the source of audit log streaming, and those IPs may change without notice.
+For general guidance, see [Enable Network Security for Azure Storage Blob Connectors](/en-us/azure/sentinel/enable-storage-network-security).
 
 - **Event Grid delivery identity**: The connector enables a **system-assigned managed identity** on a new or supplied existing Event Grid system topic. When a topic name is supplied, the connector reads the topic before updating it, preserving its tags, attached user-assigned identities, and any already enabled system-assigned principal. The connector always creates or updates its generated event subscription using the topic's system-assigned identity; the subscription's delivery configuration and filters remain connector-managed.
 
-Choose **Create** to grant that identity **Storage Queue Data Message Sender** on the destination **storage account**, or **Use existing** to skip creating the sender grant when the identity already has that permission, as required by [Event Grid Storage Queue delivery](/en-us/azure/event-grid/managed-service-identity#use-the-azure-cli---azure-storage-queue). Use Create for a new topic or a newly enabled system-assigned identity. Account-scoped sender access allows adding messages to queues in that account, not reading or deleting messages or accessing blobs. This identity is separate from the existing **ScubaSentinelToStorageProd** collector application, which remains unchanged and continues to read blobs and consume queue messages. An existing topic must belong to the selected storage account.
-
-Using **Network Security Perimeter (NSP)** is optional. If your storage account is in an Enforced NSP, allow inbound traffic from the Event Grid topic's subscription and the **Scuba** service IPv4 ranges, as described in [Enable network security](/en-us/azure/sentinel/enable-storage-network-security). The connector does not enable NSP or change its rules, associations, or access mode.
-
-The system-assigned identity has no additional charge and requires no deployment script, container instance, or temporary storage account. Normal Event Grid, Storage, and Microsoft Sentinel charges still apply.
+Choose **Create** to grant that identity **Storage Queue Data Message Sender** on the destination **storage account**, or **Use existing** to skip creating the sender grant when the identity already has that permission, as required by [Event Grid Storage Queue delivery](/en-us/azure/event-grid/managed-service-identity#use-the-azure-cli---azure-storage-queue). Use Create for a new topic or a newly enabled system-assigned identity. Account-scoped sender access allows adding messages to queues in that account, not reading or deleting messages or accessing blobs. This identity is separate from the existing **ScubaSentinelToStorageProd** collector application, which remains unchanged and continues to read blobs and consume queue messages.
 
 - **Storage Account Role Assignments**: The following Azure RBAC roles must be assigned to the Microsoft Sentinel enterprise application service principal (displayed below) on the **Storage Account** that contains your blob container:
 - **Storage Blob Data Reader** - required for reading blob data from the container.
@@ -8654,10 +8494,17 @@ If you encounter issues with data ingestion:
 
 - **Managed Identity Authorization Error - Confirm the Event Grid system topic's current system-assigned principal has Storage Queue Data Message Sender at the destination storage-account scope, not only on the notification queue. Use existing skips creating that grant; it does not discover or repair permissions. This is not the Microsoft Sentinel service principal displayed in the connection form. RBAC propagation: If Connect fails with Managed Identity Authorization Error**, wait about five minutes and retry with the same values. Propagation can take up to ten minutes.
 - Keep the same topic and identity when retrying. Recreating the topic or toggling its identity creates a different principal and requires a new grant. If the error persists with the correct account-scoped grant, retain the failed operation's request ID and UTC timestamp for support.
-- **Event Grid subscription creation fails with an internal error or disappears after appearing** - Check the failed deployment operation and any Enforced NSP on the storage account. Event Grid must use system-assigned managed-identity delivery with Storage Queue Data Message Sender access on the storage account and an NSP inbound subscription rule. A subscription can appear while provisioning and be rolled back if provisioning fails; this does not necessarily mean a duplicate resource exists. Review NSP diagnostic logs and retain the Event Grid request ID and UTC timestamp for support if the failure persists.
+- **GitHub audit log streaming stops with NSP - Check Transition access mode and Enabled from all networks as described under Storage Account Network Configuration. See Limitations** for unsupported settings.
+- **Event Grid subscription creation fails with an internal error or disappears after appearing** - Check the failed deployment operation. Event Grid must use system-assigned managed-identity delivery with Storage Queue Data Message Sender access on the storage account. A subscription can appear while provisioning and be rolled back if provisioning fails; this does not necessarily mean a duplicate resource exists. Review diagnostic logs and retain the Event Grid request ID and UTC timestamp for support if the failure persists.
 - **Enable the health feature** - If the connector health feature isn't enabled, enable it to monitor connector status and detect issues early.
 - **Enable diagnostic logs - Consider enabling diagnostic logs for both the Storage Account and Event Grid** resources to help identify and troubleshoot health issues.
 - For more details, see [Troubleshoot Azure Storage Blob connector issues](/en-us/azure/sentinel/azure-storage-blob-connector-troubleshoot).
+
+**Limitations**
+
+- **Network isolation: NSP Enforced mode and Set Secured by Perimeter (Most restricted)** on the storage account are not supported for this connector. Transition mode does not fully enforce perimeter isolation.
+- **IP allowlists:** IP-based storage firewall rules (selected networks / IPv4 CIDR) are not supported; see [Azure Storage firewall limitations](/en-us/azure/storage/common/storage-network-security-limitations). Do not rely on a fixed GitHub source IP allowlist.
+- **Azure Government: GitHub does not support audit log streaming to Blob Storage in Azure Government**. See [GitHub documentation](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/streaming-the-audit-log-for-your-enterprise#setting-up-streaming-to-azure-blob-storage).
 
 **GitHub Enterprise Audit Log (via Codeless Connector Framework)**
 
@@ -8666,6 +8513,10 @@ If you encounter issues with data ingestion:
 The GitHub audit log connector provides the capability to ingest GitHub logs into Microsoft Sentinel. By connecting GitHub audit logs into Microsoft Sentinel, you can view this data in workbooks, use it to create custom alerts, and improve your investigation process.
 
 **Note:** If you intended to ingest GitHub subscribed events into Microsoft Sentinel, please refer to GitHub (using Webhooks) Connector from "**Data Connectors**" gallery.
+
+**Volume limitation:** GitHub [limits this audit-log API](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/using-the-audit-log-api-for-your-enterprise#rate-limit) to **1,750 requests/hour** per user, source IP, and enterprise. With the current default of **30 events/page**, the theoretical ceiling is about **13,100 events/15 minutes**, before retries or competing requests. In Azure public cloud, we recommend **[GitHub Enterprise Audit Log (via Azure Storage)](/en-us/azure/sentinel/data-connectors-reference#github-enterprise-audit-log-via-azure-storage)** when your enterprise regularly generates **10,000+ audit and Git events/15 minutes**, or connector health reports recurring GitHub rate-limit errors (HTTP 403/429) or ingestion delays keep increasing.
+
+**Azure Government Cloud:** The Azure Storage connector is **not supported** in Azure Government Cloud. [GitHub documentation](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/streaming-the-audit-log-for-your-enterprise#setting-up-streaming-to-azure-blob-storage) states: "Audit log streaming to blob storage in Azure Government is not supported". The Azure Storage migration recommendation above does not apply in this cloud; the REST API connector remains subject to GitHub's API rate limits.
 
 **Log Analytics table(s):**
 
@@ -8955,17 +8806,9 @@ The Google Cloud Platform (GCP) Security Command Center is a comprehensive secur
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| [`GoogleCloudSCC`](/en-us/azure/azure-monitor/reference/tables/GoogleCloudSCC) | Yes | Yes |
+| `{{graphQueriesTableName}}` | No | No |
 
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Setup Instructions:**
-
-1. Set up your GCP environment You must have the following GCP resources defined and configured: topic, subscription for the topic, workload identity pool, workload identity provider and service account with permissions to get and consume from subscription. Terraform provides API for the IAM that creates the resources. [Link to Terraform scripts](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/GCP/Terraform/sentinel_resources_creation).
-
-- **Tenant ID: A unique identifier that is used as an input in the Terraform configuration within a GCP environment.**: &lt;variable value provided at install time&gt;
-
-1. Connect new collectors To enable GCP SCC for Microsoft Sentinel, click the Add new collector button, fill the required information in the context pane and click on Connect.
+**Data collection rule support:** Not currently supported
 
 **Google Threat Intelligence Relevance System Alerts**
 
@@ -9508,6 +9351,118 @@ Step1: Create new SIEM integration
 - **Audit Query Filter Action (Optional)**: (e.g. {"op":"include","params":["cloud.core.login","cloud.core.mfasummary"]})
 - **Audit Query Filter Application Code (Optional)**: (e.g. {"op":"include","params":["IDP","CMS"]})
 - **Audit Query Filter Audit Type (Optional)**: (e.g. {"op":"include","params":["Failure"]})
+
+**Idira EPM**
+
+**Supported by:**[Idira Support](https://www.cyberark.com/services-support/technical-support/)
+
+The [Idira Endpoint Privilege Manager](https://www.cyberark.com/products/endpoint-privilege-manager/) data connector enables Microsoft Sentinel to ingest security event logs and other events from Idira EPM via REST API.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `CyberArkEPM_Events_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Idira EPM Platform**: Access to perform required configurations in Idira EPM platform
+
+**Setup Instructions:**
+
+**Connect to Idira EPM API to start collecting event logs in Microsoft Sentinel**
+
+Follow the configuration steps [here](https://docs.cyberark.com/epm/latest/en/content/webservices/authenticate-with-identity-administration.htm) to integrate Microsoft Sentinel with Idira EPM and enable centralized monitoring of endpoint events within Microsoft Sentinel.
+
+- **Web App ID**: (The OAuth2 server web app ApplicationID)
+- **Region based Tenant URL**: (e.g. api-na.epm.cyberark.cloud)
+- **Identity Endpoint**: (e.g. kln9281.id.cyberark.cloud)
+
+**Idira EPM (using Azure Functions)**
+
+**Supported by:**[Idira Support](https://www.cyberark.com/services-support/technical-support/)
+
+The [Idira Endpoint Privilege Manager](https://www.cyberark.com/products/endpoint-privilege-manager/) data connector provides the capability to retrieve security event logs of the Idira EPM services and more events into Microsoft Sentinel through the REST API. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `CyberArkEPM_Events_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **REST API Credentials/permissions**: **OauthUsername**, **OauthPassword**, **IdentityEndpoint**, **EPMRegionHost** and **WebAppID** are required for making API calls.
+
+**Setup Instructions:**
+
+> 
+> **NOTE:** This connector uses Azure Functions to connect to the Azure Blob Storage API to pull logs into Microsoft Sentinel. This might result in additional costs for data ingestion and for storing data in Azure Blob Storage costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) and [Azure Blob Storage pricing page](https://azure.microsoft.com/pricing/details/storage/blobs/) for details.
+
+**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
+
+> 
+> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected [**CyberArkEPM**](https://aka.ms/sentinel-CyberArkEPM-parser) which is deployed with the Microsoft Sentinel Solution.
+
+STEP 1 - Configuration steps for the Idira EPM API
+
+Follow the [instructions](https://docs.cyberark.com/epm/latest/en/content/webservices/authenticate-with-identity-administration.htm) to obtain the OAuth2 credentials.
+
+1. Obtain the **OauthUsername, OauthPassword, WebAppID, IdentityEndpoint and EPMRegionHost** for your Idira EPM account.
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+
+**Option 1 - Azure Resource Manager (ARM) Template**
+
+Use this method for automated deployment of the Idira EPM data connector using an ARM Template.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-CyberArkEPMAPI-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+
+> 
+> **NOTE:** Within the same resource group, you can't mix Windows and Linux apps in the same region. Select existing resource group without Windows apps in it or create new resource group. 3. Enter the **OauthUsername, OauthPassword, IdentityEndpoint, EPMRegionHost and WebAppID** and deploy. 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 5. Click **Purchase** to deploy.
+
+**Option 2 - Manual Deployment of Azure Functions**
+
+Use the following step-by-step instructions to deploy the Idira EPM data connector manually with Azure Functions (Deployment via Visual Studio Code).
+
+1. Deploy a Function App
+
+> 
+> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
+
+1. Download the [Azure Function App](https://aka.ms/sentinel-CyberArkEPMAPI-functionapp) file. Extract archive to your local development computer.
+2. Start VS Code. Choose File in the main menu and select Open Folder.
+3. Select the top level folder from extracted files.
+4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
+5. Provide the following information at the prompts:
+
+    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
+
+    b. **Select Subscription:** Choose the subscription to use.
+
+    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
+
+    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. CyberArkXXXXX).
+
+    e. **Select a runtime:** Choose Python 3.10.
+
+    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
+6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
+7. Go to Azure Portal for the Function App configuration.
+8. Configure the Function App
+9. In the Function App, select the Function App Name and select **Configuration**.
+10. In the **Application settings tab, select New application setting**.
+11. Add each of the following application settings individually, with their respective string values (case-sensitive): OAuthUsername OAuthPassword IdentityEndpoint EPMRegionHost WebAppID WorkspaceID WorkspaceKey
+12. Use the **WorkspaceID and WorkspaceKey** values from the Log Analytics workspace connected to Microsoft Sentinel.
+13. Once all application settings have been entered, click **Save**.
 
 **IIS Logs of Microsoft Exchange Servers**
 
@@ -14247,7 +14202,7 @@ MuleSoft CloudHub Log4j push-based connector for receiving application logs dire
 
 This connector receives data from external security systems that push logs to Microsoft Sentinel. The external system must be configured to send raw event data to the Microsoft Sentinel Ingestion API. Clicking on **Deploy** will trigger the creation of Log Analytics tables and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
 
-[Learn more about the connector setup process](isv/create-push-codeless-connector)
+[Learn more about the connector setup process](https://review.learn.microsoft.com/azure/sentinel/create-push-codeless-connector)
 
 Azure Resource Deployment
 
@@ -14344,6 +14299,61 @@ If data is not appearing:
 
 - **Workspace ID**: &lt;variable value provided at install time&gt;
 - **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Netcraft Integration Gateway**
+
+**Supported by:**[Netcraft](https://www.netcraft.com/contact)
+
+[Netcraft](https://www.netcraft.com/) brings takedown activity, domain detection results, Social (Fraud Detection) findings, and deep and dark web intelligence into Microsoft Sentinel, so external threats against your brand appear alongside your internal telemetry.
+
+The connector ingests four data streams into dedicated tables:
+
+- Takedown, into `NetcraftTakedown_CL`. New takedowns, important notes, blocked or waiting events, and status changes.
+- Domain detection, into `NetcraftDomainDetection_CL`. New and updated domain results, with risk level, tags, and hosting detail.
+- Social (Fraud Detection), into `NetcraftSocialResult_CL`, `NetcraftAppResult_CL`, `NetcraftAdvertResult_CL`, and `NetcraftSearchTask_CL`. Brand abuse and impersonation found across social media, advertising platforms, and mobile app stores.
+- Deep and dark web, into `NetcraftDdwIntelligence_CL`. New intelligence matches covering credentials, cards, documents, domains, and mentions.
+
+Events are polled on the schedule you choose. The solution also ships analytics rule templates, workbooks, and hunting queries, so detections and dashboards are available as soon as data arrives.
+
+Field-level reference and event schemas: https://api.netcraft.com/integration-gateway/v1
+
+**Prerequisites**
+
+To connect Netcraft to Microsoft Sentinel you need:
+
+- Workspace: read and write permissions on the Sentinel workspace.
+- Netcraft organisation API key: available from your Netcraft account.
+- No additional Azure resources. The connector runs on the Codeless Connector Framework, so there is no Azure Function to deploy and no extra Azure consumption cost.
+
+**Configuration**
+
+Enter your Netcraft organisation API key, choose how often Sentinel should poll, then select Connect. Data typically appears in your workspace within one polling interval.
+
+- Gateway base URL: `https://api.netcraft.com/integration-gateway/v1` (prefilled)
+- Organisation API key
+- Polling frequency
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `NetcraftTakedown_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Netcraft organisation API key**: A Netcraft organisation API key presented as a Bearer token against the Integration Gateway (see https://api.netcraft.com/integration-gateway/v1).
+
+**Setup Instructions:**
+
+**Connect Netcraft Integration Gateway to Microsoft Sentinel**
+
+Provide the gateway base URL (including `/v1` for production), organisation API key, and polling frequency, then click Connect. Pollers send `connector=sentinel` automatically. Takedown (4 streams), Domain Detection (`/events/domain-detection/results`), Deep & Dark Web (`/events/deep-and-dark-web/matches`), Social, App, and Advert results, and the three task streams are polled with cursor pagination. Results use their own tables. Tasks share `NetcraftSearchTask_CL`.
+
+- **Gateway base URL (no trailing slash)**: (https://api.netcraft.com/integration-gateway/v1)
+- **Organisation API key**: (Netcraft organisation API key)
+- Enable/Disable Connection
 
 **Netskope AI SecOps**
 
@@ -15719,6 +15729,38 @@ Configuration steps for the Proofpoint TAP API
 - **Secret**: (123456)
 - Enable/Disable Connection
 
+**Pulumi Cloud Audit Logs**
+
+**Supported by:**[Pulumi](https://www.pulumi.com/support/)
+
+The Pulumi Cloud Audit Logs connector provides the capability to ingest [Pulumi Cloud audit log events](https://www.pulumi.com/docs/pulumi-cloud/audit-logs/) into Microsoft Sentinel. By connecting Pulumi Cloud audit logs to Microsoft Sentinel, you can monitor infrastructure-as-code operations, detect unauthorized access attempts, track organization membership changes, and investigate security incidents.
+
+This connector polls the Pulumi Cloud REST API to retrieve audit log events for your organization.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `PulumiAuditLogs_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Pulumi Cloud access token**: A Pulumi Cloud [personal access token](https://www.pulumi.com/docs/pulumi-cloud/access-management/access-tokens/) with permissions to read audit logs is required. The organization must be on a Pulumi Cloud edition that includes audit log export (Pro or above).
+
+**Setup Instructions:**
+
+**Connect Pulumi Cloud Audit Logs to Microsoft Sentinel**
+
+Provide your Pulumi Cloud organization name and access token to start ingesting audit log events.
+
+1. Create a [Pulumi access token](https://app.pulumi.com/account/tokens) with audit log read permissions.
+2. Enter your Pulumi organization name and access token below.
+3. Enter the Pulumi API URL: `https://api.pulumi.com` for managed Pulumi Cloud, or the API endpoint of your self-hosted Pulumi Cloud instance.
+
+- Data Connectors Grid (configure in portal)
+
 **QscoutAppEventsConnector (via Codeless Connector Framework)**
 
 **Supported by:**[Quokka](https://www.quokka.io/contact-us)
@@ -16968,6 +17010,96 @@ Learn more from our KB Page https://abap-experts.atlassian.net/wiki/spaces/SB/pa
 - **DCR Immutable ID**: &lt;variable value provided at install time&gt;
 - **Sentinel for SAP Stream ID**: &lt;variable value provided at install time&gt;
 - **SecurityBridge\_CL Stream ID**: &lt;variable value provided at install time&gt;
+
+**SecurityScorecard Factors (via Codeless Connector Framework)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+The SecurityScorecard Factors (via Codeless Connector Framework) connector ingests company factor-score history into Microsoft Sentinel. Add one connection per SecurityScorecard portfolio you want to monitor — each connection is managed independently in the grid below. Raw rows land in `SecurityScorecardFactorHistory_CL`; query via the `SecurityScorecardFactor` parser to get day-over-day deltas with factor metadata, matching the legacy Function App schema.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardFactorHistory_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **SecurityScorecard API token**: A SecurityScorecard API token is required.
+
+**Setup Instructions:**
+
+**STEP 1 - Create a SecurityScorecard API token**
+
+As an administrator, create a bot user with Read Only permission and generate the API token.
+
+**STEP 2 - Add a portfolio connection**
+
+Add one connection per SecurityScorecard portfolio. Each connection ingests the factor-score history for the companies in a single portfolio and is listed, managed, and deleted independently below. To also ingest your own company's factor scores (My Scorecard), enter your company domain in the optional field on one connection.
+
+- Data Connectors Grid (configure in portal)
+
+**SecurityScorecard Issues (via Codeless Connector Framework)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+The SecurityScorecard Issues (via Codeless Connector Framework) connector ingests issue history events from the companies in a SecurityScorecard portfolio into Microsoft Sentinel. Add one connection per portfolio you want to monitor — each connection is managed independently in the grid below. Replaces the Function App connector.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardIssuesHistory_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **SecurityScorecard API token**: A SecurityScorecard API token is required. See [SecurityScorecard docs](https://securityscorecard.readme.io/) for how to provision a bot user token.
+
+**Setup Instructions:**
+
+**STEP 1 - Create a SecurityScorecard API token**
+
+As an administrator in SecurityScorecard, navigate to My Settings then Users, create a bot user with Read Only permission, and generate the API token.
+
+**STEP 2 - Add a portfolio connection**
+
+Add one connection per SecurityScorecard portfolio. Each connection ingests the issue-history events for the companies in a single portfolio and is listed, managed, and deleted independently below. To also ingest your own company's issue events (My Scorecard), enter your company domain in the optional field on one connection.
+
+- Data Connectors Grid (configure in portal)
+
+**SecurityScorecard Ratings (via Codeless Connector Framework)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+The SecurityScorecard Ratings (via Codeless Connector Framework) connector ingests overall company score history into Microsoft Sentinel. Add one connection per SecurityScorecard portfolio you want to monitor — each connection is managed independently in the grid below. Raw daily score rows land in `SecurityScorecardRatingsHistory_CL`; query via the `SecurityScorecardRatings` parser for day-over-day deltas matching the legacy Function App schema.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardRatingsHistory_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **SecurityScorecard API token**: A SecurityScorecard API token is required.
+
+**Setup Instructions:**
+
+**STEP 1 - Create a SecurityScorecard API token**
+
+As an administrator in SecurityScorecard, navigate to My Settings then Users, create a bot user with Read Only permission, and generate the API token.
+
+**STEP 2 - Add a portfolio connection**
+
+Add one connection per SecurityScorecard portfolio. Each connection ingests the overall company scores for a single portfolio and is listed, managed, and deleted independently below. To also ingest your own company's scorecard (My Scorecard), enter your company domain in the optional field on one connection.
+
+- Data Connectors Grid (configure in portal)
 
 **Semperis Lightning (via Codeless Connector Framework)**
 
@@ -19979,9 +20111,9 @@ The [VMware Carbon Black Cloud](https://www.broadcom.com/products/carbon-black/t
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `CarbonBlack_Alerts_CL` | No | No |
+| `CarbonBlack_Alerts_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -20074,6 +20206,33 @@ Select the Auth URL that matches your Workspace ONE tenant's data center region:
 | UAT Environment | `https://uat.uemauth.vmwservices.com` |
 
 - Data Connectors Grid (configure in portal)
+
+**WhoisFreaks Threat & NRD Feeds (via Codeless Connector Framework)**
+
+**Supported by:**[WhoisFreaks](https://whoisfreaks.com/)
+
+Ingest WhoisFreaks threat feeds and newly registered domain data into Microsoft Sentinel. Threat payload fields retain their API names. WHOIS NRD payload fields retain their API names. No-WHOIS NRD domains are stored in a dedicated table. Both NRD tables include an `nrd_type` column (`gtld` or `cctld`).
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `WhoisFreaksThreat_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **WhoisFreaks API key**: A valid commercial WhoisFreaks API key with access to the threat and NRD stream feeds.
+
+**Setup Instructions:**
+
+**Connect WhoisFreaks to Microsoft Sentinel**
+
+Enter your commercial API key and select the feeds enabled by your subscription. Each selected feed is independently provisioned.
+
+- **WhoisFreaks API Key**: (Enter your WhoisFreaks API key)
+- Enable/Disable Connection
 
 **Windows DNS Events via AMA**
 
@@ -20345,6 +20504,33 @@ The [Workday](https://www.workday.com/) User Activity data connector provides th
 
 **Setup Instructions:**
 
+**Environment identification**
+
+Understand how Workday environments are identified in collected records
+
+Only records collected after this connector update include the Workday environment in `AdditionalFields.WorkdayDomain`. Existing records are not updated. Updating an existing connector
+
+Before deploying this updated template in a workspace that already has the Workday connector installed:
+
+1. Disconnect all existing Workday connector connections.
+2. Remove the existing Workday connector connections from **Data connectors**.
+3. Remove the installed Workday solution from **Content hub**.
+4. Delete the existing `workdayDCR` data collection rule from the workspace resource group.
+5. Deploy the updated connector template.
+6. Recreate and reconnect each Workday connection.
+
+Existing data in `ASimAuditEventLogs` remains unchanged. Only records collected after the updated connector is deployed and reconnected include `AdditionalFields.WorkdayDomain`.
+
+Use the following query to summarize Workday logs by environment. Historical records without an environment value are grouped as `Unknown - record collected before environment tracking`.
+
+```kusto
+ASimAuditEventLogs
+| where EventProduct == "Workday"
+| extend WorkdayDomain = tostring(AdditionalFields.WorkdayDomain)
+| extend WorkdayEnvironment = iff(isempty(WorkdayDomain), "Unknown - record collected before environment tracking", WorkdayDomain)
+| summarize EventCount = count() by WorkdayEnvironment
+```
+
 **Connect Workday to Microsoft Sentinel**
 
 1. In Workday, access the "Edit Tenant Setup - Security" task, verify "OAuth 2.0 Settings" section, make sure that the "OAuth 2.0 Clients Enabled" check box is ticked.
@@ -20352,20 +20538,18 @@ The [Workday](https://www.workday.com/) User Activity data connector provides th
 3. In Workday, access the "Register API Client" task.
 4. Define the Client Name, select the "Client Grant Type": "Authorization Code Grant" and then select "Access Token Type": "Bearer"
 5. Enter the "Redirection URI" found in the form below
-6. In section "Scope (Functional Areas)", select "System" and click OK at the bottom.
+6. In section "Scope (Functional Areas)", select the appropriate scope for the user activity and click OK at the bottom select "System" and click OK at the bottom
 7. Copy the Client ID and Client Secret before navigating away from the page, and store it securely.
-8. In Sentinel, in the connector page - provide required Token, Authorization and User Activity Endpoints, along with Client ID and Client Secret from previous step. Then click "Connect". You can find the exact endpoint values in the "View API Clients" report in your Workday tenant; the host differs per environment (for example, wd3-impl-services1.workday.com for implementation tenants and services1.myworkday.com for production tenants).
+8. In Sentinel, in the connector page - provide required Token, Authorization and User Activity Endpoints, along with Client ID and Client Secret from previous step. Then click "Connect".
 9. A Workday pop up will appear to complete the OAuth2 authentication and authorization of the API client. Here you need to provide credentials for Workday account with "System Auditing" permissions in Workday (can be either Workday account or Integration System User).
 10. Once that's complete, the message will be displayed to authorize your API client
 
-- **Connection Alias**: (Production or Impl)
+Make sure to use the accurate redirect URI in the workday configuration page, as found in the form below.
 
-> 
-> Note: Enter a unique alias to identify this Workday connection. **Important**: Use different aliases for each tenant/domain. To update an existing connection, use the same alias or delete and recreate it.
+**Manage Workday Connections**
 
-- **Token Endpoint**: (Example, https://{workdayServicesHost}/ccx/oauth2/{tenantName}/token)
-- **Authorization Endpoint**: (Example, https://{workdayHost}/{tenantName}/authorize)
-- **User Activity Logs Endpoint (ends with /activityLogging)**: (Example, https://{workdayServicesHost}/ccx/api/privacy/v1/{tenantName}/activityLogging)
+Add, view, and delete Workday connections
+
 - Data Connectors Grid (configure in portal)
 
 **Workplace from Facebook (using Azure Functions)**
@@ -21910,6 +22094,96 @@ Note
 
 The following table lists the deprecated and legacy data connectors. Deprecated connectors are no longer supported.
 
+**[Deprecated] Atlassian Jira Audit (using Azure Function) (using Azure Functions)**
+
+**Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
+
+The [Atlassian Jira](https://www.atlassian.com/software/jira) Audit data connector provides the capability to ingest [Jira Audit Records](https://support.atlassian.com/jira-cloud-administration/docs/audit-activities-in-jira-applications/) events into Microsoft Sentinel through the REST API. Refer to [API documentation](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/) for more information. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `Jira_Audit_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **REST API Credentials/permissions**: **JiraAccessToken**, **JiraUsername** is required for REST API. For more information, see [API](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/). Check all [requirements and follow the instructions](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#authentication) for obtaining credentials.
+
+**Setup Instructions:**
+
+> 
+> **NOTE:** This connector uses Azure Functions to connect to the Jira REST API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
+
+**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
+
+> 
+> **NOTE: This data connector depends on a parser based on a Kusto Function to work as expected. [Follow these steps](https://aka.ms/sentinel-jiraauditapi-parser) to create the Kusto functions alias, JiraAudit**
+
+STEP 1 - Configuration steps for the Jira API
+
+[Follow the instructions](https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/#authentication) to obtain the credentials.
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+
+> 
+> **IMPORTANT:** Before deploying the Workspace data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following).
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Option 1 - Azure Resource Manager (ARM) Template**
+
+Use this method for automated deployment of the Jira Audit data connector using an ARM Tempate.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentineljiraauditazuredeploy)[aka.ms](https://aka.ms/sentineljiraauditazuredeploy-gov)
+2. Select the preferred **Subscription, Resource Group and Location**.
+
+> 
+> **NOTE:** Within the same resource group, you can't mix Windows and Linux apps in the same region. Select existing resource group without Windows apps in it or create new resource group. 3. Enter the **JiraAccessToken, JiraUsername, JiraHomeSiteName** (short site name part, as example HOMESITENAME from https://community.atlassian.com) and deploy. 4. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 5. Click **Purchase** to deploy.
+
+**Option 2 - Manual Deployment of Azure Functions**
+
+Use the following step-by-step instructions to deploy the Jira Audit data connector manually with Azure Functions (Deployment via Visual Studio Code).
+
+1. Deploy a Function App
+
+> 
+> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
+
+1. Download the [Azure Function App](https://aka.ms/sentinel-jiraauditapi-functionapp) file. Extract archive to your local development computer.
+2. Start VS Code. Choose File in the main menu and select Open Folder.
+3. Select the top level folder from extracted files.
+4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
+5. Provide the following information at the prompts:
+
+    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
+
+    b. **Select Subscription:** Choose the subscription to use.
+
+    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
+
+    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. JiraAuditXXXXX).
+
+    e. **Select a runtime:** Choose Python 3.11.
+
+    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
+6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
+7. Go to Azure Portal for the Function App configuration.
+8. Configure the Function App
+9. In the Function App, select the Function App Name and select **Configuration**.
+10. In the **Application settings tab, select New application setting**.
+11. Add each of the following application settings individually, with their respective string values (case-sensitive): JiraUsername JiraAccessToken JiraHomeSiteName WorkspaceID WorkspaceKey logAnalyticsUri (optional)
+
+- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
+
+1. Once all application settings have been entered, click **Save**.
+
 **[Deprecated] Auth0 Logs (using Azure Function) (using Azure Functions)**
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
@@ -22818,6 +23092,300 @@ Use the following step-by-step instructions to deploy the docker based data conn
 9. Stop the docker container
 10. Use the command 'sudo docker container ps' to list the running docker containers. Note down your container id.
 11. Now stop the container using the command: 'sudo docker stop *&lt;container-id&gt;*'.
+
+**[Deprecated] SecurityScorecard Cybersecurity Ratings (using Azure Functions)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+NOTE: This data connector has been deprecated. Consider moving to the **SecurityScorecard Ratings (via Codeless Connector Framework)** CCF data connector available in the solution, which replaces ingestion via the [deprecated HTTP Data Collector API](/en-us/azure/azure-monitor/logs/custom-logs-migrate).
+
+SecurityScorecard is the leader in cybersecurity risk ratings. The [SecurityScorecard](https://www.SecurityScorecard.com/) data connector provides the ability for Microsoft Sentinel to import SecurityScorecard ratings as logs. SecurityScorecard provides ratings for over 12 million companies and domains using countless data points from across the internet. Maintain full awareness of any company's security posture and be able to receive timely updates when scores change or drop. SecurityScorecard ratings are updated daily based on evidence collected across the web.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardRatings_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **REST API Credentials/permissions**: **SecurityScorecard API Key** is required.
+
+**Setup Instructions:**
+
+> 
+> **NOTE:** This connector uses Azure Functions to connect to the SecurityScorecard API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
+
+**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
+
+STEP 1 - Configuration steps for the SecurityScorecard API
+
+Follow these instructions to create/get a SecurityScorecard API token.
+
+1. As an administrator in SecurityScorecard, navigate to My Settings and then Users
+2. Click '+ Add User'
+3. In the form, check off 'Check to create a bot user'
+4. Provide a name for the Bot and provide it with Read Only permission
+5. Click 'Add User'
+6. Locate the newly created Bot user
+7. Click 'create token' in the Bot user's row
+8. Click 'Confirm' and note the API token that has been generated
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+
+> 
+> **IMPORTANT:** Before deploying the SecurityScorecard Ratings data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following) readily available.., as well as the SecurityScorecard API Authorization Key(s)
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Option 1 - Azure Resource Manager (ARM) Template**
+
+Use this method for automated deployment of the SecurityScorecard Ratings connector.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-SecurityScorecardRatingsAPI-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the below information : Function Name Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Ratings Table Name (Default: SecurityScorecardRatings) Level Ratings Change (Default: 7) Ratings Schedule (Default: 0 45 \* \* \* \*) Diff Override Own Ratings (Default: true) Diff Override Portfolio Ratings (Default: true)
+4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
+5. Click **Purchase** to deploy.
+
+**Option 2 - Manual Deployment of Azure Functions**
+
+Use the following step-by-step instructions to deploy the SecurityScorecard Ratings data connector manually with Azure Functions (Deployment via Visual Studio Code).
+
+1. Deploy a Function App
+
+> 
+> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
+
+1. Download the [Azure Function App](https://aka.ms/sentinel-SecurityScorecardRatingsAPI-functionapp) file. Extract archive to your local development computer.
+2. Start VS Code. Choose File in the main menu and select Open Folder.
+3. Select the top level folder from extracted files.
+4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
+5. Provide the following information at the prompts:
+
+    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
+
+    b. **Select Subscription:** Choose the subscription to use.
+
+    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
+
+    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. SecurityScorecardXXXXX).
+
+    e. **Select a runtime:** Choose Python 3.8 or above.
+
+    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
+6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
+7. Go to Azure Portal for the Function App configuration.
+8. Configure the Function App
+9. In the Function App, select the Function App Name and select **Configuration**.
+10. In the **Application settings tab, select + New application setting**.
+11. Add each of the following application settings individually, with their respective values (case-sensitive): Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Ratings Table Name (Default: SecurityScorecardRatings) Level Ratings Change (Default: 7) Ratings Schedule (Default: 0 45 \* \* \* \*) Diff Override Own Ratings (Default: true) Diff Override Portfolio Ratings (Default: true) logAnalyticsUri (optional)
+
+- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
+
+1. Once all application settings have been entered, click **Save**.
+
+**[Deprecated] SecurityScorecard Factor (using Azure Functions)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+NOTE: This data connector has been deprecated. Consider moving to the **SecurityScorecard Factors (via Codeless Connector Framework)** CCF data connector available in the solution, which replaces ingestion via the [deprecated HTTP Data Collector API](/en-us/azure/azure-monitor/logs/custom-logs-migrate).
+
+SecurityScorecard is the leader in cybersecurity risk ratings. The [SecurityScorecard](https://www.SecurityScorecard.com/) Factors data connector provides the ability for Microsoft Sentinel to import SecurityScorecard factor ratings as logs. SecurityScorecard provides ratings for over 12 million companies and domains using countless data points from across the internet. Maintain full awareness of any company's security posture and be able to receive timely updates when factor scores change or drop. SecurityScorecard factor ratings are updated daily based on evidence collected across the web.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardFactor_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **REST API Credentials/permissions**: **SecurityScorecard API Key** is required.
+
+**Setup Instructions:**
+
+> 
+> **NOTE:** This connector uses Azure Functions to connect to the SecurityScorecard API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
+
+**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
+
+STEP 1 - Configuration steps for the SecurityScorecard API
+
+Follow these instructions to create/get a SecurityScorecard API token.
+
+1. As an administrator in SecurityScorecard, navigate to My Settings and then Users
+2. Click '+ Add User'
+3. In the form, check off 'Check to create a bot user'
+4. Provide a name for the Bot and provide it with Read Only permission
+5. Click 'Add User'
+6. Locate the newly created Bot user
+7. Click 'create token' in the Bot user's row
+8. Click 'Confirm' and note the API token that has been generated
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+
+> 
+> **IMPORTANT:** Before deploying the SecurityScorecard Factor data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following) readily available.., as well as the SecurityScorecard API Authorization Key(s)
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Option 1 - Azure Resource Manager (ARM) Template**
+
+Use this method for automated deployment of the SecurityScorecard Factor connector.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-SecurityScorecardFactorAPI-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the below information : Function Name Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Factor Table Name (Default: SecurityScorecardFactor) Level Factor Change (Default: 7) Factor Schedule (Default: 0 15 \* \* \* \*) Diff Override Own Factor (Default: true) Diff Override Portfolio Factor (Default: true)
+4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
+5. Click **Purchase** to deploy.
+
+**Option 2 - Manual Deployment of Azure Functions**
+
+Use the following step-by-step instructions to deploy the SecurityScorecard Factor data connector manually with Azure Functions (Deployment via Visual Studio Code).
+
+1. Deploy a Function App
+
+> 
+> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
+
+1. Download the [Azure Function App](https://aka.ms/sentinel-SecurityScorecardFactorAPI-functionapp) file. Extract archive to your local development computer.
+2. Start VS Code. Choose File in the main menu and select Open Folder.
+3. Select the top level folder from extracted files.
+4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
+5. Provide the following information at the prompts:
+
+    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
+
+    b. **Select Subscription:** Choose the subscription to use.
+
+    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
+
+    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. SecurityScorecardXXXXX).
+
+    e. **Select a runtime:** Choose Python 3.8 or above.
+
+    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
+6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
+7. Go to Azure Portal for the Function App configuration.
+8. Configure the Function App
+9. In the Function App, select the Function App Name and select **Configuration**.
+10. In the **Application settings tab, select + New application setting**.
+11. Add each of the following application settings individually, with their respective values (case-sensitive): Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Factor Table Name (Default: SecurityScorecardFactor) Level Factor Change (Default: 7) Factor Schedule (Default: 0 15 \* \* \* \*) Diff Override Own Factor (Default: true) Diff Override Portfolio Factor (Default: true) logAnalyticsUri (optional)
+
+- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
+
+1. Once all application settings have been entered, click **Save**.
+
+**[Deprecated] SecurityScorecard Issue (using Azure Functions)**
+
+**Supported by:**[SecurityScorecard](https://securityscorecard.com/company/contact-us)
+
+NOTE: This data connector has been deprecated. Consider moving to the **SecurityScorecard Issues (via Codeless Connector Framework)** CCF data connector available in the solution, which replaces ingestion via the [deprecated HTTP Data Collector API](/en-us/azure/azure-monitor/logs/custom-logs-migrate).
+
+SecurityScorecard is the leader in cybersecurity risk ratings. The [SecurityScorecard](https://www.SecurityScorecard.com/) Issues data connector provides the ability for Microsoft Sentinel to import SecurityScorecard issue data as logs. SecurityScorecard provides ratings for over 12 million companies and domains using countless data points from across the internet. Maintain full awareness of any company's security posture and be able to receive timely updates when new cybersecurity issues are discovered.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `SecurityScorecardIssues_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **REST API Credentials/permissions**: **SecurityScorecard API Key** is required.
+
+**Setup Instructions:**
+
+> 
+> **NOTE:** This connector uses Azure Functions to connect to the SecurityScorecard API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
+
+**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
+
+STEP 1 - Configuration steps for the SecurityScorecard API
+
+Follow these instructions to create/get a SecurityScorecard API token.
+
+1. As an administrator in SecurityScorecard, navigate to My Settings and then Users
+2. Click '+ Add User'
+3. In the form, check off 'Check to create a bot user'
+4. Provide a name for the Bot and provide it with Read Only permission
+5. Click 'Add User'
+6. Locate the newly created Bot user
+7. Click 'create token' in the Bot user's row
+8. Click 'Confirm' and note the API token that has been generated
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
+
+> 
+> **IMPORTANT:** Before deploying the SecurityScorecard Issue data connector, have the Workspace ID and Workspace Primary Key (can be copied from the following) readily available.., as well as the SecurityScorecard API Authorization Key(s)
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**Option 1 - Azure Resource Manager (ARM) Template**
+
+Use this method for automated deployment of the SecurityScorecard Issue connector.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-SecurityScorecardIssueAPI-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the below information : Function Name Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Issue Table Name (Default: SecurityScorecardIssue) Level Issue Change (Default: 7) Issue Schedule (Default: 0 0,30 \* \* \* \*)
+4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
+5. Click **Purchase** to deploy.
+
+**Option 2 - Manual Deployment of Azure Functions**
+
+Use the following step-by-step instructions to deploy the SecurityScorecard Issue data connector manually with Azure Functions (Deployment via Visual Studio Code).
+
+1. Deploy a Function App
+
+> 
+> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
+
+1. Download the [Azure Function App](https://aka.ms/sentinel-SecurityScorecardIssueAPI-functionapp) file. Extract archive to your local development computer.
+2. Start VS Code. Choose File in the main menu and select Open Folder.
+3. Select the top level folder from extracted files.
+4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
+5. Provide the following information at the prompts:
+
+    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
+
+    b. **Select Subscription:** Choose the subscription to use.
+
+    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
+
+    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. SecurityScorecardXXXXX).
+
+    e. **Select a runtime:** Choose Python 3.8 or above.
+
+    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
+6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
+7. Go to Azure Portal for the Function App configuration.
+8. Configure the Function App
+9. In the Function App, select the Function App Name and select **Configuration**.
+10. In the **Application settings tab, select + New application setting**.
+11. Add each of the following application settings individually, with their respective values (case-sensitive): Workspace ID Workspace Key SecurityScorecard API Key SecurityScorecard Base URL (https://api.securityscorecard.io) Domain Portfolio IDs (Coma separated IDs) SecurityScorecard Issue Table Name (Default: SecurityScorecardIssue) Level Issue Change (Default: 7) Issue Schedule (Default: 0 0,30 \* \* \* \*) logAnalyticsUri (optional)
+
+- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
+
+1. Once all application settings have been entered, click **Save**.
 
 **[Deprecated] Sophos Endpoint Protection (using Azure Function) (using Azure Functions)**
 

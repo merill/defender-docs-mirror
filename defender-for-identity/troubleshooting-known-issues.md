@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Describes how you can troubleshoot issues in Microsoft Defender for Identity.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ms.topic: troubleshooting
 ms.reviewer: rlitinsky
 ms.custom:
@@ -38,17 +38,21 @@ source_path: defender-for-identity/troubleshooting-known-issues.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 platformId: 6c06c105-31b2-b7f7-48cf-4ddaeb0100f3
 ---
 
 # Troubleshooting known issues - Microsoft Defender for Identity | Microsoft Learn
 
 This article describes how to troubleshoot known issues in Microsoft Defender for Identity.
+
+## Sensor v3.x activation without Defender for Endpoint isn't supported in government clouds
+
+Activating the Defender for Identity v3.x sensor on servers without Microsoft Defender for Endpoint deployment is temporarily not supported in government cloud environments.
 
 ## Sensor migration isn't supported between different Microsoft tenants
 

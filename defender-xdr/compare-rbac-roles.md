@@ -38,12 +38,8 @@ item_type: Content
 source_path: defender-xdr/compare-rbac-roles.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/cf9b82c5-b6dc-45f3-b005-b1bc5fc03bea
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/0c85d34e-bfd2-4466-957c-f0b61e9692df
 platformId: 9e53b337-e1a7-f0bf-31df-05ed4c3eb568
 ---
 
@@ -228,6 +224,7 @@ The following table lists the available uRBAC roles and their permissions.
 | **Alerts**: Security operations / Security data / Alerts (manage) | Manage | Manage alerts, investigations, scans, device tags, and packages. Includes cloud threat protection features. |
 | **Vulnerability Management**: Security posture / Posture management / Vulnerability management (read) | Read | View vulnerability data: software inventory, weaknesses, missing KBs, baselines, hunting, and devices. Includes data lake (Preview). |
 | **Exposure Management**: Security posture / Posture management / Exposure Management (read); Security posture / Posture management / Exposure Management (manage) | Read/Manage | View or manage exposure insights, including Secure Score, recommendations, initiatives, and metrics. |
+| **Management**: Authorization and settings / Core security settings (read) ; Authorization and settings / Core security settings (manage) | Read/Manage | View or manage your cloud security settings, including environment connections, plan enablement, policy configuration, and more. |
 
 Note
 

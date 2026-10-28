@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| iOS | 1.1.82230103 | Oct 2026 | - Build: 1.1.82230103- Release: Oct 24, 2026 | Release details and updates |
 | macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
 | Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
 | Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
@@ -1311,6 +1312,20 @@ See the full list of [Android UX improvements](android-new-ux).
 ## iOS releases
 
 For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
+
+### iOS | Oct 2026 | Platform Version: 1.1.82230103
+
+#### Release details
+
+| Platform version | Release Date |
+| --- | --- |
+| 1.1.82230103 | Oct 24, 2026 |
+
+#### Enhancements and features
+
+| Feature Area | Update Summary |
+| --- | --- |
+| Improvements | Performance improvements and general bug fixes. |
 
 ### iOS | Sep 2026 | Platform Version: 1.1.81160103
 

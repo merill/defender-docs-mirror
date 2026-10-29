@@ -34,8 +34,10 @@ item_type: Content
 source_path: defender-for-cloud/concept-agentless-data-collection.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: df05588e-3a66-7d9c-1bf0-12097794a270
 ---
 
@@ -114,6 +116,10 @@ The role **VmScanner** is assigned to the scanner when you enable agentless scan
 | Effect | Allow |
 
 In order to limit additional storage charges, deletion authorization failures with 250 or more accumulated Defender-tagged snapshots suspend new scans for the affected AWS scanning scope.
+
+Note
+
+Defender for Cloud charges continue while scans are suspended.
 
 | Attribute | Value |
 | --- | --- |

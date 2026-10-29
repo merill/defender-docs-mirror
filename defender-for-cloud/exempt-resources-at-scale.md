@@ -8,6 +8,7 @@ feedback_help_link_type: ask-the-community
 permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
+zone_pivot_group_filename: defender-for-cloud/zone-pivots/zone-pivot-groups.json
 adobe-target: true
 author: ElazarK
 ms.author: elkrieger
@@ -17,6 +18,7 @@ description: Create exemptions at scale in Microsoft Defender for Cloud to exclu
 ms.topic: how-to
 ms.date: 2026-07-03T00:00:00.0000000Z
 ms.custom: msecd-doc-authoring-1013
+zone_pivot_groups: defender-portal-experience
 ai-usage: ai-assisted
 locale: en-us
 document_id: de44916f-00ca-17de-1abc-57f22891d6d0
@@ -42,6 +44,8 @@ platformId: 26c1d858-30d8-cc11-dcf2-ce055d8d1ac6
 ---
 
 # Exempt resources at scale - Microsoft Defender for Cloud | Microsoft Learn
+
+::: zone pivot="azure-portal"
 
 Microsoft Defender for Cloud shows affected resources through recommendations. Sometimes, a resource doesn't need to be included, or a recommendation appears in a scope where it isn't relevant.
 
@@ -86,3 +90,42 @@ To create exemptions at scale:
 The exemption is created and applied to the selected resources or recommendations.
 
 To view or manage existing exemptions, return to the **Exemptions** page in the Defender for Cloud menu. Select the ellipsis (**...**) next to the exemption you want to manage. You can then edit or delete the exemption as needed.
+
+::: zone-end
+
+::: zone pivot="defender-portal"
+
+Microsoft Defender shows affected assets through security recommendations. Sometimes, an asset doesn't need remediation, or a recommendation isn't relevant for a particular scope.
+
+Organizations might also accept risk for specific assets or recommendations. In these cases, create exemptions at scale to apply a documented exemption decision across the required Defender-managed environments or assets.
+
+## Create exemptions at scale
+
+To tailor your security posture, create exemptions for recommendations that aren't applicable or are already mitigated.
+
+To create exemptions at scale:
+
+1. Sign in to the Microsoft Defender portal.
+2. Go to **Exposure Management** &gt; **Policies** &gt; **Exemption**.
+3. Select **Create Exemption**.
+4. Enter the exemption details and select the environments or assets to which the exemption applies.
+
+    Only Defender-managed environments and assets can be selected. Use the narrowest scope possible to represent the approved risk decision.
+5. Define the conditions for the exemption, such as specific recommendations, recommendation categories, or risk criteria.
+
+    Carefully review whether the condition is static or dynamic. Dynamic conditions can automatically apply to future findings that match the defined criteria.
+6. Enter the business justification and supporting evidence, and define the exemption duration.
+7. Review the complete exemption configuration, including the selected scope and affected findings.
+8. Select **Create**.
+
+After the exemption is submitted, Microsoft Defender processes the exemption and updates matching findings. Changes to finding status, exposure calculations, and related posture metrics might not be reflected immediately.
+
+To view or manage existing exemptions, return to **Exposure Management** &gt; **Policies** &gt; **Exemption**. You can edit or delete an exemption as needed.
+
+## Next step
+
+## Related content
+
+- [Manage false-positive security recommendations for Defender for Storage](defender-for-storage-false-positive-recommendations)
+
+::: zone-end

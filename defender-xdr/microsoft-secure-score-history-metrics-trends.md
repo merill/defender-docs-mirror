@@ -42,8 +42,10 @@ item_type: Content
 source_path: defender-xdr/microsoft-secure-score-history-metrics-trends.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cd48b104-e308-4e08-a405-66f04a7df418
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ac23bdb5-c078-4620-8ee2-60eba45e97f8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: d4a1962e-8f30-7622-7a42-e8e6ab8ec7aa
 ---
 

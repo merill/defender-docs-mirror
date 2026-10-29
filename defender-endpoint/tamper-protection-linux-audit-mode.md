@@ -37,7 +37,11 @@ moniker_range_name:
 monikers: []
 item_type: Content
 source_path: defender-endpoint/tamper-protection-linux-audit-mode.md
-platformId: 91b05977-f465-5575-e72a-c18bb4bafacb
+cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+platformId: 2a16484e-c30e-c967-2c7f-818b7c1f6b73
 ---
 
 # Use tamper protection in audit mode for Microsoft Defender for Endpoint on Linux - Microsoft Defender for Endpoint | Microsoft Learn

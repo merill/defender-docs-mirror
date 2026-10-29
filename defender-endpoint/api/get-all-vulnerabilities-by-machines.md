@@ -38,10 +38,8 @@ item_type: Content
 source_path: defender-endpoint/api/get-all-vulnerabilities-by-machines.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d3197845-b4ce-44c6-a237-cd4be160e76c
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://authoring-docs-microsoft.poolparty.biz/devrel/aea905fb-0a9d-4d46-b30f-e9cbaf772d1b
 platformId: a87ed1bc-7c62-3d7c-d937-f3763f7f9c32
 ---
 

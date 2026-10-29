@@ -16,7 +16,7 @@ ms.service: defender-for-cloud
 description: Learn about new, updated, and deprecated features in Microsoft Defender for Cloud, including preview releases, general availability updates, and upcoming changes.
 ms.topic: overview
 ms.custom: references_regions, msecd-doc-authoring-1030
-ms.date: 2026-10-05T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0cdaa215-1c9d-088d-65a0-67efec1dc3b9
@@ -33,13 +33,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud/release-notes.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cbe4ca68-43ac-4375-aba5-5945a6394c20
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ced846cc-6a3c-4c8f-9dfb-3de0e90e2742
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 8e52c7f4-0513-cf2a-2a7e-e8b7c4b9b436
 ---
 
@@ -61,11 +61,26 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 | Date | Category | Update |
 | --- | --- | --- |
+| October 28, 2026 | Public preview | Posture policies and recommendation exemptions available in Microsoft Defender |
 | October 20, 2026 | Public preview | Expanded server onboarding experience |
 | October 20, 2026 | Public preview | Cloud security plan management in the Defender portal |
 | October 6, 2026 | Public preview | New Defender server security experience |
 | October 5, 2026 | GA | KSPM misconfiguration recommendations moving to controller-level scope |
 | October 5, 2026 | GA | On-demand malware scanning now supports scanning specific blobs, files, containers, and file shares |
+
+### Posture policies and recommendation exemptions available in Microsoft Defender
+
+October 28, 2026
+
+Posture policies and recommendation exemptions are now available in public preview in the Microsoft Defender portal for Azure environments.
+
+With these new capabilities, you can:
+
+- Gain visibility into your security posture through evaluations of Azure resources against the Microsoft Defender for Cloud baseline policy.
+- Customize posture evaluations to align with your business, compliance, and operational requirements by creating and managing your own posture policies.
+- Manage accepted risks at scale with centralized exemption management and lifecycle tracking.
+
+For more information, see [Exempt resources from recommendations](exempt-resource?pivots=defender-portal) and [Security policies in Defender for Cloud](security-policy-concept?pivots=defender-portal).
 
 ### Expanded server onboarding experience
 

@@ -37,8 +37,10 @@ item_type: Content
 source_path: defender-xdr/configure-asset-rules.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/68cb9039-df60-49b0-8ef8-89ad96497f63
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/725b6df3-93e8-472d-834e-e7e0d2953d35
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 1d206147-1fd5-39fc-6392-b50efbae3055
 ---
 

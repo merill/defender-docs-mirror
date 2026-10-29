@@ -33,8 +33,10 @@ item_type: Content
 source_path: defender-for-cloud/regulatory-compliance-dashboard.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/eab1aabc-e18c-405b-ac29-e35eb0b15e3b
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/574d2eb1-e22a-49c0-b4eb-64e86dbeee6b
 platformId: 587fe98a-26c8-b7a4-09fe-68241cbf8d2b
 ---
 

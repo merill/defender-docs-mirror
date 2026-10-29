@@ -37,13 +37,11 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/defender-endpoint-subscription-settings.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68cb9039-df60-49b0-8ef8-89ad96497f63
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f3e14dd4-3b72-445a-a3c6-dc32ea965a1a
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://authoring-docs-microsoft.poolparty.biz/devrel/725b6df3-93e8-472d-834e-e7e0d2953d35
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/2263a632-bbca-49e8-acf1-589e723ad155
 platformId: 5c24b89f-25dd-40d9-5222-444fa7a7b9f1
 ---
 

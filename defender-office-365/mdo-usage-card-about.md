@@ -43,10 +43,8 @@ monikers: []
 item_type: Content
 source_path: defender-office-365/mdo-usage-card-about.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
 platformId: 1499940d-7733-e245-a9a7-958c8166d05d
 ---

@@ -35,10 +35,8 @@ item_type: Content
 source_path: defender-for-identity/troubleshooting-using-logs.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
-- https://authoring-docs-microsoft.poolparty.biz/devrel/00675be6-8413-445a-927c-01fdfb06925d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
-- https://authoring-docs-microsoft.poolparty.biz/devrel/3f4c9937-0bf4-403a-90e9-153dbfe1b4c3
 platformId: d55f0e7c-cd47-77ce-cda8-421763fbbd3a
 ---
 

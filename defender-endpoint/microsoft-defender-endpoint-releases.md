@@ -63,6 +63,7 @@ This table includes supported releases for all supported platforms in the past s
 | macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
 | Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
 | Android | 1.0.9406.0102 | Oct 2026 | - Build: 1.0.9406.0102- Release: Oct 23, 2026 | Release details and updates |
+| iOS | 1.1.82230103 | Oct 2026 | - Build: 1.1.82230103- Release: Oct 24, 2026 | Release details and updates |
 | macOS | 101.26082.0012 | October 2026 | - Release version: 20.126082.12.0- Engine version: 1.1.26100.3000- Signature version: 1.461.61.0 | Release details and updates |
 | Linux | 101.26091.0003 | October 2026 | - Release version: 30.126091.0003.0- Engine version: 1.1.26090.3000- Signature version: 1.461.35.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26090.9 / Engine 1.1.26090.9 | September 2026 | - Platform: 4.18.26090.9- Engine: 1.1.26090.9- Security intelligence: 1.461.1.0 | Release details and updates |
@@ -1016,6 +1017,7 @@ See the full list of [Android UX improvements](android-new-ux).
 | --- | --- |
 | Shared Device Management | Added **[Preview] Silent running mode** as a managed configuration for shared devices. Administrators can use `SilentRunMode` to enable (`1`) or disable (`0`, default) the setting. |
 | General | Performance improvements and general bug fixes. |
+| Connectivity update | Ensure the required Microsoft Defender for Endpoint URLs are allowed through your firewall and proxy servers to support device onboarding and ongoing operation. See [Standard Device Connectivity URLs](/en-us/defender-endpoint/mtd#standard-device-connectivity-urls) for the list of required URLs. |
 
 ### Android | Sep 2026 | Platform: 1.0.9330.0101
 
@@ -1326,6 +1328,7 @@ For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
 | Feature Area | Update Summary |
 | --- | --- |
 | Improvements | Performance improvements and general bug fixes. |
+| Connectivity update | Ensure the required Microsoft Defender for Endpoint URLs are allowed through your firewall and proxy servers to support device onboarding and ongoing operation. See [Standard Device Connectivity URLs](/en-us/defender-endpoint/mtd#standard-device-connectivity-urls) for the list of required URLs. |
 
 ### iOS | Sep 2026 | Platform Version: 1.1.81160103
 

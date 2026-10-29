@@ -22,7 +22,7 @@ ms.service: microsoft-sentinel
 ms.subservice: sentinel-siem
 search.appverid: met150
 description: Use the SAP connector page and a dedicated alert rule template to keep track of your SAP systems' connectivity and performance.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.reviewer: mapankra
 ms.topic: how-to
@@ -85,6 +85,12 @@ The agentless data connector page lists the SAP systems (SIDs) you configured, b
 The agentless data connector streams SAP logs into standard Log Analytics tables such as `ABAPAuditLog`, `ABAPAuthorizationDetails`, `ABAPChangeDocsLog`, and `ABAPUserDetails`. Query them from Microsoft Sentinel **Logs** (Azure portal) or from **Advanced hunting** (Defender portal). For example, run `ABAPAuditLog | take 50` to confirm that data is arriving.
 
 For the full list of tables and the recommended KQL functions to query them, see [Log and table reference for the Microsoft Sentinel solution for SAP applications](sap-solution-log-reference).
+
+### Find gaps and analyze ingestion volume
+
+Recent records confirm that data is arriving, but don't establish that earlier collection windows are complete. Use the [gap-detection KQL on GitHub](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/SAP/Tools/TimeSliceBackfill/README.md#finding-gaps) to identify completed time windows without events in `ABAPAuditLog`. Filter the query to the SAP system and client you want to investigate. Empty windows can reflect normal quiet periods, so check `SentinelHealth` and SAP Cloud Integration message processing logs before treating them as missing data.
+
+For truncation markers, daily volume, projected monthly volume, hourly peaks, and high-volume accounts, use the [SAP ingestion analysis KQL on GitHub](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/SAP/Tools/TimeSliceBackfill/README.md#sap-ingestion-analysis-and-exclusion-candidates). These queries analyze ingested audit data and don't require running the backfill script. Volume projections aren't billing estimates, and high volume alone doesn't justify excluding an account. Review detection coverage and audit requirements with your SAP and security teams before configuring exclusions.
 
 ## Check the SentinelHealth table for health indicators
 

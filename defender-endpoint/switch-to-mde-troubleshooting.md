@@ -39,13 +39,13 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/switch-to-mde-troubleshooting.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/00675be6-8413-445a-927c-01fdfb06925d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/fc3f72c2-fb6f-4cea-95ee-b444e52254ee
+- https://authoring-docs-microsoft.poolparty.biz/devrel/00675be6-8413-445a-927c-01fdfb06925d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/3f4c9937-0bf4-403a-90e9-153dbfe1b4c3
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/f12cf087-582d-48ac-a085-0c19adf1e391
+- https://authoring-docs-microsoft.poolparty.biz/devrel/3f4c9937-0bf4-403a-90e9-153dbfe1b4c3
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 platformId: 659d184c-9f05-4a9b-b00a-ea0a9f04b495
 ---
 

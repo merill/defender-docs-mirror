@@ -38,10 +38,8 @@ item_type: Content
 source_path: defender-office-365/how-policies-and-protections-are-combined.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab06385-661e-4214-8870-bbe4071c960d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
-- https://authoring-docs-microsoft.poolparty.biz/devrel/131ba09e-4280-4ae7-8622-1f9f1c0daad1
 platformId: fb73d04c-d7ce-ecc1-8197-fc8c35475925
 ---
 

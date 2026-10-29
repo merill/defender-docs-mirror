@@ -43,7 +43,7 @@ spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-platformId: 1383a400-d6b3-d569-7de5-a406ef70a7ae
+platformId: 21d6ba75-bc92-4f79-8a03-a34914f83ec6
 ---
 
 # Advanced hunting in Microsoft Defender multitenant management - Microsoft Defender XDR | Microsoft Learn

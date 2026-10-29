@@ -23,7 +23,7 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: Get an introduction to the process of deploying the Microsoft Sentinel solution for SAP applications.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: overview
 ms.date: 2026-08-04T00:00:00.0000000Z
@@ -74,6 +74,8 @@ The Microsoft Sentinel agentless data connector for SAP uses the SAP Cloud Conne
 By using the SAP Cloud Connector, the agentless data connector profits from already existing setups and established integration processes. This means you don't have to tackle network challenges again, as the people running your SAP Cloud Connector have already gone through that process.
 
 For sizing, throughput tuning, and isolation guidance, see [Configure SAP Cloud Connector settings](preparing-sap#configure-sap-cloud-connector-settings) and [Optimize SAP Cloud Connector sizing, throughput, and isolation](preparing-sap#optimize-sap-cloud-connector-sizing-throughput-and-isolation).
+
+For sample scripts and utilities to automate onboarding, estimate source log sizes, and recover historical data, see the [SAP tools on GitHub](https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/SAP/Tools).
 
 The agentless data connector is compatible with [SAP NetWeaver based systems](https://help.sap.com/docs/SAP_NETWEAVER?state=PRODUCTION&amp;version=ALL). Among them SAP S/4HANA Cloud, Private Edition (RISE with SAP), SAP S/4HANA on-premises, SAP ERP Central Component (ECC), SAP Business Warehouse (BW), and more, ensuring continued functionality of existing security content, including detections, workbooks, and playbooks.
 

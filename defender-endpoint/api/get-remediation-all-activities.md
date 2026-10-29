@@ -38,10 +38,8 @@ item_type: Content
 source_path: defender-endpoint/api/get-remediation-all-activities.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e7ed706-f5d7-4411-be22-6fcf98d10e44
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b4084e3b-5e61-4e73-886a-780c8f7b0fa1
 platformId: cc9a7394-4ff9-3e1f-015e-090107a1c0ca
 ---
 

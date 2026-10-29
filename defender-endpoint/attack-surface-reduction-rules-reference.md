@@ -42,8 +42,10 @@ item_type: Content
 source_path: defender-endpoint/attack-surface-reduction-rules-reference.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bba62c59-6b53-4be4-8b9d-6624f9184c22
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e93f3d5f-c77d-4365-a7fb-c9f2234416c7
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/f3a81ffb-ee36-4ec7-b54a-01b6681aff65
+- https://authoring-docs-microsoft.poolparty.biz/devrel/62e8d07a-cc62-4934-b30b-e168a571e51d
 platformId: 7453c068-8bed-0e9b-ebd7-8984f96a4144
 ---
 

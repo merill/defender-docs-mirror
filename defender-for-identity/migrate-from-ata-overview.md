@@ -35,8 +35,10 @@ item_type: Content
 source_path: defender-for-identity/migrate-from-ata-overview.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/58f888a4-3847-4473-ba35-882e789f0dbe
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/314a9abc-91dd-4683-8691-43005e929bb8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: df580881-1dac-e9b7-d5c2-5f6c5533dfe8
 ---
 

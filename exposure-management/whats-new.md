@@ -13,7 +13,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-Security
 description: This page is updated frequently with the latest updates in Microsoft Security Exposure Management.
 ms.topic: overview
-ms.date: 2026-06-30T00:00:00.0000000Z
+ms.date: 2026-10-28T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: aed2aa1e-1cb3-37e5-da44-4b86bddfddf7
@@ -56,6 +57,20 @@ Get notified when this page is updated by copying and pasting the following URL 
 `https://aka.ms/msem/rss`
 
 ## October 2026
+
+### Posture policies and recommendation exemptions available for Azure environments
+
+October 28, 2026
+
+Posture policies and recommendation exemptions are now available in public preview as part of Microsoft Security Exposure Management for Azure environments.
+
+With these new capabilities, you can:
+
+- Gain visibility into your security posture through evaluations of Azure resources against the Microsoft Defender for Cloud baseline policy.
+- Customize posture evaluations to align with your business, compliance, and operational requirements by creating and managing your own posture policies.
+- Manage accepted risks at scale with centralized exemption management and lifecycle tracking.
+
+For more information, see [Manage posture policies](manage-posture-policies-defender) and [Manage exemptions](manage-exemptions-defender).
 
 ### Codename MDASH - MAI Cyber configuration now uses MAI-Cyber-1.1-Flash
 

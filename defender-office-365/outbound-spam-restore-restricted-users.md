@@ -92,6 +92,7 @@ Before you begin, make sure you have access to the required tools and permission
 
         ^\*^ Microsoft strongly advocates for the principle of least privilege. Assigning accounts only the minimum permissions necessary to perform their tasks helps reduce security risks and strengthens your organization's overall protection. Global Administrator is a highly privileged role that you should limit to emergency scenarios or when you can't use a different role.
 - A sender exceeding the outbound email limits is an indicator of a compromised account. Before you follow the procedures in this article to remove a user from the **Restricted entities** page, be sure to follow the required steps to regain control of the account as described in [Responding to a compromised email account in Office 365](responding-to-a-compromised-email-account).
+- Before you unblock a user, run the **Blocked Sender History** self-help diagnostic to review listing and delisting history and the sender's MFA status. This diagnostic is useful when investigating why Defender for Office 365 restricted a sender. Shortcut link: [Run Tests: Sender History](https://aka.ms/senderhistory).
 
 ## Remove a user from the Restricted entities page in the Microsoft Defender portal
 

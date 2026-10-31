@@ -190,7 +190,7 @@ After you complete the previous steps, members of the **opt-in** group (users wh
 The **Promotions** folder in user mailboxes has the following characteristics:
 
 - **Promotions**is a regular folder, not a system folder.
-    - After the anti-spam policy is applied to a user, the **Promotions** folder is created in the mailbox when the first bulk message is delivered to the mailbox.
+    - After the anti-spam policy is applied to a user, the **Promotions** folder is created in the mailbox when the first promotional message is delivered to the mailbox.
     - If you soft delete the folder (available in **Deleted items**), bulk messages are delivered to the folder in **Deleted items**.
     - Currently, if you hard delete the folder (available in **Recoverable items**), the folder will get recreated in a few minutes.
     - If an unrelated **Promotions** folder already exists in the mailbox, a new folder named **Promotions(1)** is created and used.

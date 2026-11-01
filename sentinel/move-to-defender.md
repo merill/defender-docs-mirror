@@ -22,8 +22,8 @@ ms.service: microsoft-sentinel
 ms.subservice: sentinel-siem
 search.appverid: met150
 description: Move Microsoft Sentinel operations from the Azure portal to the Microsoft Defender portal.
-ms.author: guywild
-author: guywi-ms
+ms.author: soulisabag
+author: robicz
 ms.reviewer: soulisabag
 ms.topic: how-to
 ms.date: 2026-09-10T00:00:00.0000000Z
@@ -44,11 +44,13 @@ monikers: []
 item_type: Content
 source_path: sentinel/move-to-defender.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 556efc75-a41a-43a1-c8c3-78721b7d6ea0
 ---
 
@@ -114,6 +116,18 @@ If you enabled CMK before onboarding, when you onboard your Microsoft Sentinel-e
 Analytic rules and other Sentinel content, such as automation rules, also continue to be CMK-encrypted. However, alerts and incidents will no longer be CMK-encrypted after onboarding.
 
 For more information about CMK, see [Set up Microsoft Sentinel customer-managed key](customer-managed-keys).
+
+### Private Link support
+
+Azure Monitor Private Link Scope (AMPLS) provides private connectivity to Azure Monitor resources, including Log Analytics workspaces. For more information about configuring and using Private Link with Azure Monitor, see [Use Azure Private Link to connect networks to Azure Monitor](/en-us/azure/azure-monitor/fundamentals/private-link-security)
+
+For Microsoft Sentinel in the Defender portal, AMPLS supports private data ingestion, but it doesn't support querying Sentinel data through Defender portal experiences or Microsoft Defender APIs when Log Analytics query access is restricted to private endpoints.
+
+Specifically:
+
+- Supported: Microsoft Sentinel data ingestion into the Log Analytics workspace through AMPLS.
+- Not supported: Querying that Sentinel data through Microsoft Defender portal experiences, such as Advanced Hunting, when Log Analytics query access is restricted to AMPLS/private endpoints.
+- Customer impact: If public Log Analytics query access is disabled, Sentinel data in the Log Analytics workspace won't be available to Defender portal experiences that query Sentinel workspace data, including Advanced Hunting.
 
 ### Configure multi-workspace and multitenant management
 

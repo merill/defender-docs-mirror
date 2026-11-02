@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Configure cloud security plan coverage across connected Azure environments in the Microsoft Defender portal.
 ms.topic: how-to
-ms.date: 2026-07-28T00:00:00.0000000Z
+ms.date: 2026-10-19T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 851f6eb1-aead-c68c-f89b-b907266de41a
@@ -64,14 +64,32 @@ Cloud security plan management in the Defender portal currently supports Azure c
 
 Azure environments continue to use Azure-based plan management until one of the following actions occurs:
 
-- You migrate a specific connected environment to the Defender portal.
-- You configure global plan enablement at the tenant level. All current connected environments are migrated automatically, and future connected environments inherit the same configuration.
+- You transfer a specific connected environment to the Defender portal.
+- You configure global plan enablement at the tenant level. All current connected environments are transferred automatically, and future connected environments inherit the same configuration.
 
-After migration, plan configuration is managed in the Defender portal and appears as view-only in the Azure portal. Cost information is available in the Cloud security cost report.
+After transition, where you manage an environment depends on the transition actions you select. You can move plan enablement and Defender workload unit (DWU) billing to the Defender portal while keeping other management in the Azure portal, or move all management to the Defender portal. Cost information is available in the Cloud security cost report.
 
 Important
 
 Resource-level plan configurations aren't preserved when plan management moves to the Defender portal. Plan coverage is configured at the management-group or subscription level and applies to the resources under that scope.
+
+### Choose what to move to the Defender portal
+
+[![Screenshot of the Transfer to Defender pane with the plan enablement and billing option and the option to move all management capabilities.](media/manage-plans-defender-portal/edit-plans-new.png)](media/manage-plans-defender-portal/edit-plans-new.png#lightbox)
+
+When you edit plans for an Azure-managed environment, the **Transfer to Defender** window includes two sections, each representing a separate take-control action:
+
+- **DWU** moves plan enablement to the Defender portal and uses the new DWU billing model.
+- **Management** moves management of all supported cloud security capabilities to the Defender portal.
+
+Both options are unselected by default. You must select **DWU** to continue. You can also select **Management**, but only after you select **DWU**.
+
+| Selection | Result |
+| --- | --- |
+| **DWU** only | Plans use the new DWU billing model and are managed in the Defender portal. Other cloud security capabilities remain managed in the Azure portal. |
+| **DWU** and **Management** | Plans use the new DWU billing model, and management of all supported cloud security capabilities moves to the Defender portal. |
+
+If you initially select only **DWU**, you can move management to the Defender portal later through the same transition flow. In that case, **DWU** appears selected and disabled, and you can select **Management**.
 
 ## Choose how to edit and enable cloud security plans
 
@@ -89,9 +107,9 @@ You can enable cloud security plans in either of the following ways:
 3. Under **Manage cloud security**, select **Define Cloud Security plans**.
 4. Under **Per-environment plan configurations**, select **View environments**.
 5. Select **Groups** or **Environments**, depending on the scope you want to configure.
-6. When prompted, approve moving plan management for the selected environments to the Defender portal. To understand the effects of this change, see [What changes when managing cloud security plans in the Defender portal](plan-management-changes-defender-portal).
+6. In the **Transfer to Defender** window, select **DWU** or select both **DWU** and **Management**, and then continue. **Management** is available only after you select **DWU**. To understand the effects of each option, see Choose what to move to the Defender portal and [What changes when managing cloud security plans in the Defender portal](plan-management-changes-defender-portal).
 
-    [![Screenshot showing the environment details pane with the option to review migration details.](media/manage-plans-defender-portal/selected-environment-review-migration.png)](media/manage-plans-defender-portal/selected-environment-review-migration.png#lightbox)
+    [![Screenshot showing the environment details pane with the option to review transition details.](media/manage-plans-defender-portal/selected-environment-review-transition.png)](media/manage-plans-defender-portal/selected-environment-review-transition.png#lightbox)
 7. Select **Edit plans**.
 
     If you selected multiple environments, select **Bulk edit coverage**.
@@ -174,8 +192,20 @@ Use the environments page to verify the plan coverage applied to your Azure envi
 2. Under **Manage cloud security**, select **Define Cloud Security plans**.
 3. Under **Per-environment plan configurations**, select **View environments**.
 4. Use **All**, **Groups**, or **Environments** to choose the hierarchy level you want to review.
-5. Review the plan enablement status, subscription coverage, and where security plans are managed for each environment.
+5. Review the plan enablement status, subscription coverage, and the **Managed in** value for each environment.
 
-    [![Screenshot showing the Environments management table with plan enablement status and the portal managing each plan highlighted.](media/manage-plans-defender-portal/environment-coverage-status.png)](media/manage-plans-defender-portal/environment-coverage-status.png#lightbox)
+    [![Screenshot showing the Environments management table with plan enablement status and the Managed in column highlighted.](media/manage-plans-defender-portal/environment-coverage-status.png)](media/manage-plans-defender-portal/environment-coverage-status.png#lightbox)
+
+The **Managed in** column has the following values:
+
+| Value | Meaning |
+| --- | --- |
+| **Azure** | All cloud security management remains in the Azure portal and is based on Azure plans. Manage plans and other capabilities in the Azure portal. |
+| **Defender (plans only)** | The environment uses DWU billing, and plan enablement is managed in the Defender portal. Manage other cloud security capabilities in the Azure portal. |
+| **Defender (All capabilities)** | The environment uses DWU billing, and all supported cloud security capabilities are managed in the Defender portal. |
 
 Hover over an environment's plan enablement status to view its current status. For detailed coverage information, select the environment and review the coverage across its hierarchy.
+
+### Move environments to full management
+
+You can transition your organization to the Defender portal gradually, at your own pace. During the transition, some environments can be managed in Defender while others continue to be managed in Azure. Once you move an environment to full management in Defender, Defender becomes its authoritative management portal. All supported management operations for that environment, including plan enablement, settings, and policies, are performed in Defender. For guidance, see [Move Azure environments to full management in the Defender portal](move-environments-to-defender-portal).

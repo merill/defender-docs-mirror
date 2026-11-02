@@ -10,8 +10,8 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to create and manage custom data collection rules in Microsoft Defender for Endpoint to enhance your threat hunting capabilities.
 ms.service: defender-endpoint
-ms.author: lwainstein
-author: limwainstein
+ms.author: mobani
+author: moti-ba
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
@@ -48,10 +48,6 @@ platformId: d7f1a5bc-0a51-2315-f086-ebadcd077229
 ---
 
 # Create and manage custom data collection rules in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
-
-Important
-
-Some information in this article relates to a prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
 
 Custom data collection rules let you capture specific endpoint events beyond default telemetry and send them to Microsoft Sentinel for advanced hunting and investigation. This article walks you through creating, editing, monitoring, and deleting these rules in the Microsoft Defender portal.
 

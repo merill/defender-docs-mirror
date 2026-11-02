@@ -10,8 +10,8 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Custom data collection allows organizations to tailor telemetry collection to their specific threat hunting needs with customizable filters and enhanced visibility.
 ms.service: defender-endpoint
-ms.author: lwainstein
-author: limwainstein
+ms.author: mobani
+author: moti-ba
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
@@ -47,10 +47,6 @@ platformId: 6e48b728-2def-d1dc-cb36-18b3dc4c46ad
 ---
 
 # Custom data collection in Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
-
-Important
-
-Some information in this article relates to a prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
 
 Custom data collection enables organizations to expand telemetry collection beyond default configurations to support specialized threat hunting and security monitoring needs. This feature allows security teams to define specific collection rules with tailored filters for event properties such as folder paths, process names, and network connections.
 

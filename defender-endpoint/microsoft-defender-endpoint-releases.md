@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Linux | 101.26101.0000 | November 2026 | - Release version: 30.126101.0000.0- Engine version: 1.1.26090.3000- Signature version: 1.459.148.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26100.4 / Engine 1.1.26100.4 | October 2026 | - Platform: 4.18.26100.4- Engine: 1.1.26100.4- Security intelligence: 1.463.1.0 | Release details and updates |
 | macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
 | Linux | 101.26091.0004 | October 2026 | - Release version: 30.126091.0004.0- Engine version: 1.1.26070.5001- Signature version: 1.457.364.0 | Release details and updates |
@@ -659,11 +660,28 @@ Starting with version `101.24082.0004`, Defender for Endpoint on Linux no longer
 - If you are on versions later than `101.24072.0000`, Defender for Endpoint on Linux relies on `netlink` as a backup supplementary event provider. If a fallback occurs, all operations continue to flow seamlessly.
 - Review your current Defender for Endpoint on Linux deployment, and begin planning your migration to the eBPF-supported build. For more information on eBPF and how it works, see [Use eBPF-based sensor for Microsoft Defender for Endpoint on Linux](linux-support-ebpf).
 
-If you have any concerns or need assistance during this transition, contact support.
+> 
+> If you have any concerns or need assistance during this transition, contact support.
 
 ### Linux known issues
 
 - **Intermittent issue during process scanning**: In version `101.26072.0004`, `wdavdaemon` might restart in rare cases while scanning running processes. The process recovers automatically, and no action is required. A fix will be available in an upcoming release. **Resolution**: Upgrade to platform version 101.26072.0005 or later.
+
+### Linux | November 2026 | 101.26101.0000
+
+#### Release details
+
+| Release version | Engine version | Signature version |
+| --- | --- | --- |
+| 30.126101.0000.0 | 1.1.26090.3000 | 1.459.148.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| Security | Upgraded OpenSSL version to 3.6.4 |
+| Bug fix | Fixed missing CentOS minor patch version in the Defender portal |
+| General |  |
 
 ### Linux | October 2026 | 101.26091.0004
 

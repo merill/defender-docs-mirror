@@ -14,7 +14,7 @@ ms.author: lwainstein
 ms.service: defender-endpoint
 ms.topic: how-to
 ms.custom: msecd-doc-authoring-1030
-ms.date: 2026-10-07T00:00:00.0000000Z
+ms.date: 2026-11-02T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 3ab263d3-69ba-bccb-3caf-8a3d135be6b6
@@ -34,23 +34,21 @@ source_path: defender-endpoint/discover-local-ai-agents.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 platformId: 02bd370a-d6ee-28a3-0704-0b8885819855
 ---
 
 # Discover local AI agents with Microsoft Defender for Endpoint - Microsoft Defender for Endpoint | Microsoft Learn
 
-Microsoft Defender discovers supported AI agents and their MCP servers after it observes agent activity on onboarded devices and surfaces them in the AI agent inventory and advanced hunting. An installed agent might not appear until Defender observes agent activity. To learn more about local AI agent discovery, see [Local AI agent discovery with Microsoft Defender for Endpoint](local-agent-discovery-overview). For coverage by agent, operating system, and MCP server configuration, see [Microsoft Defender for Endpoint AI agent support matrix](ai-agent-support-matrix).
+Microsoft Defender discovers supported AI agents and their MCP servers on onboarded devices. It surfaces these agents in the AI agent inventory and advanced hunting. To learn how discovery works, see the [discovery overview](local-agent-discovery-overview). For agent and MCP coverage by operating system, see the [support matrix](ai-agent-support-matrix).
+
+For process-based discovery, observing the agent's process running can be enough for an inventory entry. The user doesn't need to submit a prompt or have permission to use the agent's service. Discovery doesn't prove active use or successful access to an AI service.
 
 In this article, you learn how to view discovered agents in the inventory, review their configuration and risk, explore their relationships with devices and identities, and investigate agent presence using advanced hunting.
-
-Note
-
-Local AI agent discovery on macOS is in preview.
 
 ## Prerequisites
 
@@ -59,8 +57,19 @@ Before you can discover local AI agents on endpoints, make sure you meet the fol
 - Your environment is in the commercial cloud. Sovereign and national clouds aren't supported.
 - Your organization has a Microsoft Defender for Endpoint Plan 2 license. For more information, see Licensing.
 - Your devices are [onboarded to Microsoft Defender for Endpoint](onboard-configure).
-- Your devices run a supported version of Windows or macOS, and Microsoft Defender Antivirus is updated with current monthly platform and engine updates.
-- Microsoft Defender Antivirus is running in active mode on your devices, with real-time protection enabled.
+- Your devices run a supported version of Windows or macOS and meet the minimum Defender version requirements in the following table.
+- Microsoft Defender Antivirus is running in active mode on your devices, with real-time protection enabled, except for the Windows and macOS VS Code extension inventory entries described in the following note.
+
+| Operating system | Minimum Defender version |
+| --- | --- |
+| Windows | Microsoft Defender Antivirus platform version `4.18.26090.9` (2609) or later. |
+| macOS | Microsoft Defender for Endpoint version `101.26072.0017` or later. |
+
+Note
+
+On Windows and macOS, agent inventory discovery for the VS Code extensions marked with footnote 1 in the [support matrix](ai-agent-support-matrix#ai-agent-discovery-support) uses an onboarded, running, and reporting Defender for Endpoint client. The client periodically collects installed extension data. This inventory collection doesn't require antivirus active mode or the extension to run. MCP server configuration discovery still requires antivirus active mode and real-time protection. This exception doesn't indicate runtime protection support. The macOS extension entries remain in preview.
+
+Keep Defender and its security intelligence up to date. On Windows, install current monthly platform and engine updates.
 
 You don't need additional deployment, configuration, or scripts beyond the device onboarding requirements. If the device meets all of the prerequisites, agent discovery begins automatically.
 
@@ -75,6 +84,18 @@ Microsoft Defender for Endpoint Plan 2 is the minimum license for local AI agent
 | View the risk level, risk indicators, and security recommendations for discovered local AI agents | Microsoft 365 E7, or Microsoft Agent 365 together with Microsoft Defender for Endpoint Plan 2 |
 
 Microsoft 365 E5 and Microsoft 365 E7 both include Microsoft Defender for Endpoint Plan 2. If your organization has Microsoft Defender for Endpoint Plan 2 without Microsoft 365 E7 or Microsoft Agent 365, you can discover local AI agents, view the inventory, and query agents in advanced hunting, but the risk level, risk indicators, and security recommendations aren't available.
+
+### Permissions
+
+To view the local agent inventory with Microsoft Defender unified RBAC, make sure your role and its assignment include:
+
+- **Permission:** **Security operations** &gt; **Security data** &gt; **Security data basics (Read)**.
+- **Users:** Your account, or a Microsoft Entra security group that includes your account.
+- **Data source:** **Security for AI**.
+
+For role setup steps, see [Create custom roles with Microsoft Defender unified RBAC](/en-us/defender-xdr/create-custom-rbac-roles).
+
+To view the attack surface graph for discovered agents, your role must also include **Security posture** &gt; **Posture management** &gt; **Exposure Management (Read)**, with **Microsoft Security Exposure Management** selected as a data source.
 
 ## View local AI agents in the inventory
 

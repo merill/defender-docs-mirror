@@ -14,7 +14,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: itaicohen
 ms.topic: how-to
-ms.date: 2026-07-14T00:00:00.0000000Z
+ms.date: 2026-10-30T00:00:00.0000000Z
 audience: Admin
 ai-usage: ai-assisted
 locale: en-us
@@ -52,8 +52,8 @@ Use the **AI Agents** page in the Microsoft Defender portal to review agent conf
 
 ## Prerequisites
 
-- Enable security for AI agents, including the Microsoft 365 connector. See [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
-- To discover local AI agents that run on endpoints, set up [AI agent runtime protection in Microsoft Defender for Endpoint](/en-us/defender-endpoint/configure-ai-agent-runtime-protection). Discovery requires Microsoft Defender for Endpoint and Microsoft Defender Antivirus in active mode. Local agents are onboarded separately.
+- For cloud agents, enable security for AI agents, including the Microsoft 365 connector. See [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
+- To discover local AI agents that run on endpoints, meet the [local AI agent discovery prerequisites](/en-us/defender-endpoint/discover-local-ai-agents#prerequisites). Local agents are onboarded separately, and discovery doesn't require you to enable AI agent runtime protection.
 
 ## Review AI agent risk and security posture
 

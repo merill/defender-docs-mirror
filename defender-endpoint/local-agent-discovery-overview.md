@@ -14,7 +14,7 @@ ms.author: lwainstein
 ms.service: defender-endpoint
 ms.topic: overview
 ms.custom: msecd-doc-authoring-1030
-ms.date: 2026-10-07T00:00:00.0000000Z
+ms.date: 2026-11-02T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: d76258bb-b8c4-0e21-0c6a-94d5623ec4e6
@@ -44,7 +44,7 @@ platformId: 5fbe46e6-1635-6e3d-c6d8-da353b0d5708
 
 Local AI agents run with user-level permissions and can access files, tools, and services on the devices where they operate. Without visibility into which agents are running and what they can reach, security teams can't assess exposure, enforce governance, or respond to agent-related incidents.
 
-Microsoft Defender can discover local AI agents and their configured MCP servers after it observes agent activity on onboarded devices, then surfaces them in the Microsoft Defender portal. This gives security teams a centralized view of AI agents used in the organization.
+Microsoft Defender discovers local AI agents and their configured MCP servers on onboarded devices. It surfaces these agents in the Microsoft Defender portal. This gives security teams a centralized view of AI agents present in the organization.
 
 [![Screenshot showing the local AI agents inventory in the Microsoft Defender portal with discovered agents listed.](media/local-agent-discovery-overview/discovery-overview.png)](media/local-agent-discovery-overview/discovery-overview.png#lightbox)
 
@@ -56,19 +56,19 @@ Defender also provides **AI agent runtime protection** for local agents. When en
 
 ## Local AI agent discovery on endpoints
 
-Defender lists a local AI agent after it observes agent activity on an onboarded device. Installing an agent doesn't by itself guarantee that the agent appears in the local AI agent inventory. An installed agent might not appear until Defender observes agent activity.
+Discovery depends on the agent type. For process-based discovery, Defender identifies an agent when it observes the agent's process running. The user doesn't need to submit a prompt or have permission to use the agent's service. An inventory entry isn't proof of active use or successful access to an AI service.
 
-Local AI agent discovery isn't a complete inventory of installed software. It provides security context for agents that Defender observes on endpoints, including the device and account associated with the activity. To review known software installed on devices, use [Software inventory in Microsoft Defender Vulnerability Management](/en-us/defender-vulnerability-management/tvm-software-inventory).
+On Windows and macOS, the onboarded Defender for Endpoint client also periodically collects installed VS Code extension data on the endpoint. The client must be running and reporting. Agent inventory discovery through this collection doesn't require antivirus active mode or the extension to run. See the entries marked with footnote 1 and their preview status in the [support matrix](ai-agent-support-matrix#ai-agent-discovery-support).
+
+MCP server configuration discovery still requires antivirus active mode and real-time protection. For details and requirements, see the [local AI agent discovery prerequisites](discover-local-ai-agents#prerequisites).
+
+Local AI agent discovery isn't a complete inventory of installed software. It provides security context for agents that Defender observes on endpoints, including the device and account associated with the agent. To review known software installed on devices, use [Software inventory in Microsoft Defender Vulnerability Management](/en-us/defender-vulnerability-management/tvm-software-inventory).
 
 When Defender identifies a local AI agent, the agent is displayed as a discoverable asset in the Microsoft Defender portal with visibility into:
 
 - **Local AI agent inventory**: A centralized view of discovered local AI agents with device and user associations and discovery metadata.
 - **Exposure map**: Visual relationships between local AI agents, devices, identities, and the resources those identities can access, to help assess potential impact.
 - **Advanced hunting**: Hunting for discovery data using Kusto Query Language (KQL) to investigate local AI agents and the resources they can access based on the permissions of the user running them.
-
-Note
-
-Local AI agent discovery on macOS is in preview.
 
 ## Supported local AI agents and MCP server configurations
 

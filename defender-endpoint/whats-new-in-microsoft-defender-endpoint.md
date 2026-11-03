@@ -15,7 +15,7 @@ author: lwainstein
 ms.author: yaronyahav
 ms.reviewer: noamhadash, pahuijbr, yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-10-16T00:00:00.0000000Z
+ms.date: 2026-10-30T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection:
 - m365-security
@@ -58,6 +58,7 @@ Learn more about [Preview features](/en-us/defender-xdr/preview).
 
 | Type | Feature | Preview/GA | Description |
 | --- | --- | --- | --- |
+| Feature | [Local AI agent discovery on Windows and macOS](local-agent-discovery-overview) | GA | Discover supported local AI agents and their configured MCP servers on onboarded Windows and macOS devices, and investigate them in the AI agent inventory and advanced hunting. Windows requires Microsoft Defender Antivirus platform version 4.18.26090.9 (2609) or later. macOS requires Microsoft Defender for Endpoint version 101.26072.0017 or later. Discovery in WSL remains in preview. See the [discovery prerequisites](discover-local-ai-agents#prerequisites) and [support matrix](ai-agent-support-matrix). |
 | Feature | [Antivirus audit mode for Linux](linux-preferences#antivirus-antimalware-and-edr-settings-in-defender-for-endpoint-on-linux) | GA | Provides real-time malware detection and alerting without automatically quarantining files or terminating processes. This enables organizations to evaluate Defender detection efficacy and performance on sensitive workloads before enabling enforcement.**Available in Microsoft Defender for Endpoint on Linux version 101.26062.0007 or later.** |
 | Release - macOS | Build 101.26092.0009 | GA | Release version 20.126092.9.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--october-2026--101260920009). |
 | Release - macOS | Build 101.26082.0012 | GA | Release version 20.126082.12.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--october-2026--101260820012). |

@@ -22,8 +22,8 @@ ms.service: microsoft-sentinel
 ms.subservice: sentinel-siem
 search.appverid: met150
 description: Learn about the latest new features and announcement in Microsoft Sentinel from the past few months.
-author: guywi-ms
-ms.author: guywild
+author: oshezaf
+ms.author: ofshezaf
 ms.topic: concept-article
 ms.date: 2026-10-21T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -80,6 +80,7 @@ Customers onboarding after September 23rd, 2026, should follow the updated guida
 - Mirror the data lake tier to Microsoft Fabric OneLake
 - Use Microsoft Fabric for data federation
 - Use Microsoft Fabric for custom security analytics
+- Use Sentinel MCP triage collection to query data
 
 Customers who have onboarded to Sentinel data lake, before September 23rd, 2026, can continue using existing documentation or choose to use the guidance below for Microsoft Fabric: Mirror the data lake tier to Microsoft Fabric OneLake, Use Microsoft Fabric for data federation, and Use Microsoft Fabric for custom security analytics.
 
@@ -122,6 +123,10 @@ You can use Microsoft Fabric notebooks to run analytics on Microsoft Sentinel ta
 #### Build custom graphs
 
 Microsoft [Fabric Graph](/en-us/fabric/graph/how-graph-works) now enables you to model and analyze relationships across Microsoft Sentinel data lake tier data. Using Sentinel tables made available through Azure Monitor mirroring and OneLake shortcuts, you can create graph models in a Microsoft Fabric Lakehouse and query them with Graph Query Language (GQL) to identify connected entities, activity patterns, and other relationships that can support security analysis and investigations. Learn more about [how to create your first graph in Microsoft Fabric](/en-us/fabric/graph/quickstart).
+
+### Use Sentinel MCP triage collection to query data
+
+Use the [triage collection](datalake/sentinel-mcp-triage-tool) in the Microsoft Sentinel MCP server to discover and query data using MCP tools. Use the *list advanced hunting tables* tool to return a list of all available tables in the built-in data lake. Use the *run hunting query* tool to query 30 days of the Advanced Hunting analytic tier data.
 
 ## August 2026
 

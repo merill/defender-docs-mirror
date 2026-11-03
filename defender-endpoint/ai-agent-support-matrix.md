@@ -14,7 +14,7 @@ ms.author: joshbregman
 ms.service: defender-endpoint
 ms.topic: concept-article
 ms.custom: msecd-doc-authoring-1030
-ms.date: 2026-10-07T00:00:00.0000000Z
+ms.date: 2026-11-02T00:00:00.0000000Z
 ai-usage: ai-generated
 locale: en-us
 document_id: abe9e026-5716-699f-a004-f1f31a28907b
@@ -33,12 +33,12 @@ item_type: Content
 source_path: defender-endpoint/ai-agent-support-matrix.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/341fdab2-4964-4759-8241-f5820b012a47
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cc1f92bb-c0d6-4d40-99ce-dabea3161a84
 platformId: fbba1eb6-4eb3-53ec-5a39-1699f4762ddc
 ---
 
@@ -50,9 +50,11 @@ Only supported combinations appear in the matrix. If a combination isn't listed,
 
 ## AI agent discovery support
 
+Local AI agent discovery is generally available on supported Windows and macOS devices, except for the preview scenarios identified in this section. For minimum Defender versions and other requirements, see [Discover local AI agents](discover-local-ai-agents#prerequisites).
+
 AI agent discovery identifies local AI agents and their configured Model Context Protocol (MCP) servers on onboarded devices. The `Name` values in these tables correspond to the `Name` column in the [`AgentsInfo`](/en-us/defender-xdr/advanced-hunting-agentsinfo-table) advanced hunting table. The `Vendor` values correspond to `RawAgentInfo.localAgentMetadata.vendor`.
 
-Discovery is activity based. Defender lists an agent after it observes agent activity on an onboarded device. Installing an agent doesn't by itself guarantee that the agent appears in the local AI agent inventory. For more information about how Defender observes agent activity and how this inventory differs from an inventory of installed software, see [Local AI agent discovery with Microsoft Defender for Endpoint](local-agent-discovery-overview).
+Discovery depends on the agent type. Defender can identify a running agent process or use installed VS Code extension data that the client periodically collects on Windows and macOS. A running process doesn't imply that the user submitted prompts or successfully accessed an AI service. Extension inventory discovery doesn't require the extension to run. Installing an agent doesn't by itself guarantee an inventory entry. For details, see the [discovery prerequisites](discover-local-ai-agents#prerequisites).
 
 A checkmark in the **Discovers MCP** column indicates that Defender reports remote MCP server data in `McpServers` and local MCP server data in `RawAgentInfo.localAgentMetadata.localMcps`. A dash indicates that MCP server configuration discovery isn't documented for that combination.
 
@@ -63,6 +65,8 @@ Use the values in the `Name` and `Vendor` columns in your advanced hunting queri
 Note
 
 For runtime protection support, see AI agent runtime protection support.
+
+^1^ The marked VS Code extensions on **Windows and macOS** use the onboarded Defender for Endpoint client for **agent inventory discovery**. The client must be running and reporting. It periodically collects installed extension data; the extension doesn't need to run, and antivirus active mode isn't required for this inventory collection. **MCP server configuration discovery** still requires antivirus active mode and real-time protection. This footnote doesn't indicate runtime protection support or change the preview status shown in the tables.
 
 ### Windows
 
@@ -117,13 +121,15 @@ For runtime protection support, see AI agent runtime protection support.
 | Qwen Code Desktop | - | ✓ | - |
 | Qwen Studio | Alibaba Cloud | ✓ | - |
 | Trae IDE | ByteDance | ✓ | - |
-| VSCode Claude Code Extension | Anthropic | ✓ | ✓ |
-| VSCode Cline Extension | Cline | ✓ | ✓ |
-| VSCode Codex Extension | OpenAI | ✓ | ✓ |
-| VSCode Gemini Code Assist Extension | Google | ✓ | ✓ |
-| VSCode GitHub Copilot Extension | GitHub | ✓ | ✓ |
-| VSCode Kimi Code Extension | Moonshot AI | ✓ | - |
-| VSCode Roo Code Extension | Roo Code | ✓ | ✓ |
+| VS Code AI Foundry Extension | Microsoft | ✓^1^ | - |
+| VS Code Windows AI Studio Extension | Microsoft | ✓^1^ | ✓ |
+| VSCode Claude Code Extension | Anthropic | ✓^1^ | ✓ |
+| VSCode Cline Extension | Cline | ✓^1^ | ✓ |
+| VSCode Codex Extension | OpenAI | ✓^1^ | ✓ |
+| VSCode Gemini Code Assist Extension | Google | ✓^1^ | ✓ |
+| VSCode GitHub Copilot Extension | GitHub | ✓^1^ | ✓ |
+| VSCode Kimi Code Extension | Moonshot AI | ✓^1^ | - |
+| VSCode Roo Code Extension | Roo Code | ✓^1^ | ✓ |
 | Warp | Warp | ✓ | ✓ |
 | Windsurf | Cognition | ✓ | ✓ |
 | ZCode | Z.ai | ✓ | - |
@@ -139,61 +145,71 @@ The following local AI agents are supported when they run in Windows Subsystem f
 | Codex CLI | OpenAI | ✓ | - |
 | GitHub Copilot CLI | GitHub | ✓ | - |
 
-### macOS (preview)
+### macOS
 
-| `Name` | `Vendor` | Discovers agent | Discovers MCP |
-| --- | --- | --- | --- |
-| Antigravity CLI | Google | ✓ | - |
-| Antigravity Desktop | Google | ✓ | - |
-| Antigravity IDE | Google | ✓ | - |
-| ChatGPT Classic | OpenAI | ✓ | - |
-| ChatGPT Desktop | OpenAI | ✓ | ✓ |
-| Claude Code | Anthropic | ✓ | ✓ |
-| Claude Desktop | Anthropic | ✓ | ✓ |
-| Clawpilot | Microsoft | ✓ | - |
-| Cline CLI | Cline | ✓ | - |
-| CoCo Desktop | Snowflake | ✓ | - |
-| Codex CLI | OpenAI | ✓ | ✓ |
-| Codex Desktop | OpenAI | ✓ | ✓ |
-| Cursor | Anysphere | ✓ | ✓ |
-| Devin CLI | Cognition | ✓ | ✓ |
-| Devin Desktop | Cognition | ✓ | - |
-| Foundry Local | Microsoft | ✓ | - |
-| Gemini CLI | Google | ✓ | ✓ |
-| GitHub Copilot App | GitHub | ✓ | ✓ |
-| GitHub Copilot CLI | GitHub | ✓ | ✓ |
-| Goose CLI | Agentic AI Foundation | ✓ | - |
-| Goose Desktop | Agentic AI Foundation | ✓ | - |
-| Grok Build | SpaceXAI | ✓ | - |
-| Hermes Agent | Nous Research | ✓ | - |
-| Junie CLI | JetBrains | ✓ | - |
-| Kimi Code CLI | Moonshot AI | ✓ | - |
-| Kiro CLI | Amazon | ✓ | - |
-| Kiro IDE | Amazon | ✓ | - |
-| LM Studio | Element Labs | ✓ | - |
-| LM Studio Bionic | Element Labs | ✓ | - |
-| Microsoft Scout | Microsoft | ✓ | - |
-| Nanobot | Claw | ✓ | - |
-| Ollama Desktop | Ollama | ✓ | ✓ |
-| OpenClaw | OpenClaw Foundation | ✓ | ✓ |
-| OpenCode | Anomaly | ✓ | ✓ |
-| Perplexity Desktop | Perplexity | ✓ | - |
-| Pi Coder | Earendil Works | ✓ | - |
-| Poe Desktop | Quora | ✓ | - |
-| QClaw | Tencent | ✓ | - |
-| Qwen Code | Alibaba Cloud | ✓ | - |
-| Qwen Studio | Alibaba Cloud | ✓ | - |
-| Trae IDE | ByteDance | ✓ | - |
-| VSCode Claude Code Extension | Anthropic | ✓ | ✓ |
-| VSCode Cline Extension | Cline | ✓ | ✓ |
-| VSCode Codex Extension | OpenAI | ✓ | ✓ |
-| VSCode Gemini Code Assist Extension | Google | ✓ | ✓ |
-| VSCode GitHub Copilot Extension | GitHub | ✓ | ✓ |
-| VSCode Kimi Code Extension | Moonshot AI | ✓ | - |
-| VSCode Roo Code Extension | Roo Code | ✓ | - |
-| Warp | Warp | ✓ | ✓ |
-| Windsurf | Cognition | ✓ | - |
-| ZeroClaw | Claw | ✓ | - |
+A checkmark in **Preview** means discovery of that agent is in preview.
+
+| `Name` | `Vendor` | Discovers agent | Discovers MCP | Preview |
+| --- | --- | --- | --- | --- |
+| Amp CLI | Amp | ✓ | - | - |
+| Antigravity CLI | Google | ✓ | ✓ | - |
+| Antigravity Desktop | Google | ✓ | ✓ | - |
+| Antigravity IDE | Google | ✓ | ✓ | - |
+| Buzz | Block | ✓ | - | - |
+| ChatGPT Classic | OpenAI | ✓ | - | - |
+| ChatGPT Desktop | OpenAI | ✓ | ✓ | - |
+| Claude Code | Anthropic | ✓ | ✓ | - |
+| Claude Desktop | Anthropic | ✓ | ✓ | - |
+| Clawpilot | Microsoft | ✓ | - | - |
+| Cline CLI | Cline | ✓ | - | - |
+| CoCo CLI | Snowflake | ✓ | - | - |
+| CoCo Desktop | Snowflake | ✓ | - | - |
+| Codex CLI | OpenAI | ✓ | ✓ | - |
+| Codex Desktop | OpenAI | ✓ | ✓ | - |
+| Cursor | Anysphere | ✓ | ✓ | - |
+| DeepSeek Harness | DeepSeek | ✓ | - | - |
+| Devin CLI | Cognition | ✓ | ✓ | - |
+| Devin Desktop | Cognition | ✓ | ✓ | - |
+| Foundry Local | Microsoft | ✓ | - | - |
+| Gemini CLI | Google | ✓ | ✓ | - |
+| GitHub Copilot App | GitHub | ✓ | ✓ | - |
+| GitHub Copilot CLI | GitHub | ✓ | ✓ | - |
+| Goose CLI | Agentic AI Foundation | ✓ | - | - |
+| Goose Desktop | Agentic AI Foundation | ✓ | - | - |
+| Grok Bot | SpaceXAI | ✓ | - | - |
+| Grok Build | SpaceXAI | ✓ | - | - |
+| Hermes Agent | Nous Research | ✓ | ✓ | - |
+| Junie CLI | JetBrains | ✓ | ✓ | - |
+| Kilo CLI | Kilo Code | ✓ | - | - |
+| Kimi Code CLI | Moonshot AI | ✓ | - | - |
+| Kiro CLI | Amazon | ✓ | ✓ | - |
+| Kiro IDE | Amazon | ✓ | ✓ | - |
+| LM Studio | Element Labs | ✓ | ✓ | - |
+| LM Studio Bionic | Element Labs | ✓ | - | - |
+| Microsoft Scout | Microsoft | ✓ | ✓ | - |
+| Nanobot | Claw | ✓ | - | - |
+| Oh My Pi | Stencil | ✓ | - | - |
+| Ollama Desktop | Ollama | ✓ | ✓ | - |
+| OpenClaw | OpenClaw Foundation | ✓ | ✓ | - |
+| OpenCode | Anomaly | ✓ | ✓ | - |
+| Perplexity Desktop | Perplexity | ✓ | - | - |
+| Pi Coder | Earendil Works | ✓ | ✓ | - |
+| Poe Desktop | Quora | ✓ | - | - |
+| QClaw | Tencent | ✓ | - | - |
+| Qwen Code | Alibaba Cloud | ✓ | - | - |
+| Qwen Studio | Alibaba Cloud | ✓ | - | - |
+| Trae IDE | ByteDance | ✓ | - | - |
+| VSCode Claude Code Extension | Anthropic | ✓^1^ | ✓ | ✓ |
+| VSCode Cline Extension | Cline | ✓^1^ | ✓ | ✓ |
+| VSCode Codex Extension | OpenAI | ✓^1^ | ✓ | ✓ |
+| VSCode Gemini Code Assist Extension | Google | ✓^1^ | ✓ | ✓ |
+| VSCode GitHub Copilot Extension | GitHub | ✓^1^ | ✓ | ✓ |
+| VSCode Kimi Code Extension | Moonshot AI | ✓^1^ | - | ✓ |
+| VSCode Roo Code Extension | Roo Code | ✓^1^ | - | ✓ |
+| Warp | Warp | ✓ | ✓ | - |
+| Windsurf | Cognition | ✓ | ✓ | - |
+| ZCode | Z.ai | ✓ | - | - |
+| ZeroClaw | Claw | ✓ | - | - |
 
 ## AI agent runtime protection support
 

@@ -8,8 +8,8 @@ feedback_system: Standard
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-author: chrisda
-ms.author: chrisda
+author: ajaj-shaikh
+ms.author: ajajshaikh
 ms.date: 2026-04-16T00:00:00.0000000Z
 ms.topic: article
 ms.service: defender-office-365
@@ -534,7 +534,7 @@ The following actions are available at the top of the Email entity page:
 - The message was dropped before delivery or delivery failed.
 - The message was *soft deleted* or *hard deleted*.
 - The message has a delivery location of *On-prem/External*.
-- ZAP moved the message to quarantine.
+- ZAP moved the message to quarantine but message expires from quarantine.
 
 [![Screenshot of the available actions at the top of the Email entity page.](media/email-entity-available-actions.png)](media/email-entity-available-actions.png#lightbox)
 

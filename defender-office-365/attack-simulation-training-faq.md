@@ -19,10 +19,10 @@ ms.collection:
 ms.custom:
 - seo-marvel-apr2020
 - sfi-image-nochange
-- msecd-doc-authoring-1016
+- msecd-doc-authoring-1030
 description: Admins can learn about deployment considerations and frequently asked questions regarding Attack simulation and training in Microsoft 365 E5 or Microsoft Defender for Office 365 Plan 2 organizations.
 ms.service: defender-office-365
-ms.date: 2026-07-30T00:00:00.0000000Z
+ms.date: 2026-11-03T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 5140574c-ba65-1ca0-8946-cfc6b9a29d35
@@ -102,11 +102,17 @@ It's possible that all users targeted by the simulation don't receive the simula
 
 You can use the [Get-DistributionGroupMember](/en-us/powershell/module/exchangepowershell/get-distributiongroupmember) cmdlet in [Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell) to view and validate targeted group members.
 
+### When will the training assignment notification arrive?
+
+Training assignments might not be available immediately after a simulation interaction. The subsequent notification email can also take some time to arrive. For details, see [End-user notifications for Attack simulation training](attack-simulation-training-end-user-notifications).
+
 ### Trainings unexpectedly assigned or not assigned to users
 
 The training threshold in training campaigns prevents users from having the same trainings assigned to them during a specific interval (90 days by default). For more information, see [Set the training threshold](attack-simulation-training-settings#configure-the-training-threshold).
 
 If you created a [simulation](attack-simulation-training-simulations#assign-training) or a [simulation automation](attack-simulation-training-simulation-automations#assign-training) with the training assignment value **Assign training for me (Recommended)**, we assign training based on a user's previous simulation and training results. To assign training based on specific criteria, select **Select training courses and modules myself**.
+
+A new training assignment can take some time to appear on the user's training page after a simulation interaction.
 
 ### What happens when a user replies to or forwards a simulation message?
 

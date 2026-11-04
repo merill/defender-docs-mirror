@@ -17,9 +17,9 @@ ms.collection:
 - m365-security
 - tier2
 description: Admins can learn how to create end-user notification email messages for Attack simulation training in Microsoft Defender for Office 365 Plan 2.
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-03T00:00:00.0000000Z
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: eb5c4243-5da5-744e-fcea-a20bf70d0d11
 document_version_independent_id: eb5c4243-5da5-744e-fcea-a20bf70d0d11
@@ -139,6 +139,10 @@ To create a custom end-user notification, use the following steps:
         - **Training reminder notification**
     - **Name**: Enter a unique name.
     - **Description**: Enter an optional description.
+
+    Note
+
+    Training assignments might not be available immediately after a simulation interaction. The subsequent notification email can also take some time to arrive.
 
     When you're finished n the **Define details** page, select **Next**.
 4. On the **Define content** page, the only setting that's available is **Add content in business language**. When you select it, an **Add content in default language** flyout opens that contains the following settings:

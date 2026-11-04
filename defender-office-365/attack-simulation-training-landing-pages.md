@@ -17,9 +17,9 @@ ms.collection:
 - m365-security
 - tier2
 description: Admins can learn how to create and manage landing pages for simulated phishing attacks in Microsoft Defender for Office 365 Plan 2.
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-03T00:00:00.0000000Z
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: a78f8d20-ca83-c7b2-a050-e7aa8e70e330
 document_version_independent_id: a78f8d20-ca83-c7b2-a050-e7aa8e70e330
@@ -129,6 +129,10 @@ To create a landing page in Attack simulation training, use the following steps:
     - **Mark this as default language**: For the first landing page you create, this setting is selected and unchangeable.
     - Landing page content: Two tabs are available:
         - **Text** tab: A rich text editor is available to create the landing page. To see the typical font and formatting settings, toggle **Formatting controls** to ![](media/scc-toggle-on.png)**On**.
+
+            Note
+
+            A new training assignment might take some time to appear. If you use a custom landing page, consider adding a message about this timing.
 
             The following controls are also available on the **Text** tab:
 

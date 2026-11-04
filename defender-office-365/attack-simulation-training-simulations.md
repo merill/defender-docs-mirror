@@ -16,9 +16,9 @@ ms.localizationpriority: medium
 ms.collection:
 - m365-security
 - tier2
-ms.custom: msecd-doc-authoring-1014
+ms.custom: msecd-doc-authoring-1030
 description: Admins can learn how to simulate phishing attacks and train their users on phishing prevention using Attack simulation training in Microsoft Defender for Office 365 Plan 2.
-ms.date: 2026-06-15T00:00:00.0000000Z
+ms.date: 2026-11-03T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: c30283e7-3f46-6444-93e6-0208f1c5e762
@@ -424,6 +424,10 @@ Select one of the following options:
         - **Select default language**: This setting is required. Select one of the following values: **Chinese (Simplified)**, **Chinese (Traditional, Taiwan)**, **Dutch**, **English**, **Spanish**, **French**, **German**, **Italian**, **Japanese**, **Korean**, **Portuguese**, or **Russian**.
     - **Tenant landing pages** tab: Contains any custom landing pages that you created. To create a new landing page, select ![](media/defender-portal-icon-create.png)**Create new**. The creation steps are the same as at **Attack simulation training** &gt; **Content library** tab &gt; **Phish landing pages** &gt; **Tenant landing pages** tab. For instructions, see [Create landing pages](attack-simulation-training-landing-pages#create-landing-pages).
 
+        Note
+
+        A new training assignment might take some time to appear. If you use a custom landing page, consider adding a message about this timing.
+
     On both tabs, the following information is shown for each landing page. You can sort the landing pages by clicking on an available column header. Select ![](media/defender-portal-icon-customize.png)**Customize columns** to change the columns that are shown. The default columns are marked with an asterisk (^\*^):
 
     - **Name**^\*^
@@ -506,6 +510,10 @@ On the **Select end user notification** page, select from the following notifica
     For the **How-to Guide**social engineering technique, you can only configure a Positive reinforcement notification..
 
 When you're finished on the **Select end user notification** page, select **Next**.
+
+Note
+
+Training assignments might not be available immediately after a simulation interaction. The subsequent notification email can also take some time to arrive. For details, see [End-user notifications for Attack simulation training](attack-simulation-training-end-user-notifications).
 
 ### Select a training assignment notification
 

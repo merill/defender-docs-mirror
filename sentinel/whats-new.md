@@ -126,7 +126,7 @@ Microsoft [Fabric Graph](/en-us/fabric/graph/how-graph-works) now enables you to
 
 ### Use Sentinel MCP triage collection to query data
 
-Use the [triage collection](datalake/sentinel-mcp-triage-tool) in the Microsoft Sentinel MCP server to discover and query data using MCP tools. Use the *list advanced hunting tables* tool to return a list of all available tables in the built-in data lake. Use the *run hunting query* tool to query 30 days of the Advanced Hunting analytic tier data.
+Use the [triage collection](datalake/sentinel-mcp-triage-tool) in the Microsoft Sentinel MCP server to discover and query data using MCP tools. Use the *list advanced hunting tables* tool to return a list of all available tables in the built-in data lake. Use the *run hunting query* tool to query the built-in lake tier.
 
 ## August 2026
 

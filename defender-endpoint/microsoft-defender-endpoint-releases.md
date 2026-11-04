@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| macOS | 101.26092.0012 | November 2026 | - Release version: 20.126092.12.0- Engine version: 1.1.26100.3000- Signature version: 1.463.110.0 | Release details and updates |
 | Linux | 101.26101.0000 | November 2026 | - Release version: 30.126101.0000.0- Engine version: 1.1.26090.3000- Signature version: 1.459.148.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26100.4 / Engine 1.1.26100.4 | October 2026 | - Platform: 4.18.26100.4- Engine: 1.1.26100.4- Security intelligence: 1.463.1.0 | Release details and updates |
 | macOS | 101.26092.0009 | October 2026 | - Release version: 20.126092.9.0- Engine version: 1.1.26060.12000- Signature version: 1.453.151.0 | Release details and updates |
@@ -280,6 +281,20 @@ To share feedback, open Defender for Endpoint on macOS and go to **Help &gt; Sen
 To get latest features, configure your device for the Beta channel (formerly Insider-Fast) device.
 
 For known issues, see macOS known issues.
+
+### macOS | November-2026 | 101.26092.0012
+
+#### Versions
+
+| Release version | Engine version | Signature version |
+| --- | --- | --- |
+| 20.126092.12.0 | 1.1.26100.3000 | 1.463.110.0 |
+
+#### Enhancements and features
+
+| Feature area | Update summary |
+| --- | --- |
+| General | Bug and performance fixes |
 
 ### macOS | October-2026 | 101.26092.0009
 
@@ -681,7 +696,7 @@ Starting with version `101.24082.0004`, Defender for Endpoint on Linux no longer
 | --- | --- |
 | Security | Upgraded OpenSSL version to 3.6.4 |
 | Bug fix | Fixed missing CentOS minor patch version in the Defender portal |
-| General |  |
+| General | Optimized memory usage during package scanning |
 
 ### Linux | October 2026 | 101.26091.0004
 

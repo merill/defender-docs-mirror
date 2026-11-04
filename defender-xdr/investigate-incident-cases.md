@@ -13,13 +13,13 @@ ms.service: microsoft-defender
 ms.subservice: unified-security-operations
 author: guywi-ms
 ms.author: guywild
-ms.date: 2026-07-15T00:00:00.0000000Z
+ms.date: 2026-11-04T00:00:00.0000000Z
 ms.collection:
 - M365-security-compliance
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1018
 ai-usage: ai-assisted
 locale: en-us
 document_id: 8a731aa7-9bcc-75f1-29b0-6791890f3444
@@ -296,6 +296,18 @@ To review activity history:
 5. Go to **Artifacts** &gt; **Activities**.
 6. Filter the activity history as needed.
 7. Select an activity item to review more details.
+
+## Review similar cases
+
+Use the **Similar cases** page to view other incident cases that resemble the current case based on similar alerts or entities. These cases provide a larger context to help direct your investigation. You can review how similar cases were handled or look for recurring patterns.
+
+The **Similarity reason** column shows why each case appears in the list, including the number of shared alerts and entities.
+
+To review similar cases from an open incident case:
+
+1. Go to **Artifacts** &gt; **Similar cases**.
+2. Review the **Similarity reason** column to see whether each case has shared alerts, shared entities, or both.
+3. Hover over the similarity reason to see the shared alerts and entities.
 
 ## Review attachments
 

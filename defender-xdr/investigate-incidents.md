@@ -17,7 +17,7 @@ ms.collection:
 - m365-security
 - tier1
 ms.topic: article
-ms.date: 2026-09-09T00:00:00.0000000Z
+ms.date: 2026-11-04T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: sfi-image-nochange
 locale: en-us
@@ -368,7 +368,9 @@ The information is organized into these sections.
 
 ## Similar incidents
 
-Some incidents might have similar incidents listed on the **Similar incidents** page. This section shows incidents that have similar alerts, entities, and other properties. This similarity can help you understand the scope of the attack and identify other incidents that might be related.
+Use the **Similar incidents** page to view other incidents that resemble the current incident based on similar alerts or entities. These incidents provide a larger context to help direct your investigation. You can review how similar incidents were handled or look for recurring patterns.
+
+The **Similarity reason** column shows why each incident appears in the list. Hover over the similarity reason to see the shared alerts and entities.
 
 [![Screenshot that shows the Similar incidents tab for an incident in the Microsoft Defender portal.](media/investigate-incidents/incident-similartab-small.png)](media/investigate-incidents/incident-similartab.png#lightbox)
 

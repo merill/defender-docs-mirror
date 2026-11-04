@@ -14,7 +14,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: itaicohen
 ms.topic: how-to
-ms.date: 2026-10-30T00:00:00.0000000Z
+ms.date: 2026-11-03T00:00:00.0000000Z
 audience: Admin
 ai-usage: ai-assisted
 locale: en-us
@@ -146,3 +146,16 @@ For more information:
 
 - To query local agents discovered on endpoint devices, see [Discover local AI agents in Microsoft Defender for Endpoint](/en-us/defender-endpoint/discover-local-ai-agents).
 - For information about Advanced Hunting, see [Proactively hunt for threats with Advanced Hunting in Microsoft Defender](/en-us/defender-xdr/advanced-hunting-overview).
+
+## Feature availability for GCC customers
+
+Microsoft Defender security for AI capabilities differ between GCC and the commercial offering. The following table lists availability for AI agent discovery and security posture capabilities in GCC.
+
+| Capability | GCC |
+| --- | --- |
+| **Agent discovery and inventory** | Supported |
+| **Agent risk assessment** | Not supported |
+| **Security recommendations** | Not supported |
+| **Attack surface graph** | Not supported |
+
+For general government environment requirements, see [Microsoft Defender XDR for US Government](../usgov).

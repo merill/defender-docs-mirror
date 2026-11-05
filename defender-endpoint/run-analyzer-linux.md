@@ -51,7 +51,11 @@ platformId: 6d3562f9-f147-4f60-4a09-e39a73b208ca
 
 If you have issues with Microsoft Defender for Endpoint on Linux and need support, you might be asked to provide the output from the Client Analyzer tool. It's a diagnostic tool that helps administrators and support teams troubleshoot issues with Microsoft Defender for Endpoint. It collects detailed information about installation, configuration, service health, logs, connectivity status, etc. This tool is primarily used for checking system health, validating configurations, and helping troubleshoot potential issues.
 
-This article explains how to use the tool on your device or with live response. You can use either a Python-based solution or a binary version that doesn't need Python.
+You can collect Client Analyzer diagnostics in any of the following ways:
+
+1. **Command line**: Run the Client Analyzer locally on the device. See run-the-binary-version-of-the-client-analyzer or run-the-python-based-client-analyzer.
+2. **Live response**: Run the Client Analyzer remotely during a live response session. See use-live-response-to-collect-diagnostics-log
+3. **Investigation package**: Collect an investigation package from the device page in the Microsoft Defender portal. On Linux, the package includes Client Analyzer diagnostics. See [collect-investigation-package-from-devices](/en-us/defender-endpoint/respond-machine-alerts)
 
 Tip
 

@@ -186,6 +186,11 @@ The following table lists the contents of the collection packages for Mac and Li
 | Services and scheduled tasks | - Certificates- Configuration profiles- Hardware information | - CPU details- Hardware information- Operating system information |
 | System security information | - Extensible Firmware Interface (EFI) integrity information- Firewall status- Malware Removal Tool (MRT) information- System Integrity Protection (SIP) status | Not applicable |
 | Users and groups | - Sign-in history- Sudoers | - Sign-in history- Sudoers |
+| Defender for Endpoint diagnostics | Not applicable | Client analyzer output including:- Installation details- Configuration details- Service health- Logs- Connectivity status |
+
+Important
+
+On Linux, the investigation package includes Microsoft Defender for Endpoint Client Analyzer diagnostics in addition to system information. The Client Analyzer collects diagnostic information about installation, configuration, service health, logs, and connectivity status, so you can get system and Defender for Endpoint troubleshooting details in a single package.
 
 ## Run Microsoft Defender Antivirus scan on devices
 

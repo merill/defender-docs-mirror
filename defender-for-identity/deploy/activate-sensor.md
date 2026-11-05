@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to automatically or manually activate the Microsoft Defender for Identity sensor v3.x on eligible identity-role servers.
-ms.date: 2026-10-20T00:00:00.0000000Z
+ms.date: 2026-11-05T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1015
@@ -91,7 +91,7 @@ Note
 
 This onboarding method supports new Defender for Identity sensor v3.x deployments on eligible servers that don't have sensor v2.x installed. The standalone onboarding package activates sensor v3.x on the Windows Sense platform in restricted identity-only mode. It doesn't deploy or license the full Defender for Endpoint experience. The server still requires connectivity to Defender for Endpoint cloud services because the underlying Sense component uses that infrastructure.
 
-1. [Configure your network environment to ensure connectivity with Defender for Endpoint](/en-us/defender-endpoint/configure-environment#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server) by using [streamlined URLs](/en-us/defender-endpoint/configure-device-connectivity#option-1-configure-connectivity-using-the-simplified-domain).
+1. [Configure your network environment to ensure connectivity with Defender for Endpoint](/en-us/defender-endpoint/configure-environment#enable-access-to-microsoft-defender-for-endpoint-service-urls-in-the-proxy-server). Allow the applicable streamlined URLs for [commercial environments](/en-us/defender-endpoint/streamlined-device-connectivity-urls-commercial?tabs=Windows) or [US Government environments](/en-us/defender-endpoint/streamlined-device-connectivity-urls-gov).
 2. On the **Sensor management** tab of the **On-premises** page in the Microsoft Defender portal, select **Download onboarding package**.
 3. In the **Download onboarding package** pane, expand **Windows Server 2019 or later**, enter a **Package name**, and select **Generate package**.
 
@@ -110,6 +110,8 @@ This onboarding method supports new Defender for Identity sensor v3.x deployment
     .\DefenderForIdentityV3StandaloneOnboardingScript.cmd
     ```
 8. When prompted, enter the access key from the Microsoft Defender portal. The input is masked.
+
+Servers onboarded to Defender for Identity only appear as **Can be onboarded** in device inventory. This status is expected and refers to Defender for Endpoint onboarding, not Defender for Identity protection. To check the v3.x sensor's health, use the **Sensor management** tab.
 
 ## Confirm sensor activation
 

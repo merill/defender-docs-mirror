@@ -15,8 +15,8 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to protect your Microsoft SQL Servers on Azure VMs, on-premises, and in hybrid and multicloud environments with Microsoft Defender for Cloud.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1013
+ms.date: 2026-11-05T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 67e8dbbb-7cd3-afb7-a115-4d1fb56337f8
@@ -63,9 +63,11 @@ Before you enable the plan, make sure the following prerequisites are met:
 
     - [SQL virtual machines](/en-us/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview), and [Azure Arc SQL Server instances](/en-us/sql/sql-server/azure-arc/overview) are supported.
     - On-premises machines must be [onboarded to Arc and registered as Azure Arc SQL Server instances](/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm).
+- **Communication**: Allow outbound HTTPS traffic on Transmission Control Protocol (TCP) port 443 using Transport Layer Security (TLS) to `*.<region>.arcdataservices.com` URL. Learn more about [URL requirements](/en-us/azure/azure-arc/servers/network-requirements#urls?tabs=azure-cloud).
 
-**Communication**: Allow outbound HTTPS traffic on Transmission Control Protocol (TCP) port 443 using Transport Layer Security (TLS) to `*.<region>.arcdataservices.com` URL. Learn more about [URL requirements](/en-us/azure/azure-arc/servers/network-requirements#urls?tabs=azure-cloud).
+    Azure Arc SQL Server instances with Arc proxy enabled are supported with Defender for SQL extension version 2.0.3585.403 or later (For update instructions, see [Update the Defender for SQL extension manually](update-defender-for-sql-extension)). The proxy must meet the same communication requirements listed earlier in this section.
 
+    If Arc proxy settings are configured, the agent first tries to communicate through the proxy. If that fails, the agent tries direct access, if available, and then Azure Monitor Agent (AMA), if available.
 - **Extensions**: Ensure these extensions aren't blocked in your environment. Learn more about [restricting extensions installation on Windows VMs](/en-us/azure/virtual-machines/extensions/extensions-rmpolicy-howto-ps).
 
     - **Defender for SQL (IaaS and Arc)**
@@ -80,9 +82,60 @@ Before you enable the plan, make sure the following prerequisites are met:
 - **Supported SQL Server versions** - SQL Server 2012 (11.x) and later versions.
 - **Supported operating systems**- Windows Server 2012 R2 and later versions.
 
-Note
+## Identify Arc proxy-enabled machines
 
-Azure Arc SQL Server instances with the Arc proxy feature enabled are **not** currently supported. Arc proxy is an optional connectivity feature for Azure Arc-enabled servers.
+To identify Windows Azure Arc-enabled machines with a configured proxy, SQL Server detected, and agent settings that permit the Defender for SQL extension, run the following script in PowerShell with the Azure CLI. Replace `<subscription-id>` with your subscription ID.
+
+```powershell
+$subscriptionId = "<subscription-id>"
+
+<#
+Lists Windows Azure Arc machines with a configured proxy, SQL Server detected,
+and extension management enabled, whose reported agent configuration permits
+the Defender for SQL extension (Microsoft.Azure.AzureDefenderForSQL /
+AdvancedThreatProtection.Windows).
+
+The extension must not be in the block list. If the allow list is nonempty,
+it must explicitly include the extension. The block list takes precedence.
+
+Displays machine name, resource group, status, proxy, and both extension lists.
+Does not check Azure Policy, RBAC, or network prerequisites for installation.
+#>
+
+$query = @'
+[?
+    agentConfiguration.proxyUrl
+    && to_string(mssqlDiscovered) == 'true'
+    && (osType == 'windows' || osType == 'Windows')
+    && to_string(agentConfiguration.extensionsEnabled) == 'true'
+    && (
+        !(agentConfiguration.extensionsAllowList)
+        || agentConfiguration.extensionsAllowList[?
+            publisher == 'Microsoft.Azure.AzureDefenderForSQL'
+            && type == 'AdvancedThreatProtection.Windows'
+        ]
+    )
+    && !(agentConfiguration.extensionsBlockList[?
+        publisher == 'Microsoft.Azure.AzureDefenderForSQL'
+        && type == 'AdvancedThreatProtection.Windows'
+    ])
+].{
+    Machine:name,
+    ResourceGroup:resourceGroup,
+    Status:status,
+    Proxy:agentConfiguration.proxyUrl,
+    AllowList:to_string(agentConfiguration.extensionsAllowList || `[]`),
+    BlockList:to_string(agentConfiguration.extensionsBlockList || `[]`)
+}
+'@
+
+$query = ($query -split '\r?\n' | ForEach-Object { $_.Trim() }) -join ' '
+
+az connectedmachine list `
+    --subscription $subscriptionId `
+    --query $query `
+    --output table
+```
 
 ## Enable the plan
 

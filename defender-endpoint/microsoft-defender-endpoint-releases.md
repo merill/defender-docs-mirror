@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Android | 1.0.9428.0102 | Oct 2026 | - Build: 1.0.9428.0102- Release: Oct 30, 2026 | Release details and updates |
 | macOS | 101.26092.0012 | November 2026 | - Release version: 20.126092.12.0- Engine version: 1.1.26100.3000- Signature version: 1.463.110.0 | Release details and updates |
 | Linux | 101.26101.0000 | November 2026 | - Release version: 30.126101.0000.0- Engine version: 1.1.26090.3000- Signature version: 1.459.148.0 | Release details and updates |
 | Windows Antivirus | Platform 4.18.26100.4 / Engine 1.1.26100.4 | October 2026 | - Platform: 4.18.26100.4- Engine: 1.1.26100.4- Security intelligence: 1.463.1.0 | Release details and updates |
@@ -1035,6 +1036,21 @@ Fixed in platform version 101.26052.0011 and later. FIPS-enabled RHEL 8/9 device
 ## Android releases
 
 See the full list of [Android UX improvements](android-new-ux).
+
+### Android | Oct 2026 | Platform: 1.0.9428.0102
+
+#### Release details
+
+| Platform version | Release Date |
+| --- | --- |
+| Android | Oct 30, 2026 |
+
+#### Enhancements and features
+
+| Feature Area | Update Summary |
+| --- | --- |
+| General | Performance improvements and general bug fixes. Includes fixing minor app crash: It was because due to some race conditions among parallel processes during initialization of the app. This was an unlikely crash and used occur in 0.02% of devices. UI bug related to accessibility permission has been fixed: The accessibility dialog used to come twice in onboarding flow due to a mishandled condition in the code. |
+| Connectivity update | Network protection notification if present, will get refreshed on each network change that causes an increase in wifi issues count. The earlier experience didn't refresh notification on network change which gave user incorrect information about the current network status of the device. |
 
 ### Android | Oct 2026 | Platform: 1.0.9406.0102
 

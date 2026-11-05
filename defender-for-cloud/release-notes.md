@@ -16,7 +16,7 @@ ms.service: defender-for-cloud
 description: Learn about new, updated, and deprecated features in Microsoft Defender for Cloud, including preview releases, general availability updates, and upcoming changes.
 ms.topic: overview
 ms.custom: references_regions, msecd-doc-authoring-1030
-ms.date: 2026-10-28T00:00:00.0000000Z
+ms.date: 2026-11-05T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0cdaa215-1c9d-088d-65a0-67efec1dc3b9
@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-for-cloud/release-notes.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cbe4ca68-43ac-4375-aba5-5945a6394c20
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ced846cc-6a3c-4c8f-9dfb-3de0e90e2742
+- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: 8e52c7f4-0513-cf2a-2a7e-e8b7c4b9b436
 ---
 
@@ -56,6 +56,26 @@ Tip
 Get notified when this page is updated by copying and pasting the following URL into your feed reader:
 
 `https://aka.ms/mdc/rss`
+
+## November 2026
+
+| Date | Category | Update |
+| --- | --- | --- |
+| November 4, 2026 | Update | Arc proxy support for Defender for SQL Servers on Machines |
+
+### Arc proxy support for Defender for SQL Servers on Machines
+
+November 4, 2026
+
+Defender for SQL Servers on Machines now supports Azure Arc SQL Server instances with Arc proxy enabled, starting with Defender for SQL extension version **2.0.3585.403**. Organizations that don't allow direct internet access from their machines can tunnel outbound communication through Arc proxy and use all Defender for SQL Servers on Machines features.
+
+Arc proxy is an optional setting and isn't required for Defender for SQL Servers on Machines to operate if the networking prereqs are met. Learn more about [Defender for SQL on machines prerequisites](defender-for-sql-usage#prerequisites).
+
+Version **2.0.3585.403** is available for manual update. Automatic rollout hasn't started, giving customers time to review affected resources and prepare for expanded protection coverage.
+
+Extending protection coverage might add billable resources and affect costs. Review [potentially affected resources](defender-for-sql-usage#identify-arc-proxy-enabled-machines) and [disable Defender for SQL Servers on Machines](disable-sql-on-machines#disable-defender-for-sql-servers-on-machines-at-the-resource-level) for resources you choose to exclude from this coverage expansion.
+
+To update the extension on an Azure Arc-enabled server or Azure virtual machine, see [Update the Defender for SQL extension manually](update-defender-for-sql-extension).
 
 ## October 2026
 

@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| iOS | 1.1.82260102 | Nov 2026 | - Build: 1.1.82260102- Release: Nov 3, 2026 | Release details and updates |
 | Android | 1.0.9428.0102 | Oct 2026 | - Build: 1.0.9428.0102- Release: Oct 30, 2026 | Release details and updates |
 | macOS | 101.26092.0012 | November 2026 | - Release version: 20.126092.12.0- Engine version: 1.1.26100.3000- Signature version: 1.463.110.0 | Release details and updates |
 | Linux | 101.26101.0000 | November 2026 | - Release version: 30.126101.0000.0- Engine version: 1.1.26090.3000- Signature version: 1.459.148.0 | Release details and updates |
@@ -309,7 +310,6 @@ For known issues, see macOS known issues.
 
 | Feature area | Update summary |
 | --- | --- |
-| General | Agent Protection: Improved reliability when applying managed protection policies. |
 | General | Antivirus: Reduced CPU usage during high-volume file activity by. |
 | General | Antivirus: Improved service reliability. |
 | General | Antivirus: Improved health reporting to indicate when the protection engine connection is unavailable. |
@@ -318,7 +318,6 @@ For known issues, see macOS known issues.
 | General | Device Control: Legacy Device Control v1 is retired. |
 | General | Device Control: Device health reporting now shows Bluetooth permission status, helping administrators verify that Device Control is configured correctly. |
 | General | EDR: Improved authentication reliability after startup and wake. |
-| General | EDR: Added support for configuring AI agent runtime protection on macOS. |
 | General | EDR: Improved macOS device isolation. |
 | General | GUI: Improved accessibility. |
 | General | TVM: Improved software inventory reporting for macOS applications that do not provide standard display-name metadata. |
@@ -1363,6 +1362,21 @@ See the full list of [Android UX improvements](android-new-ux).
 ## iOS releases
 
 For the latest UX improvements, see [iOS UX improvements](ios-new-ux).
+
+### iOS | Nov 2026 | Platform Version: 1.1.82260102
+
+#### Release details
+
+| Platform version | Release Date |
+| --- | --- |
+| 1.1.82260102 | Nov 3, 2026 |
+
+#### Enhancements and features
+
+| Feature Area | Update Summary |
+| --- | --- |
+| Connectivity | Improved reliability of redirected network connections on slow or low-bandwidth networks for a more consistent connectivity experience. |
+| Localization | Updated translations for advanced diagnostic settings to make the option and its description clearer across supported languages. |
 
 ### iOS | Oct 2026 | Platform Version: 1.1.82230103
 

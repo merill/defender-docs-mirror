@@ -24,7 +24,7 @@ ms.custom:
 - cx-ti
 - cx-ta
 - seo-marvel-apr2020
-ms.date: 2026-05-26T00:00:00.0000000Z
+ms.date: 2026-11-08T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 404ef180-7085-e1f1-a987-625979517952
@@ -255,6 +255,23 @@ The **Indicators** tab provides a list of all indicators of compromise (IOCs) as
 Important
 
 Only verified customers can access the information in the **Indicators** tab. If you don't have access to this information, you need to verify your tenant. [Learn more about getting access to IOCs](threat-analytics-indicators)
+
+## Export a threat analytics report to PDF
+
+You can export threat analytics reports from the Microsoft Defender portal to PDF for offline review and sharing with stakeholders.
+
+The exported PDF includes the following information, when available:
+
+- **Threat context:** Threat actor aliases, origin, and targeted entities.
+- **Analyst report:** Detailed threat analysis, assessments, attack techniques, images, and hyperlinks.
+- **Related intelligence:** Links to related threat analytics reports and their update dates.
+
+To export a threat analytics report to PDF:
+
+1. Open the threat analytics report you want to export.
+2. Select **Download as PDF**.
+3. In the browser's print dialog, select **Microsoft Print to PDF** or **Save as PDF**, depending on your browser.
+4. Select **Print** or **Save** to save the report as a PDF.
 
 ## Stay updated with the latest reports and threat intelligence
 

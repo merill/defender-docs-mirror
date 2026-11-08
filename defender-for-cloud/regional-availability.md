@@ -9,14 +9,14 @@ permissioned-type: public
 feedback_product_url: ''
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 adobe-target: true
-author: ElazarK
-ms.author: elkrieger
+author: CESANU
+ms.author: cesanu
 manager: orspodek
 ms.service: defender-for-cloud
 description: Discover the regional availability of Microsoft Defender for Cloud plans across Azure, AWS, and GCP. Find supported services by region and platform.
 ms.topic: concept-article
-ms.date: 2026-06-29T00:00:00.0000000Z
-ms.custom: references_regions
+ms.date: 2026-10-25T00:00:00.0000000Z
+ms.custom: references_regions, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 6e6c182b-9ae8-74e8-f4d8-e606031a81b7
@@ -117,15 +117,17 @@ This article gives an overview of where you can use Microsoft Defender for Cloud
 
 **Unsupported regions:** Asia Northeast, Austria East, Belgium Central, Chile Central, China East, China North, EU SSLV, Indonesia Central, Israel North West, Malaysia South, Mexico Central, New Zealand North, South East US, South East US 3, South US 2, Taiwan North, Taiwan North West
 
-### Sensitivity scan (DCSPM)
+### Sensitive data discovery (DCSPM)
 
-**Supported regions:** Asia East, Asia Southeast, Asia Northeast, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, East US, East US 2, France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Jio India Central, Jio India West, Korea Central, Korea South, Mexico Central, North Central US, North Europe, Norway East, Norway West, Poland Central, South Africa North, South Africa West, South Central US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE Central, UAE North, UK South, UK West, West Central US, West Europe, West US, West US 2, West US 3 **Unsupported regions:** Austria East, Belgium Central, Central US (EU Access Program), Chile Central, China East, China East 2, China East 3, China North, China North 2, China North 3, East US 2 (EU Access Program), EU SSLV, India West, Indonesia Central, Israel North West, Malaysia South, New Zealand North, Qatar, South East US, South East US 3, South US 2, Spain Central, Taiwan North, Taiwan North West, US DoD Central, US DoD East, US Gov East, US Gov South Central, US Gov Southwest
+**Supported regions:** Asia East, Asia Southeast, Asia Northeast, Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, East US, East US 2, France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Jio India Central, Jio India West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, South Africa North, South Africa West, South Central US, Spain Central, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE Central, UAE North, UK South, UK West, West Central US, West Europe, West US, West US 2, West US 3
 
-### Sensitivity scan (Defender for Storage plan)
+**Unsupported regions:** Austria East, Belgium Central, Central US (EU Access Program), Chile Central, China East, China East 2, China East 3, China North, China North 2, China North 3, East US 2 (EU Access Program), EU SSLV, India West, Indonesia Central, Israel North West, Malaysia South, Qatar, South East US, South East US 3, South US 2, Taiwan North, Taiwan North West, US DoD Central, US DoD East, US Gov East, US Gov South Central, US Gov Southwest
 
-**Supported regions:** Asia East, Asia Northeast, Australia Central 2, Australia East, Australia Southeast, Austria East, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, Central US (EU Access Program), China East, China East 3, East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, India Central, India South, Indonesia Central, Israel Central, Italy North, Japan East, Japan West, Korea Central, Korea South, Mexico Central, North Central US, North Europe, Norway East, Norway West, South Africa North, South Africa West, South Central US, South East US, Sweden Central, Switzerland North, Switzerland West, UAE North, UK South, UK West, West Central US, West Europe, West US, West US 2, West US 3
+### Sensitive data discovery (Defender for Storage plan)
 
-**Unsupported regions:** Asia Southeast, Belgium Central, Chile Central, China East 2, China North, China North 2, China North 3, EU SSLV, India West, Israel North West, Jio India Central, Jio India West, Malaysia South, New Zealand North, Poland Central, Qatar, South East US 3, South US 2, Spain Central, Sweden South, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East, US Gov East, US Gov South Central, US Gov Southwest
+**Supported regions:** Asia Northeast, Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central India, Central US, Central US (EU Access Program), East Asia, East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, Israel Central, Italy North, Japan East, Japan West, Jio India West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, South Africa North, South Africa West, South Central US, South East US, South India, Southeast Asia, Spain Central, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE North, UK South, UK West, West Central US, West Europe, West US, West US 2, West US 3
+
+**Unsupported regions:** Austria East, Belgium Central, Chile Central, China East, China East 2, China East 3, China North, China North 2, China North 3, EU SSLV, India South Central, Indonesia Central, Israel North West, Jio India Central, Malaysia South, Qatar Central, South East US 3, South US 2, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East, US Gov East, US Gov South Central, US Gov Southwest, West India
 
 ### Defender for AI
 
@@ -201,17 +203,11 @@ Not available.
 
 **Unsupported regions:** ap-southeast-3, eu-south-1, eu-south-2, me-south-1, il-central-1, us-gov-west-1, us-gov-east-1, cn-north-1, cn-northwest-1, ap-southeast-5, ap-northeast-4, me-central-2, eu-sov-1
 
-### Sensitivity scan (Defender CSPM)
+### Sensitive data discovery for S3 (Defender CSPM)
 
-**Supported regions:** us-east-1, us-east-2, us-west-1, us-west-2, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, eu-north-1, sa-east-1
+**Supported regions:** af-south-1, ap-east-1, ap-northeast-1, ap-northeast-2, ap-northeast-3, ap-south-1, ap-south-2, ap-southeast-1, ap-southeast-2, ap-southeast-3, ap-southeast-4, ca-central-1, ca-west-1, eu-central-1, eu-central-2, eu-north-1, eu-south-1, eu-south-2, eu-west-1, eu-west-2, eu-west-3, il-central-1, sa-east-1, us-east-1, us-east-2, us-west-1, us-west-2
 
-**Unsupported regions:** af-south-1, ap-east-1, ap-south-2, ap-southeast-3, ap-southeast-4, ap-northeast-2, ap-northeast-3, ca-west-1, eu-central-2, eu-south-1, eu-south-2, me-central-1, me-south-1, il-central-1, us-gov-west-1, us-gov-east-1, cn-north-1, cn-northwest-1, ap-southeast-5, ap-northeast-4, me-central-2, eu-sov-1
-
-### Sensitivity scan (Defender for Storage plan)
-
-**Supported regions:** us-east-1, us-east-2, us-west-1, us-west-2, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, sa-east-1
-
-**Unsupported regions:** af-south-1, ap-east-1, ap-south-2, ap-southeast-3, ap-southeast-4, ap-northeast-2, ap-northeast-3, ca-west-1, eu-central-2, eu-south-1, eu-south-2, eu-north-1, me-central-1, me-south-1, il-central-1, us-gov-west-1, us-gov-east-1, cn-north-1, cn-northwest-1, ap-southeast-5, ap-northeast-4, me-central-2, eu-sov-1
+**Unsupported regions:** ap-east-2, ap-southeast-5, ap-southeast-6, ap-southeast-7, me-central-1, me-south-1, mx-central-1
 
 ### Defender for Containers
 
@@ -259,13 +255,13 @@ Not available.
 
 **Unsupported regions:** asia-southeast3, asia-southeast4, europe-south1, europe-north2, europe-central3
 
-### Sensitivity scan (DCSPM)
+### Sensitive data discovery (DCSPM)
 
-**Supported regions:** asia-south1, europe-west1, northamerica-northeast1, us-central1, us-east1, us-east4, us-west1, me-west1
+**Supported regions:** africa-south1, asia-east1, asia-east2, asia-northeast1, asia-northeast2, asia-northeast3, asia-south1, asia-southeast1, asia-southeast2, australia-southeast1, europe-central2, europe-north1, europe-north2, europe-southwest1, europe-west1, europe-west10, europe-west12, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, me-central1, me-central2, me-west1, northamerica-northeast1, northamerica-northeast2, southamerica-east1, southamerica-west1, us-central1, us-east1, us-east4, us-east5, us-south1, us-west1, us-west2, us-west3, us-west4
 
-**Unsupported regions:** asia-east1, asia-east2, asia-northeast1, asia-northeast2, asia-northeast3, asia-south2, asia-southeast1, asia-southeast2, australia-southeast1, australia-southeast2, europe-central2, europe-north1, europe-west2, europe-west3, europe-west4, europe-west6, europe-west8, europe-west9, europe-west10, northamerica-northeast2, southamerica-east1, southamerica-west1, us-east5, us-south1, us-west2, us-west3, us-west4, me-central2, africa-south1, northamerica-south1, asia-southeast3, asia-southeast4, europe-south1, europe-north2, europe-central3
+**Unsupported regions:** asia-south2, asia-southeast3, australia-southeast2, northamerica-south1
 
-### Sensitivity scan (Defender for Storage plan)
+### Sensitive data discovery (Defender for Storage plan)
 
 Not available.
 

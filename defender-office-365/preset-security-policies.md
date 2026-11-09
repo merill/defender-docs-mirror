@@ -41,11 +41,11 @@ source_path: defender-office-365/preset-security-policies.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/609dad7f-61d2-4958-9386-e6e4bb38d61e
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/5cf46315-b33f-4e99-8224-a1592697eff9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/cf9b82c5-b6dc-45f3-b005-b1bc5fc03bea
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1af30562-083a-42e2-aad4-17ae29f4ad72
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/715d24c3-3683-4219-82c5-1e3c813fb7fc
+- https://authoring-docs-microsoft.poolparty.biz/devrel/0c85d34e-bfd2-4466-957c-f0b61e9692df
 platformId: 58c00992-e16b-7ef1-fe70-7eb9fa6e603d
 ---
 
@@ -78,7 +78,7 @@ To configure preset security policies, see Assign Standard and Strict preset sec
 - To connect to Exchange Online PowerShell, see [Connect to Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell).
 - You need to be assigned permissions before you can do the procedures in this article. You have the following options:
 
-    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell): **Authorization and settings/Security settings/Core Security settings (manage)** or **Authorization and settings/Security settings/Core Security settings (read)**.
+    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (Applies when both the **Defender for Office 365** and **Exchange Online permissions** toggles under **Email & collaboration** are ![](media/scc-toggle-on.png)**Active**. Applies only to the Microsoft Defender portal, not PowerShell, the [Microsoft Purview portal](https://purview.microsoft.com), the [Exchange admin center](https://admin.exchange.microsoft.com), or other experiences outside the Defender portal): **Authorization and settings/Security settings/Core Security settings (manage)** or **Authorization and settings/Security settings/Core Security settings (read)**.
     - [Exchange Online permissions](/en-us/exchange/permissions-exo/permissions-exo):
 
         - *Configure preset security policies*: Membership in the **Organization Management** or **Security Administrator** role groups.

@@ -72,7 +72,7 @@ Typically, Azure prerequisites are managed by your **security** teams.
 
 ## SAP prerequisites for the agentless data connector
 
-We recommend that your **SAP BASIS** team verify and ensure SAP system prerequisites. The SAP BASIS admin should review SAP notes 3390051 and 382318 to ensure that NetWeaver is set up for integration.
+If you encounter SAP-side errors, ask your **SAP BASIS** administrator to search SAP Notes and KBAs using the exact error message and your SAP\_BASIS release and support package. Confirm with SAP whether a correction applies before implementing it. For guidance on common corrections, see [troubleshoot the agentless data connector](sap-deploy-troubleshoot#sap-release-and-audit-log-corrections).
 
 We strongly recommend that any management of your SAP system is carried out by an experienced SAP system administrator.
 

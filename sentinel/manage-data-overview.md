@@ -26,7 +26,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-08-24T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016
 locale: en-us
@@ -44,25 +44,94 @@ item_type: Content
 source_path: sentinel/manage-data-overview.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8f37329d-5c2f-4d50-b9b8-aa5cf54dbffe
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e13db295-3de6-46d5-bcdf-8785a76e3843
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: ad3cbb72-db10-6bde-479f-bf28fba0e2a0
 ---
 
 # Manage data tiers and retention in Microsoft Sentinel | Microsoft Learn
 
-Data you collect into Microsoft Sentinel (SIEM) and Microsoft Defender XDR is stored in tables. The Microsoft Defender portal lets you manage the retention period and the storage costs associated with your data. You can manage retention and costs when you:
+The Microsoft Defender portal provides a centralized experience for managing Microsoft Sentinel and Microsoft Defender XDR data. The **Data & connectors** experience consolidates connector management, table management, transformations, and ingestion health monitoring into a single view, so you can understand and optimize your security data without navigating between separate pages.
+
+This article introduces the **Data & connectors** experience and explains how to use it to manage data in Microsoft Sentinel and Microsoft Defender XDR. For related tasks, see:
 
 - [Configure data connectors](configure-data-connector) to send data to Microsoft Sentinel or Microsoft Defender XDR.
 - [Manage your existing tables and data](manage-table-tiers-retention).
 
-This article explains how to manage table retention and tier options in the Microsoft Defender portal to optimize security operations and reduce costs in Microsoft Sentinel and Microsoft Defender XDR.
+## Data & connectors in the Microsoft Defender portal (preview)
 
-## Which tables can you manage in the Microsoft Defender portal?
+Important
+
+The **Data & connectors** experience is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for additional legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+
+The **Data & connectors** experience brings connector management, table management, transformations, and ingestion health monitoring together into a single view in the Microsoft Defender portal. Use it to understand and manage your Microsoft Sentinel data without navigating between separate pages.
+
+[![Screenshot of the Data and connectors page showing the Overview, Connectors, and Tables tabs.](media/manage-data-overview/data-and-connectors-tabs.png)](media/manage-data-overview/data-and-connectors-tabs.png#lightbox)
+
+To open the experience, in the Microsoft Defender portal, select **Setup & configuration** &gt; **Data & connectors**. The page includes three tabs:
+
+- Overview tab — Workspace-level ingestion health dashboard.
+- Connectors tab — Centralized inventory of data connectors, including classic Sentinel connectors and unified connectors.
+- Tables tab — Table management, schema exploration, transformations, and retention.
+
+### Prerequisites
+
+To use the **Data & connectors** experience in preview, you need:
+
+- Unified role-based access control (URBAC) enabled in the Microsoft Defender portal.
+- **Data (manage)** permission in the **Data Operations** permission group.
+- Workspace permissions equivalent to **Log Analytics Contributor**, including:
+    - `Microsoft.OperationalInsights/workspaces/write`
+    - `Microsoft.OperationalInsights/workspaces/tables/write`
+
+### Known limitations
+
+The following limitations apply to the preview:
+
+- The **Data Sources** tab on the table details panel appears only for federated tables. Support for other table types is planned.
+- The **Data & connectors** experience is available in the commercial cloud only. Sovereign clouds, including US Government and China, aren't supported.
+
+## Overview tab
+
+The **Overview** tab is a workspace-level dashboard that surfaces ingestion health signals so you can act on issues before they impact detections. Filter by time range and workspace to scope the dashboard.
+
+The Overview tab includes:
+
+- **Ingestion volume** — Daily ingestion split by Analytics tier and Data Lake tier for the selected time range.
+- **Connectors that need attention** — Connectors with credential errors, ingestion failures, or outages, along with the error type, failure count in the last 24 hours, and last successful ingestion.
+- **Table ingestion fluctuations** — Tables with unexpected volume changes compared to the same day the previous week, grouped as spikes and drops. You can adjust the fluctuation thresholds.
+- **Data ingestion volume by table** — Top ingesting tables ranked by daily volume, so you can identify high-volume tables driving ingestion costs.
+- **Ingestion latency by table** — The time between data generation and availability in your environment, so you can identify connector throttling or source-side delays.
+
+[![Screenshot of Overview health insights showing ingestion volume, a connector that needs attention, and table ingestion fluctuations.](media/manage-data-overview/overview-data-health-insights.png)](media/manage-data-overview/overview-data-health-insights.png#lightbox)
+
+[![Screenshot of the Data ingestion volume by table chart showing daily volume trends for the top 10 tables.](media/manage-data-overview/overview-ingestion-volume-by-table.png)](media/manage-data-overview/overview-ingestion-volume-by-table.png#lightbox)
+
+[![Screenshot of the Ingestion latency by table chart showing P95 latency trends for all tables.](media/manage-data-overview/overview-ingestion-latency-by-table.png)](media/manage-data-overview/overview-ingestion-latency-by-table.png#lightbox)
+
+## Connectors tab
+
+The **Connectors** tab brings [unified data connectors](unified-connector) and [Sentinel classic data connectors](connect-data-sources) together in a single inventory. Use it to review connector health, add new connectors, or open a connector's details view.
+
+The Connectors tab includes:
+
+- **Unified connector inventory** — All onboarded connectors, with status, provider, content source, and available updates.
+- **Toggle between unified and classic connectors** — Use the classic connectors selector to switch between the [unified connector](unified-connector) catalog and the [Sentinel classic data connectors](connect-data-sources) inventory, which includes connectors built with the [Codeless Connector Framework (CCF)](isv/create-codeless-connector).
+- **Filter by provider, data type, and status** — Narrow the list to find specific connectors quickly.
+- **Data onboarding assistant** — Guided flow to add new connectors.
+- **Create custom connector** — Start a new custom connector from the Connectors tab.
+
+[![Screenshot of the connector selector with Sentinel under Classic connectors and My connectors under Unified connectors.](media/manage-data-overview/connector-type-selector.png)](media/manage-data-overview/connector-type-selector.png#lightbox)
+
+## Tables tab
+
+Data you collect into Microsoft Sentinel and Microsoft Defender XDR is stored in tables. The **Tables** tab is where you view your tables, review their ingestion health, inspect their schema and transformations, and manage the retention period and storage costs associated with your data.
+
+### Which tables can you manage in the Microsoft Defender portal?
 
 This section describes the table types you can manage in the Microsoft Defender portal.
 
@@ -78,7 +147,7 @@ Note
 
 You can view Basic Logs tables in your Microsoft Sentinel workspace from the Microsoft Defender portal, but you can currently manage them only from your Log Analytics workspace. To manage these tables from the Microsoft Defender portal, change the table plan from Basic Logs to Analytics in your Microsoft Sentinel workspace.
 
-## How data tiers and retention work
+### How data tiers and retention work
 
 You can retain data in Microsoft Sentinel in one of two tiers:
 
@@ -97,20 +166,22 @@ The following diagram illustrates the retention components of the Analytics, Dat
 
 For more information about the Microsoft Sentinel data lake, see [What is Microsoft Sentinel data lake](datalake/sentinel-lake-overview).
 
-## Use Table insights for table-level observability
+### Use Table insights for table-level observability
 
-In the Microsoft Defender portal, Table insights is a built-in monitoring view on the Tables page that helps you understand ingestion health at the table level for the selected Microsoft Sentinel workspace. It gives you quick observability signals so you can identify ingestion and cost patterns before you change tier or retention settings.
+Table insights on the **Tables** tab helps you understand ingestion health at the table level for the selected Microsoft Sentinel workspace. It gives you quick observability signals so you can identify ingestion and cost patterns before you change tier or retention settings.
 
-Table insights includes signals such as:
+Table insights signals appear in two places on the **Tables** tab:
 
-- Ingestion volume by tier
-- Day-over-week ingestion fluctuations
-- Top tables by daily ingestion volume
-- Last data received
-- Estimated daily ingestion cost
-- Volume anomaly
+- **Summary tiles at the top of the page** show workspace-level counts, including the number of tables and how they're distributed across the Analytics tier, Data Lake tier, and XDR default tier.
+- **Columns in the tables grid**show per-table health signals for each table, including:
+    - Last data received
+    - Average daily ingestion volume
+    - Estimated daily ingestion cost
+    - Volume anomaly (day-over-week ingestion fluctuation)
 
-Use these signals to detect connector failures, investigate cost spikes, validate new connector onboarding, and identify candidates for right-sizing retention and tier.
+Use the grid columns to sort, filter, and compare tables side by side. Combine these signals to detect connector failures, investigate cost spikes, validate new connector onboarding, and identify candidates for right-sizing retention and tier.
+
+[![Screenshot of the Tables grid showing filters and table insights columns for tier, last data received, average daily ingestion, estimated daily cost, volume anomaly, and retention.](media/manage-data-overview/table-insights-grid.png)](media/manage-data-overview/table-insights-grid.png#lightbox)
 
 Important
 
@@ -118,7 +189,19 @@ Table insights is a visualization surface for investigation. It isn't a billing-
 
 For setup, access, and interpretation guidance, see [Configure table settings in Microsoft Sentinel](manage-table-tiers-retention#use-table-insights-to-monitor-table-health).
 
-## Compare the analytics and data lake tiers
+### Table details panel
+
+Select a table on the **Tables** tab to open the table details panel. The panel consolidates schema, transformations, and retention information for the selected table. It includes the following tabs:
+
+| Tab | What it shows |
+| --- | --- |
+| **Overview** | Table type, tier, analytics retention, total retention, and other table metadata. |
+| **Schema** | Column names, data types, and column descriptions for the selected table. Use this tab to inspect schema without running KQL queries. |
+| **Transformations** | Filter, Split, and Scope Tag transformation rules that apply to the table. You can view, create, edit, and delete transformation rules from this tab. |
+| **Retention** | Analytics retention and total retention settings for the table. |
+| **Data Sources** | Connector information for the table. This tab appears only for federated table types. |
+
+### Compare the analytics and data lake tiers
 
 This table compares the Analytics and Data Lake tiers and their key characteristics:
 
@@ -137,7 +220,7 @@ This table compares the Analytics and Data Lake tiers and their key characterist
 | [Data export](/en-us/azure/azure-monitor/logs/logs-data-export) | ✅ | ❌ |
 | Retention period | 90 days for Microsoft Sentinel, 30 days for Microsoft Defender XDR. Can be extended to up to two years at a prorated monthly long-term retention charge. | Same as analytics retention, by default. Can be extended to up to 12 years. |
 
-## What happens when you modify table settings
+### What happens when you modify table settings
 
 You can switch a table's tier and retention settings at any time.
 
@@ -155,7 +238,7 @@ When you change the analytics retention settings of a table with existing data, 
 - You change analytics retention to 90 days without changing total retention, which remains 180 days.
 - Microsoft Sentinel automatically removes the last 90 days of data from analytics retention, but continues to store data that's 90-180 days old in the Data Lake tier.
 
-## Manage XDR data in Microsoft Sentinel
+### Manage XDR data in Microsoft Sentinel
 
 By default, Microsoft Defender XDR retains threat hunting data in the **XDR default tier** for 30 days. This data isn't ingested into the Analytics or Data Lake tiers by default. If you extend the retention period of supported XDR tables beyond 30 days and up to 90 days, Sentinel ingestion costs apply, but there are no additional storage costs. The tables are created in your Microsoft Sentinel workspace in the Analytics tier and mirrored to the Data Lake tier.
 
@@ -173,7 +256,7 @@ To stop ingesting data into the Analytics tier, reset analytics retention and to
 
 For more information about managing your tables and data, see [Manage your existing tables and data](manage-table-tiers-retention).
 
-### XDR data retention and costs
+#### XDR data retention and costs
 
 The following tables summarize the free retention periods and cost implications for the different tiers in Microsoft Sentinel:
 

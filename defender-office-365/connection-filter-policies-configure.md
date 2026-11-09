@@ -80,7 +80,7 @@ Before you begin, review the following requirements and setup information.
 - To connect to Exchange Online PowerShell, see [Connect to Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell).
 - You need to be assigned permissions before you can do the procedures in this article. You have the following options:
 
-    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell): **Authorization and settings/Security settings/Core Security settings (manage)** or **Authorization and settings/Security settings/Core Security settings (read)**.
+    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (Applies when both the **Defender for Office 365** and **Exchange Online permissions** toggles under **Email & collaboration** are ![](media/scc-toggle-on.png)**Active**. Applies only to the Microsoft Defender portal, not PowerShell, the [Microsoft Purview portal](https://purview.microsoft.com), the [Exchange admin center](https://admin.exchange.microsoft.com), or other experiences outside the Defender portal): **Authorization and settings/Security settings/Core Security settings (manage)** or **Authorization and settings/Security settings/Core Security settings (read)**.
     - [Exchange Online permissions](/en-us/exchange/permissions-exo/permissions-exo):
 
         - *Modify policies*: Membership in the **Organization Management** or **Security Administrator** role groups.

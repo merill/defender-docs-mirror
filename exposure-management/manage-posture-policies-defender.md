@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Manage posture policies - Microsoft Security Exposure Management | Microsoft Learn
+title: Manage posture policies (preview) - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/manage-posture-policies-defender
 author: DebLanger
 ms.author: dlanger
@@ -14,7 +14,7 @@ uhfHeaderId: MSDocsHeader-Security
 description: Learn how to manage posture policies in the Microsoft Defender portal, including policy types, permissions, policy effects, transition guidance, and limitations.
 ms.topic: how-to
 ms.date: 2026-10-28T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1030
+ms.custom: msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: e47b0a6e-d15a-6101-0669-ed72a6b30aa8
@@ -40,7 +40,7 @@ spProducts:
 platformId: fd196915-2f67-2734-add0-b3f3ff26da5b
 ---
 
-# Manage posture policies - Microsoft Security Exposure Management | Microsoft Learn
+# Manage posture policies (preview) - Microsoft Security Exposure Management | Microsoft Learn
 
 Posture policies define which security posture recommendations are evaluated and the scope in which they apply. Organizations can configure policies across different environments to align recommendation evaluation with their business, compliance, and operational requirements.
 
@@ -62,8 +62,6 @@ Policies created in Defender apply only to environments managed in Defender. You
 
 - From the recommendations experience, review the **Managed in** property and confirm that the value is **Defender**.
 - From cloud environment management, open the cloud **Environment management** page and confirm that the applicable environment is managed in Defender.
-
-[![Screenshot showing Defender portal in the Plans managed in column for an environment.](media/manage-posture-policies-defender/environment-management-defender.png)](media/manage-posture-policies-defender/environment-management-defender.png#lightbox)
 
 If an environment is managed in Azure, you can connect the environment to Defender and continue managing posture policies through Defender or continue managing the applicable configuration in Azure.
 

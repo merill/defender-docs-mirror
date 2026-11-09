@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Permissions in Microsoft Defender unified role-based access control (RBAC) - Microsoft Defender XDR | Microsoft Learn
+title: Microsoft Defender Unified RBAC Permissions | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/custom-permissions-details
 breadcrumb_path: /defender-xdr/breadcrumb/toc.json
 permissioned-type: public
@@ -8,17 +8,17 @@ feedback_system: Standard
 feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
-description: Learn about the custom permissions available in Microsoft Defender Security role-based access control (RBAC)
+description: Learn about Microsoft Defender unified RBAC permissions to configure roles for security operations, automation, and incident response.
 ms.service: defender-xdr
-ms.author: mberdugo
-author: mberdugo
+ms.author: guyshmeltzer
+author: guyshmeltzer
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
 - tier3
-ms.custom: 
+ms.custom: msecd-doc-authoring-1032
 ms.topic: concept-article
-ms.date: 2026-10-20T00:00:00.0000000Z
+ms.date: 2026-11-01T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.reviewer: 
 locale: en-us
@@ -37,17 +37,17 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/custom-permissions-details.md
 cmProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 6ff0415e-f9d4-591f-4ed6-880ed939b8d6
 ---
 
-# Permissions in Microsoft Defender unified role-based access control (RBAC) - Microsoft Defender XDR | Microsoft Learn
+# Microsoft Defender Unified RBAC Permissions | Microsoft Learn
 
 Use Microsoft Defender unified role-based access control (RBAC) to manage permissions for users and groups in your organization. Unified RBAC supports selecting permissions from each permission group to customize a role.
 
@@ -69,6 +69,17 @@ Permissions for managing day-to-day operations and responding to incidents and a
 | File collection | Manage | Collect or download relevant files for analysis, including executable files. |
 | Email & collaboration quarantine | Manage | View and release email from quarantine. |
 | Email & collaboration advanced actions | Manage | Move or Delete email to the junk email folder, deleted items or inbox, including soft and hard delete of email. |
+| Automation rules | Read | View automation rules and their configuration. |
+| Automation rules | Manage | Create, edit, enable, disable, and delete automation rules. |
+| Playbooks | Read | View playbooks and their configuration. |
+| Playbooks | Manage | Create, edit, and delete playbooks. Also authorizes testing and manually running playbooks in the supported automation experiences. |
+| Integrations | Read | View automation integrations and their connections. |
+| Integrations | Manage | Create, edit, and delete automation integrations. |
+| Execute query actions | Manage | Execute read-only actions that retrieve information without changing state, such as retrieving a user, listing devices, searching alerts, or checking status. |
+| Execute soft actions | Manage | Execute actions that change operational or workflow state without directly changing security, access, or enforcement state, such as sending a notification, adding a comment, or updating a case. Includes query actions. |
+| Execute hard actions | Manage | Execute actions that change security posture, identity, access, credentials, sessions, containment, or enforcement, or whose downstream impact can't be reliably bounded. Examples include disabling a user, isolating a device, resetting a password, and running a playbook. Includes the **Execute soft actions** and **Execute query actions** permissions. |
+| Approve soft actions | Manage | Approve requests for soft actions. Also authorizes approving query actions when approval is required. |
+| Approve hard actions | Manage | Approve requests for hard, soft, and query actions when approval is required. Includes the **Approve soft actions** permission. |
 
 ## Security operations – Raw data (Email & collaboration)
 

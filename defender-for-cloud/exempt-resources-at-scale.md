@@ -17,7 +17,7 @@ ms.service: defender-for-cloud
 description: Create exemptions at scale in Microsoft Defender for Cloud to exclude resources or recommendations from unhealthy status and secure score impact across subscriptions or management groups.
 ms.topic: how-to
 ms.date: 2026-07-03T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1013
+ms.custom: msecd-doc-authoring-1032
 zone_pivot_groups: defender-portal-experience
 ai-usage: ai-assisted
 locale: en-us
@@ -94,6 +94,10 @@ To view or manage existing exemptions, return to the **Exemptions** page in the 
 ::: zone-end
 
 ::: zone pivot="defender-portal"
+
+Important
+
+This feature is currently in Public Preview in the Microsoft Defender portal. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Microsoft Defender shows affected assets through security recommendations. Sometimes, an asset doesn't need remediation, or a recommendation isn't relevant for a particular scope.
 

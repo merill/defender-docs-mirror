@@ -16,7 +16,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Create exemption rules to remove resources or recommendations from secure score impact in Microsoft Defender for Cloud.
 ms.topic: how-to
-ms.custom: ignite-2023, msecd-doc-authoring-1030
+ms.custom: ignite-2023, msecd-doc-authoring-1032
 ms.date: 2026-10-28T00:00:00.0000000Z
 zone_pivot_groups: defender-portal-experience
 ai-usage: ai-assisted
@@ -187,7 +187,13 @@ If the recommendation still shows resources as unhealthy after 24 hours, see [Re
 
 ::: zone pivot="defender-portal"
 
+Important
+
+This feature is currently in Public Preview in the Microsoft Defender portal. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Exemptions help security teams focus on the risks that require action while maintaining a governed record of findings that don't require remediation. Use an exemption when a finding has been reviewed and determined to be a false positive, covered by another control, temporarily deferred, or accepted as risk. Each exemption records its scope, matching conditions, justification, and review period, helping your organization reduce operational noise without losing visibility or accountability.
+
+[![Screenshot showing the Exemptions tab on the Policies page in the Microsoft Defender portal.](media/exempt-resource/manage-exemptions.png)](media/exempt-resource/manage-exemptions.png#lightbox)
 
 ## Why use exemptions?
 
@@ -245,6 +251,8 @@ If a finding affects assets managed in Azure, you have two options:
 
 To delegate exemption management, go to **System** &gt; **Permissions** &gt; **Microsoft Defender XDR** &gt; **Roles** in the Microsoft Defender portal and create or update a role with the required permission and scope.
 
+[![Screenshot showing Security posture permissions for exemption management in Microsoft Defender unified RBAC.](media/exempt-resource/exemption-permissions.png)](media/exempt-resource/exemption-permissions.png#lightbox)
+
 ## Create an exemption
 
 Go to **Exposure Management** &gt; **Policies** &gt; **Exemption**, and then select **Create Exemption**. The creation process includes four decisions:
@@ -258,9 +266,13 @@ Go to **Exposure Management** &gt; **Policies** &gt; **Exemption**, and then sel
 
 After the exemption is submitted, Microsoft Defender processes the exemption and updates matching findings. Changes to finding status, exposure calculations, and related posture metrics might not be reflected immediately.
 
+[![Screenshot showing the Name and scope step when creating an exemption in the Microsoft Defender portal.](media/exempt-resource/create-exemption-name-scope.png)](media/exempt-resource/create-exemption-name-scope.png#lightbox)
+
 ## Create an exemption from a recommendation
 
 You can also create an exemption directly from a recommendation. When launched from a recommendation, Defender automatically prepopulates the exemption conditions based on the selected recommendation to reduce configuration effort and ensure the exemption targets the intended finding:
+
+[![Screenshot of the Create exemption and Manage in Azure portal actions for a security recommendation.](media/exempt-resource/create-exemption-from-recommendation.png)](media/exempt-resource/create-exemption-from-recommendation.png#lightbox)
 
 ### What is prepopulated?
 

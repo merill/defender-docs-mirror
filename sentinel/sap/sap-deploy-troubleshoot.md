@@ -53,13 +53,30 @@ platformId: 68904cdb-308c-2c44-fdec-c62872ad562b
 
 # Troubleshoot the Microsoft Sentinel solution for SAP applications agentless data connector | Microsoft Learn
 
-This article includes troubleshooting steps to help you ensure accurate and timely data ingestion and monitoring for your SAP environment with Microsoft Sentinel.
+Trace problems from Microsoft Sentinel through SAP Cloud Integration and SAP Cloud Connector to the SAP system. Start with the affected SAP system ID (SID), the UTC time range, and the SAP Cloud Integration message processing log.
 
-When working with the agentless data connector, most troubleshooting is done directly in the SAP Integration Suite, where the message log displays errors indicating the nature of the issue encountered.
+## Choose a troubleshooting path
 
-Start by examining the message processing logs. For more information, see the [SAP documentation](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/monitor-message-processing-monitor). The error messages there can help you diagnose issues with missing permissions, connectivity errors, and other misconfigurations.
+| Symptom | First check |
+| --- | --- |
+| You can't deploy Azure resources or connect an SAP system | Check deployment permissions or follow the [connection procedure](deploy-data-connector-agentless#connect-your-agentless-data-connector). |
+| The connector is connected, but SAP calls fail or return no logs | Find the failed SID and exact error in the [SAP Cloud Integration message processing log](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/monitor-message-processing-monitor), then see SAP release and audit log corrections. |
+| Onboarding or log reads are slow or time out | Run the [Prerequisite checker](preparing-sap#run-the-prerequisite-checker) and identify which downstream call is slow; see timeouts and filesystem-backed audit logs. |
+| Logs are missing for a time range or arrive late | Compare the failed UTC collection window with the source records; check time zone settings and retries. |
+| User or role data is incomplete | Check the configured full-ingestion cycle and user master data guidance. |
 
-If you don't see a related error to your issue, turn on trace logging for more in-depth troubleshooting. For more information, see the [SAP documentation](https://help.sap.com/docs/cloud-integration/sap-cloud-integration/setting-log-levels).
+When you contact your SAP BASIS or SAP Cloud Integration administrator, include the SID, UTC time range, message processing log error and timestamp, SAP\_BASIS release and support package, and (for audit-log issues) the configured recording target. Don't include credentials or client secrets.
+
+To confirm agentless audit-log ingestion, check the SAP Cloud Integration message processing log for a successful Data Collector run, then query the `ABAPAuditLog` table:
+
+```kusto
+ABAPAuditLog
+| where TimeGenerated > ago(1h)
+| summarize Records = count() by SourceSystem, bin(TimeGenerated, 5m)
+| order by TimeGenerated desc
+```
+
+For delayed records, change the query's time filter to the affected collection interval. Check that interval rather than only checking the newest records.
 
 ## Check for prerequisites
 
@@ -97,9 +114,11 @@ It is a good practice to run the function module `RSAU_API_GET_LOG_DATA` manuall
 
 Undeploy the scheduled **Prerequisite checker** iflow once SAP system check was completed successfully. Repeat this sequence for every new SAP system that shall be onboarded.
 
-## Missing functionality in legacy SAP systems
+## SAP release and audit log corrections
 
-Some legacy SAP systems may be missing required functionality for the **RFC\_READ\_TABLE** function module. Make sure that your SAP admin has reviewed SAP notes 3390051 and 382318, and has patched the system accordingly.
+SAP\_BASIS 7.50 is the minimum supported release. SAP's OData API for Security Audit Log integration with SIEM is available only for S/4HANA Cloud Public Edition, and SAP hasn't indicated that it will be downported to Private Edition. Therefore, RFC-enabled extraction remains mandatory for systems outside Public Edition, despite SAP Notes that advise against RFC-based integration. The remote audit log API is available in this release, but the required functionality might depend on the installed support package and corrections. If SAP Cloud Integration logs show an **RFC\_READ\_TABLE** error, ask your SAP BASIS administrator to check [SAP Note 2246160](https://me.sap.com/notes/2246160) for release-specific enhancements.
+
+For slow or incomplete reads of file-based audit logs, see [SAP Note 3407647](https://me.sap.com/notes/3407647), which describes file-selection performance and related runtime errors. If the audit log is configured for both filesystem and database recording, [SAP Note 3726943](https://me.sap.com/notes/3726943) documents an API option to select filesystem data only. SAP Notes have release-specific validity and prerequisites. Ask SAP to confirm whether the correction chain applies to your system before changing its configuration.
 
 For more information, see [Configure SAP Cloud Connector settings](preparing-sap#configure-sap-cloud-connector-settings).
 
@@ -114,6 +133,8 @@ If you don't have the **Entra ID Application Developer** role or higher, you nee
 If you see an error in the security audit log that you're missing the last address routed (an IP address), follow the guidance in the SAP note 3566290.
 
 ## Incomplete SAP user master data
+
+Long-running SAP ERP systems can have large volumes of user master data. To maintain stability, the agentless data connector spreads full user master data ingestion, including users and roles, over seven days by default. During this cycle, incomplete data doesn't necessarily indicate a collection failure. Allow the configured cycle to complete before assessing whether the full dataset is present. The `ingestion-cycle-days` parameter controls this duration and doesn't affect ingestion of changes to user master data. For configuration details, see [Customize data connector behavior](deploy-data-connector-agentless#customize-data-connector-behavior-optional).
 
 If you see an error that you have incomplete SAP user master data or no data in the **ABAPAuthorizationDetails** Microsoft Sentinel table, do the following:
 
@@ -132,6 +153,12 @@ If you see sudden spikes in message volumes and processing times on SAP Cloud In
 2. Use the [filter capabilities](deploy-data-connector-agentless#customize-data-connector-behavior-optional) of the Sentinel package on SAP Cloud Integration to apply filtering on log read. The parameter max-rows are pre-populated to protect the integration flow from message flooding by design.
 
 Note that log filters on NetWeaver impact what is written to the audit log on the source while a filter on SAP Cloud Integration only chooses not to read the problematic entries.
+
+## Missing SAP logs due to SAP time zone settings
+
+Microsoft Sentinel requests audit log time slices in UTC. The agentless data connector uses the SAP `/OSP/SYSTEM_TIMEZONE` function module to retrieve SAP time zone details and determine the offset for audit log collection. If expected logs are missing, first ask your SAP administrator to identify the Security Audit Log recording target and verify the SAP system and RFC user time zones. For file-based logs, also confirm how the source timestamps are recorded; don't assume that the host operating system time is the timestamp basis.
+
+If your checks indicate an offset mismatch, you can test `force-utc` to use a zero offset instead of the offset retrieved from SAP. Compare the returned source interval and ingested event timestamps before and after the change; the override doesn't change SAP time zone settings. The `offset-in-seconds` parameter is a separate look-back buffer: with its default of 60 seconds, a request for 10:01 to 10:02 UTC selects the source interval from 10:00 to 10:01 UTC. Changing `force-utc` doesn't disable this shift. For configuration details, see [Customize data connector behavior](deploy-data-connector-agentless#customize-data-connector-behavior-optional).
 
 ## Intermittent failures in the SAP logging pipeline
 
@@ -221,18 +248,11 @@ To recover, first apply the remediation in the timeouts section to break the ret
 
 If Microsoft Sentinel integration requests time out during connector onboarding or ongoing log reads, review how your SAP Security Audit Log is recorded and retrieved, especially when recording is configured as **Filesystem and database**.
 
-Selecting audit logs from SAP HANA database often provides the best performance. Other databases and filesystem-backed selection might require tuning.
+Use the prerequisite checker to determine whether the delay is in SAP audit-log retrieval before changing settings. Reading filesystem-backed logs can be slow when the directory contains many files, when files don't use the classic naming pattern, or when files are on NFS storage. SAP Note 3407647 describes these conditions and the `ID_FILE_SEL_SIMPLE` option for systems that use the classic file pattern.
 
-To remediate:
+If filesystem-only retrieval is appropriate for your recording configuration, the `force-sal-filesystem` connector setting requests filesystem selection using `ID_FILESYSTEM_SEL_ONLY` and `ID_FILE_SEL_SIMPLE`. The SAP corrections that provide these parameters are described in Notes 3726943 and 3407647; simplified file selection is intended for the classic file naming pattern. Confirm the corrections and configuration with SAP for your release before enabling the setting, then compare the runtime and returned records for the same collection window.
 
-1. Confirm with your SAP administrator whether Security Audit Log recording targets include filesystem storage.
-2. Implement following SAP notes by using **SNOTE** or by importing the referenced support package (applies to **SAP\_BASIS 750+**):
-    - **3726943 - RSAU\_API\_GET\_LOG\_DATA | Dataselection only from Filesystem details**
-    - **3407647 - RSAU\_READ\_LOG | Optimization of reading audit log files**
-3. After implementing the correction, use filesystem-only selection with required parameters `ID_FILESYSTEM_SEL_ONLY` and `ID_FILE_SEL_SIMPLE` for faster retrieval. For behavior details and explanation, see SAP note **3500090**.
-4. Re-run connector validation.
-
-Applying these SAP notes often improves retrieval performance significantly. If delays continue, they're typically related to SAP-side factors such as log shipping between application servers and network latency.
+If delays continue, check SAP short dumps and the SAP Cloud Integration message processing log. SAP also recommends keeping each application server's audit files in its own directory and avoiding NFS locations; have your SAP administrator verify the configuration with SAP.
 
 ## SAP Cloud Connector sizing, throughput, and isolation guidance
 

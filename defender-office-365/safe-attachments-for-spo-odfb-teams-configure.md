@@ -69,7 +69,7 @@ Before you begin, make sure you have the following access, permissions, and setu
 - To connect to Exchange Online PowerShell, see [Connect to Exchange Online PowerShell](/en-us/powershell/exchange/connect-to-exchange-online-powershell).
 - You need to be assigned permissions before you can do the procedures in this article. You have the following options:
 
-    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (If **Email & collaboration** &gt; **Defender for Office 365** permissions is ![](media/scc-toggle-on.png)**Active**. Affects the Defender portal only, not PowerShell):
+    - [Microsoft Defender XDR Unified role based access control (RBAC)](/en-us/defender-xdr/manage-rbac) (Applies when both the **Defender for Office 365** and **Exchange Online permissions** toggles under **Email & collaboration** are ![](media/scc-toggle-on.png)**Active**. Applies only to the Microsoft Defender portal, not PowerShell, the [Microsoft Purview portal](https://purview.microsoft.com), the [Exchange admin center](https://admin.exchange.microsoft.com), or other experiences outside the Defender portal):
 
         - *Turn on Safe Attachments for SharePoint, OneDrive, and Microsoft Teams*: **Authorization and settings/Security settings/Core Security settings (manage)**.
     - [Email & collaboration permissions in the Microsoft Defender portal](mdo-portal-permissions):

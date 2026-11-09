@@ -17,7 +17,7 @@ ms.service: defender-for-cloud
 description: Learn how to improve your cloud security posture in Microsoft Defender for Cloud with security policies, standards, and recommendations.
 ms.topic: concept-article
 ms.date: 2026-10-28T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1030
+ms.custom: msecd-doc-authoring-1032
 zone_pivot_groups: defender-portal-experience
 ai-usage: ai-assisted
 locale: en-us
@@ -99,6 +99,10 @@ Defender for Cloud continuously assesses resources. If it finds any that don’t
 
 ::: zone pivot="defender-portal"
 
+Important
+
+This feature is currently in Public Preview in the Microsoft Defender portal. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Posture policies define which security posture recommendations are evaluated and the scope in which they apply. Organizations can configure policies across different environments to align recommendation evaluation with their business, compliance, and operational requirements.
 
 ## Why use posture policies?
@@ -138,6 +142,8 @@ Posture policies are available only for environments that have an eligible Micro
 
 To delegate policy management, go to **System** &gt; **Permissions** &gt; **Microsoft Defender XDR** &gt; **Roles** in the Microsoft Defender portal and create or update a role with the required permission and scope.
 
+[![Screenshot showing Core security settings permissions for posture policy management in Microsoft Defender unified RBAC.](media/security-policy-concept/posture-policy-permissions.png)](media/security-policy-concept/posture-policy-permissions.png#lightbox)
+
 ## Understand policy types
 
 The Defender portal includes a Microsoft-managed baseline policy and supports custom recommendation policies.
@@ -152,6 +158,8 @@ The Defender portal includes a Microsoft-managed baseline policy and supports cu
 The MDC Baseline Policy is a Microsoft-managed policy that provides a recommended set of security posture rules based on Microsoft's security research, threat intelligence, and best practices. It is designed to help organizations strengthen their security posture by identifying and reducing common attack paths, misconfigurations, and exploitable exposures.
 
 Unlike compliance-focused frameworks that are primarily designed to satisfy regulatory requirements, the MDC Baseline Policy focuses on improving security outcomes and reducing risk. It delivers immediate posture value with minimal configuration and serves as the recommended starting point for most organizations.
+
+[![Screenshot showing the MDC security baseline policy details in the Microsoft Defender portal.](media/security-policy-concept/security-baseline-policy.png)](media/security-policy-concept/security-baseline-policy.png#lightbox)
 
 Key characteristics of the MDC Baseline Policy:
 
@@ -171,6 +179,8 @@ To help organizations realize security value immediately, the MDC Baseline Polic
 
 Go to **Exposure Management** &gt; **Policies**, and then select **Create policy**.
 
+[![Screenshot of the cloud scope options when creating a posture policy in the Microsoft Defender portal.](media/security-policy-concept/create-posture-policy-details-scope.png)](media/security-policy-concept/create-posture-policy-details-scope.png#lightbox)
+
 The creation process includes three main decisions:
 
 | Creation section | What you define | Key guidance |
@@ -178,6 +188,8 @@ The creation process includes three main decisions:
 | Details and scope | The policy name, description, and Defender-managed environments to which the policy applies. | Select only environments that should follow the same security requirements. Only Global Administrators and Security Administrators can create policies that apply to all connected environments. |
 | Predefined rules and categories | Rules are individual security checks that generate recommendations. You can directly configure supported rule parameters, enable or disable individual rules, and tailor the policy to your organization's requirements. | Use predefined rules to select the security checks that are relevant to your organization's business, security, and compliance requirements. Configure supported rule parameters to align recommendations with internal policies, operational needs, and risk tolerance levels, while reducing unnecessary noise and focusing on the findings that matter most to your environment. |
 | Additional categories | Categories provide an additional set of Microsoft-defined recommendations grouped around a common security outcome. Unlike predefined rules, categories can't be customized or configured. Organizations can only choose whether to include or exclude a category from the policy. Category selections are additive and don't affect the predefined rule selections. | Microsoft recommends using both predefined rules and categories. Predefined rules provide granular control and customization, while categories provide broader coverage. Categories complement predefined rules rather than replace them. |
+
+[![Screenshot of the regulatory compliance framework filter during posture policy rule selection.](media/security-policy-concept/create-posture-policy-rules.png)](media/security-policy-concept/create-posture-policy-rules.png#lightbox)
 
 After the policy is created, Microsoft Defender runs applicable security assessments. New or updated recommendations are generated when assets in the selected scope don't meet the policy requirements. Policy processing and recommendation updates aren't immediate.
 
@@ -200,6 +212,8 @@ For more information, see [Assign regulatory compliance standards](/en-us/azure/
 
 Use Rule Management when you need to understand how a specific recommendation is configured and applied across your organization. This view simplifies administration by providing a single place to track rule assignments, understand policy relationships, and manage rule configurations without navigating through multiple policies.
 
+[![Screenshot showing the Rules management page for posture policies in the Microsoft Defender portal.](media/security-policy-concept/posture-policy-rules-management.png)](media/security-policy-concept/posture-policy-rules-management.png#lightbox)
+
 ## Understand the effect of a policy
 
 Posture policies determine which security checks are evaluated for selected assets. When an asset doesn't meet the requirements defined by an enabled policy, Microsoft Defender generates a recommendation to help address the identified security gap.
@@ -211,6 +225,8 @@ If multiple policies apply to the same asset, a recommendation is generated when
 Organizations can continue to manage posture policies and security standards from both the Azure portal and the Microsoft Defender portal during the transition to **Managed in Defender**.
 
 Recommendations are evaluated across all applicable policy sources and surfaced consistently in both portals. This provides a single recommendation queue and prevents duplicate recommendations from being generated when the same security requirement is configured in multiple places.
+
+[![Screenshot showing Azure security policies with an option to go to Microsoft Defender for additional policies.](media/security-policy-concept/azure-security-policies-go-to-defender.png)](media/security-policy-concept/azure-security-policies-go-to-defender.png#lightbox)
 
 ### Policy ownership
 

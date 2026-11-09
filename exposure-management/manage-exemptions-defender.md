@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Manage exemptions - Microsoft Security Exposure Management | Microsoft Learn
+title: Manage exemptions (preview) - Microsoft Security Exposure Management | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/security-exposure-management/manage-exemptions-defender
 author: DebLanger
 ms.author: dlanger
@@ -14,7 +14,7 @@ uhfHeaderId: MSDocsHeader-Security
 description: Learn how to create and manage recommendation exemptions in the Microsoft Defender portal, including scope, permissions, lifecycle management, transition guidance, and limitations.
 ms.topic: how-to
 ms.date: 2026-10-28T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1030
+ms.custom: msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: 246364c6-4046-4ca7-fdfc-4c25f534aa79
@@ -40,7 +40,7 @@ spProducts:
 platformId: 6c6acca0-4487-4dfc-74b9-c22fb67d2fe4
 ---
 
-# Manage exemptions - Microsoft Security Exposure Management | Microsoft Learn
+# Manage exemptions (preview) - Microsoft Security Exposure Management | Microsoft Learn
 
 Exemptions help security teams focus on the risks that require action while maintaining a governed record of findings that don't require remediation. Use an exemption when a finding has been reviewed and determined to be a false positive, covered by another control, temporarily deferred, or accepted as risk. Each exemption records its scope, matching conditions, justification, and review period, helping your organization reduce operational noise without losing visibility or accountability.
 
@@ -92,8 +92,6 @@ Exemptions created in Defender apply only to assets that belong to environments 
 
 - From the recommendations experience, review the **Managed in** property and confirm that the value is **Defender**.
 - From cloud environment management, open the cloud **Environment management** page and confirm that the applicable environment is managed in Defender.
-
-[![Screenshot showing Defender portal in the Plans managed in column for an environment.](media/manage-exemptions-defender/environment-management-defender.png)](media/manage-exemptions-defender/environment-management-defender.png#lightbox)
 
 If a finding affects assets managed in Azure, you have two options:
 

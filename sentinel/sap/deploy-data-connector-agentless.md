@@ -23,7 +23,7 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: Connect your SAP system to Microsoft Sentinel by configuring the agentless SAP data connector.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: how-to
 ms.date: 2026-08-04T00:00:00.0000000Z
@@ -45,9 +45,11 @@ item_type: Content
 source_path: sentinel/sap/deploy-data-connector-agentless.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 44f7375b-69bf-e10b-5352-d7cd3aa1944b
 ---
@@ -186,11 +188,11 @@ The following parameters control overall data collection behavior for the agentl
 | **collect-audit-logs** | Determines whether Audit Log data is ingested or not to the table `ABAPAuditLog`. | **true**: Ingested**false**: Not ingested | **true** |
 | **collect-changedocs-logs** | Determines whether Change Docs logs are ingested or not into the table `ABAPChangeDocsLog`. | **true**: Ingested**false**: Not ingested | **true** |
 | **force-audit-log-to-read-from-all-clients** | Determines whether the Audit Log is read from all clients. | **true**: Read from all clients**false**: Not read from all clients | **false** |
-| **ingestion-cycle-days** | Time, in days, given to ingest the full User Master data, including all roles and users. This parameter doesn't affect the ingestion of changes to User Master data. | Integer, between **1**-**14** | **7** |
+| **ingestion-cycle-days** | Number of days over which full user master data ingestion, including all roles and users, is spread. Long-running SAP ERP systems can have large volumes of this data, so the default seven-day cycle helps maintain stability by distributing the collection load. Shortening the cycle increases collection load. This parameter doesn't affect ingestion of changes to user master data. See [Incomplete SAP user master data](sap-deploy-troubleshoot#incomplete-sap-user-master-data). | Integer, between **1**-**14** | **7** |
 | **collect-user-master-data-users** | Determines whether User Details data is ingested or not to the tables `ABAPUserDetails`. | **true**: Ingested, **false**: Not ingested | **true** |
 | **collect-user-master-data-roles** | Determines whether Role Authorization data is ingested or not to the tables `ABAPAuthorizationDetails`. | **true**: Ingested, **false**: Not ingested | **true** |
 | **excluded-audit-users** | SAP users excluded from audit log selection. Often used to balance chatty batch jobs user log volumes vs. threat protection value. | Comma separated list of user names |  |
-| **offset-in-seconds** | Determines the offset, in seconds, for both the start and end times of a data collection window. Use this parameter to delay data collection by the configured number of seconds. | Integer, between **1**-**600** | **60** |
+| **offset-in-seconds** | Provides a look-back buffer so SAP has time to finish writing recent events before the connector reads them. The parameter shifts the start and end times of the requested collection window earlier by the configured number of seconds. With the default of 60 seconds, a request for 10:01 to 10:02 UTC selects logs from 10:00 to 10:01 UTC. When you inspect time slices in SAP Cloud Integration, compare the request time with the source log interval. For troubleshooting guidance, see [Missing SAP logs due to SAP time zone settings](sap-deploy-troubleshoot#missing-sap-logs-due-to-sap-time-zone-settings). | Integer, between **1**-**600** | **60** |
 
 #### Audit Log parameters
 
@@ -200,6 +202,7 @@ The following parameters control Audit Log collection behavior.
 | --- | --- | --- | --- |
 | **force-audit-log-to-read-from-all-clients** | Determines whether the Audit Log is read from all clients. | **true**: Read from all clients, **false**: Not read from all clients | **false** |
 | **force-sal-filesystem** | Enables Security Audit Log filesystem-only optimization. When set to **true**, the connector uses both `ID_FILESYSTEM_SEL_ONLY` and `ID_FILE_SEL_SIMPLE` for retrieval. | **true**: Enabled, **false**: Disabled | **false** |
+| **force-utc** | Overrides the time zone offset retrieved from SAP for audit log collection. Set this parameter to **true** to use a zero offset (UTC) when troubleshooting missing audit logs. It doesn't change SAP time zone settings or disable the `offset-in-seconds` shift. See [Missing SAP logs due to SAP time zone settings](sap-deploy-troubleshoot#missing-sap-logs-due-to-sap-time-zone-settings). | **true**: Use a zero time zone offset (UTC).**false**: Use the time zone offset retrieved from SAP. | **false** |
 | **max-rows** | Acts as a safeguard that limits the number of Audit Log records processed in a single data collection window. This parameter no longer applies to Change Docs collection. | Integer, between **1**-**1000000** | **150000** |
 
 #### Change Docs parameters

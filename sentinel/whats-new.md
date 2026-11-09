@@ -110,11 +110,11 @@ You can use Microsoft Fabric [metadata mirroring](/en-us/fabric/mirroring/overvi
 
 ### Use Microsoft Fabric for custom security analytics
 
-Microsoft Fabric enables custom analytics across data lake tables and external data tables. You can use [KQL](/en-us/fabric/real-time-intelligence/kusto-query-set?tabs=kql-database), [notebooks](/en-us/fabric/data-engineering/how-to-use-notebook), [scheduled jobs](/en-us/fabric/data-factory/kql-activity), and [custom graphs](/en-us/fabric/graph/quickstart) within Microsoft Fabric to analyze and enrich data at scale and then store results in Microsoft Fabric or publish selected findings back to Microsoft Sentinel via [DCR](/en-us/azure/azure-monitor/data-collection/data-collection-rule-overview) for hunting, detections, and investigations. For more on the DCR and using the log ingestion API to send data to Azure monitor logs, reference [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API (Azure portal) - Azure Monitor](/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal).
+Microsoft Fabric enables custom analytics on data lake tables and external data tables. You can use [KQL](/en-us/fabric/real-time-intelligence/kusto-query-set?tabs=kql-database), [notebooks](/en-us/fabric/data-engineering/how-to-use-notebook), and [custom graphs](/en-us/fabric/graph/quickstart) within Microsoft Fabric to analyze and enrich data at scale and then store results in Microsoft Fabric or publish selected findings back to Microsoft Sentinel via [DCR](/en-us/azure/azure-monitor/data-collection/data-collection-rule-overview) for hunting, detections, and investigations. For more on the DCR and using the log ingestion API to send data to Azure monitor logs, reference [Tutorial: Send data to Azure Monitor Logs with Logs ingestion API (Azure portal) - Azure Monitor](/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal).
 
-#### Run interactive KQL queries and jobs
+#### Run interactive KQL queries
 
-Using Microsoft Fabric, you can run interactive KQL lake queries across Microsoft Sentinel tables and federated data from external sources. You can also create pipelines in Microsoft Fabric that execute [Lookup](/en-us/fabric/data-factory/lookup-activity) or [KQL activities](/en-us/fabric/data-factory/kql-activity), enabling KQL queries to run on a scheduled basis. These [pipelines](/en-us/fabric/data-factory/pipeline-overview) can support recurring enrichment, analysis, and other automated workflows.
+Using Microsoft Fabric, you can run interactive KQL lake queries on Microsoft Sentinel tables and federated data from external sources.
 
 #### Run notebooks
 

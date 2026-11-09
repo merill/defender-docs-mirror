@@ -148,7 +148,7 @@ The **SAPConnectorHealth** function reflects the status of the agent's and the u
 
 ## SAPConnectorOverview
 
-The **SAPConnectorOverview** function shows row counts of each SAP table per System ID. It returns a list of data records per system ID, and their time generated.
+The **SAPConnectorOverview** function shows row counts for legacy containerized-agent tables per System ID. It doesn't include the tables collected by the agentless data connector. To verify agentless ingestion, query the relevant agentless table directly; for example, use `ABAPAuditLog` for Security Audit Log data.
 
 **Parameters:**
 

@@ -45,9 +45,11 @@ source_path: sentinel/monitor-data-connector-health.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 602cc80d-539b-b1f8-c766-a90d14495d99
 ---
 
@@ -57,11 +59,38 @@ To ensure complete and uninterrupted data ingestion in your Microsoft Sentinel s
 
 The following features allow you to perform this monitoring from within Microsoft Sentinel:
 
+- **Data & connectors Overview tab (preview)**: In the Microsoft Defender portal, review connector counts, ingestion volume and growth, connector errors, table ingestion fluctuations, and ingestion latency in one workspace-level view.
 - **Data collection health monitoring workbook**: This workbook provides additional monitors, detects anomalies, and gives insight regarding the workspace’s data ingestion status. You can use the workbook’s logic to monitor the general health of the ingested data, and to build custom views and rule-based alerts.
 - ***SentinelHealth* data table**: Querying this table provides insights on health drifts, such as latest failure events per connector, or connectors with changes from success to failure states, which you can use to create alerts and other automated actions. The *SentinelHealth* data table is currently supported only for selected data connectors, such as Amazon Web Services, Dynamics 365, Office 365, and others listed in the Supported data connectors section later in this article.
 - [**View the health and status of your connected SAP systems**](monitor-sap-system-health): Review health information for your SAP systems under the SAP data connector, and use an alert rule template to get information about the health of the SAP agent's data collection.
 
-This article explains how to use the data collection health monitoring workbook and the *SentinelHealth* data table to monitor data connector health, run diagnostic queries, and configure automated alerts for health drifts.
+This article explains how to use the Data & connectors Overview tab in the Defender portal, the data collection health monitoring workbook and the *SentinelHealth* data table to monitor data connector health, run diagnostic queries, and configure automated alerts for health drifts.
+
+## Monitor connector health and ingestion in the Defender portal (preview)
+
+Use the **Overview** tab on the **Data & connectors** page to review ingestion trends and identify connectors and tables that need attention. This experience is available in public preview in commercial cloud environments. Microsoft Sentinel must be onboarded to the Microsoft Defender portal, with unified role-based access control enabled. To view connector errors, [enable Microsoft Sentinel health monitoring](enable-monitoring) for the workspace and ensure that connector health events are being collected in the SentinelHealth table.
+
+1. In the Microsoft Defender portal, select **Setup & configuration** &gt; **Data & connectors**.
+2. Select the **Overview** tab.
+3. Select a time range and review the following information:
+
+    | **Information** | **What to review** |
+    | --- | --- |
+    | Connector counts | Total installed connectors, connected connectors, and connectors with errors. |
+    | Total ingestion volume | Combined ingestion volume across the Analytics and Data Lake tiers for the selected time range. |
+    | Month-over-month volume growth | Percentage change in combined Analytics and Data Lake ingestion volume over the last 30 days compared with the preceding 30 days. This comparison is independent of the selected time range. |
+    | Ingestion volume and growth by tier | Ingestion volumes for the Analytics and Data Lake tiers, and their growth percentages for the selected time range. |
+    | Ingestion volume trend | Daily ingestion volume with an average reference to help you compare daily volumes. |
+    | Connectors that need attention | Connector errors reported in the SentinelHealth table, including error type, failure count, and last successful ingestion. |
+    | Table ingestion fluctuations | Tables with unexpected ingestion-volume spikes or drops, with comfigurable thresholds. |
+    | Data ingestion volume by table | Per-day volume trends of top ingesting tables, ranked by daily volume. |
+    | Ingestion latency by table | Per-day trend of latency or time between data generation and availability for use. |
+4. Review **Connectors that need attention** to identify reported connector failures. Use the **Connectors** tab to find the affected connector and review its configuration and health.
+5. Review table ingestion fluctuations, volume, and latency to identify tables that need further investigation. Use the **Tables** tab to review table details.
+
+    [![Screenshot that shows monitor connector health, ingestion volumes, and trends in one view.](media/monitor-data-connector-health/data-connector-overview-1.png)](media/monitor-data-connector-health/data-connector-overview-1.png#lightbox)
+
+    [![Screenshot that shows investigate table-level ingestion volumes and latency to identify potential issues.](media/monitor-data-connector-health/data-connector-overview-2.png)](media/monitor-data-connector-health/data-connector-overview-2.png#lightbox)
 
 ## Use the health monitoring workbook
 

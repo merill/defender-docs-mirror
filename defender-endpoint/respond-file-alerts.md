@@ -38,12 +38,12 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/respond-file-alerts.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: 7874b5f6-7ddf-3bf8-b29e-e23a288dc87f
 ---
@@ -201,7 +201,9 @@ Starting February 16, 2025, new Microsoft Defender for Endpoint customers will o
 
 ### Download quarantined files
 
-Files that were quarantined by Microsoft Defender Antivirus or your security team are saved in a compliant way according to your [sample submission configurations](cloud-protection-configure). Your security team can download the files directly from the file's detail page via the "Download file" button. **The Download file feature is turned on by default**.
+Files that were quarantined by Microsoft Defender Antivirus or your security team can be backed up in a compliant way according to your [sample submission configurations](cloud-protection-configure). Your security team can download a backed-up file directly from the file's detail page via the **Download file** button. **The Download file feature is turned on by default**.
+
+The portal download uses the cloud-backed copy created when the file is quarantined. It doesn't retrieve the file from the device's local quarantine when you select **Download file**.
 
 The location depends on your organization's geo settings (either EU, UK, or US). A quarantined file is collected only once per organization. Learn more about Microsoft's data protection from the Service Trust Portal at https://aka.ms/STP.
 
@@ -212,6 +214,10 @@ Having the **Download quarantined files** setting turned on can help security te
 Users might be prompted to provide explicit consent before backing up the quarantined file, depending on your [sample submission configuration](cloud-protection-microsoft-antivirus-sample-submission#sample-submission-settings).
 
 The **Download quarantined files** feature doesn't work if sample submission is turned off. If automatic sample submission is set to request permission from the user, only samples that the user agrees to send are collected.
+
+Note
+
+The maximum file size eligible for the standard cloud backup of a quarantined file is 100 MiB (104,857,600 bytes). Files larger than this size can still be quarantined on the device, but they aren't backed up to cloud storage and can't be downloaded from the Microsoft Defender portal.
 
 Important
 
@@ -227,6 +233,8 @@ Download quarantined file requirements:
 ### Collect files
 
 If a file isn't already stored by Microsoft Defender for Endpoint, you can't download it. Instead, you see a **Collect file** button in the same location.
+
+**Collect file** retrieves the file from its current path on the device; it doesn't retrieve a copy from Microsoft Defender Antivirus quarantine. If quarantine removed the original file, collection from the original path can fail.
 
 The **Collect file** button can have the following states:
 

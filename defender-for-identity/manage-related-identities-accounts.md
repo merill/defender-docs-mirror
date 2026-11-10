@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Manage related identities and accounts in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+title: Manage related identities and accounts in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/manage-related-identities-accounts
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,12 +12,12 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn how to correlate accounts manually or with account correlation rules in Microsoft Defender for Identity, and unlink accounts that are no longer needed.
-ms.date: 2026-07-23T00:00:00.0000000Z
+description: Learn how to correlate identity accounts manually or with account correlation rules in Microsoft Defender, and unlink accounts that are no longer needed.
+ms.date: 2026-11-09T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: Almog Omrad
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1017
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: c68d99d9-12a5-b0e0-1794-1cab42436b80
 document_version_independent_id: c68d99d9-12a5-b0e0-1794-1cab42436b80
@@ -34,13 +34,17 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/manage-related-identities-accounts.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
+- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: 02fde170-2c3b-517e-daef-f9e6bb8ae784
 ---
 
-# Manage related identities and accounts in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+# Manage related identities and accounts in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
 In enterprise environments, identities are often fragmented. A single user might have multiple accounts across systems, including personal, privileged, legacy, cloud-based, or orphaned accounts. These accounts can cover on-premises Active Directory, Microsoft Entra ID, or non-Microsoft identity providers such as Okta and Ping.
 
@@ -71,7 +75,7 @@ For example:
     - `glaureano@contosolegacy.local`
 - **Accounts in multiple services**: A user might have a Microsoft Entra ID account, an Okta account, and a Ping account. Manually linking these accounts to the user's identity creates a consolidated view that supports identity-centric protection and investigation.
 
-Use the procedures in this article to manually link accounts to identities and to manually unlink unused, legacy, or orphaned accounts from identities in Defender for Identity.
+Use the procedures in this article to manually link accounts to identities and to manually unlink unused, legacy, or orphaned accounts from identities in Defender.
 
 Note
 
@@ -94,9 +98,9 @@ Before you begin, ensure that you meet the following requirement:
 
 - You must have [Unified role-based access control (URBAC)](/en-us/defender-for-identity/role-groups) roles: Global Administrator or Security Data (Manage).
 
-## Manually link accounts to an identity in Defender for Identity
+## Manually link accounts to an identity in Defender
 
-Use the following steps to manually link accounts to an identity in Defender for Identity.
+Use the following steps to manually link accounts to an identity in Defender.
 
 1. In the Microsoft Defender portal at https://security.microsoft.com, go to **Assets** &gt; **Identities**. Or, to go directly to the **Identity Inventory** page, use https://security.microsoft.com/identity-inventory.
 
@@ -130,7 +134,7 @@ Use the following steps to manually link accounts to an identity in Defender for
 
     After the account is successfully linked, select **Done**
 
-## Manually unlink legacy, orphaned, or unused accounts from an identity in Defender for Identity
+## Manually unlink legacy, orphaned, or unused accounts from an identity in Defender
 
 Use the following steps to manually unlink legacy, orphaned, or unused accounts from an identity.
 
@@ -139,7 +143,7 @@ Use the following steps to manually unlink legacy, orphaned, or unused accounts 
 3. On the **Accounts** tab, select the account you want to unlink from the identity by selecting the check box next to the **Display name** column, and then select ![](media/unlink-accounts.png)**Unlink**.
 4. In the **Unlink accounts from ...** confirmation dialog that opens, read the information, and then select **Unlink accounts**.
 
-## What to expect after linking or unlinking an account in Defender for Identity
+## What to expect after linking or unlinking an identity account in Defender
 
 After you link or unlink an account, the following changes occur:
 

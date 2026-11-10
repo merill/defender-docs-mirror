@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Account correlation rules in Microsoft Defender for Identity (Preview) - Microsoft Defender for Identity | Microsoft Learn
+title: Identity accounts correlation rules in Microsoft Defender (Preview) - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/custom-account-correlation-rules
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,10 +12,10 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn how to add, edit, and remove account correlation rules in Microsoft Defender for Identity for accounts that don't share strong identifiers.
+description: Learn how to add, edit, and remove identity account correlation rules in Microsoft Defender for identity accounts that don't share strong identifiers.
 ms.topic: how-to
-ms.custom: msecd-doc-authoring-1017
-ms.date: 2026-07-23T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1032
+ms.date: 2026-11-09T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0c0e045d-74a1-5762-01b7-33ee11a219e0
@@ -34,18 +34,18 @@ item_type: Content
 source_path: defender-for-identity/custom-account-correlation-rules.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 7171e3e5-64e8-976c-8cbd-bfb3e5a48f0e
 ---
 
-# Account correlation rules in Microsoft Defender for Identity (Preview) - Microsoft Defender for Identity | Microsoft Learn
+# Identity accounts correlation rules in Microsoft Defender (Preview) - Microsoft Defender for Identity | Microsoft Learn
 
-Custom account correlation rules are a Microsoft Defender for Identity setting for accounts that don't share strong identifiers. These identifiers include account ID, SID, object ID, or UPN. The rules are especially useful for privileged accounts with unique naming conventions. By defining custom rules, you get full visibility and better protection for all accounts.
+Use custom identity account correlation rules in Microsoft Defender to correlate identity accounts that don't share strong identifiers. These identifiers include account ID, SID, object ID, or UPN. The rules are especially useful for privileged accounts with unique naming conventions. By defining custom rules, you get full visibility and better protection for all identity accounts.
 
 [![Screenshot of the Account Correlation Rules settings page with rule management actions and configured rules.](media/account-correlation-rules-settings.png)](media/account-correlation-rules-settings.png#lightbox)
 

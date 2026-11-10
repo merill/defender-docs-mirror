@@ -15,10 +15,11 @@ ms.suite: ems
 description: View and manage all identities across your organization from the Identity inventory page in Microsoft Defender. Investigate identity types, domains, and attributes.
 ms.topic: article
 ms.custom:
-- msecd-doc-authoring-106
+- msecd-doc-authoring-1032
 - sfi-ga-nochange
 - sfi-image-nochange
-ms.date: 2026-06-22T00:00:00.0000000Z
+ms.date: 2026-11-09T00:00:00.0000000Z
+ai-usage: ai-assisted
 ms.reviewer: maelgami
 locale: en-us
 document_id: b70d63e9-d4f9-ef18-98b7-276e39e78bc3
@@ -110,7 +111,7 @@ The top section of the Identity inventory page gives you quick insights into you
 Select a tab to view details and available actions for each identity type.
 
 # [Human identities](#tab/human-identities)
-The **Human identities** tab consolidates all user identities from Active Directory and Microsoft Entra ID in one place, making it easier to view and manage user accounts. To investigate details about a specific user, see [Investigate users in Microsoft Defender XDR](/en-us/defender-xdr/investigate-users).
+The **Human identities** tab consolidates all user identities from Active Directory and Microsoft Entra ID in one place, making it easier to view and manage user accounts. To investigate details about a specific user, see [Investigate users in Microsoft Defender](/en-us/defender-xdr/investigate-users).
 
 ### Human identity statistics
 

@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-xdr/security-for-ai/get-started-defender-security-for-ai.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c389ea6b-b6a0-46df-93a1-1e21f25e19e7
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/302444b9-4a43-4841-8014-3d9e4251ff15
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c389ea6b-b6a0-46df-93a1-1e21f25e19e7
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ada1b6-705b-4ed7-aad0-bffd1bd03dfa
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/bebd8809-dac1-4c22-83e2-66d98af8a94d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ada1b6-705b-4ed7-aad0-bffd1bd03dfa
 platformId: 24cbe069-0c09-da8f-26ec-c530caa9c339
 ---
 
@@ -69,8 +69,6 @@ To configure the data sources that Microsoft Defender uses to surface, investiga
     When you onboard to Agent 365, security for AI agents is enabled automatically, including AI agent discovery, security posture assessment, and threat detection. The **Enable** toggle is on by default. To stop collecting data for AI agents, switch it to **Off**.
 
     A setup checklist shows the status of required and optional data sources. **Agent 365** provides unified visibility into AI agents and is marked as **Done** automatically.
-
-    [![Screenshot of the Security for AI setup checklist showing Agent 365 marked Done, the Microsoft 365 connector marked Connected, Copilot Studio marked Not connected, and a list of identified Power Platform admins.](media/get-started-defender-security-for-ai/security-for-ai-setup-checklist.png)](media/get-started-defender-security-for-ai/security-for-ai-setup-checklist.png#lightbox)
 3. Enable the Microsoft 365 connector to get [investigation and advanced hunting capabilities](ai-agent-detection-protection) for AI agent activity:
 
     1. In the **Get started** page, select the **Microsoft 365 connector** step.
@@ -82,31 +80,8 @@ To configure the data sources that Microsoft Defender uses to surface, investiga
         **Microsoft Entra Users and groups** is a prerequisite for all monitoring capabilities and is selected by default.
     3. Select **Connect Microsoft 365** to complete the connector setup.
 
-        [![Screenshot of the Select Microsoft 365 components step with Microsoft Entra ID Management events, Sign-in events, Apps, and Microsoft 365 activities selected.](media/get-started-defender-security-for-ai/microsoft-365-connector-components.png)](media/get-started-defender-security-for-ai/microsoft-365-connector-components.png#lightbox)
-
     When the connector is active, its status shows as **Connected**.
 
     Note
 
-    For Copilot Studio agents, if the Microsoft 365 connector isn't connected, real-time protection continues to block suspicious activity during runtime, but alerts and incidents related to these actions don't appear in the Microsoft Defender portal.
-4. Connect Copilot Studio to enable real-time protection for Copilot Studio agents:
-
-    1. In the **Get started** page, select the **Copilot Studio** step. The **Copilot Studio real-time protection** pane opens.
-    2. Toggle **Real-time protection** to on.
-
-        This integration allows Microsoft Defender to scan agent tool invocations in real time, detect security risks (suspicious behavior or cross-prompt injection attacks), and block malicious actions. If suspicious behavior is detected, the response is blocked and an alert is triggered in the Microsoft Defender alerts and incidents queues.
-
-        [![Screenshot of the Copilot Studio real-time protection pane in the Microsoft Defender portal with the Real-time protection toggle on.](media/get-started-defender-security-for-ai/copilot-studio-real-time-protection.png)](media/get-started-defender-security-for-ai/copilot-studio-real-time-protection.png#lightbox)
-    3. Under **Enable Power Platform Integration**, copy the URL provided and share it with your Power Platform administrator.
-    4. Work with your Power Platform administrator to complete the onboarding steps in Power Platform. For detailed instructions, see [Enable external threat detection and protection for Copilot Studio custom agents](/en-us/microsoft-copilot-studio/external-security-provider#step-2-configure-the-threat-detection-system).
-
-        Make sure that the Power Platform administrator uses the same App ID as the App ID used in the [Microsoft Entra ID application](/en-us/microsoft-copilot-studio/external-security-provider#step-1-configure-microsoft-entra-application).
-    5. Get the App ID from the Power Platform administrator, paste it into the **App ID** field in the Defender portal, then select **Save**.
-
-    Note
-
-    If you recently changed the App ID in Power Platform, it can take up to one minute for the update to propagate. If you encounter a validation error when saving the updated value, wait a short time and try again.
-
-    When the Power Platform administrator completes the onboarding steps, the Copilot Studio step shows a **Connected** status in the **Get started** page.
-
-    The **Get started** page also shows a list of **Identified Power Platform Admins** who have permission to complete the setup in Power Platform.
+    For Copilot Studio agents, if the Microsoft 365 connector isn't connected, alerts and incidents related to these actions don't appear in the Microsoft Defender portal.

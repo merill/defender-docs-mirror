@@ -15,9 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Compare Microsoft Defender for Cloud features and capabilities between the Azure portal and Defender portal experiences to understand the enhanced functionality available in each platform.
 ms.topic: article
-ms.date: 2026-10-23T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1030
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: e69c729e-c7f4-30e1-a1f9-c785b703a4e8
 document_version_independent_id: 5a0aa775-6160-6b25-b1b1-7f8c6a258142
@@ -75,7 +75,9 @@ This article provides a comprehensive comparison of Microsoft Defender for Cloud
 | **Data exporting** | Yes | No - Data export capabilities remain in the Azure portal |
 | **Workflow automation** | Yes | No |
 | **Tools for remediation (quick fixes)** | Yes | No |
-| **Microsoft Cloud Security Benchmark** | Yes | Partial - Security recommendations appear but security policies management is only in Azure. You can see the results in the Defender portal. |
+| **Microsoft Cloud Security Benchmark** | Yes | Yes (Preview) - The MDC security baseline is Microsoft's new default baseline. You can manage it for Azure environments in the Defender portal. |
+| **Security policies** | Yes | Yes (Preview) - Manage security policies for Azure environments in the Defender portal. |
+| **Exemptions** | Yes | Yes (Preview) - Manage exemptions for Azure environments in the Defender portal. |
 | **AI security posture management** | Yes | Yes |
 | **Agentless VM vulnerability scanning** | Yes | Yes |
 | **Agentless VM secrets scanning** | Yes | Yes |
@@ -87,7 +89,7 @@ This article provides a comprehensive comparison of Microsoft Defender for Cloud
 | **PR annotations** | Yes | No |
 | **Internet exposure analysis** | Yes | Yes |
 | **External attack surface management** | Yes | Yes |
-| **Regulatory compliance assessments** | Yes | Partial - Security recommendations appears but security policies management only in Azure |
+| **Regulatory compliance assessments** | Yes | Yes (Preview) - Available for Azure environments. |
 | **ServiceNow Integration** | Yes | No |
 | **Critical assets protection** | Yes | Yes |
 | **Governance to drive remediation at scale** | Yes | No |

@@ -13,13 +13,13 @@ ms.service: microsoft-defender
 ms.subservice: unified-security-operations
 author: guywi-ms
 ms.author: guywild
-ms.date: 2026-07-15T00:00:00.0000000Z
+ms.date: 2026-10-22T00:00:00.0000000Z
 ms.collection:
 - M365-security-compliance
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 9800f63b-cde3-4d02-37fb-badeeae72858
@@ -174,6 +174,8 @@ You can change the order of custom statuses within their lifecycle category.
 4. Select **Save**.
 
 ### Delete a custom status
+
+You can't delete a custom status that's currently assigned to any cases. Before you delete the status, update all cases that use it to a different status.
 
 1. On the **Custom statuses** page, find the custom status you want to delete.
 2. Select **More options** (...).

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Data tables in the Microsoft Defender XDR advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
+title: Data tables in the Microsoft Defender advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/advanced-hunting-schema-tables
 breadcrumb_path: /defender-xdr/breadcrumb/toc.json
 permissioned-type: public
@@ -20,9 +20,9 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
-- msecd-doc-authoring-1018
+- msecd-doc-authoring-1032
 ms.topic: reference
-ms.date: 2026-10-28T00:00:00.0000000Z
+ms.date: 2026-11-09T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 5ea94a55-ae13-98b1-1ded-bee037019f7a
@@ -40,17 +40,17 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/advanced-hunting-schema-tables.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 platformId: dc25ecc3-7937-c18f-2325-c792835e763b
 ---
 
-# Data tables in the Microsoft Defender XDR advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
+# Data tables in the Microsoft Defender advanced hunting schema - Microsoft Defender XDR | Microsoft Learn
 
 Important
 
@@ -77,7 +77,7 @@ To quickly access the schema reference, select the **View reference** action nex
 
 ## Learn the schema tables
 
-The following reference lists all the tables in the schema. Each table name links to a page describing the column names for that table. Table and column names are also listed in Microsoft Defender XDR as part of the schema representation on the advanced hunting screen.
+The following reference lists all the tables in the schema. Each table name links to a page describing the column names for that table. Table and column names are also listed in Microsoft Defender as part of the schema representation on the advanced hunting screen.
 
 | Table name | Description |
 | --- | --- |

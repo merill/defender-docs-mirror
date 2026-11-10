@@ -20,8 +20,10 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
+- msecd-doc-authoring-1032
 ms.topic: reference
-ms.date: 2025-03-28T00:00:00.0000000Z
+ms.date: 2026-11-09T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 61865333-ef75-fd38-6af3-bf08a4a51596
 document_version_independent_id: 61865333-ef75-fd38-6af3-bf08a4a51596
@@ -38,13 +40,13 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/advanced-hunting-identitylogonevents-table.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 4eaee42b-d2f5-b979-41ff-66c8c912c877
 ---
 
@@ -54,7 +56,7 @@ The `IdentityLogonEvents` table in the [advanced hunting](advanced-hunting-overv
 
 Tip
 
-For detailed information about the events types (`ActionType` values) supported by a table, use the built-in schema reference available in Microsoft Defender XDR.
+For detailed information about the events types (`ActionType` values) supported by a table, use the built-in schema reference available in Microsoft Defender.
 
 Note
 

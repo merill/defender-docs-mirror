@@ -20,8 +20,10 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
+- msecd-doc-authoring-1032
 ms.topic: reference
-ms.date: 2025-03-28T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: e2607768-6905-4420-a583-016b83f17b52
 document_version_independent_id: e2607768-6905-4420-a583-016b83f17b52
@@ -38,13 +40,13 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/advanced-hunting-identityqueryevents-table.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 8cde8a49-2c4e-390a-695d-8bebdf3e135e
 ---
 
@@ -54,9 +56,9 @@ The `IdentityQueryEvents` table in the [advanced hunting](advanced-hunting-overv
 
 Tip
 
-For detailed information about the events types (`ActionType` values) supported by a table, use the built-in schema reference available in Microsoft Defender XDR.
+For detailed information about the events types (`ActionType` values) supported by a table, use the built-in schema reference available in Microsoft Defender.
 
-This advanced hunting table is populated by records from Microsoft Defender for Identity or Microsoft Sentinel and Mirosoft Entra ID. If your organization hasn’t deployed the service in Microsoft Defender XDR, queries that use the table aren’t going to work or return any results. For more information about how to deploy Defender for Identity in Defender XDR, read [Deploy supported services](deploy-supported-services). For information on other tables in the advanced hunting schema, [see the advanced hunting reference](advanced-hunting-schema-tables).
+This advanced hunting table is populated by records from Microsoft Defender for Identity or Microsoft Sentinel and Microsoft Entra ID. If your organization hasn’t deployed the service in Microsoft Defender, queries that use the table aren’t going to work or return any results. For more information about how to deploy Defender for Identity in the Defender portal, read [Deploy supported services](deploy-supported-services). For information on other tables in the advanced hunting schema, [see the advanced hunting reference](advanced-hunting-schema-tables).
 
 | Column name | Data type | Description |
 | --- | --- | --- |

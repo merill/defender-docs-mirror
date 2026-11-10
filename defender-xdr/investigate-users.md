@@ -12,10 +12,10 @@ description: Learn how to use the Identity page in Microsoft Defender. Investiga
 ms.author: abbyweisberg
 author: AbbyMSFT
 ms.reviewer: maelgami
-ms.date: 2026-08-02T00:00:00.0000000Z
+ms.date: 2026-11-09T00:00:00.0000000Z
 ms.topic: article
 ms.service: microsoft-defender
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1018
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: 4b1e7a38-ef24-4400-897e-75a2a076f4d1
@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-xdr/investigate-users.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 4336783c-e0f3-cd37-4d0c-a66de5146f58
 ---
 
@@ -70,7 +70,7 @@ The Identity page is organized into a top section and a set of tabs. The top sec
 
 From the **Overview** page, use the **Actions** menu to trigger remediation actions on the identity. Actions apply to the accounts associated with the identity and depend on which connectors are enabled, spanning on-premises Active Directory, Microsoft Entra ID, identity and access management (IAM) systems, and SaaS apps. Available actions can include disabling or enabling accounts, revoking sessions, forcing a password change, and marking the user as compromised. You can also view the identity's account settings.
 
-For the full list of remediation actions and the identity providers and connected apps that support them, see [Remediation actions in Microsoft Defender for Identity](/en-us/defender-for-identity/remediation-actions#supported-actions).
+For the full list of remediation actions and the identity providers and connected apps that support them, see [Identity remediation actions in Microsoft Defender](/en-us/defender-for-identity/remediation-actions#supported-actions).
 
 [![Screenshot of the identity page with the identity actions menu showing.](media/investigate-users/identity-actions.png)](media/investigate-users/identity-actions.png#lightbox)
 
@@ -146,11 +146,11 @@ The **Risk score** tab summarizes the identity's risk level by combining alert a
 | **Risk Trend** | A line chart that shows how the risk score changed over a configurable time period (for example, 30 days). Select **Go to timeline** to view the full activity timeline. |
 | **Likelihood of Compromise Details** | A bar chart that shows alert distribution across MITRE ATT&CK categories, with a filterable alert table. Use the **Active alerts only** toggle to focus on unresolved alerts. Filter by account set, status, or kill chain stage. |
 
-The **Confirm safe** action now includes **Reset risk** for both the identity risk score and the Microsoft Entra risk level. For more information, see [Remediation actions in Microsoft Defender for Identity](/en-us/defender-for-identity/remediation-actions#supported-actions).
+The **Confirm safe** action now includes **Reset risk** for both the identity risk score and the Microsoft Entra risk level. For more information, see [Identity remediation actions in Microsoft Defender](/en-us/defender-for-identity/remediation-actions#supported-actions).
 
 Note
 
-Identity risk in Microsoft Defender for Identity uses automated decay logic to allow SOC prioritization. If no new risk factors are detected, the identity risk score decreases over time. Microsoft Entra ID maintains its own risk level independently and doesn't apply decay. As a result, you might see an Entra risk level with no corresponding identity risk score when the Entra risk update time is older than 30 days.
+Identity risk in Microsoft Defender uses automated decay logic to allow SOC prioritization. If no new risk factors are detected, the identity risk score decreases over time. Microsoft Entra ID maintains its own risk level independently and doesn't apply decay. As a result, you might see an Entra risk level with no corresponding identity risk score when the Entra risk update time is older than 30 days.
 
 ## Timeline tab
 

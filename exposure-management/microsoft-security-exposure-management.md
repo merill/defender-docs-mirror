@@ -13,8 +13,9 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-Security
 description: Learn how Microsoft Security Exposure Management enhances and extends security posture management.
 ms.topic: overview
-ms.date: 2025-07-30T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: b794f70f-a6d4-c17b-39e5-59d0e3e2a193
 document_version_independent_id: b794f70f-a6d4-c17b-39e5-59d0e3e2a193
@@ -87,3 +88,8 @@ With Security Exposure Management you can:
     - Consolidate security data from multiple sources including third-party tools (ServiceNow CMDB, Tenable, Qualys, Rapid7) into a single, unified view within the Exposure Management platform.
     - Gain deeper insights into your security posture by integrating data from various environments and external sources.
     - Simplify the management of security data across different platforms and solutions through unified exposure management connectors.
+- **Tailor posture evaluation to your organization**: Adapt Microsoft's default security evaluation to your organization's business, compliance and risk requirements, using scalable policy and exemption management.
+
+    - Use [posture policies](manage-posture-policies-defender) to define which security recommendations are evaluated and where they apply. Start with the Microsoft-managed MDC Baseline Policy, or create custom policies to apply stricter requirements to sensitive environments and reduce noise in lower-risk ones.
+    - Use [exemptions](manage-exemptions-defender) to exclude findings that don't require remediation, such as false positives, risks covered by another control or accepted risks. Each exemption keeps a record of its scope, justification and review period for governance and audit.
+    - Policies and exemptions are currently available for cloud resources in environments managed in Defender.

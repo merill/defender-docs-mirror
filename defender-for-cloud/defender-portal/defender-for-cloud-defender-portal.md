@@ -15,8 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Comprehensive overview of Microsoft Defender for Cloud in the Defender portal, including navigation hub, dashboard features, and unified security management capabilities.
 ms.topic: overview
-ms.date: 2026-07-28T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 97ec41ae-46fa-6726-04f0-7e8e3ae26734
 document_version_independent_id: de601629-1ec7-3a96-d9de-3bb1fd2fe3c1
@@ -72,25 +73,28 @@ Continue to use the Azure portal to onboard and configure AWS, GCP, and unsuppor
 
 Cloud security data and signals can be accessed through several experiences. Some are exclusive to the cloud, while others are incorporated into broader Defender experiences like XDR and Exposure Management.
 
-#### Cloud security
+### Cloud security
 
 - [Cloud Overview dashboard](../cloud-infrastructure-dashboard?pivots=defender-portal)
 - [Cloud inventory](../asset-inventory?pivots=defender-portal)
 
-#### Posture Management
+### Posture Management
 
 - [Cloud Secure Score](../secure-score-access-and-track?pivots=defender-portal)
 - [Recommendations](../review-security-recommendations?pivots=defender-portal)
 - [Attack paths](../how-to-manage-attack-path?pivots=defender-portal)
 - [Cloud vulnerabilities](/en-us/security-exposure-management/vulnerability-management-integration)
+- [Security policies](../security-policy-concept?pivots=defender-portal)
+- [Regulatory compliance](../concept-regulatory-compliance-standards?pivots=defender-portal)
+- [Exemptions](../exempt-resource?pivots=defender-portal)
 
-#### Threat Detection & Response
+### Threat Detection & Response
 
 - [Incidents and alerts](../concept-integration-365)
 - [Response actions](../continuous-export)
 - [Advanced hunting](../concept-integration-365#advanced-hunting-in-xdr)
 
-#### Configuration
+### Configuration
 
 - [Cloud scopes and Unified RBAC](../cloud-scopes-unified-rbac?pivots=defender-portal)
 - [Connect Azure environments](connect-azure-environments-defender-portal)
@@ -103,7 +107,7 @@ Cloud security data and signals can be accessed through several experiences. Som
 
 **[Cloud asset inventory](../asset-inventory?pivots=defender-portal)**: A complete inventory offers a comprehensive view of cloud and code assets across Azure, AWS, and GCP. Assets are categorized by workload, criticality, and coverage, with integrated health data, asset actions, and risk signals. Information security and SOC teams can easily access resource-specific views, exposure map, and metadata to address security recommendations and respond quickly to threats.
 
-**[Unified cloud security posture capabilities](/en-us/security-exposure-management/microsoft-security-exposure-management)**: All the cloud security posture management (CSPM) capabilities unified into Microsoft Security Exposure Management (MSEM). Security personas can view secure scores, prioritized recommendations, attack paths and vulnerabilities, all in a single pane of glass, empowering them to reduce risk and get a holistic view of all their posture end-to-end including devices, identities, SaaS apps and data. For more information, see [What's new in Microsoft Security Exposure Management](/en-us/security-exposure-management/whats-new).
+**[Unified cloud security posture capabilities](/en-us/security-exposure-management/microsoft-security-exposure-management)**: All the cloud security posture management (CSPM) capabilities are unified into Microsoft Security Exposure Management (MSEM). Security personas can view secure scores, prioritized recommendations, attack paths and vulnerabilities, all in a single pane of glass, empowering them to reduce risk and get a holistic view of all their posture end-to-end including devices, identities, SaaS apps and data. Adapt the default evaluation to your organization's business, compliance and risk requirements, using scalable policy and exemption management. For more information, see [What's new in Microsoft Security Exposure Management](/en-us/security-exposure-management/whats-new).
 
 **[Granular access management](../cloud-scopes-unified-rbac?pivots=defender-portal)**: Security teams can now provide targeted access to security content, so only relevant users see necessary information. This allows users to view security insights without direct resource permissions, enhancing operational security and compliance. Using a new cloud scopes capability, cloud accounts like Azure subscriptions, AWS accounts, and GCP projects can be organized into logical groups for improved data pivoting and RBAC, supporting segmentation by business unit, region, or workload with persistent filtering across dashboards and workflows.
 

@@ -78,8 +78,6 @@ The MAI Cyber (Preview) scan configuration now uses MAI-Cyber-1.1-Flash instead 
 
 If your Foundry already uses MAI-Cyber-1-Flash, it’s automatically upgraded in Foundry to MAI-Cyber-1.1-Flash.
 
-MAI Cyber (Preview) is now the recommended scan configuration for MDASH.
-
 ## September 2026
 
 ### Improved onboarding experience for MDASH

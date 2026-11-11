@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Configure Windows event auditing for Defender for Identity sensors. Learn automatic, manual, and PowerShell methods to enable required audit policies.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom:
 - msecd-doc-authoring-1015
@@ -89,7 +89,7 @@ When enabled, the v3.x sensor automatically:
     - **Directory services advanced auditing**: Configures the required Windows advanced audit policies on the local system.
     - **NTLM auditing**: Configures the required NTLM auditing settings.
     - **Domain object auditing**: Adds audit entries to the domain root object's System Access Control List (SACL) to enable required directory service auditing.
-    - **Configuration container auditing**: Modifies the SACL on the Configuration partition to capture changes to directory service configuration objects.
+    - **Configuration container auditing**: For environments that currently have or previously had Microsoft Exchange, configures the Configuration partition's SACL to capture directory service configuration changes.
     - **AD FS auditing**: Automatically configures the following settings:
         - **Object-level auditing on the AD FS configuration container**: Adds audit entries to the object's System Access Control List (SACL) of the AD FS configuration container, to enable auditing of AD FS-related directory objects.
         - **Group Policy for event auditing**: Configures the **Audit Application Generated** advanced audit policy (Success and Failure) on the local system.

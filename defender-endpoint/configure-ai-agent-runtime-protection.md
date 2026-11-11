@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to configure Microsoft Defender for Endpoint AI agent runtime protection to detect, audit, and block prompt injection on Windows devices.
-author: lwainstein
-ms.author: lwainstein
+author: j0shbregman
+ms.author: joshbregman
 ms.service: defender-endpoint
 ms.topic: how-to
 ms.date: 2026-09-25T00:00:00.0000000Z
@@ -205,6 +205,10 @@ After the policy applies, verify the setting on a device:
 Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the [AI agent runtime protection demonstration](defender-endpoint-demonstration-ai-agent-runtime-protection) to confirm that Defender detects a benign prompt injection test string.
 
 ## Review and investigate detections
+
+Important
+
+During preview, a prompt injection alert might incorrectly report a block when runtime protection is configured in Audit mode. In Block mode, Claude Code might continue processing a tool response despite a reported post-tool-response block. See [Known issues (Preview)](ai-agent-runtime-protection-overview#known-issues-preview) for details.
 
 After you enable runtime protection, review alerts to validate detection accuracy and tune your configuration before broadening enforcement. This step is critical during the audit phase because it helps you understand what agents are encountering and whether detections represent real threats.
 

@@ -13,7 +13,7 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: Set up role-based administrator access in Defender for Cloud Apps and understand how Microsoft Entra ID and Microsoft 365 roles affect permissions.
-ms.date: 2026-10-04T00:00:00.0000000Z
+ms.date: 2026-11-08T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: Naama-Goldbart
 ms.custom:
@@ -123,7 +123,7 @@ The following specific admin roles can be configured in the Microsoft Defender p
 
 Note
 
-The **App/instance admin** and **User group admin** role assignments are no longer available for new configurations as part of platform consolidation efforts. Existing configurations aren't affected and continue to be supported. If your organization requires these capabilities, contact Microsoft Support.
+The **App/instance admin**, **User group admin**, **Cloud Discovery global admin**, and **Cloud Discovery report admin** role assignments are no longer available for new configurations as part of platform consolidation efforts. Existing configurations aren't affected and continue to be supported. If your organization requires these capabilities, contact Microsoft Support.
 
 Important
 

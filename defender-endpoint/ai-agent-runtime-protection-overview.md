@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how Microsoft Defender for Endpoint provides runtime protection for local AI agents by detecting and blocking prompt injection attacks.
-author: lwainstein
-ms.author: lwainstein
+author: j0shbregman
+ms.author: joshbregman
 ms.service: defender-endpoint
 ms.topic: overview
 ms.custom: msecd-doc-authoring-1030
@@ -101,6 +101,20 @@ Once enabled on a device, Defender inspects agent activity at the available insp
 Microsoft recommends starting in audit mode to observe detections and validate accuracy before switching to block mode for active enforcement. The runtime protection setting is protected by tamper protection, which prevents unauthorized changes, and works alongside your existing Defender controls.
 
 For local PowerShell and organization-wide Microsoft Intune configuration options, see [Set up AI agent runtime protection with Microsoft Defender for Endpoint](configure-ai-agent-runtime-protection).
+
+## Known issues (Preview)
+
+Important
+
+During preview, prompt injection alerts in the Microsoft Defender portal might incorrectly report **Suspicious AI prompt injection blocked** when AI agent runtime protection is configured in **Audit** mode. This is an alert-reporting issue. In Audit mode, runtime protection allows the action to continue and records the detection; the alert title doesn't mean that runtime protection blocked the action.
+
+Verify the runtime protection mode on the affected device as described in [Set up AI agent runtime protection](configure-ai-agent-runtime-protection#enable-runtime-protection). Don't rely on the alert title alone to determine whether an action was blocked. Continue investigating the detection to assess whether the activity is malicious.
+
+Important
+
+During preview, Claude Code might continue processing a tool response even when AI agent runtime protection is configured in **Block** mode and Defender reports a post-tool-response block. This is a blocking limitation, not just an alert-reporting issue. On affected devices, the block alert doesn't mean that runtime protection prevented the agent from processing the detected content.
+
+Don't rely on the alert title alone to determine whether a tool response was blocked. Continue investigating the detection to assess whether the activity is malicious. Post-tool-response inspection occurs after the tool runs and can't undo actions the tool has already completed.
 
 ## Investigation
 

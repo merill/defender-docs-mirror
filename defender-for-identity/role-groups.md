@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Role groups - Microsoft Defender for Identity | Microsoft Learn
+title: Role groups for identity security in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/role-groups
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,7 +12,7 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn about working with Microsoft Defender for Identity role groups.
+description: Learn how role groups help manage access to identity security capabilities in Microsoft Defender.
 ms.date: 2024-01-15T00:00:00.0000000Z
 ms.topic: article
 ms.reviewer: LiorShapiraa
@@ -35,21 +35,23 @@ source_path: defender-for-identity/role-groups.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: be550c6c-ced5-6397-bfca-cd50e16bb225
 ---
 
-# Role groups - Microsoft Defender for Identity | Microsoft Learn
+# Role groups for identity security in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
-Microsoft Defender for Identity offers role-based security to safeguard data according to your organization's specific security and compliance needs. We recommend that you use role groups to manage access to Defender for Identity, segregating responsibilities across your security team and granting only the amount of access that users need to do their jobs.
+Identity security capabilities in Microsoft Defender use role-based security to safeguard data according to your organization's specific security and compliance needs. We recommend that you use role groups to manage access to identity security capabilities in Microsoft Defender, segregating responsibilities across your security team and granting only the amount of access that users need to do their jobs.
 
 ## Unified role-based access control (RBAC)
 
-Users that are already have the [Security Administrators](/en-us/entra/identity/role-based-access-control/permissions-reference) on your tenant's Microsoft Entra ID are also automatically Defender for Identity administrator. Microsoft Entra Security Administrators don't need extra permissions to access Defender for Identity.
+Users that are already have the [Security Administrators](/en-us/entra/identity/role-based-access-control/permissions-reference) on your tenant's Microsoft Entra ID are also automatically Defender for Identity administrator. Microsoft Entra Security Administrators don't need extra permissions to access identity security capabilities in Microsoft Defender.
 
-For other users, enable and use Microsoft 365 role-based access control (RBAC) to create custom roles and to support more Entra ID roles such as Security operator or Security Reader by default to manage access to Defender for Identity.
+For other users, enable and use Microsoft 365 role-based access control (RBAC) to create custom roles and to support more Entra ID roles such as Security operator or Security Reader by default to manage access to identity security capabilities in Microsoft Defender.
 
 Important
 

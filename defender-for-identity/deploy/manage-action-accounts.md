@@ -119,7 +119,7 @@ To create and configure a dedicated gMSA action account, perform the following s
 
 Use the Microsoft Defender portal to add the gMSA action account:
 
-1. Go to the [Microsoft Defender portal](https://security.microsoft.com) and select **Settings** -&gt; **Identities** &gt; **Microsoft Defender for Identity** &gt; **Manage action accounts** &gt; **+Create new account**.
+1. Go to the [Microsoft Defender portal](https://security.microsoft.com) and select **Settings** &gt; **Identities** &gt; **General** &gt; **Manage action accounts** &gt; **+ Create new account**.
 
     For example:
 

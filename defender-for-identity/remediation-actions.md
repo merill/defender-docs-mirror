@@ -34,12 +34,12 @@ item_type: Content
 source_path: defender-for-identity/remediation-actions.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 2f76b528-6f99-5127-cd8f-42178b1dfddd
 ---
 
@@ -79,7 +79,7 @@ Remediation actions can also be applied automatically by Microsoft Defender's au
 
 ## Supported actions
 
-The following identity remediation actions can be performed on Identities.
+You can take the following remediation actions on identities in the Defender portal.
 
 Depending on your Microsoft Entra ID roles, you might see additional Microsoft Entra ID actions, such as requiring users to sign in again and confirming a user as compromised. For more information, see [Remediate risks and unblock users](/en-us/entra/id-protection/howto-identity-protection-remediate-unblock).
 
@@ -97,11 +97,11 @@ The following table lists the identity remediation actions supported by Defender
 
 | Remediation Action | Active Directory | Microsoft Entra ID | Okta, SailPoint, CyberArk | Supported SaaS apps |
 | --- | --- | --- | --- | --- |
-| Disable | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, SOC Identity Responder, Security Operator | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Security Administrator, Cloud App Security Administrator |
-| Enable | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, SOC Identity Responder, Security Operator | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Security Administrator, Cloud App Security Administrator |
-| Revoke session | N/A | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, Helpdesk Administrator, SOC Identity Responder, Security Operator | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | N/A |
+| Disable | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, SOC Identity Responder, Security Operator | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Security Administrator, Cloud App Security Administrator |
+| Enable | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, SOC Identity Responder, Security Operator | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Security Administrator, Cloud App Security Administrator |
+| Revoke session | N/A | Global Administrator, User Administrator, Authentication Administrator, Privileged Authentication Administrator, Directory Writers, Helpdesk Administrator, SOC Identity Responder, Security Operator | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | N/A |
 | Mark as compromised | N/A | Global Administrator, Security Administrator, Security Operator, SOC Identity Responder | N/A | N/A |
-| Force password change | See [Required permissions Defender for Identity in Microsoft Defender XDR](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Privileged Authentication Administrator, Authentication Administrator, User Administrator, Password Administrator, Helpdesk Administrator, SOC Identity Responder, Security Operator | N/A | N/A |
+| Force password change | See [required permissions](/en-us/defender-for-identity/role-groups#required-permissions-defender-for-identity-in-microsoft-defender-xdr) | Global Administrator, Privileged Authentication Administrator, Authentication Administrator, User Administrator, Password Administrator, Helpdesk Administrator, SOC Identity Responder, Security Operator | N/A | N/A |
 
 Note
 

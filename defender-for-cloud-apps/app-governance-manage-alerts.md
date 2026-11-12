@@ -14,7 +14,7 @@ ms.service: defender-for-cloud-apps
 ms.suite: ems
 ms.date: 2026-07-03T00:00:00.0000000Z
 ms.topic: how-to
-description: Investigate and manage app governance alerts in Microsoft Defender XDR to identify risky or malicious cloud apps and take remediation actions.
+description: Investigate and manage app governance alerts in Microsoft Defender to identify risky or malicious cloud apps and take remediation actions.
 ms.reviewer: shragar
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -35,22 +35,18 @@ item_type: Content
 source_path: defender-for-cloud-apps/app-governance-manage-alerts.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 platformId: ef3bf31a-a4fe-4dab-aa5b-acea97547cbb
 ---
 
 # Remediate OAuth app threats with app governance alerts - Microsoft Defender for Cloud Apps | Microsoft Learn
 
-You can investigate alerts about malicious cloud apps and apps that may present risks to your organization in the Defender portal **Alerts** or **Incidents** pages.
+You can investigate alerts about malicious cloud apps and apps that may present risks to your organization on the **Alerts** or **Incidents** pages in the Microsoft Defender portal.
 
 For example:
 
-[![Screenshot of the app governance alerts summary page in the Microsoft Defender XDR.](media/app-governance/mapg-cc-alerts.png)](media/app-governance/mapg-cc-alerts.png#lightbox)
+[![Screenshot of the app governance alerts summary page.](media/app-governance/mapg-cc-alerts.png)](media/app-governance/mapg-cc-alerts.png#lightbox)
 
 ## View alert details
 

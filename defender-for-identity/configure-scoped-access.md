@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Configure scoped access for Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+title: Configure scoped access for identity security in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/configure-scoped-access
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,7 +12,7 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Configure scoped access in Microsoft Defender for Identity by creating custom unified RBAC roles that limit visibility to specific Active Directory domains or organizational units.
+description: Configure scoped access for identity security capabilities in Microsoft Defender by creating custom unified RBAC roles that limit visibility to specific Active Directory domains or organizational units.
 ms.date: 2026-07-02T00:00:00.0000000Z
 ms.topic: how-to
 ms. reviewer: LiorShapiraa
@@ -34,21 +34,21 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/configure-scoped-access.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 6a4c467d-55db-96ec-3f6e-73274c4ec8e1
 ---
 
-# Configure scoped access for Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+# Configure scoped access for identity security in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
 ## Overview
 
-As your organization grows, you need to control who can access which resources. Microsoft Defender for Identity scoping lets you focus monitoring on specific Active Directory domains or organizational units. Scoping reduces noise from data you don't need and helps you focus on critical assets. You can also limit visibility to specific entities so that access matches each person's role. To set up scoped access, [create a custom role using Microsoft Defender unified RBAC](/en-us/defender-xdr/create-custom-rbac-roles). When you configure the role, you choose which users or Entra ID groups can access specific Active Directory domains or organizational units.
+As your organization grows, you need to control who can access which resources. Identity security scoping in Microsoft Defender lets you focus monitoring on specific Active Directory domains or organizational units. Scoping reduces noise from data you don't need and helps you focus on critical assets. You can also limit visibility to specific entities so that access matches each person's role. To set up scoped access, [create a custom role using Microsoft Defender unified RBAC](/en-us/defender-xdr/create-custom-rbac-roles). When you configure the role, you choose which users or Entra ID groups can access specific Active Directory domains or organizational units.
 
 ## Prerequisites
 

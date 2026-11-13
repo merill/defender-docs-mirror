@@ -74,6 +74,7 @@ Microsoft 365 E5 and Defender for Office 365 Plan 2 extend Teams protection with
 - **Remove users from Teams chat**: To remediate malicious attacks, you can remove users from teams chats directly from the [Teams message entity panel](teams-message-entity-panel#remove-users-from-teams-chats-in-the-teams-message-entity-panel).
 - **Hunting on Teams messages with URLs**: You can hunt for Teams messages containing URL across three new advanced hunting tables: [MessageEvents](/en-us/defender-xdr/advanced-hunting-messageevents-table), [MessagePostDeliveryEvents](/en-us/defender-xdr/advanced-hunting-messagepostdeliveryevents-table), and [MessageURLInfo](/en-us/defender-xdr/advanced-hunting-messageurlinfo-table).
 - **Hunting on Teams calls and meetings**: You can hunt across activities performed during Microsoft Teams calls and meetings using the [CallActivityEvents](/en-us/defender-xdr/advanced-hunting-callactivityevents-table) advanced hunting table.
+- **Hunting on synthetic media (deepfake) detections in Teams**: You can hunt for synthetic media (deepfake) detected in Microsoft Teams using the [SyntheticMediaDetectionEvents](/en-us/defender-xdr/advanced-hunting-synthetic-media-detection-events) advanced hunting table.
 
 These features are summarized in the following table:
 
@@ -93,6 +94,7 @@ These features are summarized in the following table:
 | Remove users from Teams chats (admin remediation) |  |  | ![](media/feature_present_icon.png) |
 | Advanced hunting on Teams messages |  |  | ![](media/feature_present_icon.png) |
 | Advanced hunting on Teams calls and meetings |  |  | ![](media/feature_present_icon.png) |
+| Advanced hunting on synthetic media (deepfake) detections |  |  | ![](media/feature_present_icon.png) |
 
 ## Configure ZAP for Teams protection in Defender for Office 365
 

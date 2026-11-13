@@ -70,6 +70,10 @@ For more information on what's new with other Microsoft Defender security produc
 - [What's new in Microsoft Defender for Identity](/en-us/defender-for-identity/whats-new)
 - [What's new in Microsoft Defender for Cloud Apps](/en-us/defender-cloud-apps/release-notes)
 
+## November 2026
+
+- **Hunt for synthetic media (deepfake) detection events**: The [SyntheticMediaDetectionEvents table](/en-us/defender-xdr/advanced-hunting-synthetic-media-detection-events) in Microsoft Defender XDR advanced hunting contains details about synthetic media (deepfake) detected in Microsoft Teams, helping security teams investigate potential impersonation, fraud, or social engineering.
+
 ## October 2026
 
 - **Hunt across activities in Microsoft Teams calls and meetings**: The [CallActivityEvents table](/en-us/defender-xdr/advanced-hunting-callactivityevents-table) in Microsoft Defender XDR advanced hunting contains details about activities performed during Microsoft Teams calls and meetings in your organization, helping security teams investigate suspicious call activity.

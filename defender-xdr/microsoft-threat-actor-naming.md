@@ -114,7 +114,7 @@ The following table lists publicly disclosed threat actor names with their origi
 | Daffodil Gust | United Arab Emirates | Stealth Falcon, Fruity Armor, Project Raven |
 | [Denim Tsunami](https://www.microsoft.com/en-us/security/blog/2022/07/27/untangling-knotweed-european-private-sector-offensive-actor-using-0-day-exploits/) | Austria, Private sector offensive actor | DEV-0291 |
 | [Diamond Sleet](https://www.microsoft.com/en-us/security/blog/2023/11/22/diamond-sleet-supply-chain-compromise-distributes-a-modified-cyberlink-installer/) | North Korea | ZINC, LABYRINTH CHOLLIMA, Black Artemis, Lazarus |
-| Emerald Sleet | North Korea | THALLIUM, VELVET CHOLLIMA, RGB-D5, Black Banshee, Kimsuky, Greendinosa |
+| [Emerald Sleet](https://www.microsoft.com/en-us/security/blog/2026/10/29/tracking-ai-adoption-in-north-korean-threat-actor-tradecraft/) | North Korea | THALLIUM, VELVET CHOLLIMA, RGB-D5, Black Banshee, Kimsuky, Greendinosa |
 | Fallow Squall | Singapore | PLATINUM, PARASITE, RUBYVINE, GINGERSNAP |
 | [Flax Typhoon](https://www.microsoft.com/en-us/security/blog/2023/08/24/flax-typhoon-using-legitimate-software-to-quietly-access-taiwanese-organizations/) | China | Storm-0919, ETHEREAL PANDA |
 | [Forest Blizzard](https://www.microsoft.com/en-us/security/blog/tag/forest-blizzard-strontium/) | Russia | STRONTIUM, FANCY BEAR, Sednit, ATG2, Sofacy, Blue Athena, Z-Lom Team, Operation Pawn Storm, Tsar Team, CrisisFour, HELLFIRE, APT28 |
@@ -209,7 +209,6 @@ The following table lists publicly disclosed threat actor names with their origi
 | [Storm-1175](https://www.microsoft.com/en-us/security/blog/2026/04/06/storm-1175-focuses-gaze-on-vulnerable-web-facing-assets-in-high-tempo-medusa-ransomware-operations/) | China, Financially motivated |  |
 | Storm-1194 | Group in development | MONTI |
 | [Storm-1249](https://www.microsoft.com/en-us/security/blog/2025/05/29/defending-against-evolving-identity-attack-techniques/) | China |  |
-| Storm-1516 | Russia, Influence operations |  |
 | [Storm-1567](https://www.microsoft.com/en-us/security/blog/2023/10/11/automatic-disruption-of-human-operated-attacks-through-containment-of-compromised-user-accounts/) | Financially motivated | PUNK SPIDER |
 | [Storm-1575](https://www.microsoft.com/en-us/security/blog/2026/01/14/inside-redvds-how-a-single-virtual-desktop-provider-fueled-worldwide-cybercriminal-operations/) | Group in development |  |
 | [Storm-1607](https://www.microsoft.com/en-us/security/blog/2025/08/21/think-before-you-clickfix-analyzing-the-clickfix-social-engineering-technique/) | Group in development |  |

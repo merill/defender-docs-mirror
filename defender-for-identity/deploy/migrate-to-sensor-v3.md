@@ -35,11 +35,11 @@ source_path: defender-for-identity/deploy/migrate-to-sensor-v3.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 982046f3-65f5-06b3-d694-7c8bb18f0a39
 ---
 
@@ -111,12 +111,11 @@ The following table lists each reason that can appear in the tooltip, how to ver
 
 | Reason shown in the tooltip | How to verify | Resolution |
 | --- | --- | --- |
-| Device isn't properly onboarded to Microsoft Defender for Endpoint. | Run the Microsoft Defender for Endpoint Client Analyzer and check `RegOnboardingInfoPolicy.Json` in the results ZIP. The connectivity log shows *"OnboardingInfo could not be found in the registry"* if the onboarding info is missing. | Re-onboard the server to Microsoft Defender for Endpoint. |
+| Device isn't properly onboarded to Microsoft Defender for Endpoint. | Run the Microsoft Defender for Endpoint Client Analyzer and check `RegOnboardingInfoPolicy.Json` in the results ZIP. The connectivity log shows *"OnboardingInfo could not be found in the registry"* if the onboarding info is missing. | Re-onboard the server to Microsoft Defender for Endpoint sensor. |
 | Operating system version isn't supported. Requires Windows Server 2019 or later. | Run `winver` to confirm the operating system version and build number. | Upgrade the operating system to Windows Server 2019 or later and install the September 2026 or later cumulative update. |
 | Microsoft Defender for Endpoint sensor version is outdated or unsupported. | In the Client Analyzer report, check the **Sense version** field. | Update the Microsoft Defender for Endpoint sensor to the latest version. |
-| Microsoft Defender for Endpoint (Sense) service isn't running. | In the Client Analyzer report, confirm the **Sense service Status** is **Running**. | Start the Sense service and verify Microsoft Defender for Endpoint onboarding is complete. |
-| Migration is currently supported only for domain controllers. | Confirm the server is a domain controller. | In-place migration is available only for domain controllers. |
-| Microsoft Defender for Endpoint device ID is missing or not registered. | In the Client Analyzer report, confirm the **Device ID** field contains a valid GUID. | Verify Microsoft Defender for Endpoint onboarding completed successfully, and re-onboard the server if the device ID is empty. |
+| Microsoft Defender for Endpoint (Sense) service isn't running. | In the Client Analyzer report, confirm the **Sense service Status** is **Running**. | Start the Sense service and verify Microsoft Defender for Endpoint sensor onboarding is complete. |
+| Microsoft Defender for Endpoint device ID is missing or not registered. | In the Client Analyzer report, confirm the **Device ID** field contains a valid GUID. | Verify Microsoft Defender for Endpoint sensor onboarding completed successfully, and re-onboard the server to Defender for Endpoint sensor if the device ID is empty. |
 | Sensor v2.x status is unreachable or disconnected. | On the **Sensors** page, check the sensor's status. | Verify network connectivity between the server and the Defender for Identity service, and confirm the sensor v2.x is running. |
 | Sensor v2.x service status is not running. | On the **Sensors** page, confirm the **Service status** column shows **Running**, or run `sc query AATPSensorUpdater` to confirm the service state. | Start the `AATPSensorUpdater` service. If the service fails to start, reinstall the sensor v2.x. |
 

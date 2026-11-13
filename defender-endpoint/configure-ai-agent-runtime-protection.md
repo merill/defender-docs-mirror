@@ -69,10 +69,6 @@ Before you configure runtime protection, review the following requirements:
 - To deploy the settings from the Microsoft Defender portal, your account has permission to manage endpoint security policies. For more information, see [Prerequisites for managing endpoint security policies](endpoint-security-policies-configure#prerequisites).
 - To review alerts, your account has a supported Microsoft Entra role, such as Security Reader, Security Operator, or Security Administrator, or a Microsoft Defender custom role with permission to read security data. For more information, see [Required permissions to investigate alerts](/en-us/defender-xdr/investigate-alerts#required-permissions-to-investigate-alerts).
 
-Note
-
-During public preview, configure test devices to receive Microsoft Defender platform and engine updates from the **Beta Channel**. For configuration and verification instructions, see [Create a custom gradual rollout process for Microsoft Defender updates](configure-updates).
-
 ## Recommended deployment approach
 
 Microsoft recommends the following phased rollout:
@@ -119,6 +115,8 @@ To enable runtime protection on a single device:
     ```powershell
     Get-MpPreference | Select-Object AiAgentProtection, AiAgentNetworkInspection
     ```
+
+    For both settings, the numerical values are `0` (`Disabled`), `1` (`Block`), and `2` (`Audit`).
 6. Close the PowerShell window and any terminal windows used to run agents. Then open a new terminal window before starting the agent.
 
 Tip

@@ -26,7 +26,8 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: concept-article
-ms.date: 2026-10-26T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
+ai-usage: ai-assisted
 ms.custom: references_regions
 locale: en-us
 document_id: 61e5a8c4-456d-cb08-452f-19bf7026b89d
@@ -76,29 +77,29 @@ When you onboard Microsoft Sentinel from the Defender portal, the service will p
 
 ### Supported regions
 
-The following table shows the supported regions supporting Microsoft Sentinel SIEM and data lake.
+The following table shows the supported regions for Microsoft Sentinel SIEM and data lake.
 
 | Continent | Country/Region | SIEM supported region | Data lake supported region |
 | --- | --- | --- | --- |
-| **North America** | **Canada** | • Canada Central• Canada East | • Canada Central |
-|  | **United States** | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US• West US 2• West US 3• West Central US**Azure government**• USGov Arizona• USGov Virginia• USNat East• USNat West• USSec East• USSec West | • Central US• East US• East US 2• South Central US• West US 2 |
-| **South America** | **Brazil** | • Brazil South• Brazil Southeast |  |
-| **Asia and Middle East** |  | • East Asia• Southeast Asia | • Southeast Asia |
-|  | **India** | • Central India• Jio India West• Jio India Central | • Central India |
+| **North America** | **Canada** | • Canada Central• Canada East | • Canada Central• Canada East |
+|  | **United States** | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US• West US 2• West US 3• West Central US**Azure government**• USGov Arizona• USGov Virginia• USNat East• USNat West• USSec East• USSec West | • Central US• East US• East US 2• South Central US• West US• West US 2• West US 3 |
+| **South America** | **Brazil** | • Brazil South• Brazil Southeast | • Brazil South• Brazil Southeast |
+| **Asia and Middle East** |  | • East Asia• Southeast Asia | • East Asia• Southeast Asia |
+|  | **India** | • Central India• Jio India West• Jio India Central | • Central India• Jio India West |
 |  | **Israel** | • Israel Central | • Israel Central |
-|  | **Japan** | • Japan East• Japan West | • Japan East |
-|  | **Korea** | • Korea Central• Korea South |  |
+|  | **Japan** | • Japan East• Japan West | • Japan East• Japan West |
+|  | **Korea** | • Korea Central• Korea South | • Korea Central• Korea South |
 |  | **Qatar** | • Qatar Central |  |
-|  | **UAE** | • UAE Central• UAE North |  |
+|  | **UAE** | • UAE Central• UAE North | • UAE Central |
 | **Europe** |  | • North Europe• West Europe | • North Europe• West Europe |
-|  | **France** | • France Central• France South | • France Central |
+|  | **France** | • France Central• France South | • France Central• France South |
 |  | **Germany** | • Germany West Central |  |
 |  | **Italy** | • Italy North | • Italy North |
-|  | **Norway** | • Norway East• Norway West |  |
+|  | **Norway** | • Norway East• Norway West | • Norway East• Norway West |
 |  | **Sweden** | • Sweden Central |  |
-|  | **Switzerland** | • Switzerland North• Switzerland West | • Switzerland North |
-|  | **UK** | • UK South• UK West | • UK South |
-| **Australia** | **Australia** | • Australia CentralAustralia Central 2• Australia East• Australia Southeast | • Australia East |
+|  | **Switzerland** | • Switzerland North• Switzerland West | • Switzerland North• Switzerland West |
+|  | **UK** | • UK South• UK West | • UK South• UK West |
+| **Australia** | **Australia** | • Australia CentralAustralia Central 2• Australia East• Australia Southeast | • Australia Central• Australia Central 2• Australia East• Australia Southeast |
 | **Africa** | **South Africa** | • South Africa North |  |
 
 Important

@@ -26,7 +26,8 @@ description: This article lists Advanced Security Information Model (ASIM) parse
 ms.author: edbaynash
 author: EdB-MSFT
 ms.topic: reference
-ms.date: 2026-10-07T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 359873a1-56e3-33cb-bb05-d57cb8277b90
 document_version_independent_id: 2f824408-b725-e53d-b632-5a3f4b09ca0b
@@ -42,246 +43,351 @@ item_type: Content
 source_path: sentinel/normalization-parsers-list.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bcbcbad5-4208-4783-8035-8481272c98b8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
+- https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43b2e5aa-8a6d-4de2-a252-692232e5edc8
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
+- https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: f0d4b803-2365-93eb-480d-0e58a6bf1ae3
 ---
 
 # List of Microsoft Sentinel Advanced Security Information Model (ASIM) parsers | Microsoft Learn
 
-This document provides a list of Advanced Security Information Model (ASIM) parsers. For an overview of ASIM parsers refer to the [parsers overview](normalization-parsers-overview). To understand how parsers fit within the ASIM architecture, refer to the [ASIM architecture diagram](normalization#asim-components).
+Advanced Security Information Model (ASIM) parsers normalize security event data from different sources. The following tables list source-specific filtering parsers from the [Microsoft Sentinel GitHub repository](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers). Select a source name to view its query-time parser definition. The **Query Time Parser** column uses the `EquivalentBuiltInParser` name specified in that definition.
 
-Parsers that don't have a value under `Uses pack parameter` don't have the `AdditionalFields` column populated.
+For an overview of ASIM parsers, see the [parsers overview](normalization-parsers-overview). To understand how parsers fit within the ASIM architecture, see the [ASIM architecture diagram](normalization#asim-components).
+
+The **Uses pack parameter** column indicates whether the filtering parser accepts the `pack` parameter. When supported, set `pack=true` to retain unmapped source fields in `AdditionalFields`.
+
+The **Ingest Time Parser** column links **Yes** to the matching ingestion-time parser definition, or is empty if the repository doesn't contain one. Native normalized tables don't require an ingestion-time normalization parser.
 
 ## Agent Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Anthropic Claude Compliance** | Anthropic Claude Compliance events collected using the Codeless Connector Framework by BlueVoyant. | `_Im_AgentEvent_AnthropicClaudeCompliance` | `true` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Agent Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAgentEvent/Parsers/vimAgentEventNative.yaml)** | Any event normalized at ingestion to the `ASimAgentEventLogs` table. | `_Im_AgentEvent_Native` |  | `true` |
+| **[Anthropic Claude Compliance](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAgentEvent/Parsers/vimAgentEventAnthropicClaudeCompliance.yaml)** | Anthropic Claude Compliance events collected using the Codeless Connector Framework by BlueVoyant. | `_Im_AgentEvent_AnthropicClaudeCompliance` |  | `true` |
 
 ## Alert Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Microsoft Defender XDR** | Microsoft Defender XDR alert events (in the `AlertEvidence` table). | `_Im_AlertEvent_MicrosoftDefenderXDRVxx` | `false` |
-| **SentinelOne Singularity** | SentinelOne Singularity threat events (in the `SentinelOne_CL` table). | `_Im_AlertEvent_SentinelOneSingularityVxx` |  |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Alert Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventNative.yaml)** | Any event normalized at ingestion to the `ASimAlertEventLogs` table. | `_Im_AlertEvent_Native` |  | `true` |
+| **[AWS GuardDuty](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventAWSGuardDuty.yaml)** | AWS GuardDuty findings. | `_Im_AlertEvent_AWSGuardDuty` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/IngestTimeParsers/ASimAlertEventAWSGuardDuty.yaml) | `true` |
+| **[Bitdefender GravityZone](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventBitdefenderGravityZone.yaml)** | Bitdefender GravityZone alerts. | `_Im_AlertEvent_BitdefenderGravityZone` |  | `true` |
+| **[Cisco Secure Endpoint](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventCiscoSecureEndpoint.yaml)** | Cisco Secure Endpoint alerts. | `_Im_AlertEvent_CiscoSecureEndpoint` |  | `true` |
+| **[CrowdStrike Falcon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventCrowdStrikeFalcon.yaml)** | CrowdStrike Falcon alerts. | `_Im_AlertEvent_CrowdStrikeFalcon` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/IngestTimeParsers/ASimAlertEventCrowdStrikeFalcon.yaml) | `true` |
+| **[Google Cloud Security Command Center](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventGoogleCloudSCC.yaml)** | Google Cloud Security Command Center findings. | `_Im_AlertEvent_GoogleCloudSCC` |  | `true` |
+| **[Google SecOps](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventGoogleSecOps.yaml)** | Google SecOps detection alerts. | `_Im_AlertEvent_GoogleSecOps` |  | `true` |
+| **[Google Threat Intelligence](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventGoogleThreatIntelligence.yaml)** | Google Threat Intelligence alerts. | `_Im_AlertEvent_GoogleThreatIntelligence` |  | `true` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventMicrosoftDefenderXDR.yaml)** | Microsoft Defender XDR alert events (in the `AlertEvidence` table). | `_Im_AlertEvent_MicrosoftDefenderXDR` |  | `false` |
+| **[Netskope Security Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventNetskopeSecurityCloud.yaml)** | Netskope Security Cloud alerts. | `_Im_AlertEvent_NetskopeSecurityCloud` |  | `true` |
+| **[Palo Alto Cortex XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventPaloAltoXDR.yaml)** | Palo Alto Cortex XDR alerts. | `_Im_AlertEvent_PaloAltoXDR` |  | `true` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring alerts. | `_Im_AlertEvent_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[SentinelOne Singularity](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventSentinelOneSingularity.yaml)** | SentinelOne Singularity threat events (in the `SentinelOne_CL` table). | `_Im_AlertEvent_SentinelOneSingularity` |  | `false` |
+| **[SentinelOne Singularity (CCF)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventSentinelOneSingularityAlerts.yaml)** | SentinelOne Singularity alerts collected using the Codeless Connector Framework. | `_Im_AlertEvent_SentinelOneSingularityAlerts` |  | `true` |
+| **[Wiz Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventWizCloud.yaml)** | Wiz Cloud issues in the `WizIssuesV3_CL` table. | `_Im_AlertEvent_WizCloud` |  | `true` |
+| **[Wiz Defend](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAlertEvent/Parsers/vimAlertEventWizDefend.yaml)** | Wiz Defend detections in the `WizDetectionsV3_CL` table. | `_Im_AlertEvent_WizDefend` |  | `true` |
+
+## Asset Entity parsers
+
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Asset Entity Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAssetEntity/Parsers/vimAssetEntityNative.yaml)** | Any event normalized at ingestion to the `ASimAssetEntityLogs` table. | `_Im_AssetEntity_Native` |  | `true` |
 
 ## Audit Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Audit Event Logs** | Any event normalized at ingestion to the `ASimAuditEventLogs` table. | `_Im_AuditEvent_Native` |  |
-| **AWS CloudTrail** | AWS CloudTrail audit events. | `_Im_AuditEvent_AWSCloudTrailVxx` | `true` |
-| **Azure Activity** | Azure Activity events (in the `AzureActivity` table) in the category `Administrative`. | `_Im_AuditEvent_AzureActivityVxx` | `false` |
-| **Azure Key Vault** | Azure Key Vault audit events. | `_Im_AuditEvent_AzureKeyVaultVxx` |  |
-| **Barracuda CEF** | Barracuda events collected using CEF. | `_Im_AuditEvent_BarracudaCEFVxx` |  |
-| **Barracuda WAF** | Barracuda WAF events. | `_Im_AuditEvent_BarracudaWAFVxx` |  |
-| **Cisco ISE** | Cisco ISE events. | `_Im_AuditEvent_CiscoISEVxx` |  |
-| **Cisco Meraki** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_AuditEvent_CiscoMerakiVxx` |  |
-| **Cisco Meraki (Syslog)** | Cisco Meraki events collected to the table Syslog. | `_Im_AuditEvent_CiscoMerakiSyslogVxx` |  |
-| **CrowdStrike Falcon** | CrowdStrike Falcon Host events. | `_Im_AuditEvent_CrowdStrikeFalconHostVxx` |  |
-| **Illumio SaaS Core** | Illumio SaaS Core events. | `_Im_AuditEvent_IllumioSaaSCoreVxx` |  |
-| **Infoblox BloxOne** | Infoblox BloxOne events. | `_Im_AuditEvent_InfobloxBloxOneVxx` | `false` |
-| **Microsoft Events** | Windows Audit events collected in the `Event` table | `_Im_AuditEvent_MicrosoftEventVxx` |  |
-| **Microsoft Exchange 365** | Exchange Administrative events collected using the Office 365 connector (in the `OfficeActivity` table). | `_Im_AuditEvent_MicrosoftExchangeAdmin365Vxx` |  |
-| **Microsoft Security Events** | Windows Event 1102 collected using Azure Monitor Agent (using the `SecurityEvent` tables). | `_Im_AuditEvent_MicrosoftSecurityEventsVxx` |  |
-| **Microsoft Windows Events** | Windows Event 1102 collected using Azure Monitor Agent (using the `WindowsEvent` tables). | `_Im_AuditEvent_MicrosoftWindowsEventsVxx` |  |
-| **SentinelOne** | SentinelOne events. | `_Im_AuditEvent_SentinelOneVxx` | `false` |
-| **Vectra XDR** | Vectra XDR audit events. | `_Im_AuditEvent_VectraXDRAuditVxx` |  |
-| **VMware Carbon Black Cloud** | VMware Carbon Black Cloud events. | `_Im_AuditEvent_VMwareCarbonBlackCloudVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Audit Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventNative.yaml)** | Any event normalized at ingestion to the `ASimAuditEventLogs` table. | `_Im_AuditEvent_Native` |  | `false` |
+| **[Alibaba Cloud ActionTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAlibabaCloudActionTrail.yaml)** | Alibaba Cloud ActionTrail audit events. | `_Im_AuditEvent_AlibabaCloudActionTrail` |  | `true` |
+| **[AWS CloudTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrail.yaml)** | AWS CloudTrail audit events. | `_Im_AuditEvent_AWSCloudTrail` |  | `true` |
+| **[AWS CloudTrail (EC2 account and infrastructure)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2AccountAndInfrastructure.yaml)** | Amazon EC2 account and infrastructure audit events. | `_Im_AuditEvent_AWSCloudTrailEC2AccountAndInfrastructure` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2AccountAndInfrastructure.yaml) | `true` |
+| **[AWS CloudTrail (EC2 capacity and reservations)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2CapacityAndReservations.yaml)** | Amazon EC2 capacity and reservation audit events. | `_Im_AuditEvent_AWSCloudTrailEC2CapacityAndReservations` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2CapacityAndReservations.yaml) | `true` |
+| **[AWS CloudTrail (EC2 EBS)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2EBS.yaml)** | Amazon Elastic Block Store audit events. | `_Im_AuditEvent_AWSCloudTrailEC2EBS` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2EBS.yaml) | `true` |
+| **[AWS CloudTrail (EC2 Fleet and Spot)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2FleetAndSpot.yaml)** | Amazon EC2 Fleet and Spot audit events. | `_Im_AuditEvent_AWSCloudTrailEC2FleetAndSpot` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2FleetAndSpot.yaml) | `true` |
+| **[AWS CloudTrail (EC2 images and import/export)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2ImagesAndImportExport.yaml)** | Amazon EC2 image and import/export audit events. | `_Im_AuditEvent_AWSCloudTrailEC2ImagesAndImportExport` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2ImagesAndImportExport.yaml) | `true` |
+| **[AWS CloudTrail (EC2 instances)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2Instances.yaml)** | Amazon EC2 instance audit events. | `_Im_AuditEvent_AWSCloudTrailEC2Instances` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2Instances.yaml) | `true` |
+| **[AWS CloudTrail (EC2 interfaces and addresses)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2InterfacesAndAddresses.yaml)** | Amazon EC2 network interface and address audit events. | `_Im_AuditEvent_AWSCloudTrailEC2InterfacesAndAddresses` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2InterfacesAndAddresses.yaml) | `true` |
+| **[AWS CloudTrail (EC2 IPAM routing)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2IPAMRouting.yaml)** | Amazon VPC IP Address Manager routing and Resource Public Key Infrastructure (RPKI) audit events. | `_Im_AuditEvent_AWSCloudTrailEC2IPAMRouting` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2IPAMRouting.yaml) | `true` |
+| **[AWS CloudTrail (EC2 IPAM)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2IPAM.yaml)** | Amazon VPC IP Address Manager audit events. | `_Im_AuditEvent_AWSCloudTrailEC2IPAM` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2IPAM.yaml) | `true` |
+| **[AWS CloudTrail (EC2 launch and access)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2LaunchAndAccess.yaml)** | Amazon EC2 launch and access audit events. | `_Im_AuditEvent_AWSCloudTrailEC2LaunchAndAccess` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2LaunchAndAccess.yaml) | `true` |
+| **[AWS CloudTrail (EC2 private connectivity)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2PrivateConnectivity.yaml)** | Amazon EC2 private connectivity audit events. | `_Im_AuditEvent_AWSCloudTrailEC2PrivateConnectivity` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2PrivateConnectivity.yaml) | `true` |
+| **[AWS CloudTrail (EC2 security and observability)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2SecurityAndObservability.yaml)** | Amazon EC2 security and observability audit events. | `_Im_AuditEvent_AWSCloudTrailEC2SecurityAndObservability` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2SecurityAndObservability.yaml) | `true` |
+| **[AWS CloudTrail (EC2 Transit Gateway routing)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2TransitGatewayRouting.yaml)** | AWS Transit Gateway routing audit events. | `_Im_AuditEvent_AWSCloudTrailEC2TransitGatewayRouting` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2TransitGatewayRouting.yaml) | `true` |
+| **[AWS CloudTrail (EC2 Transit Gateway)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2TransitGateway.yaml)** | AWS Transit Gateway audit events. | `_Im_AuditEvent_AWSCloudTrailEC2TransitGateway` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2TransitGateway.yaml) | `true` |
+| **[AWS CloudTrail (EC2 Verified Access)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2VerifiedAccess.yaml)** | AWS Verified Access audit events. | `_Im_AuditEvent_AWSCloudTrailEC2VerifiedAccess` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2VerifiedAccess.yaml) | `true` |
+| **[AWS CloudTrail (EC2 VPC core and routing)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAWSCloudTrailEC2VPCCoreAndRouting.yaml)** | Amazon VPC core and routing audit events. | `_Im_AuditEvent_AWSCloudTrailEC2VPCCoreAndRouting` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventAWSCloudTrailEC2VPCCoreAndRouting.yaml) | `true` |
+| **[Azure Activity](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAzureAdminActivity.yaml)** | Azure Activity events (in the `AzureActivity` table) in the category `Administrative`. | `_Im_AuditEvent_AzureActivity` |  | `false` |
+| **[Azure Key Vault](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventAzureKeyVault.yaml)** | Azure Key Vault audit events. | `_Im_AuditEvent_AzureKeyVault` |  | `false` |
+| **[Barracuda CEF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventBarracudaCEF.yaml)** | Barracuda events collected using CEF. | `_Im_AuditEvent_BarracudaCEF` |  | `false` |
+| **[Barracuda WAF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventBarracudaWAF.yaml)** | Barracuda WAF events. | `_Im_AuditEvent_BarracudaWAF` |  | `false` |
+| **[Cisco ISE](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventCiscoISE.yaml)** | Cisco ISE events. | `_Im_AuditEvent_CiscoISE` |  | `false` |
+| **[Cisco Meraki](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventCiscoMeraki.yaml)** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_AuditEvent_CiscoMeraki` |  | `false` |
+| **[Cisco Meraki (Syslog)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventCiscoMerakiSyslog.yaml)** | Cisco Meraki events collected to the table Syslog. | `_Im_AuditEvent_CiscoMerakiSyslog` |  | `false` |
+| **[CrowdStrike Falcon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventCrowdStrikeFalconHost.yaml)** | CrowdStrike Falcon Host events. | `_Im_AuditEvent_CrowdStrikeFalconHost` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator audit events. | `_Im_AuditEvent_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[Illumio SaaS Core](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventIllumioSaaSCore.yaml)** | Illumio SaaS Core events. | `_Im_AuditEvent_IllumioSaaSCore` |  | `false` |
+| **[Infoblox BloxOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventInfobloxBloxOne.yaml)** | Infoblox BloxOne events. | `_Im_AuditEvent_InfobloxBloxOne` |  | `false` |
+| **[Microsoft Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventMicrosoftEvent.yaml)** | Windows Audit events collected in the `Event` table | `_Im_AuditEvent_MicrosoftEvent` |  | `false` |
+| **[Microsoft Exchange 365](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventMicrosoftExchangeAdmin365.yaml)** | Exchange Administrative events collected using the Office 365 connector (in the `OfficeActivity` table). | `_Im_AuditEvent_MicrosoftExchangeAdmin365` |  | `false` |
+| **[Microsoft Security Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventMicrosoftSecurityEvents.yaml)** | Windows Event 1102 collected using Azure Monitor Agent (using the `SecurityEvent` tables). | `_Im_AuditEvent_MicrosoftSecurityEvents` |  | `false` |
+| **[Microsoft Windows Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventMicrosoftWindowsEvents.yaml)** | Windows Event 1102 collected using Azure Monitor Agent (using the `WindowsEvent` tables). | `_Im_AuditEvent_MicrosoftWindowsEvents` |  | `false` |
+| **[Oracle Cloud Infrastructure](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventOracleOCI.yaml)** | Oracle Cloud Infrastructure audit logs. | `_Im_AuditEvent_OracleOCI` |  | `true` |
+| **[Salesforce Audit Trail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventSalesforceAuditTrail.yaml)** | Salesforce setup audit trail events. | `_Im_AuditEvent_SalesforceAuditTrail` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventSalesforceAuditTrail.yaml) ([V2 table](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/IngestTimeParsers/ASimAuditEventSalesforceAuditTrailV2_CL.yaml)) | `true` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring audit events. | `_Im_AuditEvent_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventSentinelOne.yaml)** | SentinelOne events. | `_Im_AuditEvent_SentinelOne` |  | `false` |
+| **[SQL security audit](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventSQLSecurityAudit.yaml)** | SQL security audit logs. | `_Im_AuditEvent_SQLSecurityAudit` |  | `true` |
+| **[Vectra XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventVectraXDRAudit.yaml)** | Vectra XDR audit events. | `_Im_AuditEvent_VectraXDRAudit` |  | `false` |
+| **[VMware Carbon Black Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuditEvent/Parsers/vimAuditEventVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud events. | `_Im_AuditEvent_VMwareCarbonBlackCloud` |  | `false` |
 
 ## Authentication parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Authentication Logs** | Any event normalized at ingestion to the `ASimAuthenticationEventLogs` table. | `_Im_Authentication_Native` |  |
-| **AWS CloudTrail** | AWS sign-ins, collected using the AWS CloudTrail connector. | `_Im_Authentication_AWSCloudTrailVxx` |  |
-| **Barracuda WAF** | Barracuda WAF events. | `_Im_Authentication_BarracudaWAFVxx` |  |
-| **Cisco ASA** | Cisco ASA events collected using CEF. | `_Im_Authentication_CiscoASAVxx` |  |
-| **Cisco ISE** | Cisco ISE events. | `_Im_Authentication_CiscoISEVxx` |  |
-| **Cisco Meraki** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_Authentication_CiscoMerakiVxx` | `false` |
-| **Cisco Meraki (Syslog)** | Cisco Meraki events collected to the table Syslog. | `_Im_Authentication_CiscoMerakiSyslogVxx` | `false` |
-| **CrowdStrike Falcon** | CrowdStrike Falcon Host events. | `_Im_Authentication_CrowdStrikeFalconHostVxx` |  |
-| **Fortinet Fortigate** | Fortinet Fortigate system admin logs. | `_Im_Authentication_FortigateVxx` |  |
-| **Google Workspace** | Google Workspace sign-ins. | `_Im_Authentication_GoogleWorkspaceVxx` | `false` |
-| **Illumio SaaS Core** | Illumio SaaS Core events. | `_Im_Authentication_IllumioSaaSCoreVxx` |  |
-| **Microsoft Defender for IoT** | Microsoft Defender for IoT authentication events. | `_Im_Authentication_MicrosoftMD4IoTVxx` |  |
-| **Microsoft Defender XDR** | Microsoft Defender XDR for Endpoint sign-ins for Windows and Linux. | `_Im_Authentication_M365DefenderVxx` | `false` |
-| **Microsoft Entra ID** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for regular sign-ins. | `_Im_Authentication_AADSigninLogsVxx` |  |
-| **Microsoft Entra ID (Non-Interative)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for Non-Interactive sign-ins. | `_Im_Authentication_AADNonInteractiveVxx` |  |
-| **Microsoft Entra ID (Managed Identities)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for Managed Identities sign-ins. | `_Im_Authentication_AADManagedIdentityVxx` |  |
-| **Microsoft Entra ID (Service Principal)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for Service Principal sign-ins. | `_Im_Authentication_AADServicePrincipalSignInLogsVxx` |  |
-| **Microsoft Windows Events** | Windows sign-ins (Events 4624, 4625, 4634, 4647) collected using Azure Monitor Agent or the Log Analytics Agent to the `SecurityEvent` or `WindowsEvent` tables. | `_Im_Authentication_MicrosoftWindowsEventVxx` |  |
-| **Okta (V1)** | Okta authentication, collected using the Okta connector (V1 SSO). | `_Im_Authentication_OktaOSSVxx` |  |
-| **Okta (V2)** | Okta authentication, collected using the Okta connector (V2). | `_Im_Authentication_OktaV2Vxx` |  |
-| **Okta (OktaSystemLogs)** | Okta authentication, collected using in the OktaSystemLogs table. | `_Im_Authentication_OktaSystemLogsVxx` |  |
-| **Palo Alto Cortex Data Lake** | Palo Alto Cortex Data Lake events. | `_Im_Authentication_PaloAltoCortexDataLakeVxx` |  |
-| **PostgreSQL** | PostgreSQL sign-in logs. | `_Im_Authentication_PostgreSQLVxx` |  |
-| **Salesforce Service Cloud** | Salesforce Service Cloud events. | `_Im_Authentication_SalesforceSCVxx` |  |
-| **SentinelOne** | SentinelOne events. | `_Im_Authentication_SentinelOneVxx` |  |
-| **Linux Sshd** | Linux sshd activity reported using Syslog. | `_Im_Authentication_SshdVxx` |  |
-| **Linux Su** | Linux su activity reported using Syslog. | `_Im_Authentication_SuVxx` |  |
-| **Linux Sudo** | Linux sudo activity reported using Syslog. | `_Im_Authentication_SudoVxx` |  |
-| **Vectra XDR** | Vectra XDR audit events. | `_Im_Authentication_VectraXDRAuditVxx` |  |
-| **VMware Carbon Black Cloud** | VMware Carbon Black Cloud events. | `_Im_Authentication_VMwareCarbonBlackCloudVxx` |  |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Authentication Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationNative.yaml)** | Any event normalized at ingestion to the `ASimAuthenticationEventLogs` table. | `_Im_Authentication_Native` |  | `false` |
+| **[Alibaba Cloud ActionTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAlibabaCloudActionTrail.yaml)** | Alibaba Cloud ActionTrail authentication events. | `_Im_Authentication_AlibabaCloudActionTrail` |  | `true` |
+| **[Aruba Networks ClearPass](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationArubaNetworksClearPass.yaml)** | Aruba Networks ClearPass authentication events. | `_Im_Authentication_ArubaNetworksClearPass` |  | `true` |
+| **[Auth0](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationOktaAuth0.yaml)** | Auth0 authentication events. | `_Im_Authentication_OktaAuth0` |  | `true` |
+| **[AWS CloudTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAWSCloudTrail.yaml)** | AWS sign-ins, collected using the AWS CloudTrail connector. | `_Im_Authentication_AWSCloudTrail` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationAWSCloudTrail.yaml) | `false` |
+| **[Barracuda WAF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationBarracudaWAF.yaml)** | Barracuda WAF events. | `_Im_Authentication_BarracudaWAF` |  | `false` |
+| **[Cisco ASA](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoASA.yaml)** | Cisco ASA events collected using CEF. | `_Im_Authentication_CiscoASA` |  | `false` |
+| **[Cisco DNA Center](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoDNAC.yaml)** | Cisco DNA Center authentication events collected using Syslog. | `_Im_Authentication_CiscoDNAC` |  | `false` |
+| **[Cisco FTD](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoFTD.yaml)** | Cisco Firepower Threat Defense authentication events collected using Syslog. | `_Im_Authentication_CiscoFTD` |  | `false` |
+| **[Cisco IOS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoIOS.yaml)** | Cisco IOS authentication events collected using Syslog. | `_Im_Authentication_CiscoIOS` |  | `false` |
+| **[Cisco ISE](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoISE.yaml)** | Cisco ISE events. | `_Im_Authentication_CiscoISE` |  | `false` |
+| **[Cisco ISE (administrator)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoISEAdministrator.yaml)** | Cisco ISE administrator authentication events. | `_Im_Authentication_CiscoISEAdministrator` |  | `true` |
+| **[Cisco Meraki](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoMeraki.yaml)** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_Authentication_CiscoMeraki` |  | `false` |
+| **[Cisco Meraki (Syslog)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCiscoMerakiSyslog.yaml)** | Cisco Meraki events collected to the table Syslog. | `_Im_Authentication_CiscoMerakiSyslog` |  | `false` |
+| **[CrowdStrike Falcon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCrowdStrikeFalconHost.yaml)** | CrowdStrike Falcon Host events. | `_Im_Authentication_CrowdStrikeFalconHost` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator authentication events. | `_Im_Authentication_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[CyberArk Audit](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationCyberArkAudit.yaml)** | CyberArk audit authentication events. | `_Im_Authentication_CyberArkAudit` |  | `true` |
+| **[Fortinet Fortigate](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationFortinetFortigate.yaml)** | Fortinet Fortigate system admin logs. | `_Im_Authentication_FortinetFortigate` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationFortinetFortigate.yaml) | `false` |
+| **[Google Workspace](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationGoogleWorkspace.yaml)** | Google Workspace sign-ins. | `_Im_Authentication_GoogleWorkspace` |  | `false` |
+| **[Google Workspace (CCF)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationGoogleWorkspaceLogins.yaml)** | Google Workspace login activities in the `GoogleWorkspaceReports` table, collected using the Codeless Connector Framework. | `_Im_Authentication_GoogleWorkspaceLogins` |  | `true` |
+| **[Illumio SaaS Core](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationIllumioSaaSCore.yaml)** | Illumio SaaS Core events. | `_Im_Authentication_IllumioSaaSCore` |  | `false` |
+| **[Linux Sshd](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSshd.yaml)** | Linux sshd activity reported using Syslog. | `_Im_Authentication_Sshd` |  | `false` |
+| **[Linux Su](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSu.yaml)** | Linux su activity reported using Syslog. | `_Im_Authentication_Su` |  | `false` |
+| **[Linux Sudo](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSudo.yaml)** | Linux sudo activity reported using Syslog. | `_Im_Authentication_Sudo` |  | `false` |
+| **[Microsoft Defender for IoT](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationMicrosoftMD4IoT.yaml)** | Microsoft Defender for IoT authentication events. | `_Im_Authentication_MD4IoT` |  | `false` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationM365Defender.yaml)** | Microsoft Defender XDR for Endpoint sign-ins for Windows and Linux. | `_Im_Authentication_M365Defender` |  | `false` |
+| **[Microsoft Entra ID](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAADSigninLogs.yaml)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for regular sign-ins. | `_Im_Authentication_SigninLogs` |  | `false` |
+| **[Microsoft Entra ID (Managed Identities)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAADManagedIdentity.yaml)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for Managed Identities sign-ins. | `_Im_Authentication_AADManagedIdentitySignInLogs` |  | `false` |
+| **[Microsoft Entra ID (non-interactive)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAADNonInteractive.yaml)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for non-interactive sign-ins. | `_Im_Authentication_AADNonInteractiveUserSignInLogs` |  | `false` |
+| **[Microsoft Entra ID (Service Principal)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationAADServicePrincipalSignInLogs.yaml)** | Microsoft Entra ID sign-ins, collected using the Microsoft Entra connector for Service Principal sign-ins. | `_Im_Authentication_AADServicePrincipalSignInLogs` |  | `false` |
+| **[Microsoft Windows Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationMicrosoftWindowsEvent.yaml)** | Windows sign-ins (Events 4624, 4625, 4634, 4647) collected using Azure Monitor Agent or the Log Analytics Agent to the `SecurityEvent` or `WindowsEvent` tables. | `_Im_Authentication_MicrosoftWindowsEvent` |  | `false` |
+| **[Okta (OktaSystemLogs)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationOktaSystemLogs.yaml)** | Okta authentication, collected using in the OktaSystemLogs table. | `_Im_Authentication_OktaSystemLogs` |  | `false` |
+| **[Okta (V1)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationOktaOSS.yaml)** | Okta authentication, collected using the Okta connector (V1 SSO). | `_Im_Authentication_OktaSSO` |  | `false` |
+| **[Okta (V2)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationOktaV2.yaml)** | Okta authentication, collected using the Okta connector (V2). | `_Im_Authentication_OktaV2` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationOktaV2.yaml) | `false` |
+| **[Oracle Cloud Infrastructure](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationOracleOCI.yaml)** | Oracle Cloud Infrastructure sign-in logs. | `_Im_Authentication_OracleOCI` |  | `true` |
+| **[Palo Alto Cortex Data Lake](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationPaloAltoCortexDataLake.yaml)** | Palo Alto Cortex Data Lake events. | `_Im_Authentication_PaloAltoCortexDataLake` |  | `false` |
+| **[Palo Alto GlobalProtect](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationPaloAltoGlobalProtect.yaml)** | Palo Alto PAN-OS GlobalProtect authentication events. | `_Im_Authentication_PaloAltoGlobalProtect` |  | `true` |
+| **[Palo Alto PAN-OS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationPaloAltoPanOS.yaml)** | Palo Alto PAN-OS authentication events. | `_Im_Authentication_PaloAltoPanOS` |  | `true` |
+| **[Palo Alto Prisma Cloud Compute](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationPaloAltoPrismaCloud.yaml)** | Palo Alto Prisma Cloud Compute authentication events. | `_Im_Authentication_PaloAltoPrismaCloud` |  | `true` |
+| **[PostgreSQL](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationPostgreSQL.yaml)** | PostgreSQL sign-in logs. | `_Im_Authentication_PostgreSQL` |  | `false` |
+| **[Salesforce Login History](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSalesforceLoginHistory.yaml)** | Salesforce login history events. | `_Im_Authentication_SalesforceLoginHistory` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationSalesforceLoginHistory.yaml) ([V2 table](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationSalesforceLoginHistoryV2_CL.yaml)) | `true` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring authentication events. | `_Im_Authentication_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[Salesforce Service Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSalesforceSC.yaml)** | Salesforce Service Cloud events. | `_Im_Authentication_SalesforceSC` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/IngestTimeParsers/ASimAuthenticationSalesforceServiceCloud.yaml) | `true` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationSentinelOne.yaml)** | SentinelOne events. | `_Im_Authentication_SentinelOne` |  | `false` |
+| **[Vectra XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationVectraXDRAudit.yaml)** | Vectra XDR audit events. | `_Im_Authentication_VectraXDRAudit` |  | `false` |
+| **[VMware Carbon Black Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud events. | `_Im_Authentication_VMwareCarbonBlackCloud` |  | `false` |
+| **[VMware ESXi](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationVMwareESXi.yaml)** | VMware ESXi authentication events. | `_Im_Authentication_VMwareESXi` |  | `true` |
+| **[VMware vCenter](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationVMwareVCenter.yaml)** | VMware vCenter authentication events. | `_Im_Authentication_VMwareVCenter` |  | `true` |
+| **[Wiz Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationWizCloud.yaml)** | Wiz Cloud authentication events. | `_Im_Authentication_WizCloud` |  | `true` |
+| **[Zscaler Private Access](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimAuthentication/Parsers/vimAuthenticationZscalerZPA.yaml)** | Zscaler Private Access authentication events. | `_Im_Authentication_ZscalerZPA` |  | `true` |
 
 ## DHCP Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized DHCP Event Logs** | Any event normalized at ingestion to the `ASimDhcpEventLogs` table. | `_Im_DhcpEvent_Native` |  |
-| **Infoblox BloxOne** | Infoblox BloxOne DHCP events. | `_Im_DhcpEvent_InfobloxBloxOneVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized DHCP Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDhcpEvent/Parsers/vimDhcpEventNative.yaml)** | Any event normalized at ingestion to the `ASimDhcpEventLogs` table. | `_Im_DhcpEvent_Native` |  | `false` |
+| **[Infoblox BloxOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDhcpEvent/Parsers/vimDhcpEventInfobloxBloxOne.yaml)** | Infoblox BloxOne DHCP events. | `_Im_DhcpEvent_InfobloxBloxOne` |  | `false` |
 
 ## DNS parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized DNS Logs** | Any event normalized at ingestion to the `ASimDnsActivityLogs` table. The DNS connector for the Azure Monitor Agent uses the `ASimDnsActivityLogs` table. | `_Im_Dns_Native` |  |
-| **Azure Firewall** | Azure Firewall DNS logs. | `_Im_Dns_AzureFirewallVxx` | `false` |
-| **Cisco Umbrella** | Cisco Umbrella DNS logs. | `_Im_Dns_CiscoUmbrellaVxx` |  |
-| **Corelight Zeek** | Corelight Zeek DNS logs. | `_Im_Dns_CorelightZeekVxx` |  |
-| **Fortinet FortiGate** | Fortinet FortiGate DNS logs. | `_Im_Dns_FortinetFortigateVxx` |  |
-| **GCP DNS** | Google Cloud Platform DNS logs. | `_Im_Dns_GcpVxx` |  |
-| **Infoblox BloxOne** | Infoblox BloxOne DNS events. | `_Im_Dns_InfobloxBloxOneVxx` |  |
-| **Infoblox NIOS** | Infoblox NIOS, BIND, and BlueCat DNS servers. The same parser supports multiple sources. | `_Im_Dns_InfobloxNIOSVxx` |  |
-| **Microsoft DNS Server** | Collected using the DNS connector for the Log Analytics Agent (legacy). | `_Im_Dns_MicrosoftOMSVxx` |  |
-| **Microsoft DNS Server (NXlog)** | Microsoft DNS Server collected using NXlog. | `_Im_Dns_MicrosoftNXlogVxx` |  |
-| **Microsoft Sysmon for Windows (Event)** | Sysmon DNS events (Event 22) collected using Azure Monitor Agent or the Log Analytics Agent (legacy) to the `Event` table. | `_Im_Dns_MicrosoftSysmonVxx` |  |
-| **Microsoft Sysmon for Windows (WindowsEvent)** | Sysmon DNS events (Event 22) collected using Azure Monitor Agent or the Log Analytics Agent (legacy) to the `WindowsEvent` table. | `_Im_Dns_MicrosoftSysmonWindowsEventVxx` |  |
-| **SentinelOne** | SentinelOne DNS events. | `_Im_Dns_SentinelOneVxx` | `false` |
-| **Vectra AI** | Vectra AI DNS events. | `_Im_Dns_VectraAIVxx` |  |
-| **Zscaler ZIA** | Zscaler ZIA DNS logs. | `_Im_Dns_ZscalerZIAVxx` |  |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized DNS Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsNative.yaml)** | Any event normalized at ingestion to the `ASimDnsActivityLogs` table. The DNS connector for the Azure Monitor Agent uses the `ASimDnsActivityLogs` table. | `_Im_Dns_Native` |  | `false` |
+| **[Azure Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsAzureFirewall.yaml)** | Azure Firewall DNS logs. | `_Im_Dns_AzureFirewall` |  | `false` |
+| **[Cisco Umbrella](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsCiscoUmbrella.yaml)** | Cisco Umbrella DNS logs. | `_Im_Dns_CiscoUmbrella` |  | `false` |
+| **[Corelight Zeek](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsCorelightZeek.yaml)** | Corelight Zeek DNS logs. | `_Im_Dns_CorelightZeek` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator DNS events. | `_Im_Dns_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/IngestTimeParsers/ASimDnsCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[Fortinet FortiGate](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsFortinetFortigate.yaml)** | Fortinet FortiGate DNS logs. | `_Im_Dns_FortinetFortiGate` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/IngestTimeParsers/ASimDnsFortinetFortiGate.yaml) | `false` |
+| **[GCP DNS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsGcp.yaml)** | Google Cloud Platform DNS logs. | `_Im_Dns_Gcp` |  | `false` |
+| **[Gigamon V-Series](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsGigamonVSeries.yaml)** | Gigamon V-Series Application Metadata Intelligence DNS events. | `_Im_Dns_GigamonVSeries` |  | `true` |
+| **[Halcyon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsHalcyon.yaml)** | Halcyon DNS activity. | `_Im_Dns_Halcyon` |  | `false` |
+| **[Infoblox BloxOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsInfobloxBloxOne.yaml)** | Infoblox BloxOne DNS events. | `_Im_Dns_InfobloxBloxOne` |  | `false` |
+| **[Infoblox NIOS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsInfobloxNIOS.yaml)** | Infoblox NIOS, BIND, and BlueCat DNS servers. The same parser supports multiple sources. | `_Im_Dns_InfobloxNIOS` |  | `false` |
+| **[Microsoft DNS Server](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsMicrosoftOMS.yaml)** | Collected using the DNS connector for the Log Analytics Agent (legacy). | `_Im_Dns_MicrosoftOMS` |  | `false` |
+| **[Microsoft DNS Server (NXlog)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsMicrosoftNXlog.yaml)** | Microsoft DNS Server collected using NXlog. | `_Im_Dns_MicrosoftNXlog` |  | `false` |
+| **[Microsoft Sysmon for Windows (Event)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsMicrosoftSysmon.yaml)** | Sysmon DNS events (Event 22) collected using Azure Monitor Agent or the Log Analytics Agent (legacy) to the `Event` table. | `_Im_Dns_MicrosoftSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsMicrosoftSysmonWindowsEvent.yaml)** | Sysmon DNS events (Event 22) collected using Azure Monitor Agent or the Log Analytics Agent (legacy) to the `WindowsEvent` table. | `_Im_Dns_MicrosoftSysmonWindowsEvent` |  | `false` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsSentinelOne.yaml)** | SentinelOne DNS events. | `_Im_Dns_SentinelOne` |  | `false` |
+| **[Vectra AI](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsVectraAI.yaml)** | Vectra AI DNS events. | `_Im_Dns_VectraAI` |  | `false` |
+| **[Zscaler ZIA](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimDns/Parsers/vimDnsZscalerZIA.yaml)** | Zscaler ZIA DNS logs. | `_Im_Dns_ZscalerZIA` |  | `false` |
+
+## Email Event parsers
+
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Email Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventNative.yaml)** | Any event normalized at ingestion to the `ASimEmailEventLogs` table. | `_Im_EmailEvent_Native` |  | `true` |
+| **[Microsoft Defender for Office 365](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventMicrosoftDefenderOffice365.yaml)** | Email delivery records in the `EmailEvents` table. | `_Im_EmailEvent_MicrosoftDefenderOffice365` |  | `true` |
+| **[Proofpoint POD (MailLog)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointPODMailLog.yaml)** | SMTP receipt and delivery records in the `ProofpointPODMailLog_CL` table. | `_Im_EmailEvent_ProofpointPODMailLog` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointPODMailLog.yaml) | `true` |
+| **[Proofpoint POD (message)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointPODMessage.yaml)** | Message inspection records in the `ProofpointPODMessage_CL` table. | `_Im_EmailEvent_ProofpointPODMessage` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointPODMessage.yaml) | `true` |
+| **[Proofpoint TAP (blocked clicks)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointTAPClicksBlocked.yaml)** | Blocked URL-click events in the `ProofPointTAPClicksBlockedV2_CL` table, normalized as `EmailInteraction`. | `_Im_EmailEvent_ProofpointTAPClicksBlocked` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointTAPClicksBlockedIngestTime.yaml) | `true` |
+| **[Proofpoint TAP (blocked messages)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointTAPBlocked.yaml)** | Blocked-message events in the `ProofPointTAPMessagesBlockedV2_CL` table. | `_Im_EmailEvent_ProofpointTAPBlocked` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointTAPBlocked.yaml) | `true` |
+| **[Proofpoint TAP (delivered messages)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointTAPDelivered.yaml)** | Delivered-message events in the `ProofPointTAPMessagesDeliveredV2_CL` table. | `_Im_EmailEvent_ProofpointTAPDelivered` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointTAPDelivered.yaml) | `true` |
+| **[Proofpoint TAP (permitted clicks)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/Parsers/vimEmailEventProofpointTAPClicksPermitted.yaml)** | Permitted URL-click events in the `ProofPointTAPClicksPermittedV2_CL` table, normalized as `EmailInteraction`. | `_Im_EmailEvent_ProofpointTAPClicksPermitted` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimEmailEvent/IngestTimeParsers/ASimEmailEventProofpointTAPClicksPermittedIngestTime.yaml) | `true` |
 
 ## File Activity parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized File Event Logs** | Any event normalized at ingestion to the `ASimFileEventLogs` table. | `_Im_FileEvent_Native` |  |
-| **AWS CloudTrail** | AWS CloudTrail file events. | `_Im_FileEvent_AWSCloudTrailVxx` | `true` |
-| **Azure Blob Storage** | Azure Blob Storage file events. | `_Im_FileEvent_AzureBlobStorageVxx` |  |
-| **Azure File Storage** | Azure File Storage events. | `_Im_FileEvent_AzureFileStorageVxx` |  |
-| **Azure Queue Storage** | Azure Queue Storage events. | `_Im_FileEvent_AzureQueueStorageVxx` |  |
-| **Azure Table Storage** | Azure Table Storage events. | `_Im_FileEvent_AzureTableStorageVxx` |  |
-| **Google Workspace** | Google Workspace file events. | `_Im_FileEvent_GoogleWorkspaceVxx` |  |
-| **Linux Sysmon (Created Events)** | Sysmon for Linux file created events (Events 11). | `_Im_FileEvent_LinuxSysmonFileCreatedVxx` |  |
-| **Linux Sysmon (Deleted Events)** | Sysmon for Linux file deleted events (Events 23, 26). | `_Im_FileEvent_LinuxSysmonFileDeletedVxx` |  |
-| **Microsoft Defender XDR** | Microsoft Defender XDR for Endpoint file events. | `_Im_FileEvent_Microsoft365DVxx` |  |
-| **Microsoft Security Events** | Windows file events (Event 4663) collected using the Security Events connector. | `_Im_FileEvent_MicrosoftSecurityEventsVxx` |  |
-| **Microsoft SharePoint** | Microsoft Office 365 SharePoint and OneDrive events, collected using the Office Activity connector. | `_Im_FileEvent_MicrosoftSharePointVxx` |  |
-| **Microsoft Sysmon for Windows (Event)** | Sysmon for Windows file events (Events 11, 23, 26) collected to the `Event` table. | `_Im_FileEvent_MicrosoftSysmonVxx` |  |
-| **Microsoft Sysmon for Windows (WindowsEvent)** | Sysmon for Windows file events (Events 11, 23, 26) collected to the `WindowsEvent` table. | `_Im_FileEvent_MicrosoftSysmonWindowsEventVxx` |  |
-| **Microsoft Windows Events** | Windows file events (Event 4663) collected to the `WindowsEvent` table. | `_Im_FileEvent_MicrosoftWindowsEventsVxx` |  |
-| **SentinelOne** | SentinelOne file events. | `_Im_FileEvent_SentinelOneVxx` |  |
-| **VMware Carbon Black Cloud** | VMware Carbon Black Cloud file events. | `_Im_FileEvent_VMwareCarbonBlackCloudVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized File Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventNative.yaml)** | Any event normalized at ingestion to the `ASimFileEventLogs` table. | `_Im_FileEvent_Native` |  | `false` |
+| **[AWS CloudTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventAWSCloudTrail.yaml)** | AWS CloudTrail file events. | `_vim_FileEvent_AWSCloudTrail` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/IngestTimeParsers/ASimFileEventAWSCloudTrail.yaml) | `true` |
+| **[Azure Blob Storage](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventAzureBlobStorage.yaml)** | Azure Blob Storage file events. | `_Im_FileEvent_AzureBlobStorage` |  | `false` |
+| **[Azure File Storage](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventAzureFileStorage.yaml)** | Azure File Storage events. | `_Im_FileEvent_AzureFileStorage` |  | `false` |
+| **[Azure Queue Storage](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventAzureQueueStorage.yaml)** | Azure Queue Storage events. | `_Im_FileEvent_AzureQueueStorage` |  | `false` |
+| **[Azure Table Storage](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventAzureTableStorage.yaml)** | Azure Table Storage events. | `_Im_FileEvent_AzureTableStorage` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator file events. | `_Im_FileEvent_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/IngestTimeParsers/ASimFileEventCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[Google Workspace](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventGoogleWorkspace.yaml)** | Google Workspace file events. | `_Im_FileEvent_GoogleWorkspace` |  | `false` |
+| **[Linux Sysmon (Created Events)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventLinuxSysmonFileCreated.yaml)** | Sysmon for Linux file created events (Events 11). | `_Im_FileEvent_LinuxSysmonFileCreated` |  | `false` |
+| **[Linux Sysmon (Deleted Events)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventLinuxSysmonFileDeleted.yaml)** | Sysmon for Linux file deleted events (Events 23, 26). | `_Im_FileEvent_LinuxSysmonFileDeleted` |  | `false` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventM365D.yaml)** | Microsoft Defender XDR for Endpoint file events. | `_Im_FileEvent_Microsoft365D` |  | `false` |
+| **[Microsoft Security Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventMicrosoftSecurityEvents.yaml)** | Windows file events (Event 4663) collected using the Security Events connector. | `_Im_FileEvent_MicrosoftSecurityEvents` |  | `false` |
+| **[Microsoft SharePoint](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventMicrosoftSharePoint.yaml)** | Microsoft Office 365 SharePoint and OneDrive events, collected using the Office Activity connector. | `_Im_FileEvent_MicrosoftSharePoint` |  | `false` |
+| **[Microsoft Sysmon for Windows (Event)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventMicrosoftSysmon.yaml)** | Sysmon for Windows file events (Events 11, 23, 26) collected to the `Event` table. | `_Im_FileEvent_MicrosoftSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventMicrosoftSysmonWindowsEvent.yaml)** | Sysmon for Windows file events (Events 11, 23, 26) collected to the `WindowsEvent` table. | `_Im_FileEvent_MicrosoftSysmonWindowsEvent` |  | `false` |
+| **[Microsoft Windows Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventMicrosoftWindowsEvents.yaml)** | Windows file events (Event 4663) collected to the `WindowsEvent` table. | `_Im_FileEvent_MicrosoftWindowsEvents` |  | `false` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring file events. | `_Im_FileEvent_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventSentinelOne.yaml)** | SentinelOne file events. | `_Im_FileEvent_SentinelOne` |  | `false` |
+| **[VMware Carbon Black Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimFileEvent/Parsers/vimFileEventVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud file events. | `_Im_FileEvent_VMwareCarbonBlackCloud` |  | `false` |
 
 ## Network Session parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Network Session Logs** | Any event normalized at ingestion to the `ASimNetworkSessionLogs` table. The Firewall connector for the Azure Monitor Agent uses this table. | `_Im_NetworkSession_Native` |  |
-| **AppGate SDP** | IP connection logs collected using Syslog. | `_Im_NetworkSession_AppGateSDPVxx` |  |
-| **AWS VPC logs** | Collected using the AWS S3 connector. | `_Im_NetworkSession_AWSVPCVxx` |  |
-| **Azure Firewall** | Azure Firewall network logs. | `_Im_NetworkSession_AzureFirewallVxx` | `false` |
-| **Azure NSG** | Azure Network Security Groups flow logs. | `_Im_NetworkSession_AzureNSGVxx` |  |
-| **Azure Monitor VMConnection** | Collected as part of the Azure Monitor VM Insights solution. | `_Im_NetworkSession_VMConnectionVxx` |  |
-| **Barracuda CEF** | Barracuda events collected using CEF. | `_Im_NetworkSession_BarracudaCEFVxx` |  |
-| **Barracuda WAF** | Barracuda WAF events. | `_Im_NetworkSession_BarracudaWAFVxx` |  |
-| **Checkpoint Firewall** | Checkpoint Firewall events collected using CEF. | `_Im_NetworkSession_CheckPointFirewallVxx` | `false` |
-| **Cisco ASA** | Cisco ASA events collected using CEF. | `_Im_NetworkSession_CiscoASAVxx` |  |
-| **Cisco Firepower** | Cisco Firepower events. | `_Im_NetworkSession_CiscoFirepowerVxx` | `false` |
-| **Cisco ISE** | Cisco ISE events. | `_Im_NetworkSession_CiscoISEVxx` |  |
-| **Cisco Meraki** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_NetworkSession_CiscoMerakiVxx` | `false` |
-| **Cisco Meraki (Syslog)** | Cisco Meraki events collected to the table Syslog. | `_Im_NetworkSession_CiscoMerakiSyslogVxx` | `false` |
-| **Corelight Zeek** | Corelight Zeek network events. | `_Im_NetworkSession_CorelightZeekVxx` |  |
-| **CrowdStrike Falcon** | CrowdStrike Falcon Host events. | `_Im_NetworkSession_CrowdStrikeFalconHostVxx` | `false` |
-| **ForcePoint Firewall** | ForcePoint Firewall events. | `_Im_NetworkSession_ForcePointFirewallVxx` | `false` |
-| **Fortinet FortiGate** | Fortinet FortiGate firewall events collected using Syslog. | `_Im_NetworkSession_FortinetFortiGateVxx` |  |
-| **Illumio SaaS Core** | Illumio SaaS Core events. | `_Im_NetworkSession_IllumioSaaSCoreVxx` | `false` |
-| **Microsoft Defender for IoT (Agent)** | Microsoft Defender for IoT micro agent events. | `_Im_NetworkSession_MD4IoTAgentVxx` |  |
-| **Microsoft Defender for IoT (Sensor)** | Microsoft Defender for IoT micro sensor events. | `_Im_NetworkSession_MD4IoTSensorVxx` |  |
-| **Microsoft Defender XDR** | Microsoft Defender XDR for Endpoint network events. | `_Im_NetworkSession_Microsoft365DefenderVxx` |  |
-| **Microsoft Sysmon for Linux** | Sysmon for Linux network events (Event 3). | `_Im_NetworkSession_MicrosoftLinuxSysmonVxx` |  |
-| **Microsoft Sysmon for Windows (Event)** | Sysmon for Windows network events (Event 3) collected to the `Event` table. | `_Im_NetworkSession_MicrosoftSysmonVxx` |  |
-| **Microsoft Sysmon for Windows (WindowsEvent)** | Sysmon for Windows network events (Event 3) collected to the `WindowsEvent` table. | `_Im_NetworkSession_MicrosoftSysmonWindowsEventVxx` |  |
-| **Microsoft Windows Firewall** | Windows Firewall events (Events 5150-5159) collected using Azure Monitor Agent or the Log Analytics Agent. | `_Im_NetworkSession_MicrosoftWindowsEventFirewallVxx` |  |
-| **Microsoft Windows Security Events Firewall** | Windows Firewall events collected via Security Events connector. | `_Im_NetworkSession_MicrosoftSecurityEventFirewallVxx` |  |
-| **NTA NetAnalytics** | Network Traffic Analytics events. | `_Im_NetworkSession_NTANetAnalyticsVxx` | `false` |
-| **Palo Alto PanOS** | Palo Alto PanOS traffic logs collected using CEF. | `_Im_NetworkSession_PaloAltoCEFVxx` |  |
-| **Palo Alto Cortex Data Lake** | Palo Alto Cortex Data Lake events. | `_Im_NetworkSession_PaloAltoCortexDataLakeVxx` | `false` |
-| **SentinelOne** | SentinelOne network events. | `_Im_NetworkSession_SentinelOneVxx` |  |
-| **SonicWall Firewall** | SonicWall Firewall events. | `_Im_NetworkSession_SonicWallFirewallVxx` | `false` |
-| **Vectra AI** | Vectra AI network events. Supports the pack parameter. | `_Im_NetworkSession_VectraAIVxx` | `true` |
-| **VMware Carbon Black Cloud** | VMware Carbon Black Cloud network events. | `_Im_NetworkSession_VMwareCarbonBlackCloudVxx` | `false` |
-| **WatchGuard Fireware OS** | WatchGuard Fireware OS events collected using Syslog. | `_Im_NetworkSession_WatchGuardFirewareOSVxx` |  |
-| **Zscaler ZIA** | Zscaler ZIA firewall logs collected using CEF. | `_Im_NetworkSession_ZscalerZIAVxx` |  |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Network Session Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionNative.yaml)** | Any event normalized at ingestion to the `ASimNetworkSessionLogs` table. The Firewall connector for the Azure Monitor Agent uses this table. | `_Im_NetworkSession_Native` |  | `false` |
+| **[AppGate SDP](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionAppGateSDP.yaml)** | IP connection logs collected using Syslog. | `_Im_NetworkSession_AppGateSDP` |  | `false` |
+| **[AWS GuardDuty](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionAWSGuardDuty.yaml)** | AWS GuardDuty network findings. | `_Im_NetworkSession_AWSGuardDuty` |  | `true` |
+| **[AWS VPC logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionAWSVPC.yaml)** | Collected using the AWS S3 connector. | `_Im_NetworkSession_AWSVPC` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/IngestTimeParsers/ASimNetworkSessionAWSVPC.yaml) | `false` |
+| **[Azure Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionAzureFirewall.yaml)** | Azure Firewall network logs. | `_Im_NetworkSession_AzureFirewall` |  | `false` |
+| **[Azure Monitor VMConnection](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionVMConnection.yaml)** | Collected as part of the Azure Monitor VM Insights solution. | `_Im_NetworkSession_VMConnection` |  | `false` |
+| **[Azure NSG](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionAzureNSG.yaml)** | Azure Network Security Groups flow logs. | `_Im_NetworkSession_AzureNSG` |  | `false` |
+| **[Barracuda CEF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionBarracudaCEF.yaml)** | Barracuda events collected using CEF. | `_Im_NetworkSession_BarracudaCEF` |  | `false` |
+| **[Barracuda WAF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionBarracudaWAF.yaml)** | Barracuda WAF events. | `_Im_NetworkSession_BarracudaWAF` |  | `false` |
+| **[Check Point SmartDefense](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCheckpointSmartDefense.yaml)** | Check Point SmartDefense network events. | `_Im_NetworkSession_CheckPointSmartDefense` |  | `true` |
+| **[Checkpoint Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCheckPointFirewall.yaml)** | Checkpoint Firewall events collected using CEF. | `_Im_NetworkSession_CheckPointFirewall` |  | `false` |
+| **[Cisco ASA](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoASA.yaml)** | Cisco ASA events collected using CEF. | `_Im_NetworkSession_CiscoASA` |  | `false` |
+| **[Cisco Firepower](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoFirepower.yaml)** | Cisco Firepower events. | `_Im_NetworkSession_CiscoFirepower` |  | `false` |
+| **[Cisco FTD](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoFTD.yaml)** | Cisco Firepower Threat Defense network events. | `_Im_NetworkSession_CiscoFTD` |  | `true` |
+| **[Cisco ISE](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoISE.yaml)** | Cisco ISE events. | `_Im_NetworkSession_CiscoISE` |  | `false` |
+| **[Cisco Meraki](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoMeraki.yaml)** | Cisco Meraki events collected using the API connector or Syslog. | `_Im_NetworkSession_CiscoMeraki` |  | `false` |
+| **[Cisco Meraki (Syslog)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCiscoMerakiSyslog.yaml)** | Cisco Meraki events collected to the table Syslog. | `_Im_NetworkSession_CiscoMerakiSyslog` |  | `false` |
+| **[Corelight Zeek](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCorelightZeek.yaml)** | Corelight Zeek network events. | `_Im_NetworkSession_CorelightZeek` |  | `false` |
+| **[CrowdStrike Falcon](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCrowdStrikeFalconHost.yaml)** | CrowdStrike Falcon Host events. | `_Im_NetworkSession_CrowdStrikeFalconHost` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator network events. | `_Im_NetworkSession_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/IngestTimeParsers/ASimNetworkSessionCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[ForcePoint Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionForcePointFirewall.yaml)** | ForcePoint Firewall events. | `_Im_NetworkSession_ForcePointFirewall` |  | `false` |
+| **[Fortinet FortiGate](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionFortinetFortiGate.yaml)** | Fortinet FortiGate firewall events collected using Syslog. | `_Im_NetworkSession_FortinetFortiGate` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/IngestTimeParsers/ASimNetworkSessionFortinetFortiGate.yaml) | `false` |
+| **[Gigamon V-Series](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionGigamonVSeries.yaml)** | Gigamon V-Series Application Metadata Intelligence network events. | `_Im_NetworkSession_GigamonVSeries` |  | `true` |
+| **[Illumio SaaS Core](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionIllumioSaaSCore.yaml)** | Illumio SaaS Core events. | `_Im_NetworkSession_IllumioSaaSCore` |  | `false` |
+| **[Microsoft Defender for IoT (Agent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMD4IoTAgent.yaml)** | Microsoft Defender for IoT micro agent events. | `_Im_NetworkSession_MD4IoTAgent` |  | `false` |
+| **[Microsoft Defender for IoT (Sensor)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMD4IoTSensor.yaml)** | Microsoft Defender for IoT micro sensor events. | `_Im_NetworkSession_MD4IoTSensor` |  | `false` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoft365Defender.yaml)** | Microsoft Defender XDR for Endpoint network events. | `_Im_NetworkSession_Microsoft365Defender` |  | `false` |
+| **[Microsoft Sysmon for Linux](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoftLinuxSysmon.yaml)** | Sysmon for Linux network events (Event 3). | `_Im_NetworkSession_LinuxSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (Event)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoftSysmon.yaml)** | Sysmon for Windows network events (Event 3) collected to the `Event` table. | `_Im_NetworkSession_MicrosoftSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoftSysmonWindowsEvent.yaml)** | Sysmon for Windows network events (Event 3) collected to the `WindowsEvent` table. | `_Im_NetworkSession_MicrosoftSysmonWindowsEvent` |  | `false` |
+| **[Microsoft Windows Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoftWindowsEventFirewall.yaml)** | Windows Firewall events (Events 5150-5159) collected using Azure Monitor Agent or the Log Analytics Agent. | `_Im_NetworkSession_MicrosoftWindowsEventFirewall` |  | `false` |
+| **[Microsoft Windows Security Events Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionMicrosoftSecurityEventFirewall.yaml)** | Windows Firewall events collected via Security Events connector. | `_Im_NetworkSession_MicrosoftSecurityEventFirewall` |  | `false` |
+| **[NTA NetAnalytics](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionNTANetAnalytics.yaml)** | Network Traffic Analytics events. | `_Im_NetworkSession_NTANetAnalytics` |  | `false` |
+| **[Palo Alto Cortex Data Lake](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionPaloAltoCortexDataLake.yaml)** | Palo Alto Cortex Data Lake events. | `_Im_NetworkSession_PaloAltoCortexDataLake` |  | `false` |
+| **[Palo Alto PanOS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionPaloAltoCEF.yaml)** | Palo Alto PanOS traffic logs collected using CEF. | `_Im_NetworkSession_PaloAltoCEF` |  | `false` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionSentinelOne.yaml)** | SentinelOne network events. | `_Im_NetworkSession_SentinelOne` |  | `false` |
+| **[SonicWall Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionSonicWallFirewall.yaml)** | SonicWall Firewall events. | `_Im_NetworkSession_SonicWallFirewall` |  | `false` |
+| **[Vectra AI](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionVectraAI.yaml)** | Vectra AI network events. Supports the pack parameter. | `_Im_NetworkSession_VectraAI` |  | `true` |
+| **[VMware Carbon Black Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud network events. | `_Im_NetworkSession_VMwareCarbonBlackCloud` |  | `false` |
+| **[WatchGuard Fireware OS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionWatchGuardFirewareOS.yaml)** | WatchGuard Fireware OS events collected using Syslog. | `_Im_NetworkSession_WatchGuardFirewareOS` |  | `false` |
+| **[Zscaler Private Access](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionZscalerZPA.yaml)** | Zscaler Private Access network events in the `ZPA_CL` table. | `_Im_NetworkSession_ZscalerZPA` |  | `true` |
+| **[Zscaler ZIA](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimNetworkSession/Parsers/vimNetworkSessionzScalerZIA.yaml)** | Zscaler ZIA firewall logs collected using CEF. | `_Im_NetworkSession_ZscalerZIA` |  | `false` |
 
 ## Process Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Process Event Logs** | Any event normalized at ingestion to the `ASimProcessEventLogs` table. | `_Im_ProcessEvent_Native` |  |
-| **Linux Sysmon (Create)** | Sysmon for Linux process creation events (Events 1). | `_Im_ProcessCreate_LinuxSysmonVxx` |  |
-| **Linux Sysmon (Terminate)** | Sysmon for Linux process termination events (Events 5). | `_Im_ProcessTerminate_LinuxSysmonVxx` |  |
-| **Microsoft Defender for IoT** | Microsoft Defender for IoT process events. | `_Im_ProcessEvent_MD4IoTVxx` |  |
-| **Microsoft Defender XDR** | Microsoft Defender XDR for Endpoint process events. | `_Im_ProcessEvent_Microsoft365DVxx` |  |
-| **Microsoft Security Events (Create)** | Windows Security Events process creation events (Events 4688). | `_Im_ProcessCreate_MicrosoftSecurityEventsVxx` |  |
-| **Microsoft Security Events (Terminate)** | Windows Security Events process termination events (Events 4689). | `_Im_ProcessTerminate_MicrosoftSecurityEventsVxx` |  |
-| **Microsoft Sysmon for Windows (Create)** | Sysmon for Windows process events (Event 1) collected to the `Event` tables. | `_Im_ProcessCreate_MicrosoftSysmonVxx` |  |
-| **Microsoft Sysmon for Windows (Terminate)** | Sysmon for Windows process events (Event 5) collected to the `Event` tables. | `_Im_ProcessTerminate_MicrosoftSysmonVxx` |  |
-| **Microsoft Windows Events (Create)** | Windows process events (Event 4688) collected to the `WindowsEvent` table. | `_Im_ProcessCreate_MicrosoftWindowsEventsVxx` |  |
-| **Microsoft Windows Events (Terminate)** | Windows process events (Event 4689) collected to the `WindowsEvent` table. | `_Im_ProcessTerminate_MicrosoftWindowsEventsVxx` |  |
-| **SentinelOne** | SentinelOne process events. | `_Im_ProcessCreate_SentinelOneVxx` |  |
-| **Trend Micro Vision One** | Trend Micro Vision One process events. | `_Im_ProcessCreate_TrendMicroVisionOneVxx` | `false` |
-| **VMware Carbon Black Cloud (Create)** | VMware Carbon Black Cloud process creation events. | `_Im_ProcessCreate_VMwareCarbonBlackCloudVxx` | `false` |
-| **VMware Carbon Black Cloud (Terminate)** | VMware Carbon Black Cloud process termination events. | `_Im_ProcessTerminate_VMwareCarbonBlackCloudVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Process Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessEventNative.yaml)** | Any event normalized at ingestion to the `ASimProcessEventLogs` table. | `_Im_ProcessEvent_Native` |  | `false` |
+| **[CrowdStrike Falcon Endpoint Protection](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessEventCrowdStrikeFalconEndpointProtection.yaml)** | Process creation, observation, termination, and termination request events in the `CrowdStrike_Process_Events_CL` table. | `_Im_ProcessEvent_CrowdStrikeFalconEndpointProtection` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/IngestTimeParsers/ASimProcessEventCrowdStrikeFalconEndpointProtection.yaml) | `false` |
+| **[Linux Sysmon (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateLinuxSysmon.yaml)** | Sysmon for Linux process creation events (Events 1). | `_Im_ProcessCreate_LinuxSysmon` |  | `false` |
+| **[Linux Sysmon (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateLinuxSysmon.yaml)** | Sysmon for Linux process termination events (Events 5). | `_Im_ProcessTerminate_LinuxSysmon` |  | `false` |
+| **[Microsoft Defender for IoT (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateMD4IoT.yaml)** | Microsoft Defender for IoT process creation events. | `_Im_ProcessCreate_MD4IoT` |  | `false` |
+| **[Microsoft Defender for IoT (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateMD4IoT.yaml)** | Microsoft Defender for IoT process termination events. | `_Im_ProcessTerminate_MD4IoT` |  | `false` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessEventMicrosoft365D.yaml)** | Microsoft Defender XDR for Endpoint process events. | `_Im_ProcessEvent_Microsoft365D` |  | `false` |
+| **[Microsoft Security Events (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateMicrosoftSecurityEvents.yaml)** | Windows Security Events process creation events (Events 4688). | `_Im_ProcessCreate_MicrosoftSecurityEvents` |  | `false` |
+| **[Microsoft Security Events (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateMicrosoftSecurityEvents.yaml)** | Windows Security Events process termination events (Events 4689). | `_Im_ProcessTerminate_MicrosoftSecurityEvents` |  | `false` |
+| **[Microsoft Sysmon for Windows (Create, WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateMicrosoftSysmonWidowsEvent.yaml)** | Sysmon process creation events (Event 1) collected to the `WindowsEvent` table. | `_Im_ProcessEvent_CreateMicrosoftSysmonWindowsEvent` |  | `false` |
+| **[Microsoft Sysmon for Windows (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateMicrosoftSysmon.yaml)** | Sysmon for Windows process events (Event 1) collected to the `Event` tables. | `_Im_ProcessEvent_CreateMicrosoftSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (Terminate, WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateMicrosoftSysmonWindowsEvent.yaml)** | Sysmon process termination events (Event 5) collected to the `WindowsEvent` table. | `_Im_ProcessTerminate_MicrosoftSysmonWindowsEvent` |  | `false` |
+| **[Microsoft Sysmon for Windows (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateMicrosoftSysmon.yaml)** | Sysmon for Windows process events (Event 5) collected to the `Event` tables. | `_Im_ProcessTerminate_MicrosoftSysmon` |  | `false` |
+| **[Microsoft Windows Events (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateMicrosoftWindowsEvents.yaml)** | Windows process events (Event 4688) collected to the `WindowsEvent` table. | `_Im_ProcessCreate_MicrosoftWindowsEvents` |  | `false` |
+| **[Microsoft Windows Events (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateMicrosoftWindowsEvents.yaml)** | Windows process events (Event 4689) collected to the `WindowsEvent` table. | `_Im_ProcessTerminate_MicrosoftWindowsEvents` |  | `false` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateSentinelOne.yaml)** | SentinelOne process events. | `_Im_ProcessCreate_SentinelOne` |  | `false` |
+| **[Trend Micro Vision One](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateTrendMicroVisionOne.yaml)** | Trend Micro Vision One process events. | `_Im_ProcessCreate_TrendMicroVisionOne` |  | `false` |
+| **[VMware Carbon Black Cloud (Create)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessCreateVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud process creation events. | `_Im_ProcessCreate_VMwareCarbonBlackCloud` |  | `false` |
+| **[VMware Carbon Black Cloud (Terminate)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimProcessEvent/Parsers/vimProcessTerminateVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud process termination events. | `_Im_ProcessTerminate_VMwareCarbonBlackCloud` |  | `false` |
 
 ## Registry Event parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Registry Event Logs** | Any event normalized at ingestion to the `ASimRegistryEventLogs` table. | `_Im_RegistryEvent_Native` |  |
-| **Microsoft Defender XDR** | Microsoft Defender XDR for Endpoint registry events. | `_Im_RegistryEvent_Microsoft365DVxx` |  |
-| **Microsoft Security Events** | Windows Security Events registry events (Events 4657, 4663). | `_Im_RegistryEvent_MicrosoftSecurityEventVxx` |  |
-| **Microsoft Sysmon for Windows** | Sysmon for Windows registry events (Events 12, 13, 14) collected to the `Event` or `WindowsEvent` tables. | `_Im_RegistryEvent_MicrosoftSysmonVxx` |  |
-| **Microsoft Windows Events** | Windows registry events collected to the `WindowsEvent` table. | `_Im_RegistryEvent_MicrosoftWindowsEventVxx` |  |
-| **SentinelOne** | SentinelOne registry events. | `_Im_RegistryEvent_SentinelOneVxx` |  |
-| **Trend Micro Vision One** | Trend Micro Vision One registry events. | `_Im_RegistryEvent_TrendMicroVisionOneVxx` | `false` |
-| **VMware Carbon Black Cloud** | VMware Carbon Black Cloud registry events. | `_Im_RegistryEvent_VMwareCarbonBlackCloudVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Registry Event Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventNative.yaml)** | Any event normalized at ingestion to the `ASimRegistryEventLogs` table. | `_Im_RegistryEvent_Native` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator registry events. | `_Im_RegistryEvent_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/IngestTimeParsers/ASimRegistryEventCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[Microsoft Defender XDR](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventMicrosoft365D.yaml)** | Microsoft Defender XDR for Endpoint registry events. | `_Im_RegistryEvent_Microsoft365D` |  | `false` |
+| **[Microsoft Security Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventMicrosoftSecurityEvent.yaml)** | Windows Security Events registry events (Events 4657, 4663). | `_Im_RegistryEvent_MicrosoftSecurityEvent` |  | `false` |
+| **[Microsoft Sysmon for Windows (Event)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventMicrosoftSysmon.yaml)** | Sysmon for Windows registry events (Events 12, 13, 14) collected to the `Event` table. | `_Im_RegistryEvent_MicrosoftSysmon` |  | `false` |
+| **[Microsoft Sysmon for Windows (WindowsEvent)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventMicrosoftSysmonWindowsEvent.yaml)** | Sysmon registry events collected to the `WindowsEvent` table. | `_Im_RegistryEvent_MicrosoftSysmonWindowsEvent` |  | `false` |
+| **[Microsoft Windows Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventMicrosoftWindowsEvent.yaml)** | Windows registry events collected to the `WindowsEvent` table. | `_Im_RegistryEvent_MicrosoftWindowsEvent` |  | `false` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventSentinelOne.yaml)** | SentinelOne registry events. | `_Im_RegistryEvent_SentinelOne` |  | `false` |
+| **[Trend Micro Vision One](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventTrendMicroVisionOne.yaml)** | Trend Micro Vision One registry events. | `_Im_RegistryEvent_TrendMicroVisionOne` |  | `false` |
+| **[VMware Carbon Black Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimRegistryEvent/Parsers/vimRegistryEventVMwareCarbonBlackCloud.yaml)** | VMware Carbon Black Cloud registry events. | `_Im_RegistryEvent_VMwareCarbonBlackCloud` |  | `false` |
 
 ## User Management parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized User Management Logs** | Any event normalized at ingestion to the `ASimUserManagementLogs` table. | `_Im_UserManagement_Native` |  |
-| **AWS CloudTrail** | AWS CloudTrail user management events. | `_Im_UserManagement_AWSCloudTrailVxx` | `true` |
-| **Cisco ISE** | Cisco ISE user management events. | `_Im_UserManagement_CiscoISEVxx` |  |
-| **Linux Authpriv** | Linux authpriv user management events. | `_Im_UserManagement_LinuxAuthprivVxx` |  |
-| **Microsoft Security Events** | Windows Security Events user management events. | `_Im_UserManagement_MicrosoftSecurityEventVxx` |  |
-| **Microsoft Windows Events** | Windows user management events collected to the `WindowsEvent` table. | `_Im_UserManagement_MicrosoftWindowsEventVxx` |  |
-| **SentinelOne** | SentinelOne user management events. | `_Im_UserManagement_SentinelOneVxx` | `false` |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized User Management Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementNative.yaml)** | Any event normalized at ingestion to the `ASimUserManagementLogs` table. | `_Im_UserManagement_Native` |  | `false` |
+| **[Alibaba Cloud ActionTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementAlibabaCloudActionTrail.yaml)** | Alibaba Cloud ActionTrail user management events. | `_Im_UserManagement_AlibabaCloudActionTrail` |  | `true` |
+| **[AWS CloudTrail](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementAWSCloudTrail.yaml)** | AWS CloudTrail user management events. | `_Im_UserManagement_AWSCloudTrail` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/IngestTimeParsers/ASimUserManagementAWSCloudTrail.yaml) | `true` |
+| **[Cisco ISE](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementCiscoISE.yaml)** | Cisco ISE user management events. | `_Im_UserManagement_CiscoISE` |  | `false` |
+| **[CrowdStrike Falcon Data Replicator](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementCrowdStrikeFalconDataReplicator.yaml)** | CrowdStrike Falcon Data Replicator user management events. | `_Im_UserManagement_CrowdStrikeFalconDataReplicator` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/IngestTimeParsers/ASimUserManagementCrowdStrikeFalconDataReplicator.yaml) | `true` |
+| **[Linux Authpriv](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementLinuxAuthpriv.yaml)** | Linux authpriv user management events. | `_Im_UserManagement_LinuxAuthpriv` |  | `false` |
+| **[Microsoft Security Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementMicrosoftSecurityEvent.yaml)** | Windows Security Events user management events. | `_Im_UserManagement_MicrosoftSecurityEvent` |  | `false` |
+| **[Microsoft Windows Events](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementMicrosoftWindowsEvent.yaml)** | Windows user management events collected to the `WindowsEvent` table. | `_Im_UserManagement_MicrosoftWindowsEvent` |  | `false` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring user management events. | `_Im_UserManagement_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[SentinelOne](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimUserManagement/Parsers/vimUserManagementSentinelOne.yaml)** | SentinelOne user management events. | `_Im_UserManagement_SentinelOne` |  | `false` |
 
 ## Web Session parsers
 
-| **Source** | **Notes** | **Parser** | **Uses pack parameter** |
-| --- | --- | --- | --- |
-| **Normalized Web Session Logs** | Any event normalized at ingestion to the `ASimWebSessionLogs` table. | `_Im_WebSession_Native` |  |
-| **Apache HTTP Server** | Apache HTTP Server logs. | `_Im_WebSession_ApacheHTTPServerVxx` |  |
-| **Azure Firewall** | Azure Firewall web session logs. | `_Im_WebSession_AzureFirewallVxx` | `false` |
-| **Barracuda CEF** | Barracuda events collected using CEF. | `_Im_WebSession_BarracudaCEFVxx` | `false` |
-| **Barracuda WAF** | Barracuda WAF events. | `_Im_WebSession_BarracudaWAFVxx` | `false` |
-| **Cisco Firepower** | Cisco Firepower web events. | `_Im_WebSession_CiscoFirepowerVxx` | `false` |
-| **Cisco Meraki** | Cisco Meraki web events. | `_Im_WebSession_CiscoMerakiVxx` |  |
-| **Citrix NetScaler** | Citrix NetScaler web events. | `_Im_WebSession_CitrixNetScalerVxx` | `false` |
-| **F5 ASM** | F5 ASM web events. | `_Im_WebSession_F5ASMVxx` | `false` |
-| **Fortinet FortiGate** | Fortinet FortiGate web session logs. | `_Im_WebSession_FortinetFortiGateVxx` | `false` |
-| **Internet Information Services (IIS)** | IIS logs collected using Azure Monitor Agent or Log Analytics Agent. | `_Im_WebSession_IISVxx` |  |
-| **Palo Alto PanOS** | Palo Alto PanOS threat logs collected using CEF. | `_Im_WebSession_PaloAltoCEFVxx` |  |
-| **Palo Alto Cortex Data Lake** | Palo Alto Cortex Data Lake events. | `_Im_WebSession_PaloAltoCortexDataLakeVxx` | `false` |
-| **SonicWall Firewall** | SonicWall Firewall web events. | `_Im_WebSession_SonicWallFirewallVxx` | `false` |
-| **Squid Proxy** | Squid Proxy web logs. | `_Im_WebSession_SquidProxyVxx` |  |
-| **Vectra AI** | Vectra AI web events. Supports the pack parameter. | `_Im_WebSession_VectraAIVxx` | `true` |
-| **Zscaler ZIA** | Zscaler ZIA web logs collected using CEF. | `_Im_WebSession_ZscalerZIAVxx` |  |
+| **Source** | **Notes** | **Query Time Parser** | **Ingest Time Parser** | **Uses pack parameter** |
+| --- | --- | --- | --- | --- |
+| **[Normalized Web Session Logs](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionNative.yaml)** | Any event normalized at ingestion to the `ASimWebSessionLogs` table. | `_Im_WebSession_Native` |  | `false` |
+| **[Apache HTTP Server](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionApacheHTTPServer.yaml)** | Apache HTTP Server logs. | `_Im_WebSession_ApacheHTTPServer` |  | `false` |
+| **[AWS WAF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionAWSWAF.yaml)** | AWS Web Application Firewall events. | `_Im_WebSession_AWSWAF` |  | `true` |
+| **[Azure Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionAzureFirewall.yaml)** | Azure Firewall web session logs. | `_Im_WebSession_AzureFirewall` |  | `false` |
+| **[Barracuda CEF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionBarracudaCEF.yaml)** | Barracuda events collected using CEF. | `_Im_WebSession_BarracudaCEF` |  | `false` |
+| **[Barracuda WAF](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionBarracudaWAF.yaml)** | Barracuda WAF events. | `_Im_WebSession_BarracudaWAF` |  | `false` |
+| **[Cisco Firepower](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionCiscoFirepower.yaml)** | Cisco Firepower web events. | `_Im_WebSession_CiscoFirepower` |  | `false` |
+| **[Cisco Meraki](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionCiscoMeraki.yaml)** | Cisco Meraki web events. | `_Im_WebSession_CiscoMeraki` |  | `false` |
+| **[Cisco Umbrella](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionCiscoUmbrella.yaml)** | Cisco Umbrella proxy logs. | `_Im_WebSession_CiscoUmbrella` |  | `true` |
+| **[Citrix NetScaler](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionCitrixNetScaler.yaml)** | Citrix NetScaler web events. | `_Im_WebSession_CitrixNetScaler` |  | `false` |
+| **[Cloudflare One](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionCloudflareOne.yaml)** | Cloudflare One web session events. | `_Im_WebSession_CloudflareOne` |  | `true` |
+| **[F5 ASM](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionF5ASM.yaml)** | F5 ASM web events. | `_Im_WebSession_F5ASM` |  | `false` |
+| **[Fortinet FortiGate](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionFortinetFortiGate.yaml)** | Fortinet FortiGate web session logs. | `_Im_WebSession_FortinetFortiGate` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/IngestTimeParsers/ASimWebSessionFortinetFortiGate.yaml) | `false` |
+| **[Internet Information Services (IIS)](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionIIS.yaml)** | IIS logs collected using Azure Monitor Agent or Log Analytics Agent. | `_Im_WebSession_IIS` |  | `false` |
+| **[Palo Alto Cortex Data Lake](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionPaloAltoCortexDataLake.yaml)** | Palo Alto Cortex Data Lake events. | `_Im_WebSession_PaloAltoCortexDataLake` |  | `false` |
+| **[Palo Alto PanOS](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionPaloAltoCEF.yaml)** | Palo Alto PanOS threat logs collected using CEF. | `_Im_WebSession_PaloAltoCEF` |  | `false` |
+| **[Salesforce Real-Time Event Monitoring](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionSalesforceRealTimeEventMonitoring.yaml)** | Salesforce Real-Time Event Monitoring web session events. | `_Im_WebSession_SalesforceRealTimeEventMonitoring` |  | `true` |
+| **[Salesforce Service Cloud](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionSalesforceServiceCloud.yaml)** | Salesforce Service Cloud web session events. | `_Im_WebSession_SalesforceServiceCloud` | [Yes](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/IngestTimeParsers/ASimWebSessionSalesforceServiceCloud.yaml) | `true` |
+| **[SonicWall Firewall](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionSonicWallFirewall.yaml)** | SonicWall Firewall web events. | `_Im_WebSession_SonicWallFirewall` |  | `false` |
+| **[Squid Proxy](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionSquidProxy.yaml)** | Squid Proxy web logs. | `_Im_WebSession_SquidProxy` |  | `false` |
+| **[Vectra AI](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionVectraAI.yaml)** | Vectra AI web events. Supports the pack parameter. | `_Im_WebSession_VectraAI` |  | `true` |
+| **[Zscaler ZIA](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/ASimWebSession/Parsers/vimWebSessionzScalerZIA.yaml)** | Zscaler ZIA web logs collected using CEF. | `_Im_WebSession_ZscalerZIA` |  | `false` |

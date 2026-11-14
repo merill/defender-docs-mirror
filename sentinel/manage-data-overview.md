@@ -149,6 +149,8 @@ You can view Basic Logs tables in your Microsoft Sentinel workspace from the Mic
 
 ### How data tiers and retention work
 
+For regional support, see [Data lake retention availability](geographical-availability-data-residency#supported-regions).
+
 You can retain data in Microsoft Sentinel in one of two tiers:
 
 - **Analytics tier**: This tier makes data available for alerting, hunting, workbooks, and all Microsoft Sentinel features. It retains data in two states:

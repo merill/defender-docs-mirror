@@ -124,7 +124,7 @@ Fields common to all schemas are described in detail in [ASIM common fields](nor
 
 | Field | Class | Type | Description |
 | --- | --- | --- | --- |
-| **EventType** | Mandatory | Enumerated | Describes the normalized email activity. Allowed values are `EmailDelivery` and `EmailInspection`. |
+| **EventType** | Mandatory | Enumerated | Describes the normalized email activity. Allowed values are `EmailDelivery`, `EmailInspection`, and `EmailInteraction`. |
 | **EventSubType** | Optional | Enumerated | Provides more detail about the email activity. Allowed values are `EmailSent` and `EmailReceived`. |
 | **EventSchema** | Mandatory | Enumerated | The schema name is `EmailEvent`. |
 | **EventSchemaVersion** | Mandatory | SchemaVersion (String) | The version of the schema. The version documented here is `1.0.0`. |

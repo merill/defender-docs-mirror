@@ -44,8 +44,10 @@ item_type: Content
 source_path: sentinel/manage-table-tiers-retention.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 4fa798b0-9a70-0a32-fd8e-1487bccf21f0
 ---
 
@@ -59,6 +61,7 @@ For more information about how data tiers and retention work, see [Manage data t
 
 ## Prerequisites
 
+- To use data lake retention, your workspace must be in a [supported region](geographical-availability-data-residency#supported-regions).
 - To manage Defender XDR hunting tables, you need to onboard to Microsoft Sentinel in the Defender portal. For more information, see [Connect Microsoft Sentinel to the Microsoft Defender portal](/en-us/azure/sentinel/microsoft-sentinel-onboard).
 - To use Table insights, you need read access to the Tables page in your workspace. Table insights requires the same permissions as viewing table settings. For more information, see Permissions required.
 

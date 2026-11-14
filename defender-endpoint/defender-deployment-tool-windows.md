@@ -64,6 +64,7 @@ The deployment tool provides these features:
 - **Server passive mode**: Configures Microsoft Defender Antivirus to run in passive mode on Windows Server.
 - **Nonpersistent virtual desktop infrastructure (VDI)**: Helps devices recreated with the same hostname appear as one device in the Defender portal.
 - **Package guardrails**: Requires a portal-generated access key for onboarding and supports package expiration dates from one day to one year. Use the shortest practical validity period.
+- **Embedded offboarding (preview)**: Builds the offboarding package into the tool, protected by a portal-generated offboarding key and a custom expiration date, so you don't need a separate offboarding file.
 - **Package management**: Lists deployment packages in the [Microsoft Defender portal](https://security.microsoft.com) and lets you filter them by properties such as status and expiration date.
 - **Built-in help**: Displays the available command-line options when you run `DefenderDT.exe -?`.
 
@@ -186,8 +187,8 @@ The following table lists the parameters available in the Defender deployment to
 | Onboarding | `-Passive` | Configure Microsoft Defender Antivirus to run in passive mode on Windows Server. |
 | Onboarding | `-VDI` | Identify the device as a nonpersistent virtual desktop infrastructure (VDI) device. |
 | Onboarding | `-DeviceTag:<tag>` | Add a tag to the device. |
-| Onboarding | `-Key:<key>` | Specify the onboarding access key generated in the Defender portal. |
-| Offboarding | `-Offboard` | Offboard the device. Specify the `.offboarding` file with `-File:<path>`. |
+| Onboarding | `-Key:<key>` | Specify the onboarding or offboarding key generated in the Defender portal. |
+| Offboarding | `-Offboard` | Offboard the device. Specify the offboarding key with `-Key:<key>`, or the `.offboarding` file with `-File:<path>`. |
 | Offboarding | `-Uninstall` | Offboard the device and uninstall components added during onboarding. Specify the `.offboarding` file with `-File:<path>`. |
 | Offboarding | `-Yes` | Proceed with offboarding or uninstalling without prompting for confirmation. |
 | Offboarding | `-Offline` | Allow offboarding without connectivity. |
@@ -217,6 +218,12 @@ Replace placeholder paths, keys, and proxy addresses in the following examples w
     ```dos
     DefenderDT.exe -File:\\server.contoso.com\share\WindowsDefenderATP.onboarding -Quiet
     ```
+- Offboard the device by using an embedded offboarding key without displaying dialogs:
+
+```dos
+DefenderDT.exe -Offboard -Key:<offboarding-key> -Quiet
+```
+
 - Offboard the device by using a local offboarding file without prompting for confirmation or displaying dialogs:
 
     ```dos
@@ -267,16 +274,83 @@ For more information about the management console, see [Group Policy Management 
 
 ## Offboard a device
 
-To offboard a device, download the offboarding package from the Defender portal, transfer it to the target device, and run the deployment tool with the package.
+You can offboard a device by using the deployment tool in either of these ways:
 
-### Step 1: Download the offboarding package
+- **Embedded offboarding (preview)**: Generate a deployment tool with an offboarding key in the Microsoft Defender portal. The offboarding package is built into the tool, so you don't need a separate offboarding file. The key works only with the tool instance it was generated for, and you can set a custom expiration date of up to one year.
+- **Offboarding file**: Download an offboarding package from the Defender portal and run the deployment tool with the extracted `.offboarding` file.
 
-1. On the **Offboarding** page in the Microsoft Defender portal at https://security.microsoft.com/securitysettings/endpoints/offboarding, select **Windows** under **Select operating system**.
-2. Under **Defender deployment tool**, select **Download package** to download the `.zip` file that contains the offboarding script.
+### Offboard by using embedded offboarding (preview)
 
-    [![Screenshot of the Defender portal option to download a deployment tool offboarding package.](media/defender-deployment-tool-windows/defender-deployment-tool-windows-offboard.png)](media/defender-deployment-tool-windows/defender-deployment-tool-windows-offboard.png#lightbox)
+Important
 
-### Step 2: Run the offboarding command
+Embedded offboarding is in preview. Some information relates to a prerelease product that might be substantially modified before it's released. Microsoft makes no warranties, expressed or implied, with respect to the information provided here.
+
+#### Step 1: Generate a deployment tool with an offboarding key
+
+1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **System** &gt; **Settings** &gt; **Endpoints** &gt; **Offboarding**, and then select **Windows** under **Select operating system**. You can also start offboarding from **Device inventory** by selecting **Offboard**.
+2. Under **Defender deployment tool**, select **Offboard**.
+3. On the **Generate the Defender deployment tool with an offboarding key**flyout, configure the package:
+    - **Name**: Enter a unique, descriptive package name.
+    - **Organization**: Verify the displayed organization.
+    - **Expires**: Use the shortest practical validity period to reduce the risk of unauthorized package use:
+        - In 7 days (default)
+        - In 30 days
+        - Custom (up to one year)
+4. Select **Generate**.
+
+#### Step 2: Copy the offboarding key and download the tool
+
+When the package is ready, the portal displays the offboarding key and a download option.
+
+1. Copy the offboarding key and store it securely.
+
+    Note
+
+    You can't view the key again after you close the flyout. The key works only with the deployment tool that you download from the same flyout.
+2. Select **Download deployment tool**, and choose the `.exe` or `.zip` format based on your organization's needs.
+
+To review the offboarding packages that you created, go to **System** &gt; **Settings** &gt; **Endpoints** &gt; **Deployment packages**. You can filter the list by properties such as package type, status, and expiration date.
+
+#### Step 3: Run the tool on the device
+
+Copy the downloaded tool to the device that you want to offboard, and then run it interactively or from the command line.
+
+To offboard interactively:
+
+1. Double-click the executable.
+2. In the dialog that confirms offboarding will start, select **Continue**.
+3. Enter the offboarding key that you copied from the portal, and then select **Continue**.
+4. Wait for the process to finish.
+
+To offboard from the command line, run the tool in an elevated Command Prompt with the offboarding key:
+
+```dos
+DefenderDT.exe -Offboard -Key:<offboarding-key>
+```
+
+To offboard without displaying dialogs, add the `-Quiet` parameter:
+
+```dos
+DefenderDT.exe -Offboard -Key:<offboarding-key> -Quiet
+```
+
+Replace `DefenderDT.exe` with the name of the executable that you downloaded, and replace `<offboarding-key>` with the key that you copied from the portal.
+
+After a successful offboarding, the tool displays the following message:
+
+```console
+Microsoft Defender deployment tool completed, exit code: 0 [Success]
+```
+
+### Offboard by using an offboarding file
+
+To offboard a device with an offboarding file, download the offboarding package from the Defender portal, transfer it to the target device, and run the deployment tool with the package.
+
+#### Step 1: Download the offboarding package
+
+On the **Offboarding** page in the Microsoft Defender portal at `https://security.microsoft.com/securitysettings/endpoints/offboarding`, select **Windows** under **Select operating system**. Under **Defender deployment tool**, select **Download package** to download the `.zip` file that contains the offboarding script.
+
+#### Step 2: Run the offboarding command
 
 Complete these steps on the device that you want to offboard:
 
@@ -287,11 +361,13 @@ Complete these steps on the device that you want to offboard:
     DefenderDT.exe -Offboard -File:C:\Packages\WindowsDefenderATP.offboarding
     ```
 3. Type **Y** in the confirmation dialog to proceed.
-4. Wait for the process to finish. After a successful offboarding, the tool displays the following message:
+4. Wait for the process to finish.
 
-    ```console
-    Microsoft Defender deployment tool completed, exit code: 0 [Success]
-    ```
+After a successful offboarding, the tool displays the following message:
+
+```console
+Microsoft Defender deployment tool completed, exit code: 0 [Success]
+```
 
 ## Considerations and limitations
 

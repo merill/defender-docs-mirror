@@ -45,11 +45,11 @@ source_path: sentinel/data-connectors-reference.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/540ac133-a371-4dbb-8f94-28d6cc77a70b
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/60bfc045-f127-4841-9d00-ea35495a5800
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: b9a0c2e6-d209-bd1b-535c-5d399bfdf1aa
 ---
 
@@ -105,6 +105,253 @@ The following table lists the data connectors that are available in the Microsof
 Tip
 
 For a list of tables ingested into Microsoft Sentinel and the connectors that ingest them, see [Microsoft Sentinel tables and associated connectors](sentinel-tables-connectors-reference).
+
+**(Deprecated) Exchange Security Insights On-Premises Collector**
+
+**Supported by:**[Community](https://github.com/Azure/Azure-Sentinel/issues)
+
+Connector used to push Exchange On-Premises Security configuration for Microsoft Sentinel Analysis - Deprecated, use Azure Monitor Version
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `ESIExchangeConfig_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Azure Log Analytics HTTP Data Collector API will be deprecated**: Azure Log Analytics HTTP Data Collector API will be deprecated, Update to Log Monitor API is REQUIRED. [Learn more](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment)
+- **Service Account with Organization Management role**: The service Account that launch the script as scheduled task needs to be Organization Management to be able to retrieve all the needed security Information.
+- **Detailed documentation**: &gt;**NOTE:** Detailed documentation on Installation procedure and usage can be found [here](https://aka.ms/MicrosoftExchangeSecurityGithub)
+
+**Setup Instructions:**
+
+> 
+> **NOTE - UPDATE**
+
+> 
+> Note: 
+> 
+> # **NOTE - UPDATE:**
+> We recommend to Update the Collector to Version **8.0.0.0** or higher **AND** switching to new Log Monitor API. The Collector Script Update procedure could be found here : [ESI On-Premises Collector Update](https://aka.ms/sentinel-ESI-OnlineCollectorUpdate), Update to Log Monitor API procedure could be found here : [Upgrade an existing deployment](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment). The new version of the Collector is using DCR (Data Collection Rules) for data collection. You need to configure DCR before running the script.
+
+**1. Install the ESI Collector Script on a server with Exchange Admin PowerShell console**
+
+This is the script that will collect Exchange Information to push content in Microsoft Sentinel.
+
+**Script Deployment**
+
+**Download the latest version of ESI Collector**
+
+The latest version can be found here : https://aka.ms/ESI-ExchangeCollector-Script. The file to download is CollectExchSecIns.zip
+
+**Copy the script folder**
+
+Unzip the content and copy the script folder on a server where Exchange PowerShell Cmdlets are present.
+
+**Unblock the PS1 Scripts**
+
+Click right on each PS1 Script and go to Properties tab. If the script is marked as blocked, unblock it. You can also use the Cmdlet 'Unblock-File *.* in the unzipped folder using PowerShell.
+
+\*\*Configure Network Access \*\*
+
+Ensure that the script can contact Azure Analytics (\*.ods.opinsights.azure.com).
+
+**2. Configure the ESI Collector Script**
+
+Be sure to be local administrator of the server. In 'Run as Administrator' mode, launch the 'setup.ps1' script to configure the collector. Fill the Log Analytics (Microsoft Sentinel) Workspace information. Fill the Environment name or leave empty. By default, choose 'Def' as Default analysis. The other choices are for specific usage.
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+**3. Schedule the ESI Collector Script (If not done by the Install Script due to lack of permission or ignored during installation)**
+
+The script needs to be scheduled to send Exchange configuration to Microsoft Sentinel. We recommend to schedule the script once a day. The account used to launch the Script needs to be member of the group Organization Management
+
+> 
+> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected. Parsers are automatically deployed with the solution. Follow the steps to create the Kusto Functions alias : [**ExchangeAdminAuditLogs**](https://aka.ms/sentinel-ESI-ExchangeCollector-ExchangeAdminAuditLogs-parser)
+
+**Parsers are automatically deployed during Solution deployment. If you want to deploy manually, follow the steps below**
+
+**Manual Parser Deployment**
+
+**1. Download the Parser file**
+
+The latest version of the file [**ExchangeAdminAuditLogs**](https://aka.ms/sentinel-ESI-ExchangeCollector-ExchangeAdminAuditLogs-parser)
+
+**2. Create Parser ExchangeAdminAuditLogs function**
+
+In 'Logs' explorer of your Microsoft Sentinel's log analytics, copy the content of the file to Log explorer
+
+**3. Save Parser ExchangeAdminAuditLogs function**
+
+Click on save button. No parameter is needed for this parser. Click save again.
+
+**(Deprecated) Exchange Security Insights Online Collector**
+
+**Supported by:**[Community](https://github.com/Azure/Azure-Sentinel/issues)
+
+Connector used to push Exchange Online Security configuration for Microsoft Sentinel Analysis - Deprecated, use Azure Monitor Version
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `ESIExchangeOnlineConfig_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Azure Log Analytics HTTP Data Collector API will be deprecated**: Azure Log Analytics HTTP Data Collector API will be deprecated. Update to the Azure Monitor Log Ingestion API is required. [Learn more](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment)
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **microsoft.automation/automationaccounts permissions**: Read and write permissions to create an Azure Automation with a Runbook is required. For more information, see [Automation Account](/en-us/azure/automation/overview).
+- **Microsoft.Graph permissions**: Group.Read.All, User.Read.All, and AuditLog.Read.All permissions are required to retrieve user and group information linked to Exchange Online assignments. [See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
+- **Exchange Online permissions**: Exchange.ManageAsApp permission and **Global Reader** or **Security Reader** Role are needed to retrieve the Exchange Online Security Configuration.[See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
+- **(Optional) Log Storage permissions**: Storage Blob Data Contributor to a storage account linked to the Automation Account Managed identity or an Application ID is mandatory to store logs.[See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
+
+**Setup Instructions:**
+
+> 
+> **NOTE - UPDATE**
+
+> 
+> Note: 
+> 
+> # **NOTE - UPDATE:**
+> Update the collector to version **8.0.0.0** or later and switch to the Azure Monitor Log Ingestion API. See [ESI Online Collector Update](https://aka.ms/sentinel-ESI-OnlineCollectorUpdate) and [Upgrade an existing deployment](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment).
+
+> 
+> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected. Follow the steps for each Parser to create the Kusto Functions alias : [**ExchangeConfiguration**](https://aka.ms/sentinel-ESI-ExchangeConfiguration-Online-parser) and [**ExchangeEnvironmentList](https://aka.ms/sentinel-ESI-ExchangeEnvironmentList-Online-parser) STEP 2 - Parsers deployment\*\*
+
+**Parser deployment (When using Microsoft Exchange Security Solution, Parsers are automatically deployed)**
+
+**1. Download the Parser files**
+
+The latest version of the 2 files [**ExchangeConfiguration.yaml**](https://aka.ms/sentinel-ESI-ExchangeConfiguration-Online-parser) and [**ExchangeEnvironmentList.yaml**](https://aka.ms/sentinel-ESI-ExchangeEnvironmentList-Online-parser)
+
+**2. Create Parser ExchangeConfiguration function**
+
+In 'Logs' explorer of your Microsoft Sentinel's log analytics, copy the content of the file to Log explorer
+
+**3. Save Parser ExchangeConfiguration function**
+
+Click on save button. Define the parameters as asked on the header of the parser file. Click save again.
+
+**4. Reproduce the same steps for Parser ExchangeEnvironmentList**
+
+Reproduce the step 2 and 3 with the content of 'ExchangeEnvironmentList.yaml' file
+
+> 
+> **NOTE:** This connector uses Azure Automation to connect to 'Exchange Online' to pull its Security analysis into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Automation pricing page](https://azure.microsoft.com/pricing/details/automation/) for details.
+
+STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Automation
+
+> 
+> **IMPORTANT:** Before deploying the 'ESI Exchange Online Security Configuration' connector, have the Workspace ID and Workspace Primary Key available and choose a generic environment display name for the workbooks. The template adds the `-cloud` suffix when needed.
+
+- **Workspace ID**: &lt;variable value provided at install time&gt;
+- **Primary Key**: &lt;variable value provided at install time&gt;
+
+Option 1 - Azure Resource Manager (ARM) Template
+
+Use this method for automated deployment of the 'ESI Exchange Online Security Configuration' connector.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-ESI-ExchangeCollector-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the **Workspace ID, Workspace Key, Tenant Name**, 'and/or Other required fields'.
+4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
+5. Click **Purchase** to deploy.
+
+Option 2 - Manual Deployment of Azure Automation
+
+Use the following step-by-step instructions to deploy the 'ESI Exchange Online Security Configuration' connector manually with Azure Automation.
+
+**A. Create the Azure Automation Account**
+
+1. From the Azure Portal, navigate to [Azure Automation Account](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Automation%2FAutomationAccounts).
+2. Click **+ Add** at the top.
+3. In the **Basics** tab, fill the required fields and give a name to the Azure Automation.
+4. In the **Advanced and Networking and Tags** Tabs, leave fields as default if you don't need to customize them.
+5. 'Make other preferable configuration changes', if needed, then click **Create**.
+
+**B. Add Exchange Online Management Module, Microsoft Graph (Authentication, User and Group) Modules**
+
+1. On the Automation Account page, select **Modules**.
+2. Click on **Browse gallery and search the ExchangeOnlineManagement** module.
+3. Select it and click on **Select**.
+4. Choose Version **5.1** on Runtime version field and click on Import button. Repeat the step for the following modules : 'Microsoft.Graph.Authentication', 'Microsoft.Graph.Users' and 'Microsoft.Graph.Groups. **Attention, you need to wait for Microsoft.Graph.Authentication installation before processing next modules**
+
+**C. Download the Runbook Content**
+
+1. Download the latest version of ESI Collector. The latest version can be found here : https://aka.ms/ESI-ExchangeCollector-Script
+2. Unzip the file to find the JSON file and the PS1 file for next step.
+
+**D. Create Runbook**
+
+1. On the Automation Account page, select the **Runbooks** button.
+2. Click on **Create a runbook and name it like 'ESI-Collector' with a runbook type PowerShell, Runtime Version 5.1** and click 'Create'.
+3. Import the content of the previous step's PS1 file in the Runbook window.
+4. Click on **Publish**
+
+**E. Create GlobalConfiguration Variable**
+
+1. On the Automation Account page, select the **Variables** button.
+2. Click on **Add a Variable and name it exaclty 'GlobalConfiguration' with a type String**.
+3. On 'Value' field, copy the content of the previous step's JSON file.
+4. Inside the content, replace the values of **WorkspaceID and WorkspaceKey**.
+5. Click on 'Create' button.
+
+**F. Create TenantName Variable**
+
+1. On the Automation Account page, select the **Variables** button.
+2. Click on **Add a Variable and name it exaclty 'TenantName' with a type String**.
+3. On 'Value' field, write the tenant name of your Exchange Online.
+4. Click on 'Create' button.
+
+**G. Create LastDateTracking Variable**
+
+1. On the Automation Account page, select the **Variables** button.
+2. Click on **Add a Variable and name it exaclty 'LastDateTracking' with a type String**.
+3. On 'Value' field, write 'Never'.
+4. Click on 'Create' button.
+
+**H. Create a Runbook Schedule**
+
+1. On the Automation Account page, select the **Runbook** button and click on your created runbook.
+2. Click on **Schedules and Add a schedule** button.
+3. Click on **Schedule, Add a Schedule and name it. Select Recurring** value with a reccurence of every 1 day, click 'Create'.
+4. Click on 'Configure parameters and run settings'. Leave all empty and click on **OK and OK** again.
+
+STEP 3 - Assign Microsoft Graph Permission and Exchange Online Permission to Managed Identity Account
+
+To be able to collect Exchange Online information and to be able to retrieve User information and memberlist of admin groups, the automation account need multiple permission.
+
+**Assign Permissions by Script**
+
+**A. Download Permission Script**
+
+[Permission Update script](https://aka.ms/ESI-ExchangeCollector-Permissions)
+
+**B. Retrieve the Azure Automation Managed Identity GUID and insert it in the downloaded script**
+
+1. Go to your Automation Account, in the **Identity** Section. You can find the Guid of your Managed Identity.
+2. Replace the GUID in $MI\_ID = "XXXXXXXXXXX" with the GUID of your Managed Identity.
+
+**C. Launch the script with a Global-Administrator account**
+
+**Attention this script requires MSGraph Modules and Admin Consent to access to your tenant with Microsoft Graph**. The script will add 3 permissions to the Managed identity: 1. Exchange Online ManageAsApp permission 2. User.Read.All on Microsoft Graph API 3. Group.Read.All on Microsoft Graph API
+
+**D. Exchange Online Role Assignment**
+
+1. As a **Global Administrator, go to Roles and Administrators**.
+2. Select **Global Reader role or Security Reader** and click to 'Add assignments'.
+3. Click on 'No member selected' and search your Managed Identity account Name beginning by **the name of your automation account** like 'ESI-Collector'. Select it and click on 'Select'.
+4. Click **Next and validate the assignment by clicking Assign**.
 
 **1Password**
 
@@ -1493,335 +1740,6 @@ New detections will automatically be forwarded.
 - **Workspace ID**: &lt;variable value provided at install time&gt;
 - **Primary Key**: &lt;variable value provided at install time&gt;
 
-**Armis Alerts Activities (using Azure Functions)**
-
-**Supported by:**[Armis Corporation](https://support.armis.com/)
-
-The [Armis](https://www.armis.com/) Alerts Activities connector gives the capability to ingest Armis Alerts and Activities into Microsoft Sentinel through the Armis REST API. Refer to the API documentation: `https://<YourArmisInstance>.armis.com/api/v1/docs` for more information. The connector provides the ability to get alert and activity information from the Armis platform and to identify and prioritize threats in your environment. Armis uses your existing infrastructure to discover and identify devices without having to deploy any agents.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `Armis_Alerts_CL` | Yes | Yes |
-| `Armis_Activities_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **Armis Secret Key** is required. See the documentation to learn more about API on the `https://<YourArmisInstance>.armis.com/api/v1/doc`
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to the Armis API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-> 
-> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected which is deployed as part of the solution. To view the function code in Log Analytics, open Log Analytics/Microsoft Sentinel Logs blade, click Functions and search for the alias ArmisActivities/ArmisAlerts and load the function code. The function usually takes 10-15 minutes to activate after solution installation/update.
-
-STEP 1 - Configuration steps for the Armis API
-
-Follow these instructions to create an Armis API secret key.
-
-1. Log into your Armis instance
-2. Navigate to Settings -&gt; API Management
-3. If the secret key has not already been created, press the Create button to create the secret key
-4. To access the secret key, press the Show button
-5. The secret key can now be copied and used during the Armis Alerts Activities connector configuration
-
-STEP 2 - App Registration steps for the Application in Microsoft Entra ID
-
-This integration requires an App registration in the Azure portal. Follow the steps in this section to create a new application in Microsoft Entra ID:
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Search for and select **Microsoft Entra ID**.
-3. Under **Manage, select App registrations &gt; New registration**.
-4. Enter a display **Name** for your application.
-5. Select **Register** to complete the initial app registration.
-6. When registration finishes, the Azure portal displays the app registration's Overview pane. You see the **Application (client) ID and Tenant ID**. The client ID and Tenant ID is required as configuration parameters for the execution of Armis Alerts Activities Data Connector.
-
-**Reference link:**[/azure/active-directory/develop/quickstart-register-app](/en-us/azure/active-directory/develop/quickstart-register-app)
-
-STEP 3 - Add a client secret for application in Microsoft Entra ID
-
-Sometimes called an application password, a client secret is a string value required for the execution of Armis Alerts Activities Data Connector. Follow the steps in this section to create a new Client Secret:
-
-1. In the Azure portal, in **App registrations**, select your application.
-2. Select **Certificates & secrets &gt; Client secrets &gt; New client secret**.
-3. Add a description for your client secret.
-4. Select an expiration for the secret or specify a custom lifetime. Limit is 24 months.
-5. Select **Add**.
-6. *Record the secret's value for use in your client application code. This secret value is never displayed again after you leave this page.* The secret value is required as configuration parameter for the execution of Armis Alerts Activities Data Connector.
-
-**Reference link:**[/azure/active-directory/develop/quickstart-register-app#add-a-client-secret](/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret)
-
-STEP 4 - Get Object ID of your application in Microsoft Entra ID
-
-After creating your app registration, follow the steps in this section to get Object ID:
-
-1. Go to **Microsoft Entra ID**.
-2. Select **Enterprise applications** from the left menu.
-3. Find your newly created application in the list (you can search by the name you provided).
-4. Click on the application.
-5. On the overview page, copy the **Object ID. This is the AzureEntraObjectId** needed for your ARM template role assignment.
-
-STEP 5 - Assign role of Contributor to application in Microsoft Entra ID
-
-Follow the steps in this section to assign the role:
-
-1. In the Azure portal, Go to **Resource Group** and select your resource group.
-2. Go to **Access control (IAM)** from left panel.
-3. Click on **Add, and then select Add role assignment**.
-4. Select **Contributor** as role and click on next.
-5. In **Assign access to**, select `User, group, or service principal`.
-6. Click on **add members and type your app name** that you have created and select it.
-7. Now click on **Review + assign and then again click on Review + assign**.
-
-**Reference link:**[/azure/role-based-access-control/role-assignments-portal](/en-us/azure/role-based-access-control/role-assignments-portal)
-
-STEP 6 - Create a Keyvault
-
-Follow these instructions to create a new Keyvault.
-
-1. In the Azure portal, Go to **Key vaults**. Click create.
-2. Select Subsciption, Resource Group and provide unique name of keyvault.
-
-> 
-> **NOTE: Create a separate key vault for each API key** within one workspace.
-
-STEP 7 - Create Access Policy in Keyvault
-
-Follow these instructions to create access policy in Keyvault.
-
-1. Go to keyvaults, select your keyvault, go to Access policies on left side panel. Click create.
-2. Select all keys & secrets permissions. Click next.
-3. In the principal section, search by application name which was generated in STEP - 2. Click next.
-
-> 
-> **NOTE: Ensure the Permission model in the Access Configuration of Key Vault is set to 'Vault access policy'**
-
-STEP 8 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
-
-> 
-> **IMPORTANT:** Before deploying the Armis Device data connector, have the Armis API Authorization Key(s) readily available..
-
-**Option 1 - Azure Resource Manager (ARM) Template**
-
-Use this method for automated deployment of the Armis connector.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentinel-ArmisAlertsActivitiesAPI-azuredeploy)[aka.ms](https://aka.ms/sentinel-ArmisAlertsActivitiesAPI-azuredeploy-gov)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the below information : Function Name Workspace Name Armis Secret Key Armis URL (https://&lt;armis-instance&gt;.armis.com/api/v1/) Armis Alert Table Name Armis Activity Table Name Severity (Default: Low) Armis Schedule KeyVault Name Azure Client Id Azure Client Secret Azure Entra ObjectID Tenant Id
-4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
-5. Click **Purchase** to deploy.
-
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the Armis Alerts Activities data connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-1. Deploy a Function App
-
-> 
-> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
-
-1. Download the [Azure Function App](https://aka.ms/sentinel-ArmisAlertsActivities320-functionapp) file. Extract archive to your local development computer.
-2. Start VS Code. Choose File in the main menu and select Open Folder.
-3. Select the top level folder from extracted files.
-4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
-5. Provide the following information at the prompts:
-
-    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
-
-    b. **Select Subscription:** Choose the subscription to use.
-
-    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
-
-    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. ARMISXXXXX).
-
-    e. **Select a runtime:** Choose Python 3.12
-
-    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
-6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
-7. Go to Azure Portal for the Function App configuration.
-8. Configure the Function App
-9. In the Function App, select the Function App Name and select **Configuration**.
-10. In the **Application settings tab, select + New application setting**.
-11. Add each of the following application settings individually, with their respective values (case-sensitive): Workspace Name Armis Secret Key Armis URL (https://&lt;armis-instance&gt;.armis.com/api/v1/) Armis Alert Table Name Armis Activity Table Name Severity (Default: Low) Armis Schedule KeyVault Name Azure Client Id Azure Client Secret Azure Entra ObjectID Tenant Id logAnalyticsUri (optional)
-
-- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
-
-1. Once all application settings have been entered, click **Save**.
-
-**Armis Devices (using Azure Functions)**
-
-**Supported by:**[Armis Corporation](https://support.armis.com/)
-
-The [Armis](https://www.armis.com/) Device connector gives the capability to ingest Armis Devices into Microsoft Sentinel through the Armis REST API. Refer to the API documentation: `https://<YourArmisInstance>.armis.com/api/v1/docs` for more information. The connector provides the ability to get device information from the Armis platform. Armis uses your existing infrastructure to discover and identify devices without having to deploy any agents. Armis can also integrate with your existing IT & security management tools to identify and classify each and every device, managed or unmanaged in your environment.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `Armis_Devices_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **Armis Secret Key** is required. See the documentation to learn more about API on the `https://<YourArmisInstance>.armis.com/api/v1/doc`
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to the Armis API to pull its logs into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-**(Optional Step)** Securely store workspace and API authorization key(s) or token(s) in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-> 
-> **NOTE: This data connector depends on a parser based on a Kusto Function to work as expected. [Follow these steps](https://aka.ms/sentinel-ArmisDevice-parser) to create the Kusto functions alias, ArmisDevice**
-
-STEP 1 - Configuration steps for the Armis API
-
-Follow these instructions to create an Armis API secret key.
-
-1. Log into your Armis instance
-2. Navigate to Settings -&gt; API Management
-3. If the secret key has not already been created, press the Create button to create the secret key
-4. To access the secret key, press the Show button
-5. The secret key can now be copied and used during the Armis Device connector configuration
-
-STEP 2 - App Registration steps for the Application in Microsoft Entra ID
-
-This integration requires an App registration in the Azure portal. Follow the steps in this section to create a new application in Microsoft Entra ID:
-
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Search for and select **Microsoft Entra ID**.
-3. Under **Manage, select App registrations &gt; New registration**.
-4. Enter a display **Name** for your application.
-5. Select **Register** to complete the initial app registration.
-6. When registration finishes, the Azure portal displays the app registration's Overview pane. You see the **Application (client) ID and Tenant ID**. The client ID and Tenant ID is required as configuration parameters for the execution of Armis Device Data Connector.
-
-**Reference link:**[/azure/active-directory/develop/quickstart-register-app](/en-us/azure/active-directory/develop/quickstart-register-app)
-
-STEP 3 - Add a client secret for application in Microsoft Entra ID
-
-Sometimes called an application password, a client secret is a string value required for the execution of Armis Device Data Connector. Follow the steps in this section to create a new Client Secret:
-
-1. In the Azure portal, in **App registrations**, select your application.
-2. Select **Certificates & secrets &gt; Client secrets &gt; New client secret**.
-3. Add a description for your client secret.
-4. Select an expiration for the secret or specify a custom lifetime. Limit is 24 months.
-5. Select **Add**.
-6. *Record the secret's value for use in your client application code. This secret value is never displayed again after you leave this page.* The secret value is required as configuration parameter for the execution of Armis Device Data Connector.
-
-**Reference link:**[/azure/active-directory/develop/quickstart-register-app#add-a-client-secret](/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret)
-
-STEP 4 - Get Object ID of your application in Microsoft Entra ID
-
-After creating your app registration, follow the steps in this section to get Object ID:
-
-1. Go to **Microsoft Entra ID**.
-2. Select **Enterprise applications** from the left menu.
-3. Find your newly created application in the list (you can search by the name you provided).
-4. Click on the application.
-5. On the overview page, copy the **Object ID. This is the AzureEntraObjectId** needed for your ARM template role assignment.
-
-STEP 5 - Assign role of Contributor to application in Microsoft Entra ID
-
-Follow the steps in this section to assign the role:
-
-1. In the Azure portal, Go to **Resource Group** and select your resource group.
-2. Go to **Access control (IAM)** from left panel.
-3. Click on **Add, and then select Add role assignment**.
-4. Select **Contributor** as role and click on next.
-5. In **Assign access to**, select `User, group, or service principal`.
-6. Click on **add members and type your app name** that you have created and select it.
-7. Now click on **Review + assign and then again click on Review + assign**.
-
-**Reference link:**[/azure/role-based-access-control/role-assignments-portal](/en-us/azure/role-based-access-control/role-assignments-portal)
-
-STEP 6 - Create a Keyvault
-
-Follow these instructions to create a new Keyvault.
-
-1. In the Azure portal, Go to **Key vaults**. Click create.
-2. Select Subsciption, Resource Group and provide unique name of keyvault.
-
-> 
-> **NOTE: Create a separate key vault for each API key** within one workspace.
-
-STEP 7 - Create Access Policy in Keyvault
-
-Follow these instructions to create access policy in Keyvault.
-
-1. Go to keyvaults, select your keyvault, go to Access policies on left side panel. Click create.
-2. Select all keys & secrets permissions. Click next.
-3. In the principal section, search by application name which was generated in STEP - 2. Click next.
-
-> 
-> **NOTE: Ensure the Permission model in the Access Configuration of Key Vault is set to 'Vault access policy'**
-
-STEP 8 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
-
-> 
-> **IMPORTANT:** Before deploying the Armis Device data connector, have the Armis API Authorization Key(s) readily available..
-
-**Option 1 - Azure Resource Manager (ARM) Template**
-
-Use this method for automated deployment of the Armis connector.
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentinel-ArmisDevice-azuredeploy)[aka.ms](https://aka.ms/sentinel-ArmisDevice-azuredeploy-gov)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the below information : Function Name Location Workspace Name Armis Secret Key Armis URL (https://&lt;armis-instance&gt;.armis.com/api/v1/) Armis Device Table Name Armis Schedule KeyVault Name Azure Client Id Azure Client Secret Azure Entra ObjectID Tenant Id
-4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
-5. Click **Purchase** to deploy.
-
-**Option 2 - Manual Deployment of Azure Functions**
-
-Use the following step-by-step instructions to deploy the Armis Device data connector manually with Azure Functions (Deployment via Visual Studio Code).
-
-1. Deploy a Function App
-
-> 
-> **NOTE:** You will need to [prepare VS code](/en-us/azure/azure-functions/functions-create-first-function-python#prerequisites) for Azure function development.
-
-1. Download the [Azure Function App](https://aka.ms/sentinel-ArmisDevice320-functionapp) file. Extract archive to your local development computer.
-2. Start VS Code. Choose File in the main menu and select Open Folder.
-3. Select the top level folder from extracted files.
-4. Choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose the Deploy to function app** button. If you aren't already signed in, choose the Azure icon in the Activity bar, then in the **Azure: Functions area, choose Sign in to Azure** If you're already signed in, go to the next step.
-5. Provide the following information at the prompts:
-
-    a. **Select folder:** Choose a folder from your workspace or browse to one that contains your function app.
-
-    b. **Select Subscription:** Choose the subscription to use.
-
-    c. Select **Create new Function App in Azure** (Don't choose the Advanced option)
-
-    d. **Enter a globally unique name for the function app:** Type a name that is valid in a URL path. The name you type is validated to make sure that it's unique in Azure Functions. (e.g. ARMISXXXXX).
-
-    e. **Select a runtime:** Choose Python 3.12
-
-    f. Select a location for new resources. For better performance and lower costs choose the same [region](https://azure.microsoft.com/regions/) where Microsoft Sentinel is located.
-6. Deployment will begin. A notification is displayed after your function app is created and the deployment package is applied.
-7. Go to Azure Portal for the Function App configuration.
-8. Configure the Function App
-9. In the Function App, select the Function App Name and select **Configuration**.
-10. In the **Application settings tab, select + New application setting**.
-11. Add each of the following application settings individually, with their respective values (case-sensitive): Location Workspace Name Armis Secret Key Armis URL (https://&lt;armis-instance&gt;.armis.com/api/v1/) Armis Device Table Name Armis Schedule KeyVault Name Azure Client Id Azure Client Secret Azure Entra ObjectID Tenant Id logAnalyticsUri (optional)
-
-- Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
-
-1. Once all application settings have been entered, click **Save**.
-
 **Atlassian Confluence Audit (via Codeless Connector Framework)**
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
@@ -2680,7 +2598,7 @@ Provide your BigID domain name like 'customer.bigid.cloud' and your BigID token.
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
-The [Bitglass](https://www.forcepoint.com/bitglass) data connector provides the capability to retrieve security event logs of the Bitglass services and more events into Microsoft Sentinel through the REST API. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
+The [Bitglass](https://www.bitglass.com/) data connector provides the capability to retrieve security event logs of the Bitglass services and more events into Microsoft Sentinel through the REST API. The connector enables event retrieval to assess potential security risks, monitor collaboration, and diagnose and troubleshoot configuration issues.
 
 **Log Analytics table(s):**
 
@@ -2709,7 +2627,7 @@ STEP 1 - Configuration steps for the Bitglass Log Retrieval API
 
 Follow the instructions to obtain the credentials.
 
-1. Please contact Bitglass [support](https://www.forcepoint.com/company/contact-us) and obtain the **BitglassToken and BitglassServiceURL** ntation].
+1. Please contact Bitglass [support](https://pages.bitglass.com/Contact.html) and obtain the **BitglassToken and BitglassServiceURL** ntation].
 2. Save credentials for using in the data connector.
 
 STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Function
@@ -3822,7 +3740,7 @@ The Cisco Software Defined WAN(SD-WAN) data connector provides the capability to
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
 | [`Syslog`](/en-us/azure/azure-monitor/reference/tables/Syslog) | Yes | Yes |
-| `CiscoSDWANNetflow_CL` | No | No |
+| `CiscoSDWANNetflow_CL` | Yes | Yes |
 
 **Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
@@ -4305,7 +4223,7 @@ Use this method for automated deployment of the Cohesity data connector using an
 
 **Supported by:**[Commvault](https://www.commvault.com/support)
 
-The Commvault Security IQ data connector ingests anomaly detection events from Commvault environments into Microsoft Sentinel, enabling detection and response for threats targeting backup infrastructure such as ransomware and suspicious file operations. Events are stored in the `CommvaultAlertsCCF_CL` table.
+The Commvault Security IQ data connector ingests threat indicator anomaly events from Commvault environments into Microsoft Sentinel, enabling detection and response for threats targeting backup infrastructure such as ransomware and suspicious file operations. Events are stored in the `CommvaultAlertsCCF_CL` table.
 
 **Log Analytics table(s):**
 
@@ -4327,7 +4245,7 @@ Manage your Commvault Security IQ connector instances. Each instance connects to
 
 Commvault Security IQ Connector Instances
 
-This connector polls Commvault every 30 minutes and ingests threat anomaly events into the `CommvaultAlertsCCF_CL` table.
+This connector polls Commvault every 30 minutes and ingests threat indicator anomaly events into the `CommvaultAlertsCCF_CL` table.
 
 - Data Connectors Grid (configure in portal)
 
@@ -7260,98 +7178,111 @@ Create a Microsoft Entra ID registered application by following the steps in the
 4. Provide the ESET Connect API user account **Login and Password obtained in Step 1**.
 5. Select one or more ESET products (ESET PROTECT, ESET Inspect, ESET Cloud Office Security) from which detections are retrieved.
 
-**Exchange Security Insights On-Premises Collector**
+**Exchange Security Insights On-Premises Collector (Azure Monitor)**
 
 **Supported by:**[Community](https://github.com/Azure/Azure-Sentinel/issues)
 
-Connector used to push Exchange On-Premises Security configuration for Microsoft Sentinel Analysis
+Connector used to send Exchange Server security configuration data to Microsoft Sentinel through the Azure Monitor Log Ingestion API.
 
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `ESIExchangeConfig_CL` | No | No |
+| `ESIAPIExchangeOnPremisesConfig_CL` | No | No |
 
 **Data collection rule support:** Not currently supported
 
 **Prerequisites:**
 
-- **Service Account with Organization Management role**: The service Account that launch the script as scheduled task needs to be Organization Management to be able to retrieve all the needed security Information.
-- **Detailed documentation**: &gt;**NOTE:** Detailed documentation on Installation procedure and usage can be found [here](https://aka.ms/MicrosoftExchangeSecurityGithub)
+- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires Entra ID Application Developer role or higher.
+- **Microsoft Azure**: Permission to assign the Monitoring Metrics Publisher role on the Data Collection Rule (DCR). This typically requires the Azure RBAC Owner or User Access Administrator role.
+- **Service Account with Organization Management role**: The service account that runs the scheduled collector task must be a member of the Exchange Organization Management role group.
+- **Detailed documentation**: &gt;**NOTE:** Detailed installation and usage documentation is available [here](https://aka.ms/MicrosoftExchangeSecurityGithub).
 
 **Setup Instructions:**
 
-**1. Install the ESI Collector Script on a server with Exchange Admin PowerShell console**
+> 
+> **NOTE - UPDATE**
 
-This is the script that will collect Exchange Information to push content in Microsoft Sentinel.
+> 
+> Note: 
+> 
+> # **NOTE - UPDATE:**
+> For an existing deployment, update the collector script to version **8.0.0.0** or later, before switching to the Azure Monitor Log Ingestion API. See [ESI On-Premises Collector Update](https://aka.ms/sentinel-ESI-OnpremisesCollectorUpdate) and [Upgrade an existing deployment](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment).For detailed documentation for the following steps, refer to the [Official Documentation](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md)
+
+**1. Deploy the Azure Monitor connector resources**
+
+This connector enables the Exchange Server collector to send security configuration data to Microsoft Sentinel through the Azure Monitor Log Ingestion API.
+
+**2. Install the ESI Collector on the Exchange management server**
+
+Install the collector on a Windows server that has the **Exchange Management Shell, Active Directory module for Windows PowerShell, and at least Az.Accounts module**.
 
 **Script Deployment**
 
 **Download the latest version of ESI Collector**
 
-The latest version can be found here : https://aka.ms/ESI-ExchangeCollector-Script. The file to download is CollectExchSecIns.zip
+Download the latest `CollectExchSecIns.zip` package from https://aka.ms/ESI-ExchangeCollector-Script.
 
 **Copy the script folder**
 
-Unzip the content and copy the script folder on a server where Exchange PowerShell Cmdlets are present.
+Extract the package and copy the collector folder to a server where the Exchange PowerShell cmdlets are available.
 
-**Unblock the PS1 Scripts**
+**Unblock the downloaded package**
 
-Click right on each PS1 Script and go to Properties tab. If the script is marked as blocked, unblock it. You can also use the Cmdlet 'Unblock-File *.* in the unzipped folder using PowerShell.
+Before extraction, run `Unblock-File -LiteralPath .\CollectExchSecIns.zip`. If the package is already extracted, unblock the PowerShell files recursively.
 
-\*\*Configure Network Access \*\*
+**Configure network access**
 
-Ensure that the script can contact Azure Analytics (\*.ods.opinsights.azure.com).
+Ensure that the collector can reach Microsoft Entra ID, `https://raw.githubusercontent.com` (if you accept the script AutoUpdate option), and the Data Collection Endpoint displayed by this connector.
 
-**2. Configure the ESI Collector Script**
+**3. Configure the ESI Collector and scheduled task**
 
-Be sure to be local administrator of the server. In 'Run as Administrator' mode, launch the 'setup.ps1' script to configure the collector. Fill the Log Analytics (Microsoft Sentinel) Workspace information. Fill the Environment name or leave empty. By default, choose 'Def' as Default analysis. The other choices are for specific usage.
+Run PowerShell as a local administrator and launch setup.ps1 to configure the collector and daily scheduled task.
 
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
+Here is the documentation for [Setup.ps1](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/ReadmeSetup.PS1.md).
 
-**3. Schedule the ESI Collector Script (If not done by the Install Script due to lack of permission or ignored during installation)**
+The On-Premises collector uses certificate authentication, using an application secret is an available option but this configuration is not recommended.
 
-The script needs to be scheduled to send Exchange configuration to Microsoft Sentinel. We recommend to schedule the script once a day. The account used to launch the Script needs to be member of the group Organization Management
+See the [Certificate creation guide](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20On-Premises/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#create-the-authentication-certificate).
+
+- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
+- **Entra App Registration Application ID**: &lt;variable value provided at install time&gt;
+- **Data Collection Endpoint URI**: &lt;variable value provided at install time&gt;
+- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
+- **Stream Name**: &lt;variable value provided at install time&gt;
+
+**4. Verify the scheduled task**
+
+Verify that Setup.ps1 created the daily collector task. Remember the account used by the Scheduled Task needs to be a member of the **Organization Management** group.
+
+If the task is missing, re-run Setup.ps1.
+
+**Note**
 
 > 
-> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected. Parsers are automatically deployed with the solution. Follow the steps to create the Kusto Functions alias : [**ExchangeAdminAuditLogs**](https://aka.ms/sentinel-ESI-ExchangeCollector-ExchangeAdminAuditLogs-parser)
+> **NOTE:** Parsers are automatically deployed with the solution. For additional information, see the [documentation](https://aka.ms/MicrosoftExchangeSecurityGithub).
 
-**Parsers are automatically deployed during Solution deployment. If you want to deploy manually, follow the steps below**
-
-**Manual Parser Deployment**
-
-**1. Download the Parser file**
-
-The latest version of the file [**ExchangeAdminAuditLogs**](https://aka.ms/sentinel-ESI-ExchangeCollector-ExchangeAdminAuditLogs-parser)
-
-**2. Create Parser ExchangeAdminAuditLogs function**
-
-In 'Logs' explorer of your Microsoft Sentinel's log analytics, copy the content of the file to Log explorer
-
-**3. Save Parser ExchangeAdminAuditLogs function**
-
-Click on save button. No parameter is needed for this parser. Click save again.
-
-**Exchange Security Insights Online Collector (using Azure Functions)**
+**Exchange Security Insights Online Collector (Azure Monitor)**
 
 **Supported by:**[Community](https://github.com/Azure/Azure-Sentinel/issues)
 
-Connector used to push Exchange Online Security configuration for Microsoft Sentinel Analysis
+Connector used to push Exchange Online Security configuration for Microsoft Sentinel Analysis using Azure Monitor Ingestion API.
 
 **Log Analytics table(s):**
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `ESIExchangeOnlineConfig_CL` | Yes | Yes |
+| `ESIAPIExchangeOnlineConfig_CL` | No | No |
 
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+**Data collection rule support:** Not currently supported
 
 **Prerequisites:**
 
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires Entra ID Application Developer role or higher.
+- **Microsoft Azure**: Permission to assign Monitoring Metrics Publisher role on data collection rule (DCR). Typically requires Azure RBAC Owner or User Access Administrator role.
 - **microsoft.automation/automationaccounts permissions**: Read and write permissions to create an Azure Automation with a Runbook is required. For more information, see [Automation Account](/en-us/azure/automation/overview).
-- **Microsoft.Graph permissions**: Groups.Read, Users.Read and Auditing.Read permissions are required to retrieve user/group information linked to Exchange Online assignments. [See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
+- **Microsoft.Graph permissions**: Group.Read.All, User.Read.All, and AuditLog.Read.All permissions are required to retrieve user and group information linked to Exchange Online assignments. [See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
 - **Exchange Online permissions**: Exchange.ManageAsApp permission and **Global Reader** or **Security Reader** Role are needed to retrieve the Exchange Online Security Configuration.[See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
 - **(Optional) Log Storage permissions**: Storage Blob Data Contributor to a storage account linked to the Automation Account Managed identity or an Application ID is mandatory to store logs.[See the documentation to learn more](https://aka.ms/sentinel-ESI-OnlineCollectorPermissions).
 
@@ -7364,132 +7295,63 @@ Connector used to push Exchange Online Security configuration for Microsoft Sent
 > Note: 
 > 
 > # **NOTE - UPDATE:**
-> We recommend to Update the Collector to Version **7.6.0.0** or highier. The Collector Script Update procedure could be found here : [ESI Online Collector Update](https://aka.ms/sentinel-ESI-OnlineCollectorUpdate)
+> For an existing deployment, update the collector script to version **8.0.0.0** or later, before switching to the Azure Monitor Log Ingestion API. See [ESI On-Premises Collector Update](https://aka.ms/sentinel-ESI-OnlineCollectorUpdate) and [Upgrade an existing deployment](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment).For detailed documentation for the following steps, refer to the [Official Documentation](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md)
+
+**STEP 1. Deploy the Azure Monitor connector resources**
+
+This connector enables the Exchange Online collector to send configuration data to Microsoft Sentinel through the Azure Monitor Log Ingestion API.
+
+Automated Azure Monitor resource deployment Selecting **Deploy** creates the Log Analytics table, Data Collection Endpoint (DCE), and Data Collection Rule (DCR). The Azure Automation deployment in the next step creates a system-assigned managed identity and grants it access to the DCR.
+
+STEP 2 - Deploy / Updating the Azure Automation collector
 
 > 
-> **NOTE:** This data connector depends on a parser based on a Kusto Function to work as expected. Follow the steps for each Parser to create the Kusto Functions alias : [**ExchangeConfiguration**](https://aka.ms/sentinel-ESI-ExchangeConfiguration-Online-parser) and [**ExchangeEnvironmentList](https://aka.ms/sentinel-ESI-ExchangeEnvironmentList-Online-parser) STEP 1 - Parsers deployment\*\*
+> **IMPORTANT:** Before deploying Azure Automation, record the values below. For new deployment, choose your environment display name (this name will be used in the workbooks - remember the table can contain information from several environments), for example `Contoso`. The deployment adds the `-Cloud` suffix when needed.
 
-**Parser deployment (When using Microsoft Exchange Security Solution, Parsers are automatically deployed)**
+- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
+- **Data Collection Endpoint Uri**: &lt;variable value provided at install time&gt;
+- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
+- **Stream Name**: &lt;variable value provided at install time&gt;
+- **DataCollectionRuleName**: &lt;variable value provided at install time&gt;
 
-**1. Download the Parser files**
+Option 1 : Deploy the Azure Automation template for a new deployment
 
-The latest version of the 2 files [**ExchangeConfiguration.yaml**](https://aka.ms/sentinel-ESI-ExchangeConfiguration-Online-parser) and [**ExchangeEnvironmentList.yaml**](https://aka.ms/sentinel-ESI-ExchangeEnvironmentList-Online-parser)
-
-**2. Create Parser ExchangeConfiguration function**
-
-In 'Logs' explorer of your Microsoft Sentinel's log analytics, copy the content of the file to Log explorer
-
-**3. Save Parser ExchangeConfiguration function**
-
-Click on save button. Define the parameters as asked on the header of the parser file. Click save again.
-
-**4. Reproduce the same steps for Parser ExchangeEnvironmentList**
-
-Reproduce the step 2 and 3 with the content of 'ExchangeEnvironmentList.yaml' file
-
-> 
-> **NOTE:** This connector uses Azure Automation to connect to 'Exchange Online' to pull its Security analysis into Microsoft Sentinel. This might result in additional data ingestion costs. Check the [Azure Automation pricing page](https://azure.microsoft.com/pricing/details/automation/) for details.
-
-STEP 2 - Choose ONE from the following two deployment options to deploy the connector and the associated Azure Automation
-
-> 
-> **IMPORTANT:** Before deploying the 'ESI Exchange Online Security Configuration' connector, have the Workspace ID and Workspace Primary Key (can be copied from the following), as well as the Exchange Online tenant name (contoso.onmicrosoft.com), readily available.
-
-- **Workspace ID**: &lt;variable value provided at install time&gt;
-- **Primary Key**: &lt;variable value provided at install time&gt;
-
-Option 1 - Azure Resource Manager (ARM) Template
-
-Use this method for automated deployment of the 'ESI Exchange Online Security Configuration' connector.
-
-1. Click the **Deploy to Azure** button below.
+1. Select the **Deploy to Azure** button below.
 
     [aka.ms](https://aka.ms/sentinel-ESI-ExchangeCollector-azuredeploy)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the **Workspace ID, Workspace Key, Tenant Name**, 'and/or Other required fields'.
-4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
-5. Click **Purchase** to deploy.
+2. Check the subscription, Select the resource group, Check the location.
+3. Enter the Automation account name, environment name, tenant ID, DCE URI, DCR immutable ID, and DCR name. To retrieve the DCR name, follow [Retrieve the DCR name](https://github.com/nlepagnez/Azure-Sentinel/blob/Update-for-Azure-Monitor-API---Beta/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#retrieve-the-dcr-name).
+4. Select **Review + create, and then select Create**.
 
-Option 2 - Manual Deployment of Azure Automation
+The template creates the Automation account with a system-assigned managed identity, imports the required modules, deploys the runbook and daily schedule, creates the configuration variables, and assigns the managed identity to the DCR.
 
-Use the following step-by-step instructions to deploy the 'ESI Exchange Online Security Configuration' connector manually with Azure Automation.
+Option 2 : Update an existing Deployment of Azure Automation
 
-**A. Create the Azure Automation Account**
+Use the following documentation to update an existing Azure Automation deployment. [Click Here](https://github.com/Azure/Azure-Sentinel/blob/master/Solutions/Microsoft%20Exchange%20Security%20-%20Exchange%20Online/%23%20-%20General%20Content/Documentations/README_LogIngestionAPI.md#upgrade-an-existing-deployment)
 
-1. From the Azure Portal, navigate to [Azure Automation Account](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Automation%2FAutomationAccounts).
-2. Click **+ Add** at the top.
-3. In the **Basics** tab, fill the required fields and give a name to the Azure Automation.
-4. In the **Advanced and Networking and Tags** Tabs, leave fields as default if you don't need to customize them.
-5. 'Make other preferable configuration changes', if needed, then click **Create**.
+STEP 3 - Assign Microsoft Graph and Exchange Online permissions to the managed identity (only for new deployment)
 
-**B. Add Exchange Online Management Module, Microsoft Graph (Authentication, User and Group) Modules**
-
-1. On the Automation Account page, select **Modules**.
-2. Click on **Browse gallery and search the ExchangeOnlineManagement** module.
-3. Select it and click on **Select**.
-4. Choose Version **5.1** on Runtime version field and click on Import button. Repeat the step for the following modules : 'Microsoft.Graph.Authentication', 'Microsoft.Graph.Users' and 'Microsoft.Graph.Groups. **Attention, you need to wait for Microsoft.Graph.Authentication installation before processing next modules**
-
-**C. Download the Runbook Content**
-
-1. Download the latest version of ESI Collector. The latest version can be found here : https://aka.ms/ESI-ExchangeCollector-Script
-2. Unzip the file to find the JSON file and the PS1 file for next step.
-
-**D. Create Runbook**
-
-1. On the Automation Account page, select the **Runbooks** button.
-2. Click on **Create a runbook and name it like 'ESI-Collector' with a runbook type PowerShell, Runtime Version 5.1** and click 'Create'.
-3. Import the content of the previous step's PS1 file in the Runbook window.
-4. Click on **Publish**
-
-**E. Create GlobalConfiguration Variable**
-
-1. On the Automation Account page, select the **Variables** button.
-2. Click on **Add a Variable and name it exaclty 'GlobalConfiguration' with a type String**.
-3. On 'Value' field, copy the content of the previous step's JSON file.
-4. Inside the content, replace the values of **WorkspaceID and WorkspaceKey**.
-5. Click on 'Create' button.
-
-**F. Create TenantName Variable**
-
-1. On the Automation Account page, select the **Variables** button.
-2. Click on **Add a Variable and name it exaclty 'TenantName' with a type String**.
-3. On 'Value' field, write the tenant name of your Exchange Online.
-4. Click on 'Create' button.
-
-**G. Create LastDateTracking Variable**
-
-1. On the Automation Account page, select the **Variables** button.
-2. Click on **Add a Variable and name it exaclty 'LastDateTracking' with a type String**.
-3. On 'Value' field, write 'Never'.
-4. Click on 'Create' button.
-
-**H. Create a Runbook Schedule**
-
-1. On the Automation Account page, select the **Runbook** button and click on your created runbook.
-2. Click on **Schedules and Add a schedule** button.
-3. Click on **Schedule, Add a Schedule and name it. Select Recurring** value with a reccurence of every 1 day, click 'Create'.
-4. Click on 'Configure parameters and run settings'. Leave all empty and click on **OK and OK** again.
-
-STEP 3 - Assign Microsoft Graph Permission and Exchange Online Permission to Managed Identity Account
-
-To be able to collect Exchange Online information and to be able to retrieve User information and memberlist of admin groups, the automation account need multiple permission.
+The Automation account managed identity requires application permissions to collect Exchange Online and Microsoft Graph information.
 
 **Assign Permissions by Script**
 
 **A. Download Permission Script**
 
+From a secure machine with the Microsoft Graph modules installed, download the Permission Update script.
+
+(The script is also located in the CollectExchSecIns.zip file, so if the On-Premises solution is already deployed this modification can be done on this server.)
+
 [Permission Update script](https://aka.ms/ESI-ExchangeCollector-Permissions)
 
-**B. Retrieve the Azure Automation Managed Identity GUID and insert it in the downloaded script**
+**B. Retrieve the Azure Automation managed identity object ID**
 
-1. Go to your Automation Account, in the **Identity** Section. You can find the Guid of your Managed Identity.
-2. Replace the GUID in $MI\_ID = "XXXXXXXXXXX" with the GUID of your Managed Identity.
+Open the Automation account, select **Identity**, and copy the managed identity object ID.
 
-**C. Launch the script with a Global-Administrator account**
+**C. Unblock the script and run the script with a Global Administrator account**
 
-**Attention this script requires MSGraph Modules and Admin Consent to access to your tenant with Microsoft Graph**. The script will add 3 permissions to the Managed identity: 1. Exchange Online ManageAsApp permission 2. User.Read.All on Microsoft Graph API 3. Group.Read.All on Microsoft Graph API
+Run `ExchangeOnlinePermSetup.ps1 -MIIDParam <managed-identity-object-id> -TenantId <tenant-id> -InteractiveAuth`. The script requires Microsoft Graph modules and admin consent. It assigns Exchange.ManageAsApp, User.Read.All, Group.Read.All, and AuditLog.Read.All.
 
-**D. Exchange Online Role Assignment**
+**D. Exchange Online Role Assignment. Do not forget this step !**
 
 1. As a **Global Administrator, go to Roles and Administrators**.
 2. Select **Global Reader role or Security Reader** and click to 'Add assignments'.
@@ -11989,6 +11851,72 @@ Enter your Secure Practice API credentials below. The credentials will be secure
 - **API Secret**: (Enter your Secure Practice API Secret)
 - Enable/Disable Connection
 
+**Menlo Security**
+
+**Supported by:**[Menlo Security](https://www.menlosecurity.com/customers/support)
+
+The [Menlo Security](https://www.menlosecurity.com) connector uses the Menlo Security Logs API to ingest Audit, Bandwidth, and Web proxy logs into Microsoft Sentinel. It runs as three timer-triggered Azure Functions, each polling the API every 3 minutes and writing events to custom Log Analytics tables (`MenloAudit_CL`, `MenloBandwidth_CL`, `MenloWeb_CL`).
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `MenloAudit_CL` | No | No |
+| `MenloBandwidth_CL` | No | No |
+| `MenloWeb_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
+- **Menlo Security API Token**: A valid Menlo Security API token with permission to access the `/api/rep/v2/fetch/client_select` endpoint. Obtain this from the Menlo Security admin console.
+- **Azure permissions for connector deployment**: Deploying the connector's Azure resources (via the **Deploy to Azure** button in the steps below) requires **Owner**, or **Contributor + User Access Administrator**, on the target resource group — the template creates role assignments that grant the Function App's managed identity access to Key Vault, Storage, and the Data Collection Rule (Contributor alone is not sufficient). Creating the custom tables also requires write access to the Log Analytics workspace's resource group.
+
+**Setup Instructions:**
+
+**Step 1 — Deploy the connector infrastructure**
+
+Click **Deploy to Azure** below. On the deployment page:
+
+- For **Resource group, choose Create new** and name it `MenloSecurityLogs` so all connector resources stay together and can be removed in one step later.
+- Enter your **Log Analytics Workspace Resource Group, then select your workspace from the dropdown. Connector resources are deployed automatically in the same region as the selected workspace** — no manual region matching is required.
+- Enter your **Menlo Security API token**.
+
+The template deploys the Function App, Key Vault, Storage Account, Data Collection Endpoint, and Data Collection Rule, and creates the `MenloAudit_CL`, `MenloBandwidth_CL`, and `MenloWeb_CL` custom tables in your Log Analytics workspace.
+
+[aka.ms](https://aka.ms/sentinel-MenloSecurityDataConnector-azuredeploy)
+
+*To remove the connector later, delete the `MenloSecurityLogs` resource group and the three `Menlo*_CL` custom tables from the workspace.*
+
+**Step 2 — Enable log collection**
+
+All log-collection functions are **disabled by default**. After deployment, navigate to the Function App in the Azure Portal and enable the log types you want to collect:
+
+1. Open the **Function App** created by this solution (named `menlo-logs-func-<suffix>`).
+2. Go to **Configuration → Application settings**.
+3. For each log type you want to enable, set the corresponding app setting value to `0`:
+
+| Log type | App setting name | Enable value |
+| --- | --- | --- |
+| Audit logs | `AzureWebJobs.TimerTriggerAuditLogs.Disabled` | `0` |
+| Bandwidth logs | `AzureWebJobs.TimerTriggerBandwidthLogs.Disabled` | `0` |
+| Web logs | `AzureWebJobs.TimerTriggerWebLogs.Disabled` | `0` |
+
+1. Click **Save**. Each enabled function will begin polling the Menlo Security API on a 3-minute interval.
+
+**Step 3 — Verify data ingestion**
+
+After enabling at least one log type, wait approximately 5–10 minutes for the first data to appear. Verify by running the following queries in Microsoft Sentinel **Logs**:
+
+```kusto
+MenloAudit_CL | take 10
+MenloBandwidth_CL | take 10
+MenloWeb_CL | take 10
+```
+
+If no data appears after 15 minutes, check the Function App's **Monitor** tab for invocation errors.
+
 **meshStack Event Logs**
 
 **Supported by:**[meshcloud GmbH](https://www.meshcloud.io/en/imprint/)
@@ -12153,35 +12081,6 @@ The Microsoft Copilot logs connector in Microsoft Sentinel enables seamless inge
 **Connect Microsoft Copilot audit logs to Microsoft Sentinel**
 
 This connector uses the Office Management API to get your Microsoft Copilot audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **CopilotActivity** table.
-
-- Enable/Disable Connection
-
-**Microsoft Dataverse**
-
-**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
-
-Microsoft Dataverse is a scalable and secure data platform that enables organizations to store and manage data used by business applications. The Microsoft Dataverse data connector provides the capability to ingest Dataverse and Dynamics 365 CRM activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| [`DataverseActivity`](/en-us/azure/azure-monitor/reference/tables/DataverseActivity) | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
-- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
-- **Production Dataverse**: Activity logging is available only for Production environments. Other types, such as sandbox, do not support activity logging.
-- **Dataverse Audit Settings**: Audit settings must be configured both globally and at the entity/table level. For more information, see [Dataverse audit settings](/en-us/azure/sentinel/business-applications/deploy-power-platform-solution).
-
-**Setup Instructions:**
-
-**Connect Microsoft Dataverse audit logs to Microsoft Sentinel**
-
-This connector uses the Office Management API to get your Dataverse audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **DataverseActivity** table.
 
 - Enable/Disable Connection
 
@@ -12788,60 +12687,6 @@ The Custom Table can't be created using the Azure Portal. You need to use an ARM
 **Assign the DCR to all Exchange Servers**
 
 Add all your Exchange Servers to the DCR
-
-**Microsoft Power Automate**
-
-**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
-
-Power Automate is a Microsoft service that helps users create automated workflows between apps and services to synchronize files, get notifications, collect data, and more. It simplifies task automation, increasing efficiency by reducing manual, repetitive tasks, and enhancing productivity. The Power Automate data connector provides the capability to ingest Power Automate activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| [`PowerAutomateActivity`](/en-us/azure/azure-monitor/reference/tables/PowerAutomateActivity) | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
-- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
-
-**Setup Instructions:**
-
-**Connect Microsoft Power Automate audit logs to Microsoft Sentinel**
-
-This connector uses the Office Management API to get your Power Automate audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **PowerAutomateActivity** table.
-
-- Enable/Disable Connection
-
-**Microsoft Power Platform Admin Activity**
-
-**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
-
-Microsoft Power Platform is a low-code/no-code suite empowering both citizen and pro developers to streamline business processes by enabling the creation of custom apps, automation of workflows, and data analysis with minimal coding. The Power Platform Admin data connector provides the capability to ingest Power Platform administrator activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| [`PowerPlatformAdminActivity`](/en-us/azure/azure-monitor/reference/tables/PowerPlatformAdminActivity) | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
-- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
-
-**Setup Instructions:**
-
-**Connect Microsoft Power Platform Admin Activity audit logs to Microsoft Sentinel**
-
-This connector uses the Office Management API to get your Power Platform administrator audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **PowerPlatformAdminActivity** table.
-
-- Enable/Disable Connection
 
 **Microsoft PowerBI**
 
@@ -13932,6 +13777,356 @@ STEP 2 - Deploy Mimecast API Connector
 1. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
 2. Click **Purchase** to deploy.
 3. Go to ***Azure portal ---&gt; Resource groups ---&gt; [your\_resource\_group] ---&gt; [appName](type: Storage account) ---&gt; Storage Explorer ---&gt; BLOB CONTAINERS ---&gt; TTP checkpoints ---&gt; Upload*** and create empty files on your machine named attachment-checkpoint.txt, impersonation-checkpoint.txt, url-checkpoint.txt and select them for upload (this is done so that date\_range for TTP logs are stored in consistent state)
+
+**Miro AI Interaction Logs (Beta) (Enterprise Plan + Enterprise Guard)**
+
+**Supported by:**[Miro](https://help.miro.com/hc/en-us/articles/360020185799-Contacting-Miro-Support)
+
+The [Miro AI Interaction Logs](https://developers.miro.com/reference/enterprise-get-ai-interaction-logs) data connector enables you to ingest AI interaction logs from Miro into Microsoft Sentinel. AI interaction logs capture user interactions with AI features in Miro: the prompt received from the user, the response returned to them, and the model and tool calls made in between.
+
+This connector is in **Beta**: the AI interaction logs API may change before general availability.
+
+**Key features:**
+
+- Track AI interactions by user, session, and affected object.
+- Follow each step of an interaction: input, model calls, tool calls, and output.
+- Support compliance and eDiscovery requirements.
+
+**Requirements:**
+
+- **Miro Plan**: [Enterprise Plan](https://miro.com/pricing/) + **Enterprise Guard** add-on.
+- **Collection enabled**: A Miro admin turns on **Collect AI interaction logs** in Admin console &gt; Security &gt; Audit logs &gt; Settings. Only interactions after that are recorded. If the setting is not visible, contact your Miro account manager.
+- **OAuth scope**: `aiinteractionlogs:read`.
+- **Organization ID**: Your Miro organization identifier.
+
+**Note:** The `details` column may contain unstructured data that could reveal information used in interactions with the LLM. Azure Monitor truncates any field value longer than 64 KB at ingestion, so a long `details` value can arrive cut off.
+
+For detailed instructions, refer to the [documentation](https://help.miro.com/hc/en-us/articles/31325908249362).
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `MiroAIInteractionLogs_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Miro Enterprise Plan with Enterprise Guard**: Miro Enterprise Plan with Enterprise Guard add-on is required. AI interaction logs are not available on base Enterprise Plan or lower tiers.
+- **AI interaction logs collection**: A Miro admin must turn on Collect AI interaction logs in Admin console &gt; Security &gt; Audit logs &gt; Settings. Only interactions after that are recorded.
+- **Miro OAuth Application**: Miro OAuth application with aiinteractionlogs:read scope is required.
+- **Miro Organization ID**: Your Miro organization ID is required to access AI interaction logs.
+
+**Setup Instructions:**
+
+Step 1: Verify your Miro plan and enable collection
+
+1. Ensure your organization has [Miro Enterprise Plan](https://miro.com/pricing/) with **Enterprise Guard** add-on.
+2. If you don't have Enterprise Guard yet, contact your [Miro account manager](https://miro.com/contact/sales/) to upgrade.
+3. As a Miro admin, open Admin console &gt; Security &gt; Audit logs &gt; Settings and turn on **Collect AI interaction logs**. Only interactions after that are recorded.
+4. If the setting is not visible, contact your [Miro account manager](https://miro.com/contact/sales/).
+
+Step 2: Choose your setup option
+
+There are two ways to set up the Miro AI Interaction Logs connector.
+
+**Option 1 (recommended):** Use Enterprise integrations
+
+- Simplest setup with automatic token generation.
+- Recommended for most users.
+- See Option 1 below.
+
+**Option 2 (alternative):** Create custom OAuth application
+
+- More control over OAuth app configuration.
+- For advanced users or custom integration needs.
+- See Option 2 below.
+
+**Note: When using Option 1, the integration is automatically tied to the team with the largest number of users in your organization. When using Option 2, you can choose which team to install the app to. However, the team selection does not affect which logs are collected**—both options provide organization-wide log access.
+
+Option 1: Enterprise integrations (recommended)
+
+1. Open [Miro Company Settings](https://miro.com/app/settings/).
+2. Expand the **Apps and integrations** section.
+3. Click **Enterprise integrations**.
+4. Enable the **SIEM** toggle.
+5. Copy the **Access Token** value that appears.
+6. Get your **Organization ID**from the browser URL:
+    - Look at the browser URL to find your Organization ID.
+    - The URL format is: `https://miro.com/app/settings/company/{ORGANIZATION_ID}/`.
+    - Copy your Organization ID from the URL (the numeric value).
+7. **Important:** Store both the token and Organization ID securely—they provide full access to AI interaction logs.
+8. The token will work until you disable the toggle.
+9. Proceed to Step 3.
+
+**One token for all Miro connectors:** the SIEM toggle creates one access token with every log scope your organization is entitled to: `auditlogs:read` (Enterprise Plan), `contentlogs:export` (Enterprise Guard add-on) and `aiinteractionlogs:read` (Enterprise Guard add-on with AI interaction logs). If the SIEM toggle was enabled before it offered these scopes, turn it off and on again to get a token that includes them, then update the token in every connector that uses it. Turning the toggle off invalidates its current token, so every connector that uses it fails to poll until it has the new token.
+
+Option 2: Custom OAuth application (alternative)
+
+1. Go to [Miro App Settings](https://miro.com/app/settings/user-profile/apps).
+2. Click **Create new app**.
+3. Select **Non-expiring access token** option during app creation.
+4. Enable the OAuth scope: **`aiinteractionlogs:read`**.
+5. Click **Install app and get OAuth token**.
+6. Authorize the app to access your organization.
+7. Copy the **Access Token** that is displayed.
+8. Get your **Organization ID**:
+    - Go to [Miro Company Settings](https://miro.com/app/settings/).
+    - Look at the browser URL to find your Organization ID.
+    - The URL format is: `https://miro.com/app/settings/company/{ORGANIZATION_ID}/`.
+    - Copy your Organization ID from the URL (the numeric value).
+9. **Important:** Store both the token and Organization ID securely—they provide full access to AI interaction logs.
+10. The token will work until you uninstall the app.
+
+Step 3: Learn more
+
+For detailed information about Miro AI interaction logs:
+
+- [Miro API reference](https://developers.miro.com/reference/enterprise-get-ai-interaction-logs)
+- [Miro Enterprise Guard](https://miro.com/enterprise-guard/)
+- [OAuth non-expiring tokens](https://developers.miro.com/reference/authorization-flow-for-expiring-access-tokens)
+
+**Connect to Miro to start collecting AI interaction logs in Microsoft Sentinel.**
+
+Step 4: Connect to Miro
+
+Provide the required values below to complete the connection.
+
+- **Organization ID**: (Enter your Miro Organization ID)
+- **Access token**: (Enter your Miro Access Token)
+- Enable/Disable Connection
+
+**Miro Audit Logs (Enterprise Plan)**
+
+**Supported by:**[Miro](https://help.miro.com/hc/en-us/articles/360020185799-Contacting-Miro-Support)
+
+The [Miro Audit Logs](https://help.miro.com/hc/en-us/articles/360017571434-Audit-logs) data connector enables you to ingest organization-wide audit events from Miro into Microsoft Sentinel. Monitor user activities, security events, content access, team changes, and administrative actions to enhance your security operations and compliance capabilities.
+
+**Key features:**
+
+- Track user authentication and access patterns.
+- Monitor content creation, sharing, and deletion.
+- Audit team and organization configuration changes.
+- Detect suspicious activities and policy violations.
+- Meet compliance and regulatory requirements.
+
+**Requirements:**
+
+- **Miro Plan**: [Enterprise Plan](https://miro.com/pricing/).
+- **OAuth scope**: `auditlogs:read`.
+- **Role**: Company Admin in your Miro organization.
+
+💡 **Not on Enterprise Plan yet?** Upgrade to [Miro Enterprise](https://miro.com/enterprise/) to unlock audit logs and gain comprehensive visibility into your team's activities in Microsoft Sentinel.
+
+For detailed instructions, refer to the [documentation](https://help.miro.com/hc/en-us/articles/31325908249362).
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `MiroAuditLogs_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Miro Enterprise Plan**: Miro Enterprise Plan subscription is required.
+- **Miro OAuth Application**: Miro OAuth application with auditlogs:read scope and Company Admin role is required.
+
+**Setup Instructions:**
+
+Step 1: Verify your Miro plan
+
+1. Ensure your organization has an active [Miro Enterprise Plan](https://miro.com/pricing/).
+2. If you need to upgrade, contact [Miro Sales](https://miro.com/contact/sales/) or your account manager.
+3. You must be a **Company Admin** to set up this integration.
+
+Step 2: Choose your setup option
+
+There are two ways to set up the Miro Audit Logs connector.
+
+**Option 1 (recommended):** Use Enterprise integrations
+
+- Simplest setup with automatic token generation.
+- Recommended for most users.
+- See Option 1 below.
+
+**Option 2 (alternative):** Create custom OAuth application
+
+- More control over OAuth app configuration.
+- For advanced users or custom integration needs.
+- See Option 2 below.
+
+**Note: When using Option 1, the integration is automatically tied to the team with the largest number of users in your organization. When using Option 2, you can choose which team to install the app to. However, the team selection does not affect which logs are collected**—both options provide organization-wide log access. All integration-relevant events from all teams are included in your logs.
+
+Option 1: Enterprise integrations (recommended)
+
+1. Open [Miro Company Settings](https://miro.com/app/settings/).
+2. Expand the **Apps and integrations** section.
+3. Click **Enterprise integrations**.
+4. Enable the **SIEM** toggle.
+5. Copy the **Access Token** value that appears.
+6. **Important:** Store the token securely—it provides full access to audit logs.
+7. The token will work until you disable the toggle.
+8. Proceed to Step 3.
+
+**One token for all Miro connectors:** the SIEM toggle creates one access token with every log scope your organization is entitled to: `auditlogs:read` (Enterprise Plan), `contentlogs:export` (Enterprise Guard add-on) and `aiinteractionlogs:read` (Enterprise Guard add-on with AI interaction logs). If the SIEM toggle was enabled before it offered these scopes, turn it off and on again to get a token that includes them, then update the token in every connector that uses it. Turning the toggle off invalidates its current token, so every connector that uses it fails to poll until it has the new token.
+
+Option 2: Custom OAuth application (alternative)
+
+1. Go to [Miro App Settings](https://miro.com/app/settings/user-profile/apps).
+2. Click **Create new app**.
+3. Select **Non-expiring access token** option during app creation.
+4. Enable the OAuth scope: **`auditlogs:read`**.
+5. Click **Install app and get OAuth token**.
+6. Authorize the app to access your organization.
+7. Copy the **Access Token** that is displayed.
+8. **Important:** Store the token securely—it provides full access to audit logs.
+9. The token will work until you uninstall the app.
+
+Step 3: Learn more
+
+For detailed information about Miro audit logs:
+
+- [Miro Audit Logs documentation](https://help.miro.com/hc/articles/360017571434-Audit-logs)
+- [Miro API reference](https://developers.miro.com/reference/enterprise-get-audit-logs)
+- [OAuth non-expiring tokens](https://developers.miro.com/reference/authorization-flow-for-expiring-access-tokens)
+- [Enterprise integrations settings](https://miro.com/app/settings/)
+
+**Connect to Miro to start collecting audit logs in Microsoft Sentinel.**
+
+Step 4: Connect to Miro
+
+Provide your Miro access token below to complete the connection.
+
+- **Access token**: (Enter your Miro Access Token)
+- Enable/Disable Connection
+
+**Miro Content Logs (Enterprise Plan + Enterprise Guard)**
+
+**Supported by:**[Miro](https://help.miro.com/hc/en-us/articles/360020185799-Contacting-Miro-Support)
+
+The [Miro Content Logs](https://help.miro.com/hc/en-us/articles/17774729839378-Content-Logs-overview) data connector enables you to ingest content activity logs from Miro into Microsoft Sentinel. Part of Miro's Enterprise Guard eDiscovery capabilities, this connector provides content-level visibility for compliance, legal hold, and advanced threat detection.
+
+**Key features:**
+
+- Track all content item changes.
+- Monitor content modifications by user and timestamp.
+- Support compliance and eDiscovery requirements.
+- Detect data exfiltration and insider threats.
+- Meet regulatory and legal hold obligations.
+
+**Requirements:**
+
+- **Miro Plan**: [Enterprise Plan](https://miro.com/pricing/) + **Enterprise Guard** add-on.
+- **OAuth scope**: `contentlogs:export`.
+- **Role**: Company Admin in your Miro organization.
+- **Organization ID**: Your Miro organization identifier.
+
+💡 **Not on Enterprise Plan yet?** Upgrade to [Miro Enterprise](https://miro.com/enterprise/) to unlock advanced security and compliance features for your team's collaboration activities in Microsoft Sentinel.
+
+💡 **Need Content Logs?** Content activity logging is part of [Miro Enterprise Guard](https://miro.com/enterprise-guard/), which provides advanced security, compliance, and eDiscovery features. Contact your Miro account manager to add Enterprise Guard to your Enterprise Plan and unlock content-level monitoring in Microsoft Sentinel.
+
+**Note:** If you only have the base Enterprise Plan (without Enterprise Guard), please use the **Miro Audit Logs** connector instead for organization-level event monitoring.
+
+For detailed instructions, refer to the [documentation](https://help.miro.com/hc/en-us/articles/31325908249362).
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `MiroContentLogs_CL` | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Miro Enterprise Plan with Enterprise Guard**: Miro Enterprise Plan with Enterprise Guard add-on is required. Content logs are part of Miro's eDiscovery features and are not available on base Enterprise Plan or lower tiers.
+- **Miro OAuth Application**: Miro OAuth application with contentlogs:export scope and Company Admin role is required.
+- **Miro Organization ID**: Your Miro organization ID is required to access content logs.
+
+**Setup Instructions:**
+
+Step 1: Verify your Miro plan and Enterprise Guard
+
+1. Ensure your organization has [Miro Enterprise Plan](https://miro.com/pricing/) with **Enterprise Guard** add-on.
+2. Content logs are part of Miro's eDiscovery (Enterprise Guard) features.
+3. If you don't have Enterprise Guard yet, contact your [Miro account manager](https://miro.com/contact/sales/) to upgrade.
+4. Without Enterprise Guard, use the **Miro Audit Logs** connector for organization-level monitoring.
+5. You must be a **Company Admin** to set up this integration.
+
+Step 2: Choose your setup option
+
+There are two ways to set up the Miro Content Logs connector.
+
+**Option 1 (recommended):** Use Enterprise integrations
+
+- Simplest setup with automatic token generation.
+- Recommended for most users.
+- See Option 1 below.
+
+**Option 2 (alternative):** Create custom OAuth application
+
+- More control over OAuth app configuration.
+- For advanced users or custom integration needs.
+- See Option 2 below.
+
+**Note: When using Option 1, the integration is automatically tied to the team with the largest number of users in your organization. When using Option 2, you can choose which team to install the app to. However, the team selection does not affect which logs are collected**—both options provide organization-wide log access. All integration-relevant events from all teams are included in your logs.
+
+Option 1: Enterprise integrations (recommended)
+
+1. Open [Miro Company Settings](https://miro.com/app/settings/).
+2. Expand the **Apps and integrations** section.
+3. Click **Enterprise integrations**.
+4. Enable the **eDiscovery** toggle.
+5. Copy the **Access Token** value that appears.
+6. Get your **Organization ID**from the browser URL:
+    - Look at the browser URL to find your Organization ID.
+    - The URL format is: `https://miro.com/app/settings/company/{ORGANIZATION_ID}/`.
+    - Copy your Organization ID from the URL (the numeric value).
+7. **Important:** Store both the token and Organization ID securely—they provide full access to content logs.
+8. The token will work until you disable the toggle.
+9. Proceed to Step 3.
+
+**Alternative: one token for all Miro connectors. Instead of the eDiscovery toggle, you can use the SIEM** toggle. It creates one access token with every log scope your organization is entitled to: `auditlogs:read` (Enterprise Plan), `contentlogs:export` (Enterprise Guard add-on) and `aiinteractionlogs:read` (Enterprise Guard add-on with AI interaction logs). If the SIEM toggle was enabled before it offered these scopes, turn it off and on again to get a token that includes them, then update the token in every connector that uses it. Turning the toggle off invalidates its current token, so every connector that uses it fails to poll until it has the new token.
+
+Option 2: Custom OAuth application (alternative)
+
+1. Go to [Miro App Settings](https://miro.com/app/settings/user-profile/apps).
+2. Click **Create new app**.
+3. Select **Non-expiring access token** option during app creation.
+4. Enable the OAuth scope: **`contentlogs:export`**.
+5. Click **Install app and get OAuth token**.
+6. Authorize the app to access your organization.
+7. Copy the **Access Token** that is displayed.
+8. Get your **Organization ID**:
+    - Go to [Miro Company Settings](https://miro.com/app/settings/).
+    - Look at the browser URL to find your Organization ID.
+    - The URL format is: `https://miro.com/app/settings/company/{ORGANIZATION_ID}/`.
+    - Copy your Organization ID from the URL (the numeric value).
+9. **Important:** Store both the token and Organization ID securely—they provide full access to content logs.
+10. The token will work until you uninstall the app.
+
+Step 3: Learn more
+
+For detailed information about Miro content logs and eDiscovery:
+
+- [Miro Content Logs overview](https://help.miro.com/hc/articles/17774729839378-Content-Logs-overview)
+- [Miro Enterprise Guard](https://miro.com/enterprise-guard/)
+- [Miro API reference](https://developers.miro.com/reference/enterprise-board-content-item-logs-fetch)
+- [OAuth non-expiring tokens](https://developers.miro.com/reference/authorization-flow-for-expiring-access-tokens)
+- [Enterprise integrations settings](https://miro.com/app/settings/)
+
+**Connect to Miro to start collecting content logs in Microsoft Sentinel.**
+
+Step 4: Connect to Miro
+
+Provide the required values below to complete the connection.
+
+- **Organization ID**: (Enter your Miro Organization ID)
+- **Access token**: (Enter your Miro Access Token)
+- Enable/Disable Connection
 
 **MISP2Sentinel**
 
@@ -15435,6 +15630,69 @@ Before connecting to PingOne, ensure the following prerequisites are completed. 
 
 - Data Connectors Grid (configure in portal)
 
+**Plugin 'Message Tracking' for Exchange Security Insights Online Collector (Azure Monitor)**
+
+**Supported by:**[Community](https://github.com/Azure/Azure-Sentinel/issues)
+
+Plugin Connector used in addition to Exchange Security Insights Online Collector (Azure Monitor) to collect MOnline Message Tracking using Azure Monitor Ingestion API.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `ExchangeOnlineMessageTracking_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires Entra ID Application Developer role or higher.
+- **Microsoft Azure**: Permission to assign Monitoring Metrics Publisher role on data collection rule (DCR). Typically requires Azure RBAC Owner or User Access Administrator role.
+
+**Setup Instructions:**
+
+> 
+> **NOTE**
+
+> 
+> Note: 
+> 
+> # **NOTE:**
+>  You need to install the Modern Exchange Online Collector Data Connector before to be able to use this connector.
+
+**STEP 1. Create ARM Resources and Provide the Required Permissions**
+
+This connector enables your Exchange Online Collector Message Tracking to push Exchange Online Message Tracking directly to Microsoft Sentinel via the Azure Monitor Ingestion API.
+
+Automated Configuration and Secure Data Ingestion with Entra Application Clicking on "Deploy" will trigger the creation of a Log Analytics table and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
+
+STEP 2 - Activate Message Tracking Plugin in the Collector.
+
+To enable the Message Tracking Plugin, you need to modify the configuration of the Exchange Online Collector. This involves adding a specific section to the collector's configuration file, which will activate the plugin and allow it to start collecting message tracking data.
+
+- **Tenant ID (Directory ID)**: &lt;variable value provided at install time&gt;
+- **Entra App Registration Application ID**: &lt;variable value provided at install time&gt;
+- **Entra App Registration Secret**: &lt;variable value provided at install time&gt;
+- **Data Collection Endpoint Uri**: &lt;variable value provided at install time&gt;
+- **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
+- **Stream Name**: &lt;variable value provided at install time&gt;
+
+Configure Instance
+
+To configure the instance, you need to update the Exchange Online Collector configuration file with the provided parameters. This will enable the Message Tracking Plugin to send data to Microsoft Sentinel via the Azure Monitor Ingestion API.
+
+Deploy Message Tracking Instance Scheduler - Azure Resource Manager (ARM) Template
+
+Use this method for automated deployment of the 'ESI Exchange Online Security Configuration Message Tracking Plugin' connector.
+
+1. Click the **Deploy to Azure** button below.
+
+    [aka.ms](https://aka.ms/sentinel-ESI-ExchangeCollectorMessageTracking-azuredeploy)
+2. Select the preferred **Subscription, Resource Group and Location**.
+3. Enter the **Workspace ID, Workspace Key, Tenant Name**, 'and/or Other required fields'.
+4. Mark the checkbox labeled **I agree to the terms and conditions stated above**.
+5. Click **Purchase** to deploy.
+
 **Prancer Data Connector**
 
 **Supported by:**[Prancer PenSuiteAI Integration](https://www.prancer.io/support/)
@@ -15760,6 +16018,37 @@ Provide your Pulumi Cloud organization name and access token to start ingesting 
 3. Enter the Pulumi API URL: `https://api.pulumi.com` for managed Pulumi Cloud, or the API endpoint of your self-hosted Pulumi Cloud instance.
 
 - Data Connectors Grid (configure in portal)
+
+**QCrypton PQC Scanner (via Codeless Connector Framework)**
+
+**Supported by:**[QCrypton, Inc.](https://www.qcrypton.com/contact.html)
+
+The [QCrypton PQC Scanner](https://www.qcrypton.com/) data connector provides the capability to ingest post-quantum cryptography readiness findings from your Azure environment into Microsoft Sentinel through the QCrypton API. Findings include Key Vault key posture (RSA/ECC vs. PQ-hybrid), TLS certificate signature algorithms on public endpoints, Storage Account and App Service TLS configuration, and CMK provenance.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `PQReadiness_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **QCrypton API Key**: A QCrypton PQC Scanner API key is required. Obtain one from the [QCrypton Portal](https://portal.qcrypton.com).
+
+**Setup Instructions:**
+
+**Connect QCrypton PQC Scanner to Microsoft Sentinel**
+
+This connector polls the QCrypton PQC Scanner API to retrieve post-quantum cryptography readiness findings and ingest them into the **PQReadiness\_CL** table in your Log Analytics workspace.
+
+1. API Key Obtain your QCrypton API key from the [QCrypton Portal](https://portal.qcrypton.com). Navigate to **Settings &gt; API Keys** and generate a key with read access to scan findings.
+2. API Server URL Enter the base URL of your QCrypton API server. The default is `https://api.qcrypton.com`. If you use a dedicated or regional instance, enter the URL provided by QCrypton.
+
+- **QCrypton API Key**: (Enter your QCrypton API key)
+- **QCrypton API Server URL**: (https://api.qcrypton.com)
+- Enable/Disable Connection
 
 **QscoutAppEventsConnector (via Codeless Connector Framework)**
 
@@ -16263,6 +16552,53 @@ Use the following parameters to configure Red Sift to send events to Microsoft S
 - **Data Collection Rule Immutable ID**: &lt;variable value provided at install time&gt;
 - **Auth Events Stream Name**: &lt;variable value provided at install time&gt;
 - **Email Forensics Events Stream Name**: &lt;variable value provided at install time&gt;
+
+**RedRays SAP Security Findings**
+
+**Supported by:**[RedRays, Inc.](https://redrays.io/)
+
+Bring RedRays SAP security findings into Microsoft Sentinel. Review vulnerability assessments, ABAP code findings, BTP security, segregation of duties, profile parameter checks and password security in one workbook, with analytics rules for findings that need attention. RedRays pushes data on a schedule you choose through the Azure Monitor Logs Ingestion API and stays in your existing on-premises or cloud environment. This connector does not collect SAP Security Audit Log events or populate ABAPAuditLog. You need a RedRays license with Microsoft Sentinel integration. Azure ingestion and retention charges apply.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| `RedRaysExportHealth_CL` | No | No |
+
+**Data collection rule support:** Not currently supported
+
+**Prerequisites:**
+
+- **Microsoft Entra**: Permission to create an app registration in Microsoft Entra ID. Typically requires the Application Developer role or higher.
+- **Microsoft Azure**: Permission to assign the Monitoring Metrics Publisher role on data collection rules. Typically requires the Owner or User Access Administrator role.
+- **RedRays settings access**: Permission to configure the Microsoft Sentinel integration in RedRays.
+
+**Setup Instructions:**
+
+**1. Deploy the push connector resources**
+
+Select **Deploy** to create a data collection endpoint (DCE), a data collection rule (DCR) and the eight RedRays tables in this workspace. Microsoft Sentinel also creates a Microsoft Entra app registration with a client secret and grants it the Monitoring Metrics Publisher role on the DCR, so RedRays can send data with OAuth 2.0 client credentials. Workspace shared keys are not used.
+
+> 
+> Note: The client secret is shown only once, right after deployment. Copy it immediately. If you miss it, open Microsoft Entra ID &gt; App registrations, select **RedRays SAP Security Findings**, and create a new client secret under Certificates & secrets.
+
+**2. Configure RedRays**
+
+In RedRays, open **Platform Settings &gt; Microsoft Sentinel** and enter the values below. Choose the modules to export and how often to send data. Keep baseline alerting disabled for the first import, then save and enable the integration. RedRays needs outbound HTTPS access to Microsoft Entra and the data collection endpoint. No inbound connection is required.
+
+- **Tenant ID**: &lt;variable value provided at install time&gt;
+- **Application (client) ID**: &lt;variable value provided at install time&gt;
+- **Client secret**: &lt;variable value provided at install time&gt;
+- **Ingestion endpoint (DCE URI)**: &lt;variable value provided at install time&gt;
+- **DCR immutable ID**: &lt;variable value provided at install time&gt;
+
+**3. Verify delivery**
+
+Send a test event from RedRays, then wait for a scheduled export. Query RedRaysExportHealth\_CL for RecordKind == 'HEARTBEAT'. A successful test means Azure accepted the request; the record may take a few minutes to appear in queries. RedRays sends each module to its own stream (Custom-RedRaysExportHealth\_CL, Custom-RedRaysScanRuns\_CL, Custom-RedRaysVulnerabilities\_CL, Custom-RedRaysAbapFindings\_CL, Custom-RedRaysCloudFindings\_CL, Custom-RedRaysSoDFindings\_CL, Custom-RedRaysProfileChecks\_CL and Custom-RedRaysPasswordFindings\_CL) on the same DCR.
+
+**4. Enable security content**
+
+Open Manage solution to create the workbook and selected analytics rules from templates. Review the initial findings before enabling rules. Most finding rules alert on actionable High or Critical candidates. The profile rule raises Medium severity alerts for VULNERABLE checks. The workbook flags heartbeats older than 60 minutes; adjust the threshold above your export interval and expected ingestion delay. Disable equivalent rules from earlier RedRays deployments to avoid duplicate alerts. For help, contact support@redrays.io.
 
 **RSA ID Plus Admin Logs Connector**
 
@@ -17514,7 +17850,7 @@ Use this data connector to integrate with Sonrai Security and get Sonrai tickets
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
 
-The [Sophos Endpoint Protection](https://www.sophos.com/en-us/products/endpoint-antivirus.aspx) data connector provides the capability to ingest [Sophos events](https://developer.sophos.com/docs/siem-v1/1/routes/events/get) and [Sophos alerts](https://developer.sophos.com/docs/siem-v1/1/routes/alerts/get) into Microsoft Sentinel. Refer to [Sophos Central Admin documentation](https://docs.sophos.com/central/Customer/help/en-us/central/Customer/concepts/Logs.html) for more information.
+The [Sophos Endpoint Protection](https://www.sophos.com/en-us/products/endpoint-antivirus.aspx) data connector provides the capability to ingest [Sophos events](https://developer.sophos.com) and [Sophos alerts](https://developer.sophos.com) into Microsoft Sentinel. Refer to [Sophos Central Admin documentation](https://docs.sophos.com/central/Customer/help/en-us/central/Customer/concepts/Logs.html) for more information.
 
 **Log Analytics table(s):**
 
@@ -20273,8 +20609,9 @@ Windows Firewall is a Microsoft Windows application that filters information com
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
+| [`WindowsFirewall`](/en-us/azure/azure-monitor/reference/tables/WindowsFirewall) | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Windows Firewall Events via AMA**
 
@@ -20293,8 +20630,9 @@ For more information, see the following articles:
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
+| [`ASimNetworkSessionLogs`](/en-us/azure/azure-monitor/reference/tables/ASimNetworkSessionLogs) | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Windows Forwarded Events**
 
@@ -20369,71 +20707,6 @@ Provide the Elements API URL together with the client id and client secret you c
 - **Elements API URL**: (https://api.connect.withsecure.com)
 - **Engine (optional)**: (default)
 - **Engine Group (optional)**: (default)
-
-**WithSecure Elements API (Azure Function)**
-
-**Supported by:**[WithSecure](https://www.withsecure.com/en/support)
-
-> 
-> **[Deprecated]** This Azure Function based connector is deprecated and is no longer actively maintained. Please use the **WithSecure Elements via Codeless Connector Framework (CCF)** solution instead, which provides the same data ingestion without the need to deploy and maintain an Azure Function. New deployments should use the CCF solution.
-
-WithSecure Elements is the unified cloud-based cyber security platform designed to reduce risk, complexity, and inefficiency.
-
-Elevate your security from your endpoints to your cloud applications. Arm yourself against every type of cyber threat, from targeted attacks to zero-day ransomware.
-
-WithSecure Elements combines powerful predictive, preventive, and responsive security capabilities - all managed and monitored through a single security center. Our modular structure and flexible pricing models give you the freedom to evolve. With our expertise and insight, you'll always be empowered - and you'll never be alone.
-
-With Microsoft Sentinel integration, you can correlate [security events](https://connect.withsecure.com/api-reference/security-events#overview) data from the WithSecure Elements solution with data from other sources, enabling a rich overview of your entire environment and faster reaction to threats.
-
-With this solution Azure Function is deployed to your tenant, polling periodically for the WithSecure Elements security events.
-
-For more information visit our website at: https://www.withsecure.com.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `WsSecurityEvents_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **WithSecure Elements API client credentials**: Client credentials are required. [See the documentation to learn more.](https://connect.withsecure.com/getting-started/elements#getting-client-credentials)
-
-**Setup Instructions:**
-
-**1. Create WithSecure Elements API credentials**
-
-Follow the [user guide](https://connect.withsecure.com/getting-started/elements#getting-client-credentials) to create Elements API credentials. Save credentials in a safe place.
-
-**2. Create Microsoft Entra application**
-
-Create new Microsoft Entra application and credentials. Follow [the instructions](/en-us/azure/azure-monitor/logs/tutorial-logs-ingestion-portal#create-microsoft-entra-application) and store values of **Directory (tenant) ID, Object ID, Application (client) ID and Client Secret** (from client credentials field). Remember to store Client Secret in a safe place.
-
-**3. Deploy Function App**
-
-> 
-> **NOTE:** This connector uses Azure Functions to pull logs from WithSecure Elements. This might result in additional data ingestion costs. Check the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-**(Optional Step)** Securely store Microsoft Entra client credentials and WithSecure Elements API client credentials in Azure Key Vault. Azure Key Vault provides a secure mechanism to store and retrieve key values. [Follow these instructions](/en-us/azure/app-service/app-service-key-vault-references) to use Azure Key Vault with an Azure Function App.
-
-> 
-> **IMPORTANT:** Before deploying the WithSecure Elements connector, have the Workspace Name (can be copied from the following), data from Microsoft Entra (Directory (tenant) ID, Object ID, Application (client) ID and Client Secret), as well as the WithSecure Elements client credentials, readily available.
-
-- **Workspace Name**: &lt;variable value provided at install time&gt;
-
-**Deploy all the resources related to the connector**
-
-1. Click the **Deploy to Azure** button below.
-
-    [aka.ms](https://aka.ms/sentinel-WithSecureElementsViaFunction-azuredeploy)
-2. Select the preferred **Subscription, Resource Group and Location**.
-3. Enter the **Workspace ID, Entra Client ID, Entra Client Secret, Entra Tenant ID, Elements API Client ID, Elements API Client Secret**.
-
-> 
-> Note: If using Azure Key Vault secrets for any of the values above, use the`@Microsoft.KeyVault(SecretUri={Security Identifier})`schema in place of the string values. Refer to [Key Vault references documentation](/en-us/azure/app-service/app-service-key-vault-references) for further details. 4. You can also fill in optional fields: **Elements API url, Engine, Engine Group. Use default value of Elements API url unless you have some special case. Engine and Engine Group** map to [security events request parameters](https://connect.withsecure.com/api-reference/elements#post-/security-events/v1/security-events), fill in those parameters if you are interested only in events from specific engine or engine group, in case you want to receive all security events leave the fields with default values. 5. Mark the checkbox labeled **I agree to the terms and conditions stated above**. 6. Click **Purchase** to deploy.
 
 **Wiz for Microsoft Sentinel**
 
@@ -22201,7 +22474,7 @@ The [Auth0 Logs (using Azure Function)](https://auth0.com/access-management) dat
 **Prerequisites:**
 
 - **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-- **REST API Credentials/permissions**: **API token** is required. For more information, see [API token](https://auth0.com/docs/secure/tokens/access-tokens/get-management-api-access-tokens-for-production)
+- **REST API Credentials/permissions**: **API token** is required. For more information, see [API token](https://auth0.com/docs/secure/tokens/access-tokens/management-api-access-tokens)
 
 **Setup Instructions:**
 

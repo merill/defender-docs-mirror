@@ -53,7 +53,7 @@ The **Password protection** page in Microsoft Defender consolidates password-rel
 
 To access the **Password protection** page, you need:
 
-- A Microsoft Defender for Identity license, or another license that includes Defender for Identity (such as E5), and a Microsoft Entra ID Protection license.
+- A Microsoft Defender for Identity license, or another license that includes Microsoft Defender for Identity (such as E5), and a Microsoft Entra ID Protection license.
 - A user role with at least [Security Reader](/en-us/azure/active-directory/roles/permissions-reference#security-reader) permissions.
 - To review SaaS app sources, a Microsoft Defender for Cloud Apps license and an app connector for each SaaS app you want to see. Only SaaS apps that support SSPM appear.
 

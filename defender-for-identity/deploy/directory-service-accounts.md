@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about how Microsoft Defender for Identity uses Directory Service accounts (DSAs).
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: article
 ms.reviewer: rlitinsky
 ms.custom: msecd-doc-authoring-1015
@@ -74,7 +74,7 @@ One sensor in each domain acts as the *domain synchronizer* and tracks changes t
 
 Note
 
-By default, Defender for Identity supports up to 30 credentials. To add more credentials, contact Defender for Identity support.
+By default, you can configure up to 30 credentials. To add more credentials, contact Microsoft Defender for Identity support.
 
 ## Supported DSA account options
 
@@ -144,7 +144,7 @@ If a sensor isn't able to successfully authenticate via LDAP to the Active Direc
 
 The DSA requires read only permissions on **all** the objects in Active Directory, including the **Deleted Objects Container**.
 
-The read-only permissions on the **Deleted Objects** container allows Defender for Identity to detect user deletions from your Active Directory.
+The read-only permissions on the **Deleted Objects** container allow Microsoft Defender to detect user deletions from your Active Directory.
 
 Use the following code sample to help you grant the required read permissions on the **Deleted Objects** container, whether or not you're using a gMSA account.
 

@@ -15,7 +15,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Provides a list of frequently asked questions about Microsoft Defender for Identity and the associated answers
-ms.date: 2024-06-10T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: article
 locale: en-us
 document_id: e97ffd97-fe32-11a6-80d9-7dd69b100b38
@@ -179,7 +179,7 @@ Defender for Identity supports multi-domain environments and multiple forests. F
 
 ### Can you see the overall health of the deployment?
 
-Yes, you can view the overall deployment health and any specific issues related to configuration, connectivity, and so on. You're alerted as these events occur with Defender for Identity health issues.
+Yes, you can view the overall deployment health and any specific issues related to configuration, connectivity, and so on. You're alerted as these events occur with identity security health issues in Microsoft Defender.
 
 ### Does Microsoft Defender for Identity require synchronizing users to Microsoft Entra ID?
 
@@ -264,9 +264,9 @@ To understand why an account is sensitive you can review its group membership to
 
 With Defender for Identity, there's no need to create rules, thresholds, or baselines and then fine-tune. Defender for Identity analyzes the behaviors among users, devices, and resources, as well as their relationship to one another, and can detect suspicious activity and known attacks quickly. Three weeks after deployment, Defender for Identity starts to detect behavioral suspicious activities. On the other hand, Defender for Identity will start detecting known malicious attacks and security issues immediately after deployment.
 
-### Which traffic does Defender for Identity generate in the network from domain controllers, and why?
+### Which identity security traffic does Microsoft Defender generate from domain controllers, and why?
 
-Defender for Identity generates traffic from domain controllers to computers in the organization in one of three scenarios:
+Microsoft Defender generates identity security traffic from domain controllers to computers in the organization in one of three scenarios:
 
 - **Network Name resolution** Defender for Identity captures traffic and events, learning and profiling users and computer activities in the network. To learn and profile activities according to computers in the organization, Defender for Identity needs to resolve IPs to computer accounts. To resolve IPs to computer names Defender for Identity sensors, request the IP address for the computer name *behind* the IP address.
 

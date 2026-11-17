@@ -15,8 +15,8 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Discover the regional availability of Microsoft Defender for Cloud plans across Azure, AWS, and GCP. Find supported services by region and platform.
 ms.topic: concept-article
-ms.date: 2026-10-25T00:00:00.0000000Z
-ms.custom: references_regions, msecd-doc-authoring-1030
+ms.date: 2026-11-15T00:00:00.0000000Z
+ms.custom: references_regions, msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: 6e6c182b-9ae8-74e8-f4d8-e606031a81b7
@@ -67,17 +67,17 @@ This article gives an overview of where you can use Microsoft Defender for Cloud
 
 ### Defender for Storage
 
-**Supported regions:** Asia East, Asia Southeast, Asia Northeast, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, Central US (EU Access Program), China East, China East 3, East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, Qatar Central\*\*\*\*\*, Spain Central, South Africa North, South Africa West, South Central US, South East US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE North, UK South, UK West, US Gov East, US Gov South Central, US Gov Southwest, West Central US, West Europe, West US, West US 2, West US 3
+**Supported regions:** Asia East, Asia Southeast, Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, Central US (EU Access Program), China East, China East 3, East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, Qatar Central\*\*\*\*\*, Spain Central, South Africa North, South Africa West, South Central US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE North, UK South, UK West, US Gov East, US Gov South Central, US Gov Southwest, West Central US, West Europe, West US, West US 2, West US 3
 
-**Unsupported regions:** Austria East, Belgium Central, Chile Central, China East 2, China North, China North 2, China North 3, EU SSLV, India West, Indonesia Central, Israel North West, Jio India Central, Jio India West, Malaysia South, South East US 3, South US 2, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East
+**Unsupported regions:** Austria East, Belgium Central, Chile Central, China East 2, China North, China North 2, China North 3, Denmark East, EU SSLV, India South Central, India West, Indonesia Central, Israel North West, Jio India Central, Jio India West, Malaysia West, South East US 3, South US 2, Southeast Asia 3, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East
 
 \*\*\*\*\* Supported via API management only.
 
 ### Defender for Storage (Malware Scanning)
 
-**Supported regions:** Asia East, Asia Southeast, Asia Northeast, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, Qatar Central\*\*\*\*\*, Spain Central, South Africa North, South Africa West, South Central US, South East US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE North, UK South, UK West, US Gov East, US Gov South Central, US Gov Southwest, West Central US, West Europe, West US, West US 2, West US 3
+**Supported regions:** Asia East, Asia Southeast, Australia Central, Australia Central 2, Australia East, Australia Southeast, Brazil South, Brazil Southeast, Canada Central, Canada East, Central US, Central US (EU Access Program), East US, East US 2, East US 2 (EU Access Program), France Central, France South, Germany North, Germany West Central, India Central, India South, Israel Central, Italy North, Japan East, Japan West, Korea Central, Korea South, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, Qatar Central\*\*\*\*\*, Spain Central, South Africa North, South Africa West, South Central US, Sweden Central, Sweden South, Switzerland North, Switzerland West, UAE North, UK South, UK West, US Gov East, US Gov South Central, US Gov Southwest, West Central US, West Europe, West US, West US 2, West US 3
 
-**Unsupported regions:** Austria East, Belgium Central, Central US (EU Access Program), Chile Central, China East, China East 2, China East 3, China North, China North 2, China North 3, EU SSLV, India West, Indonesia Central, Israel North West, Jio India Central, Jio India West, Malaysia South, South East US 3, South US 2, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East
+**Unsupported regions:** Austria East, Belgium Central, Chile Central, China East, China East 2, China East 3, China North, China North 2, China North 3, Denmark East, EU SSLV, India South Central, India West, Indonesia Central, Israel North West, Jio India Central, Jio India West, Malaysia West, South East US 3, South US 2, Southeast Asia 3, Taiwan North, Taiwan North West, UAE Central, US DoD Central, US DoD East
 
 \*\*\*\*\*\* Supported via API management only.
 

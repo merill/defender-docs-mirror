@@ -51,7 +51,7 @@ The Active Directory domain page in Microsoft Defender brings together domain he
 
 ## Prerequisites
 
-- A Microsoft Defender for Identity license, or another license that includes Defender for Identity (such as E5).
+- A Microsoft Defender for Identity license, or another license that includes Microsoft Defender for Identity (such as E5).
 - A user role with at least [Security Reader](/en-us/azure/active-directory/roles/permissions-reference#security-reader) permissions.
 
 ## Access the Domain page

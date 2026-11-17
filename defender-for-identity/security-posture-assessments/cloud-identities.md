@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Cloud identity assessments in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+title: Cloud identity assessments in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/security-posture-assessments/cloud-identities
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,7 +12,7 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn how Microsoft Defender for Identity assesses cloud identities in Okta, CyberArk Identity, and SailPoint Identity Security Cloud for security risks.
+description: Learn how Microsoft Defender security assessments for cloud identities in Okta, CyberArk Identity, and SailPoint Identity Security Cloud help identify security risks.
 ms.topic: article
 ms.date: 2026-07-30T00:00:00.0000000Z
 ms.reviewer: Himanch
@@ -36,17 +36,17 @@ source_path: defender-for-identity/security-posture-assessments/cloud-identities
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cd48b104-e308-4e08-a405-66f04a7df418
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ac23bdb5-c078-4620-8ee2-60eba45e97f8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 8864c430-5f37-a01b-abe4-8b3b8e93a3d8
 ---
 
-# Cloud identity assessments in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+# Cloud identity assessments in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
-Microsoft Defender for Identity provides security assessments for cloud identities in Okta, CyberArk Identity, and SailPoint Identity Security Cloud. Use these assessments to identify potential security risks and review recommended remediation actions.
+Microsoft Defender provides security assessments for cloud identities in Okta, CyberArk Identity, and SailPoint Identity Security Cloud. Use these assessments to identify potential security risks and review recommended remediation actions.
 
 ## Prerequisites
 

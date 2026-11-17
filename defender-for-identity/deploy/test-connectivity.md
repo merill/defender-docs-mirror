@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to test whether the server where you're installing your Microsoft Defender for Identity sensor can access the Defender for Identity cloud service.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
@@ -50,7 +50,7 @@ For more information, see [v2.x required ports](prerequisites-sensor-version-2#r
 
 Note
 
-To get the name and other important details about your Defender for Identity workspace, see the [About page](../settings-about) in the [Microsoft Defender XDR](https://security.microsoft.com/) portal.
+To get the name and other important details about your Defender for Identity workspace, see the [About page](../settings-about) in the [Microsoft Defender portal](https://security.microsoft.com/).
 
 ## Test connectivity using a browser
 

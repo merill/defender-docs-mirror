@@ -8,12 +8,12 @@ feedback_system: Standard
 feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
-ms.author: guywild
-author: guywi-ms
+ms.author: shragar
+author: shragar
 ms.reviewer: itaicohen
 ms.service: microsoft-defender
 ms.update-cycle: 180-days
-ms.date: 2026-08-07T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 audience: Admin
 ms.topic: concept-article
 description: Learn how Microsoft Defender secures AI workloads across their lifecycle - from build and configuration to runtime - and supports organizations in managing AI security risks.
@@ -49,6 +49,8 @@ By embedding security into the fabric of AI development and operations, Microsof
 
 This article provides an overview of the Microsoft Defender capabilities that help secure AI assets against vulnerabilities and emerging threats.
 
+Most AI security discussions focus on attacks that target agents directly, such as prompt injection. However, attackers can also exploit the trusted identities and delegated relationships that agents depend on. Microsoft Defender helps protect both the agent execution path and the identity path that can be used to weaponize trusted agent workflows.
+
 ## The AI threat landscape
 
 AI security threats span the full AI lifecycle, from build‑time and configuration risks - such as misconfigurations and insecure dependencies - to runtime threats affecting AI agents and applications.
@@ -59,6 +61,7 @@ Key security risks to your AI assets include:
 - **Agent misconfiguration and over-privilege** - Agents with excessive permissions or improperly configured tool authentication can enable unauthorized access to sensitive resources.
 - **Runtime abuse and misuse** - Agents or applications can perform unsafe actions at execution time due to malicious inputs, unexpected reasoning paths, or compromised dependencies.
 - **Prompt- and content-based attacks** - Beyond malicious inputs, more subtle tactics, such as zero-click attacks using hidden instructions embedded in emails or retrieved content, can manipulate agent behavior, cause data leakage, or trigger unintended actions.
+- **Trusted identity compromise and delegated abuse** - Attackers can compromise a user identity and misuse delegated permissions to drive trusted agent workflows, resulting in malicious actions that appear legitimate.
 
 Addressing these risks requires security controls that span discovery, posture management, detection, and runtime protection.
 
@@ -79,6 +82,8 @@ AI agents introduce unique security risks because of their ability to reason, in
 
 [Microsoft Agent 365](/en-us/microsoft-agent-365/overview) provides an enterprise control plane for managing and governing AI agents in your organization. When you enable an Agent 365 license, Microsoft Defender integrates with Agent 365 to secure all managed agents, including [local AI agents on supported endpoints](/en-us/defender-endpoint/local-agent-discovery-overview). The integration provides discovery, posture management, real-time protection, and investigation. Threat detection uses observability data from Microsoft Copilot Studio, Microsoft Foundry, Microsoft Copilot Agent Builder, and agents integrated through the Microsoft Agent 365 SDK.
 
+Microsoft Defender extends AI agent protection with detections for identity-based attack patterns in trusted agent workflows. These detections correlate identity, authorization, and resource signals to help security teams investigate and disrupt attacks involving trusted agents. For more information, see [Protect AI agents from trusted-identity attacks](protect-ai-agents-from-trusted-identity-attacks).
+
 To get started, see [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
 
 | Capability | Description | Learn more |
@@ -87,6 +92,7 @@ To get started, see [Enable security for AI agents using Microsoft Defender](get
 | **Agent security posture management** | Use Advanced Hunting in Microsoft Defender, which provides prebuilt queries to help you identify misconfigurations, risky agent settings, and excessive permissions. | [Discover AI agents and assess security posture using Microsoft Defender](/en-us/defender-xdr/security-for-ai/ai-agent-inventory) |
 | **Real-time protection** | Real-time protection evaluates tool invocations and responses against security policies when Agent 365 agents use Work IQ MCP and customer MCP tools onboarded to Agent 365. The default rule audits activity, while custom rules can block matching actions before they execute. Audited and blocked activity is recorded as behaviors in the `BehaviorInfo` table for hunting and automation. | [Protect AI agents in real time using Microsoft Defender](/en-us/defender-xdr/security-for-ai/ai-agent-real-time-protection) |
 | **Threat detection, investigation, and hunting** | Near-real-time detections analyze Agent 365 observability data for threats such as indirect prompt injection, evasion techniques, malicious content propagation, secret leakage, large language model (LLM) reconnaissance, and suspicious IP access. Microsoft Defender correlates alerts into incidents, and advanced hunting lets analysts query agent activity with other security data. | [Detect and investigate threats to AI agents using Microsoft Defender](/en-us/defender-xdr/security-for-ai/ai-agent-detection-protection) |
+| **Identity compromise detection in trusted agent workflows** | Detects identity-based attack patterns in trusted agent workflows by correlating communication, identity, authorization, and resource signals to support high-confidence SOC investigation and disruption. | [Protect AI agents from trusted-identity attacks](protect-ai-agents-from-trusted-identity-attacks) |
 
 ## Protect AI infrastructure using Microsoft Defender
 

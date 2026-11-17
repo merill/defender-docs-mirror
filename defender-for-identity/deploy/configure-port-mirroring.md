@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about Defender for Identity port mirroring options.
-ms.date: 2026-06-15T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: martin77s
 ai-usage: ai-assisted
@@ -42,7 +42,7 @@ platformId: 247c1f3f-b369-60a4-3750-aa5b627cfb4d
 
 # Configure port mirroring - Microsoft Defender for Identity | Microsoft Learn
 
-This article describes port mirroring options for Microsoft Defender for Identity, and is relevant only for standalone sensors. Defender for Identity mainly uses deep packet inspection over network traffic to and from your domain controllers. For Defender for Identity standalone sensors to see network traffic, you must either configure port mirroring, or use a Network TAP. Port mirroring copies the traffic from one port (the source port) to another port (the destination port).
+Configure port mirroring for Microsoft Defender for Identity standalone sensors. The standalone sensor uses deep packet inspection over network traffic to and from your domain controllers. For Defender for Identity standalone sensors to see network traffic, you must either configure port mirroring, or use a Network TAP. Port mirroring copies the traffic from one port (the source port) to another port (the destination port).
 
 When using port mirroring, configure port mirroring for each domain controller that you're monitoring as the source of your network traffic. We recommend working with your networking or virtualization team to configure port mirroring.
 
@@ -67,7 +67,7 @@ Note
 
 ## Supported port mirroring options
 
-The following table describes Defender for Identity's support for port mirroring configurations:
+The following table describes supported port mirroring configurations for Microsoft Defender for Identity:
 
 | Defender for Identity standalone sensor | Domain controller | Considerations |
 | --- | --- | --- |

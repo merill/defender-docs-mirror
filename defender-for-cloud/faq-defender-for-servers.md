@@ -17,7 +17,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Get answers to frequently asked questions about Microsoft Defender for Servers.
 ms.topic: faq
-ms.date: 2026-09-23T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 27311548-4fee-6cf7-791e-8b3b07749108
 document_version_independent_id: b484d8ec-ad01-0c58-0609-2a0d559b3ff5
@@ -71,7 +73,12 @@ Historical data can remain visible under the retention policy. A retained record
 
 ### What servers do I pay for in a subscription?
 
-When you enable Defender for Servers on a subscription, you're charged for all machines based on their power states. For more information, see [Upcoming billing updates for Defender for Servers](https://aka.ms/D4ServersUpcomingBillingPolicyChange).
+With the [Defender for Servers billing update](https://go.microsoft.com/fwlink/?LinkId=2387998) effective November 1, 2026, when you enable Defender for Servers plans, a machine is billed when both of the following conditions are met:
+
+- **The machine is protected by Defender for Servers Plan 1 or Plan 2.**
+    - When **Plan 1** is enabled, productivity and desktop client devices are no longer billed as servers.
+    - When **Plan 1** is enabled, billing depends on the machine's operating system. Windows servers in a connected environment are billed. Linux and other non-Windows servers in a connected environment are billed only when the Defender for Endpoint agent is deployed.
+- **The machine is in a billable power state.**
 
 | State | Details | Billing |
 | --- | --- | --- |
@@ -90,7 +97,25 @@ When you enable Defender for Servers on a subscription, you're charged for all m
 | **Direct onboarding (Defender for Endpoint only)** |  |  |
 | Sensor connected | Server is directly onboarded to Defender for Cloud through the Defender for Endpoint sensor connection model. | Billed per hour |
 
+Defender for Servers service will check for online machines multiple times per hour up from once per hour, and count each deployed machine separately.
+
+If the available information doesn't clearly identify a device as a desktop or workstation, it will be classified as a server for billing purposes.
+
 If you already have standalone Microsoft Defender for Endpoint for Servers licenses, submit a support request to apply the billing adjustment and avoid double billing. For steps, see Can I get a discount if I already have a Microsoft Defender for Endpoint license?.
+
+### How are devices classified during Defender for Servers Plan 1 billing?
+
+Microsoft Defender uses operating-system and device information to classify devices for licensing and billing. Classification doesn't depend on where a device is hosted, whether it's physical or virtual, or how you use it.
+
+The following examples aren't exhaustive and don't confirm product support or licensing eligibility. Classification depends on device information, not the OS or distribution name alone.
+
+| OS family | Desktop, workstation, or mobile examples | Server examples and classification signals |
+| --- | --- | --- |
+| **Windows** | Windows 11; Windows 10; Windows 8.1; Windows 7; Windows Enterprise multi-session / Windows Virtual Desktop (WVD); Windows 10 IoT Enterprise | Windows Server 2025, 2022, 2019, 2016, and 2012 R2; Server Core; Datacenter; Azure Stack HCI; Windows Server image or SKU information |
+| **Linux and other non-Windows systems** | Ubuntu Desktop; Fedora / Fedora Workstation; SLED; Kali; Mint; Pop!\_OS; KDE neon; elementary OS; Tuxedo OS | Ubuntu Server; RHEL; Debian; CentOS; SLES / SUSE; Mariner; Oracle Linux; Amazon Linux; Rocky Linux; AlmaLinux; Photon OS; Flatcar; COS; PAN-OS; Gaia |
+| **Other desktop and mobile systems** | macOS; iOS; Android | None listed |
+
+If the available information doesn't clearly identify a device as a desktop or workstation, it will be classified as a server for billing purposes.
 
 ### What are the licensing requirements for Microsoft Defender for Endpoint?
 

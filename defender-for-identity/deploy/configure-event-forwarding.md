@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about Microsoft Defender for Identity's support for configuring Windows event forwarding.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
@@ -111,7 +111,7 @@ You can create a group policy for these settings and apply the group policy to e
 
 ## Step 3: Create and select a subscription on your sensor
 
-This procedure describes how to create a subscription for use with Defender for Identity and then select the subscription from your standalone sensor.
+This procedure describes how to create a subscription for identity security event collection in Microsoft Defender and then select the subscription from your standalone sensor.
 
 1. Open an elevated command prompt and enter
 

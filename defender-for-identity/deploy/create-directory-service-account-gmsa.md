@@ -158,7 +158,7 @@ The directory service account requires specific read permissions on Active Direc
 
 The DSA requires read only permissions on **all** the objects in Active Directory, including the **Deleted Objects Container**.
 
-The read-only permissions on the **Deleted Objects** container allows Defender for Identity to detect user deletions from your Active Directory.
+The read-only permissions on the **Deleted Objects** container allow Microsoft Defender to detect user deletions from your Active Directory.
 
 Use the following code sample to help you grant the required read permissions on the **Deleted Objects** container, whether or not you're using a gMSA account.
 

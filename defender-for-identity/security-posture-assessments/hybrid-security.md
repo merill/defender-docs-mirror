@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Remediate Hybrid Security Posture Assessments in Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+title: Remediate hybrid security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/security-posture-assessments/hybrid-security
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,7 +12,7 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: View all hybrid security posture assessments for Microsoft Defender for Identity.
+description: View all hybrid security posture assessments.
 ms.topic: how-to
 ms.date: 2026-08-18T00:00:00.0000000Z
 ms.reviewer: LiorShapiraa
@@ -35,18 +35,16 @@ item_type: Content
 source_path: defender-for-identity/security-posture-assessments/hybrid-security.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1433a524-c01f-4b87-beab-670c040dea4f
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/312f1f05-a431-4193-8a4d-e6245d5966de
 platformId: 305914a7-7de5-2a78-c465-eeb985889b6b
 ---
 
-# Remediate Hybrid Security Posture Assessments in Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+# Remediate hybrid security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 
-This article lists all hybrid security posture assessments for Microsoft Defender for Identity.
+This article lists all hybrid security posture assessments.
 
 Note
 

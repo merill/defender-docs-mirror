@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Microsoft Defender for Identity health issues - Microsoft Defender for Identity | Microsoft Learn
+title: Identity security health issues in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/health-alerts
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,8 +12,8 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn about health issues in Microsoft Defender for Identity, including causes and resolution steps for sensor and domain-related alerts.
-ms.date: 2026-10-18T00:00:00.0000000Z
+description: Learn about identity security health issues in Microsoft Defender, including causes and resolution steps for sensor and domain-related alerts.
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ai-usage: ai-assisted
@@ -42,15 +42,15 @@ spProducts:
 platformId: 002e00a7-0e1d-673c-d854-8ddd420d02f6
 ---
 
-# Microsoft Defender for Identity health issues - Microsoft Defender for Identity | Microsoft Learn
+# Identity security health issues in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
-The Microsoft Defender for Identity Health Issues page lists issues affecting your Defender for Identity deployment and sensors. It alerts you to detected problems that might result from configuration or environmental factors.
+The **Health issues** page in Microsoft Defender lists issues affecting your identity security deployment and sensors. It alerts you to detected problems that might result from configuration or environmental factors.
 
 For v3.x sensors, configure [automatic Windows event auditing](deploy/configure-windows-event-collection) to help prevent issues related to Windows event collection. Before following a remediation procedure, check the health issue table for the applicable sensor version.
 
 ## Health issues page
 
-The Microsoft Defender for Identity **Health issues** page lets you know when there's a problem with your Defender for Identity workspace, by raising a health issue. You can see health issues for both your general Defender for Identity environment and specific sensors.
+The **Health issues** page in Microsoft Defender raises health issues for problems affecting your identity security environment or specific sensors.
 
 Defender for Identity supports the following types of health alerts:
 
@@ -77,13 +77,13 @@ Health issues in Microsoft Defender for Identity can have different statuses dep
 - **Closed:** A health issue is automatically marked as **Closed** when Microsoft Defender for Identity detects that the underlying issue is resolved. If you have the [Azure ATP (workspace name) Administrator](/en-us/defender-for-identity/role-groups#defender-for-identity-security-groups) role, you can also manually close a health issue.
 - **Suppressed:** If you have Azure ATP (workspace name) Administrators permissions, you can suppress the health alert for seven days. Suppress a health alert if you're aware of an expected temporary known issue, for example, taking down a machine for maintenance.
 
-For example, if a domain controller is taken offline for maintenance, a "Sensor stopped communicating" alert might be triggered. You can use the API to change the alert status from Open to Suppressed. After the domain controller is back online, revert the status to Open and let Microsoft Defender for Identity close the alert automatically when the issue is resolved.
+For example, if a domain controller is taken offline for maintenance, a "Sensor stopped communicating" alert might be triggered. You can use the API to change the alert status from Open to Suppressed. After the domain controller is back online, revert the status to Open and let Microsoft Defender close the alert automatically when the issue is resolved.
 
 ## Review health issue details
 
 Note
 
-In some v3 sensor environments, health alerts about Windows event auditing might persist even when Windows auditing is correctly configured. This primarily occurs with manual auditing configuration, such as using Group Policy or PowerShell. The sensor remains healthy and detections aren't affected. To resolve, enable **Automatic Windows auditing configuration** in the Defender for Identity portal under **Settings** &gt; **Advanced features**.
+In some v3 sensor environments, health alerts about Windows event auditing might persist even when Windows auditing is correctly configured. This primarily occurs with manual auditing configuration, such as using Group Policy or PowerShell. The sensor remains healthy and detections aren't affected. To resolve, enable **Automatic Windows auditing configuration** in the Microsoft Defender portal under **Settings** &gt; **Identities** &gt; **Advanced features**.
 
 The tables in this section list all health issues by component, with causes and resolution steps.
 

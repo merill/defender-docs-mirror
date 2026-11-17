@@ -15,8 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn about how Microsoft Defender for Endpoint and Microsoft Defender Vulnerability Management integrate with Defender for Cloud to enhance security.
 ms.topic: concept-article
-ms.date: 2026-06-17T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 83b60015-fb32-da34-8ea2-399cfd8f05e8
 document_version_independent_id: 00ce9dbd-f73d-f6a2-6ec2-600f4a286391
@@ -75,6 +76,8 @@ Defender for Endpoint stores collected data in the tenant's geo-location as iden
 - Customer data, in pseudonymized form, might also be stored in the central storage and processing systems in the United States.
 - After you configure the location, you can't change it.
 - If you have your own license for Defender for Endpoint and need to move your data to another location, [contact Microsoft support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) to reset the tenant.
+
+**Platform and agent requirements for Defender for Servers Plan 1:** Deploy the Microsoft Defender for Endpoint agent to access the full set of Plan 1 capabilities. On Linux and other non-Windows servers, Plan 1 capabilities require the Microsoft Defender for Endpoint agent. On Windows servers, attack surface reduction, next-generation protection, centralized configuration and administration, and APIs and integration are available without requiring customers to manually deploy or manage the Microsoft Defender for Endpoint agent.
 
 ### Resource discovery and onboarding status
 

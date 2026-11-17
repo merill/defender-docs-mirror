@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to configure Microsoft Defender for Identity on Active Directory Federation Services (AD FS), Active Directory Certificate Services (AD CS), and Microsoft Entra Connect servers.
-ms.date: 2026-10-18T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ai-usage: ai-assisted
@@ -34,12 +34,12 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/deploy/active-directory-federation-services.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/57eae307-c3a1-4cac-b645-1a899934bac8
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ee561821-1ac7-45a8-9409-6ba5eb7a5b97
 platformId: 2436d91c-852c-5e67-0682-7e57e07838f4
 ---
@@ -190,8 +190,8 @@ $SQLConnection.Close()
 
 During the sensor installation on an AD FS, AD CS, or Microsoft Entra Connect server, the closest domain controller is automatically selected. Use the following steps to check or modify the selected domain controller:
 
-1. In [Microsoft Defender XDR](https://security.microsoft.com), go to **Settings** &gt; **Identities** &gt; **Sensors** to view all of your Defender for Identity sensors.
-2. Locate and select the sensor that you installed on the server.
+1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **Settings** &gt; **Identities** &gt; **On-premises** &gt; **Sensor Management** to view all of your Defender for Identity sensors.
+2. Locate the sensor that you installed on the server, open its row actions menu, and select **Settings**.
 3. On the pane that opens, in the **Domain controller (FQDN)** box, enter the fully qualified domain name (FQDN) of the resolver domain controllers. Select **+ Add** to add the FQDN, and then select **Save**.
 
     ![Screenshot of Defender for Identity sensor settings pane showing the Domain controller (FQDN) field where you enter the resolver domain controller for an AD FS sensor.](../media/sensor-config-adfs-resolver.png)
@@ -204,7 +204,7 @@ To validate that you successfully deployed a Defender for Identity sensor on an 
 
 1. Check that the **Azure Advanced Threat Protection sensor** service is running. After you save the Defender for Identity sensor settings, it might take a few seconds for the service to start.
 2. If the service doesn't start, review the `Microsoft.Tri.sensor-Errors.log` file, located by default at `%programfiles%\Azure Advanced Threat Protection sensor\Version X\Logs`.
-3. Use AD FS or AD CS to authenticate a user to any application, and then verify that Defender for Identity observed the authentication.
+3. Use AD FS or AD CS to authenticate a user to any application, and then verify that Microsoft Defender observed the authentication.
 
     For example, select **Hunting** &gt; **Advanced Hunting**. On the **Query** pane, enter and run one of the following queries:
 

@@ -6,14 +6,14 @@ feedback_system: Standard
 feedback_product_url: https://docs.microsoft.com/cloud-app-security/support-and-ts
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 breadcrumb_path: /defender-cloud-apps/breadcrumb/toc.json
-author: AbbyMSFT
+author: shragar
 manager: bagol
-ms.author: abbyweisberg
+ms.author: shragar
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: This article is updated frequently to let you know what's new in the latest release of Microsoft Defender for Cloud Apps.
-ms.date: 2026-10-04T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: overview
 ms.custom:
 - msecd-doc-authoring-1026
@@ -38,11 +38,11 @@ source_path: defender-for-cloud-apps/release-notes.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/9bdc1705-9b40-49d6-8377-caa0b71fda66
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://authoring-docs-microsoft.poolparty.biz/devrel/686ed158-d915-41e9-9760-efa46ba88f6d
 platformId: 5d9783d4-8da0-0843-847b-aae17323f853
 ---
 
@@ -60,6 +60,18 @@ For more information on what's new with other Microsoft Defender security produc
 - [What's new in Microsoft Defender for Identity](/en-us/defender-for-identity/whats-new)
 
 For news about earlier releases, see [Archive of past updates for Microsoft Defender for Cloud Apps](release-note-archive).
+
+## November 2026
+
+### GitHub connector enhancements (Preview)
+
+The GitHub connector in Microsoft Defender for Cloud Apps now supports both **Organization-level** and **Enterprise-level** connections. This update helps security teams centralize onboarding and improve visibility across GitHub Enterprise environments.
+
+We strongly recommend creating a **new connector instance** and connecting at the **Enterprise level**. With a single enterprise connection, all organizations in that enterprise are covered, eliminating per-organization connector setup, reducing administrative overhead, and giving defenders full visibility into enterprise-wide GitHub activity.
+
+If you connect at the **Enterprise level**, you also gain stronger protection against identity-driven attacks in developer workflows, including device code phishing scenarios targeting GitHub Copilot CLI.
+
+For setup guidance, see [Protect your GitHub Enterprise environment](protect-github). For detection and disruption coverage, see [Protect AI agents from trusted-identity attacks (Preview)](/en-us/defender-xdr/security-for-ai/protect-ai-agents-from-trusted-identity-attacks).
 
 ## October 2026
 

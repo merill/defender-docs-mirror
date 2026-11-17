@@ -23,7 +23,7 @@ ms.subservice: sentinel-siem
 search.appverid: met150
 ms.reviewer: mapankra
 description: Learn how the Microsoft Sentinel solution for SAP applications helps detect, investigate, and respond to threats in SAP systems.
-ms.author: monaberdugo
+ms.author: mapankra
 author: mberdugo
 ms.topic: overview
 ms.date: 2026-08-13T00:00:00.0000000Z
@@ -102,14 +102,17 @@ Beyond activity monitoring, the solution tracks changes to sensitive SAP securit
 
 ## Solution pricing
 
-While the Microsoft Sentinel **SAP applications** solution is free to install, there's an extra hourly charge for activating and using the solution on production systems.
+The Microsoft Sentinel Solution for SAP applications is free to install. Outside ISOC, a fee of $2 per hour applies to each connected, active production SAP system, identified by its system ID (SID).
 
-- The extra hourly charge applies to connected, active **production systems only**. Inactive systems aren't subject to charges. If a system's status is unknown to Microsoft Sentinel, such as because of permission issues, it's counted as a production system.
-- Microsoft Sentinel identifies a production system by looking at the configuration on the SAP system.
+- **Production systems:** Microsoft Sentinel determines whether a system is used for production based on its SAP configuration.
+- **Nonproduction and inactive systems:** The per-system fee doesn't apply.
+- **Unknown system status:** If Microsoft Sentinel can't determine a system's status, for example because of insufficient permissions, it treats the system as a production system for billing.
+
+Under the announced ISOC pricing change, the per-system fee is removed. For availability and timing, see the [Microsoft Ignite announcement](https://techcommunity.microsoft.com/blog/microsoftsentinelblog/run-agentless-sap-connector-cost-efficiently/4464781).
 
 Microsoft Sentinel ingestion costs might vary and are influenced by the volume of SAP logs ingested. For more information, see:
 
 - [Plan costs and understand Microsoft Sentinel pricing and billing](../billing)
 - [Reduce costs for Microsoft Sentinel](../billing-reduce-costs)
 - [Manage and monitor costs for Microsoft Sentinel](../billing-monitor-costs)
-- [Microsoft Sentinel solution for SAP applications](https://azure.microsoft.com/pricing/offers/microsoft-sentinel-sap-promo/).
+- [Run agentless SAP connector cost-efficiently](https://techcommunity.microsoft.com/blog/microsoftsentinelblog/run-agentless-sap-connector-cost-efficiently/4464781).

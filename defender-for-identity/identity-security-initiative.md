@@ -50,7 +50,7 @@ Identity security is the practice of protecting the digital identities of indivi
 - Your organization must have a Microsoft Defender for Identity license.
 - [Review prerequisites and permissions needed](/en-us/security-exposure-management/prerequisites) for working with Security Exposure Management.
 
-## View Identity Security Initiatives
+## View the Identity Security initiative
 
 1. Navigate to the [Microsoft Defender portal](https://security.microsoft.com/).
 2. From the Exposure management section on the navigation bar, select **Exposure insights** **&gt;** **Initiatives** to open the Identity Security page.
@@ -80,9 +80,9 @@ Note
 
 The Affected assets experience isn't fully supported during the Preview phase.
 
-## View Identity security recommendations
+## View Identity Security recommendations
 
-The Security recommendations tab displays a list of prioritized remediation actions related to your identity security posture. Each recommendation is evaluated for compliance and mapped to its corresponding risk impact, workload, and domain. This view helps you triage and take action based on urgency and business relevance.
+The Security recommendations tab displays a list of prioritized remediation actions related to your Identity Security posture. Each recommendation is evaluated for compliance and mapped to its corresponding risk impact, workload, and domain. This view helps you triage and take action based on urgency and business relevance.
 
 [![Showing showing the security recommendations page.](media/identity-security-initiative/screenshot-showing-the-security-recommendations-page.png)](media/identity-security-initiative/screenshot-showing-the-security-recommendations-page.png#lightbox)
 

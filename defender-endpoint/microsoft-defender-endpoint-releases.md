@@ -77,6 +77,7 @@ This table includes supported releases for all supported platforms in the past s
 | Linux | 101.26081.0010 | September 2026 | - Release version: 30.126081.0010.0- Engine version: 1.1.26090.3000- Signature version: 1.459.287.0 | Release details and updates |
 | iOS | 1.1.81140101 | Sep 2026 | - Build: 1.1.81140101- Release: Sep 15, 2026 | Release details and updates |
 | iOS | 1.1.81120108 | Sep 2026 | - Build: 1.1.81120108- Release: Sep 14, 2026 | Release details and updates |
+| Linux | 101.26072.0005 | September 2026 | - Release version: 30.126072.0005.0- Engine version: 1.1.26070.5001- Signature version: 1.459.239.0 | Release details and updates |
 | Android | 1.0.9309.0102 | Sep 2026 | - Build: 1.0.9309.0102- Release: Sep 11, 2026 | Release details and updates |
 | macOS | 101.26072.0017 | September 2026 | - Release version: 20.126072.17.0- Engine version: 1.1.26060.12000- Signature version: 1.459.146.0 | Release details and updates |
 | iOS | 1.1.80270104 | Sep 2026 | - Build: 1.1.80270104- Release: Sep 7, 2026 | Release details and updates |
@@ -681,6 +682,10 @@ Starting with version `101.24082.0004`, Defender for Endpoint on Linux no longer
 ### Linux known issues
 
 - **Intermittent issue during process scanning**: In version `101.26072.0004`, `wdavdaemon` might restart in rare cases while scanning running processes. The process recovers automatically, and no action is required. A fix will be available in an upcoming release. **Resolution**: Upgrade to platform version 101.26072.0005 or later.
+
+### Linux | November 12, 2026 | Update for version 101.26091.0003: new package dependencies
+
+Starting with version 101.26091.0003, Defender for Endpoint on Linux packages require `iptables`, which device isolation uses. RPM packages also require `libacl`. The installer script and the Defender deployment tool install these dependencies automatically. If you install directly with `rpm` or `dpkg`, install these dependencies first; otherwise, the installation or upgrade fails. For more information, see [Prerequisites for Microsoft Defender for Endpoint on Linux](mde-linux-prerequisites).
 
 ### Linux | November 2026 | 101.26101.0000
 

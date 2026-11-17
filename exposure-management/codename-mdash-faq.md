@@ -55,7 +55,6 @@ A useful mental model is a structured pipeline that takes a code base and emits 
 - **Scan**: Runs specialized auditor agents over candidate code paths, emitting candidate findings with hypotheses and evidence.
 - **Validate**: A second cohort of agents (debaters) argue for and against each finding's reachability and exploitability.
 - **Dedupe**: Collapses semantically equivalent findings (for example, patch-based grouping).
-- **Prove**: Constructs and executes triggering inputs where the bug class allows, validating the pre-condition dynamically to prove the vulnerability exists.
 
 ## What kinds of vulnerabilities is Codename MDASH designed to find?
 
@@ -83,7 +82,7 @@ The Defender CLI is available on Windows, Mac, and Linux.
 
 ## If Codename MDASH uses multiple models, do results just depend on which model is best at any moment?
 
-This is exactly why the architecture is model-agnostic by design. When a better model becomes available, Codename MDASH can integrate it without rebuilding the pipeline. Targeting logic, validation stages, agent configuration, and prove infrastructure all carry over. The value is not any one model, it's the orchestration; how Codename MDASH structures model outputs, debates and validates findings, and turns hypotheses into confirmed, proven vulnerabilities.
+This is exactly why the architecture is model-agnostic by design. When a better model becomes available, Codename MDASH can integrate it without rebuilding the pipeline. Targeting logic, validation stages, agent configuration, and prove infrastructure all carry over. The value is not any one model, it's the orchestration; how Codename MDASH structures model outputs, debates and validates findings, and turns hypotheses into confirmed vulnerabilities.
 
 ## Which AI models does Codename MDASH use?
 

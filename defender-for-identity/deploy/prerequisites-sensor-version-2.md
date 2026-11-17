@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn the prerequisites for installing the Microsoft Defender for Identity sensor v2.x on domain controllers and identity servers.
-ms.date: 2026-06-08T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: install-set-up-deploy
 ms.reviewer: rlitinsky
 ai-usage: ai-assisted
@@ -173,9 +173,9 @@ When running as a virtual machine, all memory must be allocated to the virtual m
 
 ## Configure Windows event auditing
 
-Defender for Identity detections rely on specific Windows event log entries to enhance detections and provide extra information about the users performing specific actions, such as NTLM sign-ins and security group modifications.
+Identity security detections in Microsoft Defender rely on specific Windows event log entries to enhance detections and provide extra information about the users performing specific actions, such as NTLM sign-ins and security group modifications.
 
-[Configure Windows event auditing](configure-windows-event-collection) on your domain controller to support Defender for Identity detections in the Defender portal or using PowerShell.
+[Configure Windows event auditing](configure-windows-event-collection) on your domain controller to support identity security detections in Microsoft Defender, using the portal or PowerShell.
 
 ## Test your prerequisites
 

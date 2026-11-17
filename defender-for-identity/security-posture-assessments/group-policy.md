@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Group policy security assessments - Microsoft Defender for Identity | Microsoft Learn
+title: Group Policy security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/security-posture-assessments/group-policy
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -41,9 +41,9 @@ spProducts:
 platformId: 98f38c37-5d7a-a768-d259-a659347e27d5
 ---
 
-# Group policy security assessments - Microsoft Defender for Identity | Microsoft Learn
+# Group Policy security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 
-Group policy security assessments identify Group Policy Objects (GPOs) that grant excessive access or expose credentials in your Active Directory environment.
+Group Policy security posture assessments identify Group Policy Objects (GPOs) that grant excessive access or expose credentials in your Active Directory environment.
 
 ## GPO assigns unprivileged identities to local groups with elevated privileges
 

@@ -13,7 +13,7 @@ author: j0shbregman
 ms.author: joshbregman
 ms.service: defender-endpoint
 ms.topic: how-to
-ms.date: 2026-09-25T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1015
 locale: en-us
@@ -32,12 +32,12 @@ monikers: []
 item_type: Content
 source_path: defender-endpoint/configure-ai-agent-runtime-protection.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/a72e95ff-4b4f-4cc1-90c6-7dcba67ff05f
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/24dc3ccd-591a-4415-a1fe-8759afafcb12
 platformId: e109d355-caac-bd16-3663-619ad9e9dd83
 ---
@@ -123,9 +123,47 @@ Tip
 
 After you enable runtime protection on a test device, run the [AI agent runtime protection demonstration](defender-endpoint-demonstration-ai-agent-runtime-protection) to confirm that Defender detects a benign prompt injection test string.
 
+## Configure prompt evidence collection
+
+`PromptEvidenceCollection` enables or disables the collection of prompt evidence when AI agent runtime protection is configured. For feature defaults and privacy guidance, see [Prompt evidence collection](ai-agent-runtime-protection-overview#prompt-evidence-collection).
+
+Prompt evidence collection requires the October 2026 Microsoft Defender Antivirus platform and engine updates or later: platform version family `4.18.26100.x` and engine version family `1.1.26100.x`. Keep both components up to date. To check the installed versions, run:
+
+```powershell
+Get-MpComputerStatus | Select-Object AMProductVersion, AMEngineVersion
+```
+
+In an elevated PowerShell session, use the following commands:
+
+- To enable prompt evidence collection:
+
+    ```powershell
+    Set-MpPreference -PromptEvidenceCollection $true
+    ```
+- To disable prompt evidence collection:
+
+    ```powershell
+    Set-MpPreference -PromptEvidenceCollection $false
+    ```
+- To remove the locally configured preference:
+
+    ```powershell
+    Remove-MpPreference -PromptEvidenceCollection
+    ```
+
+Removing the local preference doesn't remove a setting configured by managed policy. A policy configured through Intune or another management channel takes precedence over a local PowerShell preference.
+
+To review all three device settings, run:
+
+```powershell
+Get-MpPreference | Select-Object AiAgentProtection, AiAgentNetworkInspection, PromptEvidenceCollection
+```
+
+For parameter details, see [Set-MpPreference](/en-us/powershell/module/defender/set-mppreference), [Get-MpPreference](/en-us/powershell/module/defender/get-mppreference), and [Remove-MpPreference](/en-us/powershell/module/defender/remove-mppreference).
+
 ## Deploy settings throughout your organization with Microsoft Intune
 
-Use a Microsoft Intune endpoint security Antivirus policy to deploy agent-native event inspection to enrolled Windows devices. For detailed instructions, see [Create endpoint security policies](/en-us/intune/intune-service/protect/endpoint-security-policy#create-endpoint-security-policies) or [Modify existing policies](/en-us/intune/device-configuration/endpoint-security/manage-policies#modify-existing-policies) (links open new tabs in the Intune documentation).
+Use a Microsoft Intune endpoint security Antivirus policy to deploy agent-native event inspection, network inspection, and prompt evidence collection to enrolled Windows devices. For detailed instructions, see [Create endpoint security policies](/en-us/intune/intune-service/protect/endpoint-security-policy#create-endpoint-security-policies) or [Modify existing policies](/en-us/intune/device-configuration/endpoint-security/manage-policies#modify-existing-policies) (links open new tabs in the Intune documentation).
 
 When you create the policy, use these specific settings:
 
@@ -133,46 +171,29 @@ When you create the policy, use these specific settings:
 - **Platform**: Select **Windows**.
 - **Profile**: Select **Microsoft Defender AI agent runtime protection**.
 
-On the **Configuration settings** page, configure **Ai Agent Protection** by using one of the following values:
+On the **Configuration settings** page, configure the settings you need:
 
-- **Default**: Runtime protection is disabled. Defender doesn't inspect agent-native events for prompt injection or block agent actions.
-- **Audit**: Defender detects and reports prompt injection but allows the agent action to continue.
-- **Block**: Defender detects prompt injection and blocks supported agent actions before they run.
+| Setting | Purpose | Configuration |
+| --- | --- | --- |
+| **Ai Agent Protection** (`AiAgentProtection`) | Inspect agent activity through supported agent-native event interfaces. | Choose the audit or block mode you need. The default is disabled. |
+| **Ai Agent Network Inspection** (`AiAgentNetworkInspection`) | Inspect supported agent-to-LLM network traffic. | Choose audit or block mode independently of agent-native event inspection. The default is disabled. |
+| **Prompt Evidence Collection** (`PromptEvidenceCollection`) | Collect prompt evidence when AI agent runtime protection is configured. | Enable or disable collection. |
 
-Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the setting to block mode when you're ready to enforce protection. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
+For each inspection method, **Audit** detects and reports prompt injection while allowing the action to continue, and **Block** blocks detected threats at supported inspection points. Leave a method disabled if you don't need it. You can enable either inspection method or both.
 
-After the policy applies, verify the setting on an enrolled device:
+Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the inspection settings to block mode when you're ready to enforce protection. Choose whether to enable prompt evidence collection separately. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
+
+After the policy applies, verify the settings on an enrolled device:
 
 1. In the Microsoft Defender portal, open the device page.
 2. On the **Configuration management** tab, select **Effective settings**.
-3. Find **Ai Agent Protection**, and confirm its effective value and configuration source. For more information, see [Effective settings on the device entity page](/en-us/defender-xdr/entity-page-device#effective-settings).
+3. Find the agent protection, network inspection, and prompt evidence collection settings you configured, and confirm their effective values and configuration sources. For more information, see [Effective settings on the device entity page](/en-us/defender-xdr/entity-page-device#effective-settings).
 
 Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the [AI agent runtime protection demonstration](defender-endpoint-demonstration-ai-agent-runtime-protection) to confirm that Defender detects a benign prompt injection test string.
 
-Note
-
-The **Microsoft Defender AI agent runtime protection** profile configures agent-native event inspection. To deploy network inspection with Intune, use a PowerShell platform script.
-
-### Deploy network inspection with a PowerShell platform script
-
-To deploy network inspection to device groups:
-
-1. Create a PowerShell script that contains the following command:
-
-    ```powershell
-    Set-MpPreference -AiAgentNetworkInspection Audit
-    ```
-
-    Replace `Audit` with `Block` when you're ready to enforce protection. To turn off network inspection, use `Disabled`.
-2. In the script settings, set **Run this script using the logged on credentials** to **No**. This setting runs the script in the system context so that it has permission to change Microsoft Defender Antivirus preferences.
-3. Use Microsoft Intune to deploy the script to target device groups. For detailed steps, see [Use PowerShell scripts on Windows devices in Intune](/en-us/intune/device-management/tools/run-powershell-scripts-windows).
-4. To apply a different mode later, update the script or its policy so that Intune runs the script again.
-
-Intune normally runs a platform script once. It runs the script again only after you change the script or policy, or if a failed script is eligible for retry.
-
 ## Deploy settings throughout your organization with the Microsoft Defender portal
 
-If your organization [manages endpoint security policies in the Microsoft Defender portal](endpoint-security-policies-configure), use the **Microsoft Defender AI agent runtime protection** template to deploy agent-native event inspection. The policy can apply to Intune-enrolled devices and devices managed through Defender for Endpoint security settings management.
+If your organization [manages endpoint security policies in the Microsoft Defender portal](endpoint-security-policies-configure), use the **Microsoft Defender AI agent runtime protection** template to deploy agent-native event inspection, network inspection, and prompt evidence collection. The policy can apply to Intune-enrolled devices and devices managed through Defender for Endpoint security settings management.
 
 For detailed instructions, see [Create an endpoint security policy](endpoint-security-policies-configure#create-an-endpoint-security-policy) or [Edit an endpoint security policy](endpoint-security-policies-configure#edit-an-endpoint-security-policy) (links open new tabs).
 
@@ -182,23 +203,25 @@ When you create the policy, use these specific settings:
 - **Select platform**: Select **Windows**.
 - **Select template**: Select **Microsoft Defender AI agent runtime protection**.
 
-On the **Configuration settings** page, configure **Ai Agent Protection**, which protects agents that expose vendor-supported agent event interfaces. Select one of the following values:
+On the **Configuration settings** page, configure the settings you need:
 
-- **Default**: The protection method is disabled.
-- **Audit**: Defender detects and reports prompt injection but allows the agent action to continue.
-- **Block**: Defender detects prompt injection and blocks supported agent actions before they run.
+- **Ai Agent Protection** (`AiAgentProtection`) for agent-native event inspection.
+- **Ai Agent Network Inspection** (`AiAgentNetworkInspection`) for supported agent-to-LLM network traffic.
+- **Prompt Evidence Collection** (`PromptEvidenceCollection`) to enable or disable collection of prompt evidence when AI agent runtime protection is configured.
 
-Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the setting to block mode when you're ready to enforce protection. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
+Configure each inspection method independently. **Audit** detects and reports prompt injection while allowing the action to continue, and **Block** blocks detected threats at supported inspection points. Leave a method disabled if you don't need it.
+
+Microsoft recommends that you initially assign the policy in audit mode to a limited device group. Review detections, and then change the inspection settings to block mode when you're ready to enforce protection. Choose whether to enable prompt evidence collection separately. Complete the policy wizard, assign the policy to the device groups you want to protect, and then create the policy.
 
 Important
 
 For devices managed through Defender for Endpoint security settings management that aren't enrolled in Intune, assign the policy to Microsoft Entra device groups. User targeting isn't supported for these devices.
 
-After the policy applies, verify the setting on a device:
+After the policy applies, verify the settings on a device:
 
 1. In the Microsoft Defender portal, open the device page.
 2. On the **Configuration management** tab, select **Effective settings**.
-3. Find **Ai Agent Protection**, and confirm its effective value and configuration source. For more information, see [Effective settings on the device entity page](/en-us/defender-xdr/entity-page-device#effective-settings).
+3. Find the agent protection, network inspection, and prompt evidence collection settings you configured, and confirm their effective values and configuration sources. For more information, see [Effective settings on the device entity page](/en-us/defender-xdr/entity-page-device#effective-settings).
 
 Close any terminal windows used to run agents, and then open a new terminal window before starting the agent. Run the [AI agent runtime protection demonstration](defender-endpoint-demonstration-ai-agent-runtime-protection) to confirm that Defender detects a benign prompt injection test string.
 

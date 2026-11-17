@@ -82,15 +82,15 @@ Performance tuning might be needed based on workloads. For more information, see
 
 ## Software requirements
 
-Linux server endpoints should have systemd (system manager) installed.
+- Linux server endpoints should have systemd (system manager) installed.
 
 Note
 
 Linux distributions using system manager support both SystemV and Upstart. The Microsoft Defender for Endpoint on Linux agent is independent from [Operation Management Suite (OMS) agent](/en-us/azure/azure-monitor/agents/azure-monitor-agent-overview#log-analytics-agent). Microsoft Defender for Endpoint relies on its own independent telemetry pipeline.
 
-To use [device isolation functionality](respond-machine-alerts#isolate-devices-from-the-network), the following must be enabled:
+- To use [device isolation functionality](respond-machine-alerts#isolate-devices-from-the-network), the following must be enabled:
 
-- `iptables` and `ip6tables`, or `iptables-nft` and `ip6tables-nft`
+    `iptables` and `ip6tables`, or `iptables-nft` and `ip6tables-nft`
 
 ## Network requirements
 
@@ -126,7 +126,7 @@ Note
 
 **Microsoft Defender for Endpoint now extends support to Linux desktops (Public Preview).** All Linux distributions currently supported on servers are also supported on Linux desktops. Defender support is based on the underlying distribution and kernel version, irrespective of the desktop environment running on top of the distribution. Deployment packages, methods and security capabilities remain the same across both Linux servers and desktops.
 
-Microsoft Defender for Endpoint determines whether a Linux device should be classified as a Server or Workstation by evaluating multiple system and environment attributes in a predefined order. These signals include operating system metadata, distribution-specific product information, subscription and licensing details, system purpose declarations, cloud and vendor metadata, image SKUs, Ubuntu Pro contracts, VMware guest properties, virtual desktop indicators, installation records, and other distribution-specific attributes.
+Microsoft Defender for Endpoint determines whether a Linux device should be classified as a Server or Workstation by evaluating multiple system and environment attributes in a predefined order. These signals include operating system metadata, distribution-specific product information, subscription and licensing details, system purpose declarations, cloud and vendor metadata, image SKUs, Ubuntu Pro contracts, VMware guest properties, installation records, and other distribution-specific attributes.
 
 > 
 > When the available signals do not conclusively identify a device as a Workstation, Microsoft Defender for Endpoint classifies the device as a Server by default. This behaviour is by design and ensures a deterministic classification when workstation-specific indicators are not present.
@@ -144,7 +144,7 @@ The following Linux server distributions are supported on servers and desktops:
 | SUSE Linux Enterprise Server | 12.x, 15.x, 16.x | 15 (SP5, SP6), 16.x |
 | openSUSE Leap | 15.6, 16.x | 15.6, 16.x |
 | Oracle Linux | 7.2+, 8.x, 9.x, 10.x | 8.x, 9.x, 10.x |
-| Amazon Linux | 2, 2023 | 2 (Support retiring 31 October 2026. See notice below.)2023 |
+| Amazon Linux | 2, 2023 | 2023 |
 | Fedora | 33–44 | 40–44 |
 | Rocky Linux | 8.7+, 9.2+, 10.x | 8.7+, 9.2+, 10.x |
 | Alma Linux | 8.4+, 9.2+, 10.x | 8.4+, 9.2+, 10.x |
@@ -152,9 +152,7 @@ The following Linux server distributions are supported on servers and desktops:
 
 Important
 
-**Support for Microsoft Defender for Endpoint on Amazon Linux 2 (AL2) running on ARM64 architecture will be deprecated on 31 October 2026**.
-
-The last supported Defender version for AL2 (ARM64) is 101.25122.0004 (expiry 31 October 2026). **After that date, official support for AL2 (ARM64) will end**. Customers are advised to migrate to a supported Linux distribution before this date to ensure continued protection and support.
+**Support for Microsoft Defender for Endpoint on Amazon Linux 2 (AL2) running on ARM64 architecture has been deprecated on 31 October 2026**. Customers are advised to migrate to a supported Linux distribution to ensure continued protection and support.
 
 This change applies only to ARM64-based AL2 machines. **AMD64/x86\_64 architectures are not impacted**.
 

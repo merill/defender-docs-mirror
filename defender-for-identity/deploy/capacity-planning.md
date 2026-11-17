@@ -13,7 +13,7 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Use the Microsoft Defender for Identity sizing tool to assess whether domain controllers have sufficient resources for sensor v2 deployments. Includes prerequisites and manual sizing guidance.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: rlitinsky
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
@@ -54,7 +54,7 @@ The sizing tool measures the capacity needed for domain controllers only. There 
 
 Tip
 
-By default, Defender for Identity supports up to 1000 sensors. To install more sensors, contact Defender for Identity support.
+By default, a Microsoft Defender for Identity deployment supports up to 1000 sensors. To install more sensors, contact Microsoft Defender for Identity support.
 
 ## Prerequisites
 
@@ -149,8 +149,8 @@ Various tools can help you discover the average packet/second counter for your d
 
 Note
 
-By default, Defender for Identity supports up to 350 sensors. If you want to install more sensors, contact Defender for Identity support.
+By default, a Microsoft Defender for Identity deployment supports up to 1000 sensors. To install more sensors, contact Microsoft Defender for Identity support.
 
 Important
 
-If your domain controller runs low on available memory, a corresponding health issue will appear in the Defender for Identity portal to alert you of this condition. Learn more about [Defender for Identity health alerts](../health-alerts).
+If your domain controller runs low on available memory, a corresponding health issue appears in the Microsoft Defender portal. Learn more about [Defender for Identity health alerts](../health-alerts).

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Certificates security posture assessment in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+title: Certificate security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/security-posture-assessments/certificates
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -36,17 +36,15 @@ source_path: defender-for-identity/security-posture-assessments/certificates.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: 0e2f1431-5b71-7560-9611-d0ecc8973ffd
 ---
 
-# Certificates security posture assessment in Microsoft Defender for Identity - Microsoft Defender for Identity | Microsoft Learn
+# Certificate security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 
-This article describes Microsoft Defender for Identity's **Certificates** security posture assessment report.
+This article describes **Certificates** security posture assessments in Microsoft Defender for Identity.
 
 Note
 
@@ -112,7 +110,7 @@ Once the insecure IIS endpoints are remediated, the ESC8 attack risk is mitigate
 
 ## Edit misconfigured certificate templates owner (ESC4)
 
-This article provides an overview of Microsoft Defender for Identity's **Misconfigured certificate templates owner (ESC4)** security posture assessment report.
+This section provides an overview of the **Misconfigured certificate templates owner (ESC4)** Identity Security assessment.
 
 **Description**
 
@@ -180,7 +178,7 @@ Examples of built-in, unprivileged groups are *Authenticated users*, *Domain use
 
 Typically, users have an Enrollment Agent that enrolls their certificates for them. Under specific circumstances, Enrollment Agent certificates can enroll certificates for any eligible user, posing a risk to your organization.
 
-When Microsoft Defender for Identity reports about Enrollment Agent certificate templates that endanger your organization, risky Enrollment Agent templates are listed on the **Exposed entities** pane.
+When Microsoft Defender reports Enrollment Agent certificate templates that endanger your organization, risky Enrollment Agent templates are listed on the **Exposed entities** pane.
 
 **Implementation**
 
@@ -190,7 +188,7 @@ When Microsoft Defender for Identity reports about Enrollment Agent certificate 
 2. Remediate the issues by performing at least one of the following steps:
 
     - Remove the *Certificate request agent* EKU.
-    - Remove overly permissive enrollment permissions, which allow any user to enroll certificates based on that certificate template. Templates marked as vulnerable by Defender for Identity have at least one access list entry that allows enrollment for a built-in unprivileged group, making this exploitable by any user. Examples of built-in, unprivileged groups are *Authenticated Users* or *Everyone*.
+    - Remove overly permissive enrollment permissions, which allow any user to enroll certificates based on that certificate template. Templates marked as vulnerable by Microsoft Defender have at least one access list entry that allows enrollment for a built-in unprivileged group, making this exploitable by any user. Examples of built-in, unprivileged groups are *Authenticated Users* or *Everyone*.
     - Turn on the CA certificate *Manager approval* requirement.
     - Remove the certificate template from being published by any CA. Templates that aren't published can't be requested, and therefore can't be exploited.
     - Use Enrollment Agent restrictions on the Certificate Authority level. For example, you might want to restrict which users are allowed to act as an Enrollment Agent, and which templates can be requested.
@@ -268,7 +266,7 @@ The *Supply in the request* setting is one of the most common misconfigurations.
     - Remove any EKUs that enable user authentication, such as *Client Authentication*, *Smartcard logon*, *PKINIT client authentication*, or *Any purpose*.
     - Remove overly permissive enrollment permissions, which allow any user to enroll certificate based on that certificate template.
 
-        Certificate templates marked as vulnerable by Defender for Identity have at least one access list entry that supports enrollment for a built-in, unprivileged group, making this exploitable by any user. Examples of built-in, unprivileged groups include *Authenticated Users* or *Everyone*.
+        Certificate templates marked as vulnerable by Microsoft Defender have at least one access list entry that supports enrollment for a built-in, unprivileged group, making this exploitable by any user. Examples of built-in, unprivileged groups include *Authenticated Users* or *Everyone*.
     - Turn on the CA certificate *Manager approval* requirement.
     - Remove the certificate template from being published by any CA. Templates that aren't published can't be requested, and therefore can't be exploited.
 

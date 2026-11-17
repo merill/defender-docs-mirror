@@ -25,7 +25,7 @@ description: Learn about the latest new features and announcement in Microsoft S
 author: oshezaf
 ms.author: ofshezaf
 ms.topic: concept-article
-ms.date: 2026-10-21T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom:
 - build-2025
@@ -45,10 +45,8 @@ item_type: Content
 source_path: sentinel/whats-new.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8f37329d-5c2f-4d50-b9b8-aa5cf54dbffe
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/e13db295-3de6-46d5-bcdf-8785a76e3843
 platformId: 80749d36-49ff-af3f-ba1b-9619ec434ed9
 ---
 
@@ -61,6 +59,14 @@ The listed features were released in the last six months. For information about 
 Note
 
 For information about feature availability in US Government clouds, see the Microsoft Sentinel tables in [Cloud feature availability for US Government customers](/en-us/azure/security/fundamentals/feature-availability).
+
+## November 2026
+
+- SAP solution pricing for ISOC customers
+
+### SAP solution pricing for ISOC customers
+
+As part of ISOC benefit, the SAP solution for Sentinel is now included at no additional cost for active SAP production SIDs, making it easier to cover your full SAP landscape, including development, test, and QA systems. Learn about [Microsoft Sentinel solutions for SAP](sap/solution-overview) and [SAP applications solution pricing](sap/sap-applications-overview#solution-pricing). For when this change takes effect and for more details, see the [Microsoft Ignite announcement](https://techcommunity.microsoft.com/blog/microsoftsentinelblog/run-agentless-sap-connector-cost-efficiently/4464781).
 
 ## October 2026
 

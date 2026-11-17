@@ -48,7 +48,7 @@ platformId: 05ed5b0c-f510-a947-1ae0-22c5af2fdf44
 
 # Configure Windows event auditing - Microsoft Defender for Identity | Microsoft Learn
 
-Configure Windows event auditing to enable Defender for Identity detections. The sensor parses specific Windows event logs from domain controllers, Active Directory Federation Services (AD FS), Active Directory Certificate Services (AD CS), and Microsoft Entra Connect servers. For the correct events to be audited and included in the Windows event log, these servers need the correct advanced audit policy settings.
+Configure Windows event auditing to enable identity security detections in Microsoft Defender. The sensor parses specific Windows event logs from domain controllers, Active Directory Federation Services (AD FS), Active Directory Certificate Services (AD CS), and Microsoft Entra Connect servers. For the correct events to be audited and included in the Windows event log, these servers need the correct advanced audit policy settings.
 
 Configure auditing using one of these methods:
 
@@ -57,11 +57,11 @@ Configure auditing using one of these methods:
 - PowerShell configuration as an alternative to manual configuration
 - Required Windows events for all server types
 
-Defender for Identity generates health alerts when it detects incorrect Windows event auditing configurations. For more information, see [Microsoft Defender for Identity health alerts](../health-alerts).
+Microsoft Defender generates health alerts when it detects incorrect Windows event auditing configurations related to identity security. For more information, see [Microsoft Defender for Identity health alerts](../health-alerts).
 
 If you configure auditing properly, Windows event auditing has minimal effect on server performance.
 
-## Configure Defender for Identity to collect Windows events automatically
+## Configure automatic Windows event collection in Microsoft Defender for identity security
 
 For v3.x sensors, use automatic Windows auditing to configure supported auditing settings. Complete the additional steps for AD FS or AD CS, as applicable.
 
@@ -71,7 +71,7 @@ Note
 
 Automatic sensor activation and automatic Windows auditing are available only after your organization has an active license that includes Microsoft Defender for Identity.
 
-When **Automatic sensor v3.x activation** and **Automatic Windows auditing configuration** are enabled, Defender for Identity automatically activates sensor v3.x and configures Windows auditing on eligible domain controllers, AD FS, AD CS, or Microsoft Entra Connect servers that you onboard to Defender for Endpoint. The servers must run Windows Server 2019 or later.
+When **Automatic sensor v3.x activation** and **Automatic Windows auditing configuration** are enabled, Microsoft Defender for Identity automatically activates sensor v3.x and configures Windows auditing on eligible domain controllers, AD FS, AD CS, or Microsoft Entra Connect servers that you onboard to Microsoft Defender for Endpoint. The servers must run Windows Server 2019 or later.
 
 Automatic sensor activation and automatic Windows auditing have separate controls. To enable automatic Windows auditing for v3.x sensors, complete the following steps:
 
@@ -213,7 +213,7 @@ This section includes instructions for manually configuring Windows event collec
 
 Note
 
-**Known issue:** In some sensor v3.x environments, health alerts about Windows event auditing might persist even when auditing is correctly configured. This primarily occurs with manual auditing configuration, such as using Group Policy or PowerShell. The sensor remains healthy and detections aren't affected. To resolve, enable **Automatic Windows auditing configuration** in the Defender for Identity portal under **Settings** &gt; **Advanced features**.
+**Known issue:** In some sensor v3.x environments, health alerts about Windows event auditing might persist even when auditing is correctly configured. This primarily occurs with manual auditing configuration, such as using Group Policy or PowerShell. The sensor remains healthy and detections aren't affected. To resolve, enable **Automatic Windows auditing configuration** in the Microsoft Defender portal under **Settings** &gt; **Identities** &gt; **Advanced features**.
 
 The following sections describe configuration for each server type:
 

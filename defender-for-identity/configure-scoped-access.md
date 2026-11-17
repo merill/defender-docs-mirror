@@ -13,10 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Configure scoped access for identity security capabilities in Microsoft Defender by creating custom unified RBAC roles that limit visibility to specific Active Directory domains or organizational units.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms. reviewer: LiorShapiraa
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: 9b70182d-d14a-ae89-79ca-8eaa584b241d
@@ -35,12 +35,12 @@ item_type: Content
 source_path: defender-for-identity/configure-scoped-access.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: 6a4c467d-55db-96ec-3f6e-73274c4ec8e1
 ---
 
@@ -94,18 +94,32 @@ Note
 | Defender for Identity experience | Scoping by OU's | Scoping by AD domain |
 | --- | --- | --- |
 | MDI alerts and incidents | Available | Available |
-| Hunting tables: AlertEvidence+Info, IdentityInfo, IdentityDirectoryEvents, IdentityLogonEvents, IdentityQueryEvents | Available | Available |
+| Hunting tables: AlertEvidence+Info, IdentityInfo, AccountInfo, IdentityDirectoryEvents, IdentityLogonEvents, IdentityQueryEvents | Available | Available |
 | User page and user global search | Available | Available |
 | MDI alerts based on XDR detection platform (detection source is XDR and service source is MDI) | Available | Available |
 | Health issues | Unavailable | Available |
 | Identities inventory and service accounts discovery page | Available | Available |
 | Identities settings: manual tagging | Available | Available |
-| Identities settings: sensors page, health issues notifications | Unavailable | Available |
+| Identities settings: On-premises &gt; Sensor management \* | Unavailable | Available |
+| Identities settings: Health issues notifications \* | Unavailable | Available |
 | Defender XDR Incident email notifications | Available | Unavailable |
+| Domain page | Available | Available |
+| Dashboard and Coverage & Maturity | Unavailable | Unavailable |
+| Identity reports | Unavailable | Unavailable |
 | ISPMs and exposure management | Unavailable | Unavailable |
+| Identity Explorer | Unavailable | Unavailable |
+| Password protection - 3 out of 4 tabs hidden (Password hygiene, Leaked credentials, and Exposed passwords) | Unavailable | Unavailable |
 | Download scheduled reports and Graph API | Unavailable | Unavailable |
 | Device and group global search and entity page | Available | Available |
-| Alert tuning and critical asset management | Unavailable | Unavailable |
+| Alert tuning | Available | Available |
+| Critical asset management | Unavailable | Unavailable |
+
+Note
+
+\* For AD domain-scoped users, the following behavior applies under **Settings &gt; Identities**:
+
+- **On-premises &gt; Sensor management**: You see only sensors and servers in your assigned domains. Your device group permissions also affect whether you can onboard a device to Defender for Identity. See [Manage sensors](sensor-settings).
+- **Health issues notifications**: You see entries that include at least one assigned domain, and entries with no domain scope. Entries for other domains only are hidden. In visible entries, domain names outside your scope appear as **Not in scope**. See [Configure email notifications](notifications#configure-email-notifications).
 
 ### Related articles
 

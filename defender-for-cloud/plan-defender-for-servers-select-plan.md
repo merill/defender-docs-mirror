@@ -15,8 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: This article helps you understand which Defender for Servers plan to deploy in Microsoft Defender for Cloud.
 ms.topic: concept-article
-ms.date: 2025-02-23T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 37037d89-8567-b057-4ab7-5b4b8394a69a
 document_version_independent_id: 102f436d-0352-dfb6-5084-4779159dcb14
@@ -33,10 +34,8 @@ item_type: Content
 source_path: defender-for-cloud/plan-defender-for-servers-select-plan.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: 47886230-d974-301c-0bb7-0970343fb922
 ---
 
@@ -82,6 +81,8 @@ We recommend enabling Defender for Servers at the subscription level, but you ca
 
 - Plan 1 can be enabled and disabled at resource level. A server is defined as a device running a server operating system. For information, refer to [Common questions about Defender for Servers](faq-defender-for-servers).
 - Plan 2 can't be enabled at the resource level, but you can disable the plan at the resource level.
+
+**Platform and agent requirements for Defender for Servers Plan 1:** Deploy the Microsoft Defender for Endpoint agent to access the full set of Plan 1 capabilities. On Linux and other non-Windows servers, Plan 1 capabilities require the Microsoft Defender for Endpoint agent. On Windows servers, attack surface reduction, next-generation protection, centralized configuration and administration, and APIs and integration are available without requiring customers to manually deploy or manage the Microsoft Defender for Endpoint agent.
 
 Here are some use case examples to help you decide on Defender for Servers deployment scope.
 

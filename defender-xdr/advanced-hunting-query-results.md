@@ -42,12 +42,12 @@ item_type: Content
 source_path: defender-xdr/advanced-hunting-query-results.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5287f575-02f0-405f-92b7-800456526b0c
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
-- https://authoring-docs-microsoft.poolparty.biz/devrel/540ac133-a371-4dbb-8f94-28d6cc77a70b
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/06e86142-34c2-4b94-ab9c-9477c21f7152
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
-- https://authoring-docs-microsoft.poolparty.biz/devrel/60bfc045-f127-4841-9d00-ea35495a5800
 platformId: eec469cc-527b-acab-c5b9-914160409194
 ---
 
@@ -60,6 +60,7 @@ Some information in this article relates to a prereleased product which may be s
 While you can construct your [advanced hunting](advanced-hunting-overview) queries to return precise information, you can also work with the query results to gain further insight and investigate specific activities and indicators. You can take the following actions on your query results:
 
 - View results as a table or chart
+- Visualize query results as a graph
 - Export tables and charts
 - Drill down to detailed entity information
 - Tweak your queries directly from the results
@@ -137,6 +138,85 @@ CloudAppEvents
 The following line chart clearly highlights time periods with more activity involving `invoice.doc`:
 
 [![The line chart that displays advanced hunting results in the Microsoft Defender portal](media/advanced-hunting-query-results/line-chart-a.png)](media/advanced-hunting-query-results/line-chart-a.png#lightbox)
+
+## Visualize query results as a graph
+
+Use the graph view to explore relationships between entities in your advanced hunting query results. You define which result columns represent entities (nodes) and relationships (edges), and Microsoft Defender renders the results as an interactive graph without requiring a graph-specific query.
+
+### Create a graph from query results
+
+1. In advanced hunting, run a query that returns the columns you want to represent as entities and relationships. For a clearer graph, project only the relevant identifiers and properties, and narrow the result set to the activity you want to investigate.
+2. Run the query, and on the results toolbar, select **Visualize as graph**.
+
+    [![Screenshot showing the Visualize as graph command on the advanced hunting results toolbar.](media/advanced-hunting-query-results/advanced-hunting-graph-toolbar.png)](media/advanced-hunting-query-results/advanced-hunting-graph-toolbar.png#lightbox)
+3. In **Map results to graph**, choose how to define the mapping:
+
+    - **Builder**: Add node types and choose a type name, node identifier column, and any additional columns for each node. Then add edges and choose the edge type, source node type, target node type, and any additional columns.
+    - **JSON**: Enter the equivalent mapping directly in JSON. The editor validates the mapping and displays parsing or schema issues as warnings.
+
+    [![Screenshot showing the Builder tab used to map result columns to node types and edges.](media/advanced-hunting-query-results/advanced-hunting-graph-builder.png)](media/advanced-hunting-query-results/advanced-hunting-graph-builder.png#lightbox)
+
+    Your mapping is preserved when you move between the **Builder** and **JSON** tabs, so you can author in one view and refine in the other.
+4. If the mapping is invalid, the **Apply** button is unavailable, and the mapping panel stays open and displays an error you can correct without losing the mapping.
+5. Select **Apply**. If the graph exceeds the node limit, the mapping panel stays open and displays an error you can correct without losing the mapping.
+
+Tip
+
+For commonly used tables and scenarios, Microsoft generates a good ontology that represents what you're querying, and visualizes the query with it directly, while still letting you edit for fine-tuning.
+
+[![Screenshot showing a graph created from a suggested mapping, with an option to edit the mapping.](media/advanced-hunting-query-results/advanced-hunting-graph-ontology-preview.png)](media/advanced-hunting-query-results/advanced-hunting-graph-ontology-preview.png#lightbox)
+
+### Map nodes for entity enrichment
+
+A node in the graph can open either a rich Defender entity pane or a generic properties pane. Use the following mapping guidance to enable entity enrichment where it's supported:
+
+- **Type name**: Use a supported type name: `alert`, `machine`, `file`, `ip`, `url`, `host`, or `account`. Other type names appear as generic nodes.
+- **Node identifier column**: Choose a column that uniquely identifies the entity. Examples include `DeviceId` for a machine, `SHA1` or `SHA256` for a file, and `AccountObjectId`, `AccountSid`, or `AccountUpn` for an account.
+- **Additional columns**: Add human-readable names, alternative identifiers, timestamps, command lines, or other values that help explain the node or relationship.
+
+The following table lists the recognized entity names and the identifier column advanced hunting uses to map each entity:
+
+| Recognized entity name(s) | Identifier |
+| --- | --- |
+| Device, Machine | `DeviceId` or Sense device ID |
+| IPAddress, IP, RemoteIP, LocalIP | Corresponding IP address |
+| File | `SHA256`, otherwise `SHA1` |
+| Url | URL |
+| Alert | `AlertId` |
+| Host | Hostname |
+| User, Account | `AccountObjectId`, otherwise `AccountSid`, then `AccountUpn` |
+
+Tip
+
+For step-by-step guidance on preparing query results, choosing identifiers, and connecting nodes with edges (including conditional edges), see [Best practices for graph mapping in advanced hunting](advanced-hunting-graph-mapping-best-practices).
+
+### Explore and refine the graph
+
+Use the graph controls to investigate the relationships in the result set:
+
+1. Select a node to view its properties. When a node uses a supported entity type and a valid identifier, the corresponding Defender entity pane opens.
+2. Select an edge to view the relationship, any properties mapped to it, and the underlying events.
+3. Use **Fold by** to collapse similar nodes and reduce visual clutter.
+4. Select **Edit mapping** to change node types, edges, identifiers, or properties, and then apply the mapping again.
+5. Select **Back to table** to return to the query results. You can visualize the results again without rerunning the query.
+6. Apply filters on nodes and edges to narrow what the graph displays.
+7. Change the graph layout to better suit the shape of your result set.
+8. Use **Capture Snapshot** to export the graph as a PNG file and share it.
+
+[![Screenshot showing selection of a device node in the graph view to inspect its details in the Defender entity pane.](media/advanced-hunting-query-results/advanced-hunting-graph-explore-device.png)](media/advanced-hunting-query-results/advanced-hunting-graph-explore-device.png#lightbox)
+
+[![Screenshot showing selection of an edge in the graph view to inspect the relationship and its underlying records.](media/advanced-hunting-query-results/advanced-hunting-graph-explore-edge.png)](media/advanced-hunting-query-results/advanced-hunting-graph-explore-edge.png#lightbox)
+
+Important
+
+This capability is in preview. The **Visualize as graph** command is unavailable when a query returns more than 2,000 rows. The rendered graph supports up to 4,000 nodes. Refine the query or the mapping if you reach either limit.
+
+### Troubleshoot graph creation
+
+- If the **Visualize as graph** command is unavailable, reduce the query results to 2,000 rows or fewer.
+- If the graph would contain more than 4,000 nodes, narrow the query or map fewer unique node identifiers.
+- If the mapping can't be applied, correct the issue shown in the mapping panel and select **Apply** again.
+- If a node opens a generic pane instead of a Defender entity pane, check that the type name is supported and that the node identifier column contains the expected entity identifier.
 
 ## Export tables and charts
 

@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defen
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how to detect, investigate, and hunt for threats to AI agents using Microsoft Defender.
-ms.author: guywild
-author: guywi-ms
+ms.author: joshbregman
+author: j0shbregman
 ms.reviewer: itaicohen
 ms.service: microsoft-defender
 ms.update-cycle: 180-days
@@ -66,7 +66,7 @@ Microsoft Defender detects and enables security teams to investigate threats to 
 
         Threat detection is supported only for published Microsoft Foundry agents. Unpublished agents, including agents used only in a playground environment, aren’t supported. For more information, see [Publish agents to Microsoft Copilot and Microsoft Teams in the Foundry portal](/en-us/azure/foundry/agents/how-to/publish-copilot?tabs=portal)
 - To detect threats to local AI agents that run on endpoints, set up [AI agent runtime protection in Microsoft Defender for Endpoint](/en-us/defender-endpoint/configure-ai-agent-runtime-protection). Microsoft Defender for Endpoint must run in active mode. Local agents are onboarded separately from cloud agents.
-- *(Optional)* To include the prompt snippets that triggered a detection as evidence in alerts, enable [prompt evidence collection](ai-agent-real-time-protection#control-prompt-evidence-in-alerts). This setting is enabled by default.
+- *(Optional)* Configure [prompt evidence collection](ai-agent-real-time-protection#control-prompt-evidence-in-alerts) for AI agent alerts. For local Windows agents, the [device-level setting](/en-us/defender-endpoint/configure-ai-agent-runtime-protection#configure-prompt-evidence-collection) enables or disables collection when AI agent runtime protection is configured. See the [overview](/en-us/defender-endpoint/ai-agent-runtime-protection-overview#prompt-evidence-collection) for feature defaults and privacy guidance.
 
 ## Detect AI agent threats in near-real-time
 

@@ -12,8 +12,8 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn how to migrate from the Defender for Identity sensor v2.x to the sensor v3.x with no downtime using the Sensors page in the Microsoft Defender portal.
-ms.date: 2026-10-18T00:00:00.0000000Z
+description: Learn how to migrate from the Microsoft Defender for Identity sensor v2.x to the sensor v3.x with no downtime using Sensor Management in the Microsoft Defender portal.
+ms.date: 2026-11-11T00:00:00.0000000Z
 ms.topic: how-to
 ms.custom: msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -35,11 +35,11 @@ source_path: defender-for-identity/deploy/migrate-to-sensor-v3.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 982046f3-65f5-06b3-d694-7c8bb18f0a39
 ---
 
@@ -68,9 +68,9 @@ For the full list of v3.x requirements, see [Defender for Identity sensor v3.x p
 
 ## Start the migration
 
-Servers that meet all prerequisites appear as **Ready for migration** on the **Sensors** page.
+Servers that meet all prerequisites appear as **Ready for migration** on the **Sensor Management** tab.
 
-1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **Settings** &gt; **Identities** &gt; **On-premises** &gt; **Sensors**.
+1. In the [Microsoft Defender portal](https://security.microsoft.com), go to **Settings** &gt; **Identities** &gt; **On-premises** &gt; **Sensor Management**.
 2. Select one or more servers marked as **Ready for migration** and select **Migrate**.
 3. In the confirmation prompt, review the details and confirm to start the migration.
 
@@ -80,7 +80,7 @@ The migration typically takes up to 20 minutes. During this time, the v2.x senso
 
 ### Understand migration states
 
-The **Migration state** column on the **Sensors** page shows the current status of each server:
+The **Migration state** column on the **Sensor Management** tab shows the current status of each server:
 
 | State | Description |
 | --- | --- |
@@ -105,7 +105,7 @@ The v3.x sensor updates through Windows Update as part of the server's operating
 
 ## Troubleshoot "Not ready for migration" status
 
-When a server is marked **Not ready for migration**, hover over the status on the **Sensors** page to see a tooltip that lists the reasons the server doesn't meet the migration prerequisites.
+When a server is marked **Not ready for migration**, hover over the status on the **Sensor Management** tab to see a tooltip that lists the reasons the server doesn't meet the migration prerequisites.
 
 The following table lists each reason that can appear in the tooltip, how to verify it, and how to resolve it:
 

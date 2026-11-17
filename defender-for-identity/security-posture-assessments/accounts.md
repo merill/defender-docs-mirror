@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Accounts security posture assessment - Microsoft Defender for Identity | Microsoft Learn
+title: Account security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/security-posture-assessments/accounts
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -15,7 +15,7 @@ ms.suite: ems
 ms.topic: article
 ms.date: 2026-08-18T00:00:00.0000000Z
 ms.reviewer: LiorShapiraa
-description: Lists all Microsoft Defender for Identity security posture assessments for Active Directory accounts, with detailed impacts and remediation steps to help improve your Secure Score.
+description: Lists Identity Security posture assessments for Active Directory accounts, with detailed impacts and remediation steps to help improve your Secure Score.
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1020
 locale: en-us
@@ -44,7 +44,7 @@ spProducts:
 platformId: 33ba1fec-6eb1-c4e6-2a3a-e67a45be6941
 ---
 
-# Accounts security posture assessment - Microsoft Defender for Identity | Microsoft Learn
+# Account security posture assessments - Microsoft Defender for Identity | Microsoft Learn
 
 Note
 

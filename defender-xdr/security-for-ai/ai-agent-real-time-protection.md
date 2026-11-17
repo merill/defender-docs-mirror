@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defen
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how to block unsafe AI agent actions in real time and configure real-time protection rules in Microsoft Defender.
-ms.author: guywild
-author: guywi-ms
+ms.author: joshbregman
+author: j0shbregman
 ms.reviewer: itaicohen
 ms.service: microsoft-defender
 ms.update-cycle: 180-days
@@ -141,6 +141,10 @@ On the **Real-time protection** page, select a rule to open its details pane, wh
 ## Control prompt evidence in alerts
 
 By default, Microsoft Defender includes prompt snippets exchanged between the user and the agent as evidence in each alert.
+
+Note
+
+For local Windows agents, the device-level setting enables or disables the collection of prompt evidence when AI agent runtime protection is configured. See [Configure prompt evidence collection](/en-us/defender-endpoint/configure-ai-agent-runtime-protection#configure-prompt-evidence-collection).
 
 To configure this setting, go to **Settings** &gt; **Security for AI** &gt; **Prompt evidence collection**, then toggle **Enabled** on or off.
 

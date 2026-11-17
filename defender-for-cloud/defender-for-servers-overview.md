@@ -15,9 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Get an overview of the Defender for Servers plan in Microsoft Defender for Cloud, including its features and integration with other Defender services.
 ms.topic: concept-article
-ms.date: 2026-08-10T00:00:00.0000000Z
+ms.date: 2026-11-13T00:00:00.0000000Z
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1015
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: c44b3adb-a9ba-817f-a5cf-393b496a2c8e
 document_version_independent_id: b84a2037-410b-dea7-4b8b-644fcf3f732e
@@ -108,27 +108,33 @@ For a comparison of AWS and GCP coverage by plan, see the [multicloud workload p
 
 | Feature | Plan 1 (P1) | Plan 2 (P2) | Cloud availability |
 | --- | --- | --- | --- |
-| **Multicloud and hybrid support** | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Protects Virtual Machines (VMs) on Azure, AWS and GCP VMs, and on-premises machines that are connected to Microsoft Defender for Cloud.  Review Defender for Servers [support and requirements](support-matrix-defender-for-servers). |
-| **Defender for Endpoint automatic onboarding** | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) |  |
-| [Defender for Endpoint EDR](integration-defender-for-endpoint) | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Integrated alerts and incidents](concept-integration-365) | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Software inventory discovery](asset-inventory)^1^ | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Regulatory compliance assessment](concept-regulatory-compliance-standards) | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Different standards are available for different environments. Learn more about [compliance cloud availability](concept-regulatory-compliance-standards#available-compliance-standards). |
-| [Vulnerability scanning (agent-based)](auto-deploy-vulnerability-assessment) | ![](media/icons/yes-icon.png) | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Vulnerability scanning (agentless)](concept-agentless-data-collection) | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Defender for DNS alerts](defender-for-dns-introduction) | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Threat detection (Azure network layer)](alerts-azure-network-layer) | - | ![](media/icons/yes-icon.png) | Azure |
-| [OS system updates](enable-periodic-system-updates) | - | ![](media/icons/yes-icon.png) | Azure, AWS, GCP and on-premises  Only applicable to machines onboarded with Azure ARC. [Learn more](enable-periodic-system-updates). |
-| OS baseline misconfigurations based on [Microsoft Cloud Security Benchmark (MCSB)](/en-us/security/benchmark/azure/introduction) recommendations ^2^ | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP.  Only applicable to machines onboarded with Azure ARC. |
-| [Defender for Vulnerability Management premium features](/en-us/defender-vulnerability-management/defender-vulnerability-management-capabilities)^3^ | - | ![](media/icons/yes-icon.png) | Azure, AWS, GCP |
-| [Malware scanning (agentless)](agentless-malware-scanning) | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [Machine secrets scanning (agentless)](concept-agentless-data-collection) | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP |
-| [File integrity monitoring](file-integrity-monitoring-overview) | - | ![](media/icons/yes-icon.png) | Azure, AWS, and GCP  Only applicable to AWS and GCP machines onboarded with Azure ARC. |
-| [Just-in-time virtual machine access](just-in-time-access-overview) | - | ![](media/icons/yes-icon.png) | Azure and AWS |
-| [Network map](protect-network-resources) | - | ![](media/icons/yes-icon.png) | Azure |
-| [Free data ingestion (500 MB)](data-ingestion-benefit) | - | ![](media/icons/yes-icon.png) |  |
+| **Multicloud and hybrid support** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Protects Virtual Machines (VMs) on Azure, AWS and GCP VMs, and on-premises machines that are connected to Microsoft Defender for Cloud.  Review Defender for Servers [support and requirements](support-matrix-defender-for-servers). |
+| **Defender for Endpoint automatic onboarding** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes |  |
+| [Defender for Endpoint EDR](integration-defender-for-endpoint) | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| **Attack surface reduction** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| **Next-generation protection** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| **Centralized configuration and administration** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| **APIs and integration** | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Integrated alerts and incidents](concept-integration-365) | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Software inventory discovery](asset-inventory)^1^ | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Regulatory compliance assessment](concept-regulatory-compliance-standards) | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Different standards are available for different environments. Learn more about [compliance cloud availability](concept-regulatory-compliance-standards#available-compliance-standards). |
+| [Vulnerability scanning (agent-based)](auto-deploy-vulnerability-assessment) | ![](media/icons/yes-icon.png) Yes | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Vulnerability scanning (agentless)](concept-agentless-data-collection) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Defender for DNS alerts](defender-for-dns-introduction) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Threat detection (Azure network layer)](alerts-azure-network-layer) | - | ![](media/icons/yes-icon.png) Yes | Azure |
+| [OS system updates](enable-periodic-system-updates) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, GCP and on-premises  Only applicable to machines onboarded with Azure ARC. [Learn more](enable-periodic-system-updates). |
+| OS baseline misconfigurations based on [Microsoft Cloud Security Benchmark (MCSB)](/en-us/security/benchmark/azure/introduction) recommendations ^2^ | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP.  Only applicable to machines onboarded with Azure ARC. |
+| [Defender for Vulnerability Management premium features](/en-us/defender-vulnerability-management/defender-vulnerability-management-capabilities)^3^ | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, GCP |
+| [Malware scanning (agentless)](agentless-malware-scanning) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [Machine secrets scanning (agentless)](concept-agentless-data-collection) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP |
+| [File integrity monitoring](file-integrity-monitoring-overview) | - | ![](media/icons/yes-icon.png) Yes | Azure, AWS, and GCP  Only applicable to AWS and GCP machines onboarded with Azure ARC. |
+| [Just-in-time virtual machine access](just-in-time-access-overview) | - | ![](media/icons/yes-icon.png) Yes | Azure and AWS |
+| [Network map](protect-network-resources) | - | ![](media/icons/yes-icon.png) Yes | Azure |
+| [Free data ingestion (500 MB)](data-ingestion-benefit) | - | ![](media/icons/yes-icon.png) Yes |  |
 
 ^1^ Software inventory discovery (provided by [Defender Vulnerability Management](/en-us/defender-vulnerability-management/tvm-software-inventory)) is integrated into Defender for Cloud. ^2^ OS baseline misconfigurations for MCSB are included in the [free foundational posture management](concept-cloud-security-posture-management). ^3^ This is only available in the [Defender portal](https://security.microsoft.com/homepage).
+
+**Platform and agent requirements for Defender for Servers Plan 1:** Deploy the Microsoft Defender for Endpoint agent to access the full set of Plan 1 capabilities. On Linux and other non-Windows servers, Plan 1 capabilities require the Microsoft Defender for Endpoint agent. On Windows servers, attack surface reduction, next-generation protection, centralized configuration and administration, and APIs and integration are available without requiring customers to manually deploy or manage the Microsoft Defender for Endpoint agent.
 
 ## Deployment scope
 

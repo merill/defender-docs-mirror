@@ -21,14 +21,14 @@ manager: orspodek
 ms.service: microsoft-sentinel
 ms.subservice: sentinel-siem
 search.appverid: met150
-description: Create automation rules in Microsoft Sentinel to trigger actions on incidents based on defined conditions, and configure triggers, conditions, and response actions.
+description: Create, configure, and duplicate automation rules in Microsoft Sentinel to trigger response actions on incidents and alerts.
 ms.topic: how-to
 ms.author: monaberdugo
 author: mberdugo
 ms.reviewer: sshuster
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-09-10T00:00:00.0000000Z
 ms.collection: usx-security
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: ea6edf1b-1679-5f72-8b64-2fd1c2a67427
@@ -46,9 +46,11 @@ source_path: sentinel/create-manage-use-automation-rules.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 6b69cda4-8fed-f64c-d413-c910f1b3de65
 ---
 
@@ -107,12 +109,19 @@ The following steps apply to most automation rule creation scenarios.
 
 If you're looking to suppress noisy incidents and are working in the Azure portal, try [handling false positives](false-positives#add-exceptions-with-automation-rules-azure-portal-only).
 
-If you want to create an automation rule to apply to a specific analytics rule, see [Set automated responses and create the rule](detect-threats-custom#set-automated-responses-and-create-the-rule).
+If you want to create an automation rule to apply to a specific analytics rule, see [Review or add automated responses](create-analytics-rules#review-or-add-automated-responses).
 
 To create your automation rule:
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Automation** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
-2. From the **Automation** page in the Microsoft Sentinel navigation menu, select **Create** from the top menu and choose **Automation rule**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
+
+    For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Automation** page.
+2. From the **Automation** page, select **Create** from the top menu and choose **Automation rule**.
 
 # [Defender portal](#tab/defender-portal)
 [![Screenshot of creating a new automation rule in the Automation page.](media/create-manage-use-automation-rules/add-rule-automation-defender.png)](media/create-manage-use-automation-rules/add-rule-automation-defender.png#lightbox)
@@ -316,6 +325,21 @@ Complete the remaining settings to finalize your automation rule:
 3. Select **Apply**. You're done!
 
 ![Screenshot of final steps of creating automation rule.](media/create-manage-use-automation-rules/finish-creating-rule.png)
+
+## Duplicate an automation rule in the Defender portal
+
+You can duplicate an existing automation rule to create one or more copies that you can configure separately.
+
+1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
+2. Select **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+3. Select the **Automation rules** tab.
+4. Select the automation rule you want to duplicate.
+5. Select **Duplicate**.
+6. In **Number of copies (1-10)**, enter the number of copies to create.
+7. To create the copies in an inactive state, select **Create copies as inactive**.
+8. Select **Duplicate**.
+
+The duplicated rules appear in the automation rules list.
 
 ## Audit automation rule activity
 

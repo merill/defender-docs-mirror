@@ -29,7 +29,7 @@ ms.topic: how-to
 ms.date: 2026-07-01T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1023
 locale: en-us
 document_id: bdbb05b7-fb2d-5187-e655-b75daf3c6ef8
 document_version_independent_id: f9d1a533-9a73-7a5c-b9f5-1288042f4ae4
@@ -60,7 +60,10 @@ Hunt for security threats across your organization's data sources with custom hu
 
 To create a custom hunting query, first open **Hunting** in Microsoft Sentinel, and then select the **Queries** tab.
 
-1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management** select **Hunting**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management** select **Hunting**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), use either navigation path:
+
+    - In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+    - In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
 2. Select the **Queries** tab.
 3. From the command bar, select **New query**.
 

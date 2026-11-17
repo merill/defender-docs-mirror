@@ -87,7 +87,12 @@ Make sure that you have the **Sentinel SOAR Essentials** solution installed and 
 
 To install a preexisting logic app template:
 
-1. From the Microsoft Defender portal navigation menu, go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
 2. Select **Playbook templates**, then search for **Entity Analyzer**.
 3. Choose any of the following playbooks:
     - Incident Trigger Entity Analyzer

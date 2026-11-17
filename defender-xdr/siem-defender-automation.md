@@ -18,7 +18,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: concept-article
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: a7b1d576-e978-38e3-2f56-eb6e47fe87c8
@@ -51,10 +51,6 @@ Use automation with Integrated Security Operations Center (ISOC) in Microsoft De
 Automation includes automation rules, Logic Apps-based playbooks, Playbook Generator, integration profiles, and enhanced alert trigger support.
 
 This article describes the automation capabilities available with [ISOC](isoc-overview), the requirements that apply, and the current limitations.
-
-Note
-
-This feature is in preview. Capabilities and availability might change during the preview period.
 
 [![Screenshot showing the Automation page with integration profiles, automation rules, playbooks, and the AI-generated playbooks banner.](media/siem-defender-automation/automation-ai-generated-playbooks.png)](media/siem-defender-automation/automation-ai-generated-playbooks.png#lightbox)
 

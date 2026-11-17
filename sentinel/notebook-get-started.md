@@ -25,7 +25,7 @@ description: Walk through the Getting Started Guide For Microsoft Sentinel ML No
 author: EdB-MSFT
 ms.author: edbaynash
 ms.topic: how-to
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ms.collection: usx-security
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -80,7 +80,7 @@ Before you begin, make sure you have the required permissions and resources.
 
 The following steps describe how to launch the Getting Started Guide notebook with Microsoft Sentinel.
 
-1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Notebooks**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Notebooks**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**.
 2. From the **Templates** tab, select **A Getting Started Guide For Microsoft Sentinel ML Notebooks** .
 3. Select **Create from template**.
 4. Edit the name and select the Azure Machine Learning workspace as appropriate.

@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Create and manage workbooks with ISOC in Microsoft Defender - Microsoft Defender XDR | Microsoft Learn
+title: Update workbooks to use Advanced Hunting data - Microsoft Defender XDR | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-xdr/siem-defender-workbooks
 breadcrumb_path: /defender-xdr/breadcrumb/toc.json
 permissioned-type: public
@@ -8,18 +8,14 @@ feedback_system: Standard
 feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defender/bd-p/MicrosoftThreatProtection
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
-description: Learn how to create and manage workbooks with ISOC in Microsoft Defender to visualize security data by using advanced hunting.
-ms.service: microsoft-defender
-author: guywi-ms
-ms.author: guywild
-ms.date: 2026-07-15T00:00:00.0000000Z
-ms.collection:
-- M365-security-compliance
-- tier1
-- usx-security
+description: Learn how to update workbooks to query Microsoft Defender XDR data directly by using Advanced Hunting.
+author: mberdugo
+ms.author: monaberdugo
+ms.service: microsoft-sentinel
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.date: 2026-09-08T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: a2fbabf2-da1c-78e4-6126-b51afa4ed232
 document_version_independent_id: a2fbabf2-da1c-78e4-6126-b51afa4ed232
@@ -36,23 +32,21 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/siem-defender-workbooks.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 62774c8e-09e9-be22-b031-fd92b5439832
 ---
 
-# Create and manage workbooks with ISOC in Microsoft Defender - Microsoft Defender XDR | Microsoft Learn
+# Update workbooks to use Advanced Hunting data - Microsoft Defender XDR | Microsoft Learn
 
-Use workbooks with Integrated Security Operations Center (ISOC) in Microsoft Defender to create interactive dashboards that visualize and monitor security data by using advanced hunting queries.
+Workbooks can query Microsoft Defender XDR data directly by using Advanced Hunting, without requiring the same data to be ingested into a workspace.
 
-Note
-
-This feature is in preview. Capabilities and availability might change during the preview period.
+You can update existing workbooks to use Advanced Hunting data or create new workbooks that query Microsoft Defender XDR data directly.
 
 ## Prerequisites
 
@@ -62,99 +56,47 @@ Before you begin, make sure you have:
 - To create and edit workbooks, either the **Workbooks** Unified RBAC permission with **Manage** access or the **Security Administrator** role.
 - Access to the scopes and workloads used by the workbook queries.
 
-## Explore example workbooks
+Workbook permissions don't grant access to the underlying data. Data access and scoping are enforced when the query runs.
 
-Use the example workbooks to become familiar with the workbook experience and available visualizations.
+For example, a user can open a workbook that contains Defender for Endpoint data, but the workbook tile returns an error if the user doesn't have access to that data.
 
-1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
-2. Go to **Microsoft Sentinel** &gt; **Workbooks**.
-3. Under **Getting started**, select an example workbook.
-4. Explore the workbook data and visualizations.
+For more information, see [Update permissions and roles with Unified RBAC](/en-us/azure/sentinel/transition-unified-rbac).
 
-[![Screenshot showing example workbooks for device activity, email security, identity monitoring, and alerts and incidents.](media/siem-defender-workbooks/getting-started-example-workbooks.png)](media/siem-defender-workbooks/getting-started-example-workbooks.png#lightbox)
+## Create a workbook using Advanced Hunting data
 
-Example workbooks are provided for exploration. To build and save your own dashboard, create a new workbook.
+The **Workbooks** page includes example workbooks that use Microsoft Defender XDR data.
 
-## Create a workbook
-
-Create a workbook that uses advanced hunting queries to visualize Defender XDR data.
+To create your own workbook:
 
 1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
 2. Go to **Workbooks**.
 3. Select **+ Add workbook**.
 4. Select **Edit**.
-5. Edit the existing query section or add a new query section.
-6. For **Data source**, select **Advanced hunting**.
-7. Enter an advanced hunting query.
-8. Select **Run query** to review the query results.
-9. Configure the query settings.
+5. In the query section, select **Advanced Hunting** as the data source.
+6. Add or update the query for the workbook tile.
+7. Save the workbook.
 
-    Available settings include:
+## Update an existing workbook
 
-    - **Time range**
-    - **Visualization**
-    - **Size**
-    - Visual formatting settings
-10. Select **Apply changes**.
-11. Add or edit other workbook sections as needed.
-
-    You can add text, queries, and parameters.
-12. When you're done, select **Done editing**.
-13. Select **Save**.
-14. Enter a title for the workbook.
-15. Select **Save**.
-
-The workbook is saved automatically at the tenant level.
-
-## View saved workbooks
-
-Saved workbooks appear on the **My workbooks** tab.
+When you stop ingesting a supported Microsoft Defender XDR table into a workspace, update any workbooks that query that table.
 
 1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
-2. Go to **Workbooks**.
-3. Select the **My workbooks** tab.
-4. Use search or the available filters to find a workbook.
-5. Select the workbook to view its details.
-6. Select **View saved workbook**.
+2. Go to **Workbooks** and open the workbook you want to update.
+3. Select **Edit**.
+4. Change the query data source to **Advanced Hunting**.
+5. Review the query and confirm that the table names are available in Advanced Hunting. Most table names remain the same.
+6. Update any table or column references that differ in the Advanced Hunting schema.
+7. Validate the workbook tiles, filters, and parameters.
 
-Saved workbooks are visible to users with the **Workbooks** permission with **Reader** access or the **Security Reader** role. The data displayed depends on the user's access to the relevant scope and workload.
+For information about schema and data-type differences, see [Update Microsoft Sentinel content to use Advanced Hunting tables](/en-us/azure/sentinel/transition-advanced-hunting-tables).
 
-## Edit a workbook
+## Work with workbooks across workspaces
 
-1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
-2. Go to **Workbooks**.
-3. On the **My workbooks** tab, select the workbook you want to update.
-4. Select **View saved workbook**.
-5. Select **Edit**.
-6. Update the workbook sections, queries, parameters, or visualizations.
-7. Select **Apply changes** after editing a section.
-8. When you're done, select **Done editing**.
-9. Select **Save**.
+When one or more workspaces are connected, the **Workbooks** page includes a **Workspace** column that shows where each workbook is saved.
 
-## Refresh workbook data
+- A workspace name indicates that the workbook is saved to that workspace.
+- **None** indicates that the workbook is saved at the tenant level.
 
-Refresh a workbook to display updated data.
+You can filter the workbook list by workspace directly from the **Workbooks** page.
 
-In the workbook toolbar, select one of the following options:
-
-- **Refresh** to manually refresh the workbook data.
-- **Auto refresh** to refresh the workbook automatically at a configured interval.
-
-Supported auto-refresh intervals range from 5 minutes to 1 day.
-
-Auto refresh pauses while you're editing a workbook. The interval restarts when you return to view mode or manually refresh the workbook.
-
-Auto refresh is turned off when you close the workbook. Turn it on again the next time you open the workbook, as needed.
-
-## Delete a workbook
-
-Warning
-
-Deleting a workbook permanently removes the workbook and its customizations. This action can't be undone.
-
-1. Sign in to the [Microsoft Defender portal](https://security.microsoft.com/).
-2. Go to **Workbooks**.
-3. Select the **My workbooks** tab.
-4. Select the workbook you want to remove.
-5. Select **Delete**.
-6. Select **Yes** to confirm.
+When you save a workbook, choose whether to save it to a specific workspace or at the tenant level.

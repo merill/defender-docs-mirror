@@ -29,7 +29,7 @@ ms.topic: how-to
 ms.date: 2026-07-01T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1023
 locale: en-us
 document_id: 02ce3538-bc10-700d-85fb-8150b3a44eae
 document_version_independent_id: 1c756eaf-200f-9391-d129-a30d5d76b391
@@ -45,10 +45,12 @@ item_type: Content
 source_path: sentinel/bookmarks.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: fd2f5032-0b7f-da36-bb8b-1aa4051b947a
 ---
 
@@ -62,7 +64,12 @@ Note
 
 **Microsoft Sentinel hunting bookmarks**: You can only create bookmarks in the Azure portal, under **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**. In the Microsoft Defender portal, you can view bookmarks that were already created, but you can't add new ones.
 
-**Advanced hunting bookmarks**: Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**, which provides the Microsoft Sentinel-specific hunting experience. You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
+**Advanced hunting bookmarks**: Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in the Microsoft Sentinel-specific hunting experience:
+
+- In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+- In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
+
+You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
 
 Important
 
@@ -103,7 +110,10 @@ The log query results support bookmarks whenever the **Logs** pane is opened fro
 
 Find and update a bookmark from the **Bookmarks** tab.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management** select **Hunting**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management** select **Hunting**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), use either navigation path:
+
+    - In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+    - In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
 2. Select the **Bookmarks** tab to view the list of bookmarks.
 3. Search or filter to find a specific bookmark or bookmarks.
 4. Select individual bookmarks to view the bookmark details in the right-hand pane.

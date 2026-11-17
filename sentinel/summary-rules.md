@@ -26,7 +26,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016
@@ -45,8 +45,10 @@ item_type: Content
 source_path: sentinel/summary-rules.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 8fceff5b-c730-099f-ec6b-2f21fff2d8e8
 ---
 
@@ -84,7 +86,7 @@ Create a new summary rule to aggregate a specific large set of data into a dynam
 
 1. Open the Summary rule wizard:
 
-    - In the Defender portal, select **Microsoft Sentinel &gt; Configuration &gt; Summary rules**.
+    - In the Defender portal, select **Investigation & response &gt; Summary rules**.
     - In the Azure portal, from the Microsoft Sentinel navigation menu, under **Configuration**, select **Summary rules**. For example:
 
         [![Screenshot of the Summary rules page in the Azure portal.](media/summary-rules/summary-rules-azure.png)](media/summary-rules/summary-rules-azure.png#lightbox)

@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: concept-article
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: ffb3ecdd-f0c5-fb8f-1939-6750acfdc7a4
@@ -57,7 +57,7 @@ SLA policies apply to supported case types, including incident cases, generic ca
 
 Note
 
-During this preview, SLA policies are supported only in the single-tenant Microsoft Defender portal. They aren't supported in multitenant organization environments.
+SLA policies are supported only in the single-tenant Microsoft Defender portal. They aren't supported in multitenant organization environments.
 
 For information about configuring SLA policies, see [Configure case templates in the Microsoft Defender portal](manage-case-templates).
 

@@ -20,7 +20,7 @@ ms.collection:
 - magic-ai-copilot
 ms.topic: concept-article
 ms.update-cycle: 180-days
-ms.date: 2026-05-12T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 locale: en-us
 document_id: 6a636899-1720-f29f-e2d0-c354aa713540
 document_version_independent_id: 6a636899-1720-f29f-e2d0-c354aa713540
@@ -66,7 +66,7 @@ To purchase, deploy, and use agents from Security Store, you need:
 
 To discover and deploy agents in the Microsoft Defender portal:
 
-1. Select **Security Copilot &gt; Security Store**.
+1. Select **Content management &gt; Security Store**.
 2. Browse or search for the agent you want to deploy.
 3. Select the agent to view its details, including its capabilities, requirements, and setup instructions.
 4. To purchase and deploy the agent:

@@ -26,10 +26,10 @@ description: Configure automation rules to run existing Microsoft Sentinel alert
 ms.topic: how-to
 ms.author: sshuster
 author: sshuster
-ms.date: 2026-11-08T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 33aea305-b8ed-e1fa-ecf5-04e06aa128b9
 document_version_independent_id: 79c1d3af-c1d6-6d99-096f-aa7f3b2d5f1e
@@ -91,7 +91,7 @@ To learn more, see [Microsoft Sentinel playbook prerequisites](automate-response
 
 Follow these steps to run a playbook for alerts from one analytics rule. For alerts from multiple analytics rules, use Create a new automation rule from the Automation page.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Analytics** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Analytics**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Analytics** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 2. Under **Active rules**, select the analytics rule whose alerts should run the playbook, and select **Edit**.
 
     ![Screenshot of finding and selecting an analytics rule.](../media/migrate-playbooks-to-automation-rules/find-analytics-rule.png)
@@ -110,7 +110,7 @@ Follow these steps to run a playbook for alerts from one analytics rule. For ale
 
 Use this procedure to run a playbook for alerts from multiple analytics rules. For alerts from one analytics rule, use Create an automation rule from an analytics rule.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Analytics** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Analytics**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Analytics** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 2. From the top menu bar, select **Create -&gt; Automation rule**.
 3. In the **Create new automation rule** panel, in the **Trigger** drop-down, select **When alert is created**.
 4. Under **Conditions**, select the analytics rules you want to run a particular playbook or a set of playbooks on.

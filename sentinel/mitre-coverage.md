@@ -24,7 +24,7 @@ search.appverid: met150
 description: View your organization's MITRE ATT&CK coverage in Microsoft Sentinel. Identify active detections and available rules to strengthen security.
 author: mberdugo
 ms.topic: how-to
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.author: monaberdugo
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -54,7 +54,7 @@ platformId: 056666f8-6c4e-9ae6-71f5-a91e8a5ba651
 
 Microsoft Sentinel analyzes ingested data, not only to [detect threats with built-in analytics](detect-threats-built-in) and help you [investigate incidents](investigate-cases), but also to visualize the nature and coverage of your organization's security status.
 
-This article describes how to use the **MITRE** page in Microsoft Sentinel to view the analytics rules (detections) already active in your workspace and the detections available for you to configure. Use this page to understand your organization's security coverage based on the tactics and techniques from the MITRE ATT&CK framework.
+Use the **MITRE** page in Microsoft Sentinel to view the analytics rules (detections) already active in your workspace and the detections available for you to configure. Use this page to understand your organization's security coverage based on the tactics and techniques from the MITRE ATT&CK framework.
 
 Important
 
@@ -83,7 +83,9 @@ To view the current MITRE coverage for your organization:
 1. Do one of the following, depending on the portal you're using:
 
 # [Defender portal](#tab/defender-portal)
-In the Defender portal, select **Microsoft Sentinel &gt; Threat management &gt; MITRE ATT&CK**.
+In the Defender portal, select **Microsoft Sentinel** &gt; **Threat management** &gt; **MITRE ATT&CK**. In [Integrated Security Operations Center (ISOC)](/en-us/defender-xdr/isoc-overview), select **Threat intelligence** &gt; **MITRE ATT&CK**.
+
+[![Screenshot of the Microsoft Defender navigation with Threat intelligence &gt; MITRE ATT&amp;CK selected, and the MITRE ATT&amp;CK coverage matrix.](media/mitre-coverage/mitre-isoc-nav.png)](media/mitre-coverage/mitre-isoc-nav.png#lightbox)
 
 [![Screenshot of the MITRE ATT&amp;CK page in the Defender portal.](media/mitre-coverage/mitre-coverage-defender.png)](media/mitre-coverage/mitre-coverage-defender.png#lightbox)
 
@@ -114,7 +116,12 @@ In the Azure portal, under **Threat management**, select **MITRE ATT&CK (Preview
 
 In the MITRE coverage matrix, *simulated* coverage refers to detections that are available but not currently configured in your Microsoft Sentinel workspace. View your simulated coverage to understand your organization's possible security status if you configured all available detections.
 
-1. In Microsoft Sentinel, under **Threat management**, select **MITRE ATT&CK (Preview)**, and then select items in the **Simulated rules** menu to simulate your organization's possible security status.
+1. Go to the **MITRE ATT&CK** page:
+
+    - In the Defender portal, select **Microsoft Sentinel** &gt; **Threat management** &gt; **MITRE ATT&CK**. In ISOC, select **Threat intelligence** &gt; **MITRE ATT&CK**.
+    - In the Azure portal, under **Threat management**, select **MITRE ATT&CK (Preview)**.
+
+    Then select items in the **Simulated rules** menu to simulate your organization's possible security status.
 2. Use the legend, search bar, and technique selection described in View current MITRE coverage to view the simulated coverage for a specific technique.
 
 ## Use the MITRE ATT&CK framework in analytics rules and incidents

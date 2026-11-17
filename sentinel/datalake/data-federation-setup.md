@@ -46,11 +46,11 @@ source_path: sentinel/datalake/data-federation-setup.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/f488294d-f483-456e-94e3-755f933b811b
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5c1f3bfc-fced-4ad1-b4e6-b7200832734d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e7cd09c2-9e9a-4f0d-b160-c15783f45b1f
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/02662057-0b9b-40f4-a3c7-537125b6d283
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5017978e-5a12-4c31-bdfd-1880eb1a780b
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1d337399-0ca4-4b4c-acef-8df37820e018
 platformId: cdc55d4b-eea0-74a3-a538-a3ac7a27158b
 ---
 
@@ -118,9 +118,9 @@ For more information on configuring Azure Key vaults, see [Azure Key Vaults](/en
 
 ## View and manage federated data connectors in the Defender portal
 
-Federated connectors are managed on the Data connectors page in Microsoft Sentinel on the Defender portal.
+Manage federated connectors on the **Connectors** tab of **Data & connectors** in the Defender portal.
 
-1. Navigate to **Microsoft Sentinel** &gt; **Configuration** &gt; **Data connectors**.
+1. In the Defender portal, select **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, and then select the **Connectors** tab.
 2. Under **Data federation**, select **Catalog** to view the available federated connectors.
 
     The catalog page displays:
@@ -129,11 +129,12 @@ Federated connectors are managed on the Data connectors page in Microsoft Sentin
     - Number of configured instances for each connector
     - Publisher and support information
 
-    [![Screenshot showing the data federation catalog with available connectors.](media/data-federation-setup/federation-catalog.png)](media/data-federation-setup/federation-catalog.png#lightbox)
-3. Select **My connectors page** to view all configured connector instances. The page lists your tenant's data federation connector instances along with their display name, version, status, and support provider.
-4. Select each instance to view details, edit configurations, or delete the instance.
+    [![Screenshot of the federated connector catalog on the Connectors tab of Data &amp; connectors, showing available connectors, instances, providers, and support information.](media/data-federation-setup/federation-catalog.png)](media/data-federation-setup/federation-catalog.png#lightbox)
+3. Select a connector in the catalog to view its description and prerequisites. For Azure Data Lake Storage Gen2, select **Add new instance** to create an instance.
 
-[![Screenshot showing the My connectors page with configured federation instances.](media/data-federation-setup/my-connectors.png)](media/data-federation-setup/my-connectors.png#lightbox)
+    [![Screenshot of the Azure Data Lake Storage Gen2 connector details pane in the catalog, showing its description, prerequisites, and Add new instance button.](media/data-federation-setup/my-connectors.png)](media/data-federation-setup/my-connectors.png#lightbox)
+4. Under **Data federation**, select **My connectors** to view all configured connector instances. The page lists your tenant's data federation connector instances along with their display name, version, status, and support provider.
+5. Select each instance to view details, edit configurations, or delete the instance.
 
 ## Create a connector instance
 
@@ -178,8 +179,8 @@ Before creating the connector, prepare your storage account:
 
 1. If you're creating a new storage account, ensure the **Hierarchical namespaces** setting is enabled.
 2. Assign the **Storage Blob Data Reader** role to the service principal you created earlier. For more information on granting access through the Azure portal, see [Assign Azure roles using the Azure portal - Azure RBAC](/en-us/azure/role-based-access-control/role-assignments-portal).
-3. On the **Data federation** &gt; **Catalog** page, select **Azure Data Lake Storage**.
-4. Select **Connect a connector**.
+3. On the **Data federation** &gt; **Catalog** page, select **Azure Data Lake Storage Gen2**.
+4. Select **Add new instance**.
 5. Configure the following name and connection details:
 
     | Field | Description |
@@ -263,7 +264,7 @@ After selecting **Connect**, the wizard closes and the instance count for Databr
 
 After creating a connector instance check that the tables you federated are available in Microsoft Sentinel.
 
-1. Navigate to **Microsoft Sentinel &gt; Configuration &gt; Tables**.
+1. In the Defender portal, select **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, and then select the **Tables** tab.
 2. Filter by Type **Federated** to see all federated tables.
 3. Search by your connector instance name.
 4. Tables from your connector instance are listed with their name followed by `_instance name`. For example if your data connector instance name was `GlobalHRData` and your table was called `hrlogs`, your table name is shown as `hrlogs_GlobalHRData`.

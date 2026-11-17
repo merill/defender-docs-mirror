@@ -44,10 +44,12 @@ item_type: Content
 source_path: sentinel/watchlists-manage.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 1ed9bfc7-9c0f-c2c6-a7f5-9688d580b05b
 ---
 
@@ -65,7 +67,7 @@ If you're still using Microsoft Sentinel in the Azure portal, we recommend that 
 
 Edit a watchlist to edit or add an item to the watchlist.
 
-1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), select **Setup & configuration** &gt; **Data management** &gt; **Watchlist**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**.
 2. Select the watchlist you want to edit.
 3. On the details pane, select **Update watchlist** &gt; **Edit watchlist items**.
 
@@ -98,7 +100,7 @@ The updated watchlist file you upload must contain the search key field used by 
 
 To bulk update a watchlist,
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), select **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select the watchlist you want to edit.
 3. On the details pane, select **Update watchlist** &gt; **Bulk update**.
 

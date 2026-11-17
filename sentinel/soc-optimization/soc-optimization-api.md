@@ -29,7 +29,7 @@ author: mberdugo
 ms.collection:
 - usx-security
 ms.topic: concept-article
-ms.date: 2024-06-09T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 locale: en-us
 document_id: e6a043f8-9837-a708-c535-2d5e305fc710
 document_version_independent_id: efb1b7ae-e848-3660-64d2-1145442c2cb8
@@ -45,16 +45,18 @@ item_type: Content
 source_path: sentinel/soc-optimization/soc-optimization-api.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 9867753b-efbc-84f0-fd91-252c99eb7953
 ---
 
 # Use SOC optimizations programmatically | Microsoft Learn
 
-Use the Microsoft Sentinel *[`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/list)* API to programmatically interact with SOC optimization recommendations, helping you to close coverage gaps against specific threats and tighten ingestion rates. You can get details about all current recommendations across your workspaces or a specific SOC optimization recommendation, or you can reevaluate a recommendation if you've made changes in your environment.
+Use the Microsoft Sentinel *[`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/list)* API to programmatically interact with SOC optimization recommendations, helping you to close coverage gaps against specific threats and tighten ingestion rates. You can get details about all current recommendations in your workspaces or a specific SOC optimization recommendation, or you can reevaluate a recommendation if you've made changes in your environment.
 
 For example, use the *[`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/list)* API to:
 
@@ -62,7 +64,7 @@ For example, use the *[`recommendations`](/en-us/rest/api/securityinsights/get-r
 - Integrate with third-party tools, such as for SOAR and ITSM services
 - Get automated, real-time access to SOC optimization data, triggering evaluations and responding promptly to the suggestions
 
-For customers or MSSPs managing multiple environments, the `recommendations` API provides a scalable way to handle recommendations across multiple workspaces. You can also export data from the API and store it externally for audit, archiving, or tracking trends.
+For customers or MSSPs managing multiple environments, the `recommendations` API provides a scalable way to handle recommendations in multiple workspaces. You can also export data from the API and store it externally for audit, archiving, or tracking trends.
 
 Important
 
@@ -74,7 +76,9 @@ The [`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/lis
 
 ## Get, update, or reevaluate recommendations
 
-Use the following examples of the [`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/list)` API to interact with SOC optimization recommendations programmatically:
+The API also returns **Lower Defender data costs** recommendations. Their `recommendationTypeId` value is `Precision_XdrIngestion_TableMigration`.
+
+Use the following examples of the [`recommendations`](/en-us/rest/api/securityinsights/get-recommendations/list) API to interact with SOC optimization recommendations programmatically:
 
 - **Get a list of all current SOC optimization recommendations in your workspace**:
 

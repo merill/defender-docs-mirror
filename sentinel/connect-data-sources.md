@@ -88,7 +88,9 @@ Microsoft Sentinel solutions provide packaged security content, including data c
 The Microsoft Sentinel **Data connectors** page lists the installed or in-use data connectors.
 
 # [Defender portal](#tab/defender-portal)
-[![Screenshot of the data connectors gallery.](media/connect-data-sources/data-connector-list-defender.png)](media/connect-data-sources/data-connector-list-defender.png#lightbox)
+To view installed or in-use Microsoft Sentinel data connectors, select **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, select the **Connectors** tab, and select **Classic connectors - Microsoft Sentinel** from the connector selector.
+
+[![Screenshot of the Connectors tab in Data &amp; connectors with classic Microsoft Sentinel connectors displayed and Azure Activity selected.](media/connect-data-sources/data-connector-list-defender.png)](media/connect-data-sources/data-connector-list-defender.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
 [![Screenshot of the data connectors gallery.](media/connect-data-sources/data-connector-list.png)](media/connect-data-sources/data-connector-list.png#lightbox)

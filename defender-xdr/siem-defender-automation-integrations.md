@@ -19,6 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: a2a07a6c-712c-ae63-7857-b77907f75296
 document_version_independent_id: a2a07a6c-712c-ae63-7857-b77907f75296
@@ -36,10 +37,8 @@ item_type: Content
 source_path: defender-xdr/siem-defender-automation-integrations.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 394154c0-6d88-5414-ee9c-9ec997094e40
 ---
 
@@ -52,10 +51,6 @@ Automation integrations provide a centralized catalog of prebuilt integrations. 
 An integration profile stores the provider, authentication method, and connection details used by supported playbooks or automation workflows to connect to external services.
 
 Automation integrations reduce manual setup work for SOC engineers, automation administrators, and advanced security analysts who build or maintain automated response workflows.
-
-Note
-
-This feature is in preview. Capabilities and availability might change during the preview period.
 
 ## How automation integrations work
 

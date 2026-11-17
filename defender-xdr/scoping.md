@@ -233,7 +233,12 @@ Keep the following limits in mind for scoped custom detections:
 
 To create scoped automation rules, follow these steps:
 
-1. In the Microsoft Defender portal, go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
 2. Open the **Enhanced rules** tab.
 
     [![Screenshot of the Enhanced rules tab in Automation.](media/scoping/automation-enhanced-rules.png)](media/scoping/automation-enhanced-rules.png#lightbox)

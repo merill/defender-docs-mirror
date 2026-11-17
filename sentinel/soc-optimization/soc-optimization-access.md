@@ -28,7 +28,7 @@ author: mberdugo
 ms.collection:
 - usx-security
 ms.topic: how-to
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
 locale: en-us
@@ -45,13 +45,13 @@ monikers: []
 item_type: Content
 source_path: sentinel/soc-optimization/soc-optimization-access.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/63959238-cb90-4871-a33d-4a5519097e47
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/78d87f42-5582-4a6b-90be-7db2f12b34e6
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 55205b7e-37a8-a28a-0221-e839230503bc
 ---
 
@@ -80,7 +80,7 @@ Before you use SOC optimization, make sure the following prerequisites are in pl
 
 ## Access the SOC optimization page
 
-Choose the instructions for your portal — Microsoft Defender portal or Azure portal. When your workspace is onboarded to the Defender portal, SOC optimizations include coverage from across Microsoft security services.
+Choose the instructions for your portal — Microsoft Defender portal or Azure portal. When your workspace is onboarded to the Defender portal, SOC optimizations include coverage from Microsoft security services.
 
 # [Defender portal](#tab/defender-portal)
 In the Defender portal, select **SOC optimization**.
@@ -129,6 +129,8 @@ Use the following views to locate and review SOC optimization recommendations in
 # [Defender portal](#tab/defender-portal)
 In the Defender portal, SOC optimization recommendations are listed in the **Your Optimizations** area on the **SOC optimizations** tab.
 
+The page also shows the **Lower Defender data costs** banner. Select **View progress** on the banner to open the **Update your content to use Defender data** side panel. The panel shows how many recommendations are resolved and what to do next.
+
 [![Screenshot of the SOC optimization Overview tab in the Defender portal.](media/soc-optimization-access/soc-optimization-overview-defender.png)](media/soc-optimization-access/soc-optimization-overview-defender.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
@@ -151,6 +153,9 @@ Filter the optimizations based on optimization type, or search for a specific op
     - **AI MITRE ATT&CK recommendations** for adding tagging recommendations to help close coverage gaps for various types of attacks, based on the MITRE ATT&CK framework.
     - **Risk-based recommendations** for adding security controls to help close coverage gaps for various types of business risks.
 - **Data value**: Includes recommendations that suggest ways to improve your data usage for maximizing security value from ingested data, or suggest a better data plan for your organization.
+- **Lower Defender data costs**: Includes recommendations for Microsoft Defender XDR tables that you ingest into a Microsoft Sentinel workspace when the same data is available in Microsoft Defender. For more information, see [Lower Defender data costs recommendations](soc-optimization-reference#lower-defender-data-costs-recommendations).
+
+In the Defender portal, the **Recommendation type** filter includes **SIEM setup**, **Cost optimization**, **Coverage improvement**, and **Lower Defender data costs**.
 
 ### View optimization details and take action
 
@@ -160,7 +165,7 @@ Choose the instructions for your portal — Microsoft Defender portal or Azure p
 1. In each optimization card, select **View details** to see a full description of the observation that led to the recommendation, and the value you see in your environment when that recommendation is implemented.
 2. For threat-based coverage optimizations:
 
-    - Toggle between the spider charts to understand your coverage across different tactics and techniques, based on the user-defined and out-of-the-box detections active in your environment.
+    - Toggle between the spider charts to understand your coverage for different tactics and techniques, based on the user-defined and out-of-the-box detections active in your environment.
     - Select **View threat scenario in MITRE ATT&CK** to jump to the [**MITRE ATT&CK** page in Microsoft Sentinel](../mitre-coverage?tabs=defender-portal), prefiltered for your threat scenario. For more information, see [Understand security coverage by the MITRE ATT&CK® framework](../mitre-coverage).
 3. Scroll down to the bottom of the optimization details pane for a link to where you can take the recommended actions. For example:
 
@@ -197,6 +202,10 @@ Either select the options menu or select **View details** to take one of the fol
 | **Dismiss** | Dismiss an optimization if you're not planning to take the recommended action and no longer want to see it in the list. |
 | **Provide feedback** | We invite you to share your thoughts on the recommended actions with the Microsoft team! When sharing your feedback, be careful not to share any confidential data. For more information, see [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement). |
 
+Note
+
+**Lower Defender data costs** recommendations don't complete automatically. After you update the content that uses a table, set the status to **Completed** yourself.
+
 ## View completed and dismissed optimizations
 
 If you marked a specific optimization as *Completed* or *Dismissed*, or if an optimization is automatically completed, it's listed on the **Completed** and **Dismissed** tabs, respectively.
@@ -229,4 +238,5 @@ The following sample flow shows how to use SOC optimizations in either the Defen
     1. Select **View full details** to see the current coverage and suggested improvements.
     2. Select **View all MITRE ATT&CK technique improvement** to drill down and analyze the relevant tactics and techniques, helping you understand the coverage gap.
     3. Select **Go to Content hub** to view all recommended security content, filtered specifically for this optimization.
-4. After configuring new rules or making changes, mark the recommendation as completed or let the system update automatically.
+4. Use the **Lower Defender data costs** recommendations to update content that uses Microsoft Defender XDR tables. After you complete all of them, make sure no content still uses these tables in Log Analytics and you don't need the data there for compliance. Then, in the Defender portal, go to **Table management** and select **Configure workspace** to stop ingesting Defender XDR data into Log Analytics for all Defender XDR tables in the workspace. This is what lowers your costs. For more information, see [Lower Defender data costs recommendations](soc-optimization-reference#lower-defender-data-costs-recommendations).
+5. After configuring new rules or making changes, update the recommendation status. For **Lower Defender data costs** recommendations, set the status to **Completed** yourself. For other types, mark the recommendation as completed or let the system update automatically.

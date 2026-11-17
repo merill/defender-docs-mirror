@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: c8a97ba5-ade7-2b6d-56ff-118e5acfc6b4
@@ -47,7 +47,7 @@ platformId: c9d9a593-4f45-0f37-5488-b30ab27d5015
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 Use the incident cases list to triage and prioritize incident cases in the Microsoft Defender portal. The incident cases list helps analysts identify which cases need immediate attention by using priority score, severity, investigation state, impacted assets, alerts, tags, ownership, due date, and other case details.
 

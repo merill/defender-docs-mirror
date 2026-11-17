@@ -18,7 +18,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: concept-article
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0261d659-21f7-231b-01e7-5d3b840a0f76
@@ -52,12 +52,12 @@ Microsoft Defender case management helps security operations teams manage SecOps
 
 Case management supports the following case types:
 
-- **Incident cases (Preview)**: Cases created from correlated incident activity to help analysts investigate, manage, and resolve security incidents.
+- **Incident cases**: Cases created from correlated incident activity to help analysts investigate, manage, and resolve security incidents.
 - **Generic cases**: Cases created manually to track SecOps work, collaboration, tasks, and follow-up outside the incident response workflow.
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 ![Screenshot showing the Cases page in the Microsoft Defender portal.](media/siem-defender-case-management/case-management-cases-page.png)
 
@@ -75,7 +75,7 @@ Use cases to manage work such as:
 
 ## Case management capabilities
 
-Case management capabilities vary by case type, license, onboarding state, and preview scope.
+Case management capabilities vary by case type, license, and onboarding state.
 
 Case management includes capabilities such as:
 

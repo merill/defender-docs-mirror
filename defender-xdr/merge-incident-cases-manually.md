@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 86b31e29-ceb7-2c02-d751-1bb07d6dabb7
@@ -53,7 +53,7 @@ Use manual merge to combine related incident cases. When incident cases are merg
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 Note
 

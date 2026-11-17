@@ -46,11 +46,11 @@ source_path: sentinel/add-advanced-conditions-to-automation-rules.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: add6016e-62af-2394-ba3c-29f33bd59ac3
 ---
 
@@ -89,7 +89,14 @@ Since condition groups offer a lot more power and flexibility in creating automa
 
 Let's create a rule that will change the severity of an incoming incident from whatever it is to High, assuming it meets the conditions we'll set.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Automation** page. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
+
+    For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select the **Configuration** &gt; **Automation** page.
 2. From the **Automation** page, select **Create &gt; Automation rule** from the button bar at the top.
 
     See the [general instructions for creating an automation rule](create-manage-use-automation-rules) for details.

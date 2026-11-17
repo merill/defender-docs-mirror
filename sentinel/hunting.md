@@ -29,7 +29,7 @@ author: mberdugo
 ms.reviewer: efratka
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1023
 locale: en-us
 document_id: 7a0ffcd6-590a-5141-8e0c-1e1f06ba4859
 document_version_independent_id: 12bb4708-1709-54c5-7e8e-1673cdd873f3
@@ -45,8 +45,10 @@ item_type: Content
 source_path: sentinel/hunting.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 025d7b0c-087a-2fca-90c7-351001e9a846
 ---
 
@@ -81,7 +83,12 @@ To get started, see [Conduct end-to-end proactive threat hunting in Microsoft Se
 
 ## Hunting queries
 
-In Microsoft Sentinel in Defender, select **Threat management** &gt; **Hunting**, then the **Queries** tab to run all your queries, or a selected subset. The **Queries** tab lists all the hunting queries installed with security solutions from the **Content hub**, and any extra query you created or modified. Each query provides a description of what it hunts for, and what kind of data it runs on. All hunting queries on the **Queries** tab are grouped by their MITRE ATT&CK **tactics**. The icons at the top of the **Queries** tab categorize the type of threat, such as initial access, persistence, and exfiltration. MITRE ATT&CK **techniques** are shown in the **Techniques** column and describe the specific behavior identified by the hunting query.
+To run all your queries, or a selected subset, open hunting in the Microsoft Defender portal using either navigation path:
+
+- In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+- In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
+
+Then select the **Queries** tab. The **Queries** tab lists all the hunting queries installed with security solutions from the **Content hub**, and any extra query you created or modified. Each query provides a description of what it hunts for, and what kind of data it runs on. All hunting queries on the **Queries** tab are grouped by their MITRE ATT&CK **tactics**. The icons at the top of the **Queries** tab categorize the type of threat, such as initial access, persistence, and exfiltration. MITRE ATT&CK **techniques** are shown in the **Techniques** column and describe the specific behavior identified by the hunting query.
 
 [![Microsoft Sentinel starts hunting](media/hunting/hunting-start.png)](media/hunting/hunting-start.png#lightbox)
 
@@ -154,7 +161,12 @@ During the hunting and investigation process, you might come across query result
 
 Note
 
-Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**, which provides the Microsoft Sentinel-specific hunting experience. You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
+Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in the Microsoft Sentinel-specific hunting experience:
+
+- In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+- In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
+
+You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
 
 - In your results, mark the checkboxes for any rows you want to preserve, and select **Add bookmark**. Selecting **Add bookmark** creates a bookmark for each marked row that contains the row results and the query that created the results. You can add your own tags and notes to each bookmark.
 

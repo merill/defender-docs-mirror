@@ -44,12 +44,12 @@ item_type: Content
 source_path: sentinel/watchlists-queries.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/12ed19f9-ebdf-4c8a-8bcd-7a681836774d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/540ac133-a371-4dbb-8f94-28d6cc77a70b
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3a764584-4f97-452b-8f1d-36f19b12f6ae
-- https://authoring-docs-microsoft.poolparty.biz/devrel/60bfc045-f127-4841-9d00-ea35495a5800
 platformId: cff98f68-fecc-5be9-bdc6-146392695c77
 ---
 
@@ -69,7 +69,7 @@ If you're still using Microsoft Sentinel in the Azure portal, we recommend that 
 
 To use a watchlist in a search query, write a Kusto Query Language (KQL) query that uses the \_GetWatchlist('watchlist-name') function and uses **SearchKey** as the key for your join.
 
-1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), select **Setup & configuration** &gt; **Data management** &gt; **Watchlist**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Watchlist**.
 2. Select the watchlist you want to use.
 3. Select **View in Logs**.
 
@@ -99,7 +99,7 @@ To use a watchlist in a search query, write a Kusto Query Language (KQL) query t
 
 The \_GetWatchlist('watchlist-name') function returns the contents of a specified watchlist so you can reference watchlist data directly in a query. To use watchlists in analytics rules, create a rule that includes this function in the rule query.
 
-1. Under **Configuration**, select **Analytics**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Configuration** &gt; **Analytics**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), select **Investigation & response** &gt; **Detection** &gt; **Analytics**. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Configuration**, select **Analytics**.
 2. Select **Create** and the type of rule you want to create.
 3. On the **General** tab, enter the appropriate information.
 4. On the **Set rule logic** tab, under **Rule query** use the `_GetWatchlist('<watchlist>')` function in the query.

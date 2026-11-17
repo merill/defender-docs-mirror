@@ -18,7 +18,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 92cee3a1-1491-a9ac-ed73-ac0a6df4b3cf
@@ -60,7 +60,7 @@ Before you begin, make sure the following requirements are met:
 
 Note
 
-During this preview, Copilot for Workbooks supports Advanced Hunting tables as the data source. Log Analytics data isn't supported.
+Copilot for Workbooks supports Advanced Hunting tables as the data source. Log Analytics data isn't supported.
 
 ## Create a workbook with Copilot
 

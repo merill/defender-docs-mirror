@@ -25,7 +25,7 @@ description: Launch and run notebooks with the Microsoft Sentinel hunting capabi
 author: EdB-MSFT
 ms.author: edbaynash
 ms.topic: how-to
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-10T00:00:00.0000000Z
 ms.collection: usx-security
 ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
 ai-usage: ai-assisted
@@ -45,11 +45,9 @@ source_path: sentinel/notebooks-hunt.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d6f38669-3d05-40f2-afd8-e49f7dd20884
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
 - https://authoring-docs-microsoft.poolparty.biz/devrel/55265cca-de9b-48dc-a77a-9047cc39a575
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 platformId: aedb8bb9-6914-de50-2b66-21c29533c227
 ---
 
@@ -86,7 +84,7 @@ To create your workspace, select the **Public endpoint** or **Private endpoint**
 # [Public endpoint](#tab/public-endpoint)
 Use the following steps to create an Azure Machine Learning workspace with a public endpoint from Microsoft Sentinel.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Notebooks**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Notebooks**.
 2. Select **Configure Azure Machine Learning** &gt; **Create a new AML workspace**.
 3. Enter the following details, and then select **Next**.
 
@@ -114,7 +112,7 @@ The following procedure for creating a private-endpoint Azure Machine Learning w
 
 1. Create a virtual machine (VM) jump box within a virtual network. Since the virtual network restricts access from the public internet, the jump box is used as a way to connect to resources behind the virtual network.
 2. Access the jump box, and then go to your Microsoft Sentinel workspace. We recommend using [Azure Bastion](/en-us/azure/bastion/bastion-overview) to access the VM.
-3. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Notebooks**.
+3. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Notebooks**.
 4. Select **Configure Azure Machine Learning** &gt; **Create a new AML workspace**.
 5. Enter the following details, and then select **Next**.
 
@@ -179,7 +177,7 @@ If private endpoints or public network access restrictions are enabled on your A
 
 To launch your Microsoft Sentinel notebook in your Azure Machine Learning workspace, complete the following steps.
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Notebooks**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Notebooks**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Investigation & response** &gt; **Notebooks**.
 2. Select the **Templates** tab to see the notebooks that Microsoft Sentinel provides.
 3. Select a notebook to view its description, required data types, and data sources.
 4. When you find the notebook you want to use, select **Create from template** and **Save** to clone it into your own workspace. Only Azure Machine Learning workspaces in the same subscription can be selected.

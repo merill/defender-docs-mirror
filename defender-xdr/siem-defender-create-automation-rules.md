@@ -18,7 +18,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: e514c594-45c5-8996-224f-5f6c03167254
@@ -47,10 +47,6 @@ platformId: aa0133e7-84bf-de9d-6419-0c791f83aec1
 # Create automation rules with ISOC in Microsoft Defender - Microsoft Defender XDR | Microsoft Learn
 
 Use automation rules with Integrated Security Operations Center (ISOC) in Microsoft Defender to trigger automated response actions. Automation rules help standardize response workflows, reduce repetitive work, and run supported actions when alert or incident conditions are met.
-
-Note
-
-This feature is in preview. Capabilities and availability might change during the preview period.
 
 ## Prerequisites
 

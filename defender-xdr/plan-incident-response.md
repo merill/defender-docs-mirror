@@ -17,7 +17,7 @@ ms.collection:
 - tier1
 - usx-security
 - sentinel-only
-ms.custom: admindeeplinkDEFENDER, msecd-doc-authoring-1014
+ms.custom: admindeeplinkDEFENDER, msecd-doc-authoring-1030
 ms.topic: how-to
 ms.date: 2026-07-15T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -51,7 +51,7 @@ platformId: e74643a8-278f-d620-b9ad-7f55bf58aab8
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview. This article provides incident response workflow guidance that applies to both incident cases and the legacy incident experience.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available. This article provides incident response workflow guidance that applies to both incident cases and the legacy incident experience.
 
 In the Microsoft Defender portal, security incidents bring together related alerts and investigation context to help your security operations team understand, manage, and respond to potential attacks.
 

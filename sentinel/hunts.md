@@ -28,7 +28,7 @@ ms.reviewer: efratka
 ms.topic: how-to
 ms.date: 2026-07-01T00:00:00.0000000Z
 ms.collection: usx-security
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1023
 ai-usage: ai-assisted
 locale: en-us
 document_id: 362b66d3-a3b7-6c68-f7ae-6343240dde17
@@ -45,10 +45,10 @@ item_type: Content
 source_path: sentinel/hunts.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 82242e42-3d6a-b8d1-ed55-42a640d278dd
 ---
 
@@ -94,7 +94,10 @@ Microsoft Sentinel gives you flexibility as you zero in on the right set of hunt
 
 ### Hypothesis - Suspicious behavior
 
-1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Hunting**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), select **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), under **Threat management**, select **Hunting**. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), use either navigation path:
+
+    - In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+    - In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
 2. Select the **Queries** tab. To identify potentially malicious behaviors, run all the queries.
 3. Select **Run All queries** &gt; wait for the queries to execute. Running all queries might take a while.
 4. Select **Add filter** &gt; **Results** &gt; unselect the checkboxes "!", "N/A", "-", and "0" values &gt; **Apply**![Screenshot shows the filter described in step 3.](media/hunts/all-queries-with-results.png)

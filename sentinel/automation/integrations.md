@@ -45,9 +45,11 @@ source_path: sentinel/automation/integrations.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: dab28831-cf70-abe9-9b7c-e94b80eacdf8
 ---
 
@@ -103,7 +105,12 @@ Store and rotate credentials according to your organization's security requireme
 
 Use the following high-level workflow to create an automation integration:
 
-1. Go to the Automation page at **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
 
     [![Automation integration creation experience in Microsoft Sentinel](media/integrations/automation-page.png)](media/integrations/automation-page.png#lightbox)
 2. Select **+ Create**.

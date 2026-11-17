@@ -44,12 +44,12 @@ item_type: Content
 source_path: sentinel/manage-data-overview.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8f37329d-5c2f-4d50-b9b8-aa5cf54dbffe
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
-- https://authoring-docs-microsoft.poolparty.biz/devrel/e13db295-3de6-46d5-bcdf-8785a76e3843
 platformId: ad3cbb72-db10-6bde-479f-bf28fba0e2a0
 ---
 
@@ -60,7 +60,12 @@ The Microsoft Defender portal provides a centralized experience for managing Mic
 This article introduces the **Data & connectors** experience and explains how to use it to manage data in Microsoft Sentinel and Microsoft Defender XDR. For related tasks, see:
 
 - [Configure data connectors](configure-data-connector) to send data to Microsoft Sentinel or Microsoft Defender XDR.
-- [Manage your existing tables and data](manage-table-tiers-retention).
+- [Manage tables, tiers, and retention in Sentinel](manage-table-tiers-retention).
+- [Manage tables, tiers, and retention in ISOC](manage-table-tiers-retention-isoc).
+
+Note
+
+If you use Integrated Security Operations Center (ISOC), see [Data ingestion and billing for ISOC in Microsoft Defender](/en-us/defender-xdr/integrated-security-operations-data-billing-retention) for eligibility and included retention.
 
 ## Data & connectors in the Microsoft Defender portal (preview)
 
@@ -131,55 +136,18 @@ The Connectors tab includes:
 
 Data you collect into Microsoft Sentinel and Microsoft Defender XDR is stored in tables. The **Tables** tab is where you view your tables, review their ingestion health, inspect their schema and transformations, and manage the retention period and storage costs associated with your data.
 
-### Which tables can you manage in the Microsoft Defender portal?
-
-This section describes the table types you can manage in the Microsoft Defender portal.
-
-[![Screenshot that shows the Table Management screen in the Defender portal.](media/manage-data-overview/view-table-properties-microsoft-defender-portal.png)](media/manage-data-overview/view-table-properties-microsoft-defender-portal.png#lightbox)
-
-| Table type | Description | Examples | Is in Microsoft Sentinel workspace? |
-| --- | --- | --- | --- |
-| **Microsoft Sentinel** | Built-in tables, including:- Azure tables, such as AzureDiagnostics and SigninLogs.- Microsoft Sentinel tables.- [Microsoft Defender XDR integration with Microsoft Sentinel](connect-microsoft-365-defender?tabs=MDE#connect-events), which are created in your Microsoft Sentinel workspace when you increase the analytics retention period beyond 30 days. See the **XDR** table type for Defender XDR tables that are currently unsupported. | - Azure tables: `AzureDiagnostics`, `SigninLogs`- Microsoft Sentinel tables: `AWSCloudTrail`, `SecurityAlert`- XDR tables: `DeviceEvents`,`AlertInfo` | Yes |
-| **Custom** | Tables you create manually or through jobs in your Microsoft Sentinel workspace, including summary rule and search job results tables, and custom data source tables. | Tables with `_CL` or `_SRCH` suffixes. | Yes |
-| **XDR** | Tables in the XDR default tier, which have 30 days of analytics retention by default. You can view these tables, but you can't manage them from the Defender portal. | `IdentityInfo` | No |
-
-Note
-
-You can view Basic Logs tables in your Microsoft Sentinel workspace from the Microsoft Defender portal, but you can currently manage them only from your Log Analytics workspace. To manage these tables from the Microsoft Defender portal, change the table plan from Basic Logs to Analytics in your Microsoft Sentinel workspace.
-
-### How data tiers and retention work
-
-For regional support, see [Data lake retention availability](geographical-availability-data-residency#supported-regions).
-
-You can retain data in Microsoft Sentinel in one of two tiers:
-
-- **Analytics tier**: This tier makes data available for alerting, hunting, workbooks, and all Microsoft Sentinel features. It retains data in two states:
-
-    - **Analytics retention**: In this "hot" state, data is fully available for real-time analytics, including high-performance queries, analytics rules, and threat hunting. By default, Microsoft Sentinel and Microsoft Defender XDR retain data in this tier for 30 days. You can extend the retention period of all tables to up to two years at a prorated monthly long-term retention charge. You can extend the retention period of Microsoft Sentinel solution tables to 90 days for free.
-    - **Total retention**: By default, all data in the analytics tier is mirrored to the data lake for the same retention period. You can extend the retention of your data in the lake beyond the analytics retention, for up to 12 years of total retention at a low cost.
-- **Data Lake tier**: In this low-cost "cold" tier, Microsoft Sentinel retains your data in the data lake only. Data in the Data Lake tier isn't available for real-time analytics features and threat hunting. However, you can access data in the lake whenever you need it through [KQL jobs](datalake/kql-jobs), analyze trends over time by running scheduled KQL or Spark jobs, and aggregate insights from incoming data at a regular cadence by using summary rules.
-- **XDR data**: By default, Microsoft Defender XDR threat hunting data is always available in the Analytics tier for 30 days. You can extend retention of this data in the Analytics tier up to 90 days, which incurs ingestion costs, while storage remains free. Extending retention beyond 90 days in the Analytics tier also incurs storage costs. You can also ingest exclusively into the Data Lake tier, but the data remains available in the Analytics tier for 30 days. Ingesting XDR data directly into the Data Lake tier is more cost-effective, but it involves ingestion, storage, and processing costs. In this option, customers still get 30 days' worth of data in the Analytics tier at no additional cost.
-
-For more information about the differences between the Analytics tier and the Data Lake tier, see Compare the analytics and data lake tiers.
-
-The following diagram illustrates the retention components of the Analytics, Data Lake, and XDR default tiers, and the table types that apply to each tier:
-
-[![Diagram that depicts the analytics and data lake tiers in the Microsoft Defender portal.](media/manage-data-overview/tiers-retention-defender-portal.png)](media/manage-data-overview/tiers-retention-defender-portal.png#lightbox)
-
-For more information about the Microsoft Sentinel data lake, see [What is Microsoft Sentinel data lake](datalake/sentinel-lake-overview).
+For supported table types, data tier comparisons, retention behavior, and XDR costs, see [Configure table settings in Microsoft Sentinel](manage-table-tiers-retention#which-tables-can-you-manage-in-the-microsoft-defender-portal).
 
 ### Use Table insights for table-level observability
 
 Table insights on the **Tables** tab helps you understand ingestion health at the table level for the selected Microsoft Sentinel workspace. It gives you quick observability signals so you can identify ingestion and cost patterns before you change tier or retention settings.
 
-Table insights signals appear in two places on the **Tables** tab:
+Columns in the tables grid show per-table health signals for each table, including:
 
-- **Summary tiles at the top of the page** show workspace-level counts, including the number of tables and how they're distributed across the Analytics tier, Data Lake tier, and XDR default tier.
-- **Columns in the tables grid**show per-table health signals for each table, including:
-    - Last data received
-    - Average daily ingestion volume
-    - Estimated daily ingestion cost
-    - Volume anomaly (day-over-week ingestion fluctuation)
+- Last data received.
+- Average daily ingestion volume.
+- Estimated daily ingestion cost.
+- Volume anomaly (day-over-week ingestion fluctuation).
 
 Use the grid columns to sort, filter, and compare tables side by side. Combine these signals to detect connector failures, investigate cost spikes, validate new connector onboarding, and identify candidates for right-sizing retention and tier.
 
@@ -189,7 +157,72 @@ Important
 
 Table insights is a visualization surface for investigation. It isn't a billing-grade or alerting surface.
 
-For setup, access, and interpretation guidance, see [Configure table settings in Microsoft Sentinel](manage-table-tiers-retention#use-table-insights-to-monitor-table-health).
+For detailed signals, steps, and limitations, see Use Table insights to monitor table health.
+
+#### Table insights permissions
+
+Use the following permissions when you want to investigate ingestion health in **Table insights** or take action from a flagged table.
+
+| Task | Minimum role | Scope |
+| --- | --- | --- |
+| View **Table insights** cards and the table grid | [Microsoft Sentinel Reader built-in role](roles#built-in-azure-roles-for-microsoft-sentinel) | Resource group that contains the workspace |
+| Configure fluctuation thresholds or customize table columns | [Microsoft Sentinel Contributor built-in role](roles#built-in-azure-roles-for-microsoft-sentinel) | Workspace |
+| Change a table tier or retention setting | [Microsoft Sentinel Contributor built-in role](roles#built-in-azure-roles-for-microsoft-sentinel) and [Log Analytics Contributor built-in role](/en-us/azure/azure-monitor/logs/manage-access#log-analytics-contributor) | Workspace |
+| Create a data collection rule (DCR) or ingestion-time transformation from a flagged table | [Monitoring Contributor built-in role](/en-us/azure/role-based-access-control/built-in-roles/monitor#monitoring-contributor) and [Microsoft Sentinel Contributor built-in role](roles#built-in-azure-roles-for-microsoft-sentinel) | Subscription or resource group that contains the DCR |
+| Read the underlying health signals for custom alerting | [Log Analytics Reader built-in role](/en-us/azure/azure-monitor/logs/manage-access#log-analytics-reader) | Workspace |
+
+Custom roles must include equivalent read and write permissions for table settings and health investigation, including `Microsoft.OperationalInsights/workspaces/tables/read` and `Microsoft.SecurityInsights/*/read` data actions.
+
+### Use Table insights to monitor table health
+
+Table insights is a built-in monitoring view on the Tables page in the Microsoft Defender portal. It gives security and platform engineers a single table-level view of ingestion health in a Microsoft Sentinel workspace, including tables populated by third-party data connectors. Use it to spot silent connector failures, investigate cost spikes, validate a new connector onboarding, and identify tables that might need a different tier or retention setting.
+
+Review the Table insights section and table grid together to understand whether a table is healthy, expensive, or misconfigured.
+
+| Signal | What it shows | How to use it |
+| --- | --- | --- |
+| **Ingestion volume per tier** | The rolling 30-day total of gigabytes ingested into the Analytics and Data Lake tiers for the current workspace | Compare how much data each tier is receiving before you move tables between tiers or shorten retention. |
+| **Table ingestion fluctuations** | Tables whose last 24-hour ingestion volume differs from the same day last week by at least the configured fluctuation threshold | Investigate large drops or spikes first. A negative value can indicate an upstream collection issue, while a positive value can signal unexpected cost growth. |
+| **Top 5 tables by daily ingestion volume** | The tables that drove the most daily ingestion during the last 30 days | Use this view to identify the main cost drivers in the workspace and decide whether a transformation or tier change might help. |
+| **Last data received** | How long it has been since the table last received a record | Use this value to detect a connector that has gone silent, especially after a deployment or credential change. |
+| **Avg. daily ingestion** | The average number of gigabytes per day over the lookback window | Compare this value with retention settings to find tables that are storing more data than you need for active investigations. |
+| **Est. daily ingestion cost** | The estimated daily ingestion cost for the table's current tier | Use this estimate to prioritize which tables to optimize first when costs increase. |
+| **Volume anomaly** | The signed percentage change from the baseline ingestion pattern | Focus on large positive values for unexpected cost growth and large negative values for possible data collection failures. |
+
+To view all table insights and investigate table behavior:
+
+1. Sign in to the Microsoft Defender portal.
+2. Go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Tables**.
+3. Select **View all**.
+
+    [![Screenshot that shows where the View all button is located in the Table insights section of the page.](media/manage-table-tiers-retention/view-all-table-insights.png)](media/manage-table-tiers-retention/view-all-table-insights.png#lightbox)
+4. Review all insights.
+5. (Optional) Add additional filters such as:
+
+    - Minimum fluctuation percentage.
+    - Minimum fluctuation volume by kilobytes (KB), megabytes (MB), or gigabytes (GB).
+6. (Optional) Sort the table by selecting one of the headers.
+
+Table insights is useful in scenarios such as:
+
+- If a third-party connector silently stops sending data, sort by **Last data received** and review the **Table ingestion fluctuations** card for tables that dropped to zero ingestion in the last 24 hours compared to the same period last week.
+- If a noisy connector causes an unexpected cost spike, review **Top 5 tables by daily ingestion volume**, then inspect **Volume anomaly** and **Est. daily ingestion cost** to find the table that needs transformation or tier review.
+- If you just onboarded a new third-party data connector, confirm that its destination table appears in the grid, is receiving data, and is on the expected tier.
+- If you need to right-size table settings, compare **Avg. daily ingestion**, **Est. daily ingestion cost**, **Tier**, and **Retention** to identify candidates for the Data Lake tier or shorter retention.
+- If detections suddenly drop, review the fluctuations card for tables that show a 100 percent decrease and correlate those tables with the detections that stopped firing.
+
+#### Table insights limitations
+
+Keep the following limits in mind when you interpret the **Table insights** data:
+
+| Area | Limitation |
+| --- | --- |
+| Lookback window | Ingestion volume cards show only the last 30 days. Fluctuations compare the last 24 hours with the same day of the previous week, so they don't account for longer seasonal patterns such as month-end batch jobs. |
+| Fluctuation thresholds | By default, fluctuations require at least a 10 percent change and 1 megabyte of absolute change. Tables below 1 MB per day aren't evaluated and won't appear on the card even if they fully stop sending data. |
+| Cost estimates | The **Est. daily ingestion cost** value is based on public list price for the table's current tier and region. It doesn't reflect commitment-tier discounts, reservations, or private pricing. |
+| Tier coverage | Auxiliary, Basic Logs, and Data Lake tier tables are listed, but the **Volume anomaly** signal is currently optimized for Analytics tier tables. Results for Data Lake tier tables can be less precise. |
+| Alerting | **Table insights** is a visualization surface only. To alert on table health, such as when a connector goes silent, create a scheduled analytics rule that uses the `SentinelHealth` table or a Kusto Query Language (KQL) query against `Usage` or a table-specific schema. |
+| Multi-workspace view | **Table insights** shows data for the currently selected workspace only. If you manage multiple workspaces, switch workspaces to review each one separately. |
 
 ### Table details panel
 
@@ -202,80 +235,3 @@ Select a table on the **Tables** tab to open the table details panel. The panel 
 | **Transformations** | Filter, Split, and Scope Tag transformation rules that apply to the table. You can view, create, edit, and delete transformation rules from this tab. |
 | **Retention** | Analytics retention and total retention settings for the table. |
 | **Data Sources** | Connector information for the table. This tab appears only for federated table types. |
-
-### Compare the analytics and data lake tiers
-
-This table compares the Analytics and Data Lake tiers and their key characteristics:
-
-| Comparison | Analytics tier | Data Lake tier |
-| --- | --- | --- |
-| Key characteristics | High-performance querying and indexing for logs (also known as hot, or interactive retention). | Cost-effective long-term retention of large data volumes (also known as cold storage). |
-| Best for | Real-time analytics rules, alerting, hunting, workbooks, and all Microsoft Sentinel features. | - Compliance and regulatory logging.- Historical trend analysis and forensics.- Low-touch data that's not needed for real-time alerts. |
-| Ingestion cost | Standard | Minimal |
-| Query price included | ✅ | ❌ |
-| Optimized query performance | ✅ | ❌ Slower queries.Good for auditing. Not optimized for real-time analysis. |
-| Query capabilities | [Full query capabilities](/en-us/azure/azure-monitor/logs/get-started-queries) in the Microsoft Defender portal, the Azure portal, and by using APIs. | - [Full query capabilities](/en-us/azure/azure-monitor/logs/get-started-queries), including unions and joins.- Run scheduled KQL or Spark jobs.- Use notebooks. |
-| Full set of real-time analytics features | ✅ | ❌ Limitations on some features, including analytics rules, hunting queries, parsers, watchlists, workbooks, and playbooks. |
-| [Search jobs](investigate-large-datasets) | ✅ | ✅ |
-| [Summary rules](summary-rules) | ✅ | ✅ [Full KQL on a single table](/en-us/azure/azure-monitor/logs/basic-logs-query), which you can extend with data from an analytics table using [lookup](/en-us/azure/data-explorer/kusto/query/lookup-operator) |
-| [Restore](restore) | ✅ | ❌ KQL and Notebook jobs can promote data to the analytics tier. |
-| [Data export](/en-us/azure/azure-monitor/logs/logs-data-export) | ✅ | ❌ |
-| Retention period | 90 days for Microsoft Sentinel, 30 days for Microsoft Defender XDR. Can be extended to up to two years at a prorated monthly long-term retention charge. | Same as analytics retention, by default. Can be extended to up to 12 years. |
-
-### What happens when you modify table settings
-
-You can switch a table's tier and retention settings at any time.
-
-When you change a table's tier from Analytics to Data Lake, all real-time analytics and hunting queries stop working.
-
-When you shorten a table's total retention, Microsoft waits 30 days before removing the data, so you can revert the change and avoid data loss if you made a configuration error.
-
-When you increase total retention, the new retention period applies to all data that was already ingested into the table and wasn't yet removed.
-
-When you change the analytics retention settings of a table with existing data, the change takes effect immediately.
-
-***Example***:
-
-- You have a table in the Analytics tier with 180 days of analytics retention. By default, total retention is also set to 180 days.
-- You change analytics retention to 90 days without changing total retention, which remains 180 days.
-- Microsoft Sentinel automatically removes the last 90 days of data from analytics retention, but continues to store data that's 90-180 days old in the Data Lake tier.
-
-### Manage XDR data in Microsoft Sentinel
-
-By default, Microsoft Defender XDR retains threat hunting data in the **XDR default tier** for 30 days. This data isn't ingested into the Analytics or Data Lake tiers by default. If you extend the retention period of supported XDR tables beyond 30 days and up to 90 days, Sentinel ingestion costs apply, but there are no additional storage costs. The tables are created in your Microsoft Sentinel workspace in the Analytics tier and mirrored to the Data Lake tier.
-
-If you enable the Microsoft Sentinel XDR connector in the Azure portal, the tables you select during setup are automatically ingested into the Analytics tier and mirrored to the Data Lake tier. The default retention is 30 days, and you can extend it up to 12 years. For a list of tables, see [Microsoft Defender XDR integration with Microsoft Sentinel](connect-microsoft-365-defender?tabs=MDE#connect-events). You can ingest supported XDR tables that you didn't select during connector deployment into the Analytics tier and mirror them to the Data Lake tier by setting retention to more than 30 days.
-
-If you don't enable the Microsoft Sentinel XDR connector, XDR tables aren't automatically ingested, but you can still ingest them by setting Analytics or Data Lake tier retention to more than 30 days in the Microsoft Defender portal.
-
-You can choose to ingest supported XDR tables exclusively into the Data Lake tier by selecting the **Data Lake tier** option when configuring retention settings. For more information, see [Configure data retention and tiering](configure-data-connector?tabs=defender-portal#configure-data-retention-and-tiering).
-
-Warning
-
-Resetting analytics retention and total retention to the default 30 days disables the connector in the Azure portal.
-
-To stop ingesting data into the Analytics tier, reset analytics retention and total retention to the default 30 days.
-
-For more information about managing your tables and data, see [Manage your existing tables and data](manage-table-tiers-retention).
-
-#### XDR data retention and costs
-
-The following tables summarize the free retention periods and cost implications for the different tiers in Microsoft Sentinel:
-
-| Tier | Retention | Notes |
-| --- | --- | --- |
-| Advanced hunting (default) | 30 days | Default, included in the XDR license. |
-| Analytics tier | 31-90 days | Free storage for Sentinel-enabled workspaces. Data is mirrored to the data lake. Sentinel ingestion charges apply. |
-| Data Lake tier | Configurable. By default, the same as the analytics tier. | Free storage when total retention is the same as analytics tier retention.Retaining data in the Data Lake tier beyond analytics tier retention incurs Data Lake tier storage costs.Ingesting data directly into the Data Lake tier incurs ingestion, storage, and processing costs. |
-
-For more information about billing and costs, see [Understand the full billing model for Microsoft Sentinel](billing#understand-the-full-billing-model-for-microsoft-sentinel).
-
-In the following examples, XDR data is available through advanced hunting for at least 30 days, regardless of the retention settings in the analytics or data lake tiers.
-
-| Analytics tier retention | Total retention | Analytics tier ingestion costs | Analytics tier storage costs | Data Lake tier costs |
-| --- | --- | --- | --- | --- |
-| 30 days default | 30 days default | No additional costs | N/A | N/A |
-| 90 days | 90 days | Costs apply for analytics tier ingestion. | No additional costs. 90 days included free. | No additional costs. Total retention matches analytics tier retention. |
-| 90 days | 180 days | Costs apply for analytics tier ingestion. | No additional costs; 90 days included free. | Costs apply for 90 days of additional data lake retention (180 - 90 days). |
-| 180 days | 1 year | Costs apply for analytics tier ingestion. | Costs apply for 90 days of additional analytics tier retention. | Costs apply for 185 days of additional data lake retention (365 - 180 days). |
-| 0 days (data lake only) | 5 years | N/A | N/A | Costs apply for ingestion and for 5 years of data lake retention. |

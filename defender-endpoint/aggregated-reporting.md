@@ -17,7 +17,8 @@ ms.collection:
 - m365-security
 - tier3
 ms.topic: article
-ms.date: 2025-10-20T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 118910ce-fbfb-6db9-4864-bc844759810a
 document_version_independent_id: 118910ce-fbfb-6db9-4864-bc844759810a
@@ -94,7 +95,7 @@ Turning on aggregated reporting improves signal visibility, which might incur hi
 
 To query new data with aggregated reports:
 
-1. Go to **Investigation & response** &gt; **Hunting** &gt; **Custom detection rules**.
+1. Go to **Investigation & response** &gt; **Detection** &gt; **Custom detection rules**.
 2. Review and modify [existing rules and queries](/en-us/defender-xdr/custom-detection-rules) that might be affected by aggregated reporting.
 3. When necessary, create new custom rules to incorporate new action types.
 4. Go to the **Advanced Hunting** page and query the new data.

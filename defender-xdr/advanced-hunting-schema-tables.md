@@ -20,7 +20,7 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
-- msecd-doc-authoring-1032
+- msecd-doc-authoring-1030
 ms.topic: reference
 ms.date: 2026-11-09T00:00:00.0000000Z
 ai-usage: ai-assisted

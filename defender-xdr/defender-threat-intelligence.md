@@ -21,6 +21,7 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ta
+- msecd-doc-authoring-1030
 ms.topic: overview
 ms.date: 2026-08-31T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -58,7 +59,7 @@ Threat intelligence in the Microsoft Defender portal brings together Microsoft t
 
 ## Threat intelligence with ISOC
 
-For Integrated Security Operations Center (ISOC) customers, an [ISOC workspace](onboard-isoc-workspace) is required to use threat intelligence capabilities available in preview.
+For Integrated Security Operations Center (ISOC) customers, an [ISOC workspace](onboard-isoc-workspace) is required to use threat intelligence capabilities.
 
 For ISOC eligibility requirements, see [ISOC in Microsoft Defender](isoc-overview).
 

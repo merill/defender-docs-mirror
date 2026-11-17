@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 078cecfd-6e2e-350a-83de-8c0af96ef2e4
@@ -51,7 +51,7 @@ Use incident cases to track incident ownership, severity, status, classification
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 For an overview of Case Management, see [Case management in the Microsoft Defender portal](siem-defender-case-management).
 
@@ -84,7 +84,7 @@ To access the **Manage case** pane:
 1. Update the fields you need.
 2. Select **Save**.
 
-Available fields can vary by tenant configuration and preview scope.
+Available fields can vary by tenant configuration.
 
 ## Assign an incident case to an owner
 

@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1018
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 8a731aa7-9bcc-75f1-29b0-6791890f3444
@@ -51,7 +51,7 @@ For case management tasks, such as assigning ownership, updating status, adding 
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 ## Prerequisites
 

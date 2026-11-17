@@ -28,7 +28,9 @@ author: mberdugo
 ms.collection:
 - usx-security
 ms.topic: reference
-ms.date: 2025-05-06T00:00:00.0000000Z
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1032
+ms.date: 2026-11-15T00:00:00.0000000Z
 locale: en-us
 document_id: 39ba3288-2fe1-0fa1-df7a-6db393f7f00d
 document_version_independent_id: de93cae5-1680-6b42-d068-a2dc601bccbe
@@ -44,10 +46,10 @@ item_type: Content
 source_path: sentinel/soc-optimization/soc-optimization-reference.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: d703e32a-4344-7c72-bda1-a921bf3cc55a
 ---
 
@@ -64,6 +66,7 @@ Microsoft Sentinel SOC optimizations include the following types of recommendati
     - **AI MITRE ATT&CK tagging recommendations (Preview)**: Uses artificial intelligence to suggest tagging security detections with MITRE ATT&CK tactics and techniques.
     - **Risk-based recommendations (Preview)**: Recommends implementing controls to address coverage gaps linked to use cases that may result in business risks or financial losses, including operational, financial, reputational, compliance, and legal risks.
 - **Similar organizations recommendations** suggest ingesting data from the types of sources used by organizations which have similar ingestion trends and industry profiles to yours.
+- **Lower Defender data costs recommendations** find Microsoft Defender XDR tables that you ingest into a Microsoft Sentinel workspace when the same data is already available in Microsoft Defender.
 
 This article provides a detailed reference of the types of SOC optimization recommendations available.
 
@@ -158,4 +161,22 @@ SOC optimization uses advanced machine learning to identify tables that are miss
 ### Considerations
 
 - A workspace only receives similar organization recommendations if the machine learning model identifies significant similarities with other organizations and discovers tables that they have but you don't. SOCs in their early or onboarding stages are more likely to receive these recommendations than SOCs with a higher level of maturity. Not all workspaces get similar organizations recommendations.
-- The machine learning models never access or analyze the content of customer logs or ingest them at any point. No customer data, content, or personal data (EUII) is exposed to the analysis. Recommendations are based on machine learning models that rely solely on Organizational Identifiable Information (OII) and system metadata.
+- The machine learning models never access or analyze the content of customer logs or ingest them at any point. No customer data, content, or personal data is exposed to the analysis. Recommendations are based on machine learning models that rely solely on organization-level metadata and system metadata.
+
+## Lower Defender data costs recommendations
+
+SOC optimization shows a **Lower Defender data costs** recommendation when a Microsoft Defender XDR table is ingested into a Microsoft Sentinel workspace, and the same data is available in Microsoft Defender for 90 days as part of ISOC. SIEM features can query this data in Microsoft Defender. For more information, see [Data ingestion, retention, and billing for ISOC](/en-us/defender-xdr/integrated-security-operations-data-billing-retention).
+
+Each recommendation covers one table in one workspace. The recommendation shows the analytics rules, workbooks, and playbooks that use the table.
+
+Completing a recommendation doesn't lower costs by itself. Costs go down only after you stop ingestion for the supported Defender XDR tables with **Configure workspace**.
+
+Important
+
+You can't stop ingestion for a single table. **Configure workspace** stops ingesting data into Log Analytics for the supported Defender XDR tables in the workspace at the same time, except tables with analytics retention set to 180 days or more, which stay ingested. Before you select it, make sure no analytics rules, workbooks, playbooks, or other content still use these tables in Log Analytics, and that you don't need to keep any of them in Log Analytics for compliance or other reasons.
+
+| Type of observation | Action |
+| --- | --- |
+| A Microsoft Defender XDR table is ingested into a Microsoft Sentinel workspace, and the same data is available in Microsoft Defender. | Update the content that uses the table, such as analytics rules, workbooks, and playbooks, to use Defender data through Advanced Hunting instead of Log Analytics. After you complete all **Lower Defender data costs** recommendations, stop ingestion for the supported Defender XDR tables. In the Microsoft Defender portal, go to **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, select the **Tables** tab, and then select **Configure workspace**. Stopping this ingestion lowers your costs. |
+
+These recommendations don't change status automatically. Set the status yourself: **In progress**, **Completed**, or **Dismissed**.

@@ -23,8 +23,8 @@ ms.collection:
 - msftsolution-secops
 ms.topic: overview
 ai-usage: ai-assisted
-ms.date: 2026-09-14T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1014
+ms.date: 2026-10-22T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 0bd08118-cd70-ac39-7608-d197e3b92c08
 document_version_independent_id: 0bd08118-cd70-ac39-7608-d197e3b92c08
@@ -55,10 +55,6 @@ platformId: bb66c1b2-59a5-a1a6-e6db-71f616ada2ba
 
 Integrated Security Operations Center (ISOC) in Microsoft Defender brings leading XDR and SIEM capabilities, threat intelligence, automation, and AI together in the Microsoft Defender portal. ISOC gives security teams shared security signals, context, and workflows to detect, investigate, and respond to threats faster from one integrated experience.
 
-Note
-
-ISOC is in preview. Capabilities and availability might change during the preview period.
-
 [![Screenshot of the Microsoft Defender home page showing the Integrated Security Operations Center capabilities banner.](media/isoc-overview/integrated-security-operations-defender-home.png)](media/isoc-overview/integrated-security-operations-defender-home.png#lightbox)
 
 ## ISOC advantages
@@ -66,14 +62,16 @@ ISOC is in preview. Capabilities and availability might change during the previe
 ISOC helps security teams:
 
 - **Integrated security operations** - Leading SIEM capabilities are available out of the box in Microsoft Defender, delivering immediate security operations value from day one without requiring a traditional SIEM deployment as a starting point.
-- **Value from Microsoft 365 investments** - Eligible customers receive 30 days of included retention for Defender data during this phase of the preview. For broader visibility, bring in additional Microsoft and non-Microsoft data through more than 500 data connectors. Additional ingestion charges might apply depending on the data you ingest.
+- **Value from Microsoft 365 investments** - Eligible customers receive 30 days of included retention for Defender data during this phase of the preview. For broader visibility, bring in additional Microsoft and non-Microsoft data through more than 500 [data connectors](/en-us/azure/sentinel/connect-data-sources?tabs=defender-portal). Additional ingestion charges might apply depending on the data you ingest.
 - **Path for agentic security** - Security teams and Perception agents work together on a common set of signals, context, and workflows, enabling faster investigations, coordinated response, and improved security outcomes.
 
 ## Who can use ISOC?
 
-During this phase of the preview, ISOC is available to eligible customers with Microsoft Defender Suite, Microsoft 365 E5, or Microsoft 365 E7 that don't have an active Microsoft Sentinel workspace.
+ISOC is available to eligible customers with Microsoft Defender Suite, Microsoft 365 E5, or Microsoft 365 E7.
 
-If your organization has an active Microsoft Sentinel workspace, continue using your existing Microsoft Sentinel experience during this phase. Don't disconnect a production Microsoft Sentinel workspace only to qualify for the ISOC preview.
+Eligible customers without an existing Microsoft Sentinel deployment can start using ISOC directly in the Microsoft Defender portal.
+
+Eligible customers with an existing Microsoft Sentinel deployment can choose to transition their deployment to ISOC. Existing Microsoft Sentinel customers aren't automatically moved to ISOC.
 
 ## Prerequisites
 
@@ -91,29 +89,32 @@ To compare the security capabilities included with Microsoft 365 enterprise plan
 
 ISOC lets eligible customers start with security operations capabilities built into Microsoft Defender and expand with additional data and capabilities when needed.
 
-- Start immediately with case management, workbooks, and natural-language playbook generation.
-- Add an ISOC workspace when you need additional Microsoft and non-Microsoft data ingestion, UEBA, Content hub connectors, repositories (CI/CD), threat intelligence, and other workspace-dependent capabilities.
+- Start immediately with case management, workbooks, natural-language playbook generation, and SOC optimization.
+- Use [Content hub](content-hub-defender) and repository connections (CI/CD) to deploy supported Defender-level content at tenant scope without an ISOC workspace.
+- Add an ISOC workspace when you need additional Microsoft and non-Microsoft data ingestion, UEBA, threat intelligence, and other workspace-dependent capabilities.
 
-The following table summarizes the workspace requirements for the capabilities covered in this preview.
+The following table summarizes the workspace requirements for ISOC capabilities.
 
 | Capability | ISOC workspace required | Learn more |
 | --- | --- | --- |
 | Case management | No | [Case management in the Microsoft Defender portal](siem-defender-case-management) |
 | Natural-language playbook generation | No | [Generate playbooks using AI with ISOC](siem-defender-generate-playbooks) |
 | Enhanced automation rule | No | [Create automation rules with ISOC in Microsoft Defender](siem-defender-create-automation-rules) |
-| Workbooks | No | [Create and manage workbooks with ISOC in Microsoft Defender](siem-defender-workbooks) |
+| SOC optimization | No | [Review SOC optimization recommendations](/en-us/azure/sentinel/transition-soc-optimization-recommendations) |
 | User and Entity Behavior Analytics (UEBA) | Yes | [Add UEBA to Microsoft 365 E5 data](extend-ueba) |
-| Content hub | Yes | [Use Content hub with ISOC in Microsoft Defender](content-hub-defender) |
-| CI/CD | Yes | [Deploy content as code from your repository for an ISOC workspace](deploy-content-integrated-security-operations) |
+| Content hub | Depends on deployment target | [Use Content hub with ISOC in Microsoft Defender](content-hub-defender) |
+| CI/CD | Depends on deployment target | [Deploy content as code with ISOC in Microsoft Defender](deploy-content-integrated-security-operations) |
 | Threat intelligence | Yes | [Threat intelligence in Microsoft Defender](defender-threat-intelligence) |
-| Azure and third-party security data | Yes | [Data ingestion and billing for ISOC](integrated-security-operations-data-billing-retention) |
+| Azure and third-party security data | Yes | [Data ingestion, retention, and billing for ISOC](integrated-security-operations-data-billing-retention) |
 
 Note
 
-This table shows whether an ISOC workspace is required for each capability during this preview. It doesn't indicate licensing or availability for the same capabilities in other Microsoft security experiences.
+This table shows whether an ISOC workspace is required for each capability. For Content hub and CI/CD, workspace-level deployments require an ISOC or Microsoft Sentinel workspace. Supported Defender-level content can be deployed at tenant scope without a workspace. This table doesn't indicate licensing or availability for the same capabilities in other Microsoft security experiences.
 
 ## Get started
 
-If the capabilities you want to use require an ISOC workspace, see [Create an ISOC workspace in the Microsoft Defender portal](onboard-isoc-workspace).
+To deploy supported Defender-level content at tenant scope, use [Content hub](content-hub-defender) or [repository connections](deploy-content-integrated-security-operations) without creating an ISOC workspace.
 
-For information about ingesting additional security data and understanding billing, see [Data ingestion and billing for ISOC](integrated-security-operations-data-billing-retention).
+To use capabilities that require an ISOC workspace, see [Create an ISOC workspace in the Microsoft Defender portal](onboard-isoc-workspace).
+
+For information about security data, included retention, and additional ingestion and retention charges, see [Data ingestion, retention, and billing for ISOC](integrated-security-operations-data-billing-retention).

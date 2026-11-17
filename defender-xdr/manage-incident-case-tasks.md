@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0171450e-19f7-9def-642e-5dd64c241009
@@ -51,7 +51,7 @@ Incident case tasks help security operations teams coordinate investigation, res
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 For an overview of case management, see [Case management in the Microsoft Defender portal](siem-defender-case-management).
 

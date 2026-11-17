@@ -65,7 +65,7 @@ This service supports [Azure Lighthouse](/en-us/azure/lighthouse/overview), whic
 Microsoft Sentinel provides security content packaged in SIEM solutions that enable you to ingest data, monitor, alert, hunt, investigate, respond, and connect with different products, platforms, and services.
 
 # [Defender portal](#tab/defender-portal)
-[![Screenshot of the Microsoft Sentinel content hub in the Defender portal that shows the security content available with a solution.](media/overview/content-hub-defender-portal.png)](media/overview/content-hub-defender-portal.png#lightbox)
+[![Screenshot of the content hub in the Defender portal with the SOC Handbook solution selected and its details displayed.](media/overview/content-hub-defender-portal.png)](media/overview/content-hub-defender-portal.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
 [![Screenshot of the Microsoft Sentinel content hub in the Azure portal that shows the security content available with a solution.](media/overview/content-hub-azure-portal.png)](media/overview/content-hub-azure-portal.png#lightbox)
@@ -79,7 +79,9 @@ For more information, see [About Microsoft Sentinel content and solutions](senti
 Collect data across all users, devices, applications, and infrastructure, both on-premises and in multiple clouds.
 
 # [Defender portal](#tab/defender-portal)
-[![Screenshot of the Microsoft Sentinel data connectors page in the Defender portal that shows a list of available connectors.](media/overview/data-connector-list-defender.png)](media/overview/data-connector-list-defender.png#lightbox)
+To view Microsoft Sentinel data connectors, select **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, select the **Connectors** tab, and select **Classic connectors - Microsoft Sentinel** from the connector selector.
+
+[![Screenshot of Data &amp; connectors in the Defender portal, with the Connectors tab selected and the Classic connectors - Microsoft Sentinel inventory displayed.](media/overview/data-connector-list-defender.png)](media/overview/data-connector-list-defender.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
 [![Screenshot of the data connectors page in Microsoft Sentinel that shows a list of available connectors.](media/overview/data-connectors.png)](media/overview/data-connectors.png#lightbox)
@@ -99,7 +101,7 @@ This table highlights the key capabilities in Microsoft Sentinel for data collec
 Detect previously undetected threats and minimize false positives using Microsoft's analytics and unparalleled threat intelligence.
 
 # [Defender portal](#tab/defender-portal)
-[![Screenshot of the MITRE coverage page with both active and simulated indicators selected in Microsoft Defender.](media/overview/mitre-coverage-defender.png)](media/overview/mitre-coverage-defender.png#lightbox)
+[![Screenshot of MITRE ATT&amp;CK coverage in the Defender portal, with Account Manipulation selected and its detections and coverage details displayed.](media/overview/mitre-coverage-defender.png)](media/overview/mitre-coverage-defender.png#lightbox)
 
 # [Azure portal](#tab/azure-portal)
 [![Screenshot of the MITRE coverage page with both active and simulated indicators selected.](media/overview/mitre-coverage.png)](media/overview/mitre-coverage.png#lightbox)
@@ -120,7 +122,7 @@ This table highlights the key capabilities in Microsoft Sentinel for threat dete
 
 Investigate threats with artificial intelligence, and hunt for suspicious activities at scale, tapping into years of cyber security work at Microsoft.
 
-[![Screenshot of an incident investigation that shows an entity and connected entities in an interactive graph.](media/overview/map-timeline.png)](media/overview/map-timeline.png#lightbox)
+[![Screenshot of an incident's Attack story tab in the Defender portal, showing alerts and an incident graph with related users, devices, processes, files, URLs, and IP addresses.](media/overview/map-timeline.png)](media/overview/map-timeline.png#lightbox)
 
 This table highlights the key capabilities in Microsoft Sentinel for threat investigation.
 

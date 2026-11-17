@@ -45,10 +45,12 @@ item_type: Content
 source_path: sentinel/watchlists-create.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 99cdfbe9-35fc-0404-71be-7b11f1cae826
 ---
 
@@ -85,7 +87,7 @@ You have two ways to upload a CSV file from your local machine to create a watch
 
 If you didn't use a watchlist template to create the CSV watchlist file:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select **+ New** to open the **Watchlist wizard**.
 
     [![Screenshot of the Microsoft Sentinel Watchlist page with the New button highlighted.](media/watchlists-create/sentinel-watchlist-new-defender.png)](media/watchlists-create/sentinel-watchlist-new-defender.png#lightbox)
@@ -119,7 +121,7 @@ It might take several minutes for the watchlist to be created and the new data t
 
 To create a watchlist from a populated watchlist template file:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select the tab **Templates (Preview)**.
 3. Select the appropriate template from the list to view details of the template in the right pane.
 4. Select **Create from template** to open the **Watchlist wizard**.
@@ -192,7 +194,7 @@ For more information, see [CORS support for Azure Storage](/en-us/rest/api/stora
 
 To add the watchlist from Azure Storage to your Microsoft Sentinel workspace, complete the following steps:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select **+ New** to open the **Watchlist wizard**.
 3. On the **General** page, enter the name, description, and alias for the watchlist, and then select **Next: Source**.
 4. On the **Source** page, use the information in the following table to upload your watchlist data, and then select **Next: Review + create**.
@@ -212,7 +214,7 @@ It might take a while for a large watchlist to be created and for the new data t
 
 To create a watchlist from scratch:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select **+ New** to open the **Watchlist wizard**.
 3. On the **General** page, enter the name, description, and alias for the watchlist, and then select **Next: Source**.
 4. On the **Source** page, choose **Manual (Preview)** as the **Source type**.
@@ -232,7 +234,7 @@ Watchlists you create manually automatically contain a single entry that uses de
 
 To view the status of a watchlist in your workspace:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. On the **My Watchlists** tab, select the watchlist.
 3. On the details page, review the **Status (Preview)**.
 
@@ -249,7 +251,7 @@ Each built-in watchlist template has its own set of data listed in the CSV file 
 
 To download one of the watchlist templates:
 
-1. In the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**.
+1. For Microsoft Sentinel in the [Defender portal](https://security.microsoft.com/), go to **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlist**. For [ISOC in Microsoft Defender](/en-us/defender-xdr/isoc-overview), go to **Setup & configuration** &gt; **Data management** &gt; **Watchlist**.
 2. Select the tab **Templates (Preview)**.
 3. Select a template from the list to view details of the template in the right pane.
 4. Select the ellipses **...** at the end of the row.

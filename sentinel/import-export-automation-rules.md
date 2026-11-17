@@ -70,11 +70,18 @@ After **March 31, 2027**, Microsoft Sentinel will no longer be supported in the 
 
 If you're still using Microsoft Sentinel in the Azure portal, we recommend that you start planning your [transition to the Defender portal](move-to-defender) to ensure a smooth transition and take full advantage of the [unified security operations experience offered by Microsoft Defender](/en-us/defender-xdr/isoc-overview).
 
+Note
+
+To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+- In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+- In ISOC main navigation menu: **Automation**.
+
 ## Export automation rules to ARM templates
 
 To export one or more automation rules to a JSON file, perform the following steps:
 
-1. From the Microsoft Sentinel navigation menu, select **Automation**.
+1. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select **Automation** from the navigation menu.
 2. Select the rule (or rules—see note) you want to export, and select **Export** from the bar at the top of the screen.
 
     [![Screenshot showing how to export an automation rule.](media/import-export-automation-rules/export-automation-rule.png)](media/import-export-automation-rules/export-automation-rule.png#lightbox)
@@ -92,7 +99,7 @@ To export one or more automation rules to a JSON file, perform the following ste
 To import automation rules from an ARM template JSON file, perform the following steps:
 
 1. Have an automation rule ARM template JSON file ready.
-2. From the Microsoft Sentinel navigation menu, select **Automation**.
+2. For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select **Automation** from the navigation menu.
 3. Select **Import** from the bar at the top of the screen. In the resulting dialog box, navigate to and select the JSON file representing the rule you want to import, and select **Open**.
 
     [![Screenshot showing how to import an automation rule.](media/import-export-automation-rules/import-automation-rule.png)](media/import-export-automation-rules/import-automation-rule.png#lightbox)

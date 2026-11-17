@@ -22,8 +22,10 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
+- msecd-doc-authoring-1030
 ms.topic: concept-article
-ms.date: 2026-06-09T00:00:00.0000000Z
+ms.date: 2026-10-15T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 485b66a5-0967-f695-8102-d7278977a3af
 document_version_independent_id: 485b66a5-0967-f695-8102-d7278977a3af
@@ -70,7 +72,7 @@ If you're currently using Microsoft Sentinel in the Azure portal, we recommend t
 
 You can query data in any workload that you can currently access based on your roles and permissions.
 
-To query across Microsoft Sentinel and Microsoft Defender data in the unified advanced hunting page, you need at least the Microsoft Sentinel Reader role. For more information, see [Microsoft Sentinel-specific roles](/en-us/azure/sentinel/roles#microsoft-sentinel-specific-roles).
+To query across Microsoft Sentinel and Microsoft Defender data in the unified advanced hunting page, you need at least the Microsoft Sentinel Reader role. For more information, see [Microsoft Sentinel-specific roles](/en-us/azure/sentinel/roles#built-in-azure-roles-for-microsoft-sentinel).
 
 ### Connect a workspace
 
@@ -78,12 +80,16 @@ In Microsoft Defender, you can connect workspaces by selecting **Connect a works
 
 After connecting your Microsoft Sentinel workspace and Microsoft Defender XDR advanced hunting data, you can start querying Microsoft Sentinel data from the advanced hunting page. For an overview of advanced hunting features, read [Proactively hunt for threats with advanced hunting](advanced-hunting-overview).
 
+Note
+
+Starting November 15, 2026, Microsoft 365 E5 customers can query supported Microsoft Defender XDR data for up to 90 days in advanced hunting. For queries that look back more than 30 days, **Query details** shows **Kusto** in the **Data sources** field, and **Age of processed data** shows the actual queried duration. For supported data and retention details, see [Data ingestion, retention, and billing for ISOC in Microsoft Defender](integrated-security-operations-data-billing-retention).
+
 ## What to expect for Defender XDR tables streamed to Microsoft Sentinel
 
-- **Use tables with longer data retention periods in queries** – Advanced hunting follows the maximum data retention period you set for the Defender tables (see [Understand quotas](advanced-hunting-limits#understand-advanced-hunting-quotas-and-usage-parameters)). If you [stream Defender tables](/en-us/defender-xdr/streaming-api) to Microsoft Sentinel and set a data retention period longer than 30 days for those tables, you can query for the longer period in advanced hunting.
+- **Use tables with longer data retention periods in queries** – Advanced hunting follows the available retention period for the data you query (see [Understand quotas](advanced-hunting-limits#understand-advanced-hunting-quotas-and-usage-parameters)). Microsoft 365 E5 customers can query supported native Defender XDR data for up to 90 days. If you [stream Defender tables](/en-us/defender-xdr/streaming-api) to Microsoft Sentinel and configure a longer retention period, you can query the data for the longer available period in advanced hunting.
 - **Use Kusto operators you use in Microsoft Sentinel** – In general, queries from Microsoft Sentinel work in advanced hunting, including queries that use the `adx()` operator. IntelliSense might warn you that the operators in your query don't match the schema. However, you can still run the query and it should execute successfully.
-- **Use the time filter dropdown instead of setting the time span in the query** – If you're filtering ingestion of Defender tables to Sentinel instead of streaming the tables as is, don't filter the time in the query as this action might generate incomplete results. If you set the time in the query, the streamed, filtered data from Sentinel is used because it usually has the longer data retention period. If you want to make sure you're querying all Defender data for up to 30 days, use the time filter dropdown provided in the query editor instead.
-- **View `SourceSystem` and `MachineGroup` columns for Defender data that you stream from Microsoft Sentinel** – Since the columns `SourceSystem` and `MachineGroup` are added to Defender tables once you stream them to Microsoft Sentinel, they also appear in results in advanced hunting in Defender. However, they remain blank for Defender tables that you don't stream (tables that follow the default 30-day data retention period).
+- **Use the time filter dropdown instead of setting the time span in the query** – If you're filtering ingestion of Defender tables to Sentinel instead of streaming the tables as is, don't filter the time in the query as this action might generate incomplete results. If you set the time in the query, the streamed, filtered data from Sentinel is used because it usually has the longer data retention period. If you want to make sure you're querying native Defender XDR data for the available retention period, use the time filter dropdown provided in the query editor instead.
+- **View `SourceSystem` and `MachineGroup` columns for Defender data that you stream from Microsoft Sentinel** – Since the columns `SourceSystem` and `MachineGroup` are added to Defender tables once you stream them to Microsoft Sentinel, they also appear in results in advanced hunting in Defender. However, they remain blank for Defender tables that you query directly from Microsoft Defender XDR instead of streaming to Microsoft Sentinel.
 
 Note
 
@@ -122,9 +128,15 @@ In the unified portal, you can view the schema column names and descriptions, as
 
 - Guided hunting mode and take actions capabilities support Defender XDR data only.
 - Custom detections have the following limitations:
+
     - Near real-time detection frequency isn't available for detections that include Microsoft Sentinel data.
     - Custom functions that you create and save in Microsoft Sentinel aren't supported.
-- Bookmarks aren't supported in the advanced hunting experience. They're supported in the **Microsoft Sentinel &gt; Threat management &gt; Hunting** feature. Alternatively, you can use the [Link to incident](advanced-hunting-defender-results#link-query-results-to-an-incident) feature to link query results to new or existing incidents.
+- Bookmarks aren't supported in the advanced hunting experience. They're supported in the Microsoft Sentinel-specific hunting experience:
+
+    - In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+    - In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
+
+    Alternatively, you can use the [Link to incident](advanced-hunting-defender-results#link-query-results-to-an-incident) feature to link query results to new or existing incidents.
 - If you're streaming Defender XDR tables to Log Analytics, there might be a difference between the `Timestamp` and `TimeGenerated` columns. If the data arrives to Log Analytics after 48 hours, the ingestion process overrides it to `now()`. Therefore, to get the actual time the event happened, rely on the `Timestamp` column.
 - When prompting [Security Copilot](advanced-hunting-security-copilot) for advanced hunting queries, you might find that not all Microsoft Sentinel tables are currently supported. However, support for these tables can be expected in the future.
 - When a query contains a function with a time range defined within the function, the time range applied through the advanced hunting or custom detections UI overrides the function's intended time scope instead of using the **Set in query** option.

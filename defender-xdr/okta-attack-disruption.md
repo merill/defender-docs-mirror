@@ -38,9 +38,11 @@ item_type: Content
 source_path: defender-xdr/okta-attack-disruption.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: 0146102d-9025-d20d-40e9-20d63f5bb99b
 ---
@@ -89,7 +91,12 @@ This token is a secret that allows connecting to your Okta environment and perfo
 To create the integration in the Defender portal, follow these steps:
 
 1. Log in to the [Defender portal](https://security.microsoft.com/)
-2. Navigate **Microsoft Sentinel** -&gt; **Configuration** -&gt; **Automation**.
+2. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
 3. In the **Integrations profiles** tab, select **+Create** to create a new integration.
 
     ![Screenshot of the Integrations profile tab in the Automation page with the Create button highlighted.](media/okta-attack-disruption/create-new-integration.png)

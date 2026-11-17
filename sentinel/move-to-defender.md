@@ -29,7 +29,7 @@ ms.topic: how-to
 ms.date: 2026-09-10T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1028
+ms.custom: msecd-doc-authoring-1023
 locale: en-us
 document_id: a6a0f54f-1bcd-f8f5-1010-3cf121ef687d
 document_version_independent_id: d6fa3825-581d-d394-8e93-4ad7e2b9a124
@@ -309,7 +309,12 @@ For more information, see [Incidents and alerts in the Microsoft Defender portal
 
 After onboarding Microsoft Sentinel to the Defender portal, access and use all your existing log tables, Kusto Query Language (KQL) queries, and functions in the **Advanced hunting** page. All Microsoft Sentinel alerts that are tied to incidents are ingested into the `AlertInfo` table, accessible from the **Advanced hunting** page.
 
-Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting**, which provides the Microsoft Sentinel-specific hunting experience. You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
+Bookmarks aren't available in Advanced hunting, which provides a unified query experience across Microsoft Defender and Microsoft Sentinel data. However, bookmarks are still available in the Microsoft Sentinel-specific hunting experience:
+
+- In Microsoft Sentinel: **Microsoft Sentinel &gt; Threat management &gt; Hunting**.
+- In ISOC main navigation menu: **Investigation & response &gt; Hunts**.
+
+You can also use alternatives such as incident tags, saved queries, or custom hunting tables to preserve and track investigation context.
 
 For more information, see [Advanced hunting with Microsoft Sentinel data in Microsoft Defender](/en-us/defender-xdr/advanced-hunting-microsoft-defender), especially the list of [known issues for advanced hunting with Microsoft Sentinel data](/en-us/defender-xdr/advanced-hunting-microsoft-defender), and [Keep track of data during hunting with Microsoft Sentinel](/en-us/azure/sentinel/bookmarks).
 

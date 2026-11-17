@@ -26,9 +26,9 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: 88c619d6-058a-61a7-d3b1-873d6443d909
@@ -45,10 +45,12 @@ item_type: Content
 source_path: sentinel/create-analytics-rule-from-template.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 9d99524f-36c2-a007-668c-9649144d19a9
 ---
 
@@ -73,7 +75,7 @@ To view the installed analytics rules in Microsoft Sentinel, go to the **Analyti
 # [Defender portal](#tab/defender-portal)
 Use the following steps to view existing analytics rule templates in the Defender portal.
 
-1. From the Microsoft Defender navigation menu, expand **Microsoft Sentinel**, then **Configuration**. Select **Analytics**.
+1. From the Microsoft Defender navigation menu, select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 2. On the **Analytics** screen, select the **Rule templates** tab.
 3. If you want to filter the list for **Scheduled** templates:
 
@@ -101,7 +103,7 @@ Use the following steps to view existing analytics rule templates in the Azure p
 This procedure describes how to create an analytics rule from a template.
 
 # [Defender portal](#tab/defender-portal)
-From the Microsoft Defender navigation menu, expand **Microsoft Sentinel**, then **Configuration**. Select **Analytics**.
+From the Microsoft Defender navigation menu, select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 
 # [Azure portal](#tab/azure-portal)
 From the **Configuration** section of the Microsoft Sentinel navigation menu, select **Analytics**.

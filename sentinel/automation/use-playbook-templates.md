@@ -45,12 +45,12 @@ item_type: Content
 source_path: sentinel/automation/use-playbook-templates.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/e60d1924-c4ad-4104-bd1b-973758bbac7a
+- https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/91d5f984-ee3d-43c4-9daf-bb09a6bc4e1a
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 77e09a5b-4120-cbc9-0fe5-ac12bae84a94
 ---
 
@@ -101,9 +101,14 @@ For Microsoft Sentinel in the [Azure portal](https://portal.azure.com), select t
 
 On the **Content hub** page, select **Content type** to filter for **Playbook**. The filtered **Content hub** page lists all the solutions and standalone content that include one or more playbook templates. Install the solution or standalone content to get the template.
 
-To view the installed templates, select **Configuration** &gt; **Automation** &gt; **Playbook templates** tab. For example:
+Note
 
-[![Screenshot of the playbook templates gallery.](../media/use-playbook-templates/gallery.png)](../media/use-playbook-templates/gallery.png#lightbox)
+To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+- In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+- In ISOC main navigation menu: **Automation**.
+
+In the [Azure portal](https://portal.azure.com), select **Configuration** &gt; **Automation**. Then, in either portal, select the **Playbook templates** tab to view the installed templates. For example: To view the installed templates, select the **Playbook templates** option within the Playbook tab. For example: [![Screenshot of the playbook templates gallery.](../media/use-playbook-templates/gallery.png)](../media/use-playbook-templates/gallery.png#lightbox)
 
 To find a playbook template that fits your requirements, filter the list by the following criteria:
 

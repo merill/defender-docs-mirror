@@ -46,11 +46,9 @@ source_path: sentinel/automation/create-playbooks.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e60d1924-c4ad-4104-bd1b-973758bbac7a
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/91d5f984-ee3d-43c4-9daf-bb09a6bc4e1a
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 platformId: 225f5a4c-5d77-cbb6-27bc-12e31fff8312
 ---
 
@@ -95,7 +93,14 @@ Before you create or manage playbooks, make sure you meet the following prerequi
 
 Follow these steps to create a new playbook in Microsoft Sentinel:
 
-1. In the [Defender portal](https://security.microsoft.com/) or in the [Azure portal](https://portal.azure.com), go to your Microsoft Sentinel workspace. On the workspace menu, under **Configuration**, select **Automation**.
+1. Note
+
+    To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+    - In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+    - In ISOC main navigation menu: **Automation**.
+
+    In the [Azure portal](https://portal.azure.com), go to your Microsoft Sentinel workspace. On the workspace menu, under **Configuration**, select **Automation**.
 
 # [Defender portal](#tab/defender-portal)
 [![Screenshot showing the Logic App playbook creation menu in the Defender portal, including alert, case, blank, and legacy playbook options.](../media/create-playbooks/sentinel-logic-app-playbook-light-mode.png)](../media/create-playbooks/sentinel-logic-app-playbook-light-mode.png#lightbox)

@@ -44,8 +44,10 @@ item_type: Content
 source_path: sentinel/entity-behaviors-layer.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: bde4ff75-cdf4-47da-8d4a-12f21f2a0091
 ---
 
@@ -245,7 +247,7 @@ You must enable each supported data source for behaviors separately from other U
 To use the UEBA behaviors layer, you need:
 
 - A Microsoft Sentinel workspace that's onboarded to the Defender portal.
-- Connect and actively send logs from at least one supported data source into the Analytics tier. The UEBA behaviors layer only generates behaviors when supported data sources are connected and actively sending logs. For more information about data tiers, see [Manage data tiers and retention in Microsoft Sentinel](manage-data-overview#how-data-tiers-and-retention-work).
+- Connect and actively send logs from at least one supported data source into the Analytics tier. The UEBA behaviors layer only generates behaviors when supported data sources are connected and actively sending logs. For more information about data tiers, see [How data tiers and retention work](manage-table-tiers-retention#how-data-tiers-and-retention-work).
 
 ## Permissions required
 

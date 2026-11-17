@@ -26,10 +26,10 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: fc93f6e5-44a0-65e1-c154-d07104eaeb8e
 document_version_independent_id: 8e35cd34-c007-1cbc-0c4f-e19c6b4f56da
@@ -45,10 +45,12 @@ item_type: Content
 source_path: sentinel/map-data-fields-to-entities.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 8760b197-eaf3-1c80-0cf6-489eff235972
 ---
 
@@ -75,7 +77,7 @@ To map entities in an analytics rule, perform the following steps:
 From the **Configuration** section of the Microsoft Sentinel navigation menu, select **Analytics**.
 
 # [Defender portal](#tab/defender)
-From the Microsoft Defender navigation menu, expand **Microsoft Sentinel**, then **Configuration**. Select **Analytics**.
+From the Microsoft Defender navigation menu, select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 
 ---
 2. Select a scheduled query rule and select **Edit** from the details pane. Or create a new rule by clicking **Create &gt; Scheduled query rule** at the top of the screen.

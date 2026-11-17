@@ -26,10 +26,10 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: idpelleg
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: e7751deb-6d40-0c50-9384-f39279427e26
 document_version_independent_id: 42df02e9-eb5f-7112-2456-bd36d3ae2de1
@@ -46,9 +46,11 @@ source_path: sentinel/surface-custom-details-in-alerts.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/062d60c9-ee0f-402e-a046-b4e67c3572d6
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
 - https://authoring-docs-microsoft.poolparty.biz/devrel/17d3b3f6-a66e-4c69-9774-14a73c38e669
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 089ae3a0-608b-4ddd-04a4-5dde6dd98c52
 ---
 
@@ -73,7 +75,7 @@ Perform the following steps to surface custom event details in an analytics rule
 1. Enter the **Analytics** page in the portal through which you access Microsoft Sentinel:
 
 # [Microsoft Defender portal](#tab/defender)
-From the Microsoft Defender navigation menu, expand **Microsoft Sentinel**, then **Configuration**. Select **Analytics**.
+From the Microsoft Defender navigation menu, select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 
 # [Microsoft Azure portal](#tab/azure)
 From the **Configuration** section of the Microsoft Sentinel navigation menu, select **Analytics**.

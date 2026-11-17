@@ -26,10 +26,10 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: idpelleg
 ms.topic: how-to
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 0d72ee61-16b2-efc3-12a5-ee074cb6c9e3
 document_version_independent_id: 77b9eb71-9fa0-2cd5-aa6a-bf0f0d8f2e3c
@@ -45,10 +45,12 @@ item_type: Content
 source_path: sentinel/customize-alert-details.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 9742dd5f-ad46-0531-3c2c-c316346c9a02
 ---
 
@@ -78,7 +80,7 @@ Use the following procedure to customize alert details. These steps are part of 
 From the **Configuration** section of the Microsoft Sentinel navigation menu, select **Analytics**.
 
 # [Defender portal](#tab/defender)
-From the Microsoft Defender navigation menu, expand **Microsoft Sentinel**, then **Configuration**. Select **Analytics**.
+From the Microsoft Defender navigation menu, select **Investigation & response** &gt; **Detection** &gt; **Analytics**.
 
 ---
 2. Select a scheduled query rule and select **Edit**. Or create a new rule by selecting **Create &gt; Scheduled query rule** at the top of the screen.

@@ -26,10 +26,10 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: soulisabag
 ms.topic: overview
-ms.date: 2026-06-18T00:00:00.0000000Z
+ms.date: 2026-11-12T00:00:00.0000000Z
 ms.collection: usx-security
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1013
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: d90c1ec3-1323-0cf2-b10a-9bdc104b9f3a
 document_version_independent_id: 591e2fc1-c503-258e-e0b2-fc4394590f5e
@@ -44,13 +44,13 @@ monikers: []
 item_type: Content
 source_path: sentinel/microsoft-sentinel-defender-portal.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 561d77c0-ef3a-ee02-3b45-ecd664f5299f
 ---
 
@@ -157,9 +157,8 @@ The following table lists the changes in navigation between the Azure and Defend
 | Azure portal | Defender portal |
 | --- | --- |
 | **Overview** | **Overview** |
-| **Logs** | **Investigation & response** &gt; **Hunting** &gt; **Advanced hunting** |
+| **Logs** | **Investigation & response** &gt; **Advanced hunting** |
 | **News & guides** | Not available |
-| **Search** | **Microsoft Sentinel** &gt; **Search** |
 
 ### Threat management
 
@@ -168,12 +167,11 @@ The following table lists the changes in navigation between the Azure and Defend
 | Azure portal | Defender portal |
 | --- | --- |
 | **Incidents** | **Investigation & response** &gt; **Incidents & alerts** &gt; **Incidents** |
-| **Workbooks** | **Microsoft Sentinel** &gt; **Threat management** &gt; **Workbooks** |
-| **Hunting** | **Microsoft Sentinel** &gt; **Threat management** &gt; **Hunting** |
-| **Notebooks** | **Microsoft Sentinel** &gt; **Threat management** &gt; **Notebooks** |
-| **Entity behavior** | *User entity page:***Assets** &gt; **Identities** &gt; *{user}* &gt; **Sentinel events**AND*Device entity page:***Assets** &gt; **Devices** &gt; *{device}* &gt; **Sentinel events**Also, find the entity pages for the user, device, IP, and Azure resource entity types from incidents and alerts as they appear. |
-| **Threat intelligence** | **Threat intelligence** &gt; **Intel management** |
-| **MITRE ATT&CK** | **Microsoft Sentinel** &gt; **Threat management** &gt; **MITRE ATT&CK** |
+| **Workbooks** | **Dashboards & reports** &gt; **Workbooks** |
+| **Hunting** | **Investigation & response** &gt; **Hunts** |
+| **Notebooks** | **Investigation & response** &gt; **Notebooks** |
+| **Threat intelligence** | **Threat intelligence** &gt; **Intel explorer** |
+| **MITRE ATT&CK** | **Threat intelligence** &gt; **MITRE ATT&CK** |
 
 ### Content management
 
@@ -181,19 +179,26 @@ The following table lists the changes in navigation between the Azure and Defend
 
 | Azure portal | Defender portal |
 | --- | --- |
-| **Content hub** | **Microsoft Sentinel** &gt; **Content management** &gt; **Content hub** |
-| **Repositories** | **Microsoft Sentinel** &gt; **Content management** &gt; **Repositories** |
-| **Community** | **Microsoft Sentinel** &gt; **Content management** &gt; **Community** |
+| **Content hub** | **Content management** &gt; **Content hub** |
+| **Repositories** | **Content management** &gt; **Repositories** |
+| **Community** | **Content management** &gt; **Community** |
 
 ### Configuration
 
 The following table lists the changes in navigation between the Azure and Defender portals for the **Configuration** section in the Azure portal.
 
+Note
+
+To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+- In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+- In ISOC main navigation menu: **Automation**.
+
 | Azure portal | Defender portal |
 | --- | --- |
 | **Workspace manager** | Not available |
-| **Data connectors** | **Microsoft Sentinel** &gt; **Configuration** &gt; **Data connectors** |
-| **Analytics** | **Microsoft Sentinel** &gt; **Configuration** &gt; **Analytics**AND**Investigation and response** &gt; **Hunting** &gt; **Custom detection rules** |
-| **Watchlists** | **Microsoft Sentinel** &gt; **Configuration** &gt; **Watchlists** |
-| **Automation** | **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation** |
-| **Settings** | **System** &gt; **Settings** &gt;**Microsoft Sentinel** |
+| **Data connectors** | **Setup & configuration** &gt; **Data management** &gt; **Data & connectors** &gt; **Connectors** tab. Select **Classic connectors - Microsoft Sentinel** from the connector selector. |
+| **Analytics** | **Investigation & response** &gt; **Detection** &gt; **Analytics**AND**Investigation & response** &gt; **Detection** &gt; **Custom detection rules** |
+| **Watchlists** | **Setup & configuration** &gt; **Data management** &gt; **Watchlist** |
+| **Automation** | Automation navigation by package |
+| **Settings** | **Setup & configuration** &gt; **Settings** &gt; **Microsoft Sentinel** |

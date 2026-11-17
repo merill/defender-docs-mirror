@@ -20,6 +20,7 @@ ms.collection:
 - usx-security
 ms.topic: how-to
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: dbb40ef5-1da0-671b-d1bb-1a04500bb064
 document_version_independent_id: dbb40ef5-1da0-671b-d1bb-1a04500bb064
@@ -54,7 +55,7 @@ You must have a Microsoft Sentinel workspace because UEBA outputs are written to
 
 Important
 
-This preview is available for new and existing UEBA deployments.
+This capability is available for new and existing UEBA deployments.
 
 If you're already using UEBA with Microsoft Sentinel data, you must re-onboard UEBA from your primary Microsoft Sentinel workspace before you can connect Microsoft Defender XDR data sources.
 
@@ -166,7 +167,7 @@ You can connect eligible third-party and other non-XDR data that is ingested int
 
 Note
 
-**Microsoft Defender XDR sources** are made available based on your Microsoft 365 E5 and preview eligibility. You must still select and connect the sources that you want UEBA to analyze.
+**Microsoft Defender XDR sources** are made available based on your Microsoft 365 E5 eligibility. You must still select and connect the sources that you want UEBA to analyze.
 
 **Third-party and other non-XDR sources** become available after eligible data is ingested into the selected Microsoft Sentinel workspace. You must connect these sources separately. The data can be ingested through any supported method; a Microsoft Sentinel data connector isn't required.
 
@@ -202,7 +203,7 @@ UEBA outputs are written to the Log Analytics workspace associated with the Micr
 
 ## Limitations
 
-The following limitations apply during the preview:
+The following limitations apply:
 
 - Microsoft Defender XDR data sources can be connected only from your primary Microsoft Sentinel workspace.
 - The **Microsoft XDR data sources** section is disabled when another workspace is selected.

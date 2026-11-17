@@ -44,12 +44,12 @@ item_type: Content
 source_path: sentinel/monitor-your-data.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/970f20f1-2f12-4aa9-9c95-c00fe1f5e722
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/432c4950-b799-4ed5-93d5-b9b2934edf7d
 platformId: 1ac455d6-d383-2f56-dada-863ca48b76e0
 ---
 
@@ -80,7 +80,8 @@ Before you create or use workbooks, make sure you meet the following prerequisit
 Use a template installed from the content hub to create a workbook.
 
 1. In Microsoft Sentinel, select **Threat management &gt; Workbooks**.
-2. On the **Workbooks** page, select the **Templates** tab to see the list of workbook templates installed. Select a template to view its details.
+2. For ISOC customers: select **Dashboards & Reports &gt; Workbooks**
+3. On the **Workbooks** page, select the **Templates** tab to see the list of workbook templates installed. Select a template to view its details.
 
     Some workbooks require specific data connections to function. Before saving a workbook, check for a **Required data types** field ensure that you have that type of data ingested.
 
@@ -93,9 +94,9 @@ Use a template installed from the content hub to create a workbook.
 [![Screenshot of a workbook template with required data types shown in the details pane.](media/monitor-your-data/workbook-template-azure-portal.png)](media/monitor-your-data/workbook-template-azure-portal.png#lightbox)
 
 ---
-3. From the details pane, select **Save**, then select the location where you want to save the workbook. Saving the workbook creates an Azure resource in the selected location based on the relevant template. Only the workbook's JSON file is saved in this location, and no data.
-4. From the details pane, select **View saved workbook** to open it for editing.
-5. With the workbook open, select **Edit** to customize the workbook according to your needs.
+4. From the details pane, select **Save**, then select the location where you want to save the workbook. Saving the workbook creates an Azure resource in the selected location based on the relevant template. Only the workbook's JSON file is saved in this location, and no data.
+5. From the details pane, select **View saved workbook** to open it for editing.
+6. With the workbook open, select **Edit** to customize the workbook according to your needs.
 
 # [Defender portal](#tab/defender-portal)
 [![Screenshot that shows the saved workbook.](media/monitor-your-data/workbook-graph-defender.png)](media/monitor-your-data/workbook-graph.png#lightbox)
@@ -110,7 +111,7 @@ When working in the Defender portal, some visualizations can only be viewed in t
     For example, select the **TimeRange** filter to view data for a different time range than the current selection. To edit a specific workbook area, either select **Edit** or select the ellipsis (**...**) to add elements, or move, clone, or remove the area.
 
     To clone your workbook, select **Save as**. Save the clone with another name, under the same subscription and resource group. Cloned workbooks are also displayed under the **My workbooks** tab in the **Microsoft Sentinel &gt; Threat management &gt; Workbooks** page.
-6. When you're done, select **Done Editing** to save your changes.
+7. When you're done, select **Done Editing** to save your changes.
 
 For more information, see:
 

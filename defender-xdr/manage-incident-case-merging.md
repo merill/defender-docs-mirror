@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: concept-article
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: a0406791-b922-086c-1717-4bbda5e1dbd2
@@ -53,7 +53,7 @@ Use merging and alert movement to reduce duplicate work, group related investiga
 
 Note
 
-Incident cases are in preview and are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available during this preview.
+Incident cases are the recommended experience for managing incidents in the Microsoft Defender portal. The legacy incident experience remains available.
 
 For an overview of incident cases, see [Case management in the Microsoft Defender portal](siem-defender-case-management).
 

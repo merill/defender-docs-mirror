@@ -18,8 +18,8 @@ ms.collection:
 - tier3
 - must-keep
 ms.topic: reference
-ms.custom: api, msecd-doc-authoring-1015
-ms.date: 2026-08-03T00:00:00.0000000Z
+ms.custom: api, msecd-doc-authoring-1030
+ms.date: 2026-10-15T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 58e88b5b-18be-39d6-ad39-625a80651631
@@ -57,7 +57,7 @@ Important
 
 Some information relates to prereleased product which may be substantially modified before it's commercially released. Microsoft makes no warranties, express or implied, with respect to the information provided here.
 
-[Advanced hunting](advanced-hunting-overview) is a threat-hunting tool that uses [specially constructed queries](advanced-hunting-query-language) to examine the past 30 days of event data in Microsoft Defender. You can use advanced hunting queries to inspect unusual activity, detect possible threats, and even respond to attacks. The advanced hunting API allows you to programmatically query event data.
+[Advanced hunting](advanced-hunting-overview) is a threat-hunting tool that uses [specially constructed queries](advanced-hunting-query-language) to examine event data in Microsoft Defender. You can use advanced hunting queries to inspect unusual activity, detect possible threats, and even respond to attacks. The advanced hunting API allows you to programmatically query event data.
 
 ## Quotas and resource allocation
 

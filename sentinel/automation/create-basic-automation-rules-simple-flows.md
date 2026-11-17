@@ -44,11 +44,11 @@ source_path: sentinel/automation/create-basic-automation-rules-simple-flows.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/43093068-2dda-408b-b3fe-dfd705c84f78
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1ae5c491-970a-4062-8301-6336e69f9026
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/e453d60d-ba7e-43bc-8028-ec38e6b62512
 - https://authoring-docs-microsoft.poolparty.biz/devrel/f2c3e52e-3667-4e8a-bf11-20b9eaccdc8c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 55391a93-a9f4-dc8d-e064-63d06b505b86
 ---
 
@@ -149,11 +149,18 @@ Not every action works with every trigger. The matrix below shows the supported 
 
 The following examples show how to combine Simple Flows triggers, conditions, and actions to deliver common SOC workflows.
 
+Note
+
+To open the automation page in the [Microsoft Defender portal](https://security.microsoft.com/), use the path for your package:
+
+- In Microsoft Sentinel in the Defender portal: **Microsoft Sentinel** &gt; **Configuration** &gt; **Automation**.
+- In ISOC main navigation menu: **Automation**.
+
 ### Example 1: Auto-triage low-fidelity alerts by classification
 
 Automatically resolve informational alerts from a specific provider as benign positives so the queue stays focused on real threats.
 
-1. In the Microsoft Defender portal, go to **Microsoft Sentinel** &gt; **Automation** and select **+ Create** &gt; **Automation rule**.
+1. Select **+ Create** &gt; **Automation rule**.
 2. Under **Trigger**, select **When an alert is created**.
 3. Under **Conditions**, add:
     - **Provider***Equals***Microsoft Defender for Endpoint**
@@ -167,7 +174,7 @@ Automatically resolve informational alerts from a specific provider as benign po
 
 Add a stage-appropriate checklist the moment an analyst starts investigating.
 
-1. From **Microsoft Sentinel** &gt; **Automation**, create a new automation rule.
+1. Create a new automation rule.
 2. Under **Trigger**, select **When a case is updated**.
 3. Under **Conditions**, add: **Status***Changed to***Investigating**.
 4. Under **Actions**, add **Add Task** with the tasks you want the analyst to follow during the investigation phase.

@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - usx-security
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 57274645-51ca-5687-7afa-90c2602fd9de
@@ -73,7 +73,7 @@ To create a generic case:
     ![Screenshot showing the Generic cases page and the Create case pane in the Microsoft Defender portal.](media/manage-cases/manage-cases-create-case.png)
 6. Select **Save**.
 
-Available fields can vary by tenant configuration and preview scope.
+Available fields can vary by tenant configuration.
 
 ## Access the Manage case pane
 
@@ -91,7 +91,7 @@ To access the **Manage case** pane:
     ![Screenshot showing a generic case and the Manage case pane in the Microsoft Defender portal.](media/manage-cases/manage-cases-manage-case-pane.png)
 7. Select **Save**.
 
-Available fields can vary by tenant configuration and preview scope.
+Available fields can vary by tenant configuration.
 
 ## Rename a generic case
 

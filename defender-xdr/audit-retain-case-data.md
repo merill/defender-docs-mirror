@@ -15,6 +15,7 @@ ms.service: defender-xdr
 ms.topic: how-to
 ms.date: 2026-07-05T00:00:00.0000000Z
 ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: dc1ff136-cd3d-a64c-cf62-1793d8489129
 document_version_independent_id: dc1ff136-cd3d-a64c-cf62-1793d8489129
@@ -154,5 +155,5 @@ The **Tables** page also provides Table insights to help you review ingestion vo
 For more information, see:
 
 - [Configure table settings in Microsoft Sentinel](/en-us/azure/sentinel/manage-table-tiers-retention)
-- [Manage data tiers and retention in Microsoft Sentinel](/en-us/azure/sentinel/manage-data-overview#how-data-tiers-and-retention-work)
+- [How data tiers and retention work](/en-us/azure/sentinel/manage-table-tiers-retention#how-data-tiers-and-retention-work)
 - [Plan costs and understand pricing and billing for Microsoft Sentinel](/en-us/azure/sentinel/billing?tabs=simplified%2Ccommitment-tiers)

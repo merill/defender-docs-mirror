@@ -81,7 +81,7 @@ Use the federated table name when querying data from the Sentinel data lake.
 
 The table management view provides an overview of all tables in your Sentinel data lake, including federated tables.
 
-1. Navigate to **Microsoft Sentinel** &gt; **Configuration** &gt; **Tables**.
+1. In the Defender portal, select **Setup & configuration** &gt; **Data management** &gt; **Data & connectors**, and then select the **Tables** tab.
 2. Select the **Type** filter.
 3. Select **Federated** and select **Apply**.
 

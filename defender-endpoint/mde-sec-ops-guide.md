@@ -8,14 +8,14 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: joshbregman, mattcall, pahuijbr, hayhov
+ms.reviewer: joshbregman, mattcall,  hayhov
 description: A prescriptive playbook for SecOps personnel to manage Microsoft Defender for Endpoint.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.date: 2025-03-26T00:00:00.0000000Z
 ms.topic: concept-article
-author: limwainstein
-ms.author: lwainstein
+ms.author: sihamilt
+author: contributor-sh
 ms.custom:
 - nextgen
 - admindeeplinkDEFENDER

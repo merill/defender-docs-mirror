@@ -11,10 +11,10 @@ manager: bagol
 description: You can configure Microsoft Defender Antivirus to scan email storage files, back-up or reparse points, network files, and archived files (such as .zip files).
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1015
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.date: 2026-09-15T00:00:00.0000000Z
 ms.collection:

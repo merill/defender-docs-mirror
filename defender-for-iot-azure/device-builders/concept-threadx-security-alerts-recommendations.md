@@ -61,7 +61,7 @@ For more information on how alert customization works in the Defender for IoT se
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Defender-IoT-micro-agent for Eclipse ThreadX supported security alerts
 

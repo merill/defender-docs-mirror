@@ -12,9 +12,8 @@ description: Learn how to enable and configure Microsoft Defender Antivirus on W
 ms.service: defender-endpoint
 ms.subservice: ngp
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
-ms.reviewer: pahuijbr
+ms.author: sihamilt
+author: contributor-sh
 ms.topic: how-to
 ms.date: 2026-06-25T00:00:00.0000000Z
 ms.custom: msecd-doc-authoring-1015

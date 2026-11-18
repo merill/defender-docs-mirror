@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Get a list of the standard connectivity URLs required to onboard and maintain devices in Microsoft Defender for Endpoint in US commercial cloud environments.
-author: limwainstein
-ms.author: lwainstein
+ms.author: sihamilt
+author: contributor-sh
 ms.topic: how-to
 ms.service: defender-endpoint
 ms.subservice: onboard
@@ -18,7 +18,7 @@ ms.localizationpriority: medium
 ms.collection:
 - m365-security
 - tier1
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.date: 2026-07-03T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016

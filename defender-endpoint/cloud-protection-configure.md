@@ -12,10 +12,10 @@ description: Configure Microsoft Defender Antivirus cloud protection, automatic 
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.topic: how-to
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.date: 2026-09-10T00:00:00.0000000Z
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.custom: nextgen, msecd-doc-authoring-1015
 ms.subservice: ngp
 ms.collection:

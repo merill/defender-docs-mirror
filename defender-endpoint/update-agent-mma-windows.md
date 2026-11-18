@@ -11,15 +11,15 @@ manager: bagol
 description: Learn about your options for updating or replacing your MMA agent on Windows devices for Defender for Endpoint.
 ms.service: defender-endpoint
 ms.subservice: onboard
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
 ms.date: 2026-07-02T00:00:00.0000000Z
 ms.collection:
 - m365-security
 - tier2
 ms.topic: how-to
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016
 locale: en-us

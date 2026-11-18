@@ -66,7 +66,7 @@ Some of the benefits of the device inventory include:
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Device inventory overview
 

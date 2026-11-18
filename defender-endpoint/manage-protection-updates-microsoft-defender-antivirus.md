@@ -12,9 +12,9 @@ description: Manage the fallback order for how Microsoft Defender Antivirus rece
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.topic: how-to
-author: chrisda
-ms.author: chrisda
-ms.reviewer: pahuijbr
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: 
 ms.custom: nextgen, msecd-doc-authoring-1015
 ms.subservice: ngp
 ms.collection:

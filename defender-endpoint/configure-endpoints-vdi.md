@@ -10,9 +10,9 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to onboard non-persistent virtual desktop infrastructure devices to Microsoft Defender for Endpoint and maintain VDI images.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
-ms.reviewer: pahuijbr; yonghree
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: yonghree
 ms.localizationpriority: medium
 ms.collection:
 - m365-security

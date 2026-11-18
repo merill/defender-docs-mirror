@@ -9,8 +9,8 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to configure streamlined connectivity and onboard devices to Microsoft Defender for Endpoint by using consolidated domains or static IP ranges.
-author: paulinbar
-ms.author: painbar
+ms.author: sihamilt
+author: contributor-sh
 ms.date: 2026-09-21T00:00:00.0000000Z
 ms.topic: how-to
 ms.service: defender-endpoint
@@ -19,7 +19,7 @@ ms.localizationpriority: medium
 ms.collection:
 - m365-security
 - tier1
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1016
 locale: en-us

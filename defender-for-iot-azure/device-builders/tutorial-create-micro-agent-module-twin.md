@@ -54,7 +54,7 @@ This tutorial will help you learn how to create an individual `DefenderIotMicroA
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Device twins
 

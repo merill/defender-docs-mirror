@@ -8,14 +8,14 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: joshbregman, mattcall, pahuijbr, hayhov, oogunrinde
+ms.reviewer: joshbregman, mattcall,  hayhov, oogunrinde
 description: Review the requirements for protecting Microsoft Defender Antivirus exclusions with tamper protection, and verify protection on Windows devices.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.date: 2026-09-08T00:00:00.0000000Z
 ms.topic: how-to
-author: limwainstein
-ms.author: lwainstein
+ms.author: sihamilt
+author: contributor-sh
 ms.custom:
 - msecd-doc-authoring-1016
 - nextgen

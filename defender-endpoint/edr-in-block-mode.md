@@ -9,9 +9,9 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn about endpoint detection and response in block mode.
-author: limwainstein
-ms.author: lwainstein
-ms.reviewer: pahuijbr, kausd
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: kausd
 ms.topic: article
 ms.service: defender-endpoint
 ms.subservice: edr

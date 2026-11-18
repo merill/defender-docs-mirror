@@ -53,7 +53,7 @@ Defender for IoT continuously analyzes your IoT solution using advanced analytic
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 In this article, you'll find a list of built-in alerts, which can be triggered on your IoT devices.
 

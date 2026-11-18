@@ -12,11 +12,11 @@ description: Manage how Microsoft Defender Antivirus applies security intelligen
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.topic: how-to
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1016
 ms.date: 2026-09-16T00:00:00.0000000Z
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.collection:
 - m365-security

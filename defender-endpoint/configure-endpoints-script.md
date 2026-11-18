@@ -10,9 +10,9 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to use a local script to onboard, verify, and offboard a limited number of Windows devices in Microsoft Defender for Endpoint.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
-ms.reviewer: pahuijbr
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: 
 ms.localizationpriority: medium
 ms.collection:
 - m365-security

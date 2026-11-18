@@ -10,10 +10,10 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Understand the type of technical support offered for previous versions of Microsoft Defender Antivirus
 ms.service: defender-endpoint
-ms.author: chrisda
-author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.date: 2026-05-20T00:00:00.0000000Z
 ms.collection:
 - m365-security

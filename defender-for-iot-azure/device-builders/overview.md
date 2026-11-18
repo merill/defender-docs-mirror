@@ -63,7 +63,7 @@ Microsoft Defender for IoT provides lightweight security agents so that you can 
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 The Defender for IoT micro agent provides deep security protection, and visibility into device behavior.
 

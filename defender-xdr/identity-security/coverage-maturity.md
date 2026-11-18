@@ -11,7 +11,7 @@ manager: orspodek
 description: Learn how to use the Coverage and maturity page in Microsoft Defender to check your identity protection status and close coverage gaps in your environments.
 ms.date: 2026-09-16T00:00:00.0000000Z
 ms.topic: how-to
-ms.author: abbyweisberg
+ms.author: chrisda
 author: AbbyMSFT
 ms.reviewer: maelgami
 ai-usage: ai-assisted
@@ -137,7 +137,7 @@ The **On-premises identities** card shows identities from on-premises Active Dir
 
 Note
 
-The **Coverage and maturity** page lists all servers that don't have a Defender for Identity sensor. Sensor version 3 requires Defender for Endpoint. If a server has Defender for Endpoint, you can install sensor version 3 from the **Sensor activation** page (**Settings** &gt; **Identities** &gt; **Sensors**). If a server doesn't have Defender for Endpoint, it won't appear on the Sensor activation page. For those servers, deploy [sensor version 2](/en-us/defender-for-identity/deploy/install-sensor) instead.
+The **Coverage and maturity** page lists all servers that don't have an MDI sensor. Sensor version 3 requires Defender for Endpoint. If a server has Defender for Endpoint, you can install sensor version 3 from the **Sensor activation** page (**Settings** &gt; **Identities** &gt; **Sensors**). If a server doesn't have Defender for Endpoint, it won't appear on the Sensor activation page. For those servers, deploy [sensor version 2](/en-us/defender-for-identity/deploy/install-sensor) instead.
 
 ### Review the SaaS identities card
 

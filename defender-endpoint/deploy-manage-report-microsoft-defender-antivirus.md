@@ -13,10 +13,10 @@ ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.date: 2026-09-15T00:00:00.0000000Z
 ms.topic: install-set-up-deploy
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.collection:
 - m365-security

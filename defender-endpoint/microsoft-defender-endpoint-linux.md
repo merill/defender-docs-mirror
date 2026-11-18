@@ -8,11 +8,11 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: gopkr, pahuijbr, megphapriya
+ms.reviewer: gopkr,  megphapriya
 description: Learn how Microsoft Defender for Endpoint on Linux protects servers with next-gen antivirus, EDR, and vulnerability management.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
@@ -152,4 +152,4 @@ Microsoft Defender integrates with existing security tools and workflows through
 
 To learn about what's new in Endpoint security, see the latest updates in [What's new in Microsoft Defender for Endpoint](/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint).
 
-Microsoft includes security fixes in monthly releases. However, the release notes don’t always list these fixes under a separate Security patch section. For more information, see [What's new in Microsoft Defender for Endpoint on Linux](/en-us/defender-endpoint/microsoft-defender-endpoint-releases#linux-releases).
+Microsoft includes security fixes in monthly releases. However, the release notes don't always list these fixes under a separate Security patch section. For more information, see [What's new in Microsoft Defender for Endpoint on Linux](/en-us/defender-endpoint/microsoft-defender-endpoint-releases#linux-releases).

@@ -14,13 +14,13 @@ ms.subservice: ngp
 ms.localizationpriority: medium
 ms.date: 2026-08-21T00:00:00.0000000Z
 ms.topic: how-to
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom:
 - msecd-doc-authoring-1016
 - nextgen
 - partner-contribution
-ms.reviewer: pahuijbr, dmcwee, yongrhee
+ms.reviewer: dmcwee, yongrhee
 ms.collection:
 - m365-security
 - tier2

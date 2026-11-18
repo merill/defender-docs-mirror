@@ -12,15 +12,15 @@ description: Learn how to use the Microsoft Defender deployment tool to onboard,
 ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.topic: how-to
-author: paulinbar
-ms.author: painbar
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1015
-ms.reviewer: pahuijbr, sihamilt
+ms.reviewer: sihamilt
 ms.collection:
 - m365-security
 - tier3
 ms.subservice: onboard
-ms.date: 2026-09-22T00:00:00.0000000Z
+ms.date: 2026-11-17T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 67364684-294b-f129-1fd8-7580fefde15e
@@ -95,6 +95,8 @@ Review the general prerequisites and the requirements for Windows 7 SP1 and Wind
 
 - Most operations require administrative privileges.
 - Allow access to `definitionupdates.microsoft.com`. The tool downloads updates and installation files from this domain. Because the files are hosted on a content distribution network, the associated IP address ranges aren't static or predictable.
+- The Defender deployment tool explicitly requires TLS 1.2 for its online connections, including self-update, downloads, telemetry, and onboarding-blob validation.
+- If you are using a proxy for onboarding or offboarding, the Defender deployment tool requires proxy to be set via `-proxy` during offboarding. The tool does not reuse the listed Defender-specific registry proxy settings for its own connection.
 - The tool checks connectivity to your organization before onboarding. Other Defender for Endpoint features also require access to service URLs such as `*.endpoint.security.microsoft.com`. For the complete requirements, see [Configure your network environment to ensure connectivity with the Defender for Endpoint service](configure-environment).
 
 For streamlined connectivity, exclude traffic to `*.endpoint.security.microsoft.com` from SSL/TLS inspection, HTTPS interception, and man-in-the-middle (MITM) proxying. If you enable SSL inspection, Defender for Endpoint sensors might fail to communicate with backend services, resulting in onboarding or connectivity failures.
@@ -179,12 +181,12 @@ The following table lists the parameters available in the Defender deployment to
 | General | `-Verbose` | Display detailed information and write detailed logs. |
 | Configuration | `-AllowReboot` | Allow the device to restart when required. |
 | Configuration | `-NoResumeAfterReboot` | Prevent the tool from resuming after a restart. |
-| Configuration | `-Proxy:<https://host:port>` | Configure the proxy server for onboarding and Defender for Endpoint. |
+| Configuration | `-Proxy:<https://host:port>` | Configure the proxy server for onboarding and Defender for Endpoint. During onboarding, the tool always sets HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection\DisableEnterpriseAuthProxy to 1.When `-Proxy` flag is provided, it sets the following values only when they're absent; it does not overwrite the existing ones: TelemetryProxyServer under the same key to host:port, and HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\ProxyServer to the supplied proxy URL. |
 | Configuration | `-Precheck` | Check prerequisites and log the results without installing or onboarding. |
 | Configuration | `-UpdateOnly` | Install updates without onboarding, even when an onboarding file is present. |
 | Onboarding | `-File:<path>` | Specify the absolute path to an `.onboarding` or `.offboarding` file. If you don't specify the parameter, the tool looks for `WindowsDefenderATP.onboarding` in the current folder. |
 | Onboarding | `-Source:<path>` | Specify the folder that contains staged installation files. |
-| Onboarding | `-Passive` | Configure Microsoft Defender Antivirus to run in passive mode on Windows Server. |
+| Onboarding | `-Passive` | Configure Microsoft Defender Antivirus to run in passive mode. |
 | Onboarding | `-VDI` | Identify the device as a nonpersistent virtual desktop infrastructure (VDI) device. |
 | Onboarding | `-DeviceTag:<tag>` | Add a tag to the device. |
 | Onboarding | `-Key:<key>` | Specify the onboarding or offboarding key generated in the Defender portal. |
@@ -386,7 +388,13 @@ Review the general limitations and the limitations for Windows 7 SP1 and Windows
 - Microsoft Defender Antivirus doesn't provide a local user interface on these operating systems. To manage Microsoft Defender Antivirus settings locally, install PowerShell 5.1 or later.
 - Group Policy configuration requires a Central Store with current Group Policy templates on a domain controller. To use Local Group Policy Editor, manually update `WindowsDefender.admx` and `WindowsDefender.adml` with current Windows 11 templates.
 - The Defender endpoint security solution installs in `C:\Program Files\Microsoft Defender for Endpoint`.
-- The deployment tool's `-Passive` parameter applies to Windows Server. It isn't supported for Windows 7 SP1.
+- On Windows Server 2008 R2 SP1, the Defender deployment tool selects its proxy in this order:
+
+1. A proxy supplied through `-Proxy` flag.
+2. The executing account's Internet Explorer static proxy setting, if present.
+3. The machine's default WinHTTP proxy configuration; otherwise, a direct connection.
+
+Therefore, if the proxy exists only in the listed Defender registry settings, specify it again during onboarding and offboarding.
 
 ## Troubleshooting
 

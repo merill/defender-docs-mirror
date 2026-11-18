@@ -13,7 +13,7 @@ ms.topic: whats-new
 ms.service: defender-endpoint
 author: Vjindal
 ms.author: vjindal
-ms.reviewer: noamhadash, pahuijbr, yongrhee
+ms.reviewer: noamhadash,  yongrhee
 ms.localizationpriority: medium
 ms.date: 2026-10-23T00:00:00.0000000Z
 ai-usage: ai-assisted
@@ -1016,7 +1016,7 @@ Fixed in platform version 101.26052.0011 and later. FIPS-enabled RHEL 8/9 device
 
 | Feature area | Update summary |
 | --- | --- |
-| Device management | Fixed issue to generate unique machine identifiers for each onboarded deviceâ€”especially useful when deploying Microsoft Defender via Golden image. |
+| Device management | Fixed issue to generate unique machine identifiers for each onboarded deviceâ€"especially useful when deploying Microsoft Defender via Golden image. |
 | General | Other stability enhancements and bug fixes. |
 
 ### Linux | August 2025 | Platform: 101.25062.0003
@@ -1691,7 +1691,7 @@ For more information about Microsoft Defender Antivirus updates, see [Microsoft 
 
 ### Enhancements and features
 
-- Fixed an issue where Windows could incorrectly display a notification stating that “Microsoft Defender Antivirus is turned off” when Windows started or intermittently afterward, even though Defender Antivirus remained active and functioning correctly. For more information, see [Incorrect notifications that Microsoft Defender Antivirus is turned off](/en-us/windows/release-health/status-windows-11-25h2#4956msgdesc).
+- Fixed an issue where Windows could incorrectly display a notification stating that "Microsoft Defender Antivirus is turned off" when Windows started or intermittently afterward, even though Defender Antivirus remained active and functioning correctly. For more information, see [Incorrect notifications that Microsoft Defender Antivirus is turned off](/en-us/windows/release-health/status-windows-11-25h2#4956msgdesc).
 
 ### Windows Antivirus | August 2026 | Platform 4.18.26080.3 | Engine 1.1.26080.3
 

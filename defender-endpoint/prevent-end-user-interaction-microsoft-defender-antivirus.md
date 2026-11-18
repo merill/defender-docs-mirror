@@ -11,11 +11,11 @@ manager: bagol
 description: Use Group Policy to hide the Microsoft Defender Antivirus interface in the Windows Security app and prevent users from pausing scans.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: paulinbar
-ms.author: painbar
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1016
 ms.date: 2026-07-02T00:00:00.0000000Z
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.topic: how-to
 ms.collection:

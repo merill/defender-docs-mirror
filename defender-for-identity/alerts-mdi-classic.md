@@ -36,11 +36,11 @@ source_path: defender-for-identity/alerts-mdi-classic.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 7b0ed51c-d402-68a3-c9cb-5ecb772a5c11
 ---
 
@@ -130,6 +130,10 @@ The following security alerts help you identify and remediate **Credential acces
 
 Lateral Movement consists of techniques that adversaries use to enter and control remote systems on a network. Following through on their primary objective often requires exploring the network to find their target and subsequently gaining access to it. Reaching their objective often involves pivoting through multiple systems and accounts to gain. Adversaries might install their own remote access tools to accomplish Lateral Movement or use legitimate credentials with native network and operating system tools, which may be stealthier. Microsoft Defender for Identity can cover different passing attacks (pass the ticket, pass the hash, etc.) or other exploitations against the domain controller, like PrintNightmare or remote code execution.
 
+Important
+
+The **Suspected identity theft (pass-the-hash)** alert will be retired at the end of November 2026. You can continue monitoring this activity on onboarded devices with Microsoft Defender for Endpoint. For more information, see [Behavioral blocking and containment](/en-us/defender-endpoint/behavioral-blocking-containment).
+
 | Security alert name | Severity | External ID |
 | --- | --- | --- |
 | Suspected exploitation attempt on Windows Print Spooler service <br>**Description**:Adversaries might exploit the Windows Print Spooler service to perform privileged file operations in an improper manner. An attacker who has (or obtains) the ability to execute code on the target, and who successfully exploits the vulnerability, could run arbitrary code with SYSTEM privileges on a target system. If run against a domain controller, the attack would allow a compromised non-administrator account to perform actions against a domain controller as SYSTEM.This functionally allows any attacker who enters the network to instantly elevate privileges to Domain Administrator, steal all domain credentials, and distribute further malware as a Domain Admin.**Learning period**: None**MITRE**:  - **Primary MITRE tactic : [Lateral Movement (TA0008)](https://attack.mitre.org/tactics/TA0008)- MITRE attack technique: [Exploitation of Remote Services (T1210)](https://attack.mitre.org/techniques/T1210/) - MITRE attack sub-technique: N/ASuggested steps for prevention**: - Due to the risk of the domain controller being compromised, install the security updates for [CVE-2021-34527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527) on Windows domain controllers, before installing on member servers and workstations. - You can use the Defender for Identity built-in security assessment that tracks the availability of Print spooler services on domain controllers. [Learn more](/en-us/defender-for-identity/security-assessment-print-spooler). | High or Medium | 2415 |
@@ -151,6 +155,10 @@ Lateral Movement consists of techniques that adversaries use to enter and contro
 ## Other alerts
 
 The following security alerts help you identify and remediate **Other** phase suspicious activities detected by Defender for Identity in your network.
+
+Important
+
+The **Remote code execution attempt** classic alert will be retired at the end of November 2026. You can continue monitoring this activity by creating custom detections in Advanced hunting. The query will be published in the Microsoft Defender XDR Community hub soon.
 
 | Security alert name | Severity | External ID |
 | --- | --- | --- |

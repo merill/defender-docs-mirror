@@ -8,11 +8,11 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: pahuijbr
+ms.reviewer: 
 description: Learn about Microsoft Defender for Endpoint on Windows capabilities, including threat protection, EDR, attack surface reduction, vulnerability management, and deployment options.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
 ms.collection:
 - m365-security
@@ -174,6 +174,6 @@ For more information, see [Manage Microsoft Defender Antivirus updates and apply
 
 ## What's new in the latest release
 
-To learn what’s new in endpoint security, see the latest updates in [What's new in Microsoft Defender for Endpoint](/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint).
+To learn what's new in endpoint security, see the latest updates in [What's new in Microsoft Defender for Endpoint](/en-us/defender-endpoint/whats-new-in-microsoft-defender-endpoint).
 
 To learn about the latest Windows updates, see [What's new in Microsoft Defender for Endpoint on Windows](/en-us/defender-endpoint/microsoft-defender-endpoint-releases#windows-releases).

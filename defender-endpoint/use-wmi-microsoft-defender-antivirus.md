@@ -11,11 +11,11 @@ manager: bagol
 description: Use WMI classes and scripts to retrieve, modify, and update local Microsoft Defender Antivirus settings. Learn where WMI fits alongside Group Policy, Configuration Manager, and Intune.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1016
 ms.date: 2026-07-02T00:00:00.0000000Z
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.topic: how-to
 ms.collection:

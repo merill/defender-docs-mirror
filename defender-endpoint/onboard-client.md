@@ -10,10 +10,10 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Find out how to onboard Windows client devices to Defender for Endpoint.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.collection:
 - m365-security
 - tier2

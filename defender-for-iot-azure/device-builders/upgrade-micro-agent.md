@@ -57,7 +57,7 @@ For more information, see our [release notes for device builders](release-notes)
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Upgrade a micro agent from version 4.2.\* to 4.6.2
 

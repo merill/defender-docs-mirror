@@ -58,7 +58,7 @@ The About page provides the following details:
 - Geolocation: The geographic location of the workspace where your data is stored.
 - Workspace ID: The identifier of your workspace.
 - Workspace name: The name of your workspace.
-- Total licenses: The total number of Microsoft Denfender for Identity licenses assigned to the tenant.
-- Active identities during the past 28 days: The total number of on-premises identities that had activity detected by Defender for Identity.
+- Total licenses: The total number of Microsoft Defender for Identity licenses assigned to the tenant.
+- Active identities during the past 28 days: The total number of on-premises identities that had activity detected by Microsoft Defender.
 
 This information can help you troubleshoot issues and open support tickets. You can also find your workspace name here. You need the workspace name to configure your [proxy or firewall](configure-proxy#enable-access-to-defender-for-identity-service-urls-in-the-proxy-server).

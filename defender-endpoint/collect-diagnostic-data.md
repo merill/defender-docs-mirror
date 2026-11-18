@@ -11,11 +11,11 @@ manager: bagol
 description: Learn how to use MpCmdRun to collect Microsoft Defender Antivirus diagnostic data locally or copy support packages to a central location.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1015
 ms.date: 2026-09-22T00:00:00.0000000Z
-ms.reviewer: pahuijbr, yongrhee
+ms.reviewer: yongrhee
 ms.subservice: ngp
 ms.topic: how-to
 ms.collection:

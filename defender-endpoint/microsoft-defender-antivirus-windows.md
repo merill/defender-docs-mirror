@@ -13,9 +13,9 @@ ms.service: defender-endpoint
 ms.localizationpriority: high
 ms.date: 2026-10-05T00:00:00.0000000Z
 ms.topic: overview
-author: chrisda
-ms.author: chrisda
-ms.reviewer: mkaminska, yongrhee, pahuijbr, ericlaw
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: mkaminska, yongrhee,  ericlaw
 ms.custom: nextgen
 ms.subservice: ngp
 ms.collection:

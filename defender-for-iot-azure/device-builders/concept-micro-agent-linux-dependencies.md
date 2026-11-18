@@ -52,7 +52,7 @@ This article describes the different Linux OS dependencies for the Defender for 
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Linux dependencies
 

@@ -13,12 +13,12 @@ ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.date: 2025-06-13T00:00:00.0000000Z
 ms.topic: article
-author: limwainstein
-ms.author: lwainstein
+ms.author: sihamilt
+author: contributor-sh
 ms.custom:
 - nextgen
 - partner-contribution
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.collection:
 - m365-security
 - tier2

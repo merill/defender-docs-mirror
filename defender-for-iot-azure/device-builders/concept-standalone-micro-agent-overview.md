@@ -51,7 +51,7 @@ Security is a near-universal concern for IoT implementers. IoT devices have uniq
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 The Microsoft Defender for IoT security agent allows you to build security directly into your new IoT devices and Azure IoT projects. The micro agent has flexible deployment options, including the ability to deploy as a binary package or modify source code, and it's available for standard IoT operating systems like Linux and Eclipse ThreadX.
 

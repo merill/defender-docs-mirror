@@ -11,9 +11,9 @@ manager: bagol
 description: Choose automatic or manual endpoint deployment and verify server onboarding.
 ms.service: defender-endpoint
 ms.author: kschwabacher
-author: paulinbar
+author: contributor-sh
 ms.localizationpriority: medium
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.collection:
 - m365-security
 - tier2

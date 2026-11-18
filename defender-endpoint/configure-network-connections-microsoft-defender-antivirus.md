@@ -12,12 +12,12 @@ description: Configure and test your connection to the Microsoft Defender Antivi
 ms.service: defender-endpoint
 ms.subservice: ngp
 ms.localizationpriority: medium
-author: paulinbar
-ms.author: painbar
+ms.author: sihamilt
+author: contributor-sh
 ms.topic: how-to
 ms.custom: nextgen, msecd-doc-authoring-1016
 ms.date: 2026-07-02T00:00:00.0000000Z
-ms.reviewer: yongrhee; pahuijbr
+ms.reviewer: yongrhee
 ms.collection:
 - m365-security
 - tier2

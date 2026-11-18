@@ -51,7 +51,7 @@ Defender for IoT security agents collect data and system events from your local 
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 If you've configured and connected a Log Analytics workspace, you'll see these events in Log Analytics. For more information, see [Tutorial: Investigate security alerts](tutorial-investigate-security-alerts).
 

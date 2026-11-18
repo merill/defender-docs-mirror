@@ -7,16 +7,16 @@ feedback_system: Standard
 permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
-manager: bagol
+manager: daniha
 description: Learn how to set up and configure Defender for Endpoint Plan 1. Review the requirements, plan your rollout, and set up your environment.
-author: paulinbar
-ms.author: painbar
+ms.author: sihamilt
+author: contributor-sh
 ms.topic: overview
 ms.service: defender-endpoint
 ms.subservice: onboard
 ms.localizationpriority: medium
 ms.date: 2026-09-09T00:00:00.0000000Z
-ms.reviewer: yonghree, pahuijbr
+ms.reviewer: yonghree
 ms.collection:
 - m365-security
 - tier2

@@ -8,14 +8,14 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: pahuijbr
+ms.reviewer: 
 description: Learn which built-in and automatic exclusions Microsoft Defender Antivirus applies on Windows Server by role, and how to add custom exclusions or disable automatic exclusions.
 ms.service: defender-endpoint
 ms.subservice: ngp
 ms.localizationpriority: medium
 ms.date: 2026-08-12T00:00:00.0000000Z
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.topic: install-set-up-deploy
 ai-usage: ai-assisted
 ms.custom: nextgen, msecd-doc-authoring-1015

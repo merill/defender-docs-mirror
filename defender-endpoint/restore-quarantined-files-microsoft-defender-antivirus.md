@@ -11,11 +11,11 @@ manager: bagol
 description: You can restore quarantined files and folders in Microsoft Defender Antivirus.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1016
 ms.date: 2026-07-02T00:00:00.0000000Z
-ms.reviewer: yongrhee, pahuijbr
+ms.reviewer: yongrhee
 ms.subservice: ngp
 ms.topic: how-to
 ms.collection:

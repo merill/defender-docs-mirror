@@ -55,7 +55,7 @@ This article describes how to configure the Defender-IoT-micro-agent for your Ec
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Configure the Defender-IoT-micro-agent
 

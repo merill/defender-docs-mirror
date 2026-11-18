@@ -173,3 +173,7 @@ To verify that Dev Drive and Defender Performance Mode is enabled, follow these 
     | `C:` | Since the system drive (for example, C: or D:) drive is formatted with NTFS, it's not eligible for Defender Performance mode. |
     | `D:` | Dev Drive is enabled but Defender Performance mode isn't enabled. |
     | `F:` | Dev Drive is enabled, and Defender Performance mode is enabled. |
+
+Note
+
+`Get-MpPreference` reports `PerformanceModeStatus` as `1` when performance mode is enabled and `0` when it's disabled, the reverse of the Intune values. To check whether performance mode is on for a volume, use **See volumes** in the Windows Security app.

@@ -10,9 +10,9 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Understand licensing and other requirements for onboarding devices to Defender for Endpoint
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
-ms.reviewer: pahuijbr
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: 
 ms.localizationpriority: medium
 ms.date: 2025-11-17T00:00:00.0000000Z
 ms.collection:

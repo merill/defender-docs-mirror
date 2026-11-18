@@ -13,10 +13,10 @@ ms.service: defender-endpoint
 ms.localizationpriority: medium
 ms.date: 2026-08-12T00:00:00.0000000Z
 ms.topic: how-to
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1015
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.subservice: ngp
 ms.collection:
 - m365-security

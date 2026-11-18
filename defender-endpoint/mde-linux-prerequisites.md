@@ -8,11 +8,11 @@ permissioned-type: public
 feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance-and-identity/ct-p/MicrosoftSecurityandCompliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
-ms.reviewer: gopkr, pahuijbr, megphapriya
+ms.reviewer: gopkr,  megphapriya
 description: Describes the requirements needed to install and use Microsoft Defender for Endpoint on Linux.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
 ms.collection:
 - m365-security

@@ -9,7 +9,7 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/microsoft-365-defen
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: orspodek
 description: Learn how to use the Identity page in Microsoft Defender. Investigate user identities, review alerts, analyze activity timelines, and assess security risks across linked accounts.
-ms.author: abbyweisberg
+ms.author: chrisda
 author: AbbyMSFT
 ms.reviewer: maelgami
 ms.date: 2026-11-09T00:00:00.0000000Z
@@ -154,7 +154,7 @@ Identity risk in Microsoft Defender uses automated decay logic to allow SOC prio
 
 ## Timeline tab
 
-The **Timeline** tab provides a chronological, identity-centric view of activity and alerts correlated to the identity across your environment: on-premises Active Directory, Microsoft Entra ID, IAM and other identity providers, SaaS applications, cloud, and endpoints. It aggregates data from various security capabilities in Defender, such as identity security, endpoint security, SaaS security, and Microsoft Sentinel.
+The **Timeline** tab provides a chronological, identity-centric view of activity and alerts correlated to the identity across your environment: on-premises Active Directory, Microsoft Entra ID, IAM and other identity providers, SaaS applications, cloud, and endpoints. It aggregates data from integrated Microsoft security tools in Microsoft Defender, including identity security, endpoint security, SaaS security, and Microsoft Sentinel.
 
 The timeline brings together sign-ins, audit events, risk signals, applied controls, and Conditional Access evaluations alongside all workload activity, so you can reconstruct sequences of activity and correlate events during an investigation. Because activity is correlated at the identity level, the timeline includes events where the identity is the actor or the target. It covers every account linked to the identity, including manually and policy-based (custom) correlated accounts. Duplicate events are removed so the same activity isn't shown twice; for example, when a sign-in appears in both the Entra ID and cloud app data, the timeline favors the Entra ID source.
 

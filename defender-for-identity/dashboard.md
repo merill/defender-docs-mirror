@@ -1,6 +1,6 @@
 ---
 layout: Conceptual
-title: Identity Security dashboard in Microsoft Defender for Identity (Preview) - Microsoft Defender for Identity | Microsoft Learn
+title: Identity Security dashboard in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 canonicalUrl: https://learn.microsoft.com/en-us/defender-for-identity/dashboard
 feedback_system: Standard
 feedback_product_url: https://aka.ms/MDIcommunity
@@ -12,7 +12,7 @@ ms.collection: M365-security-compliance
 ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
-description: Learn how to work with the Identity Security dashboard in Microsoft Defender for Identity to monitor identity-related security risks.
+description: Learn how to work with the Identity Security dashboard in Microsoft Defender to monitor identity-related security risks.
 ms.date: 2026-07-02T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: maelgami
@@ -34,21 +34,21 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/dashboard.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 22ad1df6-41b9-fb18-463d-70e1f305a5b3
 ---
 
-# Identity Security dashboard in Microsoft Defender for Identity (Preview) - Microsoft Defender for Identity | Microsoft Learn
+# Identity Security dashboard in Microsoft Defender - Microsoft Defender for Identity | Microsoft Learn
 
-## Microsoft Defender for Identity dashboard
+## Identity Security dashboard
 
-The Microsoft Defender for Identity **Dashboard** page shows data to help you better analyze your security posture, understand how well you're protected, identify vulnerabilities, and perform recommended actions.
+The Identity Security **Dashboard** page shows data to help you better analyze your security posture, understand how well you're protected, identify vulnerabilities, and perform recommended actions.
 
 Use the **Dashboard** page to view critical insights and real-time data about identity threat detection and response (ITDR). View graphs and widgets that showcase important information related to unauthorized access, account compromise, insider threats, and abnormal activities, and then proactively monitor and manage potential identity-related security risks.
 
@@ -95,7 +95,7 @@ The following table describes the key insights shown on the dashboard:
 
 | Name | Description |
 | --- | --- |
-| **Users identified in a risky lateral movement path** | Indicates any sensitive accounts with risky lateral movement paths, which are windows of opportunity for attackers and can expose risks.We recommend that you take action on any sensitive accounts found with risky lateral movement paths to minimize your risk. For more information, see [Understand and investigate lateral movement paths with Microsoft Defender for Identity](understand-lateral-movement-paths). |
+| **Users identified in a risky lateral movement path** | Indicates any sensitive accounts with risky lateral movement paths, which are windows of opportunity for attackers and can expose risks.We recommend that you take action on any sensitive accounts found with risky lateral movement paths to minimize your risk. For more information, see [Understand and investigate the identity lateral movement paths with Microsoft Defender](understand-lateral-movement-paths). |
 | **Dormant Active Directory users** | Lists accounts that have been left unused for at least 180 days. Inactive accounts that are a part of sensitive groups provide an easy path into your organization. We recommend removing those users from sensitive groups. |
 
 ## Understand dashboard widgets
@@ -107,7 +107,7 @@ The following table describes the widgets available on the dashboard:
 | **Identity Security Deployment Status** | Shows the number of identities that are Protected, Need Attention, and Not Protected, giving you a quick view of your identity protection deployment progress. Select **Configure your identity protection** to review and improve your deployment. |
 | **Identity posture (Secure score)** | The score shown represents your organization's security posture with a focus on the *identity* score, reflecting the collective security state of your identities. The score is automatically updated in real-time to reflect the data shown in graphs and recommended actions. Microsoft Secure Score updates daily with system data with new points for each recommended action taken. For more information, see [Microsoft Secure Score](/en-us/microsoft-365/security/defender/microsoft-secure-score). |
 | **Entra ID highly privileged** | Lists a summary of the sensitive accounts in your organization, including Entra ID Global Admins, Security Administrators, and accounts tagged as sensitive. Select **View all identities** to go to the identity inventory. |
-| **Identity related incidents** | Lists alerts from both Defender for Identity and [Microsoft Entra ID Protection](/en-us/azure/active-directory/identity-protection/overview-identity-protection), and any corresponding, relevant incidents from the last 30 days. |
+| **Identity related incidents** | Lists alerts from both Identity Security and [Microsoft Entra ID Protection](/en-us/azure/active-directory/identity-protection/overview-identity-protection), and any corresponding, relevant incidents from the last 30 days. |
 | **Useful guides** | Provides links to key documentation, including [What is Identity Security in Microsoft Defender?](/en-us/defender-xdr/identity-security/identity-security-overview), [Conditional access policies in Microsoft](/en-us/entra/identity/conditional-access/overview), and [How to increase my Identity security coverage in Defender?](/en-us/defender-xdr/identity-security/coverage-maturity). |
 | **Domains with unsecured configurations** | Lists Active Directory domains that have unsecured configuration settings. Active Directory domains hold many security-related configurations, which, when misconfigured, can make organizations more susceptible to cyber-attacks. Make sure to configure your domains in accordance with security best practices to decrease the likelihood of identity compromise. For more information, see [Security assessment: Unsecure domain configurations](security-posture-assessments/identity-infrastructure#resolve-unsecure-domain-configurations). |
 | **Active users at risk** | Lists active user accounts that may be vulnerable to security threats, unusual activities, or potential compromises. Identifying and managing users at risk is a crucial aspect of maintaining a secure IT environment. Select **View all users** to investigate further. For more information, see [Remediate risks and unblock users in Microsoft Entra ID Protection](/en-us/entra/id-protection/howto-identity-protection-remediate-unblock). |

@@ -10,9 +10,9 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to configure firewall and proxy access for Microsoft Defender for Endpoint service URLs, including streamlined and standard connectivity.
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
-ms.reviewer: pahuijbr
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: 
 ms.localizationpriority: medium
 ms.collection:
 - m365-security

@@ -11,11 +11,11 @@ manager: bagol
 description: Learn how to use a Group Policy to configure and manage Microsoft Defender Antivirus on your endpoints in Microsoft Defender for Endpoint.
 ms.service: defender-endpoint
 ms.localizationpriority: medium
-author: chrisda
-ms.author: chrisda
+ms.author: sihamilt
+author: contributor-sh
 ms.custom: nextgen, msecd-doc-authoring-1015
 ms.date: 2026-08-12T00:00:00.0000000Z
-ms.reviewer: ksarens, jtoole, pahuijbr, yongrhee
+ms.reviewer: ksarens, jtoole,  yongrhee
 ms.subservice: ngp
 ms.topic: how-to
 ms.collection:

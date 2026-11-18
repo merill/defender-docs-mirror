@@ -12,9 +12,9 @@ description: Describes how to offboard Linux servers from Microsoft Defender for
 ms.service: defender-endpoint
 ms.subservice: linux
 ms.topic: article
-author: paulinbar
-ms.author: painbar
-ms.reviewer: gopkr, pahuijbr, megphapriya
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: gopkr,  megphapriya
 audience: ITPro
 ms.localizationpriority: medium
 ms.collection:

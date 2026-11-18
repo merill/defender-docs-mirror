@@ -10,10 +10,10 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Onboard supported previous versions of Windows devices so that they can send sensor data to the Microsoft Defender for Endpoint sensor
 ms.service: defender-endpoint
-ms.author: painbar
-author: paulinbar
+ms.author: sihamilt
+author: contributor-sh
 ms.localizationpriority: medium
-ms.reviewer: pahuijbr
+ms.reviewer: 
 ms.collection:
 - m365-security
 - tier2

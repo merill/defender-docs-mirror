@@ -9,9 +9,9 @@ feedback_product_url: https://techcommunity.microsoft.com/t5/security-compliance
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 manager: bagol
 description: Learn how to set up and use the Defender for Endpoint plug-in for Windows Subsystem for Linux.
-author: paulinbar
-ms.author: painbar
-ms.reviewer: gokulgiju, priyankagill, kvitta, pahuijbr
+ms.author: sihamilt
+author: contributor-sh
+ms.reviewer: gokulgiju, priyankagill, kvitta
 ms.service: defender-endpoint
 ms.subservice: onboard
 ms.topic: how-to

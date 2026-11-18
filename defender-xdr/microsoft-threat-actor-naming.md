@@ -113,7 +113,7 @@ The following table lists publicly disclosed threat actor names with their origi
 | Cuboid Sandstorm | Iran | DEV-0228, IMPERIAL KITTEN |
 | Daffodil Gust | United Arab Emirates | Stealth Falcon, Fruity Armor, Project Raven |
 | [Denim Tsunami](https://www.microsoft.com/en-us/security/blog/2022/07/27/untangling-knotweed-european-private-sector-offensive-actor-using-0-day-exploits/) | Austria, Private sector offensive actor | DEV-0291 |
-| [Diamond Sleet](https://www.microsoft.com/en-us/security/blog/2023/11/22/diamond-sleet-supply-chain-compromise-distributes-a-modified-cyberlink-installer/) | North Korea | ZINC, LABYRINTH CHOLLIMA, Black Artemis, Lazarus |
+| [Diamond Sleet](https://www.microsoft.com/en-us/security/blog/2026/10/29/tracking-ai-adoption-in-north-korean-threat-actor-tradecraft/) | North Korea | ZINC, LABYRINTH CHOLLIMA, Black Artemis, Lazarus |
 | [Emerald Sleet](https://www.microsoft.com/en-us/security/blog/2026/10/29/tracking-ai-adoption-in-north-korean-threat-actor-tradecraft/) | North Korea | THALLIUM, VELVET CHOLLIMA, RGB-D5, Black Banshee, Kimsuky, Greendinosa |
 | Fallow Squall | Singapore | PLATINUM, PARASITE, RUBYVINE, GINGERSNAP |
 | [Flax Typhoon](https://www.microsoft.com/en-us/security/blog/2023/08/24/flax-typhoon-using-legitimate-software-to-quietly-access-taiwanese-organizations/) | China | Storm-0919, ETHEREAL PANDA |

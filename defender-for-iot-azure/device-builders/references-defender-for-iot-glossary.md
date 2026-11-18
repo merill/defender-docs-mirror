@@ -51,7 +51,7 @@ This glossary provides a brief description of important terms and concepts for t
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## D
 

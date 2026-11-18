@@ -42,11 +42,11 @@ source_path: defender-for-iot-azure/device-builders/quickstart-onboard-iot-hub.m
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/816835a3-1c5d-4536-835c-4b59dc9c9d97
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1438b371-d010-4b69-a622-5b0950c389fc
-- https://authoring-docs-microsoft.poolparty.biz/devrel/68ec7f3a-2bc6-459f-b959-19beb729907d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/a98c4e96-5248-4755-860b-6c76f1933f0c
 - https://authoring-docs-microsoft.poolparty.biz/devrel/86b71af1-f926-4f84-ad97-652864405350
-- https://authoring-docs-microsoft.poolparty.biz/devrel/90370425-aca4-4a39-9533-d52e5e002a5d
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: d376e576-2624-8d7c-0d90-c6d30ec0815a
 ---
 
@@ -69,7 +69,7 @@ This article explains how to enable Microsoft Defender for IoT on an Azure IoT h
 
 Note
 
-Defender for IoT currently only supports standard tier IoT Hubs.
+Defender for IoT integration with Azure IoT Hub plans to retire on August 15, 2027.
 
 ## Create an IoT Hub with Microsoft Defender for IoT
 

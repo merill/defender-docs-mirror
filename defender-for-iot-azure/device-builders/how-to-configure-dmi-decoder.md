@@ -53,7 +53,7 @@ This article explains how to configure the DMI decoder, and alternative configur
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Overview
 

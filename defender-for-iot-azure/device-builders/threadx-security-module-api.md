@@ -57,7 +57,7 @@ This API is intended for use with the Defender-IoT-micro-agent for Eclipse Threa
 
 Note
 
-Defender for IoT plans to retire the micro agent on June 1, 2027.
+Defender for IoT plans to retire the micro agent on August 15, 2027.
 
 ## Enable Defender-IoT-micro-agent for Eclipse ThreadX
 

@@ -12,12 +12,12 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: shragar
 description: Learn how to investigate predefined app policy alerts from app governance in Microsoft Defender XDR with Microsoft Defender for Cloud Apps.
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 7871a290-8697-c7d7-2665-c0f46ebfd7cc
 document_version_independent_id: 7871a290-8697-c7d7-2665-c0f46ebfd7cc
@@ -34,12 +34,12 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/app-governance-investigate-predefined-policies.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 platformId: 885430cf-17d8-5219-6bb4-6e450234f62b
 ---
@@ -83,7 +83,7 @@ An overprivileged app has permissions that exceed what it needs for its intended
 
 Note
 
-As part of our continuous efforts to enhance Defender for Cloud apps alert accuracy, we have disabled this policy. The Increase in data usage by an overprivileged or highly privileged app policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
+As part of our continuous efforts to enhance Microsoft Defender alert accuracy, we have disabled this policy. The Increase in data usage by an overprivileged or highly privileged app policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
 
 **Severity**: Medium
 
@@ -102,11 +102,11 @@ To determine if the alert is a true positive (TP) or a false positive (FP), revi
 
 ### Unusual activity from an app with priority account consent
 
-A priority account is a high-value account, such as an executive or service administrator, that you tag in Microsoft Defender for Cloud Apps. This alert triggers when an app that a priority account has consented to exhibits unusual activity.
+A priority account is a high-value account, such as an executive or service administrator, that you tag in Defender. This alert triggers when an app that a priority account has consented to exhibits unusual activity.
 
 Note
 
-As part of our continuous efforts to enhance Defender for Cloud apps alert accuracy, we have disabled this policy. The Unusual activity from an app with priority account consent policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
+As part of our continuous efforts to enhance Defender alert accuracy, we have disabled this policy. The Unusual activity from an app with priority account consent policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
 
 **Severity**: Medium
 
@@ -265,7 +265,7 @@ This alert detects apps that access sensitive data in ways that might indicate r
 
 Note
 
-As part of our continuous efforts to enhance Defender for Cloud apps alert accuracy, we have disabled this policy. The Access to sensitive data policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
+As part of our continuous efforts to enhance Defender alert accuracy, we have disabled this policy. The Access to sensitive data policy remains visible in the Defender portal in a disabled state. If you want to continue using this policy, in the Defender portal, go to **App Governance**, and then the **Policies** page. Select the policy, and then select **Activate**.
 
 **Severity**: Medium
 

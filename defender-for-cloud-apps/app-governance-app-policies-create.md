@@ -12,12 +12,12 @@ ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: shragar
 description: Learn how to create app governance policies for OAuth apps in Microsoft 365, Google Workspace, and Salesforce to detect risk and take action.
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: d1ff15d1-1aeb-9cc2-dbc7-87a8b6d2e866
 document_version_independent_id: d1ff15d1-1aeb-9cc2-dbc7-87a8b6d2e866
@@ -57,7 +57,7 @@ This article shows you how to create and configure OAuth app policies in app gov
 
 For apps connected to Microsoft Entra ID, create app policies from provided templates that can be customized, or create your own custom app policy.
 
-1. To create a new app policy for Microsoft 365 apps, go to **Microsoft Defender XDR** &gt; **App governance** &gt; **Policies** &gt; **Microsoft 365**.
+1. To create a new app policy for Microsoft 365 apps, go to **Microsoft Defender** &gt; **App governance** &gt; **Policies** &gt; **Microsoft 365**.
 
     For example:
 
@@ -179,7 +179,7 @@ Use a custom app policy when you need to do something not already done by one of
 
 After you create an app policy, monitor it on the **Policies** page to confirm that it generates the expected number of active and total alerts.
 
-[![Screenshot of the app governance policies summary page in Microsoft Defender XDR, with a highlighted policy.](media/app-governance/mapg-cc-policies-policy.png)](media/app-governance/mapg-cc-policies-policy.png#lightbox)
+[![Screenshot of the app governance policies summary page in the Microsoft Defender portal, with a highlighted policy.](media/app-governance/mapg-cc-policies-policy.png)](media/app-governance/mapg-cc-policies-policy.png#lightbox)
 
 If the number of alerts is unexpectedly low, review and update the app policy settings.
 
@@ -189,7 +189,7 @@ Policies for OAuth apps trigger alerts only on policies that are authorized by u
 
 **To create a new app policy for Salesforce, Google and other apps**:
 
-1. In Microsoft Defender XDR, go to **Cloud Apps** &gt; **App governance** &gt; **Policies** &gt; **Other apps**. For example:
+1. In Microsoft Defender, go to **Cloud Apps** &gt; **App governance** &gt; **Policies** &gt; **Other apps**. For example:
 
     ![Screenshot of the Other apps policy creation page in App Governance](media/app-governance-app-policies-create/other-apps-policy-creation.jpg)
 2. Filter the apps according to your needs. For example, you might want to view all apps that request **Permission** to **Modify calendars in your mailbox**.
@@ -205,7 +205,7 @@ Policies for OAuth apps trigger alerts only on policies that are authorized by u
 
 ### Anomaly detection policies for OAuth apps connected to Salesforce and Google Workspace
 
-In addition to Oauth app policies that you can create, Microsoft Defender for Cloud Apps provides out-of-the-box anomaly detection policies that profile metadata of OAuth apps to identify ones that are potentially malicious. Defender for Cloud Apps is the Microsoft security service that helps protect your organization's cloud app environment, including OAuth apps connected to Salesforce and Google Workspace.
+In addition to OAuth app policies that you can create, Defender provides out-of-the-box anomaly detection policies. These policies profile OAuth app metadata to identify potentially malicious apps. These SaaS security capabilities help protect your organization's cloud app environment, including OAuth apps connected to Salesforce and Google Workspace.
 
 The out-of-the-box anomaly detection policies are only relevant for Salesforce and Google Workspace applications.
 
@@ -213,7 +213,7 @@ Note
 
 Anomaly detection policies are only available for OAuth apps that are authorized in your Microsoft Entra ID. The severity of OAuth app anomaly detection policies can't be modified.
 
-The following table describes the out-of-the-box anomaly detection policies provided by Defender for Cloud Apps:
+The following table describes the out-of-the-box anomaly detection policies provided by Defender:
 
 | Policy | Description |
 | --- | --- |

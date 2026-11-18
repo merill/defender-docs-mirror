@@ -12,10 +12,11 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2025-08-18T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: overview
 description: Learn about app governance policies with Microsoft Defender for Cloud Apps in Microsoft Defender XDR.
 ms.reviewer: shragar
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 91aa926a-1312-c4e7-0108-90a0fef1d884
 document_version_independent_id: 91aa926a-1312-c4e7-0108-90a0fef1d884
@@ -32,13 +33,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/app-governance-app-policies-overview.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
+- https://authoring-docs-microsoft.poolparty.biz/devrel/d6f38669-3d05-40f2-afd8-e49f7dd20884
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/55265cca-de9b-48dc-a77a-9047cc39a575
 platformId: 4d0db2f9-49be-5708-a6e0-83694d76be68
 ---
 
@@ -61,7 +62,7 @@ For more information, see [App governance roles](app-governance-get-started#role
 
 ## View policies
 
-To see your list of current app policies, go to **Microsoft Defender XDR &gt; App governance** and select **Policies**. This shows a list of all your policies in app governance.
+To see your list of current app policies, go to **Microsoft Defender &gt; App governance** and select **Policies**. This shows a list of all your policies in app governance.
 
 For example:
 
@@ -112,13 +113,13 @@ App governance contains a set of out-of-the-box policies to detect anomalous app
 
 ### Work with predefined policies
 
-- To view available predefined policies, go to **Microsoft Defender XDR** &gt; **App governance** &gt; **Overview** and select **View predefined policies** in the **Predefined policies** section.
+- To view available predefined policies, go to **Microsoft Defender** &gt; **App governance** &gt; **Overview** and select **View predefined policies** in the **Predefined policies** section.
 
     ![Screenshot that shows how to view predefined policies.](media/app-governance/predefined-policies.png)
-- Alternatively, go to **Microsoft Defender XDR** &gt; **App governance** &gt; **Policies** and filter for **Source: Predefined** to see the list of available predefined policies.
+- Alternatively, go to **Microsoft Defender** &gt; **App governance** &gt; **Policies** and filter for **Source: Predefined** to see the list of available predefined policies.
 
     ![Screenshot that shows how to filter for predefined policies.](media/app-governance/source-predefined.png)
 - To view the description of the policy, select the policy to see the policy summary and description in the detailed policy window.
 - To change the status of a policy (deactivate/activate), select the policy and select **Deactivate** in the detailed policy window.
 - By default, predefined policies trigger alerts when the conditions are met. You can choose to automatically disable the app when the policy triggers. Use caution when applying these actions because a policy might affect users and legitimate app use. To disable the app, mark the **Disable app** box under **Policy action** in the summary section and select **Save**.
-- Alerts generated from predefined policies are listed as app governance policy alerts in the Microsoft Defender XDR alerts queue.
+- Alerts generated from predefined policies are listed as app governance policy alerts in the Microsoft Defender alerts queue.

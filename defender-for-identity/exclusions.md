@@ -13,10 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to configure Microsoft Defender for Identity detection exclusions in Microsoft Defender XDR.
-ms.date: 2026-08-10T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: LiorShapiraa
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 61e0c938-fa23-1c10-57f2-54f7be3c259c
@@ -34,32 +34,32 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/exclusions.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 0cfd954e-46b0-f6d5-4fb9-d46789f9a90c
 ---
 
 # Detection exclusions in Microsoft Defender XDR - Microsoft Defender for Identity | Microsoft Learn
 
-This article explains how to configure [Microsoft Defender for Identity](/en-us/defender-for-identity) detection exclusions in [Microsoft Defender](/en-us/microsoft-365/security/defender/overview-security-center).
+Configure [identity security](/en-us/defender-for-identity) detection exclusions in [Microsoft Defender](/en-us/microsoft-365/security/defender/overview-security-center).
 
-Microsoft Defender for Identity enables the exclusion of specific IP addresses, computers, domains, or users from a number of detections.
+You can exclude specific IP addresses, computers, domains, or users from a number of identity security detections.
 
-For example, a **DNS Reconnaissance** alert could be triggered by a security scanner that uses DNS as a scanning mechanism. Creating an exclusion helps Microsoft Defender for Identity ignore such scanners and reduce false positives.
+For example, a **DNS Reconnaissance** alert could be triggered by a security scanner that uses DNS as a scanning mechanism. Creating an exclusion helps Defender ignore such scanners and reduce false positives.
 
 Note
 
-- We recommend that you [tune an alert in Microsoft Defender XDR](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert) instead of using exclusions. Alert tuning rules allow more granular conditions than exclusions, and allow you to review the alerts, which were tuned.
+- We recommend that you [tune an alert in Microsoft Defender](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert) instead of using exclusions. Alert tuning rules allow more granular conditions than exclusions, and allow you to review the alerts, which were tuned.
 - Among the most common domains with [Suspicious communication over DNS](other-alerts#suspicious-communication-over-dns-external-id-2031) alerts, we observed the domains that were most frequently excluded from the alert. These domains are added to the exclusions list by default, but you have the option to remove them.
 
 Important
 
-As Defender for Identity detections move to the Microsoft Defender XDR detection engine, existing detection exclusions don't automatically carry over. After a detection moves, previously configured exclusions stop applying, and alerts that were previously suppressed can reappear. To preserve your tuning, re-create equivalent tuning by using [alert tuning rules](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert) in the Microsoft Defender portal.
+As Defender for Identity detections move to the Defender extended detection and response (XDR) engine, existing detection exclusions don't automatically carry over. After a detection moves, previously configured exclusions stop applying, and alerts that were previously suppressed can reappear. To preserve your tuning, re-create equivalent tuning by using [alert tuning rules](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert) in the Microsoft Defender portal.
 
 ## How to add detection exclusions
 

@@ -13,9 +13,9 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: Create and manage app permission policies in Microsoft Defender for Cloud Apps to control OAuth app behavior and permissions.
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 0cc2fa0e-a1a1-9ebd-f1d8-e006e1472b4c
@@ -33,17 +33,19 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/app-permission-policy.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
+- https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
+- https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
 platformId: 575366f3-2e23-281c-50e7-833ecf92fab7
 ---
 
 # Create policies to control OAuth apps - Microsoft Defender for Cloud Apps | Microsoft Learn
 
-In Microsoft Defender for Cloud Apps, you can create app permission policies to monitor and control OAuth app behavior. Use these policies to get automated notifications when apps meet specific criteria, investigate requested permissions, and mark permissions as approved or banned.
+With the SaaS security capabilities in Microsoft Defender, you can create app permission policies to monitor and control OAuth app behavior. Use these policies to get automated notifications when apps meet specific criteria, investigate requested permissions, and mark permissions as approved or banned.
 
 ## Create OAuth app policies
 

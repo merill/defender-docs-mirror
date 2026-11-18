@@ -13,11 +13,11 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn how to use and configure Microsoft Defender for Identity notifications in Microsoft Defender XDR.
-ms.date: 2026-07-02T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: LiorShapiraa
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: a34dccc9-902f-86f4-aae0-840629fec263
 document_version_independent_id: a34dccc9-902f-86f4-aae0-840629fec263
@@ -48,9 +48,9 @@ Note
 
 Defender for Identity notifications are currently supported only by the Defender for Identity sensor version 2.x.
 
-Microsoft Defender for Identity provides notifications for health issues and security alerts, either via email notifications or to a Syslog server.
+Microsoft Defender provides identity security notifications for health issues and security alerts, either via email notifications or to a Syslog server.
 
-This article describes how to configure Defender for Identity notifications so that you're aware of any health issues or security alerts detected.
+Configure notifications so that you're aware of any identity security health issues or security alerts detected.
 
 Tip
 
@@ -64,7 +64,7 @@ Use the following procedure to configure email notifications for Defender for Id
 2. Under **Notifications**, select **Health issues notifications**.
 3. In the **Add recipient email**, enter the email address(es) where you want to receive email notifications, and select **+ Add**.
 
-Whenever Defender for Identity detects a health issue, configured recipients receive an email notification with the details, with a link to Microsoft Defender XDR for more details.
+Whenever Defender for Identity detects a health issue, configured recipients receive an email notification with the details, with a link to the Defender portal for more details.
 
 Note
 
@@ -82,7 +82,7 @@ If you use Syslog in TLS mode, install the required certificates on the designat
 
 **To configure Syslog notifications**:
 
-1. In [Microsoft Defender XDR](https://security.microsoft.com), select **Settings** &gt; **Identities**.
+1. In [Microsoft Defender](https://security.microsoft.com), select **Settings** &gt; **Identities**.
 2. Under **Notifications**, select **Syslog notifications**, then toggle on the **Syslog service** option.
 3. Select **Configure service** to open the **Syslog service** pane.
 4. Enter the following details:

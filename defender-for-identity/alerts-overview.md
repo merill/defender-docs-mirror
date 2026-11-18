@@ -13,9 +13,11 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: This article provides a list of the security alerts issued by Microsoft Defender for Identity.
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: reference
 ms.reviewer: rlitinsky
+ai-usage: ai-assisted
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: ae0482a9-4ea2-c264-8513-2ecd1269ce7d
 document_version_independent_id: ae0482a9-4ea2-c264-8513-2ecd1269ce7d
@@ -44,17 +46,17 @@ platformId: 793c3823-d342-1bf3-0b44-2533e46e06f7
 
 ## What are Microsoft Defender for Identity security alerts?
 
-Microsoft Defender for Identity security alerts provide information about the suspicious activities detected by Defender for Identity, and the actors and computers involved in each threat. Alert evidence lists contain direct links to the involved users and computers, to help make your investigations easy and direct.
+Microsoft Defender's identity security alerts provide information about suspicious activities and the actors and computers involved in each threat. Alert evidence lists contain direct links to the involved users and computers, to help make your investigations easy and direct.
 
 Note
 
 Defender for Identity isn't designed to serve as an auditing or logging solution that captures every single operation or activity on the servers where the sensor is installed. It only captures the data required for its detection and recommendation mechanisms.
 
-The Identity alerts page gives you cross-domain signal enrichment and automated identity response capabilities. The benefit of investigating alerts with [Microsoft Defender](/en-us/microsoft-365/security/defender/microsoft-365-defender) is that Microsoft Defender for Identity alerts are correlated with information obtained from each of the other products in the suite. These enhanced alerts are consistent with the other Microsoft Defender alert formats originating from [Microsoft Defender for Office 365](/en-us/microsoft-365/security/office-365-security) and [Microsoft Defender for Endpoint](/en-us/microsoft-365/security/defender-endpoint).
+The Identity alerts page gives you cross-domain signal enrichment and automated identity response capabilities. In [Microsoft Defender](/en-us/microsoft-365/security/defender/microsoft-365-defender), identity security alerts are correlated with signals from other security capabilities. These enhanced alerts are consistent with alert formats from [email security](/en-us/microsoft-365/security/office-365-security) and [endpoint security](/en-us/microsoft-365/security/defender-endpoint).
 
-Alerts originating from Defender for Identity trigger [Microsoft Defender automated investigation and response (AIR)](/en-us/microsoft-365/security/defender/m365d-autoir) capabilities, including automatically remediating alerts and the mitigation of tools and processes that can contribute to the suspicious activity.
+These identity security alerts trigger [Microsoft Defender automated investigation and response (AIR)](/en-us/microsoft-365/security/defender/m365d-autoir) capabilities, including automatically remediating alerts and the mitigation of tools and processes that can contribute to the suspicious activity.
 
-Microsoft Defender for Identity alerts currently appear in two different layouts in the Microsoft Defender portal. While the alert views may show different information, all alerts are based on detections from Defender for Identity sensors. The differences in layout and information shown are part of an ongoing transition to a unified alerting experience across Microsoft Defender products.
+Identity security alerts currently appear in two different layouts in the Microsoft Defender portal. While the alert views might show different information, all alerts are based on detections from Defender for Identity sensors. The differences in layout and information shown are part of an ongoing transition to a unified alerting experience in Defender.
 
 Note
 
@@ -64,13 +66,13 @@ During the transition to the Defender-format alert experience, some detections m
 
 Tuning is format-specific. Exclusions configured under **Settings** &gt; **Identities** &gt; **Excluded entities** apply to Defender for Identity detection exclusions. Defender-format alerts should be tuned with [Microsoft Defender alert tuning rules](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert).
 
-To learn more about how to understand the structure, and common components of all Defender for Identity security alerts, see [View and manage alerts](understanding-security-alerts).
+To learn more about how to understand the structure, and common components of identity security alerts, see [View and manage alerts](understanding-security-alerts).
 
 For information about **True positive (TP)**, **Benign true positive (B-TP)**, and **False positive (FP)**, see [security alert classifications](understanding-security-alerts#classify-security-alerts).
 
 ## Alerts categories
 
-The alerts are divided into categories based on the phases seen in a typical cyber-attack kill chain. The categories differ slightly depending on whether the alert originates from using the classic Microsoft Defender for Identity alerting, or Microsoft Defender. The differences are part of an ongoing transition to a unified alerting experience across Microsoft Defender products.
+The alerts are divided into categories based on the phases seen in a typical cyber-attack kill chain. The categories differ slightly depending on whether the alert uses the classic or Defender format. The differences are part of an ongoing transition to a unified alerting experience in Defender.
 
 For example, there are categories for:
 

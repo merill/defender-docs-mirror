@@ -13,8 +13,9 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: This article provides daily operational recommendations to help security operations teams to plan and run security activities.
-ms.date: 2024-05-15T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: reference
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 387bcbba-1163-51d7-6306-93300570402e
 document_version_independent_id: 387bcbba-1163-51d7-6306-93300570402e
@@ -190,7 +191,7 @@ For more information, see:
 
 We recommend that you check your list of OAuth-enabled apps daily, together with relevant app metadata and usage data. Select an app to view deeper insights and information.
 
-App governance uses machine learning-based detection algorithms to detect anomalous app behavior in your Microsoft Defender XDR tenant, and generates alerts that you can see, investigate, and resolve. Beyond this built-in detection capability, you can use a set of default policy templates or create your own app policies that generate other alerts.
+App governance uses machine learning-based detection algorithms to detect anomalous app behavior in your Microsoft Defender tenant, and generates alerts that you can see, investigate, and resolve. Beyond this built-in detection capability, you can use a set of default policy templates or create your own app policies that generate other alerts.
 
 For more information, see:
 

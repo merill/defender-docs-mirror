@@ -12,11 +12,11 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 ms.reviewer: anandd512
 description: Get started with app governance capabilities to govern your apps in  Microsoft Defender for Cloud Apps.
-ms.custom: sfi-ga-nochange, msecd-doc-authoring-1016
+ms.custom: sfi-ga-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 1d66f038-d13e-24b3-b621-f82b8fac8a93
@@ -46,7 +46,7 @@ platformId: d3d0a393-0c46-5df0-6ebf-91c45aabe1ea
 
 # Turn on app governance in Microsoft Defender for Cloud Apps - Microsoft Defender for Cloud Apps | Microsoft Learn
 
-This article describes how to turn on Microsoft Defender for Cloud Apps app governance.
+Use app governance, a SaaS security capability in Microsoft Defender, to monitor and govern OAuth-enabled apps. Before you begin, review the prerequisites for licensing, administrator roles, and supported billing regions.
 
 ## Prerequisites
 
@@ -66,9 +66,9 @@ Learn how to [connect to the Microsoft 365 connector](/en-us/defender-cloud-apps
 
 ## Turn on app governance
 
-If your organization satisfies the app governance prerequisites, go to [Microsoft Defender XDR &gt; Settings &gt; Cloud Apps &gt; App governance](https://security.microsoft.com/cloudapps/settings) and select **Use app governance**. For example:
+If your organization satisfies the app governance prerequisites, go to [Microsoft Defender &gt; Settings &gt; Cloud Apps &gt; App governance](https://security.microsoft.com/cloudapps/settings) and select **Use app governance**. For example:
 
-[![Screenshot of the App governance toggle in Microsoft Defender XDR.](media/app-governance-get-started/app-governance-service-status2.png)](media/app-governance-get-started/app-governance-service-status2.png#lightbox)
+[![Screenshot of the App governance toggle in the Microsoft Defender portal.](media/app-governance-get-started/app-governance-service-status2.png)](media/app-governance-get-started/app-governance-service-status2.png#lightbox)
 
 After signing up for app governance, you'll need to wait up to 10 hours to see and use the product.
 

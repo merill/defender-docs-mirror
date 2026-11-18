@@ -13,10 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: This article provides a list of the classic security alerts issued by Microsoft Defender for Identity.
-ms.date: 2026-08-16T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: reference
 ms.reviewer: rlitinsky
-ms.custom: msecd-doc-authoring-1015
+ms.custom: msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: 8af2dc03-eb44-e7b1-032b-a48ef1eedee9
@@ -36,25 +36,25 @@ source_path: defender-for-identity/alerts-mdi-classic.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 platformId: 7b0ed51c-d402-68a3-c9cb-5ecb772a5c11
 ---
 
 # Microsoft Defender for Identity classic security alerts - Microsoft Defender for Identity | Microsoft Learn
 
-Microsoft Defender for Identity alerts can appear in the Microsoft Defender portal in two different formats depending on if the alert originates from Defender for Identity or Microsoft Defender. All alerts are based on detections from Defender for Identity sensors. The differences in layout and information are part of an ongoing transition to a unified alerting experience in Microsoft Defender products.
+Identity security alerts in the Microsoft Defender portal can appear in two different formats: classic and Defender. All alerts are based on detections from Defender for Identity sensors. The differences in layout and information are part of an ongoing transition to a unified alerting experience in Defender.
 
-To learn more about how to understand the structure, and common components of all Defender for Identity security alerts, see [View and manage alerts](understanding-security-alerts).
+To learn more about how to understand the structure, and common components of identity security alerts, see [View and manage alerts](understanding-security-alerts).
 
 Some vulnerability-related alerts can still trigger after you install the relevant security update because the activity matches a suspicious pattern. If every affected system has the update, applicable alerts have Low severity. Patch status appears in the evidence when the alert supports it. Review the alert, and use [Microsoft Defender alert tuning rules](/en-us/microsoft-365/security/defender/investigate-alerts#tune-an-alert) only if you confirm that repeated activity is expected or benign.
 
 ## Microsoft Defender for Identity classic alert categories
 
-Defender for Identity security alerts are divided into the following categories or phases, like the phases seen in a typical cyber-attack kill chain. Learn more about each phase, the alerts designed to detect each attack, and how to use the alerts to help protect your network using the following links:
+Classic identity security alerts in Defender are divided into the following categories or phases, like the phases seen in a typical cyber-attack kill chain. Learn more about each phase, the alerts designed to detect each attack, and how to use the alerts to help protect your network using the following links:
 
 - Reconnaissance and discovery alerts
 - Persistence and privilege escalation alerts
@@ -64,9 +64,9 @@ Defender for Identity security alerts are divided into the following categories 
 
 ## Reconnaissance and discovery alerts
 
-Reconnaissance and discovery consist of techniques an adversary may use to gain knowledge about the system and internal network. These techniques help adversaries observe the environment and orient themselves before deciding how to act. They also allow adversaries to explore what they can control and what's around their entry point to discover how it could benefit their current objective. Native operating system tools are often used toward this post-compromise information-gathering objective. In Microsoft Defender for Identity, these alerts usually involve internal account enumeration with different techniques.
+Reconnaissance and discovery consist of techniques an adversary may use to gain knowledge about the system and internal network. These techniques help adversaries observe the environment and orient themselves before deciding how to act. They also allow adversaries to explore what they can control and what's around their entry point to discover how it could benefit their current objective. Native operating system tools are often used toward this post-compromise information-gathering objective. In Defender, these alerts usually involve internal account enumeration with different techniques.
 
-The following security alerts help you identify and remediate **Reconnaissance and discovery** phase suspicious activities detected by Defender for Identity in your network.
+The following security alerts help you identify and remediate **Reconnaissance and discovery** phase suspicious activities detected by Defender in your network.
 
 | Security alert name | Severity | External ID |
 | --- | --- | --- |
@@ -79,7 +79,7 @@ The following security alerts help you identify and remediate **Reconnaissance a
 
 After the attacker uses techniques to keep access to different on-premises resources they start the Privilege Escalation phase, which consists of techniques that adversaries use to gain higher-level permissions on a system or network. Adversaries can often enter and explore a network with unprivileged access but require elevated permissions to follow through on their objectives. Common approaches are to take advantage of system weaknesses, misconfigurations, and vulnerabilities.
 
-The following security alerts help you identify and remediate **Persistence and privilege escalation** phase suspicious activities detected by Defender for Identity in your network.
+The following security alerts help you identify and remediate **Persistence and privilege escalation** phase suspicious activities detected by Defender in your network.
 
 | Security alert name | Severity | External ID |
 | --- | --- | --- |
@@ -106,7 +106,7 @@ The following security alerts help you identify and remediate **Persistence and 
 
 Credential Access consists of techniques for stealing credentials like account names and passwords. Techniques used to get credentials include keylogging or credential dumping. Using legitimate credentials can give adversaries access to systems, make them harder to detect, and provide the opportunity to create more accounts to help achieve their goals.
 
-The following security alerts help you identify and remediate **Credential access** phase suspicious activities detected by Defender for Identity in your network.
+The following security alerts help you identify and remediate **Credential access** phase suspicious activities detected by Defender in your network.
 
 | Security alert name | Severity | External ID |
 | --- | --- | --- |
@@ -128,7 +128,7 @@ The following security alerts help you identify and remediate **Credential acces
 
 ## Lateral movement alerts
 
-Lateral Movement consists of techniques that adversaries use to enter and control remote systems on a network. Following through on their primary objective often requires exploring the network to find their target and subsequently gaining access to it. Reaching their objective often involves pivoting through multiple systems and accounts to gain. Adversaries might install their own remote access tools to accomplish Lateral Movement or use legitimate credentials with native network and operating system tools, which may be stealthier. Microsoft Defender for Identity can cover different passing attacks (pass the ticket, pass the hash, etc.) or other exploitations against the domain controller, like PrintNightmare or remote code execution.
+Lateral Movement consists of techniques that adversaries use to enter and control remote systems on a network. Following through on their primary objective often requires exploring the network to find their target and subsequently gaining access to it. Reaching their objective often involves pivoting through multiple systems and accounts to gain. Adversaries might install their own remote access tools to accomplish Lateral Movement or use legitimate credentials with native network and operating system tools, which may be stealthier. Defender can cover different passing attacks (pass the ticket, pass the hash, etc.) or other exploitations against the domain controller, like PrintNightmare or remote code execution.
 
 Important
 
@@ -154,7 +154,7 @@ The **Suspected identity theft (pass-the-hash)** alert will be retired at the en
 
 ## Other alerts
 
-The following security alerts help you identify and remediate **Other** phase suspicious activities detected by Defender for Identity in your network.
+The following security alerts help you identify and remediate **Other** phase suspicious activities detected by Defender in your network.
 
 Important
 

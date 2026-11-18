@@ -13,9 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Describes each activity type monitored by Microsoft Defender for Identity
-ms.date: 2024-02-12T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: article
 ms.reviewer: rlitinsky
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 888882ce-80ac-7945-57e3-9c03eedc0929
 document_version_independent_id: 888882ce-80ac-7945-57e3-9c03eedc0929
@@ -33,20 +34,22 @@ item_type: Content
 source_path: defender-for-identity/monitored-activities.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: 2d32fc6f-63bb-8f7a-a6d7-e857b5f8d1ca
 ---
 
 # Monitored activities - Microsoft Defender for Identity | Microsoft Learn
 
-Microsoft Defender for Identity monitors information generated from your organization's Active Directory, network activities and event activities to detect suspicious activity. The monitored activity information enables Defender for Identity to help you determine the validity of each potential threat and correctly triage and respond.
+Microsoft Defender uses identity security capabilities to monitor information generated from your organization's Active Directory, network activities and event activities to detect suspicious activity. The monitored activity information enables Defender to help you determine the validity of each potential threat and correctly triage and respond.
 
-In the case of a valid threat, or **true positive**, Defender for Identity enables you to discover the scope of the breach for each incident, investigate which entities are involved, and determine how to remediate them.
+In the case of a valid threat, or **true positive**, Defender enables you to discover the scope of the breach for each incident, investigate which entities are involved, and determine how to remediate them.
 
-The information monitored by Defender for Identity is presented in the form of activities. Defender for Identity currently supports monitoring of the following activity types:
+The information monitored by Defender is presented in the form of activities. Defender currently supports monitoring of the following activity types:
 
 Note
 
@@ -56,7 +59,7 @@ Note
 
 Tip
 
-For detailed information on all supported event types (`ActionType` values) in Advanced Hunting Identity-related tables, use the built-in schema reference available in Microsoft Defender XDR.
+For detailed information on all supported event types (`ActionType` values) in Advanced Hunting Identity-related tables, use the built-in schema reference available in the Microsoft Defender portal.
 
 ## Monitored user activities: User account AD attribute changes
 

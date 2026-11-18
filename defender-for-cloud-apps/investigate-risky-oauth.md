@@ -13,9 +13,9 @@ ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
 description: This tutorial provides information on how to investigate and remediate risky OAuth apps in Defender for Cloud Apps.
-ms.date: 2024-01-23T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: tutorial
-ms.custom: sfi-image-nochange
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 locale: en-us
 document_id: 56451486-dbd1-e486-e352-4ec1e8963e7c
 document_version_independent_id: 56451486-dbd1-e486-e352-4ec1e8963e7c
@@ -33,12 +33,12 @@ item_type: Content
 source_path: defender-for-cloud-apps/investigate-risky-oauth.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
 platformId: d0d13114-f519-0642-b017-8fca58a8ac23
 ---
 
@@ -56,9 +56,9 @@ For example, the following OAuth app consent page might look legitimate to the a
 
 ![OAuth phishing google.](media/oauth-phishing.png)
 
-As a security admin, you need visibility and control over the apps in your environment and that includes the permissions they have. You need the ability to prevent use of apps that require permission to resources you wish to revoke. Therefore, Microsoft Defender for Cloud Apps provides you with the ability to investigate and monitor the app permissions your users granted. This article is dedicated to helping you investigate the OAuth apps in your organization, and focus on the apps that are more likely to be suspicious.
+As a security admin, you need visibility and control over the apps in your environment and that includes the permissions they have. You need the ability to prevent use of apps that require permission to resources you wish to revoke. Therefore, Microsoft Defender provides SaaS security capabilities to investigate and monitor the app permissions your users granted. This article is dedicated to helping you investigate the OAuth apps in your organization, and focus on the apps that are more likely to be suspicious.
 
-Our recommended approach is to investigate the apps by using the abilities and information provided in Defender for Cloud Apps to filter out apps with a low chance of being risky, and focus on the suspicious apps.
+Our recommended approach is to investigate the apps by using the abilities and information provided in Defender to filter out apps with a low chance of being risky, and focus on the suspicious apps.
 
 In this tutorial, you'll learn how to:
 
@@ -124,7 +124,7 @@ After you determine that an app is suspicious and you want to investigate it, we
 
 ## How to remediate suspicious OAuth apps
 
-After you determine that an OAuth app is risky, Defender for Cloud Apps provides the following remediation options:
+After you determine that an OAuth app is risky, Defender provides the following remediation options:
 
 - **Manual remediation**: You can easily [ban or revoke an app from the OAuth apps page](manage-app-permissions#ban-or-approve-an-app)
 - **Automatic remediation**: You can create a policy that [automatically revokes an app or revokes a specific user from an app](app-permission-policy).

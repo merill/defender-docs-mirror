@@ -57,10 +57,6 @@ platformId: 77a066dd-16cb-9b8e-ff46-54a3d01c95b7
 
 This article describes how to stream data from Microsoft Purview Information Protection (formerly Microsoft Information Protection or MIP) to Microsoft Sentinel. You can use the data ingested from the Microsoft Purview labeling clients and scanners to track, analyze, report on the data, and use it for compliance purposes.
 
-Important
-
-The Microsoft Purview Information Protection connector is currently in PREVIEW. The [Azure Preview Supplemental Terms](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) include additional legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
 ## Overview
 
 Auditing and reporting are an important part of organizations' security and compliance strategy. With the continued expansion of the technology landscape that has an ever-increasing number of systems, endpoints, operations, and regulations, it becomes even more important to have a comprehensive logging and reporting solution in place.
@@ -112,7 +108,7 @@ If you set the connector on a workspace located in a different region than your 
 
 1. Open the [Azure portal](https://portal.azure.com/) and navigate to the **Microsoft Sentinel** service.
 2. In the **Data connectors** blade, in the search bar, type *Purview*.
-3. Select the **Microsoft Purview Information Protection (Preview)** connector.
+3. Select the **Microsoft Purview Information Protection** connector.
 4. Below the connector description, select **Open connector page**.
 5. Under **Configuration**, select **Connect**.
 

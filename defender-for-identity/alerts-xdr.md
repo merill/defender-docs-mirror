@@ -13,9 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about security alerts issued by Defender for Identity in the extended detection and response (XDR) format.
-ms.date: 2026-07-01T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: concept-article
 ms.reviewer: yossidahan
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: 87209f1d-6644-84de-b7c0-e9fb112e37d5
 document_version_independent_id: 87209f1d-6644-84de-b7c0-e9fb112e37d5
@@ -44,9 +45,9 @@ platformId: 2d7db945-a5bf-40fc-86df-6433f315687c
 
 # Microsoft Defender for Identity XDR security alerts - Microsoft Defender for Identity | Microsoft Learn
 
-This article lists all Defender for Identity security alerts in the Defender format. Defender for Identity sends these alerts to the Microsoft Defender portal.
+Use this reference to review identity security alerts in the Defender format in the Microsoft Defender portal.
 
-Defender for Identity generates alerts in both the Defender format and the [classic format](alerts-overview). The Defender format provides an alert structure that's consistent with other Microsoft Defender products. Both formats are based on the same underlying detections from Defender for Identity sensors, but they differ in structure, naming, and categorization. To identify the format of each alert, check the **Detection source** field on the security alerts page.
+Identity security alerts in Defender use both the Defender format and the [classic format](alerts-overview). The Defender format provides an alert structure that's consistent with other alerts in Defender. Both formats are based on the same underlying detections from Defender for Identity sensors, but they differ in structure, naming, and categorization. To identify the format of each alert, check the **Detection source** field on the security alerts page.
 
 Note
 
@@ -60,7 +61,7 @@ For more information, see [Security alerts in Microsoft Defender](/en-us/microso
 
 ## Alerts by category
 
-Defender for Identity XDR security alerts are divided by category, or phase, as seen in a typical cyber-attack kill chain.
+Identity security alerts in the Defender format are divided by category, or phase, as seen in a typical cyber-attack kill chain.
 
 Use the following links to jump directly to the relevant category and review the available alerts:
 

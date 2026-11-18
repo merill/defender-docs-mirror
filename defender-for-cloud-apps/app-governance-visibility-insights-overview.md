@@ -12,12 +12,12 @@ ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: concept-article
 description: Learn about visibility and insights available for app governance with Microsoft Defender for Cloud Apps in Microsoft Defender XDR.
 ms.reviewer: shragar
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: f7481f78-2987-1cda-5d81-70caa5b8b8fd
 document_version_independent_id: f7481f78-2987-1cda-5d81-70caa5b8b8fd
@@ -94,7 +94,7 @@ Your sign-in account must have one of the [required app governance administrator
 
 For example:
 
-[![Screenshot of the App governance overview page in Microsoft Defender XDR.](media/app-governance-visibility-insights-get-started/overview.png)](media/app-governance-visibility-insights-get-started/overview.png#lightbox)
+[![Screenshot of the App governance overview page in the Microsoft Defender portal.](media/app-governance-visibility-insights-get-started/overview.png)](media/app-governance-visibility-insights-get-started/overview.png#lightbox)
 
 ### What's available on the Overview tab
 

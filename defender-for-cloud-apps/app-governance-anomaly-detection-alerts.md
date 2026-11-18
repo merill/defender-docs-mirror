@@ -12,9 +12,9 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-10-15T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
-ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done, msecd-doc-authoring-1028
+ms.custom: has-azure-ad-ps-ref, azure-ad-ref-level-one-done, msecd-doc-authoring-1030
 description: Learn how to investigate threat detection alerts from app governance in Microsoft Defender XDR with Microsoft Defender for Cloud Apps.
 ms.reviewer: shragar
 ai-usage: ai-assisted
@@ -61,7 +61,7 @@ For more information see:
 
 ## General steps to investigate app governance threat detection alerts
 
-Use the following steps to locate and investigate app governance threat detection alerts in Microsoft Defender XDR.
+Use the following steps to locate and investigate app governance threat detection alerts in Microsoft Defender.
 
 ### Find app governance-related alerts
 

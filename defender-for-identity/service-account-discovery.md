@@ -14,8 +14,8 @@ uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: The Service Accounts page provides a centralized location for customers to view and manage identity information across their environment, ensuring optimal visibility and a comprehensive experience.
 ms.topic: article
-ms.date: 2025-03-25T00:00:00.0000000Z
-ms.custom: sfi-image-nochange
+ms.date: 2026-11-16T00:00:00.0000000Z
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 locale: en-us
 document_id: 70c2ebdc-32f3-0a35-1bf8-ddf4bec95b40
 document_version_independent_id: 70c2ebdc-32f3-0a35-1bf8-ddf4bec95b40
@@ -32,13 +32,13 @@ monikers: []
 item_type: Content
 source_path: defender-for-identity/service-account-discovery.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/37da4cc9-0cfc-42a9-ba5e-805706b01ef8
 - https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
+- https://authoring-docs-microsoft.poolparty.biz/devrel/5711eaa5-435f-4c40-8d89-924ef7945eec
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/3661fb96-d414-4a4e-b7ad-9370637790dd
 - https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8ee4d551-d6c4-4e91-986e-0f1afd52559f
 platformId: a099cd2d-8689-1a31-e1b2-9755c0e07167
 ---
 
@@ -128,9 +128,9 @@ When you investigate a specific Service account, you see the following details u
 
 ### Define Service Account classification rules
 
-Service account classification rules let you define your own criteria for identifying service accounts. These rules help you include service accounts that Defender for Identity doesn't identify automatically. For example, some organizations name all their service accounts with a prefix like `srv`. Defender for Identity doesn't automatically detect such naming conventions. By creating a classification rule based on that pattern, you can include those accounts in the Service accounts view.
+Service account classification rules let you define your own criteria for identifying service accounts. These rules help you include service accounts that Microsoft Defender doesn't identify automatically. For example, some organizations name all their service accounts with a prefix like `srv`. Defender doesn't automatically detect such naming conventions. By creating a classification rule based on that pattern, you can include those accounts in the Service accounts view.
 
-Classification rules work alongside Defender for Identity’s automatic discovery and provide a more complete and customized view of service accounts in your environment.
+Classification rules work alongside Defender's automatic discovery and provide a more complete and customized view of service accounts in your environment.
 
 To create a rule:
 

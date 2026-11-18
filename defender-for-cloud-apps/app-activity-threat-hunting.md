@@ -12,11 +12,11 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-08-07T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: how-to
 description: Learn how app governance in Microsoft Defender for Cloud Apps helps you hunt for resources accessed and activities carried out by apps in your environment.
 ms.reviewer: shragar
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1030
 ai-usage: ai-assisted
 locale: en-us
 document_id: d894cda4-f715-539f-e17d-a2b7a0449aac
@@ -35,10 +35,10 @@ item_type: Content
 source_path: defender-for-cloud-apps/app-activity-threat-hunting.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
-- https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: 2b1a165e-7e4c-8a14-0d83-3cf28db62c49
 ---
 
@@ -48,11 +48,11 @@ Apps can be a valuable entry point for attackers, so we recommend monitoring ano
 
 Using app governance and advanced hunting capabilities, you can get complete visibility into activities done by the apps and the resources the app has accessed.
 
-This article describes how you can simplify app-based threat hunting using app governance in Microsoft Defender for Cloud Apps.
+Simplify app-based threat hunting with app governance, a SaaS security capability in Microsoft Defender.
 
 ## Step 1: Find the app in app governance
 
-The Defender for Cloud Apps **App governance** page lists [all Microsoft Entra ID OAuth apps](https://security.microsoft.com/cloudapps/app-governance?viewid=allApps).
+The Defender **App governance** page lists [all Microsoft Entra ID OAuth apps](https://security.microsoft.com/cloudapps/app-governance?viewid=allApps).
 
 If you're looking to get more details on the data accessed by a specific app, search for that app on the app list in app governance. Alternatively, use the **Data usage** or **Services accessed** filters to view apps that have accessed data on one or more of the supported Microsoft 365 services.
 

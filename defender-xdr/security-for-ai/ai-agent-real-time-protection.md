@@ -35,9 +35,11 @@ item_type: Content
 source_path: defender-xdr/security-for-ai/ai-agent-real-time-protection.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/302444b9-4a43-4841-8014-3d9e4251ff15
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c389ea6b-b6a0-46df-93a1-1e21f25e19e7
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/bebd8809-dac1-4c22-83e2-66d98af8a94d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ada1b6-705b-4ed7-aad0-bffd1bd03dfa
 platformId: 73fadc8f-aa21-1c5c-2ed6-d59cde94cfa5
 ---
@@ -48,27 +50,29 @@ Deployed AI agents operate autonomously, invoking tools, accessing data, and tak
 
 To detect, investigate, and hunt for AI agent threats after they occur, see [Detect and investigate threats to AI agents using Microsoft Defender](ai-agent-detection-protection).
 
+Note
+
+Real-time protection policies currently support Microsoft Foundry agents, Microsoft Copilot Studio agents, and Agent 365 Tooling Servers (WorkIQ and Custom MCP) only. Support for additional agent types is not yet available.
+
 ## Prerequisites
 
 - Enable security for AI agents, including the Microsoft 365 app connector. See [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
-- To protect Copilot Studio agents in real time, make sure Copilot Studio is connected. See [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
 - Local agents are onboarded separately from cloud agents. To protect local AI agents that run on endpoints, set up [AI agent runtime protection in Microsoft Defender for Endpoint](/en-us/defender-endpoint/configure-ai-agent-runtime-protection). Microsoft Defender for Endpoint must run in active mode.
 
 ## How real-time protection works
 
 Real-time protection inspects AI agent activity throughout the agentic loop and blocks risky actions before they execute. Coverage depends on the agent type:
 
-- **Agent 365 tool invocations**: Defender integrates with [Work IQ MCP](/en-us/microsoft-agent-365/tooling-servers-overview) to evaluate tool invocations before they run, including invocations of customer MCP tools [onboarded to Agent 365](/en-us/microsoft-365/admin/manage/manage-tools-for-agent). Agents that rely on unsupported tools or don't integrate with Work IQ MCP aren't covered.
-- **Copilot Studio agents (Preview)**: Protection evaluates tool invocations, which doesn't depend on Work IQ MCP. To enable it, make sure that Copilot Studio is connected. For more information, see [Enable security for AI agents using Microsoft Defender](get-started-defender-security-for-ai).
-- **Foundry agents (Preview):** Protection evaluates user requests, agent responses, tool invocations, and tool responses.
-- **Local AI agents**: Covered through [endpoint runtime protection in Microsoft Defender for Endpoint](/en-us/defender-endpoint/ai-agent-runtime-protection-overview).
+- **Agent 365 Tooling Servers (GA)**: Defender integrates with [Work IQ MCP](/en-us/microsoft-agent-365/tooling-servers-overview) to evaluate tool invocations and responses, including invocations of customer MCP tools [onboarded to Agent 365](/en-us/microsoft-365/admin/manage/manage-tools-for-agent).
+- **Foundry agents (Preview):** Protection evaluates user requests, agent responses, tool invocations and responses.
+- **Copilot Studio agents (Preview)**: Protection currently evaluates tool invocations only.
 
-For cloud agents, there are two types of real-time protection rules:
+There are two types of real-time protection rules:
 
 - **Default rule**: Audits all agents, recording matching activity as a behavior without stopping the action. This gives you visibility before you enforce blocking.
 - **Custom rules**: Block matching actions before they execute and record the behavior. Create custom rules for high-confidence threats and scope them to specific agents.
 
-When Microsoft Defender audits or blocks an action, it records the event as a behavior in the `BehaviorInfo` table, including what happened, why the action was considered risky, and which agent, user, and tool were involved. Security teams can query these behaviors to build custom detections, hunting queries, and downstream automation. Near-real-time detections continue to surface as alerts only in audit mode. When a blocking rule covers an agent, near-real-time alerts aren't generated for that agent.
+When Microsoft Defender audits or blocks an action, it records the event as a behavior in the `BehaviorInfo` table, including what happened, why the action was considered risky, and which agent, user, and tool were involved. Security teams can query these behaviors to build custom detections, hunting queries, and downstream automation.
 
 Note
 

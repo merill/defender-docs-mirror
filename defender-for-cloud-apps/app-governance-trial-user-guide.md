@@ -12,12 +12,12 @@ ms.author: andeshpande
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-09-28T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ms.topic: quickstart
 description: Step-by-step guide to help you quickly get started with app governance in Microsoft Defender for Cloud Apps and Microsoft Defender XDR.
 ms.reviewer: shragar
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1030
 locale: en-us
 document_id: b1299c13-7049-6349-5157-d73d3616a2df
 document_version_independent_id: b1299c13-7049-6349-5157-d73d3616a2df
@@ -34,21 +34,21 @@ monikers: []
 item_type: Content
 source_path: defender-for-cloud-apps/app-governance-trial-user-guide.md
 cmProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1e69816a-aaaa-474e-a36f-3ec7790fadc3
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ae012320-d2b3-47d8-abdc-898a64d069a9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: 6a167d81-ab48-28b2-65ec-7b2e6ce8b475
 ---
 
 # Get started with app governance in Microsoft Defender for Cloud Apps in Microsoft Defender XDR. - Microsoft Defender for Cloud Apps | Microsoft Learn
 
-App governance solutions require a deep understanding of app behavior within an environment to identify and address activities that fall within a tolerance level that requires more review to assess malicious intent. When layered over Defender for Cloud Apps, app governance gives you in-depth governance against risky app behavior in your environment.
+App governance provides SaaS security capabilities in Microsoft Defender to help you identify and respond to risky OAuth app behavior.
 
-Use this quickstart to begin using app governance features in Microsoft Defender for Cloud Apps.
+Use this quickstart to assess apps, create policies, and respond to threats in the Defender portal.
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ Use this quickstart to begin using app governance features in Microsoft Defender
 
 Start by using the following steps to get visibility and insights about your apps:
 
-1. **Sign in**: In your browser, go to the **Microsoft Defender XDR &gt; Cloud Apps &gt; [App governance](https://aka.ms/appgovernance)** page.
+1. **Sign in**: In your browser, go to the **Microsoft Defender &gt; Cloud Apps &gt; [App governance](https://aka.ms/appgovernance)** page.
 2. **[Determine security posture](app-governance-visibility-insights-security-posture)**: Use the data on the **App governance &gt; Overview** tab to assess the security posture of your apps and incidents in your tenant. View details like how many overprivileged apps are in your tenant, the number of active incidents, the total Graph API data access, and more.
 
     Tip
@@ -90,7 +90,7 @@ App governance supports the following types of policies:
 | **Predefined policies** | App governance is equipped with a set of predefined policies tailored to your environment. Predefined policies allow you to start monitoring your apps even before you set up any policies. Use predefined policies to ensure that you're notified of any app anomalies early on. |
 | **User defined policies** | In addition to predefined policies, admins can also use the available conditions to create their custom policies or pick from the available recommended policies. |
 
-To see your list of current app governance policies, go to the **Microsoft Defender XDR &gt; Cloud apps &gt; App governance &gt; Policies** tab.
+To see your list of current app governance policies, go to the **Microsoft Defender &gt; Cloud apps &gt; App governance &gt; Policies** tab.
 
 Note
 

@@ -21,8 +21,10 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
+- msecd-doc-authoring-1032
 ms.topic: reference
-ms.date: 2025-12-22T00:00:00.0000000Z
+ms.date: 2026-11-19T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 4855ee67-f79f-16c5-58c7-562dc836239c
 document_version_independent_id: 4855ee67-f79f-16c5-58c7-562dc836239c
@@ -40,12 +42,12 @@ item_type: Content
 source_path: defender-xdr/advanced-hunting-identityinfo-table.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/b1cfdec6-b0c3-4209-818c-736879856e0e
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
-- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
+- https://authoring-docs-microsoft.poolparty.biz/devrel/2d0723c1-cf38-4c30-ab3d-5df787b33270
 platformId: 4c3acf5c-d121-efba-212b-514270f9d181
 ---
 
@@ -67,8 +69,9 @@ This advanced hunting table is populated by records from Microsoft Defender for 
 
 | Column name | Data type | Description |
 | --- | --- | --- |
-| `Timestamp`* | `datetime` | The date and time that the line was written to the database. This is used when there are multiple lines for each identity, such as when a change is detected, or if 24 hours have passed since the last database line was added. |
+| `Timestamp`* | `datetime` | Date and time when the record was generated |
 | `ReportId`* | `string` | Unique identifier for the event |
+| `IdentityId` | `string` | Unique identifier for the identity |
 | `AccountObjectId` | `string` | Unique identifier for the account in Microsoft Entra ID |
 | `AccountUpn` | `string` | User principal name (UPN) of the account |
 | `OnPremSid` | `string` | On-premises security identifier (SID) of the account |
@@ -77,7 +80,7 @@ This advanced hunting table is populated by records from Microsoft Defender for 
 | `AccountDomain`* | `string` | Domain of the account |
 | `CriticalityLevel` | `int` | The criticality score of the account |
 | `Type`* | `string` | Type of identity; possible values: User, ServiceAccount |
-| `DistinguishedName`* | string | The user's [distinguished name](/en-us/previous-versions/windows/desktop/ldap/distinguished-names) |
+| `DistinguishedName`* | `string` | The user's [distinguished name](/en-us/previous-versions/windows/desktop/ldap/distinguished-names) |
 | `CloudSid` | `string` | Cloud security identifier of the account |
 | `GivenName` | `string` | Given name or first name of the account user |
 | `Surname` | `string` | Surname, family name, or last name of the account user |
@@ -92,24 +95,28 @@ This advanced hunting table is populated by records from Microsoft Defender for 
 | `Manager`* | `string` | The listed manager of the account user |
 | `Phone`* | `string` | The listed phone number of the account user |
 | `CreatedDateTime`* | `datetime` | Date and time when the account user was created |
+| `SourceProvider` | `string` | Primary identity provider of the account user |
 | `ChangeSource`* | `string` | Identifies which identity provider or process triggered the addition of the new row. For example, the `System-UserPersistence` value is used for any rows added by an automated process. |
 | `BlastRadius`** | `string` | A calculation based on the position of the user in the org tree and the user's Microsoft Entra roles and permissions; possible values: Low, Medium, High |
 | `CompanyName`** | `string` | Name of the company for which the user works |
 | `DeletedDateTime`** | `datetime` | Date and time when the user account was deleted |
 | `EmployeeId`** | `string` | Employee identifier assigned to the user by the organization |
 | `OtherMailAddresses`** | `dynamic` | Additional email addresses of the user account |
+| `RiskScore` | `int` | Risk score of the identity as calculated by Microsoft Defender |
+| `RiskScoreUpdateTime` | `datetime` | Date and time Microsoft Defender last updated the risk score of the identity |
 | `RiskLevel` | `string` | Microsoft Entra ID risk level of the user account; possible values: Low, Medium, High |
 | `RiskLevelDetails` | `string` | Details regarding the Microsoft Entra ID risk level |
-| `State`** | `string` | State where the sign-in occurred, if available |
+| `State`** | `string` | Geographical state of the user account as defined in Microsoft Entra ID |
 | `Tags`* | `dynamic` | Tags assigned to the account user by Defender for Identity |
 | `AssignedRoles`* | `dynamic` | For identities from Microsoft Entra-only, the roles assigned to the account user |
 | `PrivilegedEntraPimRoles` (Preview) *** | `dynamic` | A snapshot of privileged role assignment schedules and eligibility schedules for the account as maintained by Microsoft Entra Privileged Identity Management (excluding activated assignments) |
 | `TenantId` | `string` | Unique identifier representing your organization's instance of Microsoft Entra ID |
 | `SourceSystem`* | `string` | The source system for the record |
+| `TimeGenerated` | `datetime` | Time when the event was generated (UTC) |
 | `OnPremObjectId` | `string` | Active Directory object ID of the user |
 | `TenantMembershipType` | `string` | User type in Microsoft Entra ID; possible values: Guest, Member |
 | `RiskStatus`** | `string` | Status of the user's risk; possible values: None, ConfirmedSafe, Remediated, Dismissed, AtRisk, ConfirmedCompromised, UnknownFutureValue |
-| `UserAccountControl` | `string` | Security attributes of the user account in the Active Directory domain |
+| `UserAccountControl` | `dynamic` | Security attributes of the user account in the Active Directory domain |
 | `IdentityEnvironment` | `string` | Environment where the identity is used; possible values: CloudOnly, Hybrid, On-premises |
 | `SourceProviders` | `dynamic` | Source providers of the accounts for the identity; possible values: ActiveDirectory, EntraID, Okta |
 | `GroupMembership`** | `dynamic` | Microsoft Entra ID groups where the user account is a member |

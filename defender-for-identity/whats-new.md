@@ -13,10 +13,10 @@ ms.service: microsoft-defender-for-identity
 uhfHeaderId: MSDocsHeader-MicrosoftDefender
 ms.suite: ems
 description: Learn about the latest Microsoft Defender for Identity features, sensor updates, security alerts, enhancements, and preview capabilities.
-ms.date: 2026-10-28T00:00:00.0000000Z
+ms.date: 2026-11-19T00:00:00.0000000Z
 ms.topic: overview
 ms.reviewer: AbbyMSFT
-ms.custom: sfi-image-nochange, msecd-doc-authoring-1015
+ms.custom: sfi-image-nochange, msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: e601dfee-5ce8-ca02-7614-89981fc949a2
@@ -59,6 +59,12 @@ For more information, see also:
 - [What's new in Microsoft Defender for Cloud Apps](/en-us/cloud-app-security/release-notes)
 
 For updates about versions and features released six months ago or earlier, see the [What's new archive for Microsoft Defender for Identity](whats-new-archive).
+
+## November 2026
+
+### Sensor v3.x activation without Defender for Endpoint is now supported in government clouds
+
+The known limitation announced in the October 2026 update is now resolved for government cloud environments. For more information, see [Activate the Defender for Identity sensor](deploy/activate-sensor#onboard-a-server-without-defender-for-endpoint-deployment).
 
 ## October 2026
 

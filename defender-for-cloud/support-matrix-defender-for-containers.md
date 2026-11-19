@@ -323,7 +323,7 @@ For additional requirements for Kubernetes workload protection, see [existing li
 
 ## Supported host operating systems
 
-Defender for Containers relies on the Defender sensor for several features. The Defender sensor is supported only with Linux Kernel 5.4 and above, on the following host operating systems:
+Defender for Containers relies on the Defender sensor for several features. The Defender sensor latest capabilities are supported with Linux Kernel 5.15 and above (Linux Kernel 5.4 and above is supported with limited functionality), on the following host operating systems:
 
 - Amazon Linux 2
 - AWS Bottlerocket (provisioning via Helm only)

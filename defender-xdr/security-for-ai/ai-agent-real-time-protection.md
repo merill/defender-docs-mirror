@@ -35,12 +35,12 @@ item_type: Content
 source_path: defender-xdr/security-for-ai/ai-agent-real-time-protection.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/302444b9-4a43-4841-8014-3d9e4251ff15
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c389ea6b-b6a0-46df-93a1-1e21f25e19e7
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/302444b9-4a43-4841-8014-3d9e4251ff15
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/bebd8809-dac1-4c22-83e2-66d98af8a94d
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/19ada1b6-705b-4ed7-aad0-bffd1bd03dfa
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/bebd8809-dac1-4c22-83e2-66d98af8a94d
 platformId: 73fadc8f-aa21-1c5c-2ed6-d59cde94cfa5
 ---
 
@@ -53,6 +53,10 @@ To detect, investigate, and hunt for AI agent threats after they occur, see [Det
 Note
 
 Real-time protection policies currently support Microsoft Foundry agents, Microsoft Copilot Studio agents, and Agent 365 Tooling Servers (WorkIQ and Custom MCP) only. Support for additional agent types is not yet available.
+
+Important
+
+**Action required by December 23, 2026 to keep real-time protection for Copilot Studio agents enabled** If you set up Microsoft Defender real-time protection for Copilot Studio through the existing onboarding experience, your blocking settings won’t migrate when that experience retires on December 23, 2026. To keep blocking enabled, first disable the existing onboarding under **Settings &gt; Security for AI &gt; Get started &gt; Copilot Studio**, then re-create and enable your blocking rules before December 23. See **Configure real-time protection rules** on this page. Automatic tenant-level onboarding begins rolling out in public preview on November 22, 2026, for supported Copilot Studio agents in tenants with Security for AI agents enabled. After retirement, agents without an enabled blocking rule operate in audit mode, which generates security alerts without blocking actions.
 
 ## Prerequisites
 

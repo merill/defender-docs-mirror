@@ -137,13 +137,47 @@ The following domains must be reachable from the machine or pipeline running the
 
 ## Cloud and region support
 
-Codename MDASH - Agentic code scanner is available in the Azure commercial cloud in the following regions:
+Although Codename MDASH is available in the Azure commercial cloud in the following geographic regions listed below, **Microsoft Foundry integration is supported only in Azure regions that also support the Azure OpenAI Responses API.** Before configuring Microsoft Foundry integration with Codename MDASH, verify that your selected Azure region supports the Responses API. For the latest list of supported regions, also see [Use the Azure OpenAI Responses API](/en-us/azure/foundry/openai/how-to/responses?tabs=python#supported-regions).
 
-- US (United States)
-- EU (Europe)
-- UK (United Kingdom)
-- AUS (Australia)
-- IND (India)
-- CH (Switzerland)
-- UAE (United Arab Emirates)
-    - UAE currently supports MDASH CLI scans only.
+| Geography | Region | Azure region identifiers |
+| --- | --- | --- |
+| US | United States | `westus`, `centralus`, `eastus`, `eastus2`, `westus3`, `northcentralus`, `southcentralus` |
+| EU | Europe | `swedencentral`, `francecentral`, `westeurope`, `germanywestcentral`, `italynorth`, `spaincentral`, `polandcentral`, `norwayeast` |
+| UK | United Kingdom | `uksouth` |
+| AUS | Australia | `australiaeast` |
+| IND | India | `southindia` |
+| CH | Switzerland | `switzerlandnorth`, `switzerlandwest` |
+| UAE | United Arab Emirates | `uaenorth` |
+
+Note
+
+UAE currently supports MDASH CLI scans only.
+
+### Optional MAI Cyber model integration
+
+Codename MDASH supports optional integration with the **MAI Cyber model** through Microsoft Foundry.
+
+**The MAI Cyber model is not required to use Codename MDASH.** Customers can use standard codename MDASH scanning capabilities without deploying or configuring the MAI Cyber model.
+
+For customers who choose to enable MAI Cyber integration, the model is available in the following Microsoft Foundry regions:
+
+- Australia
+- Brazil
+- Canada
+- France
+- Germany
+- India
+- Italy
+- Japan
+- Korea
+- Norway
+- Poland
+- Singapore
+- South Africa
+- Spain
+- Sweden
+- Switzerland
+- United Arab Emirates
+- United Kingdom
+- United States
+- Western Europe

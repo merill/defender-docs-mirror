@@ -15,7 +15,7 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn about how Microsoft Defender for Endpoint and Microsoft Defender Vulnerability Management integrate with Defender for Cloud to enhance security.
 ms.topic: concept-article
-ms.date: 2026-11-13T00:00:00.0000000Z
+ms.date: 2026-11-18T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1032
 locale: en-us
@@ -86,6 +86,18 @@ Defender for Cloud can discover machines independently of Microsoft Defender for
 Machines that exist in Azure, Azure Arc–enabled environments, or connected multicloud accounts (AWS, GCP) are identified by Defender for Cloud through its native resource discovery processes. These machines can appear in the Defender for Endpoint device inventory even before the Defender for Endpoint sensor is installed and reporting.
 
 In this state, devices may show Defender for Cloud as the discovery source and a status of **Can be onboarded**, indicating that the machine is known to Defender for Cloud but isn’t yet onboarded to Defender for Endpoint. Onboarding occurs only after the Defender for Endpoint sensor is deployed and successfully reports to the service.
+
+## Extension behavior on machines already onboarded to Defender for Endpoint
+
+When a machine is already onboarded to Microsoft Defender for Endpoint, the Defender for Cloud extension behaves as follows:
+
+| Area | Behavior |
+| --- | --- |
+| Defender for Cloud integration | Ensures the machine's resource identification information is present and up to date for integration with Defender for Cloud. |
+| Proxy configuration | Applies the machine's Azure Arc proxy configuration to Defender for Endpoint. |
+| Defender for Endpoint version | **Windows:** Leaves the existing installation unchanged.**Linux:** Can upgrade the existing installation when automatic updates are enabled (default). |
+| Onboarding and tenant association | Retains the existing onboarding and tenant association without repeating onboarding. |
+| Other | Leaves existing settings, including antivirus mode (active/passive) and antivirus exclusions, unchanged. |
 
 ## Move between subscriptions
 

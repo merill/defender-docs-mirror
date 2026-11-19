@@ -20,8 +20,10 @@ ms.collection:
 ms.custom:
 - cx-ti
 - cx-ah
+- msecd-doc-authoring-1032
 ms.topic: reference
-ms.date: 2026-02-04T00:00:00.0000000Z
+ms.date: 2026-11-19T00:00:00.0000000Z
+ai-usage: ai-assisted
 locale: en-us
 document_id: 668172cc-f654-de43-3c93-8e63359d0742
 document_version_independent_id: 668172cc-f654-de43-3c93-8e63359d0742
@@ -56,12 +58,12 @@ For information on other tables in the advanced hunting schema, [see the advance
 
 | Column name | Data type | Description |
 | --- | --- | --- |
-| `Timestamp` | `datetime` | The date and time that the line was written to the database.This is used when there are multiple lines for each identity, such as when a change is detected, or if 24 hours have passed since the last database line was added. |
+| `Timestamp` | `datetime` | Date and time when the record was generated |
 | `ReportId` | `string` | Unique identifier for the event |
 | `SourceProviderAccountId` | `string` | Identifier for the account in the source provider (for example, object ID for a Microsoft Entra ID account) |
 | `AccountId` | `string` | Internal identifier for the account |
 | `IdentityId` | `string` | Identifier for the identity that the account is linked to |
-| `IsPrimary ` | `bool` | Indicates if this account is considered as primary account for the linked identity |
+| `IsPrimary` | `bool` | Indicates if this account is considered as primary account for the linked identity |
 | `IdentityLinkType` | `string` | Type of linkage between the account and identity; possible values: Manual, Strong identifiers |
 | `IdentityLinkReason` | `string` | Reason for linking the account and identity. If the linkage type is manual, the value will be the justification comment added by the user. |
 | `IdentityLinkTime` | `datetime` | Date and time the account was linked to the identity |
@@ -70,8 +72,6 @@ For information on other tables in the advanced hunting schema, [see the advance
 | `AccountUpn` | `string` | User principal name (UPN) of the account |
 | `EmailAddress` | `string` | SMTP address of the account |
 | `CriticalityLevel` | `int` | The criticality score of the account |
-| `DefenderRiskLevel` | `int` | The risk level of the account as calculated by Microsoft Defender |
-| `DefenderRiskUpdateTime` | `datetime` | Date and time Microsoft Defender last updated the risk level of the account |
 | `Type` | `string` | Type of identity; possible values: User, ServiceAccount |
 | `GivenName` | `string` | Given name or first name of the account user |
 | `Surname` | `string` | Surname, family name, or last name of the account user |
@@ -89,16 +89,19 @@ For information on other tables in the advanced hunting schema, [see the advance
 | `SourceProviderInstanceId` | `string` | The identifier of the source application or service of the account. For example, in Microsoft Entra ID, this is the organization Globally Unique Identifier (GUID). |
 | `SourceProviderInstanceDisplayName` | `string` | The display name of the source application or service of the account |
 | `AuthenticationMethod` | `string` | Authentication method used to allow the account user to sign into the account; possible values: Credentials, Federated, Hybrid |
-| `AuthenticationSourceAcccountId` | `string` | The identifier of the federating account, if the authentication method is Federated |
+| `AuthenticationSourceAccountId` | `string` | The identifier of the federating account, if the authentication method is Federated |
 | `EnrolledMfas` | `dynamic` | Types of multifactor authentication methods configured for the account user and their status |
 | `LastPasswordChangeTime` | `datetime` | Date and time the account password was last changed |
 | `GroupMembership` | `dynamic` | Group identifiers assigned to the account |
 | `AssignedRoles` | `dynamic` | Role identifiers assigned to the account |
 | `EligibleRoles` | `dynamic` | Identifiers for roles the account are eligible to use (for example, Microsoft Entra Privileged Identity Management roles) |
 | `TenantMembershipType` | `string` | User type; possible values: Guest, Member |
-| `CreatedDateTime ` | `datetime` | Date and time when the user account was created |
+| `CreatedDateTime` | `datetime` | Date and time when the user account was created |
 | `DeletedDateTime` | `datetime` | Date and time when the user account was deleted |
 | `Tags` | `dynamic` | Tags assigned to the account by Defender for Identity |
-| `SourceProvderRiskLevel` | `dynamic` | Risk level of the account as it appears in the source provider; possible values: Low, Medium, High |
+| `SourceProviderRiskLevel` | `string` | Risk level of the account as it appears in the source provider; possible values: Low, Medium, High |
+| `SourceProviderRiskLevelDetails` | `string` | Details regarding the risk level in the source provider |
 | `AdditionalFields` | `dynamic` | Additional information about the entity or event |
 | `TenantId` | `string` | Universally unique identifier (UUID) for the tenant |
+| `SourceSystem` | `string` | The source system for the record |
+| `TimeGenerated` | `datetime` | Time when the event was generated (UTC) |

@@ -33,12 +33,12 @@ item_type: Content
 source_path: defender-endpoint/configure-ai-agent-runtime-protection.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8b9ae643-2e85-42b8-beb2-eef4bae8c4bc
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/a72e95ff-4b4f-4cc1-90c6-7dcba67ff05f
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/e047e27d-b5f3-43a8-b4b0-4f6dca95e7c9
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/24dc3ccd-591a-4415-a1fe-8759afafcb12
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 platformId: e109d355-caac-bd16-3663-619ad9e9dd83
 ---
 
@@ -178,6 +178,10 @@ On the **Configuration settings** page, configure the settings you need:
 | **Ai Agent Protection** (`AiAgentProtection`) | Inspect agent activity through supported agent-native event interfaces. | Choose the audit or block mode you need. The default is disabled. |
 | **Ai Agent Network Inspection** (`AiAgentNetworkInspection`) | Inspect supported agent-to-LLM network traffic. | Choose audit or block mode independently of agent-native event inspection. The default is disabled. |
 | **Prompt Evidence Collection** (`PromptEvidenceCollection`) | Collect prompt evidence when AI agent runtime protection is configured. | Enable or disable collection. |
+
+Important
+
+Sensitive data and secrets **aren't redacted** from prompt snippets shown in alerts. During preview, the help text in the Intune template is being finalized. For current details about **Prompt Evidence Collection**, see [Prompt evidence collection](ai-agent-runtime-protection-overview#prompt-evidence-collection).
 
 For each inspection method, **Audit** detects and reports prompt injection while allowing the action to continue, and **Block** blocks detected threats at supported inspection points. Leave a method disabled if you don't need it. You can enable either inspection method or both.
 

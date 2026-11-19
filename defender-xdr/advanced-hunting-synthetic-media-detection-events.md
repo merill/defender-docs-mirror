@@ -57,7 +57,7 @@ This advanced hunting table is populated by records from Microsoft Defender for 
 
 Note
 
-This table contains data only if you're using an approved detection engine: Microsoft or a third-party engine (GetReal, Pindrop, Reality Defender, or Resemble AI).
+This table contains data only if you're using an approved detection engine: Microsoft or a third-party engine.
 
 ## Schema
 

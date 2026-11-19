@@ -112,7 +112,7 @@ An upcoming Microsoft Defender Antivirus platform release will enable prompt evi
 
 Important
 
-Sensitive data and secrets are redacted from prompt snippets shown in alerts, but customer conversations might still be sensitive in nature. Review your organization's privacy and data-handling requirements before you enable collection. Evidence included in security alerts is retained according to the [Microsoft Defender XDR data retention policy](/en-us/defender-xdr/data-privacy).
+Sensitive data and secrets **aren't redacted** from prompt snippets shown in alerts. These snippets can contain users' conversations, sensitive data, and secrets. Review your organization's privacy and data-handling requirements before you enable collection. Evidence included in security alerts is retained according to the [Microsoft Defender XDR data retention policy](/en-us/defender-xdr/data-privacy).
 
 Disabling device-level collection doesn't disable runtime protection. Content associated with activity that Defender blocks can still appear in the associated security alert.
 

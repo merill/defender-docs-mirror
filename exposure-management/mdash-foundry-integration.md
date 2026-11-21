@@ -31,12 +31,12 @@ monikers: []
 item_type: Content
 source_path: exposure-management/mdash-foundry-integration.md
 cmProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/64b65f6c-101f-411a-9b83-9f577fab52d0
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/de19c5b8-e208-412e-9238-db3f631dea5b
+- https://authoring-docs-microsoft.poolparty.biz/devrel/64b65f6c-101f-411a-9b83-9f577fab52d0
 - https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
-- https://authoring-docs-microsoft.poolparty.biz/devrel/1a667fd1-8145-4b11-af0f-9f5de205a6e5
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ea7bf5d6-7154-4ba9-8ebc-59117ccacd49
+- https://authoring-docs-microsoft.poolparty.biz/devrel/1a667fd1-8145-4b11-af0f-9f5de205a6e5
 - https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: fa300fee-25bf-e572-1ee3-fd32d6d42e7d
 ---
@@ -136,7 +136,7 @@ The standard scan configuration requires three models. These models are also req
 
 ### Step 2: Deploy MAI Cyber (Preview), recommended
 
-**MAI Cyber (Preview) is the recommended scan configuration for codename MDASH.**
+**MAI Cyber (Preview) is the recommended scan configuration for codename MDASH.** To use the MAI Cyber Model, you must first [submit](https://forms.cloud.microsoft/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR13ffypyvwVJhqpm2XjyFblURUxFVkJHRlJUTFlQNlVFWElJTE45VTM1MS4u&amp;route=shorturl) a request and be approved.
 
 MAI Cyber is an optional model that can be used alongside the three standard models to enhance agentic code security scanning.
 
@@ -151,7 +151,7 @@ If you've already completed Step 1, you only need to deploy `MAI-Cyber-1.1-Flash
 
 Note
 
-MAI Cyber (Preview) is currently available only through the **Global Standard** deployment type. The model must be provisioned using Azure CLI. Deployment through the Microsoft Foundry portal isn't currently supported. MAI Cyber is optional. If you don't deploy it, you can continue using codename MDASH with the three required standard models.
+MAI Cyber (Preview) must be approved after [requesting](https://forms.cloud.microsoft/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR13ffypyvwVJhqpm2XjyFblURUxFVkJHRlJUTFlQNlVFWElJTE45VTM1MS4u&amp;route=shorturl) access. Access must be approved. MAI Cyber (Preview) is currently available only through the **Global Standard** deployment type. Before deploying the model, confirm that this deployment type meets your organization's data-processing and residency requirements. The model must be provisioned using Azure CLI. Deployment through the Microsoft Foundry portal isn't currently supported. MAI Cyber availability depends on the selected Microsoft Foundry region. For more information, see [Codename MDASH overview](ai-code-security-overview#cloud-and-region-support). Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans MAI Cyber is optional. If you don't deploy it, you can continue using codename MDASH with the three required standard models.
 
 #### Deploy MAI Cyber using Azure CLI
 
@@ -234,10 +234,6 @@ The following table summarizes the models required for each scan configuration.
 | `gpt-5.4-mini` | Required | Required |
 | `MAI-Cyber-1.1-Flash` | Not required | Required |
 
-Important
-
-MAI Cyber (Preview) uses a Global Standard deployment. Before deploying the model, confirm that this deployment type meets your organization's data-processing and residency requirements. MAI Cyber availability depends on the selected Microsoft Foundry region. For more information, see [Codename MDASH overview](/en-us/security-exposure-management/ai-code-security-overview). Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans.
-
 ## Configure the TPM rate limit
 
 For each of the three deployed models, configure the TPM rate limit.
@@ -261,7 +257,7 @@ Configure a content filter to ensure the deployed models can operate without res
 
 Warning
 
-Configure content filtering is intentionally permissive for MDASH scanning scenarios. Create and use a dedicated Microsoft Foundry endpoint for MDASH only. Do not use this endpoint for any other workload.
+Configure content filtering is intentionally permissive for codename MDASH scanning scenarios. Create and use a dedicated Microsoft Foundry endpoint for codename MDASH only. Do not use this endpoint for any other workload.
 
 ### Prerequisites
 
@@ -282,7 +278,7 @@ To create a content filter, follow these steps:
 
 ## Allow Codename MDASH to access your Microsoft Foundry resource
 
-Codename MDASH needs to access your Microsoft Foundry endpoint to validate credentials and run agentic scans. When your Foundry resource networking is set to **Selected networks and private endpoints**, all inbound traffic is blocked by default, including requests from MDASH. Without allowing the required IP addresses, validation of the Foundry resource during MDASH onboarding will fail. If your Foundry resource has public access set to **All networks**, no action is required and you can continue to the next step.
+Codename MDASH needs to access your Microsoft Foundry endpoint to validate credentials and run agentic scans. When your Foundry resource networking is set to **Selected networks and private endpoints**, all inbound traffic is blocked by default, including requests from codename MDASH. Without allowing the required IP addresses, validation of the Foundry resource during MDASH onboarding will fail. If your Foundry resource has public access set to **All networks**, no action is required and you can continue to the next step.
 
 To allow Codename MDASH to access your Microsoft Foundry resource, you should run script to configure access:
 

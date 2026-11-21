@@ -56,6 +56,21 @@ Get notified when this page is updated by copying and pasting the following URL 
 
 `https://aka.ms/msem/rss`
 
+## November 2026
+
+### Codename MDASH - Finding validation and scan improvements
+
+November 20, 2026
+
+Codename MDASH includes the following updates:
+
+- Validate findings with Perception: Use the Run web pen test playbook with MDASH code-scanning findings as input to focus testing on suspected code weaknesses and assess whether they're exploitable in the deployed application. This capability is available through Perception's limited public preview.
+- Lower scan costs and improve reliability: Reduced token consumption helps lower inference costs, while scan hardening reduces failures.
+- Reduce duplicate findings: Improved deduplication removes duplicate findings from scan results, reducing noise and simplifying review.
+- Removed gpt-5.3-codex as a mandatory deployment requirement. The minimum required models is GPT-5.4 and GPT-5.4-mini (General profile) and GPT-5.4, GPT-5.4-mini, and MAI Cyber (MAI profile). GPT-5.3-codex is still supported when deployed and available.
+
+For more information, see [Validate code-scanning findings with the Web App Pen Test Agent](/en-us/security/agentic-security/web-app-pen-test-agent#validate-code-scanning-findings)
+
 ## October 2026
 
 ### Posture policies and recommendation exemptions available for Azure environments

@@ -35,7 +35,7 @@ ms.collection:
 ms.topic: how-to
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1032
-ms.date: 2026-11-15T00:00:00.0000000Z
+ms.date: 2026-11-22T00:00:00.0000000Z
 locale: en-us
 document_id: ad771d6b-bf51-50fb-24e1-7ba2a7dcb78c
 document_version_independent_id: fd18f79f-e4e6-0b15-fb46-1a302d99ae12
@@ -115,24 +115,6 @@ For a rule marked **Migration isn't available**, select **Download report**. Use
 
 Choose the migration scope that matches the rules you want to evaluate.
 
-Some JSON columns, including `DeviceEvents.AdditionalFields` and `DeviceNetworkInfo.ConnectedNetworks`, are `dynamic` in Log Analytics but JSON-formatted strings in advanced hunting. Parse the column with `todynamic()` before accessing a property or array element, for example, `todynamic(AdditionalFields).Property` or `todynamic(ConnectedNetworks)[0]`. Use `tostring()` when comparing extracted values with text. Migration applies this conversion automatically for scheduled analytics rules. For streaming (NRT) rules, direct nested access to affected columns is an eligibility blocker: update the source analytics-rule query, then reassess eligibility. Apply the same parsing when manually running the original query in advanced hunting. Validate changes against representative data in both environments; other schema differences and migration blockers can still require changes.
-
-The following table lists the affected JSON columns.
-
-| Table | Affected columns |
-| --- | --- |
-| `DeviceNetworkInfo` | `ConnectedNetworks`, `DefaultGateways`, `DnsAddresses`, `IPAddresses` |
-| `DeviceNetworkEvents` | `AdditionalFields` |
-| `DeviceProcessEvents` | `AdditionalFields` |
-| `DeviceInfo` | `AdditionalFields`, `LoggedOnUsers` |
-| `DeviceFileEvents` | `AdditionalFields` |
-| `DeviceLogonEvents` | `AdditionalFields` |
-| `DeviceEvents` | `AdditionalFields` |
-| `AlertEvidence` | `AdditionalFields` |
-| `EmailEvents` | `AdditionalFields` |
-
-Other columns can also have different schemas or query requirements.
-
 ### Migrate a single rule
 
 Select one eligible analytics rule from the recommendation.
@@ -192,6 +174,24 @@ Evaluation alerts contain `#EVAL` in their titles. Use [Tune alerts from custom 
 Important
 
 Don't complete migration until detection results and downstream automation meet your requirements. Revalidate any edits made during evaluation.
+
+Note
+
+Migrated rules handle JSON-column conversions automatically when they run. If you copy a rule's query into advanced hunting, parse JSON-string columns such as `AdditionalFields` and `ConnectedNetworks` with `todynamic()` before accessing nested values, for example, `todynamic(AdditionalFields).Property` or `todynamic(ConnectedNetworks)[0]`. Use `tostring()` when comparing extracted values with text.
+
+The following table lists the affected JSON columns.
+
+| Table | Affected columns |
+| --- | --- |
+| `DeviceNetworkInfo` | `ConnectedNetworks`, `DefaultGateways`, `DnsAddresses`, `IPAddresses` |
+| `DeviceNetworkEvents` | `AdditionalFields` |
+| `DeviceProcessEvents` | `AdditionalFields` |
+| `DeviceInfo` | `AdditionalFields`, `LoggedOnUsers` |
+| `DeviceFileEvents` | `AdditionalFields` |
+| `DeviceLogonEvents` | `AdditionalFields` |
+| `DeviceEvents` | `AdditionalFields` |
+| `AlertEvidence` | `AdditionalFields` |
+| `EmailEvents` | `AdditionalFields` |
 
 ## Complete migration
 
@@ -262,8 +262,6 @@ Both value columns below describe the **Sentinel view for workspaces onboarded t
 | `ExtendedProperties["Event Grouping"]` | Added | Not populated by default | Same value as in the matching analytics rule | Describes how alerts are generated, not how incidents are grouped. |
 | `ExtendedProperties["Search Query Results Overall Count"]` | Added | Not populated by default | Same value as in the matching analytics rule | Don't assume a total result count is available for grouped alerts. |
 | `ExtendedProperties["Data Sources"]` | Added | Not populated by default | Same value as in the matching analytics rule |  |
-| `ExtendedProperties["Query"]` | Not yet available | Not populated by default | Not available yet | This field isn't available on alerts from migrated custom detections. |
-| `ExtendedProperties["OriginalQuery"]` | Not yet available | Not populated by default | Not available yet | This field isn't available on alerts from migrated custom detections. |
 
 ## Troubleshoot migration
 

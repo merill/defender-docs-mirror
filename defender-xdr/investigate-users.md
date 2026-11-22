@@ -146,7 +146,7 @@ The **Risk score** tab summarizes the identity's risk level by combining alert a
 | **Risk Trend** | A line chart that shows how the risk score changed over a configurable time period (for example, 30 days). Select **Go to timeline** to view the full activity timeline. |
 | **Likelihood of Compromise Details** | A bar chart that shows alert distribution across MITRE ATT&CK categories, with a filterable alert table. Use the **Active alerts only** toggle to focus on unresolved alerts. Filter by account set, status, or kill chain stage. |
 
-The **Confirm safe** action now includes **Reset risk** for both the identity risk score and the Microsoft Entra risk level. For more information, see [Identity remediation actions in Microsoft Defender](/en-us/defender-for-identity/remediation-actions#supported-actions).
+You can take an action and reset the identity's risk. For more information, see [Identity remediation actions in Microsoft Defender](/en-us/defender-for-identity/remediation-actions#supported-actions).
 
 Note
 

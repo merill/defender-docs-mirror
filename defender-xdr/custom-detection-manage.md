@@ -23,7 +23,7 @@ ms.custom:
 - cx-ti
 - cx-ah
 ms.topic: how-to
-ms.date: 2026-11-12T00:00:00.0000000Z
+ms.date: 2026-11-15T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 76dfe3e6-2253-8172-d91e-df741bf40f4f
@@ -99,6 +99,14 @@ You can also take the following actions on the rule from the rule details page:
 - **Turn on** / **Turn off** - allows you to enable the rule or stop it from running
 - **Delete** - turns off the rule and permanently removes it
 - **Include or exclude from correlation** - allows you to include or exclude an analytics rule from correlation. For custom detections, this per-rule setting is in public preview. Custom detections are included in correlation by default. See [Manage detection rule correlation settings in Microsoft Defender XDR](exclude-analytics-rules-correlation) for more information.
+
+### Edit alert grouping (preview)
+
+Note
+
+Alert grouping for custom detection rules is in preview.
+
+To change alert grouping for a custom detection rule, select **Edit** on the rule details page, then go to **Incident settings** and expand **Alert grouping**. For configuration options and limits, see [Alert grouping](custom-detection-rules#alert-grouping-preview).
 
 ### View and manage triggered alerts
 

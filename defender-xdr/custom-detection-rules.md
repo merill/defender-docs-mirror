@@ -26,7 +26,7 @@ ms.custom:
 - cx-ah
 - sfi-image-nochange
 ms.topic: how-to
-ms.date: 2026-09-02T00:00:00.0000000Z
+ms.date: 2026-11-15T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 889233db-f43a-794c-5a31-24ee96a226be
@@ -44,12 +44,12 @@ monikers: []
 item_type: Content
 source_path: defender-xdr/custom-detection-rules.md
 cmProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
-- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: 07966987-9838-b2f6-59e1-a5ccbc17abd4
 ---
@@ -106,14 +106,14 @@ You can create a custom detection rule from either of the following entry points
 - **From Advanced hunting** — Go to **Advanced hunting**, prepare and run your query, then select **Create detection rule**. This approach lets you validate your query results before creating the rule.
 - **From the custom detections list** — Go to **Custom detection rules** and select **+ Create detection rule**. This approach opens the rule wizard directly, where you can write or paste a query and configure all rule settings in one place.
 
-Regardless of which entry point you use, follow these steps to configure the rule:
+Regardless of which entry point you use, prepare the query, then configure the wizard steps in this order:
 
-1. Prepare the query
-2. Create new rule and provide alert details
-3. Define alert enrichment details
-4. Specify actions
-5. Set the rule scope
-6. Review and turn on the rule
+1. **General**
+2. **Alert settings**
+3. **Incident settings** (preview)
+4. **Automated actions**
+5. **Scope**
+6. **Review and create**
 
 ### 1. Prepare the query
 
@@ -145,7 +145,7 @@ To create a custom detection rule by using Defender data, we recommend that the 
         - `SenderMailFromAddress` (sender address displayed by email client)
         - `SenderObjectId`
         - `RecipientObjectId`
-    - Account:
+    - User:
         - `AccountObjectId`
         - `AccountSid`
         - `AccountUpn`
@@ -182,7 +182,7 @@ When you create custom detections and analytics rules, you must project the `Sen
 
 ### 2. Create new rule and provide alert details
 
-In the query editor, select **Create detection rule** and specify the following alert details:
+In the query editor, select **Create detection rule**. In the wizard, configure **General** and **Alert settings** with the following rule and alert details:
 
 - **Detection name** - Name of the detection rule; make it unique.
 - **Frequency** - Interval for running the query and taking action. For more information, see Rule frequency.
@@ -289,7 +289,7 @@ When the lookback period is longer than the frequency, duplicate events might oc
 
 ### 3. Define alert enrichment details
 
-You can enrich alerts by providing and defining more details. When you enrich alerts, you can:
+In **Alert settings**, you can enrich alerts by providing and defining more details. When you enrich alerts, you can:
 
 - Create a dynamic alert title and description
 - Add custom details to display in the alert side panel
@@ -335,11 +335,19 @@ Custom details have the following limitations:
 
 #### Link entities
 
+Note
+
+Mapping up to four identifiers per entity, adding the same entity type more than once, and the newly supported identifiers are in preview.
+
 Identify the columns in your query results where you expect to find the main affected or impacted entity. For example, a query might return sender (`SenderFromAddress` or `SenderMailFromAddress`) and recipient (`RecipientEmailAddress`) addresses. Identifying which of these columns represent the main impacted entity helps the service aggregate relevant alerts, correlate incidents, and target response actions.
 
-You can select only one column for each entity type (mailbox, user, or device). You can't select columns that aren't returned by your query.
+You can add the same entity type more than once and map up to four identifier and column pairs to each entity. For example, map one **Device** entity to `DeviceName` and another **Device** entity to `RemoteDeviceName`, or map several **IP** entities to `IPAddress`, `LocalIP`, and `RemoteIP`. You can't select columns that aren't returned by your query.
 
 ##### Expanded entity mapping
+
+Note
+
+Mapping up to four identifiers per entity, adding the same entity type more than once, and the newly supported identifiers are in preview.
 
 You can link a wide range of entity types to your alerts. Linking more entities helps the correlation engine group alerts to the same incidents and to correlate incidents together. If you're a Microsoft Sentinel customer, this also means that you can map any entity from your third-party data sources that are ingested into Microsoft Sentinel.
 
@@ -347,24 +355,24 @@ For Microsoft Defender XDR data, the entities are automatically selected. If the
 
 Note
 
-Entities impact how alerts are grouped into incidents. Make sure to carefully review the entities to ensure high quality of incidents. For more information, see [Alert correlation and incident merging in the Microsoft Defender portal](alerts-incidents-correlation).
+Identified entities determine how alerts are grouped into incidents. Make sure to carefully review the entities to ensure a high quality of incident correlation. For more information, see [Alert correlation and incident merging in the Microsoft Defender portal](alerts-incidents-correlation).
 
-The expanded **Entity mapping** section has two sections where you can select entities:
+In the **Alert settings** step, the **Entity mapping** section follows **Alert details** and **Custom details**. It has two parts:
 
-- **Impacted assets**– Add impacted assets that appear in the selected events. You can add the following types of assets:
-    - Account
+- **Impacted Assets** - Select **Add assets**to add impacted assets that appear in the selected events. You can add the following types of assets:
+    - User
     - Device
     - Mailbox
-    - Cloud application
+    - Cloud Application
     - Azure resource
     - Amazon Web Services resource
     - Google Cloud Platform resource
-- **Related evidence**– Add nonassets that appear in the selected events. The supported entity types are:
+- **Related Evidence** - Select **Add entities**to add nonassets that appear in the selected events. The supported entity types are:
     - Process
     - File
     - Registry value
     - IP
-    - OAuth application
+    - OAuth Application
     - DNS
     - Security group
     - URL
@@ -375,15 +383,76 @@ Note
 
 You can currently map only assets as impacted entities.
 
-[![Screenshot that shows the entity mapping options in the Custom detections wizard.](media/custom-detection-rules/ah-link-entities.png)](media/custom-detection-rules/ah-link-entities.png#lightbox)
+[![Screenshot of Impacted Assets with one Device entity mapped to three identifiers and query result columns.](media/custom-detection-rules/custom-detection-impacted-assets.png)](media/custom-detection-rules/custom-detection-impacted-assets.png#lightbox)
 
-After you select an entity type, select an identifier type that exists in the selected query results so you can use it to identify this entity. Each entity type has a list of supported identifiers, as shown in the relevant dropdown menu. To better understand each identifier, read the description displayed when you hover over it.
+[![Screenshot of Related Evidence with a Process entity mapping and the Add identifier and Add entities controls.](media/custom-detection-rules/custom-detection-related-evidence.png)](media/custom-detection-rules/custom-detection-related-evidence.png#lightbox)
+
+For each entity, use the following steps in either **Impacted Assets** or **Related Evidence**:
+
+1. Choose the entity type under **Entity**.
+2. Choose an **Identifier** and the query result **Column** that contains it. Both fields are required.
+3. To map more identifiers to the same entity, select **Add identifier**. Each entity supports up to four identifier and column pairs.
+4. To remove an identifier row or a whole entity, select the delete (trash) icon next to it.
+
+For example, map a **Registry value** entity by **Key** to `RegistryKey` and by **ValueName** to `RegistryValueName`.
+
+Each entity type has a list of supported identifiers in the **Identifier** dropdown. To better understand an identifier, read its description when you hover over it.
+
+##### Newly supported identifiers (preview)
+
+The following identifiers are available in preview for existing entity types:
+
+| Entity | Newly supported identifiers |
+| --- | --- |
+| User | `ObjectGuid`, `AadTenantId`, `PUID`, `IsDomainJoined`, `DisplayName` |
+| Device | `AzureID`, `OMSAgentID`, `OSFamily`, `OSVersion`, `IsDomainJoined` |
+| Cloud Application | `InstanceName`, `SaasId` |
+| File | `Directory` |
+| Process | `ElevationToken`, `CreationTimeUtc` |
+| Registry value | `Value`, `ValueType` |
+| Mailbox | `DisplayName`, `Upn`, `ExternalDirectoryObjectId`, `RiskLevel` |
+| Mail Cluster | `NetworkMessageIds`, `CountByDeliveryStatus`, `CountByThreatType`, `CountByProtectionStatus`, `MailCount`, `QueryTime`, `IsVolumeAnomaly`, `ClusterSourceIdentifier`, `ClusterSourceType`, `ClusterQueryStartTime`, `ClusterQueryEndTime`, `ClusterGroup` |
+| Mail Message | `P1Sender`, `P1SenderDisplayName`, `P1SenderDomain`, `P2SenderDisplayName`, `P2SenderDomain`, `InternetMessageId`, `Threats`, `ReceivedDate`, `BodyFingerprintBin1`, `BodyFingerprintBin2`, `BodyFingerprintBin3`, `BodyFingerprintBin4`, `BodyFingerprintBin5`, `AntispamDirection`, `DeliveryAction`, `DeliveryLocation`, `Language`, `ThreatDetectionMethods` |
+
+The supported identifiers for IP, URL, Azure resource, and Security Group are unchanged; these entity types already support the same identifiers in custom detection rules and Microsoft Sentinel analytics rules.
 
 After selecting the identifier, select a column from the query results that contains the selected identifier. Select **Explore query and results** to open the advanced hunting context panel. This option allows you to explore your query and results to make sure you choose the right column for the selected identifier.
 
-### 4. Specify actions
+### 4. Incident settings (preview)
 
-If your custom detection rule uses Defender data, it can automatically take actions on devices, files, users, or emails that the query returns.
+Note
+
+Alert grouping for custom detection rules is in preview.
+
+In **Incident settings**, use **Alert grouping** to combine related alerts from the same custom detection rule into a single incident instead of creating one incident per alert. As with alert grouping in Microsoft Sentinel analytics rules, this gives analysts one place to investigate recurring or related activity.
+
+#### Alert grouping (preview)
+
+Configure alert grouping in the custom detection rule wizard:
+
+1. In **Incident settings**, expand **Alert grouping**.
+2. Turn on **Group related alerts, triggered by this custom detection rule, into incidents**. The default is **Disabled**. The remaining alert grouping settings are unavailable until you turn it on.
+3. Under **Limit the group to alerts created within the selected time frame**, enter a number and choose a unit. This setting is required and defaults to **5 Hours**. Only alerts created within this time frame are grouped together.
+4. Under **Group alerts triggered by this custom detection rule into a single incident by**, choose one option:
+    - **Grouping alerts into a single incident if all the entities match (recommended).** This option is selected by default.
+    - **Grouping all alerts triggered by this rule into a single incident.**
+    - **Grouping alerts into a single incident if the selected entity types and details match.** Select the entities and details to match in the **Select entities** and **Select details** dropdowns, which become available when you choose this option.
+
+[![Screenshot of the custom detection wizard with alert grouping enabled, a five-hour time frame, and all entities matching.](media/custom-detection-rules/custom-detection-alert-grouping.png)](media/custom-detection-rules/custom-detection-alert-grouping.png#lightbox)
+
+Alert grouping has the following behavior and limits:
+
+- **Up to 150 alerts per incident.** After an incident reaches this limit, a new incident is created with the same incident details, and additional alerts are grouped into it. This limit is separate from the 150-alert limit per rule run, which limits how many alerts a rule can generate each time it runs.
+- **Closed incidents aren't reopened.** Unlike Microsoft Sentinel analytics rules, custom detection rules don't have a **Re-open closed matching incidents** option. If a new alert matches a closed incident, a new incident is created.
+- **Defender correlation still applies.** Alert grouping doesn't prevent Defender from linking other alerts or merging existing incidents.
+
+Note
+
+Microsoft Defender correlation activities can link other alerts or merge existing incidents to the generated incident, regardless of the alert grouping settings defined in the custom detection rule.
+
+### 5. Specify actions
+
+In **Automated actions**, if your custom detection rule uses Defender data, it can automatically take actions on devices, files, users, or emails that the query returns.
 
 [![Screenshot that shows actions for custom detections in the Microsoft Defender portal.](media/custom-detection-rules/ah-custom-actions.png)](media/custom-detection-rules/ah-custom-actions.png#lightbox)
 
@@ -435,9 +504,9 @@ For more information on user actions, see [Remediation actions in Microsoft Defe
 
 The columns `NetworkMessageId` and `RecipientEmailAddress` must be present in the output results of the query to apply actions to email messages.
 
-### 5. Set the rule scope
+### 6. Set the rule scope
 
-Set the scope to specify which devices the rule covers. The scope influences rules that check devices and doesn't affect rules that check only mailboxes and user accounts or identities.
+In **Scope**, specify which devices the rule covers. The scope influences rules that check devices and doesn't affect rules that check only mailboxes and user accounts or identities.
 
 When setting the scope, select:
 
@@ -450,9 +519,9 @@ Note
 
 Users can create or edit a custom detection rule only if they have the corresponding permissions for the devices included in the scope of the rule. For example, admins can only create or edit rules that are scoped to all device groups if they have permissions for all device groups.
 
-### 6. Review and turn on the rule
+### 7. Review and turn on the rule
 
-After reviewing the rule, select **Create** to save it. The custom detection rule runs immediately. It runs again based on the configured frequency to check for matches, generate alerts, and take response actions.
+In **Review and create**, review the rule, then select **Create** to save it. The custom detection rule runs immediately. It runs again based on the configured frequency to check for matches, generate alerts, and take response actions.
 
 Important
 
@@ -463,3 +532,5 @@ You maintain control over the broadness or specificity of your custom detections
 #### How custom detections handle duplicate alerts
 
 An important consideration when creating and reviewing custom detection rules is alert noise and fatigue. Custom detections group and deduplicate events into a single alert. If a custom detection rule runs twice on an event that contains the same entities, custom details, and dynamic details, it creates one alert for both events. If the detection rule recognizes that the events are identical, it logs one of the events on the created alert and takes care of the duplicates. Duplicates can occur when the lookback period is longer than the frequency. If the events are different, the custom detection logs both events on the alert.
+
+This event-to-alert deduplication is separate from alert-to-incident grouping.

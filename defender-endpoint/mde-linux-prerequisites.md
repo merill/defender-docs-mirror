@@ -149,6 +149,7 @@ The following Linux server distributions are supported on servers and desktops:
 | Rocky Linux | 8.7+, 9.2+, 10.x | 8.7+, 9.2+, 10.x |
 | Alma Linux | 8.4+, 9.2+, 10.x | 8.4+, 9.2+, 10.x |
 | Mariner | 2 | 2 |
+| Azure Linux | 4.0 | 4.0 |
 
 Important
 

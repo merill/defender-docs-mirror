@@ -19,7 +19,7 @@ ms.collection:
 - tier1
 - sentinel-only
 ms.topic: concept-article
-ms.date: 2026-11-04T00:00:00.0000000Z
+ms.date: 2026-11-15T00:00:00.0000000Z
 ai-usage: ai-assisted
 locale: en-us
 document_id: 11ef3ff8-0b63-1e8e-c5a3-837e19da4a14
@@ -114,6 +114,10 @@ The contents of the incidents are handled in the following ways:
 - Entities (assets etc.) follow the alerts they're linked to.
 - Detection rules recorded as involved in the creation of the source incident are added to the rules recorded in the target incident. To control whether alerts from an analytics rule or custom detection participate in correlation, see [Manage detection rule correlation settings in Microsoft Defender XDR](exclude-analytics-rules-correlation). Correlation settings for custom detections are in public preview.
 - Currently, migration of comments and audits of activity log entries is in *preview*.To see the source incident's comments and activity history if you don't have access to the preview, open the incident in Microsoft Sentinel in the Azure portal. The activity history includes the closing of the incident and the adding and removal of alerts, tags, and other items related to the incident merge. These activities are attributed to the identity *Microsoft Defender XDR - alert correlation*.
+
+Note
+
+Alert grouping for custom detection rules is in preview. [Alert grouping](custom-detection-rules#alert-grouping-preview) happens before Defender correlation, which can still link other alerts or merge existing incidents regardless of the rule's alert grouping settings. Custom detection alert grouping doesn't reopen closed incidents, consistent with the behavior for resolved incidents.
 
 ### When incidents aren't merged
 

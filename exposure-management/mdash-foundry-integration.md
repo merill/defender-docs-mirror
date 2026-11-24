@@ -33,11 +33,9 @@ source_path: exposure-management/mdash-foundry-integration.md
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/de19c5b8-e208-412e-9238-db3f631dea5b
 - https://authoring-docs-microsoft.poolparty.biz/devrel/64b65f6c-101f-411a-9b83-9f577fab52d0
-- https://authoring-docs-microsoft.poolparty.biz/devrel/fcc3cd4a-59ea-47a2-9cc1-784142a5a25d
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/ea7bf5d6-7154-4ba9-8ebc-59117ccacd49
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1a667fd1-8145-4b11-af0f-9f5de205a6e5
-- https://authoring-docs-microsoft.poolparty.biz/devrel/d7a55faf-a992-4e27-aa3a-eadc9830e778
 platformId: fa300fee-25bf-e572-1ee3-fd32d6d42e7d
 ---
 
@@ -113,7 +111,7 @@ From the Foundry project's **home** page, copy the values that the service needs
 
 ## Deploy the required models
 
-Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans. Before running scans, deploy the three required models. You can also deploy the optional **MAI Cyber (Preview)** model to use the recommended scan configuration.
+Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans. Before running scans, deploy the required models in your Microsoft Foundry resource. You can also deploy GPT-5.3-Codex and the optional MAI Cyber (Preview) model. **GPT-5.3-Codex is no longer required.** If GPT-5.3-Codex isn't available, codename MDASH automatically uses GPT-5.4 instead. This fallback behavior is supported across all regions where codename MDASH is available.
 
 ### Step 1: Deploy the standard models
 
@@ -129,29 +127,48 @@ The standard scan configuration requires three models. These models are also req
 | Model | Required |
 | --- | --- |
 | `gpt-5.4` | Yes |
-| `gpt-5.3-codex` | Yes |
+| `gpt-5.3-codex` | No |
 | `gpt-5.4-mini` | Yes |
 
 1. Verify that all three model deployments are available in your Microsoft Foundry resource.
 
-### Step 2: Deploy MAI Cyber (Preview), recommended
+### Automatic model fallback
 
-**MAI Cyber (Preview) is the recommended scan configuration for codename MDASH.** To use the MAI Cyber Model, you must first [submit](https://forms.cloud.microsoft/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR13ffypyvwVJhqpm2XjyFblURUxFVkJHRlJUTFlQNlVFWElJTE45VTM1MS4u&amp;route=shorturl) a request and be approved.
+Codename MDASH supports automatic model fallback when GPT-5.3-Codex isn't available in your Microsoft Foundry resource.
 
-MAI Cyber is an optional model that can be used alongside the three standard models to enhance agentic code security scanning.
+**When GPT-5.3-Codex is available:** Codename MDASH uses GPT-5.3-Codex for its designated scanning tasks.
 
-To enable this configuration, you must deploy:
+**When GPT-5.3-Codex isn't available:** Codename MDASH automatically uses GPT-5.4 instead.
 
-- `gpt-5.4`
-- `gpt-5.3-codex`
-- `gpt-5.4-mini`
-- `MAI-Cyber-1.1-Flash`
+**When GPT-5.4 isn't available:** The scan fails because GPT-5.4 is required.
 
-If you've already completed Step 1, you only need to deploy `MAI-Cyber-1.1-Flash`. **Deploy each model only once.** You don't need to deploy the standard models again when enabling MAI Cyber (Preview). If you use custom deployment settings, don't select the `DataZoneBatch`, `GlobalBatch`, or `DeveloperTier` deployment types.
+This fallback behavior applies across all supported regions and doesn't require additional configuration.
 
 Note
 
-MAI Cyber (Preview) must be approved after [requesting](https://forms.cloud.microsoft/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR13ffypyvwVJhqpm2XjyFblURUxFVkJHRlJUTFlQNlVFWElJTE45VTM1MS4u&amp;route=shorturl) access. Access must be approved. MAI Cyber (Preview) is currently available only through the **Global Standard** deployment type. Before deploying the model, confirm that this deployment type meets your organization's data-processing and residency requirements. The model must be provisioned using Azure CLI. Deployment through the Microsoft Foundry portal isn't currently supported. MAI Cyber availability depends on the selected Microsoft Foundry region. For more information, see [Codename MDASH overview](ai-code-security-overview#cloud-and-region-support). Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans MAI Cyber is optional. If you don't deploy it, you can continue using codename MDASH with the three required standard models.
+Automatic fallback applies only when GPT-5.3-Codex isn't available. It doesn't apply to runtime failures or throttling. If a deployed model encounters these issues, the scan can fail.
+
+### Step 2: Deploy MAI Cyber (Preview), recommended
+
+**MAI Cyber (Preview) is the recommended scan configuration for codename MDASH.** To use the MAI Cyber Model, you must first [submit](https://forms.cloud.microsoft/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR13ffypyvwVJhqpm2XjyFblURUxFVkJHRlJUTFlQNlVFWElJTE45VTM1MS4u&amp;route=shorturl) a request and be approved. MAI Cyber is an optional model that can be used alongside the standard models to enhance agentic code security scanning.
+
+To enable this configuration, deploy the following models:
+
+| Model | Required |
+| --- | --- |
+| gpt-5.4 | Yes |
+| gpt-5.4-mini | Yes |
+| MAI-Cyber-1.1-Flash | Yes |
+| gpt-5.3-codex | No |
+
+If you've already completed Step 1, you only need to deploy MAI-Cyber-1.1-Flash. The model must be provisioned using Azure CLI (see below). Deployment through the Microsoft Foundry portal isn't currently supported.
+
+Note
+
+- **Deploy each model only once.** You don't need to deploy the standard models again when enabling MAI Cyber (Preview).
+- If GPT-5.3-Codex isn't available, codename MDASH automatically uses GPT-5.4 for the applicable scanning tasks.
+- MAI Cyber (Preview) is currently available only through the **Global Standard** deployment type. Before deploying the model, confirm that this deployment type meets your organization's data-processing and residency requirements.
+- MAI Cyber availability depends on the selected Microsoft Foundry region. For more information, see [Codename MDASH overview](ai-code-security-overview#cloud-and-region-support). Codename MDASH uses AI models deployed in Microsoft Foundry to perform agentic code security scans
 
 #### Deploy MAI Cyber using Azure CLI
 

@@ -159,3 +159,7 @@ Codename MDASH logs activity via an audit trail. It captures privileged-user act
 ## What are the licensing prerequisites? How will Codename MDASH be licensed?
 
 Customers must have an eligible Microsoft Defender XDR plan, and Codename MDASH must be enabled and configured through the Microsoft Defender portal. Customers with Defender XDR access through an eligible license are qualified for participation in MDASH.
+
+## What happens if GPT-5.3-Codex isn't available in my Microsoft Foundry region?
+
+Codename MDASH automatically uses GPT-5.4 when GPT-5.3-Codex isn't available. You don't need to deploy GPT-5.3-Codex or configure fallback manually. This behavior is supported across all regions where codename MDASH is available. The fallback applies only when GPT-5.3-Codex is unavailable. It doesn't apply to model throttling or runtime failures. GPT-5.4 and GPT-5.4-Mini remain required for scanning.

@@ -157,6 +157,7 @@ Domain verification is optional and separate from the GitHub Enterprise Cloud ap
     - In the **Application name** box, enter a name for the app.
     - In the **Homepage URL** box, enter the URL for the app's homepage.
     - In the **Authorization callback URL** box, enter the following value: `https://portal.cloudappsecurity.com/api/oauth/connect`.
+    - Uncheck **Expire user access tokens**.
 
     Note
 

@@ -22,7 +22,7 @@ ms.collection:
 ms.topic: concept-article
 ms.service: microsoft-sentinel
 ai-usage: ai-assisted
-ms.date: 2026-11-16T00:00:00.0000000Z
+ms.date: 2026-11-24T00:00:00.0000000Z
 ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: a3018aa1-e3e0-007c-d45a-e48fa92f6945
@@ -165,9 +165,13 @@ The following tables don't receive the 90-day included retention benefit. They'r
 
 An ISOC workspace is required to ingest additional Microsoft and non-Microsoft security data through [more than 500 data connectors](/en-us/azure/sentinel/data-connectors-reference).
 
-Additional Microsoft and non-Microsoft security data is billed separately from the Microsoft security data included with the ISOC benefit. Ingested data can be retained for up to 90 days as part of the ISOC ingestion experience.
+Except for threat intelligence ingestion, additional Microsoft and non-Microsoft security data is billed separately from the Microsoft security data included with the ISOC benefit. Ingested data can be retained for up to 90 days as part of the ISOC ingestion experience.
 
 Additional ingestion and retention charges will apply depending on the data you ingest and how long you retain it.
+
+## Threat intelligence ingestion
+
+Threat intelligence ingestion is free for ISOC customers through all ingestion methods, including TAXII, upload APIs, STIX APIs, and threat intelligence vendor connectors.
 
 ## Choose a retention option
 

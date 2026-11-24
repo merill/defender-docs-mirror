@@ -150,7 +150,7 @@ In the support table, **NA** indicates that the feature isn't available.
 | [Serverless protection](serverless-protection)^4^ | GA | NA | NA | NA |
 | **DEFENDER FOR CLOUD PLANS** |  |  |  |  |
 | [Defender Cloud Security Posture Management (CSPM)](concept-cloud-security-posture-management) | GA | GA | NA | NA |
-| [Defender for AI Services](ai-threat-protection) | GA | NA | NA | NA |
+| [Defender for AI Services](ai-threat-protection) | GA | GA | NA | NA |
 | [Defender for APIs](defender-for-apis-introduction) | GA | NA | NA | NA |
 | [Defender for App Service](defender-for-app-service-introduction) | GA | NA | NA | GA |
 | [Defender for Containers](defender-for-containers-introduction)[Review detailed feature support](support-matrix-defender-for-containers) | GA | GA | NA | GA |

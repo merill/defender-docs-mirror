@@ -35,11 +35,11 @@ source_path: defender-for-cloud/alerts-sql-database-and-azure-synapse-analytics.
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cbe4ca68-43ac-4375-aba5-5945a6394c20
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
-- https://authoring-docs-microsoft.poolparty.biz/devrel/bad69977-db6a-44f3-b752-d2bee7de49ca
+- https://authoring-docs-microsoft.poolparty.biz/devrel/6ab7faaf-d791-4a26-96a2-3b11738538e7
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ced846cc-6a3c-4c8f-9dfb-3de0e90e2742
 - https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
-- https://authoring-docs-microsoft.poolparty.biz/devrel/b31d7aff-61be-45e2-a324-a578cf0c3360
+- https://authoring-docs-microsoft.poolparty.biz/devrel/302e28b0-1f09-4811-9a9b-2a72e0770581
 platformId: 1dbddb2e-23d2-3ccf-013f-7ddaf2c24251
 ---
 
@@ -195,11 +195,11 @@ Alerts from different sources might take different amounts of time to appear. Fo
 
 ### **An abnormally large number of rows were extracted from your SQL Server - Preview**
 
-(SQL.VM\_DataExfiltration)
+(SQL.VM\_DataExfiltration, SQL.DB\_DataExfiltration, SQL.MI\_DataExfiltration, Synapse.SQLPool\_DataExfiltration, SQL.DW\_DataExfiltration)
 
 **Description**: An unusually large number of rows has been extracted from your database in a single query. The activity might be related to legitimate operations, such as nonstandard backups or maintenance tasks. Alternatively, it could indicate a potential attempt to exfiltrate data from your SQL Server instances.
 
-*Applies only to Defender for SQL on machines with extension version 2.0.3448.357 and later.*
+*Supported in SQL on machines only where extension version 2.0.3448.357 and later is installed.*
 
 **[MITRE tactics](alerts-reference#mitre-attck-tactics)**: Exfiltration
 

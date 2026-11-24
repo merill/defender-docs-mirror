@@ -127,7 +127,7 @@ Run one scan with a specific configuration (overrides the default for this scan 
 # Standard:
 ./defender scan ai-scan submit <TARGET_SOURCE> --model-profile standard
 
-# May Cyber:
+# Mai Cyber:
 ./defender scan ai-scan submit <TARGET_SOURCE> --model-profile mai-cyber
 ```
 

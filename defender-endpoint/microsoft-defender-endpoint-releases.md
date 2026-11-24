@@ -59,6 +59,7 @@ This table includes supported releases for all supported platforms in the past s
 
 | OS | Build | Month released | Details | Learn more |
 | --- | --- | --- | --- | --- |
+| Android | 1.0.9511.0102 | Nov 2026 | - Build: 1.0.9511.0102- Release: Nov 13, 2026 | Release details and updates |
 | iOS | 1.1.83150101 | Nov 2026 | - Build: 1.1.83150101- Release: Nov 18, 2026 | Release details and updates |
 | iOS | 1.1.82260102 | Nov 2026 | - Build: 1.1.82260102- Release: Nov 3, 2026 | Release details and updates |
 | Android | 1.0.9428.0102 | Oct 2026 | - Build: 1.0.9428.0102- Release: Oct 30, 2026 | Release details and updates |
@@ -1041,6 +1042,21 @@ Fixed in platform version 101.26052.0011 and later. FIPS-enabled RHEL 8/9 device
 ## Android releases
 
 See the full list of [Android UX improvements](android-new-ux).
+
+### Android | Nov 2026 | Platform: 1.0.9511.0102
+
+#### Release details
+
+| Platform version | Release Date |
+| --- | --- |
+| Android | Nov 13, 2026 |
+
+#### Enhancements and features
+
+| Feature Area | Update Summary |
+| --- | --- |
+| General | Performance improvements and general bug fixes. |
+| Network Protection | Improved Network Protection on Android by adding support for Android's Nearby Devices permission , allowing users who grant this permission to benefit from improved wi-fi threat detection. |
 
 ### Android | Oct 2026 | Platform: 1.0.9428.0102
 

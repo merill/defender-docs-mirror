@@ -26,7 +26,7 @@ ms.author: guywild
 author: guywi-ms
 ms.reviewer: noak
 ms.topic: concept-article
-ms.date: 2026-11-13T00:00:00.0000000Z
+ms.date: 2026-11-23T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: references_regions
 locale: en-us
@@ -44,8 +44,10 @@ item_type: Content
 source_path: sentinel/geographical-availability-data-residency.md
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/8a94907f-2511-4271-b5ca-ec7f2e75067c
+- https://authoring-docs-microsoft.poolparty.biz/devrel/8f37329d-5c2f-4d50-b9b8-aa5cf54dbffe
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/bffa8e88-f633-409d-a24d-083bdbc68872
+- https://authoring-docs-microsoft.poolparty.biz/devrel/e13db295-3de6-46d5-bcdf-8785a76e3843
 platformId: b41c1dab-4595-b5a3-dc24-e1543d962d56
 ---
 
@@ -79,32 +81,39 @@ When you onboard Microsoft Sentinel from the Defender portal, the service will p
 
 The following table shows the supported regions for Microsoft Sentinel SIEM and data lake.
 
-| Continent | Country/Region | SIEM supported region | Data lake supported region |
-| --- | --- | --- | --- |
-| **North America** | **Canada** | • Canada Central• Canada East | • Canada Central• Canada East |
-|  | **United States** | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US• West US 2• West US 3• West Central US**Azure government**• USGov Arizona• USGov Virginia• USNat East• USNat West• USSec East• USSec West | • Central US• East US• East US 2• South Central US• West US• West US 2• West US 3 |
-| **South America** | **Brazil** | • Brazil South• Brazil Southeast | • Brazil South• Brazil Southeast |
-| **Asia and Middle East** |  | • East Asia• Southeast Asia | • East Asia• Southeast Asia |
-|  | **India** | • Central India• Jio India West• Jio India Central | • Central India• Jio India West |
-|  | **Israel** | • Israel Central | • Israel Central |
-|  | **Japan** | • Japan East• Japan West | • Japan East• Japan West |
-|  | **Korea** | • Korea Central• Korea South | • Korea Central• Korea South |
-|  | **Qatar** | • Qatar Central |  |
-|  | **UAE** | • UAE Central• UAE North | • UAE Central |
-| **Europe** |  | • North Europe• West Europe | • North Europe• West Europe |
-|  | **France** | • France Central• France South | • France Central• France South |
-|  | **Germany** | • Germany West Central |  |
-|  | **Italy** | • Italy North | • Italy North |
-|  | **Norway** | • Norway East• Norway West | • Norway East• Norway West |
-|  | **Sweden** | • Sweden Central |  |
-|  | **Switzerland** | • Switzerland North• Switzerland West | • Switzerland North• Switzerland West |
-|  | **UK** | • UK South• UK West | • UK South• UK West |
-| **Australia** | **Australia** | • Australia CentralAustralia Central 2• Australia East• Australia Southeast | • Australia Central• Australia Central 2• Australia East• Australia Southeast |
-| **Africa** | **South Africa** | • South Africa North |  |
+Choose the data lake column that matches when and how you onboarded:
+
+- **Separate data lake onboarding, September 2025 to September 2026:** If you onboarded to Microsoft Sentinel data lake through the separate data lake setup, use this column. The [data lake onboarding guidance](datalake/sentinel-lake-onboarding) continues to apply to this experience.
+- **Workspace built-in lake tier onboarding, on or after September 2026:** If you onboarded to the Sentinel workspace built-in lake tier, use this column. This experience doesn't require separate data lake onboarding or billing setup. Complete [Microsoft Sentinel onboarding](quickstart-onboard), connect your [workspace to the Defender portal](microsoft-sentinel-onboard), and enable the lake tier through **Table management**. For more information, see [Integrated Microsoft Sentinel SIEM and data lake onboarding](whats-new#integrated-microsoft-sentinel-siem-and-data-lake-onboarding).
+
+For September 2026 onboarding, use the column that matches the onboarding experience you used.
+
+| Continent | Country/Region | SIEM supported region | Data lake: separate onboarding, September 2025 to September 2026 | Data lake: workspace built-in lake tier onboarding, on or after September 2026 |
+| --- | --- | --- | --- | --- |
+| **North America** | **Canada** | • Canada Central• Canada East | • Canada Central | • Canada Central• Canada East |
+|  | **United States** | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US• West US 2• West US 3• West Central US**Azure government**• USGov Arizona• USGov Virginia• USNat East• USNat West• USSec East• USSec West | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US 2 | • Central US• East US• East US 2• East US 2 EUAP• North Central US• South Central US• West US• West US 2• West US 3 |
+| **South America** | **Brazil** | • Brazil South• Brazil Southeast | Not supported | • Brazil South• Brazil Southeast |
+| **Asia and Middle East** |  | • East Asia• Southeast Asia | • Southeast Asia | • East Asia• Southeast Asia |
+|  | **India** | • Central India• Jio India West• Jio India Central | • Central India | • Central India• West India |
+|  | **Israel** | • Israel Central | • Israel Central | • Israel Central |
+|  | **Japan** | • Japan East• Japan West | • Japan East | • Japan East• Japan West |
+|  | **Korea** | • Korea Central• Korea South | Not supported | • Korea Central• Korea South |
+|  | **Qatar** | • Qatar Central | Not supported | Not supported |
+|  | **UAE** | • UAE Central• UAE North | • UAE North | • UAE Central• UAE North |
+| **Europe** |  | • North Europe• West Europe | • North Europe• West Europe | • North Europe• West Europe |
+|  | **France** | • France Central• France South | • France Central | • France Central• France South |
+|  | **Germany** | • Germany West Central | • Germany West Central | • Germany West Central |
+|  | **Italy** | • Italy North | • Italy North | • Italy North |
+|  | **Norway** | • Norway East• Norway West | Not supported | • Norway East• Norway West |
+|  | **Sweden** | • Sweden Central | • Sweden Central | • Sweden Central |
+|  | **Switzerland** | • Switzerland North• Switzerland West | • Switzerland North | • Switzerland North• Switzerland West |
+|  | **UK** | • UK South• UK West | • UK South | • UK South• UK West |
+| **Australia** | **Australia** | • Australia CentralAustralia Central 2• Australia East• Australia Southeast | • Australia East | • Australia Central• Australia Central 2• Australia East• Australia Southeast |
+| **Africa** | **South Africa** | • South Africa North | • South Africa North | • South Africa North |
 
 Important
 
-Microsoft Sentinel data lake must be deployed in the same Azure region as the associated primary Sentinel workspace.
+If you onboarded through the separate data lake setup between September 2025 and September 2026, Microsoft Sentinel data lake must be deployed in the same Azure region as the associated primary Sentinel workspace. Only workspaces in that region can be attached to the data lake. For more information, see [How onboarding affects existing Microsoft Sentinel workspaces](datalake/sentinel-lake-onboarding#how-onboarding-affects-existing-microsoft-sentinel-workspaces).
 
 ## Data retention
 

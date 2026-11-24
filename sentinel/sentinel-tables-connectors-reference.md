@@ -284,8 +284,9 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | databahn\_audit\_logs\_CL | [DataBahn](/en-us/azure/sentinel/data-connectors-reference#databahn) | No | No |
 | databahn\_device\_inventory\_CL | [DataBahn](/en-us/azure/sentinel/data-connectors-reference#databahn) | No | No |
 | DataminrPulse\_Alerts\_CL | [Dataminr Pulse Alerts Data Connector (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#dataminr-pulse-alerts-data-connector-using-azure-functions) | No | No |
+| [DataverseActivity](/en-us/azure/azure-monitor/reference/tables/DataverseActivity) | [Microsoft Dataverse](/en-us/azure/sentinel/data-connectors-reference#microsoft-dataverse) | Yes | Yes |
 | datawizaserveraccess\_CL | [Datawiza DAP](/en-us/azure/sentinel/data-connectors-reference#datawiza-dap) | No | No |
-| DelineaAuditEvents\_CL | [Delinea Platform Audit Events](/en-us/azure/sentinel/data-connectors-reference#delinea-platform-audit-events) | No | No |
+| DelineaAuditEvents\_CL | [Delinea Platform Audit Events](/en-us/azure/sentinel/data-connectors-reference#delinea-platform-audit-events) | Yes | Yes |
 | Detections\_Data\_CCF\_CL | [Vectra RUX Security Data Connector (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#vectra-rux-security-data-connector-via-codeless-connector-framework) | Yes | Yes |
 | Detections\_Data\_CL | [Vectra XDR (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#vectra-xdr-using-azure-functions) | Yes | Yes |
 | [DeviceEvents](/en-us/azure/azure-monitor/reference/tables/DeviceEvents) | [Microsoft Defender XDR](/en-us/azure/sentinel/data-connectors-reference#microsoft-defender-xdr) | Yes | Yes |
@@ -339,7 +340,7 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | Entity\_Scoring\_Data\_CL | [Vectra XDR (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#vectra-xdr-using-azure-functions) | Yes | Yes |
 | ErmesBrowserSecurityEvents\_CL | [Ermes Browser Security Events](/en-us/azure/sentinel/data-connectors-reference#ermes-browser-security-events) | Yes | Yes |
 | ESIAPIExchangeOnlineConfig\_CL | [Exchange Security Insights Online Collector (Azure Monitor)](/en-us/azure/sentinel/data-connectors-reference#exchange-security-insights-online-collector-azure-monitor) | No | No |
-| ESIAPIExchangeOnPremisesConfig\_CL | [Exchange Security Insights On-Premises Collector (Azure Monitor)](/en-us/azure/sentinel/data-connectors-reference#exchange-security-insights-on-premises-collector-azure-monitor) | No | No |
+| ESIAPIExchangeOnPremisesConfig\_CL | [Exchange Security Insights On-Premises Collector (Azure Monitor)](/en-us/azure/sentinel/data-connectors-reference#exchange-security-insights-on-premises-collector-azure-monitor) | Yes | Yes |
 | ESIExchangeConfig\_CL | [(Deprecated) Exchange Security Insights On-Premises Collector](/en-us/azure/sentinel/data-connectors-reference#deprecated-exchange-security-insights-on-premises-collector) | No | No |
 | ESIExchangeOnlineConfig\_CL | [(Deprecated) Exchange Security Insights Online Collector](/en-us/azure/sentinel/data-connectors-reference#deprecated-exchange-security-insights-online-collector) | Yes | Yes |
 | [Event](/en-us/azure/azure-monitor/reference/tables/Event) | [Automated Logic WebCTRL](/en-us/azure/sentinel/data-connectors-reference#automated-logic-webctrl)[Microsoft Exchange Admin Audit Logs by Event Logs](/en-us/azure/sentinel/data-connectors-reference#microsoft-exchange-admin-audit-logs-by-event-logs)[Microsoft Exchange Logs and Events](/en-us/azure/sentinel/data-connectors-reference#microsoft-exchange-logs-and-events)[\[Deprecated\] Microsoft Exchange Logs and Events](/en-us/azure/sentinel/data-connectors-reference#deprecated-microsoft-exchange-logs-and-events) | Yes | No |
@@ -520,7 +521,9 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | Phosphorus\_CL | [Phosphorus Devices](/en-us/azure/sentinel/data-connectors-reference#phosphorus-devices) | No | No |
 | PingOne\_AuditActivitiesV2\_CL | [Ping One (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#ping-one-via-codeless-connector-framework) | Yes | Yes |
 | PostgreSQL\_CL | [Custom logs via AMA](/en-us/azure/sentinel/data-connectors-reference#custom-logs-via-ama) | Yes | Yes |
+| [PowerAutomateActivity](/en-us/azure/azure-monitor/reference/tables/PowerAutomateActivity) | [Microsoft Power Automate](/en-us/azure/sentinel/data-connectors-reference#microsoft-power-automate) | Yes | Yes |
 | [PowerBIActivity](/en-us/azure/azure-monitor/reference/tables/PowerBIActivity) | [Microsoft PowerBI](/en-us/azure/sentinel/data-connectors-reference#microsoft-powerbi) | Yes | Yes |
+| [PowerPlatformAdminActivity](/en-us/azure/azure-monitor/reference/tables/PowerPlatformAdminActivity) | [Microsoft Power Platform Admin Activity](/en-us/azure/sentinel/data-connectors-reference#microsoft-power-platform-admin-activity) | Yes | Yes |
 | PQReadiness\_CL | [QCrypton PQC Scanner (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#qcrypton-pqc-scanner-via-codeless-connector-framework) | No | No |
 | prancer\_CL | [Prancer Data Connector](/en-us/azure/sentinel/data-connectors-reference#prancer-data-connector) | No | No |
 | PrismaCloudCompute\_CL | [Palo Alto Prisma Cloud CWPP (using REST API)](/en-us/azure/sentinel/data-connectors-reference#palo-alto-prisma-cloud-cwpp-using-rest-api) | Yes | Yes |
@@ -597,16 +600,16 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | [SigninLogs](/en-us/azure/azure-monitor/reference/tables/SigninLogs) | [Microsoft Entra ID](/en-us/azure/sentinel/data-connectors-reference#microsoft-entra-id) | Yes | Yes |
 | SlackAuditV2\_CL | [SlackAudit (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#slackaudit-via-codeless-connector-framework) | Yes | Yes |
 | SLP\_Feeds\_CL | [SilentPush Feeds](/en-us/azure/sentinel/data-connectors-reference#silentpush-feeds) | No | No |
-| SnowflakeLoadV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeLoginV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeMaterializedViewV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeQueryV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeRoleGrantV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeRolesV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeTableStorageMetricsV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeTablesV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeUserGrantV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
-| SnowflakeUsersV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | No | No |
+| SnowflakeLoadV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeLoginV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeMaterializedViewV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeQueryV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeRoleGrantV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeRolesV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeTableStorageMetricsV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeTablesV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeUserGrantV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
+| SnowflakeUsersV3\_CL | [Snowflake (via Codeless Connector Framework)](/en-us/azure/sentinel/data-connectors-reference#snowflake-via-codeless-connector-framework) | Yes | Yes |
 | SOCPrimeAuditLogs\_CL | [SOC Prime Platform Audit Logs Data Connector](/en-us/azure/sentinel/data-connectors-reference#soc-prime-platform-audit-logs-data-connector) | Yes | Yes |
 | Sonrai\_Tickets\_CL | [Sonrai Data Connector](/en-us/azure/sentinel/data-connectors-reference#sonrai-data-connector) | No | No |
 | SophosEP\_CL | [\[DEPRECATED\] Sophos Endpoint Protection (using Azure Function) (using Azure Functions)](/en-us/azure/sentinel/data-connectors-reference#deprecated-sophos-endpoint-protection-using-azure-function-using-azure-functions) | Yes | Yes |
@@ -665,7 +668,6 @@ The following table lists the tables ingested into Microsoft Sentinel via data c
 | Vaikora\_AgentSignals\_CL | [Vaikora AI Agent Behavioral Signals](/en-us/azure/sentinel/data-connectors-reference#vaikora-ai-agent-behavioral-signals) | Yes | Yes |
 | ValenceAlert\_CL | [SaaS Security](/en-us/azure/sentinel/data-connectors-reference#saas-security) | No | No |
 | ValimailEnforceEvents\_CL | [Valimail Enforce Configuration Events](/en-us/azure/sentinel/data-connectors-reference#valimail-enforce-configuration-events) | Yes | Yes |
-| VaronisAlerts\_CL | [\[Deprecated\] Varonis SaaS](/en-us/azure/sentinel/data-connectors-reference#deprecated-varonis-saas) | Yes | Yes |
 | VaronisAlertsV2\_CL | [Varonis SaaS (Push)](/en-us/azure/sentinel/data-connectors-reference#varonis-saas-push) | Yes | Yes |
 | VaronisResources\_CL | [Varonis Purview Push Connector](/en-us/azure/sentinel/data-connectors-reference#varonis-purview-push-connector) | Yes | Yes |
 | vcenter\_CL | [Custom logs via AMA](/en-us/azure/sentinel/data-connectors-reference#custom-logs-via-ama) | Yes | Yes |

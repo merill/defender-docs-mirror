@@ -6192,9 +6192,9 @@ Ingests privileged-access audit events from the **Delinea Platform** (`/audit/ap
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `DelineaAuditEvents_CL` | No | No |
+| `DelineaAuditEvents_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -7188,9 +7188,9 @@ Connector used to send Exchange Server security configuration data to Microsoft 
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `ESIAPIExchangeOnPremisesConfig_CL` | No | No |
+| `ESIAPIExchangeOnPremisesConfig_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Prerequisites:**
 
@@ -12084,6 +12084,35 @@ This connector uses the Office Management API to get your Microsoft Copilot audi
 
 - Enable/Disable Connection
 
+**Microsoft Dataverse**
+
+**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
+
+Microsoft Dataverse is a scalable and secure data platform that enables organizations to store and manage data used by business applications. The Microsoft Dataverse data connector provides the capability to ingest Dataverse and Dynamics 365 CRM activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| [`DataverseActivity`](/en-us/azure/azure-monitor/reference/tables/DataverseActivity) | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
+- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
+- **Production Dataverse**: An active Dataverse in a production environment with the version higher or equal to 9.1.0000.09831. Read more on how to [verify your Dataverse version](/en-us/power-platform/admin/determine-org-id-name).
+- **Dataverse Audit Settings**: Have Administrator privileges in your Dataverse environment to enable auditing. Read more on [managing Dataverse auditing](/en-us/power-platform/admin/manage-dataverse-auditing).
+
+**Setup Instructions:**
+
+**Connect Microsoft Dataverse audit logs to Microsoft Sentinel**
+
+This connector uses the Office Management API to get your Dataverse audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **DataverseActivity** table.
+
+- Enable/Disable Connection
+
 **Microsoft Defender for Cloud Apps**
 
 **Supported by:**[Microsoft Corporation](https://support.microsoft.com/)
@@ -12687,6 +12716,60 @@ The Custom Table can't be created using the Azure Portal. You need to use an ARM
 **Assign the DCR to all Exchange Servers**
 
 Add all your Exchange Servers to the DCR
+
+**Microsoft Power Automate**
+
+**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
+
+Power Automate is a Microsoft service that helps users create automated workflows between apps and services to synchronize files, get notifications, collect data, and more. It simplifies task automation, increasing efficiency by reducing manual, repetitive tasks, and enhancing productivity. The Power Automate data connector provides the capability to ingest Power Automate activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| [`PowerAutomateActivity`](/en-us/azure/azure-monitor/reference/tables/PowerAutomateActivity) | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
+- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
+
+**Setup Instructions:**
+
+**Connect Microsoft Power Automate audit logs to Microsoft Sentinel**
+
+This connector uses the Office Management API to get your Power Automate audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **PowerAutomateActivity** table.
+
+- Enable/Disable Connection
+
+**Microsoft Power Platform Admin Activity**
+
+**Supported by:**[Microsoft Corporation](https://azure.microsoft.com/support/)
+
+Microsoft Power Platform is a low-code/no-code suite empowering both citizen and pro developers to streamline business processes by enabling the creation of custom apps, automation of workflows, and data analysis with minimal coding. The Power Platform Admin data connector provides the capability to ingest Power Platform administrator activity logs from the Microsoft Purview Audit log into Microsoft Sentinel.
+
+**Log Analytics table(s):**
+
+| Table | DCR support | Lake-only ingestion |
+| --- | --- | --- |
+| [`PowerPlatformAdminActivity`](/en-us/azure/azure-monitor/reference/tables/PowerPlatformAdminActivity) | Yes | Yes |
+
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
+
+**Prerequisites:**
+
+- **Tenant Permissions**: 'Security Administrator' or 'Global Administrator' on the workspace's tenant.
+- **Micorosft Purview Audit**: Microsoft Purview Audit (Standard or Premium) must be activated.
+
+**Setup Instructions:**
+
+**Connect Microsoft Power Platform Admin Activity audit logs to Microsoft Sentinel**
+
+This connector uses the Office Management API to get your Power Platform administrator audit logs. The logs will be stored and processed in your existing Microsoft Sentinel workspace. You can find the data in the **PowerPlatformAdminActivity** table.
+
+- Enable/Disable Connection
 
 **Microsoft PowerBI**
 
@@ -17635,7 +17718,7 @@ Configure your ServiceNow instance connection and select a CMDB table to collect
 
 **Supported by:**[SilentPush](https://www.silentpush.com/contact/)
 
-Native codeless data connector for monitoring Silent Push threat actor feeds. Supports feed exports in CSV format with a header row (e.g. `*_enriched.csv`). Not compatible with headerless plaintext indicator lists (e.g. `*_ips.txt`, `*_domains.txt`) -- use the SilentPush Export Enrichment playbooks for those instead.
+Native codeless data connector for monitoring Silent Push threat actor feeds. Supports feed exports in CSV format with a header row (e.g. `*_enriched.csv`). Not compatible with headerless plaintext indicator lists (e.g. `*_ips.txt`, `*_domains.txt`) -- use the SilentPush Export Enrichment playbooks for those instead. The feed is polled once every 24 hours and each poll ingests the full export, so the same indicator can appear once per day. To get the latest row per indicator, use `SLP_Feeds_CL | summarize arg_max(TimeGenerated, *) by indicator`.
 
 **Log Analytics table(s):**
 
@@ -17758,18 +17841,18 @@ The Snowflake data connector provides the capability to ingest Snowflake [Login 
 
 | Table | DCR support | Lake-only ingestion |
 | --- | --- | --- |
-| `SnowflakeLoginV3_CL` | No | No |
-| `SnowflakeQueryV3_CL` | No | No |
-| `SnowflakeUserGrantV3_CL` | No | No |
-| `SnowflakeRoleGrantV3_CL` | No | No |
-| `SnowflakeLoadV3_CL` | No | No |
-| `SnowflakeMaterializedViewV3_CL` | No | No |
-| `SnowflakeRolesV3_CL` | No | No |
-| `SnowflakeTablesV3_CL` | No | No |
-| `SnowflakeTableStorageMetricsV3_CL` | No | No |
-| `SnowflakeUsersV3_CL` | No | No |
+| `SnowflakeLoginV3_CL` | Yes | Yes |
+| `SnowflakeQueryV3_CL` | Yes | Yes |
+| `SnowflakeUserGrantV3_CL` | Yes | Yes |
+| `SnowflakeRoleGrantV3_CL` | Yes | Yes |
+| `SnowflakeLoadV3_CL` | Yes | Yes |
+| `SnowflakeMaterializedViewV3_CL` | Yes | Yes |
+| `SnowflakeRolesV3_CL` | Yes | Yes |
+| `SnowflakeTablesV3_CL` | Yes | Yes |
+| `SnowflakeTableStorageMetricsV3_CL` | Yes | Yes |
+| `SnowflakeUsersV3_CL` | Yes | Yes |
 
-**Data collection rule support:** Not currently supported
+**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
 
 **Setup Instructions:**
 
@@ -18983,41 +19066,11 @@ The [Trellix Endpoint Security](https://www.trellix.com/) data connector enables
 
 **Setup Instructions:**
 
-**1. API Configuration**
+**Trellix Connections**
 
-Configure your Trellix ePO API connection.
+Add a connection for each Trellix instance or domain. Delete only the selected connection from the grid.
 
-- **API Base URL**: (https://api.manage.trellix.com) Authentication
-
-Provide your API key for authentication. This will be sent in the x-api-key header.
-
-- **API Key**: (Enter your API key)
-
-> 
-> Note: The API key will be securely stored and used for authentication with the Trellix ePO API.
-
-**2. Authentication Configuration**
-
-Configure OAuth2 authentication credentials.
-
-- **Token endpoint**: (https://iam.cloud.trellix.com/iam/v1.0/token) OAuth2 Configuration Configure OAuth2 client credentials for API access. Read about the Trellix API authorization model at https://developer.manage.trellix.com/public/mvision/docs/umam
-- **Client ID**: (Your client ID)
-- **Client Secret**: (Your client secret)
-
-> 
-> Note: OAuth2 authentication provides secure access to your API endpoints.
-
-**3. Enable Connector**
-
-Activate the Trellix Endpoint Security connector
-
-Connector Activation
-
-Review your configuration and enable the connector to start collecting security events.
-
-- Enable/Disable Connection Post-Connection
-
-After connecting, monitor the connector status in the **Data connectors** page. Data should begin appearing within 5-10 minutes.
+- Data Connectors Grid (configure in portal)
 
 **Trend Micro Cloud App Security (using Azure Functions)**
 
@@ -19559,7 +19612,7 @@ Use the following parameters to configure the Varonis Purview Connector in your 
 
 **Varonis SaaS (Push)**
 
-**Supported by:**[Varonis](https://www.varonis.com/support/)
+**Supported by:**[Varonis](https://www.varonis.com/resources/support)
 
 The [Varonis SaaS](https://www.varonis.com/) connector provides the capability to push real-time DatAlert security alerts from your Varonis application directly into Microsoft Sentinel using the Codeless Connector Framework (CCF) Push pattern. Varonis prioritizes deep data visibility, classification capabilities, and automated remediation for data access. This connector ingests alert severity, event types, user information, and related details into a custom Log Analytics table for analysis, alerting, and visualization.
 
@@ -19583,6 +19636,9 @@ The [Varonis SaaS](https://www.varonis.com/) connector provides the capability t
 This connector enables your Varonis SaaS application to push DatAlert security alerts directly to Microsoft Sentinel via the Azure Monitor Ingestion API.
 
 Automated Configuration and Secure Data Ingestion with Entra Application Clicking on "Deploy" will trigger the creation of a Log Analytics table and a Data Collection Rule (DCR). It will then create an Entra application, link the DCR to it, and set the entered secret in the application. This setup enables data to be sent securely to the DCR using an Entra token.
+
+> 
+> **Important:** CCF Push connector deployment currently requires the Microsoft Sentinel experience in the Azure portal. Managed deployment from the Microsoft Defender portal might fail while creating the identity resources required by the connector. If this occurs, install and connect the connector from Microsoft Sentinel in the Azure portal, and then use the Microsoft Defender portal for ongoing Microsoft Sentinel operations. For more information, see [Microsoft Sentinel CCF push connectors](/en-us/azure/sentinel/create-push-codeless-connector#prerequisites).
 
 **2. Configure Your Varonis Application**
 
@@ -23740,61 +23796,6 @@ Use the following step-by-step instructions to deploy the Sophos Endpoint Protec
 - Use logAnalyticsUri to override the log analytics API endpoint for dedicated cloud. For example, for public cloud, leave the value empty; for Azure GovUS cloud environment, specify the value in the following format: `https://<CustomerId>.ods.opinsights.azure.us`.
 
 1. Once all application settings have been entered, click **Save**.
-
-**[Deprecated] Varonis SaaS**
-
-**Supported by:**[Varonis](https://www.varonis.com/support/)
-
-Varonis SaaS provides the capability to ingest [Varonis Alerts](https://www.varonis.com/products/datalert) into Microsoft Sentinel.
-
-Varonis prioritizes deep data visibility, classification capabilities, and automated remediation for data access. Varonis builds a single prioritized view of risk for your data, so you can proactively and systematically eliminate risk from insider threats and cyberattacks.
-
-**Log Analytics table(s):**
-
-| Table | DCR support | Lake-only ingestion |
-| --- | --- | --- |
-| `VaronisAlerts_CL` | Yes | Yes |
-
-**Data collection rule support:**[Workspace transform DCR](/en-us/azure/azure-monitor/logs/tutorial-workspace-transformations-portal)
-
-**Prerequisites:**
-
-- **Microsoft.Web/sites permissions**: Read and write permissions to Azure Functions to create a Function App is required. For more information, see [Azure Functions](/en-us/azure/azure-functions/).
-
-**Setup Instructions:**
-
-> 
-> **NOTE:** This connector uses Azure Functions to connect to Varonis DatAlert service to pull alerts into Microsoft Sentinel. This might result in additional data ingestion costs. See the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/) for details.
-
-For Azure function and related services installation use:
-
-[portal.azure.com](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FVaronisSaaS%2FData%2520Connectors%2Fazuredeploy.json)
-
-STEP 1 - Obtain the Varonis DatAlert Endpoint API credentials.
-
-To generate the Client ID and API key:
-
-1. Launch the Varonis Web Interface.
-2. Navigate to Configuration -&gt; API Keys. The API Keys page is displayed.
-3. Click Create API Key. The Add New API Key settings are displayed on the right.
-4. Fill in the name and description.
-5. Click the Generate Key button.
-6. Copy the API key secret and save it in a handy location. You won't be able to copy it again.
-
-For additional information, please check: [Varonis Documentation](https://help.varonis.com/s/document-item?bundleId=ami1661784208197&amp;topicId=emp1703144742927.html&amp;_LANG=enus)
-
-STEP 2 - Deploy the connector and the associated Azure Function.
-
-- **Workspace Name**: &lt;variable value provided at install time&gt;
-
-Use this method for automated deployment of the data connector using an ARM Template.
-
-1. Click the Deploy to Azure button.
-
-    [portal.azure.com](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Sentinel%2Fmaster%2FSolutions%2FVaronisSaaS%2FData%2520Connectors%2Fazuredeploy.json)
-2. Select the preferred Subscription, Resource Group, Region, Storage Account Type.
-3. Enter Log Analytics Workspace Name, Varonis FQDN, Varonis SaaS API Key.
-4. Click Review + Create, Create.
 
 **[Deprecated] VMware Carbon Black Cloud (using Azure Function) (using Azure Functions)**
 

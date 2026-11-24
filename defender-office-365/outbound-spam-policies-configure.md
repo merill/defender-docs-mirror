@@ -157,6 +157,10 @@ To create an outbound spam policy in the Microsoft Defender portal, perform the 
             - Any recipients specified in the **Notify specific people if a sender is blocked due to sending outbound spam** setting in the policy are also notified.
         - **Restrict the user from sending mail**: Email notifications are sent, the user is added to **Restricted users**https://security.microsoft.com/restrictedusers in the Microsoft Defender portal, and the user can't send email until they're removed from **Restricted users** by an admin. After an admin removes the user from the list, the user won't be restricted again for that day. For instructions, see [Remove blocked users from the Restricted entities page](outbound-spam-restore-restricted-users).
         - **No action, alert only**: The alert policy named **Email sending limit exceeded** notifies admins (via email and on the **Incidents & alerts** &gt; **View alerts** page).
+
+        Note
+
+        Outbound spam-policy recipient limits are supported only in Public cloud.
     - **Forwarding rules** section: The setting in this section controls automatic email forwarding by **Exchange Online mailboxes** to external recipients. For more information, see [Control automatic external email forwarding](outbound-spam-policies-external-email-forwarding).
 
         Select one of the following actions from the **Automatic forwarding rules** dropdown list:

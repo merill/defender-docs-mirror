@@ -42,9 +42,11 @@ source_path: defender-xdr/integrated-security-operations-data-billing-retention.
 cmProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/c671beaa-a830-4c9f-aceb-97379ee031ca
 - https://authoring-docs-microsoft.poolparty.biz/devrel/1dd701e0-441f-4b0a-9806-aa47decc4e35
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/1577a46d-8446-40bd-bfae-0578362f4d94
 spProducts:
 - https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/8921374c-4dbe-4ed0-b011-a39e18bfbd98
 - https://authoring-docs-microsoft.poolparty.biz/devrel/0a2fc935-5977-4aa6-9f55-0be03bd2acb8
+- https://microsoft-devrel.poolparty.biz/DevRelOfferingOntology/cdf3f22d-5420-4d59-a2bf-66d6b3d9c828
 platformId: e0abdc18-4f42-d5b3-4f53-0202e91916db
 ---
 
@@ -79,7 +81,7 @@ To compare the security capabilities included with Microsoft 365 enterprise plan
 
 Starting November 15, 2026, eligible customers receive up to 90 days of included retention for supported Microsoft Defender data.
 
-The retention benefit applies at the workload level. As additional supported tables become available for an included workload, they'll also be included in the retention benefit.
+The retention benefit applies at the workload level, except for the tables listed in Retention exceptions. As additional supported tables become available for an included workload, they're also included in the retention benefit unless otherwise noted.
 
 The following tables and data sources are currently included:
 
@@ -110,13 +112,10 @@ The following tables and data sources are currently included:
 - **Microsoft Defender for Endpoint**
 
     - `DeviceEvents`
-    - `DeviceFileCertificateInfo`
     - `DeviceFileEvents`
     - `DeviceImageLoadEvents`
-    - `DeviceInfo`
     - `DeviceLogonEvents`
     - `DeviceNetworkEvents`
-    - `DeviceNetworkInfo`
     - `DeviceProcessEvents`
     - `DeviceRegistryEvents`
     - `DisruptionAndResponseEvents`
@@ -147,11 +146,20 @@ The following tables and data sources are currently included:
 
 ### Extend Microsoft Defender data retention
 
-You can extend retention for supported Microsoft Defender data up to a maximum of 180 days.
+When you enable streaming for supported Microsoft Defender data, the retention period starts at 180 days.
 
 Extended retention applies to new data after you enable it. Data that was collected before you enabled extended retention isn't backfilled.
 
 Additional charges apply when you extend retention beyond the retention included with ISOC.
+
+### Retention exceptions
+
+The following tables don't receive the 90-day included retention benefit. They're stored in XDR for 30 days. As with other supported tables, extended retention starts at 180 days.
+
+| Table | Retention in XDR | Extended retention starts at |
+| --- | --- | --- |
+| `AgentsInfo` | 30 days. | 180 days. |
+| `IdentityAccountInfo` | 30 days. | 180 days. |
 
 ## Additional Microsoft and non-Microsoft security data
 

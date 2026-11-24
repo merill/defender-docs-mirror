@@ -73,8 +73,6 @@ ISOC supports Microsoft security data from the following sources:
 - Microsoft Defender for Cloud Apps
 - Microsoft Defender for Cloud
 - Microsoft Entra
-- Azure Activity through a connector
-- Office 365 Activity through a connector
 
 Eligible customers with Microsoft Defender Suite, Microsoft 365 E5, or Microsoft 365 E7 can use supported Microsoft Defender security data as part of the ISOC experience.
 
@@ -84,7 +82,7 @@ To compare the security capabilities included with Microsoft 365 enterprise plan
 
 ### 90-day retention
 
-Starting November 15, 2026, eligible customers receive up to 90 days of included retention for supported Microsoft Defender data, Azure Activity data, and Office 365 Activity data at no additional charge.
+Starting November 15, 2026, eligible customers receive up to 90 days of included retention for supported Microsoft Defender data.
 
 The retention benefit applies at the workload level, except for the tables listed in Retention exceptions. As additional supported tables become available for an included workload, they're also included in the retention benefit unless otherwise noted.
 
@@ -94,68 +92,60 @@ The following tables and data sources are currently included:
 
     - `AlertEvidence`
     - `AlertInfo`
-- **Azure Activity**
 - **Behaviors**
 
-    - `BehaviorEntities`
-    - `BehaviorInfo`
+    Retention varies by underlying source; 90-day retention applies only to supported, enabled sources.
+
+    - `BehaviorEntities` (Preview)
+    - `BehaviorInfo` (Preview)
 - **Microsoft Defender for Cloud**
 
-    - `BehaviorInfo`
-    - `BehaviorEntities`
-    - `CloudStorageEvents`
-    - `CloudStorageAggregatedEventsV2`
+    A full 90-day history is expected by January 3, 2027 for data covered by the current rollout.
+
     - `CloudPolicyEnforcementEvents`
-    - `CloudKeyVaultEvents`
-    - `CloudKeyVaultRawEvents`
-    - `CloudHttpIncomingEvents`
+    - `CloudKeyVaultEvents` (Preview)
     - `CloudProcessEvents`
-    - `CloudStorageAggregatedEvents`
+    - `CloudStorageAggregatedEvents` (Preview)
     - `CloudAuditEvents`
     - `CloudDnsEvents`
 - **Microsoft Defender for Cloud Apps**
 
     - `CloudAppEvents`
-    - `OAuthAppInfo`
+    - `OAuthAppInfo` (Preview)
 - **Microsoft Defender for Endpoint**
 
     - `DeviceEvents`
-    - `DeviceFileCertificateInfo`
     - `DeviceFileEvents`
     - `DeviceImageLoadEvents`
-    - `DeviceInfo`
     - `DeviceLogonEvents`
     - `DeviceNetworkEvents`
-    - `DeviceNetworkInfo`
     - `DeviceProcessEvents`
     - `DeviceRegistryEvents`
     - `DisruptionAndResponseEvents`
 - **Microsoft Defender for Identity**
 
     - `IdentityDirectoryEvents`
-    - `IdentityEvents`
+    - `IdentityEvents` (Preview)
     - `IdentityLogonEvents`
     - `IdentityQueryEvents`
 - **Microsoft Defender for Office 365**
 
     - `CallActivityEvents`
-    - `CampaignInfo`
+    - `CampaignInfo` (Preview)
     - `EmailAttachmentInfo`
     - `EmailEvents`
     - `EmailPostDeliveryEvents`
     - `EmailUrlInfo`
-    - `FileMaliciousContentInfo`
+    - `FileMaliciousContentInfo` (Preview)
     - `MessageEvents`
     - `MessagePostDeliveryEvents`
     - `MessageUrlInfo`
     - `UrlClickEvents`
 - **Microsoft Entra**
 
-    - `EntraIdDirectoryAuditEvents`
     - `EntraIdSignInEvents`
     - `EntraIdSpnSignInEvents`
     - `GraphAPIAuditEvents`
-- **Office 365 Activity**
 
 ### Extend Microsoft Defender data retention
 
@@ -180,7 +170,7 @@ An ISOC workspace is required to ingest additional Microsoft and non-Microsoft s
 
 Additional Microsoft and non-Microsoft security data is billed separately from the Microsoft security data included with the ISOC benefit. Ingested data can be retained for up to 90 days as part of the ISOC ingestion experience.
 
-Additional ingestion and retention charges might apply depending on the data you ingest and how long you retain it.
+Additional ingestion and retention charges will apply depending on the data you ingest and how long you retain it.
 
 ## How data tiers and retention work
 

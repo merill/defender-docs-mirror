@@ -12,12 +12,12 @@ ms.author: abbyweisberg
 ms.collection: M365-security-compliance
 ms.service: defender-for-cloud-apps
 ms.suite: ems
-ms.date: 2026-07-03T00:00:00.0000000Z
+ms.date: 2026-11-25T00:00:00.0000000Z
 ms.topic: how-to
 description: Use app governance hygiene features to identify unused apps, manage unused credentials, and review expiring credentials in Microsoft Defender.
 ms.reviewer: anandd512
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1016
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: 7a9b916a-6d36-92bb-6dfa-2916a9d1fc16
 document_version_independent_id: 7a9b916a-6d36-92bb-6dfa-2916a9d1fc16
@@ -67,6 +67,10 @@ App governance allows you to sort and filter on app last used date, credential u
 ## Create app hygiene policies
 
 App governance provides customizable policies for unused apps, apps with unused credentials, and apps with expiring credentials.
+
+Note
+
+You temporarily can't create app governance policies that use the **Last used** condition. Evaluation of existing policies that use this condition is also paused, so affected policies don't generate alerts or execute governance actions. Existing policy configurations remain unchanged, and policy evaluation will resume when normal operation is restored.
 
 For example, create a policy to automatically disable any app that hasn’t been used in the past 90 days, has high privilege permissions, and can access [priority accounts in Microsoft 365](/en-us/microsoft-365/admin/setup/priority-accounts). Like all app governance alerts, these alerts are aggregated into incidents in your Defender alerts queue and flow to Advanced hunting and Microsoft Sentinel.
 

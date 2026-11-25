@@ -18,6 +18,7 @@ ms.localizationpriority: medium
 ms.topic: troubleshooting-general
 ms.date: 2026-02-05T00:00:00.0000000Z
 ms.custom: partner-contribution
+ai-usage: ai-assisted
 ms.collection:
 - m365-security
 - tier3
@@ -64,32 +65,35 @@ Watch this video to get an overview of the client analyzer: [Defender for Endpoi
     ```bash
     curl -s -L -o XMDEClientAnalyzerBinary.zip "https://aka.ms/XMDEClientAnalyzerBinary"
     ```
-2. Verify the download.
-
-    ```bash
-    echo '8707A2327A0B3D7AE6734D9CA34E116FC628DA23FDCA61C7BA7C7A9965F0BE34  XMDEClientAnalyzerBinary.zip' | shasum -a 256 -c
-    ```
-3. Extract the contents of `XMDEClientAnalyzerBinary.zip` on the machine.
+2. Extract the contents of `XMDEClientAnalyzerBinary.zip` on the machine.
 
     If you're using a terminal, extract the files by running the following command:
 
     ```bash
     unzip -q XMDEClientAnalyzerBinary.zip -d XMDEClientAnalyzerBinary
     ```
-4. Change to the tool's directory by running the following command:
+3. Change to the tool's directory by running the following command:
 
     ```bash
     cd XMDEClientAnalyzerBinary/XMDEClientAnalyzer
     ```
-5. Notice that the following two zipped files are produced:
+4. Notice that the following two zipped files are produced:
 
     - `SupportToolLinuxBinary.zip`: For all Linux devices
     - `SupportToolMacOSBinary.zip`: For Mac devices
-6. Unzip the SupportToolMacOSBinary.zip.
+5. Unzip the SupportToolMacOSBinary.zip.
 
     ```bash
      unzip -q SupportToolMacOSBinary.zip
     ```
+6. Verify the binary's code signature and display its signing information:
+
+    ```bash
+    codesign --verify --strict --verbose=2 ./MDESupportTool
+    codesign -dvvv ./MDESupportTool
+    ```
+
+    Confirm that verification succeeds and the output includes `Authority=Developer ID Application: Microsoft Corporation (UBF8T346G9)` and `TeamIdentifier=UBF8T346G9`. Don't run the tool if verification fails or the signer doesn't match.
 7. Run the tool as root to generate your diagnostic package:
 
     ```bash
@@ -118,12 +122,12 @@ Running the Python-based client analyzer requires the installation of PIP packag
     - **Linux**:
 
         ```bash
-        echo 'CCADC17FDE907E63FBAF0A5F9D0FAA2FC6D03C49CBA62276BDE427D0F512167F  XMDEClientAnalyzer.zip' | sha256sum -c
+        echo 'EA40B6D476DE007F8F27FA3188B7E5A6B85E08071B97522D8E3C5AA5DEDD12DE  XMDEClientAnalyzer.zip' | sha256sum -c
         ```
     - **macOS**:
 
         ```bash
-        echo 'CCADC17FDE907E63FBAF0A5F9D0FAA2FC6D03C49CBA62276BDE427D0F512167F  XMDEClientAnalyzer.zip' | shasum -a 256 -c
+        echo 'EA40B6D476DE007F8F27FA3188B7E5A6B85E08071B97522D8E3C5AA5DEDD12DE  XMDEClientAnalyzer.zip' | shasum -a 256 -c
         ```
 3. Extract the contents of `XMDEClientAnalyzer.zip` on the machine.
 

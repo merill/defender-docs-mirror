@@ -21,7 +21,7 @@ ms.custom:
 - cx-ti
 - cx-ah
 ms.topic: reference
-ms.date: 2026-06-29T00:00:00.0000000Z
+ms.date: 2026-07-13T00:00:00.0000000Z
 locale: en-us
 document_id: 17e24ad7-d9eb-581d-6ec9-9d9897bd5ddc
 document_version_independent_id: 17e24ad7-d9eb-581d-6ec9-9d9897bd5ddc
@@ -72,6 +72,7 @@ Some information relates to prereleased product which may be substantially modif
 | `Action` | `string` | Action taken on the entity |
 | `ActionType` | `string` | Type of activity that triggered the event: Manual remediation, Phish ZAP, Malware ZAP |
 | `ActionTrigger` | `string` | Indicates whether an action was triggered by an administrator (manually or through approval of a pending automated action), or by some special mechanism, such as a ZAP or Dynamic Delivery |
+| `ApproverUpn` | `string` | User principal name (UPN) of the person who approved the remediation action |
 | `ActionResult` | `string` | Result of the action |
 | `RecipientEmailAddress` | `string` | Email address of the recipient, or email address of the recipient after distribution list expansion |
 | `DeliveryLocation` | `string` | Location where the email was delivered: Inbox/Folder, On-premises/External, Junk, Quarantine, Failed, Dropped, Deleted items |

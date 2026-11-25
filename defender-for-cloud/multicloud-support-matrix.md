@@ -15,9 +15,9 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Review Azure, AWS, and GCP support for Microsoft Defender for Cloud workload protection and security posture features to plan a multicloud deployment.
 ms.topic: limits-and-quotas
-ms.date: 2026-09-11T00:00:00.0000000Z
+ms.date: 2026-11-25T00:00:00.0000000Z
 ai-usage: ai-assisted
-ms.custom: msecd-doc-authoring-1015
+ms.custom: msecd-doc-authoring-1032
 locale: en-us
 document_id: c9b5c0ed-9259-8884-0aea-adfd15c98ace
 document_version_independent_id: 6cfab17a-addf-7fef-c4b0-9db303973d7a
@@ -65,7 +65,7 @@ Use the following table to verify Defender for Cloud plan coverage in multicloud
 | Defender for Containers | GA | GA | Kubernetes threat detection, container vulnerability assessment, control plane hardening | [Containers support matrix](support-matrix-defender-for-containers) |
 | Defender CSPM | GA | GA | Agentless posture assessment, attack path analysis, governance and risk prioritization | [Defender CSPM overview](concept-cloud-security-posture-management) |
 | Defender for SQL Servers on Machines | GA | GA | SQL threat detection and vulnerability assessment on multicloud machines | [Defender for SQL Servers on Machines overview](defender-for-sql-servers-introduction) |
-| Defender for Open-Source Relational Databases | Preview | Not supported | Threat detection for PostgreSQL, MySQL, and MariaDB in supported environments | [Overview of Defender for Open-Source Relational Databases](defender-for-databases-introduction) |
+| Defender for Open-Source Relational Databases | GA | Not supported | Threat detection for PostgreSQL, MySQL, and MariaDB in supported environments | [Overview of Defender for Open-Source Relational Databases](defender-for-databases-introduction) |
 | Defender for Azure SQL Databases | Not supported | Not supported | Threat detection and vulnerability assessment for Azure SQL services | [Defender for SQL overview](defender-for-sql-introduction) |
 | Defender for Azure Cosmos DB | Not supported | Not supported | Threat protection for Azure Cosmos DB workloads | [Defender for Azure Cosmos DB](concept-defender-for-cosmos) |
 | Defender for DevOps | GA | GA | CI/CD security posture, code-to-cloud insights, pull request annotations | [Defender for DevOps overview](defender-for-devops-introduction) |
@@ -91,7 +91,7 @@ The following table provides a high-level view of Defender for Cloud plan availa
 | [Defender for Containers](defender-for-containers-introduction) | GA | GA | GA |
 | [Defender CSPM](concept-cloud-security-posture-management) | GA | GA | GA |
 | [Defender for SQL Servers on Machines](defender-for-sql-introduction) | GA | GA | GA |
-| [Defender for Open-Source Relational Databases](defender-for-databases-introduction) | GA | Preview | Not supported |
+| [Defender for Open-Source Relational Databases](defender-for-databases-introduction) | GA | GA | Not supported |
 | [Defender for Azure SQL Databases](defender-for-sql-introduction) | GA | Not supported | Not supported |
 | [Defender for Azure Cosmos DB](concept-defender-for-cosmos) | GA | Not supported | Not supported |
 | [Defender for DevOps](defender-for-devops-introduction) | GA | GA | GA |
@@ -222,7 +222,7 @@ Defender for Databases provides threat detection for database services. Multiclo
 | --- | --- | --- | --- |
 | Defender for Azure SQL Databases | GA | Not supported | Not supported |
 | Defender for SQL Servers on Machines | GA | GA | GA |
-| Defender for Open-Source Relational Databases | GA | Preview | Not supported |
+| Defender for Open-Source Relational Databases | GA | GA | Not supported |
 | Defender for Azure Cosmos DB | GA | Not supported | Not supported |
 
 Note

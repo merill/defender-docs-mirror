@@ -15,8 +15,8 @@ manager: orspodek
 ms.service: defender-for-cloud
 description: Learn how to identify SQL Server instances still using the legacy Microsoft Monitoring Agent (MMA) so you can deploy Azure Arc and migrate to the updated agent.
 ms.topic: how-to
-ms.date: 2026-07-03T00:00:00.0000000Z
-ms.custom: msecd-doc-authoring-1013
+ms.date: 2026-11-25T00:00:00.0000000Z
+ms.custom: msecd-doc-authoring-1032
 ai-usage: ai-assisted
 locale: en-us
 document_id: a3f709bd-79a3-a57a-8f8c-c3756ed607c9
@@ -35,11 +35,11 @@ source_path: defender-for-cloud/identify-sql-servers-protected-by-monitor-agent.
 cmProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/cbe4ca68-43ac-4375-aba5-5945a6394c20
 - https://authoring-docs-microsoft.poolparty.biz/devrel/07bb3e10-d135-43ff-bc8b-360497cb39fa
-- https://authoring-docs-microsoft.poolparty.biz/devrel/8e3fdb08-a059-4277-98f6-c0e21e940707
+- https://authoring-docs-microsoft.poolparty.biz/devrel/beac614b-f66d-40ed-a947-3996de709333
 spProducts:
 - https://authoring-docs-microsoft.poolparty.biz/devrel/ced846cc-6a3c-4c8f-9dfb-3de0e90e2742
 - https://authoring-docs-microsoft.poolparty.biz/devrel/12e559b9-eaf6-4aee-9af7-62334e15f863
-- https://authoring-docs-microsoft.poolparty.biz/devrel/88291526-9c74-4f87-878c-de0a82134421
+- https://authoring-docs-microsoft.poolparty.biz/devrel/9da05372-4706-43ec-a899-f436adab380d
 platformId: af64b92c-605a-cbd6-781a-adbeb40aa2e2
 ---
 
@@ -56,6 +56,12 @@ Migrating to the updated agent might affect your pricing. For information regard
 ## Determine which SQL servers are protected by the legacy MMA
 
 You can identify SQL servers onboarded to the Defender for SQL Server on Machines plan with the legacy MMA in your environment without Azure Arc installed.
+
+You can also use the [SQL Servers on Machines MMA Helper workbook](https://portal.azure.com/#blade/AppInsightsExtension/UsageNotebookBlade/ComponentId/Azure%20Security%20Center/ConfigurationId/community-Workbooks%2FAzure%20Security%20Center%2FSQL%20Servers%20on%20Machines%20MMA%20Helper/WorkbookTemplateName/SQL%20Servers%20on%20Machines%20MMA%20Helper) in the Azure portal to identify machines protected by MMA.
+
+[![Screenshot of the SQL Servers on Machines MMA Helper workbook showing subscriptions, Log Analytics workspaces, and MMA-reporting machines.](media/identify-sql-servers-protected-by-mma/defender-for-sql-microsoft-monitoring-agent-workbook.png)](media/identify-sql-servers-protected-by-mma/defender-for-sql-microsoft-monitoring-agent-workbook.png#lightbox)
+
+To identify these machines by using Azure Resource Graph Explorer, follow these steps:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. Search for and select **Azure Resource Graph Explorer**.
@@ -96,7 +102,7 @@ You can identify SQL servers onboarded to the Defender for SQL Server on Machine
 4. Select **Run query**.
 
     [![Screenshot that shows the pasted query and where to find the Run query button.](media/identify-sql-servers-protected-by-mma/run-query.png)](media/identify-sql-servers-protected-by-mma/run-query.png#lightbox)
-5. For any results returned, [connect hybrid machines with Azure Arc-enabled servers](/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm).
+5. For any results returned, [connect hybrid machines with Azure Arc-enabled servers](/en-us/azure/azure-arc/servers/learn/quick-enable-hybrid-vm). To deploy Azure Arc at scale, [connect machines using a service principal](/en-us/azure/azure-arc/servers/onboard-service-principal?tabs=portal).
 
 ## Learn more
 

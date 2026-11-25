@@ -68,6 +68,13 @@ The known limitation announced in the October 2026 update is now resolved for go
 
 ## October 2026
 
+### Retirement of two security alerts
+
+The following Defender for Identity alerts will be retired at the end of November 2026:
+
+- **Suspected identity theft (pass-the-hash)**: You can continue monitoring this activity on onboarded devices with Microsoft Defender for Endpoint. For more information, see [Behavioral blocking and containment](/en-us/defender-endpoint/behavioral-blocking-containment).
+- **Remote code execution attempt**: You can continue monitoring this activity by creating custom detections in Advanced hunting. The query will be published in the Microsoft Defender XDR Community hub soon. For more information, see [Microsoft Defender for Identity classic alerts](/en-us/defender-for-identity/alerts-mdi-classic).
+
 ### Automatic sensor v3.x activation and Windows auditing for existing customers
 
 This rollout applies only to organizations that are licensed for Defender for Identity and have an active workspace. Eligible organizations included in the rollout see a banner on the **Sensor management** tab of the **On-premises** settings page for 30 days.

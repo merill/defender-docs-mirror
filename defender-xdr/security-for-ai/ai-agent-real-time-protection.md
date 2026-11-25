@@ -71,6 +71,10 @@ Real-time protection inspects AI agent activity throughout the agentic loop and 
 - **Foundry agents (Preview):** Protection evaluates user requests, agent responses, tool invocations and responses.
 - **Copilot Studio agents (Preview)**: Protection currently evaluates tool invocations only.
 
+Note
+
+Real-time protection for Copilot Studio agents is supported only for agents built using the standard agent harness.
+
 There are two types of real-time protection rules:
 
 - **Default rule**: Audits all agents, recording matching activity as a behavior without stopping the action. This gives you visibility before you enforce blocking.

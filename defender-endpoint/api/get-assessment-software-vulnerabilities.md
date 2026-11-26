@@ -356,7 +356,7 @@ Exports are scoped by **RBACGroup**. A device that moves from one RBAC group to 
 1. **Baseline** – Download the full VA(Flat VA) export on your preferred cadence (weekly is often sufficient).
 2. **Stay current** – delta export between full snapshots(Delta can be queried up to 14 days into the past).
 3. **Handle RBAC moves** – When processing a Delta, de-duplicate entries where the same `Id(deviceId_software_` version \_ cve`)`appears under multiple `rbacGroupId` values.
-4. When "Status" = Fix" the calcualtion of "EventTimestamp"- "FirstSeenTimestamp" should give you an estimation on when the CVE was fixed up to a granularity of 6 hours(because of Delta worker run interval).
+4. When `Status` is `Fixed`, the difference between `EventTimestamp` and `FirstSeenTimestamp` provides an estimate of when the CVE was fixed, with a granularity of up to 24 hours because of the delta generation interval.
 
 #### 3.1.1 Limitations
 
@@ -381,7 +381,7 @@ GET /api/machines/SoftwareVulnerabilityChangesByMachine
 
 ### 3.4 Parameters
 
-- sinceTime (required): The start time from which you want to see data changes. Vulnerability management generates data on new and updated vulnerabilities every 6 hours. The data returned includes all the changes captured in the 6-hour period the specified sinceTime falls into, along with the changes in any subsequent 6 hour periods up to and including the most recently generated data.
+- sinceTime (required): The start time from which you want to see data changes. Vulnerability management generates data on new and updated vulnerabilities every 6-24 hours. The data returned includes all the changes captured in the generation period the specified sinceTime falls into, along with the changes in any subsequent generation periods up to and including the most recently generated data.
 - pageSize (default = 50,000): number of results in response.
 - $top: number of results to return (doesn't return @odata.nextLink and so doesn't pull all the data).
 

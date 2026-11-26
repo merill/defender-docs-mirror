@@ -20,7 +20,7 @@ ms.collection:
 - sentinel-only
 ms.custom: admindeeplinkDEFENDER
 ms.topic: concept-article
-ms.date: 2025-12-22T00:00:00.0000000Z
+ms.date: 2026-11-26T00:00:00.0000000Z
 locale: en-us
 document_id: 8717e531-fa99-f7ab-3907-06c528edf3f3
 document_version_independent_id: 8717e531-fa99-f7ab-3907-06c528edf3f3
@@ -81,7 +81,7 @@ Alerts in the Microsoft Defender portal come from many sources. These sources in
 
 For example, when Microsoft Sentinel is [onboarded](/en-us/azure/sentinel/microsoft-sentinel-onboard) to the Microsoft Defender portal, the correlation engine in the Defender portal has access to all the raw data ingested by Microsoft Sentinel, which you can find in Defender's **Advanced hunting** tables.
 
-- Microsoft Sentinel customers using the Defender portal, or who are using the Azure portal with the [Microsoft Sentinel Defender XDR data connector](/en-us/azure/sentinel/connect-microsoft-365-defender), also benefit from Microsoft Threat Intelligence alerts that highlight activity from nation state actors, such as ransomware campaigns and fraudulent operations. For customers without E5 licenses or Microsoft Sentinel, these alerts are available only in the Microsoft 365 Admin Center (MAC).
+- Microsoft Sentinel customers using the Defender portal, or who are using the Azure portal with the [Microsoft Sentinel Defender XDR data connector](/en-us/azure/sentinel/connect-microsoft-365-defender), also benefit from Microsoft Threat Intelligence alerts that highlight activity from nation state actors, such as ransomware campaigns and fraudulent operations. For customers without E5 licenses or Microsoft Sentinel, these alerts are available only in the Microsoft 365 Admin Center (MAC). To control access to these Nation-State Notification (NSN) alerts, configure the **Microsoft Threat Intelligence** data source in [Microsoft Defender unified role-based access control (RBAC) role assignments](create-custom-rbac-roles#control-access-to-microsoft-threat-intelligence-alerts).
 - Microsoft Defender XDR itself also creates alerts. Defender XDR's unique correlation capabilities provide another layer of data analysis and threat detection for all the non-Microsoft solutions in your digital estate. These detections produce Defender XDR alerts, in addition to the alerts already provided by Microsoft Sentinel's analytics rules.
 
 Within each of these sources, there are one or more threat detection mechanisms that produce alerts based on the rules defined in each mechanism. For example, Microsoft Sentinel has at least four different engines that produce different types of alerts, each with its own rules.

@@ -18,7 +18,7 @@ ms.collection:
 - tier3
 ms.custom: msecd-doc-authoring-1014
 ms.topic: how-to
-ms.date: 2026-08-31T00:00:00.0000000Z
+ms.date: 2026-11-26T00:00:00.0000000Z
 ms.reviewer: 
 ai-usage: ai-assisted
 locale: en-us
@@ -142,6 +142,21 @@ The following steps describe how to create custom roles in the Microsoft Defende
 Note
 
 For the Microsoft Defender portal to start enforcing the permissions and assignments configured in your new or imported roles, you need to activate the new Microsoft Defender unified RBAC model. For more information, see [Activate Microsoft Defender unified RBAC](activate-defender-rbac).
+
+## Control access to Microsoft Threat Intelligence alerts
+
+Use the **Microsoft Threat Intelligence** data source to control access to Nation-State Notification (NSN) alerts in the Microsoft Defender portal.
+
+When you create or edit a role assignment, select **Microsoft Threat Intelligence** from **Data sources**. The role's permissions determine what assigned users can do:
+
+- **Security data basics** (Read): View NSN alerts.
+- **Alerts** (Manage): Manage NSN alerts.
+
+For existing assignments that require NSN alert access, add **Microsoft Threat Intelligence** if it isn't already included. Assignments with **Include future data sources automatically** selected automatically include newly supported data sources.
+
+This selection scopes the current role assignment. It doesn't remove access granted through other role assignments or Microsoft Entra roles.
+
+For more information about these alerts, see [Alert sources and threat detection](incidents-overview#alert-sources-and-threat-detection).
 
 ## Configure scoped roles for Microsoft Defender for Identity
 

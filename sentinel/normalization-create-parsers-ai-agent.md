@@ -26,7 +26,7 @@ description: Use GitHub Copilot or the Microsoft Sentinel VS Code extension skil
 ms.author: derricklee
 author: derricklee
 ms.topic: how-to
-ms.date: 2026-09-07T00:00:00.0000000Z
+ms.date: 2026-11-26T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.custom: msecd-doc-authoring-1012
 locale: en-us
@@ -81,7 +81,7 @@ To run the ASIM parser creation workflow in Copilot CLI, follow these steps:
 3. Run `copilot`. This command starts Copilot CLI. Running `copilot` in the Azure-Sentinel repository preloads existing skills in the repository.
 
     If the ASIM parser skills don't appear when you run `/skills list`, load the skills manually with `/skills add .github/skills/`.
-4. Select Claude Sonnet 4.6+ or Claude Opus 4.6+ for best results by running `/model` .
+4. Select Claude Sonnet 5 or later or Claude Opus 4.8 or later for best results by running `/model` .
 5. Prompt Copilot in the session to create an ASIM parser with the following prompt: `Create an ASIM parser for me.`
 
 ### Quick start with the Microsoft Sentinel VS Code extension

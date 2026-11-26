@@ -108,6 +108,8 @@ Returns all of the configurations and their status, on a per-device basis.
 
 ### 1.3 Properties (via files)
 
+For the download workflow, including asynchronous copy-status checks and retries, see [Download assessment export files](download-assessment-export-files).
+
 | Property (ID) | Data type | Description |
 | --- | --- | --- |
 | Export files | array[string] | A list of download URLs for files holding the current snapshot of the organization. |
@@ -144,6 +146,8 @@ Returns all of the installed software and their details on each device.
 | SoftwareVersion | String | Version number of the software product. |
 
 ### 2.3 Properties (via files)
+
+For the download workflow, including asynchronous copy-status checks and retries, see [Download assessment export files](download-assessment-export-files).
 
 | Property (ID) | Data type | Description |
 | --- | --- | --- |
@@ -189,6 +193,8 @@ Returns all the known vulnerabilities on a device and their details, for all dev
 | VulnerabilitySeverityLevel | String | Severity level that is assigned to the security vulnerability based on the CVSS score. |
 
 ### 3.3 Properties (via files)
+
+For the download workflow, including asynchronous copy-status checks and retries, see [Download assessment export files](download-assessment-export-files).
 
 | Property (ID) | Data type | Description |
 | --- | --- | --- |
@@ -247,6 +253,8 @@ Returns all of the installed software that does not have a [Common Platform Enum
 | SoftwareVersion | string | Version number of the software product. |
 
 ### 4.3 Properties (via files)
+
+For the download workflow, including asynchronous copy-status checks and retries, see [Download assessment export files](download-assessment-export-files).
 
 | Property (ID) | Data type | Description |
 | --- | --- | --- |

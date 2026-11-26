@@ -170,6 +170,8 @@ https://api.security.microsoft.com/api/machines/SoftwareInventoryNoProductCodeBy
 
 ## 2. Export non product code software inventory assessment (via files)
 
+For the download workflow, including asynchronous copy-status checks and retries, see [Download assessment export files](download-assessment-export-files).
+
 ### 2.1 API method description
 
 This API response contains all the data of installed software that doesn't have a [Common Platform Enumeration(CPE)](https://nvd.nist.gov/products/cpe) per device. Returns a table with an entry for every unique combination of DeviceId, SoftwareVendor, SoftwareName, SoftwareVersion.

@@ -15,7 +15,7 @@ author: yaronyahav-ms
 ms.author: yaronyahav
 ms.reviewer: noamhadash,  yongrhee
 ms.localizationpriority: medium
-ms.date: 2026-10-30T00:00:00.0000000Z
+ms.date: 2026-11-16T00:00:00.0000000Z
 ai-usage: ai-assisted
 ms.collection:
 - m365-security
@@ -58,6 +58,8 @@ Learn more about [Preview features](/en-us/defender-xdr/preview).
 
 | Type | Feature | Preview/GA | Description |
 | --- | --- | --- | --- |
+| Feature | Domain filter in device inventory portal | GA | You can now filter devices by their Active Directory domain in the device inventory. This makes it easier to narrow the inventory to devices belonging to a specific domain for investigation and device management. For more information, see [Device inventory field and filter reference](device-inventory-field-reference#filters-reference). |
+| Feature | [Server-side filtering for export assessment APIs](api/export-assessment-server-side-filtering) | Preview | The export assessment APIs now support the `$filter` query parameter to narrow records by device group and supported properties before retrieval, reducing the data you transfer and process. |
 | Feature | Preview features page | Preview | Turn certain Defender for Endpoint public preview features on or off per feature. For more information, see [Manage individual preview features in Microsoft Defender for Endpoint](manage-preview-features). |
 | Feature | Embedded offboarding with the Defender deployment tool for Windows | Preview | As with embedded onboarding, a key is required to run the tool, you can set an expiry date for the package, and you can download the package as an .exe or .zip file. Track the offboarding packages you create on the **Deployment packages** page. For more information, see [Offboard devices by using the Defender deployment tool](defender-deployment-tool-windows#offboard-by-using-embedded-offboarding-preview). |
 | Release - macOS | Build 101.26092.0012 | GA | Release version 20.126092.12.0 released: See [enhancements and features for this release](microsoft-defender-endpoint-releases#macos--november-2026--101260920012). |

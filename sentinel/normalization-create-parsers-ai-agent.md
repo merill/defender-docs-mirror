@@ -82,6 +82,10 @@ To run the ASIM parser creation workflow in Copilot CLI, follow these steps:
 
     If the ASIM parser skills don't appear when you run `/skills list`, load the skills manually with `/skills add .github/skills/`.
 4. Select Claude Sonnet 5 or later or Claude Opus 4.8 or later for best results by running `/model` .
+
+    Note
+
+    To comply with Article 50(2) of the EU AI Act, make sure the agent harness and large language model (LLM) you use with this skill comply with those requirements.
 5. Prompt Copilot in the session to create an ASIM parser with the following prompt: `Create an ASIM parser for me.`
 
 ### Quick start with the Microsoft Sentinel VS Code extension
